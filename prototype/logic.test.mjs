@@ -161,6 +161,8 @@ test('skill DNA, time machine, and SDG mapper render their evidence limits', () 
   assert.match(demoMapping, /https:\/\/www\.onetonline\.org\/link\/summary\/13-1161\.00/);
   assert.match(demoMapping, /https:\/\/sdgs\.un\.org\/goals\/goal8/);
   assert.match(demoMapping, /not proof of productivity gain/i);
+});
+
 test('anonymous request uses CSRF and no shared access code', async () => {
   const original=globalThis.fetch;const seen=[];
   globalThis.fetch=async(url,options)=>{seen.push({url,options});return {ok:true,json:async()=>url==='/api/session'?{csrf_token:'fixture-token'}:{mode:'real-ai',analysis:{},inference:{request_id:'FIXTURE-NOT-LIVE'}}};};
