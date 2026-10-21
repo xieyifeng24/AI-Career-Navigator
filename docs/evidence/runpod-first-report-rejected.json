@@ -1,0 +1,18 @@
+{
+  "date": "2026-10-21",
+  "request_id": "chatcmpl-af5e87464f06c27c",
+  "model": "Qwen/Qwen3-4B-Instruct-2507",
+  "duration_seconds": 83.11,
+  "usage": {
+    "completion_tokens": 4857,
+    "completion_tokens_details": null,
+    "prompt_tokens": 6286,
+    "prompt_tokens_details": null,
+    "total_tokens": 11143
+  },
+  "http_status": 200,
+  "application_validation": "rejected",
+  "reason": "Model quoted occupational reference tasks as user evidence; literal-input validation rejected the response.",
+  "fix": "Constrained generation schema now enumerates exact input task/evidence excerpts, known source IDs, roles and skills.",
+  "note": "This is a failed evaluation, not a successful career report."
+}
