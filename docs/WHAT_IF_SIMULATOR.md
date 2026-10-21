@@ -18,7 +18,7 @@ No new AI request, provider cost, backend contract or scoring change.
   Salary priority therefore changes what to verify first and links the official
   occupational source; it cannot honestly create a salary-based ranking.
 - Reset restores the selected report path and original weekly budget. Simulator
-  language selection persists while resetting the planning choices.
+  language follows the shared app language while resetting the planning choices.
 
 All schedule estimates assume the report's effort estimates are usable and tasks
 can be split. Time does not imply learned skills, certification, suitability or
@@ -27,19 +27,18 @@ Original reports remain below; simulator choices do not overwrite them.
 
 ## Language inspection
 
-This checkout's app/document are English. No existing Chinese/Malay dictionary,
-locale selector or translation API was found. Existing report text is unchanged.
-The NEW simulator controls/explanations support English, Chinese and Malay via its
-own scoped language selector and lang attribute. Career titles, quoted report
-content and official sources retain their original language; they are not silently
-machine-translated. This change does not claim whole-app multilingual support.
+The integrated application uses the questionnaire branch's shared English,
+Simplified Chinese and Malay selector. It controls simulator labels and preserves
+scenario choices when switching language. There is no competing simulator selector.
+Generated report prose and official source pages keep their original language;
+the report-language notice explains when a new analysis is needed.
 
 ## Light report refinement
 
 Only adjacent identical sentences, repeated citation IDs in one reference group,
 exactly duplicate limitation entries and redundant English week prefixes are
 removed at render time. Original report data, caveats, detailed advice, figures,
-deliverables and unique official links are retained. No AI prompt was changed.
+deliverables and unique official links are retained. Scoring and report structure remain unchanged; the integration only clarifies optional questionnaire context in the existing prompt.
 
 ## Validation
 
@@ -59,3 +58,5 @@ range-keyboard updates, salary-priority warning, original-score preservation,
 shorter review/deferred work, Path B, Chinese/Malay labels, and reset retaining the
 selected language. Screenshot `evidence/simulator-local-fixture.png` uses synthetic
 contract test data, not a newly generated or verified career analysis.
+
+Integration validation supersedes the historical counts above; see [INTEGRATION_REPORT.md](INTEGRATION_REPORT.md).

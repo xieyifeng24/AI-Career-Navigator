@@ -17,4 +17,7 @@ There is no automatic fallback from a failed model request.
 port 4173. Only the explicitly selected scripted mode works without the API;
 public source and real AI features require `src.career.api:app` on port 8000.
 
-Frontend checks: `node --test prototype/logic.test.mjs`.
+Frontend checks: `node --test prototype/*.test.mjs`.
+
+The structured questionnaire, language behavior, API compatibility and verification
+limits are documented in [QUESTIONNAIRE_I18N](../docs/QUESTIONNAIRE_I18N.md).

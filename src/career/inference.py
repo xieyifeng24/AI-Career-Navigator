@@ -62,6 +62,12 @@ Use exactly one transferable skill, one gap, one tool per path; two uncertaintie
 The schema uses keyed objects for capabilities, paths and scenarios: fill every key.
 """
 
+LANGUAGE_RULES = {
+    'en': ('English', ['Your fictional profile reports ', 'Your reported AI use is ', 'An unverified next experiment is ', 'Test with fictional data: ', 'Not evidenced in your fictional profile: ', 'Reported transferable evidence: ']),
+    'zh-CN': ('Simplified Chinese', ['你的虚构资料显示：', '你报告的 AI 使用情况是：', '一个尚待验证的新尝试是：', '使用虚构数据验证：', '虚构资料中尚未体现：', '已报告的可迁移能力：']),
+    'ms': ('Bahasa Melayu', ['Profil rekaan anda menyatakan ', 'Penggunaan AI yang anda laporkan ialah ', 'Eksperimen seterusnya yang belum disahkan ialah ', 'Uji dengan data rekaan: ', 'Belum dibuktikan dalam profil rekaan anda: ', 'Bukti kemahiran boleh pindah yang dilaporkan: '])
+}
+
 def quote_options(text):
     """Extract exact input excerpts for constrained generation, never paraphrase."""
     options=[]
@@ -75,6 +81,7 @@ def quote_options(text):
 
 def output_schema(profile, snapshot):
     schema=Analysis.model_json_schema()
+    prefixes=LANGUAGE_RULES[profile.language][1]
     definitions=schema['$defs']
     evidence=list(dict.fromkeys(q for text in [profile.tasks,profile.skills,profile.aiUse] for q in quote_options(text)))
     definitions['Capability']['properties']['evidence_quote']['enum']=evidence
@@ -100,19 +107,19 @@ def output_schema(profile, snapshot):
     schema['properties']['summary']=context_claim()
     capability=deepcopy(definitions['Capability'])
     variants=[]
-    for lens,prefix,fields in [('independent','Your fictional profile reports ',['skills','tasks']),
-                               ('collaboration','Your reported AI use is ',['aiUse']),
-                               ('extended','An unverified next experiment is ',['tasks','skills'])]:
+    for lens,prefix,fields in [('independent',prefixes[0],['skills','tasks']),
+                               ('collaboration',prefixes[1],['aiUse']),
+                               ('extended',prefixes[2],['tasks','skills'])]:
         variant=deepcopy(capability)
         variant['properties']['lens']={'type':'string','const':lens}
         variant['properties']['evidence_quote']['enum']=list(dict.fromkeys(q for field in fields for q in quote_options(getattr(profile,field))))
         variant['properties']['assessment']['properties']['text']['pattern']='^'+prefix+'.+'
-        variant['properties']['verify_next']['properties']['text']['pattern']='^Test with fictional data: .+'
+        variant['properties']['verify_next']['properties']['text']['pattern']='^'+re.escape(prefixes[3])+'.+'
         variants.append(variant)
     schema['properties']['capabilities']={'type':'object','additionalProperties':False,
         'required':['independent','collaboration','extended'],
         'properties':{v['properties']['lens']['const']:v for v in variants}}
-    for field,prefix in [('gaps','Not evidenced in your fictional profile: '),('transferable','Reported transferable evidence: ')]:
+    for field,prefix in [('gaps',prefixes[4]),('transferable',prefixes[5])]:
         skill=deepcopy(definitions['SkillAdvice'])
         skill['properties']['advice']['properties']['text']['pattern']='^'+prefix+'.+'
         definitions['Path']['properties'][field]['items']=skill
@@ -167,7 +174,14 @@ def make_messages(profile, snapshot, ranked):
                'allowed_user_task_quotes':quote_options(profile.tasks),
                'allowed_user_evidence_quotes':{key:quote_options(getattr(profile,key)) for key in ['tasks','skills','aiUse']},
                'weekly_learning_hours':profile.hours}
-    return [{'role':'system','content':SYSTEM}, {'role':'user','content':json.dumps(context,ensure_ascii=False)}]
+    language, prefixes = LANGUAGE_RULES[profile.language]
+    system = SYSTEM.replace('Write concise English: one COMPLETE sentence of 15-25 words per text field, under',
+        f'Write ALL explanatory text in {language}: one concise complete sentence per text field, under')
+    system += (f'\nOUTPUT LANGUAGE: {language}. Keep schema keys, enum IDs, supplied skill names, and exact evidence/input quotes unchanged. '
+               'Translate all other prose, including SDG rationale, actions, deliverables, validation and uncertainties. '
+               'Interpret every selected option, optional additionalContext and any legacy custom answers as self-reported context. Other (not specified) is missing detail, not evidence of a specific skill or task. '
+               f'Use the language-specific prefixes enforced in the JSON schema: {json.dumps(prefixes, ensure_ascii=False)}.')
+    return [{'role':'system','content':system}, {'role':'user','content':json.dumps(context,ensure_ascii=False)}]
 
 def validate_analysis(raw, profile, snapshot):
     result=Analysis.model_validate(raw)

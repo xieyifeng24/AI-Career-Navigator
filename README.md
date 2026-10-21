@@ -93,7 +93,7 @@ In the current maintainer workspace the tested virtual environment is `.venv312`
 python -m unittest discover tests -v
 node --check prototype/app.js
 node --check prototype/live.js
-node --test prototype/logic.test.mjs
+node --test prototype/*.test.mjs
 python -m pip check
 ```
 
@@ -198,3 +198,7 @@ priority simulator. It reuses the current report and official links without anot
 AI call or changes to matching scores. Simulator controls support English, Chinese
 and Malay; original report content retains its existing language. See
 [behaviour, limits and verification](docs/WHAT_IF_SIMULATOR.md).
+
+## Integrated team candidate
+
+`codex/integration-hackathon` combines the existing visual prototype, real AI backend, choice-based trilingual questionnaire and What-if planning. The questionnaire has one optional supplement field. Integration provenance, verification and remaining limitations: [docs/INTEGRATION_REPORT.md](docs/INTEGRATION_REPORT.md). This branch is for review; it has not been deployed.

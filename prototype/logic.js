@@ -1,18 +1,23 @@
+import {validateAnswers} from './questionnaire.js';
 import { cases, steps } from './data.js';
 
 export function emptyProfile() {
-  return { scenario: '', background: '', experience: '', tasks: '', skills: '', aiUse: '', concerns: '', goal: '', hours: '', constraints: '' };
+  return { scenario: '', background: '', experience: '', tasks: '', skills: '', aiUse: '', concerns: '', goal: '', hours: '', constraints: '', additionalContext: '' };
 }
 
 export function sampleProfile(scenario) {
-  return { ...emptyProfile(), ...cases[scenario].sample, scenario };
+  const p={ ...emptyProfile(), ...cases[scenario].sample, scenario };
+  const marketing=scenario==='marketing';
+  p.answers={background:marketing?'marketing':'admin',experience:marketing?'3to5':'1to2',tasks:marketing?['write','data','communicate']:['coordinate','data','communicate'],skills:marketing?['writing','analysis','communication']:['coordination','time','communication'],aiUsage:'occasional',concerns:['automation','skills'],goal:marketing?'upgrade':'explore',constraints:['time','budget'],custom:{}};
+  p.additionalContext=['tasks','skills','aiUse','concerns','goal','constraints'].map(key=>`${key}: ${p[key]}`).join('\n');
+  return p;
 }
 
 export function validateStep(profile, index, mode='demo') {
-  const errors = {};
+  const errors = validateAnswers(profile,index);
   for (const field of steps[index].fields) {
     if(field==='scenario' && mode==='live') continue;
-    if (!String(profile[field] ?? '').trim()) errors[field] = 'Please complete this field.';
+    if (field==='scenario' && !profile.scenario) errors.scenario='Please complete this field.';
   }
   if (index === 3 && profile.hours) {
     const n = Number(profile.hours);

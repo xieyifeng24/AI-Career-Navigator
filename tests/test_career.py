@@ -125,7 +125,8 @@ class API(unittest.TestCase):
         self.assertEqual(r.status_code,422);self.assertNotIn('private@example.com',r.text)
     def test_files_and_body_are_bounded(self):
         for path in ['/.env','/requirements.txt','/server.py','/logic.test.mjs']:self.assertEqual(self.client.get(path).status_code,404)
-        self.assertEqual(self.client.get('/simulator.js').status_code,200)
+        for asset in ['simulator.js','i18n.js','questionnaire.js','questionnaire.json','translations.json']:
+            self.assertEqual(self.client.get('/'+asset).status_code,200)
         self.assertEqual(self.client.post('/api/analyze',content='x'*19000).status_code,413)
         self.assertIn("script-src 'self'",self.client.get('/').headers['Content-Security-Policy'])
     def auth(self,client=None):
@@ -175,3 +176,19 @@ class API(unittest.TestCase):
                 r=self.client.post('/api/analyze',json=profile().model_dump(),headers=self.auth())
             self.assertEqual(r.status_code,200);self.assertEqual(r.json()['inference']['request_id'],'TEST-FIXTURE-NOT-LIVE')
             self.assertNotIn('test-code',r.text);self.assertFalse(self.client.app.state.busy)
+
+    def test_integrated_choices_and_single_supplement_reach_inference_over_http(self):
+        from src.career.models import Analysis
+        from test_questionnaire import structured
+        app.state.inference.key='test';app.state.inference.endpoint='test-id'
+        payload={'answers':structured(goal='other'),'additionalContext':'Fictional interest in public services',
+                 'language':'ms','hours':3,'synthetic':True}
+        infer=AsyncMock(return_value=(Analysis.model_validate(analysis()),{'request_id':'TEST-FIXTURE-NOT-LIVE','model':'FIXTURE'}))
+        with patch.object(app.state.sources,'get',new=AsyncMock(return_value=snapshot())),patch.object(app.state.inference,'analyze',new=infer):
+            r=self.client.post('/api/analyze',json=payload,headers=self.auth())
+        self.assertEqual(r.status_code,200)
+        sent=infer.call_args.args[0]
+        self.assertEqual(sent.additionalContext,payload['additionalContext'])
+        self.assertEqual(sent.answers.goal,'other')
+        self.assertEqual(sent.language,'ms')
+        self.assertEqual(r.json()['language'],'ms')

@@ -105,7 +105,7 @@ async def generate_analysis(profile):
             report,meta=await provider.analyze(profile,snapshot,ranked)
             app.state.last_inference=datetime.now(timezone.utc).isoformat()
             return {'mode':'real-ai','analysis':report.model_dump(),'ranking':ranked,'evidence':snapshot,
-                    'inference':meta,'report_id':str(uuid.uuid4()),'generated_at':datetime.now(timezone.utc).isoformat(),
+                    'language':profile.language,'inference':meta,'report_id':str(uuid.uuid4()),'generated_at':datetime.now(timezone.utc).isoformat(),
                     'limitations':['Model inferences are hypotheses, not verified competence or hiring advice.',
                                    'Citations identify context; semantic support requires human review.',
                                    'US occupational data does not establish Malaysian demand.',
@@ -153,5 +153,5 @@ async def index(): return FileResponse(ROOT/'prototype/index.html')
 @app.get('/{filename}')
 async def asset(filename: str):
     # Serve only explicit frontend assets, never repository files, secrets or tests.
-    if filename not in {'app.js','data.js','logic.js','live.js','styles.css','simulator.js'}: raise HTTPException(404)
+    if filename not in {'app.js','data.js','logic.js','live.js','styles.css','simulator.js','i18n.js','questionnaire.js','questionnaire.json','translations.json'}: raise HTTPException(404)
     return FileResponse(ROOT/'prototype'/filename)
