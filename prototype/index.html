@@ -3,13 +3,72 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#f7f6f2" />
+  <meta name="theme-color" content="#0b241e" />
   <meta name="description" content="Explore your skills, understand how AI changes work tasks, and compare practical career paths." />
-  <title>AI Career Navigator · Interactive Prototype</title>
+  <title>AI Career Navigator · Your next chapter</title>
   <link rel="stylesheet" href="./styles.css" />
   <script type="module" src="./app.js"></script>
+<style>
+
+/* Original motion design inspired by public MotionSites previews; no third-party assets. */
+body{background:#f4f2e9;overflow-x:clip}body.nx-home .site-header{background:#0b241ef5;border-bottom-color:#ffffff12;color:#f4f2e9}body.nx-home .brand,body.nx-home .brand b{color:#f4f2e9}body.nx-home .demo-badge{background:#ffffff09;border-color:#ffffff25;color:#c9d8be}body.nx-home .button.dark{background:#d8e7c2;color:#183a2c}
+.hero{position:relative;isolation:isolate;padding-top:80px;padding-bottom:78px;gap:50px}.hero::before{content:'';position:absolute;inset:0 calc((100vw - 100%)/-2);background:radial-gradient(ellipse at 80% 25%,#294c35 0,transparent 49%),linear-gradient(135deg,#0b241e,#102a22 65%,#182e23);z-index:-2}.hero h1{color:#f4f2e9;letter-spacing:-.065em}.hero h1 em{color:#bdd1a2}.hero .eyebrow{color:#bed0a9}.hero .eyebrow-line{background:#bed0a9}.hero .hero-lede{color:#b8c5b6}.hero .hero-note{color:#a8b8a3}.hero .button.primary{background:#d5e5bb;border-color:#d5e5bb;color:#173b2c;box-shadow:0 8px 30px #0002}.hero .button.secondary{background:#ffffff07;border-color:#b7c5aa50;color:#edf1e3}.hero .button:hover{transform:translateY(-3px);box-shadow:0 10px 30px #0002}
+.hero-visual{position:relative;background:linear-gradient(140deg,#173c30aa,#10271e77);border:1px solid #bcd0a72e;box-shadow:0 30px 80px #0003;overflow:hidden;transform:perspective(1000px) rotateY(var(--nx-ry,0deg)) rotateX(var(--nx-rx,0deg));transition:transform .5s ease;border-radius:28px;min-height:440px}.hero-visual .visual-top,.hero-visual .visual-bottom{position:relative;z-index:2;color:#c2d4b5;pointer-events:none}.hero-visual .visual-top{opacity:.8}.hero-visual .visual-bottom{padding-bottom:64px}.hero-visual .visual-orbit{visibility:hidden}.hero-visual .visual-grid{opacity:.15}.nx-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none}
+.nx-switcher{position:absolute;bottom:20px;left:20px;right:20px;display:flex;justify-content:center;gap:5px;z-index:3;flex-wrap:wrap}.nx-switcher button{border:1px solid #b9d2a42e;background:#0a211bc9;color:#b6c9aa;border-radius:100px;padding:8px 12px;font:500 10px/1.2 system-ui;cursor:pointer;min-height:32px;transition:background .2s,color .2s}.nx-switcher button[aria-pressed=true]{background:#d5e5bb;color:#193929;border-color:#d5e5bb}.nx-switcher button:hover{border-color:#d5e5bb}.nx-switcher button:focus-visible{outline:2px solid white;outline-offset:3px}
+.mode-tools{position:relative;padding-top:24px;padding-bottom:24px}.proof-strip{background:#e9ecdf;border-color:#d6dfcb}.section{padding-top:100px;padding-bottom:100px}.feature-card,.sample-card,.path-card,.lens-card{transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease}.feature-card:hover,.sample-card:hover{transform:translateY(-6px);box-shadow:0 18px 40px #1637290d;border-color:#9fb38e}.process-section{position:relative;overflow:hidden;background:#102d24}.process-section::before{content:'';position:absolute;inset:-30%;background:radial-gradient(ellipse at 75% 45%,#7b986725,transparent 55%);pointer-events:none}.process-inner{position:relative}.process-list li{transition:transform .3s ease,background .3s ease;border-radius:14px;padding:18px 12px}.process-list li:hover{transform:translateX(7px);background:#ffffff05}.bottom-cta{position:relative}.bottom-cta::before{content:'';position:absolute;inset:20px -25px;z-index:-1;background:radial-gradient(ellipse at 80% 50%,#d6e2c288,transparent 65%);border-radius:30px}
+.form-page{background:radial-gradient(ellipse at 8% 25%,#dce5cc99,transparent 52%),radial-gradient(ellipse at 95% 85%,#e9dfcb77,transparent 45%),#f4f2e9}.form-card{border-color:#d7ddcc;box-shadow:0 24px 70px #17392708;border-radius:22px}.progress-track>div{transition:width .65s cubic-bezier(.22,1,.36,1);background:linear-gradient(90deg,#779765,#bad091)}.field input:focus,.field textarea:focus,.field select:focus{border-color:#6e9161;box-shadow:0 0 0 4px #8ba86f12}.path-card.selected{box-shadow:0 12px 40px #345e3012;border-color:#789666}.path-card:hover{transform:translateY(-4px)}.path-card:focus-within{border-color:#789666}
+@media(prefers-reduced-motion:no-preference){.nx-reveal{animation:nx-rise .65s cubic-bezier(.22,1,.36,1) both}.nx-enter{animation:nx-rise .45s cubic-bezier(.22,1,.36,1) both}@keyframes nx-rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}}@media(max-width:900px){.hero{gap:30px;padding-top:50px;padding-bottom:50px}.hero-visual{min-height:380px}}@media(max-width:600px){.hero{padding-top:38px;padding-bottom:38px}.hero h1{letter-spacing:-.055em}.hero-visual{min-height:350px;border-radius:20px;transform:none!important}.section{padding-top:60px;padding-bottom:60px}.nx-switcher{bottom:15px;gap:4px;left:10px;right:10px}.nx-switcher button{padding:8px 10px}.hero-visual .visual-bottom{padding-bottom:66px}}@media(prefers-reduced-motion:reduce){.hero-visual,.button,.feature-card,.sample-card,.path-card,.progress-track>div,.process-list li{transition:none!important;transform:none!important}.nx-reveal,.nx-enter{animation:none!important}}
+
+</style>
 </head>
 <body>
   <div id="app"></div>
+<script type="module">
+(function nexusMotion(){
+  // Decorative only: does not read profiles, make API calls, or alter reports.
+  const root=document.getElementById('app');
+  const reduced=matchMedia('(prefers-reduced-motion: reduce)');
+  let dispose=()=>{},pending=false,chosen='growth',paused=false;
+  const reveal='IntersectionObserver' in window?new IntersectionObserver(entries=>{for(const e of entries)if(e.isIntersecting){e.target.classList.add('nx-reveal');reveal.unobserve(e.target);}},{threshold:.1}):null;
+  function decorate(){
+    pending=false;dispose();reveal?.disconnect();
+    const hero=root.querySelector('.hero');document.body.classList.toggle('nx-home',!!hero);
+    root.querySelectorAll('.feature-card,.process-list li,.bottom-cta').forEach(el=>reveal?.observe(el));
+    root.querySelector('.form-card')?.classList.add('nx-enter');
+    const visual=hero?.querySelector('.hero-visual');if(!visual)return;
+    visual.setAttribute('role','group');visual.setAttribute('aria-label','Decorative growth tree and future paths. Use the buttons to change the background.');
+    const canvas=document.createElement('canvas');canvas.className='nx-canvas';canvas.setAttribute('aria-hidden','true');
+    const controls=document.createElement('div');controls.className='nx-switcher';controls.setAttribute('role','group');controls.setAttribute('aria-label','Background appearance');
+    const buttons=[['growth','Growth tree'],['paths','Future paths'],['aurora','Soft aurora']].map(([id,label])=>{const b=document.createElement('button');b.type='button';b.textContent=label;b.dataset.scene=id;b.setAttribute('aria-pressed',String(chosen===id));controls.append(b);return b;});
+    const pause=document.createElement('button');pause.type='button';pause.textContent=paused?'Play motion':'Pause motion';pause.setAttribute('aria-pressed',String(paused));controls.append(pause);visual.append(canvas,controls);
+    const ctx=canvas.getContext('2d');if(!ctx){canvas.remove();controls.remove();return;}
+    let frame=0,w=0,h=0,visible=true,dead=false,elapsed=0,last=0,points=[],pointer={x:0,y:0};
+    const mobile=matchMedia('(pointer: coarse)').matches;let seed=42;
+    const random=()=>{seed=(seed*1664525+1013904223)>>>0;return seed/4294967296;};
+    function resize(){const box=visual.getBoundingClientRect();w=box.width;h=box.height;if(!w||!h)return;const dpr=Math.min(devicePixelRatio||1,1.5);canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);seed=42;points=Array.from({length:mobile?480:900},()=>({u:random(),v:random(),r:random(),a:random()*Math.PI*2}));draw();}
+    function draw(){
+      if(!w||!h)return;ctx.clearRect(0,0,w,h);const t=elapsed*.0002,cx=w*.5+pointer.x*8,base=h*.76;
+      const glow=ctx.createRadialGradient(cx,h*.48,5,cx,h*.48,w*.5);glow.addColorStop(0,'#a1c28315');glow.addColorStop(1,'#a1c28300');ctx.fillStyle=glow;ctx.fillRect(0,0,w,h);
+      if(chosen==='aurora'){ctx.globalCompositeOperation='screen';for(let band=0;band<3;band++){ctx.beginPath();for(let x=0;x<=w;x+=8){const y=h*(.32+band*.1)+Math.sin(x/w*5+t+band)*h*.08+Math.sin(x/w*2-t)*h*.1;if(x===0)ctx.moveTo(x,y);else ctx.lineTo(x,y);}ctx.strokeStyle=['#c6ddad35','#99b7a92e','#d7c39225'][band];ctx.lineWidth=h*.12;ctx.filter='blur(22px)';ctx.stroke();}ctx.filter='none';ctx.globalCompositeOperation='source-over';}
+      if(chosen==='growth'){ctx.strokeStyle='#b5cf9220';ctx.lineWidth=.8;for(let b=0;b<7;b++){const endx=w*(.16+b*.113),endy=h*(.28+Math.abs(b-3)*.025);ctx.beginPath();ctx.moveTo(cx,base);ctx.bezierCurveTo(cx,h*.46,endx,h*.53,endx,endy);ctx.stroke();}}
+      if(chosen==='paths'){for(let branch=0;branch<3;branch++){ctx.beginPath();for(let n=0;n<=80;n++){const u=n/80,x=cx+(branch-1)*w*.3*u*u,y=base-u*h*.52;if(n===0)ctx.moveTo(x,y);else ctx.lineTo(x,y);}ctx.strokeStyle='#c7dbaa35';ctx.lineWidth=1;ctx.stroke();}}
+      for(const p of points){let x,y,alpha=.18+p.r*.5;if(chosen==='growth'){if(p.u<.23){const q=p.u/.23;y=base-q*h*.4;x=cx+Math.sin(q*3)*w*.025+(p.v-.5)*w*.028*(1-q*.6);}else{const a=p.a+t*.09,radius=Math.sqrt(p.v);x=cx+Math.cos(a)*radius*w*.36;y=h*.37+Math.sin(a)*radius*h*.19+Math.cos(a*3)*h*.025;}}else if(chosen==='paths'){const u=(p.v+t*.07)%1,branch=Math.floor(p.u*3)-1;x=cx+branch*w*.3*u*u+(p.r-.5)*w*.035;y=base-u*h*.52;alpha*=.6+u*.4;}else{x=p.u*w;y=h*.47+Math.sin(p.u*5+t+p.r)*h*.16+(p.v-.5)*h*.18;alpha*=.6;}x+=Math.sin(t+p.a)*1.6;y+=Math.cos(t*.8+p.a)*1.2;ctx.fillStyle='rgba('+(p.r>.85?'220,198,143':'187,214,158')+','+alpha+')';ctx.beginPath();ctx.arc(x,y,p.r>.97?1.5:.55+p.r*.55,0,Math.PI*2);ctx.fill();}
+      ctx.strokeStyle='#c6d8ac18';ctx.lineWidth=.7;for(let i=0;i<3;i++){ctx.beginPath();ctx.ellipse(cx,base+12,w*(.21+i*.06),h*(.025+i*.008),0,0,Math.PI*2);ctx.stroke();}
+    }
+    function active(){return !dead&&!paused&&!reduced.matches&&!document.hidden&&visible&&!navigator.connection?.saveData;}
+    function tick(now){frame=0;if(!active())return;if(now-last>32){elapsed+=Math.min(now-last,50);last=now;draw();}frame=requestAnimationFrame(tick);}
+    function sync(){cancelAnimationFrame(frame);frame=0;last=performance.now();draw();if(active())frame=requestAnimationFrame(tick);}
+    function onMove(event){if(mobile||reduced.matches||paused)return;const box=visual.getBoundingClientRect();pointer={x:(event.clientX-box.left)/box.width-.5,y:(event.clientY-box.top)/box.height-.5};visual.style.setProperty('--nx-ry',pointer.x*4+'deg');visual.style.setProperty('--nx-rx',-pointer.y*4+'deg');if(!active())draw();}
+    function onLeave(){pointer={x:0,y:0};visual.style.removeProperty('--nx-ry');visual.style.removeProperty('--nx-rx');}
+    buttons.forEach(button=>button.addEventListener('click',()=>{chosen=button.dataset.scene;buttons.forEach(b=>b.setAttribute('aria-pressed',String(b===button)));draw();}));
+    pause.addEventListener('click',()=>{paused=!paused;pause.textContent=paused?'Play motion':'Pause motion';pause.setAttribute('aria-pressed',String(paused));onLeave();sync();});
+    const observer='ResizeObserver' in window?new ResizeObserver(resize):null;observer?.observe(visual);
+    const viewport='IntersectionObserver' in window?new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;sync();}):null;viewport?.observe(visual);
+    visual.addEventListener('pointermove',onMove);visual.addEventListener('pointerleave',onLeave);document.addEventListener('visibilitychange',sync);reduced.addEventListener('change',sync);window.addEventListener('resize',resize);resize();sync();
+    dispose=()=>{dead=true;cancelAnimationFrame(frame);observer?.disconnect();viewport?.disconnect();visual.removeEventListener('pointermove',onMove);visual.removeEventListener('pointerleave',onLeave);document.removeEventListener('visibilitychange',sync);reduced.removeEventListener('change',sync);window.removeEventListener('resize',resize);canvas.remove();controls.remove();};
+  }
+  new MutationObserver(()=>{if(!pending){pending=true;queueMicrotask(decorate);}}).observe(root,{childList:true});decorate();
+})();
+</script>
 </body>
 </html>
