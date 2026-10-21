@@ -812,7 +812,7 @@
     "ms": "Cabaran praktikal"
   },
   "Next experiment": {
-    "zh-CN": "下一项尝试",
+    "zh-CN": "下一项实践",
     "ms": "Eksperimen seterusnya"
   },
   "Selected ✓": {
@@ -1436,8 +1436,8 @@
     "ms": "KEMBANGKAN LAGI"
   },
   "Grow": {
-    "zh-CN": "成长",
-    "ms": "Berkembang"
+    "zh-CN": "待发展",
+    "ms": "Untuk dibangunkan"
   },
   "A way to move from output volume toward decision quality.": {
     "zh-CN": "从追求产出数量转向提升决策质量。",
@@ -2250,5 +2250,325 @@
   "Add fictional details, goals or circumstances that the choices do not cover. Other choices do not require an explanation.": {
     "zh-CN": "可补充选项未涵盖的虚构背景、目标或现实情况。选择“其他”不要求填写说明。",
     "ms": "Tambah butiran, matlamat atau keadaan rekaan yang tidak diliputi pilihan. Pilihan lain-lain tidak memerlukan penjelasan."
+  },
+  "Career map": {
+    "zh-CN": "职业星图",
+    "ms": "Peta kerjaya"
+  },
+  "Compare paths": {
+    "zh-CN": "比较路线",
+    "ms": "Banding laluan"
+  },
+  "Skill DNA": {
+    "zh-CN": "技能 DNA",
+    "ms": "DNA kemahiran"
+  },
+  "Time machine": {
+    "zh-CN": "未来情景",
+    "ms": "Senario masa depan"
+  },
+  "SDG mapper": {
+    "zh-CN": "SDG 关联",
+    "ms": "Pemetaan SDG"
+  },
+  "Previous: {section}": {
+    "zh-CN": "上一页：{section}",
+    "ms": "Sebelumnya: {section}"
+  },
+  "YOUR CAREER CONSTELLATION": {
+    "zh-CN": "你的职业星图",
+    "ms": "KONSTELASI KERJAYA ANDA"
+  },
+  "BASED ON THIS REPORT": {
+    "zh-CN": "基于本报告",
+    "ms": "BERDASARKAN LAPORAN INI"
+  },
+  "Explore where your skills can take you.": {
+    "zh-CN": "探索技能可以带你走向何方。",
+    "ms": "Terokai hala tuju berdasarkan kemahiran anda."
+  },
+  "Start from your current experience, then explore paths from your assessment and source-based role matches.": {
+    "zh-CN": "从当前经验出发，探索报告分析与来源匹配中的职业路线。",
+    "ms": "Bermula dengan pengalaman anda, kemudian terokai laluan penilaian dan padanan berasaskan sumber."
+  },
+  "Career star map": {
+    "zh-CN": "职业星图",
+    "ms": "Peta bintang kerjaya"
+  },
+  "Skills you listed": {
+    "zh-CN": "你填写的技能",
+    "ms": "Kemahiran yang anda senaraikan"
+  },
+  "A path from your report": {
+    "zh-CN": "报告中的职业路线",
+    "ms": "Laluan daripada laporan anda"
+  },
+  "Build on your current direction": {
+    "zh-CN": "在当前方向上发展",
+    "ms": "Kembangkan hala tuju semasa"
+  },
+  "Explore an adjacent direction": {
+    "zh-CN": "探索相邻方向",
+    "ms": "Terokai hala tuju bersebelahan"
+  },
+  "Consider another source-based option": {
+    "zh-CN": "考虑另一项有来源的选择",
+    "ms": "Pertimbangkan pilihan lain berasaskan sumber"
+  },
+  "Carry": {
+    "zh-CN": "可迁移",
+    "ms": "Boleh dipindah"
+  },
+  "Why this path may fit": {
+    "zh-CN": "为何值得考虑这条路线",
+    "ms": "Mengapa laluan ini boleh dipertimbangkan"
+  },
+  "Skills you can carry forward": {
+    "zh-CN": "可迁移的技能",
+    "ms": "Kemahiran boleh pindah"
+  },
+  "Skills to develop": {
+    "zh-CN": "待发展的技能",
+    "ms": "Kemahiran untuk dibangunkan"
+  },
+  "Potential opportunities": {
+    "zh-CN": "潜在机会",
+    "ms": "Peluang berpotensi"
+  },
+  "Real-world constraint": {
+    "zh-CN": "现实限制",
+    "ms": "Kekangan sebenar"
+  },
+  "PUBLISHED OUTLOOK": {
+    "zh-CN": "公开职业展望",
+    "ms": "UNJURAN TERBITAN"
+  },
+  "PROPOSED SDG CONNECTION": {
+    "zh-CN": "拟议 SDG 关联",
+    "ms": "HUBUNGAN SDG YANG DICADANGKAN"
+  },
+  "Compare path details ↗": {
+    "zh-CN": "比较路线详情 ↗",
+    "ms": "Bandingkan butiran laluan ↗"
+  },
+  "Open this path's action plan →": {
+    "zh-CN": "查看这条路线的行动计划 →",
+    "ms": "Buka pelan tindakan laluan ini →"
+  },
+  "CAREER MULTIVERSE · SIDE-BY-SIDE": {
+    "zh-CN": "职业路线 · 并排比较",
+    "ms": "LALUAN KERJAYA · PERBANDINGAN"
+  },
+  "Compare paths without locking one in.": {
+    "zh-CN": "比较路线，无需立即做决定。",
+    "ms": "Bandingkan laluan tanpa membuat keputusan muktamad."
+  },
+  "Compare source-backed role details and report interpretations. Scores and job outcomes are not guarantees.": {
+    "zh-CN": "比较有来源的职业信息与报告解读。评分和就业结果不构成保证。",
+    "ms": "Bandingkan maklumat pekerjaan bersumber dengan tafsiran laporan. Skor dan hasil pekerjaan bukan jaminan."
+  },
+  "COMPARE WITH": {
+    "zh-CN": "比较对象",
+    "ms": "BANDINGKAN DENGAN"
+  },
+  "Transferable / matched skills": {
+    "zh-CN": "可迁移／匹配技能",
+    "ms": "Kemahiran boleh pindah / sepadan"
+  },
+  "Skills to develop / verify": {
+    "zh-CN": "待发展／验证技能",
+    "ms": "Kemahiran untuk dibangunkan / disahkan"
+  },
+  "Trade-off": {
+    "zh-CN": "现实取舍",
+    "ms": "Pertimbangan"
+  },
+  "Use this route": {
+    "zh-CN": "选择这条路线",
+    "ms": "Gunakan laluan ini"
+  },
+  "SKILL DNA · INTERACTIVE NETWORK": {
+    "zh-CN": "技能 DNA · 交互网络",
+    "ms": "DNA KEMAHIRAN · RANGKAIAN INTERAKTIF"
+  },
+  "See what connects your skills to each route.": {
+    "zh-CN": "看见技能与各条路线的关联。",
+    "ms": "Lihat hubungan kemahiran anda dengan setiap laluan."
+  },
+  "Select any skill to highlight the routes where it appears. Skill state reflects the report, not a validated aptitude score.": {
+    "zh-CN": "选择技能，突出其关联路线。技能状态来自报告，并非经过验证的能力评分。",
+    "ms": "Pilih kemahiran untuk menyerlahkan laluan berkaitan. Status kemahiran mencerminkan laporan, bukan skor kebolehan yang disahkan."
+  },
+  "SELF-REPORTED": {
+    "zh-CN": "个人自述",
+    "ms": "LAPORAN KENDIRI"
+  },
+  "TO DEVELOP / VERIFY": {
+    "zh-CN": "待发展／验证",
+    "ms": "UNTUK DIBANGUNKAN / DISAHKAN"
+  },
+  "SELECTED SKILL": {
+    "zh-CN": "所选技能",
+    "ms": "KEMAHIRAN DIPILIH"
+  },
+  "Related routes": {
+    "zh-CN": "关联路线",
+    "ms": "Laluan berkaitan"
+  },
+  "Self-reported": {
+    "zh-CN": "个人自述",
+    "ms": "Laporan kendiri"
+  },
+  "Develop / verify": {
+    "zh-CN": "发展／验证",
+    "ms": "Bangunkan / sahkan"
+  },
+  "Connections are derived from exact report skill labels.": {
+    "zh-CN": "关联基于报告中一致的技能名称。",
+    "ms": "Hubungan berdasarkan padanan tepat label kemahiran laporan."
+  },
+  "You listed this skill in your profile. The report does not independently verify proficiency.": {
+    "zh-CN": "你在资料中填写了这项技能，报告并未独立验证熟练程度。",
+    "ms": "Anda menyenaraikan kemahiran ini dalam profil. Laporan tidak mengesahkan tahap penguasaan secara bebas."
+  },
+  "This skill appears as a route requirement or gap. Its absence from your profile is not evidence that you lack it.": {
+    "zh-CN": "这项技能出现在路线要求或待验证项中。未在资料中提及不代表你不具备它。",
+    "ms": "Kemahiran ini ialah keperluan atau jurang laluan. Ketiadaan dalam profil tidak membuktikan anda tidak memilikinya."
+  },
+  "CAREER TIME MACHINE · SCENARIO PLANNER": {
+    "zh-CN": "未来职业情景 · 规划工具",
+    "ms": "SENARIO MASA DEPAN KERJAYA · PERANCANG"
+  },
+  "Plan for checkpoints, not predictions.": {
+    "zh-CN": "以复盘节点规划，不把情景当预测。",
+    "ms": "Rancang titik semakan tanpa menganggapnya ramalan."
+  },
+  "Choose a planning year and an AI adoption scenario. The controls change the view; they do not create a new labor-market forecast.": {
+    "zh-CN": "选择规划年份和 AI 采用情景。控件改变展示方式，不会生成新的劳动力市场预测。",
+    "ms": "Pilih tahun perancangan dan senario penggunaan AI. Kawalan mengubah paparan tanpa mencipta ramalan pasaran buruh baharu."
+  },
+  "Moderate adoption": {
+    "zh-CN": "中等速度采用",
+    "ms": "Penggunaan sederhana"
+  },
+  "Faster adoption": {
+    "zh-CN": "较快采用",
+    "ms": "Penggunaan lebih pantas"
+  },
+  "Slower adoption": {
+    "zh-CN": "较慢采用",
+    "ms": "Penggunaan lebih perlahan"
+  },
+  "MODEL SCENARIO · NOT A PREDICTION": {
+    "zh-CN": "模型情景 · 并非预测",
+    "ms": "SENARIO MODEL · BUKAN RAMALAN"
+  },
+  "NOT INCLUDED IN THIS REPORT": {
+    "zh-CN": "本报告未分析此情景",
+    "ms": "TIDAK DISERTAKAN DALAM LAPORAN INI"
+  },
+  "What to watch": {
+    "zh-CN": "需要观察什么",
+    "ms": "Perkara untuk diperhatikan"
+  },
+  "Published outlooks in this report": {
+    "zh-CN": "报告中的公开职业展望",
+    "ms": "Unjuran terbitan dalam laporan ini"
+  },
+  "This scenario was not assessed in the report. No year-specific demand forecast is available.": {
+    "zh-CN": "本报告未评估此情景，也没有针对该年份的需求预测。",
+    "ms": "Senario ini tidak dinilai dalam laporan. Tiada ramalan permintaan khusus tahun tersedia."
+  },
+  "The report does not contain comparable historical observations for every year above. Years are planning checkpoints, not forecast datapoints.": {
+    "zh-CN": "报告没有上述每个年份可比较的历史观测。年份代表规划复盘点，并非预测数据点。",
+    "ms": "Laporan tidak mengandungi pemerhatian sejarah setanding bagi setiap tahun di atas. Tahun ialah titik semakan perancangan, bukan titik data ramalan."
+  },
+  "SDG CAREER IMPACT MAPPER": {
+    "zh-CN": "职业任务与 SDG 关联",
+    "ms": "PEMETAAN IMPAK KERJAYA SDG"
+  },
+  "Trace a possible contribution to the work task.": {
+    "zh-CN": "从具体工作任务追溯潜在贡献。",
+    "ms": "Jejaki sumbangan yang mungkin melalui tugas kerja."
+  },
+  "A job title alone does not make a career sustainable. Review the task and the proposed connection before drawing a conclusion.": {
+    "zh-CN": "仅凭职位名称无法证明职业的可持续性。请先审视具体任务及拟议关联。",
+    "ms": "Nama jawatan sahaja tidak membuktikan kemampanan kerjaya. Semak tugas dan hubungan yang dicadangkan sebelum membuat kesimpulan."
+  },
+  "01 · SKILL": {
+    "zh-CN": "01 · 技能",
+    "ms": "01 · KEMAHIRAN"
+  },
+  "02 · OCCUPATION": {
+    "zh-CN": "02 · 职业",
+    "ms": "02 · PEKERJAAN"
+  },
+  "03 · WORK TASK": {
+    "zh-CN": "03 · 工作任务",
+    "ms": "03 · TUGAS KERJA"
+  },
+  "04 · PROPOSED SDG": {
+    "zh-CN": "04 · 拟议 SDG",
+    "ms": "04 · SDG DICADANGKAN"
+  },
+  "Evidence boundary": {
+    "zh-CN": "证据边界",
+    "ms": "Batas bukti"
+  },
+  "Possible check:": {
+    "zh-CN": "验证方式：",
+    "ms": "Semakan yang mungkin:"
+  },
+  "Relationship:": {
+    "zh-CN": "关联类型：",
+    "ms": "Hubungan:"
+  },
+  "Not classified in report": {
+    "zh-CN": "报告未分类",
+    "ms": "Tidak dikelaskan dalam laporan"
+  },
+  "Proposed contribution, not measured impact or UN endorsement.": {
+    "zh-CN": "拟议贡献，非实测影响，也不代表联合国背书。",
+    "ms": "Sumbangan yang dicadangkan, bukan impak terukur atau sokongan PBB."
+  },
+  "Additional source-based candidate": {
+    "zh-CN": "其他有来源的候选职业",
+    "ms": "Calon tambahan berasaskan sumber"
+  },
+  "Use this candidate": {
+    "zh-CN": "探索此候选职业",
+    "ms": "Terokai calon ini"
+  },
+  "PATH C · SOURCE MATCH": {
+    "zh-CN": "路线 C · 来源匹配",
+    "ms": "LALUAN C · PADANAN SUMBER"
+  },
+  "Additional occupational candidate · not fully analyzed by the model": {
+    "zh-CN": "其他职业候选 · 尚未经过完整模型分析",
+    "ms": "Calon pekerjaan tambahan · belum dianalisis sepenuhnya oleh model"
+  },
+  "Test the route before committing.": {
+    "zh-CN": "先通过实践检验，再作决定。",
+    "ms": "Uji laluan sebelum membuat komitmen."
+  },
+  "SOURCE-BASED ROLE FACTS": {
+    "zh-CN": "有来源的职业事实",
+    "ms": "FAKTA PEKERJAAN BERSUMBER"
+  },
+  "MENTIONED SKILLS": {
+    "zh-CN": "已提及的技能",
+    "ms": "KEMAHIRAN DINYATAKAN"
+  },
+  "NOT MENTIONED · VERIFY": {
+    "zh-CN": "未提及 · 待验证",
+    "ms": "TIDAK DINYATAKAN · SAHKAN"
+  },
+  "NEXT EXPLORATION": {
+    "zh-CN": "下一项探索",
+    "ms": "PENEROKAAN SETERUSNYA"
+  },
+  "DATA LIMIT": {
+    "zh-CN": "数据局限",
+    "ms": "BATAS DATA"
   }
 }

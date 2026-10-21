@@ -1,0 +1,121 @@
+.explorer-page {max-width:100%;}
+.explorer-heading {margin:8px 0 22px;}
+.explorer-heading h1 {margin:8px 0;font-size:clamp(30px,4vw,43px);letter-spacing:-.045em;line-height:1.08;}
+.explorer-heading>p {max-width:760px;color:#6c786e;font-size:13px;line-height:1.65;}
+.compare-picker {display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1.3fr);align-items:center;gap:18px;padding:18px 20px;border:1px solid #e1e6df;border-radius:16px;background:#fff;margin:18px 0;}
+.compare-picker>div {display:grid;gap:6px;min-width:0;}
+.compare-picker>div>span {color:#77857b;font-size:9px;font-weight:800;letter-spacing:.13em;}
+.compare-picker>div>strong {overflow-wrap:anywhere;font-size:14px;}
+.compare-vs {color:#7a6be6;font-size:17px;font-weight:900;}
+.compare-options {display:flex;flex-wrap:wrap;gap:6px;}
+.compare-option {padding:8px 10px;border:1px solid #dfe4e0;border-radius:9px;background:#f8f9f7;color:#48554d;text-align:left;font-size:10px;cursor:pointer;}
+.compare-option.active {border-color:#8979ee;background:#f0edff;color:#5744c8;}
+.compare-option:focus-visible,.dna-skill-node:focus-visible,.dna-route:focus-visible,.year-timeline button:focus-visible,.scenario-tabs button:focus-visible,.sdg-route-picker button:focus-visible {outline:3px solid #7868e8;outline-offset:3px;}
+.compare-grid {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;}
+.compare-card {display:flex;flex-direction:column;gap:15px;padding:23px;border:1px solid #e2e5e2;border-radius:17px;background:#fff;min-width:0;}
+.compare-card.compare-primary {border-color:#8b7cf0;box-shadow:0 10px 30px #5744c80f;}
+.compare-card-top {display:flex;justify-content:space-between;align-items:flex-start;gap:10px;color:#5e51cb;font-size:10px;font-weight:850;letter-spacing:.12em;}
+.evidence-tag {padding:5px 8px;border-radius:99px;background:#f0edff;color:#6153c2;font-size:8px;letter-spacing:0;text-align:right;}
+.compare-card h2 {margin:0;font-size:22px;line-height:1.2;overflow-wrap:anywhere;}
+.compare-card>p {margin:0;color:#657168;font-size:12px;line-height:1.65;}
+.compare-facts {display:grid;gap:9px;}
+.compare-facts>div {display:grid;gap:4px;padding:10px 12px;border-radius:10px;background:#f7f8f6;}
+.compare-facts b {color:#55645a;font-size:9px;text-transform:uppercase;letter-spacing:.08em;}
+.compare-facts span {color:#425148;font-size:11px;line-height:1.55;overflow-wrap:anywhere;}
+.market-fact {display:grid;gap:4px;padding:12px;border-radius:11px;background:#f1f8f3;}
+.market-fact strong {color:#285c3a;font-size:14px;}
+.market-fact span {color:#69766c;font-size:10px;}
+.market-fact a,.time-source a,.sdg-chain a {width:max-content;color:#506d59;font-size:10px;text-decoration:underline;text-underline-offset:2px;}
+.data-limit,.truth-note {color:#758177;font-size:10px;line-height:1.6;}
+.compare-card>.button {margin-top:auto;}
+.dna-layout {display:grid;grid-template-columns:minmax(0,1.4fr) minmax(260px,.8fr);gap:16px;align-items:start;}
+.dna-network {position:relative;display:grid;gap:18px;min-height:300px;padding:23px;border:1px solid #283552;border-radius:18px;overflow:hidden;background:radial-gradient(ellipse at 50% 0%,#25335a,#12192c 74%);}
+.dna-network:before {content:"";position:absolute;inset:0;background-image:radial-gradient(#a9a8ff22 1px,transparent 1px);background-size:24px 24px;pointer-events:none;}
+.dna-origin {position:relative;z-index:1;width:max-content;max-width:100%;padding:11px 16px;border:1px solid #8178df;border-radius:99px;background:#292c4b;color:#f5f3ff;font-size:12px;font-weight:750;overflow-wrap:anywhere;}
+.dna-skill-cloud {position:relative;z-index:1;display:flex;flex-wrap:wrap;align-content:center;justify-content:center;gap:11px;min-height:195px;}
+.dna-graph {position:relative;z-index:1;display:grid;gap:9px;}
+.dna-graph-row {display:grid;grid-template-columns:minmax(110px,.85fr) 42px minmax(0,1.15fr);align-items:center;gap:8px;padding:5px;border-radius:12px;}
+.dna-graph-row.is-focused {background:#ffffff0d;}
+.dna-graph-row .dna-skill-node {width:100%;}
+.dna-edge {height:2px;background:linear-gradient(90deg,#61d5df,#a48aff);box-shadow:0 0 8px #778cff66;}
+.dna-edge-targets {display:flex;flex-wrap:wrap;gap:5px;min-width:0;}
+.dna-route-node {padding:6px 8px;border:1px solid #796bc4;border-radius:8px;background:#292847;color:#e7e3ff;font-size:9px;text-align:left;overflow-wrap:anywhere;cursor:pointer;}
+.dna-route-node.active {border-color:#f0ce71;background:#403955;color:#fff1c2;}
+.dna-unmapped {color:#a4abc3;font-size:9px;}
+.dna-skill-node {display:grid;gap:4px;max-width:100%;padding:12px 14px;border:1px solid #59668d;border-radius:12px;background:#202b48;color:#f3f3ff;font:inherit;text-align:left;overflow-wrap:anywhere;cursor:pointer;transition:transform .15s ease,box-shadow .15s ease;}
+.dna-skill-node:hover {transform:translateY(-2px);box-shadow:0 8px 22px #080d1f99;}
+.dna-skill-node small {color:#aab5d6;font-size:8px;letter-spacing:.08em;}
+.dna-current {border-color:#57cddd;background:#163548;}
+.dna-develop {border-color:#a18cff;background:#31284e;}
+.dna-skill-node.is-focused {outline:2px solid #f3cc70;outline-offset:2px;}
+.dna-detail {padding:21px;border:1px solid #e0e6df;border-radius:16px;background:#fff;}
+.dna-detail h2 {margin:8px 0;font-size:22px;overflow-wrap:anywhere;}
+.dna-detail>p {color:#68756b;font-size:11px;line-height:1.65;}
+.dna-detail h3 {margin:20px 0 9px;font-size:12px;}
+.dna-route-list {display:grid;gap:8px;}
+.dna-route {display:grid;gap:4px;padding:11px;border:1px solid #e0e6e0;border-radius:10px;background:#f9faf8;color:#34453a;text-align:left;cursor:pointer;}
+.dna-route.active {border-color:#8071e2;background:#f3f0ff;}
+.dna-route span,.dna-route small {color:#747f75;font-size:9px;}
+.dna-route strong {font-size:11px;}
+.skill-state-legend {display:flex;flex-wrap:wrap;gap:10px 18px;padding:13px 0;color:#718076;font-size:10px;}
+.skill-state-legend span {display:flex;align-items:center;gap:7px;}
+.skill-state-legend i {width:9px;height:9px;border-radius:50%;background:#57cddd;}
+.skill-state-legend .legend-develop {background:#a18cff;}
+.time-controls {display:grid;gap:14px;margin:18px 0;}
+.year-timeline,.scenario-tabs {display:flex;flex-wrap:wrap;gap:8px;}
+.year-timeline button,.scenario-tabs button {padding:10px 14px;border:1px solid #dfe4e0;border-radius:10px;background:#fff;color:#4d5e51;font:inherit;font-size:11px;cursor:pointer;}
+.year-timeline button[aria-pressed="true"],.scenario-tabs button[aria-pressed="true"] {border-color:#8172e6;background:#f0edff;color:#5b4dcc;box-shadow:0 0 0 2px #8172e61c;}
+.time-scenario-card {padding:24px;border:1px solid #2b3857;border-radius:17px;background:radial-gradient(ellipse at 100% 0%,#382f62,#172039 65%);color:#f4f4ff;}
+.time-year-label {color:#b9b2ff;font-size:9px;font-weight:850;letter-spacing:.14em;}
+.time-scenario-card h2 {margin:9px 0;font-size:24px;}
+.scenario-status {display:inline-block;padding:5px 8px;border:1px solid #7268aa;border-radius:99px;color:#dedaff;font-size:8px;letter-spacing:.08em;}
+.time-scenario-card>p,.time-watch p {max-width:760px;color:#d2d6e6;font-size:12px;line-height:1.7;}
+.time-watch {margin-top:19px;padding-top:14px;border-top:1px solid #ffffff26;}
+.time-watch strong {font-size:11px;}
+.section-space {margin:26px 0 11px;font-size:17px;}
+.time-sources {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;}
+.time-source {display:grid;gap:6px;padding:14px;border:1px solid #e0e6df;border-radius:12px;background:#fff;}
+.time-source strong {font-size:11px;}
+.time-source span {color:#6b786d;font-size:10px;line-height:1.5;}
+.sdg-route-picker {display:flex;flex-wrap:wrap;gap:7px;margin:16px 0;}
+.sdg-route-picker button {padding:9px 11px;border:1px solid #dedfe4;border-radius:9px;background:#fff;color:#4b5660;font:inherit;font-size:10px;cursor:pointer;}
+.sdg-route-picker button[aria-pressed="true"] {border-color:#7b6add;background:#f1eeff;color:#5746bb;}
+.sdg-chain {display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1.2fr);gap:9px;align-items:stretch;}
+.sdg-chain article {display:flex;flex-direction:column;gap:8px;min-width:0;padding:15px;border:1px solid #dfe5df;border-radius:13px;background:#fff;overflow-wrap:anywhere;}
+.sdg-chain article>span {color:#65756a;font-size:8px;font-weight:850;letter-spacing:.1em;}
+.sdg-chain h2 {margin:0;font-size:14px;line-height:1.35;}
+.sdg-chain p {margin:0;color:#69766d;font-size:10px;line-height:1.6;}
+.sdg-chain>i {align-self:center;color:#8978e8;font-style:normal;font-size:18px;}
+.sdg-chain .sdg-goal-card {border-color:#c7bdf6;background:#f6f3ff;}
+.sdg-goal-card small {margin-top:auto;color:#798278;font-size:8px;line-height:1.5;}
+.sdg-evidence-note {margin-top:15px;padding:15px 17px;border-left:3px solid #8978e8;border-radius:0 10px 10px 0;background:#f3f1fb;}
+.sdg-evidence-note strong {font-size:11px;}
+.sdg-evidence-note p {margin:5px 0 0;color:#69736e;font-size:10px;line-height:1.6;}
+.explorer-plan-grid {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;}
+.explorer-plan-grid .plan-mini p {color:#657269;font-size:11px;line-height:1.65;}
+.empty-panel {padding:18px;border:1px solid #e2e6e1;border-radius:12px;background:#fff;color:#68756b;}
+@media(max-width:900px) {
+  .dna-layout {grid-template-columns:1fr;}
+  .sdg-chain {grid-template-columns:1fr 20px 1fr;}
+  .sdg-chain>i:nth-of-type(2) {display:none;}
+  .sdg-chain .sdg-goal-card {grid-column:3;}
+  .time-sources {grid-template-columns:1fr;}
+}
+@media(max-width:700px) {
+  .compare-picker {grid-template-columns:1fr auto 1fr;gap:8px;padding:13px;}
+  .compare-grid,.explorer-plan-grid {grid-template-columns:1fr;}
+  .compare-card {padding:18px;}
+  .compare-card h2 {font-size:20px;}
+  .dna-network {min-height:250px;padding:16px;}
+  .dna-skill-cloud {justify-content:flex-start;min-height:unset;}
+  .dna-graph-row {grid-template-columns:1fr;gap:5px;}
+  .dna-edge {width:2px;height:12px;margin-left:17px;background:linear-gradient(180deg,#61d5df,#a48aff);}
+  .year-timeline button,.scenario-tabs button {flex:1;}
+  .time-scenario-card {padding:18px;}
+  .sdg-chain {grid-template-columns:1fr;}
+  .sdg-chain>i,.sdg-chain>i:nth-of-type(2) {display:block;justify-self:center;transform:rotate(90deg);}
+  .sdg-chain .sdg-goal-card {grid-column:auto;}
+}
+@media(prefers-reduced-motion:reduce) {
+  .dna-skill-node {transition:none;}
+}

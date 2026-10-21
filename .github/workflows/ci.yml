@@ -51,6 +51,8 @@ jobs:
           node --check prototype/data.js
           node --check prototype/logic.js
           node --check prototype/live.js
+          node --check prototype/star-map.js
+          node --check prototype/career-explorer.js
           node --check prototype/simulator.js
           node --check prototype/questionnaire.js
           node --check prototype/i18n.js

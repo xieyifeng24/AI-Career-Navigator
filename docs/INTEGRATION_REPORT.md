@@ -12,16 +12,15 @@ Branch: `codex/integration-hackathon`. Based on `origin/main` at
 | feature/interactive-prototype-v0.1 | 7db7c84 | Visual foundation, four-step flow, responsive sage design and two explicitly scripted demo cases; already an ancestor of real-ai-mvp |
 | codex/real-ai-mvp | 2abf265 | Real RunPod analysis, official source retrieval/citations, existing matching formula, asynchronous jobs, anonymous session/CSRF/quota protection; included through What-if ancestry |
 | codex/questionnaire-i18n | aac3a2b | Primary choice-questionnaire implementation; shared option IDs, canonical server mapping, EN/zh-CN/MS UI and model-language context; merged explicitly |
+| codex/career-star-map | 144478b | New UI feature branch discovered on the final fetch: career constellation, side-by-side comparison, Skill DNA, scenario checkpoints, SDG mapper and clearly labelled source-only candidate C; merged explicitly |
 | codex/what-if-simulator | e2265fe | Uploaded existing local work first, then merged: deterministic interactive planning and conservative report readability refinements |
 
 The first five heads were the complete remote branch inventory before uploading
-What-if. No separate newer UI-only branch exists in that inventory. The integrated
-visual design therefore retains the UI prototype and its subsequent questionnaire
-choice-card/responsive improvements. No teammate branch was deleted or force-pushed.
+What-if. A subsequent pre-push fetch discovered `codex/career-star-map`; it is the newer UI/exploration branch and is now integrated as the report exploration visual foundation, including its original dark constellation, layout, cards and responsive CSS. The original landing/report design and questionnaire choice cards remain integrated around it. No teammate branch was deleted or force-pushed.
 
 ## Conflict resolutions and targeted compatibility work
 
-Five content conflicts were resolved: `prototype/app.js`, `prototype/live.js`,
+The questionnaire merge had five file conflicts; the newer UI merge additionally conflicted in app.js, live.js and logic.test.mjs. Resolved files include: `prototype/app.js`, `prototype/live.js`,
 `prototype/styles.css`, `src/career/api.py`, `.github/workflows/ci.yml`.
 
 - Combine questionnaire navigation, global language selection and What-if state.
@@ -50,10 +49,26 @@ Five content conflicts were resolved: `prototype/app.js`, `prototype/live.js`,
 existing real-AI branch. All tracked files from main remain; template directories,
 submission PDFs, tests and team collaboration files are retained.
 
+## Newer UI branch compatibility
+
+- Report entry opens the new career constellation; all nine report/explorer routes
+  and the original capability/impact/path/action pages remain accessible.
+- Preserve the new branch's comparison, exact-label skill network, scenario-year
+  controls and SDG trace view. Planning years are checkpoints, not predictions.
+- Only existing AI-analyzed A/B paths have What-if schedules. Source-only C uses
+  the branch's explicitly non-AI exploration exercise, without inventing AI output,
+  learned skills, matching points or a generated plan. Both analyzed routes remain.
+- Preserve current anonymous session/CSRF/quota APIs. The older UI branch's access
+  code call signature is not restored. Add four UI JS/CSS assets to the allowlist.
+- Extend the shared EN/ZH/MS catalog for new navigation, core headings, controls and
+  evidence notices. Original generated/source prose remains in its original language;
+  some new branch explanatory copy still falls back to English.
+- Normalize the third route's source title to avoid `[object Object]` rendering.
+
 ## Verification
 
 - Python 3.12: **38 tests passed**, `python -m unittest discover tests -v`.
-- Node 24: **31 tests passed**, `node --test prototype/*.test.mjs`.
+- Node 24: **37 tests passed**, `node --test prototype/*.test.mjs`.
 - JavaScript module syntax and `git diff --check` pass. The frontend has no separate
   compilation/build or TypeScript step; it is native browser ES modules.
 - Tests cover old API compatibility, canonical choices in all three languages,
@@ -66,7 +81,10 @@ submission PDFs, tests and team collaboration files are retained.
   without extra fields; empty supplement accepted; consent required; asynchronous
   submit/poll/report flow; EN/ZH/MS switching with draft preservation; What-if
   slider, salary priority, Path B, early review, report/action-plan synchronization.
-- `evidence/integration-local-fixture.png` is **isolated synthetic UI fixture
+- Browser checks also covered the star-map report entry, map selection to comparison,
+  Skill DNA selection, 2035/slower unassessed-scenario notice, SDG official links,
+  and returning to What-if/action-plan with synchronized A/B focus.
+- `evidence/integration-local-fixture.png` and `evidence/integration-star-map-fixture.png` are **isolated synthetic UI fixture
   evidence, not a newly generated AI report**. The ignored local harness disables
   provider credentials; it is not shipped or used by normal application routes.
 

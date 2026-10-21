@@ -27,3 +27,9 @@ report; restarting the single backend instance also expires pending jobs/results
 Anonymous quotas use local SQLite. They survive process restarts on the same disk,
 but a replacement Replit deployment/instance may have fresh storage. Limits are not
 a hard dollar-spend guarantee. Networks sharing one apparent IP share its allowance.
+
+Integration candidate: some extended explorer explanatory copy retains English
+fallbacks in Chinese/Malay UI. The shared questionnaire, original report interface,
+What-if controls and new explorer navigation/core headings support all three.
+Source-only candidate C has no generated AI plan and cannot be used to invent a
+What-if schedule; its separate exploration exercise is explicitly labelled.

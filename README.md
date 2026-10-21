@@ -201,4 +201,4 @@ and Malay; original report content retains its existing language. See
 
 ## Integrated team candidate
 
-`codex/integration-hackathon` combines the existing visual prototype, real AI backend, choice-based trilingual questionnaire and What-if planning. The questionnaire has one optional supplement field. Integration provenance, verification and remaining limitations: [docs/INTEGRATION_REPORT.md](docs/INTEGRATION_REPORT.md). This branch is for review; it has not been deployed.
+`codex/integration-hackathon` combines the existing visual prototype, real AI backend, choice-based trilingual questionnaire, newer career-star-map UI/explorer views and What-if planning. The questionnaire has one optional supplement field. Integration provenance, verification and remaining limitations: [docs/INTEGRATION_REPORT.md](docs/INTEGRATION_REPORT.md). This branch is for review; it has not been deployed.
