@@ -2,12 +2,12 @@ import { requestAnalysis, renderLiveReport, sourceRadar, requestMatching, render
 import { cases, steps } from './data.js';
 import { emptyProfile, sampleProfile, validateStep, makeReport, recommendedPath } from './logic.js';
 import { renderCareerStarMap } from './star-map.js';
-import { renderCareerComparison, renderSkillDNA, renderTimeMachine, renderSDGMapper, renderExplorationPlan, buildCareerExplorerModel } from './career-explorer.js';
+import { renderCareerComparison, renderSkillDNA, renderExplorationPlan, buildCareerExplorerModel } from './career-explorer.js';
 
 const root = document.getElementById('app');
-const state = { page: 'home', step: 0, profile: emptyProfile(), report: null, path: 'A', comparePath: 'B', selectedSkill: '', timeYear: '2026', timeScenario: 'moderate', errors: {}, mode: 'live', health: null, busy: false, apiError: '', code: '', controller: null, radar: null, matching: null };
-const reportPages = ['star-map', 'compare', 'skill-dna', 'time-machine', 'sdg-map', 'capability', 'impact', 'paths', 'plan'];
-const pageLabels = { 'star-map': 'Career map', compare: 'Compare paths', 'skill-dna': 'Skill DNA', 'time-machine': 'Time machine', 'sdg-map': 'SDG mapper', capability: 'Capabilities', impact: 'AI & work', paths: 'Career paths', plan: 'Action plan' };
+const state = { page: 'home', step: 0, profile: emptyProfile(), report: null, path: 'A', pathChosen: false, comparePath: 'B', selectedSkill: '', skillProgress: {}, skillQuery: '', errors: {}, mode: 'live', health: null, busy: false, apiError: '', code: '', controller: null, radar: null, matching: null };
+const reportPages = ['star-map', 'plan', 'skill-dna', 'paths', 'compare', 'capability', 'impact'];
+const pageLabels = { 'star-map': 'Career roadmap', plan: 'Action plan', 'skill-dna': 'Skill DNA', paths: 'Career paths', compare: 'Compare paths', capability: 'Capabilities', impact: 'AI & work' };
 const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const nl = value => esc(value).replace(/\n/g, '<br>');
 
@@ -17,7 +17,7 @@ function button(label, action, cls = 'button primary', extra = '') {
 function iconArrow() { return '<span aria-hidden="true">↗</span>'; }
 function badge(label=state.mode==='demo'?'DEMO / MOCK':state.report?.mode==='real-ai'?'REAL AI · SYNTHETIC INPUT':state.health?.inference_configured?'AI CONNECTED · UNVERIFIED':'AI SETUP REQUIRED') { return `<span class="demo-badge"><span class="demo-dot"></span>${label}</span>`; }
 function header() {
-  const links = state.report ? `<nav class="top-nav" aria-label="Report navigation">${reportPages.map(p => `<button type="button" data-action="page:${p}" class="${state.page === p ? 'active' : ''}">${pageLabels[p]}</button>`).join('')}</nav>` : '';
+  const links = state.report ? `<nav class="top-nav" aria-label="Report navigation">${reportPages.map(p => `<button type="button" data-action="page:${p}" class="${state.page === p ? 'active' : ''}" ${p==='plan'&&!state.pathChosen?'disabled title="Choose a career route first"':''}>${pageLabels[p]}</button>`).join('')}</nav>` : '';
   return `<header class="site-header"><div class="shell header-inner"><button type="button" class="brand" data-action="home" aria-label="AI Career Navigator home"><span class="brand-mark"><i></i><i></i><i></i></span><span>AI Career<br><b>Navigator</b></span></button>${links}<div class="header-actions">${badge()}${state.report ? button('Start over', 'restart', 'button small ghost') : button('Start assessment', 'start', 'button small dark')}</div></div></header>`;
 }
 function footer() {
@@ -68,15 +68,18 @@ function reportShell(content, active) {
   const activeIndex = reportPages.indexOf(active);
   const nav = reportPages.map((page, i) => {
     const marker = page === 'star-map' ? '✦' : String(i).padStart(2, '0');
-    return `<button type="button" data-action="page:${page}" class="${active===page?'active':''}" ${active===page?'aria-current="page"':''}><span>${marker}</span>${pageLabels[page]}<b aria-hidden="true">↗</b></button>`;
+    return `<button type="button" data-action="page:${page}" class="${active===page?'active':''}" ${active===page?'aria-current="page"':''} ${page==='plan'&&!state.pathChosen?'disabled title="Choose a career route first"':''}><span>${marker}</span>${pageLabels[page]}<b aria-hidden="true">↗</b></button>`;
   }).join('');
   const previous = activeIndex === 0
     ? button('Edit your answers ↗','edit','text-button')
     : button(`← Previous: ${pageLabels[reportPages[activeIndex-1]]}`,`page:${reportPages[activeIndex-1]}`,'button secondary');
   const next = activeIndex === reportPages.length-1
     ? button('Start again ↗','restart','button primary')
-    : button(`Next: ${pageLabels[reportPages[activeIndex+1]]} →`,`page:${reportPages[activeIndex+1]}`,'button primary');
-  return `<main class="report-page shell"><aside class="report-sidebar"><div class="sidebar-sticky"><div class="report-person"><span class="person-avatar">${esc((r.scenario?.short||r.profile.background).slice(0,1))}</span><div><span>${r.mode==='real-ai'?'FICTIONAL INPUT · REAL INFERENCE':'SCRIPTED DEMO PROFILE'}</span><strong>${esc(r.profile.background)}</strong></div></div><nav aria-label="Report sections" class="report-nav">${nav}</nav><div class="sidebar-bottom"><span>YOUR INPUT</span><p>${esc(r.profile.experience)} · ${r.weeklyHours}h/week</p>${button('Edit your answers ↗','edit','text-button')}</div></div></aside><div class="report-main">${content}<div class="report-bottom-nav">${previous}${next}</div></div></main>`;
+    : button(`Next: ${pageLabels[reportPages[activeIndex+1]]} →`,`page:${reportPages[activeIndex+1]}`,'button primary',active==='star-map'&&!state.pathChosen?'disabled title="Choose a career route first"':'');
+  return `<main class="report-page shell ${active==='skill-dna'?'report-page-skill-dna':''}"><aside class="report-sidebar"><div class="sidebar-sticky"><div class="report-person"><span class="person-avatar">${esc((r.scenario?.short||r.profile.background).slice(0,1))}</span><div><span>${r.mode==='real-ai'?'FICTIONAL INPUT · REAL INFERENCE':'SCRIPTED DEMO PROFILE'}</span><strong>${esc(r.profile.background)}</strong></div></div><nav aria-label="Report sections" class="report-nav">${nav}</nav><div class="sidebar-bottom"><span>YOUR INPUT</span><p>${esc(r.profile.experience)} · ${r.weeklyHours}h/week</p>${button('Edit your answers ↗','edit','text-button')}</div></div></aside><div class="report-main">${content}<div class="report-bottom-nav">${previous}${next}</div></div></main>`;
+}
+function skillDNAIntro() {
+  return `<section class="skill-dna-guide"><div class="skill-dna-guide-icon" aria-hidden="true">✳</div><div><span class="small-label">YOUR NEXT STEP · SKILL DNA</span><h2>Explore the skills behind this route.</h2><p>Preview every skill branch, see what you already reported, and mark practice steps as you progress.</p></div>${button('Open my Skill DNA ↗','page:skill-dna','button primary')}</section>`;
 }
 function methodology() { return `<div class="method-note"><span class="method-icon">ⓘ</span><div><strong>How to read this demo</strong><p>${esc(state.report.evidenceLimit)} Treat each suggestion as a hypothesis to test, not a prediction.</p></div></div>`; }
 function capability() {
@@ -99,19 +102,17 @@ function paths() {
 }
 function plan() {
   const livePathExists = state.report?.mode !== 'real-ai' || state.report.analysis.paths.some(path => path.kind === state.path);
-  if (!livePathExists) return reportShell(renderExplorationPlan(state.report, state.path),'plan');
-  if (state.report?.mode === 'real-ai') return reportShell(renderLiveReport(state.report,'plan',state.path),'plan');
+  if (!livePathExists) return reportShell(`${renderExplorationPlan(state.report, state.path)}${skillDNAIntro()}`,'plan');
+  if (state.report?.mode === 'real-ai') return reportShell(`${renderLiveReport(state.report,'plan',state.path)}${skillDNAIntro()}`,'plan');
   const r=state.report, p=r.scenario.plan[state.path], path=r.scenario.paths[state.path];
-  return reportShell(`${reportHeader('04 / ACTION PLAN','Make the next step visible.','A practical starting plan for your selected demo path, shaped around the time you said you have.')}<div class="plan-summary"><div><span>YOUR FOCUS</span><h2>Path ${state.path}: ${path.subtitle}</h2><p>${esc(r.profile.goal)}</p></div><div class="time-token"><strong>${r.weeklyHours}h</strong><span>per week available</span></div></div><div class="plan-layout"><section class="plan-primary"><div class="plan-section-title"><span>01</span><div><small>THE PRACTICE PROJECT</small><h2>Build evidence, not just confidence.</h2></div></div><p class="project-copy">${p.project}</p><div class="milestone-box"><span>SHORT-TERM MILESTONE</span><strong>${p.milestone}</strong></div><div class="proof-box"><span>HOW TO CHECK PROGRESS</span><p>${p.proof}</p></div></section><div class="plan-side"><section class="plan-mini"><span class="small-label">02 / SKILLS TO PRIORITIZE</span><ol>${p.skills.map(x=>`<li>${x}</li>`).join('')}</ol></section><section class="plan-mini"><span class="small-label">03 / TOOLS TO EXPLORE</span><ul>${p.tools.map(x=>`<li>${x}</li>`).join('')}</ul><p class="tool-note">Examples only. Check workplace privacy rules before entering any real work data into an AI tool.</p></section></div></div><div class="reality-panel"><span>YOUR REAL-WORLD LIMIT</span><p>${esc(r.profile.constraints)}</p><small>Keep the project small enough to fit roughly ${r.weeklyHours} hour${r.weeklyHours===1?'':'s'} per week. Adjust the milestone if that is unrealistic.</small></div>${methodology()}`,'plan');
+  return reportShell(`${reportHeader('ACTION PLAN','Make the next step visible.','A practical starting plan for your selected career route, shaped around the time you said you have.')}<div class="plan-summary"><div><span>YOUR CHOSEN ROUTE · PATH ${state.path}</span><h2>${path.subtitle}</h2><p>${esc(r.profile.goal)}</p></div><div class="time-token"><strong>${r.weeklyHours}h</strong><span>per week available</span></div></div><div class="plan-layout"><section class="plan-primary"><div class="plan-section-title"><span>01</span><div><small>THE PRACTICE PROJECT</small><h2>Build evidence, not just confidence.</h2></div></div><p class="project-copy">${p.project}</p><div class="milestone-box"><span>SHORT-TERM MILESTONE</span><strong>${p.milestone}</strong></div><div class="proof-box"><span>HOW TO CHECK PROGRESS</span><p>${p.proof}</p></div></section><div class="plan-side">${skillDNAIntro()}<section class="plan-mini"><span class="small-label">TOOLS TO EXPLORE</span><ul>${p.tools.map(x=>`<li>${x}</li>`).join('')}</ul><p class="tool-note">Examples only. Check workplace privacy rules before entering any real work data into an AI tool.</p></section></div></div><div class="reality-panel"><span>YOUR REAL-WORLD LIMIT</span><p>${esc(r.profile.constraints)}</p><small>Keep the milestone small enough to fit roughly ${r.weeklyHours} hour${r.weeklyHours===1?'':'s'} per week. Adjust it if that is unrealistic.</small></div>${methodology()}`,'plan');
 }
 function render() {
   const explorerPages = {
     compare: () => renderCareerComparison(state.report,state.path,state.comparePath),
-    'skill-dna': () => renderSkillDNA(state.report,state.path,state.selectedSkill),
-    'time-machine': () => renderTimeMachine(state.report,state.timeYear,state.timeScenario),
-    'sdg-map': () => renderSDGMapper(state.report,state.path)
+    'skill-dna': () => renderSkillDNA(state.report,state.path,state.selectedSkill,state.skillProgress),
   };
-  const pageContent = state.report && state.page==='star-map' ? reportShell(renderCareerStarMap(state.report,state.path),'star-map')
+  const pageContent = state.report && state.page==='star-map' ? reportShell(renderCareerStarMap(state.report,state.path,state.pathChosen),'star-map')
     : state.report && explorerPages[state.page] ? reportShell(explorerPages[state.page](),state.page)
     : state.report?.mode==='real-ai' && ['capability','impact','paths'].includes(state.page) ? reportShell(renderLiveReport(state.report,state.page,state.path),state.page)
     : ({ home, samples, profile, capability, impact, paths, plan, loading, failure, radar, matching })[state.page]();
@@ -130,20 +131,29 @@ root.addEventListener('click', event=>{
   if(action==='legacy') {state.mode='demo'; return go('samples');}
   if(action==='radar' || action==='refresh-radar') return loadRadar(action==='refresh-radar');
   if(action==='home') { state.report=null; return go('home'); }
-  if(action==='start') { state.mode='live'; state.profile=emptyProfile(); state.report=null; state.step=0; state.errors={}; return go('profile'); }
+  if(action==='start') { state.mode='live'; state.profile=emptyProfile(); state.report=null; state.pathChosen=false; state.skillProgress={}; state.step=0; state.errors={}; return go('profile'); }
   if(action==='samples') {state.mode='live'; return go('samples');}
   if(action.startsWith('sample:')) { state.profile=sampleProfile(action.split(':')[1]); state.report=null; state.step=0; state.errors={}; return go('profile'); }
   if(action==='prev') { collectForm(); state.errors={}; state.step=Math.max(0,state.step-1); return go('profile'); }
   if(action==='edit') { state.report=null; state.errors={}; state.step=0; return go('profile'); }
-  if(action==='restart') { state.report=null; state.profile=emptyProfile(); state.step=0; state.path='A'; state.errors={}; return go('home'); }
-  if(action.startsWith('page:') && state.report) return go(action.split(':')[1]);
-  if(action.startsWith('map-select:') && state.report) { const id=action.split(':')[1]; if(buildCareerExplorerModel(state.report).paths.some(path=>path.id===id)){state.path=id; render(); const selectedMapNode=[...document.querySelectorAll('[data-action^="map-select:"]')].find(node=>node.dataset.action===`map-select:${id}`); selectedMapNode?.focus();} return; }
+  if(action==='restart') { state.report=null; state.profile=emptyProfile(); state.step=0; state.path='A'; state.pathChosen=false; state.skillProgress={}; state.errors={}; return go('home'); }
+  if(action.startsWith('page:') && state.report) { const page=action.slice('page:'.length); if(page==='plan'&&!state.pathChosen)return go('star-map'); if(!reportPages.includes(page))return; return go(page); }
+  if(action.startsWith('choose-path:') && state.report) { const id=action.slice('choose-path:'.length); if(buildCareerExplorerModel(state.report).paths.some(path=>path.id===id)){state.path=id;state.pathChosen=true;return go('plan');} return; }
+  if(action.startsWith('map-select:') && state.report) { const id=action.split(':')[1]; if(buildCareerExplorerModel(state.report).paths.some(path=>path.id===id)){state.path=id;state.pathChosen=true; render(); const selectedMapNode=[...document.querySelectorAll('[data-action^="map-select:"]')].find(node=>node.dataset.action===`map-select:${id}`); selectedMapNode?.focus();} return; }
   if(action.startsWith('compare-select:') && state.report) { state.comparePath=action.split(':')[1]; return render(); }
-  if(action.startsWith('route-select:') && state.report) { const id=action.split(':')[1]; if(buildCareerExplorerModel(state.report).paths.some(path=>path.id===id)){ if(state.page==='compare') state.comparePath=state.path; state.path=id; return render(); } }
-  if(action.startsWith('skill-select:') && state.report) { try { state.selectedSkill=decodeURIComponent(action.slice('skill-select:'.length)); } catch { return; } return render(); }
-  if(action.startsWith('time-year:') && state.report) { state.timeYear=action.slice('time-year:'.length); return render(); }
-  if(action.startsWith('time-scenario:') && state.report) { state.timeScenario=action.slice('time-scenario:'.length); return render(); }
-  if(action.startsWith('select:') && state.report) { state.path=action.split(':')[1]; return go('paths'); }
+  if(action.startsWith('route-select:') && state.report) { const id=action.split(':')[1]; if(buildCareerExplorerModel(state.report).paths.some(path=>path.id===id)){ if(state.page==='compare') state.comparePath=state.path; state.path=id; state.pathChosen=true; return render(); } }
+  if(action.startsWith('skill-select:') && state.report) { try { state.selectedSkill=decodeURIComponent(action.slice('skill-select:'.length)); } catch { return; } const model=buildCareerExplorerModel(state.report); const path=model.paths.find(item=>[...item.strengths,...(item.matches??[]),...item.gaps].some(skill=>skill.toLowerCase()===state.selectedSkill.toLowerCase())); if(path){state.path=path.id;state.pathChosen=true;} return render(); }
+  if(action.startsWith('skill-step-done:') && state.report) {
+    const [, pathId, rawIndex] = action.split(':'); const index = Number(rawIndex); const model = buildCareerExplorerModel(state.report); const path = model.paths.find(item=>item.id===pathId);
+    if(!path || !Number.isInteger(index) || index<0) return;
+    const known = new Set([...model.profileSkills,...path.strengths,...path.matches].map(skill=>skill.toLowerCase()));
+    const steps = [...new Set([...path.strengths,...path.matches,...path.gaps].filter(Boolean))].filter(skill=>!known.has(skill.toLowerCase()));
+    const progress = new Set(state.skillProgress[pathId] ?? []);
+    const nextIndex = steps.findIndex((_,i)=>!progress.has(i));
+    if(index===nextIndex && steps[index]) { progress.add(index); state.skillProgress[pathId]=[...progress].sort((a,b)=>a-b); state.selectedSkill=steps[index]; }
+    return render();
+  }
+  if(action.startsWith('select:') && state.report) { state.path=action.split(':')[1]; state.pathChosen=true; return go('paths'); }
 });
 root.addEventListener('submit', event=>{
   if(event.target.id!=='profile-form') return;
@@ -151,7 +161,12 @@ root.addEventListener('submit', event=>{
   if(Object.keys(state.errors).length) { render(); (document.getElementById(`field-${Object.keys(state.errors)[0]}`)||document.getElementById('synthetic'))?.focus(); return; }
   if(state.step<steps.length-1) {state.step++; return go('profile');}
   if(state.mode==='live') return generate();
-  state.report=makeReport(state.profile); state.path=recommendedPath(state.profile); go('star-map');
+  state.report=makeReport(state.profile); state.path=recommendedPath(state.profile); state.pathChosen=false; state.skillProgress={}; go('star-map');
+});
+root.addEventListener('input', event=>{
+  if(!event.target.matches('[data-skill-search]'))return;
+  const query=event.target.value.trim().toLowerCase();
+  for(const node of root.querySelectorAll('.dna-map-node,.dna-role-node')) node.classList.toggle('dna-search-hidden',!!query&&!node.dataset.searchText?.includes(query));
 });
 render();
 
@@ -159,7 +174,7 @@ function loading() { return `<main class="subpage shell"><div class="form-card s
 function failure() { return `<main class="subpage shell"><div class="form-card status-panel" role="alert"><span class="kicker">ANALYSIS UNAVAILABLE</span><h1>Your answers are safe in this tab.</h1><p>${esc(state.apiError)}</p><p>No mock report has been substituted.</p>${button('Retry real analysis','retry')}${button('Edit fictional profile','edit','button secondary')}</div></main>`; }
 async function generate() {
  state.busy=true; state.controller=new AbortController(); const controller=state.controller; go('loading');
- try { const result=await requestAnalysis(state.profile,state.code,controller.signal); if(controller.signal.aborted)return; state.report={...result,profile:{...state.profile},weeklyHours:Number(state.profile.hours)}; state.path='A'; go('star-map'); }
+ try { const result=await requestAnalysis(state.profile,state.code,controller.signal); if(controller.signal.aborted)return; state.report={...result,profile:{...state.profile},weeklyHours:Number(state.profile.hours)}; state.path='A'; state.pathChosen=false; state.skillProgress={}; go('star-map'); }
  catch(error) { if(error.name!=='AbortError'){state.apiError=error.message;go('failure');} }
  finally { if(state.controller===controller)state.busy=false; }
 }

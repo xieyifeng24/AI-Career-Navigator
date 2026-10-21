@@ -106,7 +106,7 @@ function renderSDG(sdg) {
     return `<div class="star-sdg"><span class="star-detail-label">PROPOSED SDG CONNECTION</span><strong>SDG ${e(sdg.target)}</strong>${sdg.relationship ? `<span class="star-sdg-relation">${e(sdg.relationship)}</span>` : ''}<p>${e(sdg.rationale || 'The report suggests this connection.')}</p>${sdg.measure ? `<p><b>Possible measure:</b> ${e(sdg.measure)}</p>` : ''}<a href="https://sdgs.un.org/goals/goal${goal}" target="_blank" rel="noopener noreferrer">Explore UN Goal ${goal} ↗</a><small>A proposed contribution, not measured impact.</small></div>`;
 }
 
-function renderRouteDetail(path, selected) {
+function renderRouteDetail(path, selected, pathChosen) {
   const market = path.market
     ? `<div class="star-market"><span class="star-detail-label">PUBLISHED OUTLOOK</span><strong>${e(path.market.growth)}</strong><p>${e(path.market.geography)} · ${e(path.market.period)}</p><a href="${e(path.market.url)}" target="_blank" rel="noopener noreferrer">${e(path.market.source)} ↗</a></div>`
     : `<div class="star-market star-empty"><span class="star-detail-label">PUBLISHED OUTLOOK</span><p>Market trend data is not available for this route in this report.</p></div>`;
@@ -121,13 +121,13 @@ function renderRouteDetail(path, selected) {
         <div class="star-detail-group"><h3>Next experiment</h3><p>${e(path.next || 'No next experiment is available.')}</p>${path.nextSources ? `<small class="star-source-links">${path.nextSources}</small>` : ''}</div>
         ${path.constraint ? `<div class="star-detail-group star-constraint"><h3>Real-world constraint</h3><p>${e(path.constraint)}</p>${path.constraintSources ? `<small class="star-source-links">${path.constraintSources}</small>` : ''}</div>` : ''}
       </div>
-      <aside class="star-detail-aside">${market}${path.sdg ? renderSDG(path.sdg) : `<div class="star-sdg star-empty"><span class="star-detail-label">SDG CONNECTION</span><p>No supported SDG mapping is available in this report.</p></div>`}</aside>
+      <aside class="star-detail-aside">${market}</aside>
     </div>
-    <div class="star-detail-actions"><button type="button" class="button secondary" data-action="page:paths">Compare path details ↗</button><button type="button" class="button primary" data-action="page:plan">Open this path's action plan →</button></div>
+    <div class="star-detail-actions">${pathChosen ? `<button type="button" class="button secondary" data-action="page:paths">Compare route details ↗</button><button type="button" class="button primary" data-action="page:plan">Build my action plan →</button>` : `<button type="button" class="button primary" data-action="choose-path:${e(path.id)}">Choose this route and continue →</button>`}</div>
   </section>`;
 }
 
-export function renderCareerStarMap(report, selectedPath = 'A') {
+export function renderCareerStarMap(report, selectedPath = 'A', pathChosen = false) {
   const model = buildCareerStarMapModel(report);
   const paths = model.paths;
   const selected = paths.find(path => path.id === selectedPath) || paths[0];
@@ -135,10 +135,10 @@ export function renderCareerStarMap(report, selectedPath = 'A') {
     ? model.skills.map(skill => `<span class="star-skill-chip">${e(skill)}</span>`).join('')
     : `<span class="star-skill-chip star-skill-muted">Add skills to your profile</span>`;
   const modeNote = model.mode === 'demo'
-    ? '<p class="star-map-note"><strong>DEMO / MOCK.</strong> These routes are scripted examples; market trends and SDG connections are not verified in this mode.</p>'
-    : '<p class="star-map-note">Paths are drawn from this report. Published outlooks are shown only when a matching source is available; SDG links are proposed contributions, not measured impact.</p>';
+    ? '<p class="star-map-note"><strong>DEMO / MOCK.</strong> These routes are scripted examples. No labor-market forecast is included in this demo.</p>'
+    : '<p class="star-map-note">Paths are drawn from this report. Published outlooks are shown only when a matching source is available.</p>';
   const routeButtons = paths.map(path => {
-    const active = path.id === selected?.id;
+    const active = pathChosen && path.id === selected?.id;
     const carry = path.strengths.slice(0, 2).map(item => item.skill);
     const build = path.gaps.slice(0, 2).map(item => item.skill);
     return `<button type="button" class="star-map-route ${active ? 'is-selected' : ''}" data-action="map-select:${e(path.id)}" aria-pressed="${active}" aria-controls="star-map-detail">
@@ -150,14 +150,15 @@ export function renderCareerStarMap(report, selectedPath = 'A') {
     </button>`;
   }).join('');
   return `<div class="star-map-page">
-    <div class="report-head"><div class="report-head-top"><span class="kicker">YOUR CAREER CONSTELLATION</span><span class="demo-badge">${model.mode === 'demo' ? 'DEMO / MOCK' : 'BASED ON THIS REPORT'}</span></div><h1>Explore where your skills can take you.</h1><p>Start from your current experience, then explore paths from your assessment and source-based role matches.</p></div>
+    <div class="report-head"><div class="report-head-top"><span class="kicker">YOUR CAREER ROADMAP</span><span class="demo-badge">${model.mode === 'demo' ? 'DEMO / MOCK' : 'BASED ON THIS REPORT'}</span></div><h1>Choose a direction for your next chapter.</h1><p>Explore the paths grounded in your assessment. Choose one to unlock its personalized action plan.</p></div>
+    ${!pathChosen?'<div class="star-choice-prompt"><span aria-hidden="true">✦</span><div><strong>Start by choosing a path</strong><p>Select a route node, review its strengths and gaps, then continue to the matching action plan.</p></div></div>':''}
     <section class="star-map-stage" aria-label="Career star map">
       <svg class="star-map-edges" viewBox="0 0 1000 520" preserveAspectRatio="none" aria-hidden="true"><path d="M500 154 C500 210 170 205 170 268"/><path d="M500 154 C500 210 500 215 500 268"/><path d="M500 154 C500 210 830 205 830 268"/><circle cx="500" cy="154" r="5"/><circle cx="170" cy="268" r="5"/><circle cx="500" cy="268" r="5"/><circle cx="830" cy="268" r="5"/></svg>
       <div class="star-map-origin"><span class="star-core-icon" aria-hidden="true">◎</span><div><span class="star-detail-label">YOUR STARTING POINT · ${e(model.experience || 'EXPERIENCE NOT SPECIFIED')}</span><h2>${e(model.currentRole)}</h2><div class="star-skill-chips" aria-label="Skills you listed">${skills}</div></div></div>
       <div class="star-map-routes">${routeButtons}</div>
       <div class="star-map-legend"><span><i class="legend-current"></i> Your starting point</span><span><i class="legend-path"></i> A path from your report</span></div>
     </section>
-    ${selected ? renderRouteDetail(selected, selected.id === selectedPath) : '<p class="star-empty">No career paths are available in this report yet.</p>'}
+    ${selected ? renderRouteDetail(selected, pathChosen && selected.id === selectedPath, pathChosen) : '<p class="star-empty">No career paths are available in this report yet.</p>'}
     ${modeNote}
   </div>`;
 }
