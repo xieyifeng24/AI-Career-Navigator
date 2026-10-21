@@ -92,7 +92,7 @@ test('career star map is built from the existing live report paths and evidence'
   assert.equal(model.paths[0].market.geography, 'US');
   assert.equal(model.paths[0].market.period, '2025-2035');
   assert.equal(model.paths[0].sdg.target, '4.4');
-  const html = renderCareerStarMap(report, 'B');
+  const html = renderCareerStarMap(report, 'B', true);
   assert.match(html, /data-action="map-select:B"[^>]*aria-pressed="true"/);
   assert.match(html, /US · 2025-2035/);
   assert.match(html, /SDG 4\.4/);
@@ -110,11 +110,8 @@ test('scripted demo star map does not invent market or SDG evidence', () => {
   assert.match(html, /Marketing specialist/);
   assert.match(html, /Marketing operations \/ growth analysis/);
   assert.match(html, /No verified market signal in this report/);
-  assert.match(html, /No supported SDG mapping is available in this report/);
   assert.doesNotMatch(html, /undefined/);
-  const mappedHtml = renderCareerStarMap(report, 'C');
-  assert.match(mappedHtml, /SDG 8\.2/);
-  assert.match(mappedHtml, /Enabling hypothesis/);
+  assert.doesNotMatch(html, /SDG 8\.2/);
 });
 
 test('career star map escapes profile and role content before rendering', () => {
