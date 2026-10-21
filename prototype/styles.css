@@ -29,3 +29,36 @@
 @keyframes progress-slide {to{transform:translateX(180%);}}
 @media(prefers-reduced-motion:reduce){.indeterminate div{animation:none;}}
 @media(max-width:640px){.mode-tools{padding:0 24px 32px;}.ranking article{padding:14px;gap:10px;}.status-panel h1{font-size:32px;}}
+
+/* What-if planning uses the existing sage palette and report cards. */
+.whatif{margin:24px 0 36px;padding:24px;border:1px solid #bed9c9;border-radius:18px;background:#f0f7f1;}
+.sim-heading{display:flex;justify-content:space-between;align-items:center;gap:20px;}
+.sim-heading h2{margin:8px 0 16px;font-size:27px;}
+.sim-heading .text-button{flex:none;}
+.whatif p{font-size:13px;line-height:1.65;}
+.sim-controls{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:22px 0;}
+.sim-controls label{display:block;font-size:12px;font-weight:700;line-height:1.6;}
+.sim-controls select{display:block;width:100%;min-height:44px;margin-top:6px;padding:8px 10px;border:1px solid #c6d8cb;border-radius:9px;background:white;color:var(--ink);font-size:13px;}
+.sim-controls input[type=range]{display:block;width:100%;min-height:36px;margin:6px 0 0;accent-color:var(--accent);}
+.sim-controls output{float:right;color:var(--accent);font-size:15px;}
+.sim-controls :is(select,input):focus-visible{outline:3px solid #66a88b;outline-offset:3px;}
+.sim-comparison{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;}
+.sim-comparison article{padding:16px;border:1px solid var(--line);border-radius:12px;background:white;}
+.sim-comparison .sim-changed{border-color:#83b69a;background:#e0f0e4;}
+.sim-comparison span,.sim-comparison small{display:block;font-size:11px;color:var(--muted);line-height:1.5;}
+.sim-comparison strong{display:block;font-size:22px;margin:8px 0;}
+.sim-comparison strong small{display:inline;font-size:12px;}
+.sim-reason{padding:14px 0;margin:0;}
+.sim-decision{padding:18px;border:1px solid var(--line);border-radius:12px;background:white;margin-bottom:20px;}
+.sim-decision h3,.sim-schedule h3{font-size:17px;letter-spacing:-.02em;margin-bottom:12px;}
+.sim-decision p{margin:10px 0 0;}
+.whatif a{color:#5143a2;text-decoration:underline;text-underline-offset:3px;font-size:12px;}
+.sim-schedule{display:grid;gap:10px;}
+.sim-schedule>details{padding:18px;background:white;border:1px solid var(--line);border-radius:12px;}
+.sim-work+.sim-work{border-top:1px solid var(--line);padding-top:14px;margin-top:14px;}
+.sim-work p{margin:8px 0;}
+.sim-limits{color:var(--muted);border-top:1px solid #cdddcf;padding-top:16px;margin:20px 0 0;}
+.report-main p{line-height:1.65;}
+@media(max-width:700px){.whatif{padding:18px;}.sim-heading{align-items:flex-start;}.sim-heading h2{font-size:23px;}.sim-heading .text-button{max-width:100px;text-align:right;}.sim-controls{grid-template-columns:1fr;gap:14px;}.sim-comparison{grid-template-columns:1fr;}.sim-comparison article{padding:12px 16px;}.sim-comparison strong{font-size:20px;}}
+
+.sim-context{margin-top:12px;}.sim-context summary,.sim-schedule summary{font-size:13px;font-weight:700;}.sim-schedule details[open] summary{margin-bottom:14px;}

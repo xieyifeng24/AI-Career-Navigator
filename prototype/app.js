@@ -1,9 +1,10 @@
+import { renderSimulator, simulatorDefaults, simulateCareer, simulatorResults, simulatorHoursLabel } from './simulator.js';
 import { requestAnalysis, renderLiveReport, sourceRadar, requestMatching, renderMatching } from './live.js';
 import { cases, steps } from './data.js';
 import { emptyProfile, sampleProfile, validateStep, makeReport, recommendedPath } from './logic.js';
 
 const root = document.getElementById('app');
-const state = { page: 'home', step: 0, profile: emptyProfile(), report: null, path: 'A', errors: {}, mode: 'live', health: null, busy: false, apiError: '', controller: null, radar: null, matching: null };
+const state = { page: 'home', step: 0, profile: emptyProfile(), report: null, path: 'A', errors: {}, mode: 'live', health: null, busy: false, apiError: '', controller: null, radar: null, matching: null, simulator: null };
 const reportPages = ['capability', 'impact', 'paths', 'plan'];
 const pageLabels = { capability: 'Capabilities', impact: 'AI & work', paths: 'Career paths', plan: 'Action plan' };
 const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -89,7 +90,7 @@ function plan() {
   return reportShell(`${reportHeader('04 / ACTION PLAN','Make the next step visible.','A practical starting plan for your selected demo path, shaped around the time you said you have.')}<div class="plan-summary"><div><span>YOUR FOCUS</span><h2>Path ${state.path}: ${path.subtitle}</h2><p>${esc(r.profile.goal)}</p></div><div class="time-token"><strong>${r.weeklyHours}h</strong><span>per week available</span></div></div><div class="plan-layout"><section class="plan-primary"><div class="plan-section-title"><span>01</span><div><small>THE PRACTICE PROJECT</small><h2>Build evidence, not just confidence.</h2></div></div><p class="project-copy">${p.project}</p><div class="milestone-box"><span>SHORT-TERM MILESTONE</span><strong>${p.milestone}</strong></div><div class="proof-box"><span>HOW TO CHECK PROGRESS</span><p>${p.proof}</p></div></section><div class="plan-side"><section class="plan-mini"><span class="small-label">02 / SKILLS TO PRIORITIZE</span><ol>${p.skills.map(x=>`<li>${x}</li>`).join('')}</ol></section><section class="plan-mini"><span class="small-label">03 / TOOLS TO EXPLORE</span><ul>${p.tools.map(x=>`<li>${x}</li>`).join('')}</ul><p class="tool-note">Examples only. Check workplace privacy rules before entering any real work data into an AI tool.</p></section></div></div><div class="reality-panel"><span>YOUR REAL-WORLD LIMIT</span><p>${esc(r.profile.constraints)}</p><small>Keep the project small enough to fit roughly ${r.weeklyHours} hour${r.weeklyHours===1?'':'s'} per week. Adjust the milestone if that is unrealistic.</small></div>${methodology()}`,'plan');
 }
 function render() {
-  const pageContent = state.report?.mode==='real-ai' && reportPages.includes(state.page) ? reportShell(renderLiveReport(state.report,state.page,state.path),state.page) : ({ home, samples, profile, capability, impact, paths, plan, loading, failure, radar, matching })[state.page]();
+  const pageContent = state.report?.mode==='real-ai' && reportPages.includes(state.page) ? reportShell(renderLiveReport(state.report,state.page,state.path,state.simulator),state.page) : ({ home, samples, profile, capability, impact, paths, plan, loading, failure, radar, matching })[state.page]();
   root.innerHTML = `${header()}${pageContent}${footer()}`;
   document.title = `${state.page==='home'?'AI Career Navigator':state.page==='profile'?'Your profile':pageLabels[state.page]||({loading:'Analyzing',failure:'Analysis unavailable',radar:'Live trend sources',matching:'Source-based matches',samples:'Fictional profiles'}[state.page])||'AI Career Navigator'} · AI Career Navigator`;
 }
@@ -101,6 +102,7 @@ root.addEventListener('click', event=>{
   if(state.busy && action!=='cancel') return;
   if(action==='cancel') { state.controller?.abort(); state.busy=false; return go('profile'); }
   if(action==='retry') return generate();
+  if(action==='sim-reset' && state.report?.mode==='real-ai') { state.simulator={...simulatorDefaults(state.report,state.path),language:state.simulator?.language||'en'}; control.closest('[data-simulator]').outerHTML=renderSimulator(state.report,state.simulator,state.path); return; }
   if(action==='match') return getMatches();
   if(action==='legacy') {state.mode='demo'; return go('samples');}
   if(action==='radar' || action==='refresh-radar') return loadRadar(action==='refresh-radar');
@@ -112,8 +114,27 @@ root.addEventListener('click', event=>{
   if(action==='edit') { state.report=null; state.errors={}; state.step=0; return go('profile'); }
   if(action==='restart') { state.report=null; state.profile=emptyProfile(); state.step=0; state.path='A'; state.errors={}; return go('home'); }
   if(action.startsWith('page:') && state.report) return go(action.split(':')[1]);
-  if(action.startsWith('select:') && state.report) { state.path=action.split(':')[1]; return go('paths'); }
+  if(action.startsWith('select:') && state.report) { state.path=action.split(':')[1]; if(state.simulator)state.simulator.path=state.path; return go('paths'); }
 });
+
+function updateSimulator(event) {
+  const control=event.target.closest('[data-sim-control]');
+  if(!control || state.report?.mode!=='real-ai') return;
+  if((event.type==='input')!==(control.type==='range')) return;
+  const choices={...(state.simulator||simulatorDefaults(state.report,state.path)),[control.dataset.simControl]:control.value};
+  state.simulator=simulateCareer(state.report,choices).options;
+  const panel=control.closest('[data-simulator]');
+  if(control.dataset.simControl==='language') {
+    panel.outerHTML=renderSimulator(state.report,state.simulator,state.path);
+    root.querySelector('#sim-language')?.focus();
+  } else {
+    panel.querySelector('[data-sim-results]').innerHTML=simulatorResults(state.report,state.simulator);
+    panel.querySelector('#sim-hours-value').textContent=simulatorHoursLabel(state.simulator);
+  }
+}
+root.addEventListener('input',updateSimulator);
+root.addEventListener('change',updateSimulator);
+
 root.addEventListener('submit', event=>{
   if(event.target.id!=='profile-form') return;
   event.preventDefault(); collectForm(); state.errors=validateStep(state.profile,state.step,state.mode);
@@ -127,7 +148,7 @@ render();
 function loading() { return `<main class="subpage shell"><div class="form-card status-panel" role="status" aria-live="polite"><span class="kicker">REAL MODEL INFERENCE</span><h1>Building a sourced perspective.</h1><p>Retrieving public signals, comparing reference roles, then asking RunPod to analyze your fictional profile. Cold starts can take several minutes.</p><div class="progress-track indeterminate"><div></div></div><p>No scripted fallback. Every response must pass citation, structure and time-budget checks.</p>${button('Stop waiting and edit','cancel','button secondary')}<p class="field-help">Stopping the browser wait may not cancel a GPU request already running.</p></div></main>`; }
 function failure() { return `<main class="subpage shell"><div class="form-card status-panel" role="alert"><span class="kicker">ANALYSIS UNAVAILABLE</span><h1>Your answers are safe in this tab.</h1><p>${esc(state.apiError)}</p><p>No mock report has been substituted.</p>${button('Retry real analysis','retry')}${button('Edit fictional profile','edit','button secondary')}</div></main>`; }
 async function generate() {
- state.busy=true; state.controller=new AbortController(); const controller=state.controller; go('loading');
+ state.simulator=null; state.busy=true; state.controller=new AbortController(); const controller=state.controller; go('loading');
  try { const result=await requestAnalysis(state.profile,controller.signal); if(controller.signal.aborted)return; state.report={...result,profile:{...state.profile},weeklyHours:Number(state.profile.hours)}; state.path='A'; go('capability'); }
  catch(error) { if(error.name!=='AbortError'){state.apiError=error.message;go('failure');} }
  finally { if(state.controller===controller)state.busy=false; }

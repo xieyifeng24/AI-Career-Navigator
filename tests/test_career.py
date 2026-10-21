@@ -125,6 +125,7 @@ class API(unittest.TestCase):
         self.assertEqual(r.status_code,422);self.assertNotIn('private@example.com',r.text)
     def test_files_and_body_are_bounded(self):
         for path in ['/.env','/requirements.txt','/server.py','/logic.test.mjs']:self.assertEqual(self.client.get(path).status_code,404)
+        self.assertEqual(self.client.get('/simulator.js').status_code,200)
         self.assertEqual(self.client.post('/api/analyze',content='x'*19000).status_code,413)
         self.assertIn("script-src 'self'",self.client.get('/').headers['Content-Security-Policy'])
     def auth(self,client=None):

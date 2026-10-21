@@ -153,5 +153,5 @@ async def index(): return FileResponse(ROOT/'prototype/index.html')
 @app.get('/{filename}')
 async def asset(filename: str):
     # Serve only explicit frontend assets, never repository files, secrets or tests.
-    if filename not in {'app.js','data.js','logic.js','live.js','styles.css'}: raise HTTPException(404)
+    if filename not in {'app.js','data.js','logic.js','live.js','styles.css','simulator.js'}: raise HTTPException(404)
     return FileResponse(ROOT/'prototype'/filename)

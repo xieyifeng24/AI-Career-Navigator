@@ -190,3 +190,11 @@ Domain 1 rubric is for preliminaries; the final-round rubric has not been suppli
 ## License
 
 Project code: [Apache-2.0](LICENSE). Third-party sources retain their own licences.
+
+## What-if simulator (local candidate, not deployed)
+
+After a report, Career paths and Action plan include an interactive schedule and
+priority simulator. It reuses the current report and official links without another
+AI call or changes to matching scores. Simulator controls support English, Chinese
+and Malay; original report content retains its existing language. See
+[behaviour, limits and verification](docs/WHAT_IF_SIMULATOR.md).
