@@ -1,3 +1,4 @@
+import {validateAnswers} from './questionnaire.js';
 import { cases, steps } from './data.js';
 
 export function emptyProfile() {
@@ -9,10 +10,10 @@ export function sampleProfile(scenario) {
 }
 
 export function validateStep(profile, index, mode='demo') {
-  const errors = {};
+  const errors = validateAnswers(profile,index);
   for (const field of steps[index].fields) {
     if(field==='scenario' && mode==='live') continue;
-    if (!String(profile[field] ?? '').trim()) errors[field] = 'Please complete this field.';
+    if (field==='scenario' && !profile.scenario) errors.scenario='Please complete this field.';
   }
   if (index === 3 && profile.hours) {
     const n = Number(profile.hours);

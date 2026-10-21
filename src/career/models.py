@@ -1,7 +1,7 @@
 """The public API and model contracts. No permissive parsing of model output."""
 import re
 from typing import Annotated, Literal
-from pydantic import BaseModel, ConfigDict, Field, field_validator
+from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
 Text = Annotated[str, Field(min_length=1, max_length=1600)]
 Short = Annotated[str, Field(min_length=1, max_length=180)]
@@ -9,7 +9,63 @@ Short = Annotated[str, Field(min_length=1, max_length=180)]
 class StrictModel(BaseModel):
     model_config = ConfigDict(extra='forbid', str_strip_whitespace=True)
 
+# Shared option IDs and canonical analysis labels. UI translations never affect matching.
+import json
+from pathlib import Path as FilePath
+OPTIONS = json.loads((FilePath(__file__).resolve().parents[2] / 'prototype/questionnaire.json').read_text())
+
+class Answers(StrictModel):
+    background: str
+    experience: str
+    tasks: Annotated[list[str], Field(min_length=2, max_length=10)]
+    skills: Annotated[list[str], Field(min_length=1, max_length=10)]
+    aiUsage: str
+    concerns: Annotated[list[str], Field(min_length=1, max_length=6)]
+    goal: str
+    constraints: Annotated[list[str], Field(min_length=1, max_length=6)]
+    custom: dict[str, Annotated[str, Field(max_length=500)]] = Field(default_factory=dict)
+
+    @model_validator(mode='after')
+    def validate_options(self):
+        for key, rows in OPTIONS.items():
+            values = getattr(self, key)
+            values = values if isinstance(values, list) else [values]
+            if len(set(values)) != len(values) or not set(values) <= {row[0] for row in rows}:
+                raise ValueError('Invalid option IDs')
+            if 'none' in values and len(values) != 1:
+                raise ValueError('No concerns/constraints must be exclusive')
+            custom = self.custom.get(key, '').strip()
+            if 'other' in values and not custom:
+                raise ValueError('Describe the other option')
+        if not set(self.custom) <= set(OPTIONS):
+            raise ValueError('Unknown custom field')
+        for value in self.custom.values():
+            if re.search(r'[\w.+-]+@[\w.-]+\.[A-Za-z]{2,}|(?:\+?\d[\s()-]*){9,}', value):
+                raise ValueError('Use fictional details without identifiers')
+        return self
+
+    def canonical(self):
+        result = {}
+        for key, rows in OPTIONS.items():
+            values = getattr(self, key)
+            values = values if isinstance(values, list) else [values]
+            labels = {row[0]: row[1] for row in rows}
+            result['aiUse' if key == 'aiUsage' else key] = '; '.join(
+                self.custom[key].strip() if value == 'other' else labels[value] for value in values)
+        return result
+
 class Profile(StrictModel):
+    language: Literal['zh-CN', 'en', 'ms'] = 'en'
+    answers: Answers | None = None
+
+    @model_validator(mode='before')
+    @classmethod
+    def structured_answers_are_authoritative(cls, data):
+        if isinstance(data, dict) and data.get('answers') is not None:
+            answers = Answers.model_validate(data['answers'])
+            data = {**data, **answers.canonical(), 'answers': answers}
+        return data
+
     background: Short
     experience: Short
     tasks: Text

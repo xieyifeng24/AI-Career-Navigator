@@ -29,3 +29,25 @@
 @keyframes progress-slide {to{transform:translateX(180%);}}
 @media(prefers-reduced-motion:reduce){.indeterminate div{animation:none;}}
 @media(max-width:640px){.mode-tools{padding:0 24px 32px;}.ranking article{padding:14px;gap:10px;}.status-panel h1{font-size:32px;}}
+
+/* Structured questionnaire: native inputs retain keyboard and screen-reader behavior. */
+.choice-field {border:0;padding:0;margin:0 0 24px;min-width:0}
+.choice-field legend {font-weight:600;margin-bottom:6px}
+.choice-grid {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;outline:none}
+.choice {display:flex;align-items:center;gap:10px;min-height:54px;padding:12px 14px;border:1px solid #d9d7df;border-radius:12px;background:#fff;cursor:pointer;font-weight:400;line-height:1.45;overflow-wrap:anywhere}
+.choice input {width:18px;height:18px;flex:0 0 18px;accent-color:#6752b8;margin:0}
+.choice.is-selected {background:#f0eafa;border-color:#7963b4;box-shadow:0 0 0 1px #7963b4}
+.choice:focus-within {outline:3px solid #b4a2db;outline-offset:2px}
+.custom-label {display:block;margin:12px 0 8px}.field-help {font-size:.85rem;color:#66616e;line-height:1.5}
+.language-switch select {max-width:155px;padding:9px;border-radius:8px;border:1px solid #d9d7df;background:white;color:#302b3a;font:inherit}
+.sr-only {position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+.header-actions {flex-wrap:wrap}.header-inner {gap:12px}.top-nav {flex-wrap:wrap}
+@media(max-width:650px){.choice-grid{grid-template-columns:1fr}.header-actions .demo-badge{display:none}.language-switch select{max-width:135px}.header-inner{flex-wrap:wrap}.form-actions{gap:12px;flex-wrap:wrap}}
+.field .choice {display:flex;font-weight:500;font-size:13px;margin-bottom:0}
+.field .choice input {width:18px;height:18px;padding:0;margin:0;border:0;background:transparent;accent-color:var(--accent)}
+.choice.is-selected {background:#eaf5ef;border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
+.choice:focus-within {outline-color:#80ad98}
+.choice-field textarea {min-height:72px}
+.site-header {height:auto;min-height:92px}
+.header-inner {min-height:92px;padding-top:14px;padding-bottom:14px}
+@media(max-width:650px){.site-header,.header-inner{min-height:76px}.header-actions{gap:8px}.header-inner{justify-content:space-between}.top-nav{order:3;max-width:100%;overflow-x:auto}}

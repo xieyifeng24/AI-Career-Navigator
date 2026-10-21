@@ -51,4 +51,6 @@ jobs:
           node --check prototype/data.js
           node --check prototype/logic.js
           node --check prototype/live.js
-          node --test prototype/logic.test.mjs
+          node --check prototype/questionnaire.js
+          node --check prototype/i18n.js
+          node --test prototype/*.test.mjs
