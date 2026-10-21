@@ -84,7 +84,7 @@ source/identity/time validation and human review bound the resulting risk.
 - `GET /api/health`: configuration state, not an assertion of successful inference.
 - `GET /api/radar?refresh=true`: public source snapshot with warnings and dates.
 - `POST /api/match`: validated fictional profile → `source-matching` result; no model.
-- `POST /api/analyze`: same profile + `X-Demo-Code` → `real-ai` result only on success.
+- `POST /api/analyze`: same profile + anonymous cookie / CSRF token → `real-ai` result only on success.
 - `src/career/models.py`: shared request and output contract.
 - `prototype/live.js`: API boundary and escaped rendering; no provider secret.
 
@@ -95,6 +95,6 @@ behalf of team members.
 ## Released cold-start transport
 
 The browser submits to POST `/api/analyses` and polls GET `/api/analyses/{job_id}`
-every three seconds with the same team access code. The backend executes real
+every three seconds with the same anonymous session cookie. The backend executes real
 inference in a bounded background task and temporarily holds the result in memory.
 The existing synchronous route remains available. No database was introduced.

@@ -5,7 +5,6 @@ Run from repository root: python scripts/live_check.py --run
 """
 import argparse
 import json
-import os
 from pathlib import Path
 import sys
 import time
@@ -24,19 +23,27 @@ CASES={'marketing':BASE,'admin':BASE|{'background':'Fictional administrative ass
        'skills-change':BASE|{'skills':'Mathematics, programming, systems analysis'},'one-hour':BASE|{'hours':1},'eight-hours':BASE|{'hours':8}}
 
 def main():
-    parser=argparse.ArgumentParser();parser.add_argument('--run',action='store_true');parser.add_argument('--base-url',default='http://127.0.0.1:8000')
+    parser=argparse.ArgumentParser();parser.add_argument('--run',action='store_true');parser.add_argument('--base-url',default='http://127.0.0.1:8000');parser.add_argument('--case',choices=CASES,default='marketing')
     args=parser.parse_args()
     if not args.run: parser.exit(message='No inference performed. Use --run after approving endpoint costs.\n')
     load_dotenv()
-    code=os.getenv('DEMO_ACCESS_CODE')
-    if not code: parser.exit(2,'DEMO_ACCESS_CODE is missing. No requests sent.\n')
     out=Path('.cache/live-evaluation');out.mkdir(parents=True,exist_ok=True)
     records=[]
     with httpx.Client(timeout=450) as client:
-        for name,fields in CASES.items():
+        base=args.base_url.rstrip('/')
+        session=client.get(base+'/api/session');session.raise_for_status()
+        headers={'Origin':base,'X-CSRF-Token':session.json()['csrf_token']}
+        for name,fields in [(args.case,CASES[args.case])]:
             start=time.monotonic()
-            response=client.post(args.base_url.rstrip('/')+'/api/analyze',json=fields,headers={'X-Demo-Code':code})
-            response.raise_for_status();result=response.json()
+            response=client.post(base+'/api/analyses',json=fields,headers=headers)
+            response.raise_for_status();job_id=response.json()['job_id']
+            for _ in range(160):
+                time.sleep(3)
+                poll=client.get(base+'/api/analyses/'+job_id);poll.raise_for_status();status=poll.json()
+                if status['status']=='error': raise RuntimeError(status['detail'])
+                if status['status']=='complete':
+                    result=status['result'];break
+            else: raise RuntimeError('Analysis exceeded the polling deadline.')
             if result.get('mode')!='real-ai': raise RuntimeError('Not a real-inference report')
             validate_analysis(result['analysis'],Profile(**fields),result['evidence'])
             (out/f'{name}.json').write_text(json.dumps(result,indent=2))

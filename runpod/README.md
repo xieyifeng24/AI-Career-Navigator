@@ -21,7 +21,8 @@ Provision only after account owner approves current GPU price and spending cap:
    `/openai/v1/chat/completions`, not the queue API echo handler. No paid request
    has been made by this repository's offline tests.
 4. Put the endpoint ID, API key and exact served model name in backend secrets.
-   Create `DEMO_ACCESS_CODE` in secrets to restrict paid analysis to judges/team.
+   No shared access code is required. Anonymous sessions, per-network/session rate
+   limits and shared quotas protect paid calls; see `docs/ACCESS_CONTROL.md`.
    Never include these values in screenshots or commits.
 5. Run `python scripts/live_check.py` against a candidate server. Review the
    generated output for actual relevance and source entailment. Record model
