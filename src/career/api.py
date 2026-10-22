@@ -160,6 +160,11 @@ async def knowledge_current():
 async def knowledge_bundle():
     return FileResponse(ROOT/'data/knowledge/current.json')
 
+@app.get('/combined/{filename}')
+async def combined_asset(filename: str):
+    if filename not in {'app.js','model.js','styles.css'}: raise HTTPException(404)
+    return FileResponse(ROOT/'prototype/combined'/filename)
+
 @app.get('/v3/{filename}')
 async def v3_preview_asset(filename: str):
     # Phase-one questionnaire assets only; no scoring or inference route changes.
@@ -180,5 +185,5 @@ async def local_asset(filename: str):
 @app.get('/{filename}')
 async def asset(filename: str):
     # Serve only explicit frontend assets, never repository files, secrets or tests.
-    if filename not in {'bootstrap.js','intro.js','intro.css','app.js','data.js','logic.js','live.js','styles.css','simulator.js','star-map.js','star-map.css','career-explorer.js','career-explorer.css','i18n.js','questionnaire.js','questionnaire.json','translations.json'}: raise HTTPException(404)
+    if filename not in {'explorer-catalog.json','explorer-engine.js','explorer-views.js','explorer.css','offline-app.js','sdg-characters.png','bootstrap.js','intro.js','intro.css','app.js','data.js','logic.js','live.js','styles.css','simulator.js','star-map.js','star-map.css','career-explorer.js','career-explorer.css','i18n.js','questionnaire.js','questionnaire.json','translations.json'}: raise HTTPException(404)
     return FileResponse(ROOT/'prototype'/filename)

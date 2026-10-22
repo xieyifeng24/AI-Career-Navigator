@@ -1,3 +1,4 @@
+import {mountCombined,hasCombinedDraft} from './combined/app.js';
 import {shouldPlayIntro,playIntroduction,consumeIntroParameter} from './intro.js';
 import {createDraft,isV2,exampleProfile,validateExploration} from './exploration/engine.js';
 import {renderExplorationIntake,collectExploration,V2_STEPS,renderExplorationSimulator,explorationNotice,translationNotice} from './exploration/ui.js';
@@ -14,6 +15,12 @@ import { renderCareerStarMap } from './star-map.js';
 import { renderCareerComparison, renderSkillDNA, renderTimeMachine, renderSDGMapper, renderExplorationPlan, buildCareerExplorerModel } from './career-explorer.js';
 
 const root = document.getElementById('app');
+const legacyAssessment = new URLSearchParams(location.search).get('assessment') === 'v2';
+let combinedActive=false,combinedUnmount=null;
+function startCombined(){
+ combinedUnmount?.();combinedActive=true;
+ combinedUnmount=mountCombined({root,onHome:()=>{combinedUnmount?.();combinedUnmount=null;combinedActive=false;state.page='home';state.report=null;render();}});
+}
 const state = { page: 'home', step: 0, profile: emptyProfile(), report: null, path: 'A', comparePath: 'B', selectedSkill: '', timeYear: '2026', timeScenario: 'moderate', errors: {}, mode: 'live', health: null, busy: false, apiError: '', controller: null, radar: null, matching: null, simulator: null, localScenario:{ratings:{}}, ai:{busy:false,result:null,error:'',consent:false} };
 const reportPages = ['star-map', 'compare', 'skill-dna', 'time-machine', 'sdg-map', 'capability', 'impact', 'paths', 'plan'];
 const pageLabels = { 'star-map': 'Career map', compare: 'Compare paths', 'skill-dna': 'Skill DNA', 'time-machine': 'Time machine', 'sdg-map': 'SDG mapper', capability: 'Capabilities', impact: 'AI & work', paths: 'Career paths', plan: 'Action plan' };
@@ -99,6 +106,7 @@ function plan() {
   return reportShell(`${reportHeader('04 / ACTION PLAN','Make the next step visible.','A practical starting plan for your selected demo path, shaped around the time you said you have.')}<div class="plan-summary"><div><span>YOUR FOCUS</span><h2>${t('Path {path}',{path:state.path})}: ${t(path.subtitle)}</h2><p><span data-user-content>${esc(answerText(r.profile,'goal'))}</span></p></div><div class="time-token"><strong>${r.weeklyHours}h</strong><span>per week available</span></div></div><div class="plan-layout"><section class="plan-primary"><div class="plan-section-title"><span>01</span><div><small>THE PRACTICE PROJECT</small><h2>Build evidence, not just confidence.</h2></div></div><p class="project-copy">${p.project}</p><div class="milestone-box"><span>SHORT-TERM MILESTONE</span><strong>${p.milestone}</strong></div><div class="proof-box"><span>HOW TO CHECK PROGRESS</span><p>${p.proof}</p></div></section><div class="plan-side"><section class="plan-mini"><span class="small-label">02 / SKILLS TO PRIORITIZE</span><ol>${p.skills.map(x=>`<li>${x}</li>`).join('')}</ol></section><section class="plan-mini"><span class="small-label">03 / TOOLS TO EXPLORE</span><ul>${p.tools.map(x=>`<li>${x}</li>`).join('')}</ul><p class="tool-note">Examples only. Check workplace privacy rules before entering any real work data into an AI tool.</p></section></div></div><div class="reality-panel"><span>YOUR REAL-WORLD LIMIT</span><p><span data-user-content>${esc(answerText(r.profile,'constraints'))}</span></p><small>${t('Keep the project small enough to fit roughly {hours} hours per week. Adjust the milestone if that is unrealistic.',{hours:r.weeklyHours})}</small></div>${methodology()}`,'plan');
 }
 function render() {
+  if(combinedActive)return;
   if(state.report?.mode==='rules' && state.report.language!==language) state.report=buildLocalReport(state.report.profile,language,{},state.report.knowledge);
   const explorerPages = {
     compare: () => renderCareerComparison(state.report,state.path,state.comparePath),
@@ -120,6 +128,7 @@ function render() {
 function go(page) { state.page=page; render(); window.scrollTo({top:0,behavior:'instant'}); }
 function collectForm(changed) {const form=document.getElementById('profile-form');if(form && isV2(state.profile))return collectExploration(form,state.profile);if(form) {collectAnswers(form,state.profile,changed);collectRatings(form,state.profile);const data=new FormData(form);if(data.has('scenario')) state.profile.scenario=String(data.get('scenario'));}}
 root.addEventListener('change',event=>{
+ if(combinedActive)return;
  if(event.target.matches('[data-v2-control]')){
   const key=event.target.dataset.v2Control;state.localScenario[key]=key==='hours'?Number(event.target.value):event.target.value;
   const panel=event.target.closest('[data-v2-simulator]');panel.outerHTML=renderExplorationSimulator(state.report,state.localScenario);root.querySelector(`[data-v2-control="${key}"]`)?.focus();return;
@@ -144,6 +153,7 @@ root.addEventListener('change',event=>{
  }
 });
 root.addEventListener('click', event=>{
+  if(combinedActive)return;
   const control=event.target.closest('[data-action]'); if(!control) return;
   const action=control.dataset.action;
   if(state.busy && action!=='cancel') return;
@@ -158,6 +168,7 @@ root.addEventListener('click', event=>{
   if(action==='legacy') {state.mode='demo'; return go('samples');}
   if(action==='radar' || action==='refresh-radar') return loadRadar(action==='refresh-radar');
   if(action==='home') { state.report=null; return go('home'); }
+  if(action==='start'&&!legacyAssessment)return startCombined();
   if(action==='start') { state.mode='live'; state.profile=createDraft(); state.report=null; state.step=0; state.errors={}; return go('profile'); }
   if(action==='samples') {state.mode='live'; return go('samples');}
   if(action.startsWith('sample:')) { state.profile=state.mode==='live'?exampleProfile(action.split(':')[1]):sampleProfile(action.split(':')[1]); if(!isV2(state.profile))initialAnswers(state.profile); state.report=null; state.step=0; state.errors={}; return go('profile'); }
@@ -205,6 +216,7 @@ root.addEventListener('input',event=>{
 root.addEventListener('change',updateSimulator);
 
 root.addEventListener('submit', event=>{
+  if(combinedActive)return;
   if(event.target.id!=='profile-form') return;
   event.preventDefault(); collectForm();
   if(isV2(state.profile)){
@@ -224,17 +236,17 @@ let introCleanup = null;
 function beginIntroduction() {
   introCleanup?.();
   state.mode='live';state.profile=createDraft();state.report=null;state.step=0;state.errors={};
-  go('profile');
+  if(legacyAssessment)go('profile');else startCombined();
   introCleanup=playIntroduction({app:root,storage:introStorage,onComplete:()=>{
     introCleanup=null;
-    document.getElementById('exploration-direction')?.focus({preventScroll:true});
+    (document.getElementById('exploration-direction')||root.querySelector('main h1'))?.focus?.({preventScroll:true});
   }});
 }
 let introStorage;
 try { introStorage=window.sessionStorage; } catch { introStorage=null; }
 const playOnEntry=shouldPlayIntro(introStorage,window.location.search);
 consumeIntroParameter();
-if(playOnEntry)beginIntroduction();else render();
+if(playOnEntry)beginIntroduction();else if(!legacyAssessment&&hasCombinedDraft())startCombined();else render();
 
 function loading() { return `<main class="subpage shell"><div class="form-card status-panel" role="status" aria-live="polite"><span class="kicker">REAL MODEL INFERENCE</span><h1>Building a sourced perspective.</h1><p>Retrieving public signals, comparing reference roles, then asking RunPod to analyze your fictional profile. Cold starts can take several minutes.</p><div class="progress-track indeterminate"><div></div></div><p>No scripted fallback. Every response must pass citation, structure and time-budget checks.</p>${button('Stop waiting and edit','cancel','button secondary')}<p class="field-help">Stopping the browser wait may not cancel a GPU request already running.</p></div></main>`; }
 function failure() { return `<main class="subpage shell"><div class="form-card status-panel" role="alert"><span class="kicker">ANALYSIS UNAVAILABLE</span><h1>Your answers are safe in this tab.</h1><p>${esc(state.apiError)}</p><p>No mock report has been substituted.</p>${button('Retry real analysis','retry')}${button('Edit fictional profile','edit','button secondary')}</div></main>`; }

@@ -2243,6 +2243,590 @@
     "zh-CN": "没有明显限制",
     "ms": "Tiada kekangan utama"
   },
+  "OFFLINE EXPLORATION": {
+    "zh-CN": "离线职业探索",
+    "ms": "PENEROKAAN LUAR TALIAN"
+  },
+  "Local rules · no online prediction": {
+    "zh-CN": "本地规则 · 无在线预测",
+    "ms": "Peraturan setempat · tiada ramalan dalam talian"
+  },
+  "A future worth exploring.": {
+    "zh-CN": "未来，值得探索。",
+    "ms": "Masa depan untuk diterokai."
+  },
+  "Your curiosity. Your pace. Your next chapter.": {
+    "zh-CN": "你的好奇心，你的节奏，你的下一篇章。",
+    "ms": "Minat anda. Rentak anda. Bab seterusnya anda."
+  },
+  "Answer with choices. Explore career directions, build a learning plan and meet your SDG action companions.": {
+    "zh-CN": "通过选择作答，探索职业方向、制定学习计划，并认识你的 SDG 行动伙伴。",
+    "ms": "Jawab melalui pilihan. Terokai hala tuju kerjaya, bina pelan belajar dan kenali teman tindakan SDG anda."
+  },
+  "Your answers stay in this tab. Reports are assembled on your device from a reviewed catalog; no profile is sent to an AI service.": {
+    "zh-CN": "答案保留在当前标签页。报告由设备上的预写内容库与规则组合，不会把资料发送到 AI 服务。",
+    "ms": "Jawapan kekal dalam tab ini. Laporan digabung pada peranti anda daripada katalog yang disemak; tiada profil dihantar ke perkhidmatan AI."
+  },
+  "Four steps · mostly choices": {
+    "zh-CN": "四个步骤 · 主要通过选择完成",
+    "ms": "Empat langkah · kebanyakannya pilihan"
+  },
+  "Same answers, same result": {
+    "zh-CN": "相同答案，结果一致",
+    "ms": "Jawapan sama, hasil sama"
+  },
+  "24 career directions": {
+    "zh-CN": "24 条职业方向",
+    "ms": "24 hala tuju kerjaya"
+  },
+  "17 action companions": {
+    "zh-CN": "17 位行动伙伴",
+    "ms": "17 teman tindakan"
+  },
+  "Explore a sample": {
+    "zh-CN": "体验示例资料",
+    "ms": "Terokai profil contoh"
+  },
+  "Meet the 17 companions": {
+    "zh-CN": "认识 17 位伙伴",
+    "ms": "Kenali 17 teman"
+  },
+  "See the rules and all outcomes": {
+    "zh-CN": "查看规则与全部结果",
+    "ms": "Lihat peraturan dan semua hasil"
+  },
+  "From preferences to practical experiments.": {
+    "zh-CN": "从偏好出发，以实践验证。",
+    "ms": "Daripada pilihan kepada eksperimen praktikal."
+  },
+  "Choose your context": {
+    "zh-CN": "选择你的背景",
+    "ms": "Pilih latar belakang anda"
+  },
+  "Education, interests, AI habits and a sustainable learning rhythm.": {
+    "zh-CN": "学历、兴趣、AI 习惯与可持续学习节奏。",
+    "ms": "Pendidikan, minat, tabiat AI dan rentak belajar yang mampan."
+  },
+  "Understand the reasoning": {
+    "zh-CN": "理解推荐依据",
+    "ms": "Fahami asas cadangan"
+  },
+  "Every direction shows the selected signals behind its ranking.": {
+    "zh-CN": "每条方向都会展示支持其排序的已选信息。",
+    "ms": "Setiap hala tuju menunjukkan pilihan yang menyokong kedudukannya."
+  },
+  "Try one small project": {
+    "zh-CN": "先做一个小项目",
+    "ms": "Cuba satu projek kecil"
+  },
+  "Compare two paths and check the result before a major decision.": {
+    "zh-CN": "比较两条路径，并在重大决定前验证结果。",
+    "ms": "Bandingkan dua laluan dan semak hasil sebelum keputusan besar."
+  },
+  "Make a positive contribution": {
+    "zh-CN": "尝试带来积极影响",
+    "ms": "Cuba memberi sumbangan positif"
+  },
+  "Connect a practical task to a global goal, without claiming measured impact.": {
+    "zh-CN": "把实践任务与全球目标连接，但不把拟议行动当作已测量影响。",
+    "ms": "Hubungkan tugas praktikal dengan matlamat global tanpa mendakwa impak terukur."
+  },
+  "Your answers, your choice.": {
+    "zh-CN": "你的答案，你的选择。",
+    "ms": "Jawapan anda, pilihan anda."
+  },
+  "Choose what feels closest today. You can change it at any time.": {
+    "zh-CN": "选择最接近当前情况的答案，随时可以修改。",
+    "ms": "Pilih yang paling hampir dengan keadaan sekarang. Anda boleh mengubahnya pada bila-bila masa."
+  },
+  "Multi-select questions are marked. There is no correct personality or ideal background.": {
+    "zh-CN": "多选题已有标注，没有标准性格或理想背景。",
+    "ms": "Soalan berbilang pilihan ditandakan. Tiada personaliti betul atau latar belakang ideal."
+  },
+  "Your selected language changes the interface, not your answers or ranking.": {
+    "zh-CN": "切换语言只改变显示，不改变答案或排序。",
+    "ms": "Bahasa pilihan menukar paparan, bukan jawapan atau kedudukan."
+  },
+  "Nationality (optional)": {
+    "zh-CN": "国籍（可不透露）",
+    "ms": "Kewarganegaraan (pilihan)"
+  },
+  "Prefer not to say": {
+    "zh-CN": "不透露",
+    "ms": "Tidak mahu menyatakan"
+  },
+  "Choose a country or region": {
+    "zh-CN": "选择国家或地区",
+    "ms": "Pilih negara atau wilayah"
+  },
+  "Not used to rank careers.": {
+    "zh-CN": "不参与职业排序。",
+    "ms": "Tidak digunakan untuk pemeringkatan kerjaya."
+  },
+  "Select an option": {
+    "zh-CN": "请选择",
+    "ms": "Sila pilih"
+  },
+  "View my exploration report": {
+    "zh-CN": "查看我的探索报告",
+    "ms": "Lihat laporan penerokaan saya"
+  },
+  "Choose a valid country or prefer not to say.": {
+    "zh-CN": "请选择有效国籍，或选择不透露。",
+    "ms": "Pilih kewarganegaraan yang sah atau pilih untuk tidak menyatakan."
+  },
+  "Not using AI yet must be selected on its own.": {
+    "zh-CN": "“尚未使用 AI”须单独选择。",
+    "ms": "“Belum menggunakan AI” mesti dipilih secara berasingan."
+  },
+  "Age ranges do not overlap; subject fields appear only when relevant.": {
+    "zh-CN": "年龄段不重叠；专业选项仅在相关学历阶段显示。",
+    "ms": "Julat umur tidak bertindih; bidang pengajian hanya dipaparkan apabila berkaitan."
+  },
+  "We never use gender or nationality to limit career possibilities.": {
+    "zh-CN": "性别和国籍不会用于限制职业可能性。",
+    "ms": "Kami tidak menggunakan jantina atau kewarganegaraan untuk mengehadkan kemungkinan kerjaya."
+  },
+  "Overview": {
+    "zh-CN": "探索概览",
+    "ms": "Gambaran keseluruhan"
+  },
+  "You & AI": {
+    "zh-CN": "你与 AI",
+    "ms": "Anda dan AI"
+  },
+  "Career directions": {
+    "zh-CN": "职业方向",
+    "ms": "Hala tuju kerjaya"
+  },
+  "Learning plan": {
+    "zh-CN": "学习计划",
+    "ms": "Pelan pembelajaran"
+  },
+  "SDG companions": {
+    "zh-CN": "SDG 行动伙伴",
+    "ms": "Teman SDG"
+  },
+  "All outcomes & rules": {
+    "zh-CN": "全部结果与规则",
+    "ms": "Semua hasil dan peraturan"
+  },
+  "YOUR EXPLORATION REPORT": {
+    "zh-CN": "你的探索报告",
+    "ms": "LAPORAN PENEROKAAN ANDA"
+  },
+  "Possibilities to test, at your pace.": {
+    "zh-CN": "按你的节奏，检验未来可能。",
+    "ms": "Uji kemungkinan mengikut rentak anda."
+  },
+  "This is a local exploration aid, not a validated aptitude test, hiring prediction or fixed personality type.": {
+    "zh-CN": "这是本地职业探索工具，不是经过验证的能力测验、录用预测或固定人格类型。",
+    "ms": "Ini alat penerokaan setempat, bukan ujian kebolehan disahkan, ramalan pengambilan atau jenis personaliti tetap."
+  },
+  "START HERE": {
+    "zh-CN": "从这里开始",
+    "ms": "MULAKAN DI SINI"
+  },
+  "Your next experiment": {
+    "zh-CN": "你的下一项尝试",
+    "ms": "Eksperimen seterusnya anda"
+  },
+  "WHY THIS DIRECTION": {
+    "zh-CN": "为何探索此方向",
+    "ms": "SEBAB MENEROKA HALA TUJU INI"
+  },
+  "Matching interests": {
+    "zh-CN": "相关兴趣",
+    "ms": "Minat berkaitan"
+  },
+  "Subject connection": {
+    "zh-CN": "专业关联",
+    "ms": "Hubungan bidang"
+  },
+  "Thinking preferences": {
+    "zh-CN": "思维偏好",
+    "ms": "Gaya berfikir pilihan"
+  },
+  "AI-purpose overlap": {
+    "zh-CN": "AI 用途关联",
+    "ms": "Pertindihan kegunaan AI"
+  },
+  "School stream connection": {
+    "zh-CN": "高中科目关联",
+    "ms": "Hubungan aliran sekolah"
+  },
+  "Limited signals: compare this option with alternatives before choosing.": {
+    "zh-CN": "信息较少：选择前请与其他方向比较。",
+    "ms": "Petunjuk terhad: bandingkan pilihan ini dengan alternatif sebelum memilih."
+  },
+  "No background is a ceiling.": {
+    "zh-CN": "背景不会决定你的上限。",
+    "ms": "Latar belakang bukan had anda."
+  },
+  "BUILD NEXT": {
+    "zh-CN": "接下来培养",
+    "ms": "BINA SETERUSNYA"
+  },
+  "Compare A and B": {
+    "zh-CN": "比较路径 A 与 B",
+    "ms": "Bandingkan A dan B"
+  },
+  "Suggested starting direction": {
+    "zh-CN": "建议优先尝试的方向",
+    "ms": "Hala tuju permulaan dicadangkan"
+  },
+  "Alternative to explore": {
+    "zh-CN": "可探索的备选方向",
+    "ms": "Alternatif untuk diterokai"
+  },
+  "A new direction can be selected from any of the 24 cards below.": {
+    "zh-CN": "你可以从下方 24 张职业卡片中选择其他方向。",
+    "ms": "Anda boleh memilih hala tuju baharu daripada mana-mana 24 kad di bawah."
+  },
+  "Selected focus": {
+    "zh-CN": "当前重点",
+    "ms": "Fokus dipilih"
+  },
+  "Use this for my plan": {
+    "zh-CN": "用此方向制定计划",
+    "ms": "Gunakan untuk pelan saya"
+  },
+  "Entry pathway to check": {
+    "zh-CN": "需要核实的进入路径",
+    "ms": "Laluan kemasukan untuk disemak"
+  },
+  "A small project to try": {
+    "zh-CN": "可以尝试的小项目",
+    "ms": "Projek kecil untuk dicuba"
+  },
+  "How AI could help": {
+    "zh-CN": "AI 可以怎样辅助",
+    "ms": "Cara AI boleh membantu"
+  },
+  "What stays with you": {
+    "zh-CN": "仍需由你负责",
+    "ms": "Perkara yang kekal tanggungjawab anda"
+  },
+  "Rank score (editorial points)": {
+    "zh-CN": "探索排序分（编辑性规则）",
+    "ms": "Skor susunan (mata editorial)"
+  },
+  "These points order exploration cards. They are not fit percentages, ability scores or job-market forecasts.": {
+    "zh-CN": "分数只用于排列探索卡片，不代表适配百分比、能力分数或就业市场预测。",
+    "ms": "Mata ini hanya menyusun kad penerokaan. Ia bukan peratus kesesuaian, skor kebolehan atau ramalan pasaran kerja."
+  },
+  "YOUR LEARNING RHYTHM": {
+    "zh-CN": "你的学习节奏",
+    "ms": "RENTAK PEMBELAJARAN ANDA"
+  },
+  "Build evidence in four weeks.": {
+    "zh-CN": "四周积累一份可检验成果。",
+    "ms": "Bina bukti dalam empat minggu."
+  },
+  "Suggested weekly starting hours": {
+    "zh-CN": "建议每周起步时长",
+    "ms": "Cadangan jam permulaan mingguan"
+  },
+  "This is a small starting commitment, not an assumption that you must use every available hour. Reduce it if needed.": {
+    "zh-CN": "这是小规模起步建议，不要求用满可用时间；有需要时可减少投入。",
+    "ms": "Ini komitmen permulaan kecil, bukan kewajipan menggunakan semua masa yang ada. Kurangkan jika perlu."
+  },
+  "Foundations": {
+    "zh-CN": "基础学习",
+    "ms": "Asas"
+  },
+  "Project work": {
+    "zh-CN": "项目实践",
+    "ms": "Kerja projek"
+  },
+  "Review": {
+    "zh-CN": "复核与反思",
+    "ms": "Semakan"
+  },
+  "{hours} h": {
+    "zh-CN": "{hours} 小时",
+    "ms": "{hours} jam"
+  },
+  "Week {week}": {
+    "zh-CN": "第 {week} 周",
+    "ms": "Minggu {week}"
+  },
+  "Make a baseline": {
+    "zh-CN": "建立基线",
+    "ms": "Bina garis dasar"
+  },
+  "Study one core skill and attempt a tiny task without AI. Keep the first attempt to compare later.": {
+    "zh-CN": "学习一项核心技能，不用 AI 尝试微型任务，保留初稿用于后续比较。",
+    "ms": "Pelajari satu kemahiran asas dan cuba tugas kecil tanpa AI. Simpan percubaan pertama untuk perbandingan."
+  },
+  "Build a bounded prototype": {
+    "zh-CN": "制作有边界的原型",
+    "ms": "Bina prototaip berskop"
+  },
+  "Choose a small part of the project below and finish one visible artifact.": {
+    "zh-CN": "从下方项目中选择一小部分，完成一项可见成果。",
+    "ms": "Pilih bahagian kecil projek di bawah dan siapkan satu hasil yang dapat dilihat."
+  },
+  "Check and revise": {
+    "zh-CN": "检查与修订",
+    "ms": "Semak dan baiki"
+  },
+  "Test three cases, log mistakes and revise one part. Compare manual and AI-assisted work only if you choose to use AI.": {
+    "zh-CN": "测试三种情况、记录错误并修改一处。只有选择使用 AI 时，才比较人工与 AI 辅助成果。",
+    "ms": "Uji tiga kes, catat kesilapan dan baiki satu bahagian. Bandingkan kerja manual dengan bantuan AI hanya jika memilih AI."
+  },
+  "Present and decide": {
+    "zh-CN": "展示与决定",
+    "ms": "Bentang dan putuskan"
+  },
+  "Show a willing peer your artifact, explain its limitations and decide whether to continue, adapt or try another direction.": {
+    "zh-CN": "向愿意交流的同伴展示成果、解释局限，并决定继续、调整或换一个方向。",
+    "ms": "Tunjukkan hasil kepada rakan yang sudi, jelaskan batasan dan putuskan sama ada meneruskan, menyesuaikan atau mencuba hala tuju lain."
+  },
+  "Deliverable": {
+    "zh-CN": "交付成果",
+    "ms": "Hasil"
+  },
+  "A short baseline and one question.": {
+    "zh-CN": "一份简短基线与一个问题。",
+    "ms": "Garis dasar ringkas dan satu soalan."
+  },
+  "One working draft or prototype.": {
+    "zh-CN": "一份可检查的草稿或原型。",
+    "ms": "Satu draf atau prototaip yang boleh disemak."
+  },
+  "A three-case test log and one revision.": {
+    "zh-CN": "三种情况的测试记录与一次修订。",
+    "ms": "Log ujian tiga kes dan satu pembaikan."
+  },
+  "A one-page portfolio note and next decision.": {
+    "zh-CN": "一页作品说明与下一步决定。",
+    "ms": "Nota portfolio satu halaman dan keputusan seterusnya."
+  },
+  "YOUR AI RELATIONSHIP": {
+    "zh-CN": "你与 AI 的协作关系",
+    "ms": "HUBUNGAN ANDA DENGAN AI"
+  },
+  "Use assistance while keeping agency.": {
+    "zh-CN": "获得辅助，同时保留自主判断。",
+    "ms": "Gunakan bantuan sambil mengekalkan kawalan kendiri."
+  },
+  "Usage time and reliance describe habits, not competence or replacement risk.": {
+    "zh-CN": "使用时长和依赖程度描述习惯，不代表能力或被替代风险。",
+    "ms": "Tempoh penggunaan dan kebergantungan menggambarkan tabiat, bukan kecekapan atau risiko penggantian."
+  },
+  "This report itself used no AI inference or online prediction.": {
+    "zh-CN": "本报告本身未调用 AI 推理或在线预测。",
+    "ms": "Laporan ini tidak menggunakan inferens AI atau ramalan dalam talian."
+  },
+  "Your selected uses": {
+    "zh-CN": "你选择的用途",
+    "ms": "Kegunaan pilihan anda"
+  },
+  "YOUR ACTION COMPANION": {
+    "zh-CN": "你的行动伙伴",
+    "ms": "TEMAN TINDAKAN ANDA"
+  },
+  "17 goals. Many ways to contribute.": {
+    "zh-CN": "17 个目标，多种贡献方式。",
+    "ms": "17 matlamat. Pelbagai cara menyumbang."
+  },
+  "These original characters turn the UN goals into playful action prompts. They are not official UN mascots or an MBTI assessment.": {
+    "zh-CN": "这些原创角色把联合国目标转化为趣味行动提示，并非联合国官方吉祥物或 MBTI 测评。",
+    "ms": "Watak asli ini menukar matlamat PBB menjadi petunjuk tindakan yang menyeronokkan. Ia bukan maskot rasmi PBB atau penilaian MBTI."
+  },
+  "Your three-letter shorthand describes only the preferences you selected. It does not determine your abilities or career.": {
+    "zh-CN": "三字母简称仅表示你选择的偏好，不决定能力或职业。",
+    "ms": "Singkatan tiga huruf hanya menggambarkan pilihan anda. Ia tidak menentukan keupayaan atau kerjaya."
+  },
+  "I / E: inward / outward energy · J / P: planned / flexible · R / F: reasoning / empathy": {
+    "zh-CN": "I／E：内向／外向 · J／P：计划／灵活 · R／F：理性／共情",
+    "ms": "I / E: tenaga ke dalam / ke luar · J / P: terancang / fleksibel · R / F: penaakulan / empati"
+  },
+  "Selected by interest overlap and links to your top three career directions.": {
+    "zh-CN": "按兴趣重合与前三条职业方向的关联选择。",
+    "ms": "Dipilih melalui pertindihan minat dan hubungan dengan tiga hala tuju kerjaya teratas."
+  },
+  "An action you can try": {
+    "zh-CN": "可以尝试的行动",
+    "ms": "Tindakan yang boleh dicuba"
+  },
+  "UN goal and targets ↗": {
+    "zh-CN": "联合国目标与具体目标 ↗",
+    "ms": "Matlamat dan sasaran PBB ↗"
+  },
+  "Proposed connection, not measured SDG impact.": {
+    "zh-CN": "这是拟议关联，不是已测量的 SDG 影响。",
+    "ms": "Ini hubungan dicadangkan, bukan impak SDG terukur."
+  },
+  "Explore all 17": {
+    "zh-CN": "探索全部 17 位",
+    "ms": "Terokai semua 17"
+  },
+  "Your leading companions": {
+    "zh-CN": "与你较相关的伙伴",
+    "ms": "Teman utama anda"
+  },
+  "View companion": {
+    "zh-CN": "查看伙伴",
+    "ms": "Lihat teman"
+  },
+  "Local catalog · complete output vocabulary": {
+    "zh-CN": "本地内容库 · 完整输出词汇",
+    "ms": "Katalog setempat · semua modul hasil"
+  },
+  "All possible report components are written in advance.": {
+    "zh-CN": "所有报告组件均已预先编写。",
+    "ms": "Semua komponen laporan ditulis terlebih dahulu."
+  },
+  "The engine combines these finite modules for your answers. It does not invent new careers, fetch market data or call a model.": {
+    "zh-CN": "引擎依据答案组合这些有限模块，不会编造新职业、获取实时市场数据或调用模型。",
+    "ms": "Enjin menggabungkan modul terhingga ini mengikut jawapan anda. Ia tidak mencipta kerjaya baharu, mendapatkan data pasaran atau memanggil model."
+  },
+  "Career rules": {
+    "zh-CN": "职业排序规则",
+    "ms": "Peraturan susunan kerjaya"
+  },
+  "Each matching interest +4; matching university subject +6; school stream +2; each thinking preference +2; each AI purpose +1. Ties use the catalog order.": {
+    "zh-CN": "每项相关兴趣 +4；大学专业关联 +6；高中科目关联 +2；每项思维偏好 +2；每项 AI 用途 +1。同分按内容库固定顺序排列。",
+    "ms": "Setiap minat sepadan +4; bidang universiti +6; aliran sekolah +2; gaya berfikir +2; kegunaan AI +1. Seri dipecahkan mengikut susunan katalog."
+  },
+  "SDG rules": {
+    "zh-CN": "SDG 关联规则",
+    "ms": "Peraturan hubungan SDG"
+  },
+  "Each matching interest +2; each of the top three careers linked to the goal +3. Ties use the goal number.": {
+    "zh-CN": "每项相关兴趣 +2；前三职业中每项与目标的关联 +3。同分按目标编号排列。",
+    "ms": "Setiap minat sepadan +2; setiap tiga kerjaya teratas yang berkaitan +3. Seri dipecahkan mengikut nombor matlamat."
+  },
+  "Gender, nationality, personality and self-rated learning ability never add or remove career points.": {
+    "zh-CN": "性别、国籍、性格和自评学习能力均不会增加或减少职业排序分。",
+    "ms": "Jantina, kewarganegaraan, personaliti dan penilaian kendiri pembelajaran tidak menambah atau mengurangkan mata kerjaya."
+  },
+  "No randomness, dates, live labour-market claims or online inference affect the result.": {
+    "zh-CN": "结果不受随机数、日期、实时就业市场判断或在线推理影响。",
+    "ms": "Tiada rawak, tarikh, dakwaan pasaran kerja langsung atau inferens dalam talian mempengaruhi hasil."
+  },
+  "Allowed questionnaire combinations": {
+    "zh-CN": "合法问卷组合数",
+    "ms": "Gabungan soal selidik yang sah"
+  },
+  "This counts input combinations, not distinct careers or guaranteed future outcomes.": {
+    "zh-CN": "这是输入组合数，不是职业种类数或保证实现的未来结果。",
+    "ms": "Ini bilangan gabungan input, bukan bilangan kerjaya atau hasil masa depan terjamin."
+  },
+  "Learning and AI modules": {
+    "zh-CN": "学习与 AI 建议模块",
+    "ms": "Modul pembelajaran dan AI"
+  },
+  "All career possibilities": {
+    "zh-CN": "全部职业可能性",
+    "ms": "Semua kemungkinan kerjaya"
+  },
+  "Export my report": {
+    "zh-CN": "导出我的报告",
+    "ms": "Eksport laporan saya"
+  },
+  "Print / save PDF": {
+    "zh-CN": "打印／另存为 PDF",
+    "ms": "Cetak / simpan PDF"
+  },
+  "Copy link not needed: the report stays local. Export only when you want to keep it.": {
+    "zh-CN": "报告保留在本地；想留存时可主动导出。",
+    "ms": "Laporan kekal setempat; eksport apabila anda mahu menyimpannya."
+  },
+  "Report exported as a local JSON file.": {
+    "zh-CN": "报告已导出为本地 JSON 文件。",
+    "ms": "Laporan dieksport sebagai fail JSON setempat."
+  },
+  "Rules version": {
+    "zh-CN": "规则版本",
+    "ms": "Versi peraturan"
+  },
+  "Report configuration": {
+    "zh-CN": "报告配置编号",
+    "ms": "Konfigurasi laporan"
+  },
+  "Browse companions": {
+    "zh-CN": "浏览伙伴",
+    "ms": "Lihat teman"
+  },
+  "You can keep exploring; no selection locks you into a profession.": {
+    "zh-CN": "你可以持续探索，任何选择都不会把你锁定在某个职业。",
+    "ms": "Anda boleh terus meneroka; tiada pilihan mengikat anda kepada satu profesion."
+  },
+  "For younger learners, these are future exploration ideas, not immediate job recommendations.": {
+    "zh-CN": "对低龄学习者，这些是未来探索方向，不是立即就业建议。",
+    "ms": "Bagi pelajar muda, ini idea penerokaan masa depan, bukan cadangan pekerjaan segera."
+  },
+  "SDG goal titles follow the United Nations. Character names, career links and scoring are our editorial interpretations.": {
+    "zh-CN": "SDG 目标名称依据联合国；角色名称、职业关联与评分规则是本产品的编辑性设计。",
+    "ms": "Nama matlamat SDG mengikut PBB. Nama watak, hubungan kerjaya dan pemarkahan ialah tafsiran editorial produk ini."
+  },
+  "Local report navigation": {
+    "zh-CN": "本地报告导航",
+    "ms": "Navigasi laporan setempat"
+  },
+  "Complete the highlighted choices to continue.": {
+    "zh-CN": "请完成标出的选项后继续。",
+    "ms": "Lengkapkan pilihan yang ditandakan untuk meneruskan."
+  },
+  "Back to report": {
+    "zh-CN": "返回报告",
+    "ms": "Kembali ke laporan"
+  },
+  "Report": {
+    "zh-CN": "报告",
+    "ms": "Laporan"
+  },
+  "AI habits": {
+    "zh-CN": "AI 使用习惯",
+    "ms": "Tabiat AI"
+  },
+  "Show all 24 directions": {
+    "zh-CN": "查看全部 24 条方向",
+    "ms": "Lihat semua 24 hala tuju"
+  },
+  "Show the leading four": {
+    "zh-CN": "查看前四条方向",
+    "ms": "Lihat empat hala tuju teratas"
+  },
+  "Questionnaire overview": {
+    "zh-CN": "问卷信息概览",
+    "ms": "Gambaran soal selidik"
+  },
+  "Your current focus": {
+    "zh-CN": "你目前的重点",
+    "ms": "Fokus semasa anda"
+  },
+  "No AI use reported": {
+    "zh-CN": "尚未使用 AI",
+    "ms": "Belum menggunakan AI"
+  },
+  "Your profile stays local; only your language choice is saved automatically.": {
+    "zh-CN": "资料保留在当前标签页，只有语言选择会自动保存。",
+    "ms": "Profil kekal dalam tab ini; hanya pilihan bahasa disimpan secara automatik."
+  },
+  "17 companions, one shared future.": {
+    "zh-CN": "17 位伙伴，共同的未来。",
+    "ms": "17 teman, satu masa depan bersama."
+  },
+  "The complete result catalog": {
+    "zh-CN": "完整结果内容库",
+    "ms": "Katalog hasil lengkap"
+  },
+  "Age and education adapt the next steps. They do not change which careers you can explore.": {
+    "zh-CN": "年龄和学历调整起步步骤，不改变可探索的职业方向。",
+    "ms": "Umur dan pendidikan menyesuaikan langkah permulaan, bukan mengehadkan kerjaya untuk diterokai."
+  },
+  "Your learning rhythm": {
+    "zh-CN": "你的学习节奏",
+    "ms": "Rentak pembelajaran anda"
+  },
+  "Download the complete catalog": {
+    "zh-CN": "下载完整结果内容库",
+    "ms": "Muat turun katalog lengkap"
+  },
   "Additional context (optional)": {
     "zh-CN": "补充信息（可选）",
     "ms": "Maklumat tambahan (pilihan)"
@@ -2710,5 +3294,13 @@
   "Why try this exercise": {
     "zh-CN": "为什么尝试这项体验",
     "ms": "Mengapa mencuba latihan ini"
+  },
+  "V3 self-report · separate from career scores": {
+    "zh-CN": "V3 自述 · 不计入职业分数",
+    "ms": "Laporan kendiri V3 · berasingan daripada skor kerjaya"
+  },
+  "Career rankings use your background choices. The V3 responses below are unverified self-report and do not change those rankings.": {
+    "zh-CN": "职业排序沿用基础选择题的既有规则。下方 V3 回答属于未经客观验证的自述，不改变职业排序。",
+    "ms": "Kedudukan kerjaya menggunakan peraturan sedia ada bagi pilihan latar belakang. Jawapan V3 di bawah ialah laporan kendiri yang belum disahkan secara objektif dan tidak mengubah kedudukan tersebut."
   }
 }
