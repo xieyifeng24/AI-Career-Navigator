@@ -1,0 +1,25 @@
+{
+  "project": "https://replit.com/@xyf20070924/AI-Career-Navigator",
+  "url": "https://ai-career-navigator-xyf20070924.replit.app/",
+  "status": "Live",
+  "github_branch": "codex/integrate-pr8-pr9",
+  "source_commit": "a6836f911c52e20b070670bd334ea13862324efe",
+  "cloud_branch": "release/pr8-pr9-20261022",
+  "cloud_runtime_commit": "18b8057",
+  "runtime_difference": "Existing .replit Nix packages cacert, git, libxcrypt retained",
+  "release": "50a8ab0d",
+  "backup_branch": "backup/before-pr8-pr9-20261022",
+  "backup_commit": "3b01aeb",
+  "pull_request": "https://github.com/xieyifeng24/AI-Career-Navigator/pull/10",
+  "tests": {
+    "javascript": 125,
+    "python": 59,
+    "asset_allowlist": true,
+    "production_flow": "background + DATA V3 12 answers including unknown + report; en/zh-CN/ms switch",
+    "console_errors": 0
+  },
+  "limitations": [
+    "V3 is isolated self-report and does not influence ranking",
+    "What If and official-source integrations remain accessible through retained V2 route; new combined answers are not mapped into What If"
+  ]
+}

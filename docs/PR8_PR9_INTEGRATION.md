@@ -23,4 +23,6 @@ Neither the combined questionnaire nor its report calls generative AI. The origi
 
 ## Deployment
 
-Use the existing Replit project and Autoscale configuration. Preserve a cloud backup branch and its Nix runtime dependencies. Do not merge GitHub main. Production URL and release revision are recorded after publication.
+Use the existing Replit project and Autoscale configuration. Preserve a cloud backup branch and its Nix runtime dependencies. Do not merge GitHub main. Production is Live at https://ai-career-navigator-xyf20070924.replit.app/. Published source: `a6836f9`; cloud runtime commit: `18b8057` (only preserves existing `.replit` Nix packages); Replit release: `50a8ab0d`. Backup: `backup/before-pr8-pr9-20261022` at `3b01aeb`.
+
+Production browser acceptance completed background choices → DATA V3 12 questions (including unknown) → report, switching English → Chinese → Malay while answering and Chinese at the result. Browser console reported no errors. Screenshot: `docs/evidence/pr8-pr9-production-report.png`. GitHub review: PR #10 (draft); main was not merged. No paid inference calls were required.
