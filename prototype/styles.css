@@ -96,3 +96,17 @@
 .knowledge-provenance details { margin-block:1rem; }
 .knowledge-provenance li { margin-block:.5rem; }
 .knowledge-provenance a { text-decoration:underline; }
+
+/* V2 keeps the established form/card system; original Chinese content is a distinct language block. */
+.v2-original-questions { margin-top:1.5rem; }
+.v2-question + .v2-question { margin-top:2rem; }
+.v2-question legend { line-height:1.65; }
+.v2-question .choice-grid { grid-template-columns:1fr; }
+.v2-question details { margin-top:.75rem; font-size:.875rem; }
+.v2-question details summary { cursor:pointer; }
+.v2-question input:focus-visible + span { outline:2px solid var(--ink); outline-offset:4px; }
+.v2-original-answer { margin:.75rem 0; padding:.85rem 1rem; border-left:3px solid #83a893; background:#eef3ee; border-radius:0 .5rem .5rem 0; line-height:1.65; }
+.v2-answer-row { padding-block:1rem; border-bottom:1px solid #dce4dc; }
+.v2-language-notice { margin-block:1rem; }
+.v2-results .local-dimensions { align-items:start; }
+.v2-results .path-card { overflow-wrap:anywhere; }

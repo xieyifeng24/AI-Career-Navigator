@@ -1,0 +1,2273 @@
+{
+  "notice": "除阶段/情境策略外，其他选项只存标签，不代表测评标准答案。",
+  "rules": {
+    "G01": {
+      "facet": "motivation",
+      "direction_id": "COMMON",
+      "options": {
+        "A": {
+          "score": null,
+          "tag": "build"
+        },
+        "B": {
+          "score": null,
+          "tag": "analysis"
+        },
+        "C": {
+          "score": null,
+          "tag": "people"
+        },
+        "D": {
+          "score": null,
+          "tag": "creation"
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "G02": {
+      "facet": "career_goal",
+      "direction_id": "COMMON",
+      "options": {
+        "A": {
+          "score": null,
+          "tag": "discover"
+        },
+        "B": {
+          "score": null,
+          "tag": "compare"
+        },
+        "C": {
+          "score": null,
+          "tag": "next_step"
+        },
+        "D": {
+          "score": null,
+          "tag": "ai_transition"
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "G03": {
+      "facet": "constraints",
+      "direction_id": "COMMON",
+      "options": {
+        "A": {
+          "score": null,
+          "tag": "time_lt1"
+        },
+        "B": {
+          "score": null,
+          "tag": "time_1_3"
+        },
+        "C": {
+          "score": null,
+          "tag": "time_3_6"
+        },
+        "D": {
+          "score": null,
+          "tag": "time_gt6"
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "G04": {
+      "facet": "ai_experience",
+      "direction_id": "COMMON",
+      "options": {
+        "A": {
+          "score": 0,
+          "tag": null
+        },
+        "B": {
+          "score": 1,
+          "tag": null
+        },
+        "C": {
+          "score": 2,
+          "tag": null
+        },
+        "D": {
+          "score": 3,
+          "tag": null
+        },
+        "E": {
+          "score": 4,
+          "tag": null
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "SW01": {
+      "facet": "interest",
+      "direction_id": "SW",
+      "options": {
+        "A": {
+          "score": null,
+          "tag": "build"
+        },
+        "B": {
+          "score": null,
+          "tag": "debug"
+        },
+        "C": {
+          "score": null,
+          "tag": "user_need"
+        },
+        "D": {
+          "score": null,
+          "tag": "automation"
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "SW02": {
+      "facet": "experience",
+      "direction_id": "SW",
+      "options": {
+        "A": {
+          "score": 0,
+          "tag": null
+        },
+        "B": {
+          "score": 1,
+          "tag": null
+        },
+        "C": {
+          "score": 2,
+          "tag": null
+        },
+        "D": {
+          "score": 3,
+          "tag": null
+        },
+        "E": {
+          "score": 4,
+          "tag": null
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "SW03": {
+      "facet": "problem_style",
+      "direction_id": "SW",
+      "options": {
+        "A": {
+          "score": null,
+          "tag": "diagnose"
+        },
+        "B": {
+          "score": null,
+          "tag": "collaborate"
+        },
+        "C": {
+          "score": null,
+          "tag": "structure"
+        },
+        "D": {
+          "score": null,
+          "tag": "prioritize"
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "SW04": {
+      "facet": "subdomain",
+      "direction_id": "SW",
+      "options": {
+        "A": {
+          "score": null,
+          "tag": "app"
+        },
+        "B": {
+          "score": null,
+          "tag": "ai_product"
+        },
+        "C": {
+          "score": null,
+          "tag": "reliability"
+        },
+        "D": {
+          "score": null,
+          "tag": "integration"
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "SW05": {
+      "facet": "ai_experience",
+      "direction_id": "SW",
+      "options": {
+        "A": {
+          "score": 0,
+          "tag": null
+        },
+        "B": {
+          "score": 1,
+          "tag": null
+        },
+        "C": {
+          "score": 2,
+          "tag": null
+        },
+        "D": {
+          "score": 3,
+          "tag": null
+        },
+        "E": {
+          "score": 4,
+          "tag": null
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "SW06": {
+      "facet": "ai_judgement",
+      "direction_id": "SW",
+      "options": {
+        "A": {
+          "score": 0,
+          "tag": null
+        },
+        "B": {
+          "score": 1,
+          "tag": null
+        },
+        "C": {
+          "score": 3,
+          "tag": null
+        },
+        "D": {
+          "score": 2,
+          "tag": null
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "SW07": {
+      "facet": "scenario_preference",
+      "direction_id": "SW",
+      "options": {
+        "A": {
+          "score": null,
+          "tag": "implement"
+        },
+        "B": {
+          "score": null,
+          "tag": "ux"
+        },
+        "C": {
+          "score": null,
+          "tag": "product_coord"
+        },
+        "D": {
+          "score": null,
+          "tag": "qa"
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "SW08": {
+      "facet": "growth_tradeoff",
+      "direction_id": "SW",
+      "options": {
+        "A": {
+          "score": null,
+          "tag": "craft"
+        },
+        "B": {
+          "score": null,
+          "tag": "ai_experiment"
+        },
+        "C": {
+          "score": null,
+          "tag": "quality"
+        },
+        "D": {
+          "score": null,
+          "tag": "systems"
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "DATA01": {
+      "facet": "interest",
+      "direction_id": "DATA",
+      "options": {
+        "A": {
+          "score": null,
+          "tag": "insights"
+        },
+        "B": {
+          "score": null,
+          "tag": "visualization"
+        },
+        "C": {
+          "score": null,
+          "tag": "experiments"
+        },
+        "D": {
+          "score": null,
+          "tag": "data_ops"
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "DATA02": {
+      "facet": "experience",
+      "direction_id": "DATA",
+      "options": {
+        "A": {
+          "score": 0,
+          "tag": null
+        },
+        "B": {
+          "score": 1,
+          "tag": null
+        },
+        "C": {
+          "score": 2,
+          "tag": null
+        },
+        "D": {
+          "score": 3,
+          "tag": null
+        },
+        "E": {
+          "score": 4,
+          "tag": null
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "DATA03": {
+      "facet": "problem_style",
+      "direction_id": "DATA",
+      "options": {
+        "A": {
+          "score": null,
+          "tag": "definitions"
+        },
+        "B": {
+          "score": null,
+          "tag": "collaborate"
+        },
+        "C": {
+          "score": null,
+          "tag": "communicate"
+        },
+        "D": {
+          "score": null,
+          "tag": "question_first"
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "DATA04": {
+      "facet": "subdomain",
+      "direction_id": "DATA",
+      "options": {
+        "A": {
+          "score": null,
+          "tag": "product_analytics"
+        },
+        "B": {
+          "score": null,
+          "tag": "business_analytics"
+        },
+        "C": {
+          "score": null,
+          "tag": "social_research"
+        },
+        "D": {
+          "score": null,
+          "tag": "operations_analytics"
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "DATA05": {
+      "facet": "ai_experience",
+      "direction_id": "DATA",
+      "options": {
+        "A": {
+          "score": 0,
+          "tag": null
+        },
+        "B": {
+          "score": 1,
+          "tag": null
+        },
+        "C": {
+          "score": 2,
+          "tag": null
+        },
+        "D": {
+          "score": 3,
+          "tag": null
+        },
+        "E": {
+          "score": 4,
+          "tag": null
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "DATA06": {
+      "facet": "ai_judgement",
+      "direction_id": "DATA",
+      "options": {
+        "A": {
+          "score": 3,
+          "tag": null
+        },
+        "B": {
+          "score": 1,
+          "tag": null
+        },
+        "C": {
+          "score": 0,
+          "tag": null
+        },
+        "D": {
+          "score": 2,
+          "tag": null
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "DATA07": {
+      "facet": "scenario_preference",
+      "direction_id": "DATA",
+      "options": {
+        "A": {
+          "score": null,
+          "tag": "funnel"
+        },
+        "B": {
+          "score": null,
+          "tag": "qualitative"
+        },
+        "C": {
+          "score": null,
+          "tag": "communication"
+        },
+        "D": {
+          "score": null,
+          "tag": "testing"
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "DATA08": {
+      "facet": "growth_tradeoff",
+      "direction_id": "DATA",
+      "options": {
+        "A": {
+          "score": null,
+          "tag": "patient"
+        },
+        "B": {
+          "score": null,
+          "tag": "automation"
+        },
+        "C": {
+          "score": null,
+          "tag": "storytelling"
+        },
+        "D": {
+          "score": null,
+          "tag": "prioritization"
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "FIN01": {
+      "facet": "interest",
+      "direction_id": "FIN",
+      "options": {
+        "A": {
+          "score": null,
+          "tag": "company_finance"
+        },
+        "B": {
+          "score": null,
+          "tag": "risk"
+        },
+        "C": {
+          "score": null,
+          "tag": "planning"
+        },
+        "D": {
+          "score": null,
+          "tag": "financial_communication"
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "FIN02": {
+      "facet": "experience",
+      "direction_id": "FIN",
+      "options": {
+        "A": {
+          "score": 0,
+          "tag": null
+        },
+        "B": {
+          "score": 1,
+          "tag": null
+        },
+        "C": {
+          "score": 2,
+          "tag": null
+        },
+        "D": {
+          "score": 3,
+          "tag": null
+        },
+        "E": {
+          "score": 4,
+          "tag": null
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "FIN03": {
+      "facet": "problem_style",
+      "direction_id": "FIN",
+      "options": {
+        "A": {
+          "score": null,
+          "tag": "cost"
+        },
+        "B": {
+          "score": null,
+          "tag": "risk"
+        },
+        "C": {
+          "score": null,
+          "tag": "goal"
+        },
+        "D": {
+          "score": null,
+          "tag": "communication"
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "FIN04": {
+      "facet": "subdomain",
+      "direction_id": "FIN",
+      "options": {
+        "A": {
+          "score": null,
+          "tag": "corporate_finance"
+        },
+        "B": {
+          "score": null,
+          "tag": "budgeting"
+        },
+        "C": {
+          "score": null,
+          "tag": "market_risk"
+        },
+        "D": {
+          "score": null,
+          "tag": "fintech_ops"
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "FIN05": {
+      "facet": "ai_experience",
+      "direction_id": "FIN",
+      "options": {
+        "A": {
+          "score": 0,
+          "tag": null
+        },
+        "B": {
+          "score": 1,
+          "tag": null
+        },
+        "C": {
+          "score": 2,
+          "tag": null
+        },
+        "D": {
+          "score": 3,
+          "tag": null
+        },
+        "E": {
+          "score": 4,
+          "tag": null
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "FIN06": {
+      "facet": "ai_judgement",
+      "direction_id": "FIN",
+      "options": {
+        "A": {
+          "score": 0,
+          "tag": null
+        },
+        "B": {
+          "score": 3,
+          "tag": null
+        },
+        "C": {
+          "score": 1,
+          "tag": null
+        },
+        "D": {
+          "score": 2,
+          "tag": null
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "FIN07": {
+      "facet": "scenario_preference",
+      "direction_id": "FIN",
+      "options": {
+        "A": {
+          "score": null,
+          "tag": "allocation"
+        },
+        "B": {
+          "score": null,
+          "tag": "efficiency"
+        },
+        "C": {
+          "score": null,
+          "tag": "communication"
+        },
+        "D": {
+          "score": null,
+          "tag": "risk"
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "FIN08": {
+      "facet": "growth_tradeoff",
+      "direction_id": "FIN",
+      "options": {
+        "A": {
+          "score": null,
+          "tag": "scenario_planning"
+        },
+        "B": {
+          "score": null,
+          "tag": "research"
+        },
+        "C": {
+          "score": null,
+          "tag": "risk_comms"
+        },
+        "D": {
+          "score": null,
+          "tag": "process"
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "PM01": {
+      "facet": "interest",
+      "direction_id": "PM",
+      "options": {
+        "A": {
+          "score": null,
+          "tag": "discovery"
+        },
+        "B": {
+          "score": null,
+          "tag": "execution"
+        },
+        "C": {
+          "score": null,
+          "tag": "coordination"
+        },
+        "D": {
+          "score": null,
+          "tag": "strategy"
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "PM02": {
+      "facet": "experience",
+      "direction_id": "PM",
+      "options": {
+        "A": {
+          "score": 0,
+          "tag": null
+        },
+        "B": {
+          "score": 1,
+          "tag": null
+        },
+        "C": {
+          "score": 2,
+          "tag": null
+        },
+        "D": {
+          "score": 3,
+          "tag": null
+        },
+        "E": {
+          "score": 4,
+          "tag": null
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "PM03": {
+      "facet": "problem_style",
+      "direction_id": "PM",
+      "options": {
+        "A": {
+          "score": null,
+          "tag": "clarify"
+        },
+        "B": {
+          "score": null,
+          "tag": "prioritize"
+        },
+        "C": {
+          "score": null,
+          "tag": "empathy"
+        },
+        "D": {
+          "score": null,
+          "tag": "experiment"
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "PM04": {
+      "facet": "subdomain",
+      "direction_id": "PM",
+      "options": {
+        "A": {
+          "score": null,
+          "tag": "product"
+        },
+        "B": {
+          "score": null,
+          "tag": "service"
+        },
+        "C": {
+          "score": null,
+          "tag": "growth"
+        },
+        "D": {
+          "score": null,
+          "tag": "operations"
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "PM05": {
+      "facet": "ai_experience",
+      "direction_id": "PM",
+      "options": {
+        "A": {
+          "score": 0,
+          "tag": null
+        },
+        "B": {
+          "score": 1,
+          "tag": null
+        },
+        "C": {
+          "score": 2,
+          "tag": null
+        },
+        "D": {
+          "score": 3,
+          "tag": null
+        },
+        "E": {
+          "score": 4,
+          "tag": null
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "PM06": {
+      "facet": "ai_judgement",
+      "direction_id": "PM",
+      "options": {
+        "A": {
+          "score": 3,
+          "tag": null
+        },
+        "B": {
+          "score": 0,
+          "tag": null
+        },
+        "C": {
+          "score": 1,
+          "tag": null
+        },
+        "D": {
+          "score": 2,
+          "tag": null
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "PM07": {
+      "facet": "scenario_preference",
+      "direction_id": "PM",
+      "options": {
+        "A": {
+          "score": null,
+          "tag": "prioritize"
+        },
+        "B": {
+          "score": null,
+          "tag": "research"
+        },
+        "C": {
+          "score": null,
+          "tag": "delivery"
+        },
+        "D": {
+          "score": null,
+          "tag": "testing"
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "PM08": {
+      "facet": "growth_tradeoff",
+      "direction_id": "PM",
+      "options": {
+        "A": {
+          "score": null,
+          "tag": "interviews"
+        },
+        "B": {
+          "score": null,
+          "tag": "metrics"
+        },
+        "C": {
+          "score": null,
+          "tag": "ux"
+        },
+        "D": {
+          "score": null,
+          "tag": "problem_fit"
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "MKT01": {
+      "facet": "interest",
+      "direction_id": "MKT",
+      "options": {
+        "A": {
+          "score": null,
+          "tag": "creative"
+        },
+        "B": {
+          "score": null,
+          "tag": "audience"
+        },
+        "C": {
+          "score": null,
+          "tag": "sales"
+        },
+        "D": {
+          "score": null,
+          "tag": "analytics"
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "MKT02": {
+      "facet": "experience",
+      "direction_id": "MKT",
+      "options": {
+        "A": {
+          "score": 0,
+          "tag": null
+        },
+        "B": {
+          "score": 1,
+          "tag": null
+        },
+        "C": {
+          "score": 2,
+          "tag": null
+        },
+        "D": {
+          "score": 3,
+          "tag": null
+        },
+        "E": {
+          "score": 4,
+          "tag": null
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "MKT03": {
+      "facet": "problem_style",
+      "direction_id": "MKT",
+      "options": {
+        "A": {
+          "score": null,
+          "tag": "copy"
+        },
+        "B": {
+          "score": null,
+          "tag": "segmentation"
+        },
+        "C": {
+          "score": null,
+          "tag": "feedback"
+        },
+        "D": {
+          "score": null,
+          "tag": "funnel"
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "MKT04": {
+      "facet": "subdomain",
+      "direction_id": "MKT",
+      "options": {
+        "A": {
+          "score": null,
+          "tag": "branding"
+        },
+        "B": {
+          "score": null,
+          "tag": "consumer"
+        },
+        "C": {
+          "score": null,
+          "tag": "sales"
+        },
+        "D": {
+          "score": null,
+          "tag": "growth"
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "MKT05": {
+      "facet": "ai_experience",
+      "direction_id": "MKT",
+      "options": {
+        "A": {
+          "score": 0,
+          "tag": null
+        },
+        "B": {
+          "score": 1,
+          "tag": null
+        },
+        "C": {
+          "score": 2,
+          "tag": null
+        },
+        "D": {
+          "score": 3,
+          "tag": null
+        },
+        "E": {
+          "score": 4,
+          "tag": null
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "MKT06": {
+      "facet": "ai_judgement",
+      "direction_id": "MKT",
+      "options": {
+        "A": {
+          "score": 0,
+          "tag": null
+        },
+        "B": {
+          "score": 3,
+          "tag": null
+        },
+        "C": {
+          "score": 1,
+          "tag": null
+        },
+        "D": {
+          "score": 2,
+          "tag": null
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "MKT07": {
+      "facet": "scenario_preference",
+      "direction_id": "MKT",
+      "options": {
+        "A": {
+          "score": null,
+          "tag": "field_research"
+        },
+        "B": {
+          "score": null,
+          "tag": "campaign"
+        },
+        "C": {
+          "score": null,
+          "tag": "outreach"
+        },
+        "D": {
+          "score": null,
+          "tag": "measurement"
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "MKT08": {
+      "facet": "growth_tradeoff",
+      "direction_id": "MKT",
+      "options": {
+        "A": {
+          "score": null,
+          "tag": "optimization"
+        },
+        "B": {
+          "score": null,
+          "tag": "novelty"
+        },
+        "C": {
+          "score": null,
+          "tag": "automation"
+        },
+        "D": {
+          "score": null,
+          "tag": "relationships"
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "DES01": {
+      "facet": "interest",
+      "direction_id": "DES",
+      "options": {
+        "A": {
+          "score": null,
+          "tag": "visual"
+        },
+        "B": {
+          "score": null,
+          "tag": "ux_flow"
+        },
+        "C": {
+          "score": null,
+          "tag": "information"
+        },
+        "D": {
+          "score": null,
+          "tag": "interaction"
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "DES02": {
+      "facet": "experience",
+      "direction_id": "DES",
+      "options": {
+        "A": {
+          "score": 0,
+          "tag": null
+        },
+        "B": {
+          "score": 1,
+          "tag": null
+        },
+        "C": {
+          "score": 2,
+          "tag": null
+        },
+        "D": {
+          "score": 3,
+          "tag": null
+        },
+        "E": {
+          "score": 4,
+          "tag": null
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "DES03": {
+      "facet": "problem_style",
+      "direction_id": "DES",
+      "options": {
+        "A": {
+          "score": null,
+          "tag": "feedback"
+        },
+        "B": {
+          "score": null,
+          "tag": "usability"
+        },
+        "C": {
+          "score": null,
+          "tag": "exploration"
+        },
+        "D": {
+          "score": null,
+          "tag": "message"
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "DES04": {
+      "facet": "subdomain",
+      "direction_id": "DES",
+      "options": {
+        "A": {
+          "score": null,
+          "tag": "product_design"
+        },
+        "B": {
+          "score": null,
+          "tag": "brand"
+        },
+        "C": {
+          "score": null,
+          "tag": "motion"
+        },
+        "D": {
+          "score": null,
+          "tag": "info_design"
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "DES05": {
+      "facet": "ai_experience",
+      "direction_id": "DES",
+      "options": {
+        "A": {
+          "score": 0,
+          "tag": null
+        },
+        "B": {
+          "score": 1,
+          "tag": null
+        },
+        "C": {
+          "score": 2,
+          "tag": null
+        },
+        "D": {
+          "score": 3,
+          "tag": null
+        },
+        "E": {
+          "score": 4,
+          "tag": null
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "DES06": {
+      "facet": "ai_judgement",
+      "direction_id": "DES",
+      "options": {
+        "A": {
+          "score": 3,
+          "tag": null
+        },
+        "B": {
+          "score": 0,
+          "tag": null
+        },
+        "C": {
+          "score": 1,
+          "tag": null
+        },
+        "D": {
+          "score": 2,
+          "tag": null
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "DES07": {
+      "facet": "scenario_preference",
+      "direction_id": "DES",
+      "options": {
+        "A": {
+          "score": null,
+          "tag": "wayfinding"
+        },
+        "B": {
+          "score": null,
+          "tag": "structure"
+        },
+        "C": {
+          "score": null,
+          "tag": "aesthetics"
+        },
+        "D": {
+          "score": null,
+          "tag": "research"
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "DES08": {
+      "facet": "growth_tradeoff",
+      "direction_id": "DES",
+      "options": {
+        "A": {
+          "score": null,
+          "tag": "usability"
+        },
+        "B": {
+          "score": null,
+          "tag": "research"
+        },
+        "C": {
+          "score": null,
+          "tag": "content_design"
+        },
+        "D": {
+          "score": null,
+          "tag": "tradeoffs"
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "ENG01": {
+      "facet": "interest",
+      "direction_id": "ENG",
+      "options": {
+        "A": {
+          "score": null,
+          "tag": "mechanism"
+        },
+        "B": {
+          "score": null,
+          "tag": "product_eng"
+        },
+        "C": {
+          "score": null,
+          "tag": "manufacturing"
+        },
+        "D": {
+          "score": null,
+          "tag": "controls"
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "ENG02": {
+      "facet": "experience",
+      "direction_id": "ENG",
+      "options": {
+        "A": {
+          "score": 0,
+          "tag": null
+        },
+        "B": {
+          "score": 1,
+          "tag": null
+        },
+        "C": {
+          "score": 2,
+          "tag": null
+        },
+        "D": {
+          "score": 3,
+          "tag": null
+        },
+        "E": {
+          "score": 4,
+          "tag": null
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "ENG03": {
+      "facet": "problem_style",
+      "direction_id": "ENG",
+      "options": {
+        "A": {
+          "score": null,
+          "tag": "factor_analysis"
+        },
+        "B": {
+          "score": null,
+          "tag": "observation"
+        },
+        "C": {
+          "score": null,
+          "tag": "expertise"
+        },
+        "D": {
+          "score": null,
+          "tag": "testing"
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "ENG04": {
+      "facet": "subdomain",
+      "direction_id": "ENG",
+      "options": {
+        "A": {
+          "score": null,
+          "tag": "robotics"
+        },
+        "B": {
+          "score": null,
+          "tag": "reliability"
+        },
+        "C": {
+          "score": null,
+          "tag": "sustainable"
+        },
+        "D": {
+          "score": null,
+          "tag": "smart_factory"
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "ENG05": {
+      "facet": "ai_experience",
+      "direction_id": "ENG",
+      "options": {
+        "A": {
+          "score": 0,
+          "tag": null
+        },
+        "B": {
+          "score": 1,
+          "tag": null
+        },
+        "C": {
+          "score": 2,
+          "tag": null
+        },
+        "D": {
+          "score": 3,
+          "tag": null
+        },
+        "E": {
+          "score": 4,
+          "tag": null
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "ENG06": {
+      "facet": "ai_judgement",
+      "direction_id": "ENG",
+      "options": {
+        "A": {
+          "score": 0,
+          "tag": null
+        },
+        "B": {
+          "score": 1,
+          "tag": null
+        },
+        "C": {
+          "score": 3,
+          "tag": null
+        },
+        "D": {
+          "score": 2,
+          "tag": null
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "ENG07": {
+      "facet": "scenario_preference",
+      "direction_id": "ENG",
+      "options": {
+        "A": {
+          "score": null,
+          "tag": "design"
+        },
+        "B": {
+          "score": null,
+          "tag": "field_research"
+        },
+        "C": {
+          "score": null,
+          "tag": "prototype"
+        },
+        "D": {
+          "score": null,
+          "tag": "deployment"
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "ENG08": {
+      "facet": "growth_tradeoff",
+      "direction_id": "ENG",
+      "options": {
+        "A": {
+          "score": null,
+          "tag": "mechanical"
+        },
+        "B": {
+          "score": null,
+          "tag": "measurement"
+        },
+        "C": {
+          "score": null,
+          "tag": "software"
+        },
+        "D": {
+          "score": null,
+          "tag": "operations"
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "HLT01": {
+      "facet": "interest",
+      "direction_id": "HLT",
+      "options": {
+        "A": {
+          "score": null,
+          "tag": "communication"
+        },
+        "B": {
+          "score": null,
+          "tag": "research"
+        },
+        "C": {
+          "score": null,
+          "tag": "service"
+        },
+        "D": {
+          "score": null,
+          "tag": "healthtech"
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "HLT02": {
+      "facet": "experience",
+      "direction_id": "HLT",
+      "options": {
+        "A": {
+          "score": 0,
+          "tag": null
+        },
+        "B": {
+          "score": 1,
+          "tag": null
+        },
+        "C": {
+          "score": 2,
+          "tag": null
+        },
+        "D": {
+          "score": 3,
+          "tag": null
+        },
+        "E": {
+          "score": 4,
+          "tag": null
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "HLT03": {
+      "facet": "problem_style",
+      "direction_id": "HLT",
+      "options": {
+        "A": {
+          "score": null,
+          "tag": "evidence"
+        },
+        "B": {
+          "score": null,
+          "tag": "expertise"
+        },
+        "C": {
+          "score": null,
+          "tag": "communication"
+        },
+        "D": {
+          "score": null,
+          "tag": "service"
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "HLT04": {
+      "facet": "subdomain",
+      "direction_id": "HLT",
+      "options": {
+        "A": {
+          "score": null,
+          "tag": "life_science"
+        },
+        "B": {
+          "score": null,
+          "tag": "health_communication"
+        },
+        "C": {
+          "score": null,
+          "tag": "health_ops"
+        },
+        "D": {
+          "score": null,
+          "tag": "digital_health"
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "HLT05": {
+      "facet": "ai_experience",
+      "direction_id": "HLT",
+      "options": {
+        "A": {
+          "score": 0,
+          "tag": null
+        },
+        "B": {
+          "score": 1,
+          "tag": null
+        },
+        "C": {
+          "score": 2,
+          "tag": null
+        },
+        "D": {
+          "score": 3,
+          "tag": null
+        },
+        "E": {
+          "score": 4,
+          "tag": null
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "HLT06": {
+      "facet": "ai_judgement",
+      "direction_id": "HLT",
+      "options": {
+        "A": {
+          "score": 3,
+          "tag": null
+        },
+        "B": {
+          "score": 0,
+          "tag": null
+        },
+        "C": {
+          "score": 1,
+          "tag": null
+        },
+        "D": {
+          "score": 2,
+          "tag": null
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "HLT07": {
+      "facet": "scenario_preference",
+      "direction_id": "HLT",
+      "options": {
+        "A": {
+          "score": null,
+          "tag": "evidence"
+        },
+        "B": {
+          "score": null,
+          "tag": "content"
+        },
+        "C": {
+          "score": null,
+          "tag": "people"
+        },
+        "D": {
+          "score": null,
+          "tag": "coordination"
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "HLT08": {
+      "facet": "growth_tradeoff",
+      "direction_id": "HLT",
+      "options": {
+        "A": {
+          "score": null,
+          "tag": "research"
+        },
+        "B": {
+          "score": null,
+          "tag": "direct_help"
+        },
+        "C": {
+          "score": null,
+          "tag": "systems"
+        },
+        "D": {
+          "score": null,
+          "tag": "innovation"
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "EDU01": {
+      "facet": "interest",
+      "direction_id": "EDU",
+      "options": {
+        "A": {
+          "score": null,
+          "tag": "teaching"
+        },
+        "B": {
+          "score": null,
+          "tag": "inquiry"
+        },
+        "C": {
+          "score": null,
+          "tag": "instructional_design"
+        },
+        "D": {
+          "score": null,
+          "tag": "knowledge"
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "EDU02": {
+      "facet": "experience",
+      "direction_id": "EDU",
+      "options": {
+        "A": {
+          "score": 0,
+          "tag": null
+        },
+        "B": {
+          "score": 1,
+          "tag": null
+        },
+        "C": {
+          "score": 2,
+          "tag": null
+        },
+        "D": {
+          "score": 3,
+          "tag": null
+        },
+        "E": {
+          "score": 4,
+          "tag": null
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "EDU03": {
+      "facet": "problem_style",
+      "direction_id": "EDU",
+      "options": {
+        "A": {
+          "score": null,
+          "tag": "analogies"
+        },
+        "B": {
+          "score": null,
+          "tag": "learner_research"
+        },
+        "C": {
+          "score": null,
+          "tag": "visualization"
+        },
+        "D": {
+          "score": null,
+          "tag": "accuracy"
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "EDU04": {
+      "facet": "subdomain",
+      "direction_id": "EDU",
+      "options": {
+        "A": {
+          "score": null,
+          "tag": "teaching"
+        },
+        "B": {
+          "score": null,
+          "tag": "course_design"
+        },
+        "C": {
+          "score": null,
+          "tag": "research"
+        },
+        "D": {
+          "score": null,
+          "tag": "access"
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "EDU05": {
+      "facet": "ai_experience",
+      "direction_id": "EDU",
+      "options": {
+        "A": {
+          "score": 0,
+          "tag": null
+        },
+        "B": {
+          "score": 1,
+          "tag": null
+        },
+        "C": {
+          "score": 2,
+          "tag": null
+        },
+        "D": {
+          "score": 3,
+          "tag": null
+        },
+        "E": {
+          "score": 4,
+          "tag": null
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "EDU06": {
+      "facet": "ai_judgement",
+      "direction_id": "EDU",
+      "options": {
+        "A": {
+          "score": 0,
+          "tag": null
+        },
+        "B": {
+          "score": 1,
+          "tag": null
+        },
+        "C": {
+          "score": 3,
+          "tag": null
+        },
+        "D": {
+          "score": 2,
+          "tag": null
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "EDU07": {
+      "facet": "scenario_preference",
+      "direction_id": "EDU",
+      "options": {
+        "A": {
+          "score": null,
+          "tag": "diagnosis"
+        },
+        "B": {
+          "score": null,
+          "tag": "explanation"
+        },
+        "C": {
+          "score": null,
+          "tag": "scaffolding"
+        },
+        "D": {
+          "score": null,
+          "tag": "support"
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "EDU08": {
+      "facet": "growth_tradeoff",
+      "direction_id": "EDU",
+      "options": {
+        "A": {
+          "score": null,
+          "tag": "patient_teaching"
+        },
+        "B": {
+          "score": null,
+          "tag": "research_uncertainty"
+        },
+        "C": {
+          "score": null,
+          "tag": "iteration"
+        },
+        "D": {
+          "score": null,
+          "tag": "collaboration"
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "OPS01": {
+      "facet": "interest",
+      "direction_id": "OPS",
+      "options": {
+        "A": {
+          "score": null,
+          "tag": "process"
+        },
+        "B": {
+          "score": null,
+          "tag": "coordination"
+        },
+        "C": {
+          "score": null,
+          "tag": "automation"
+        },
+        "D": {
+          "score": null,
+          "tag": "service"
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "OPS02": {
+      "facet": "experience",
+      "direction_id": "OPS",
+      "options": {
+        "A": {
+          "score": 0,
+          "tag": null
+        },
+        "B": {
+          "score": 1,
+          "tag": null
+        },
+        "C": {
+          "score": 2,
+          "tag": null
+        },
+        "D": {
+          "score": 3,
+          "tag": null
+        },
+        "E": {
+          "score": 4,
+          "tag": null
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "OPS03": {
+      "facet": "problem_style",
+      "direction_id": "OPS",
+      "options": {
+        "A": {
+          "score": null,
+          "tag": "ownership"
+        },
+        "B": {
+          "score": null,
+          "tag": "communication"
+        },
+        "C": {
+          "score": null,
+          "tag": "workflow"
+        },
+        "D": {
+          "score": null,
+          "tag": "response"
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "OPS04": {
+      "facet": "subdomain",
+      "direction_id": "OPS",
+      "options": {
+        "A": {
+          "score": null,
+          "tag": "supply_chain"
+        },
+        "B": {
+          "score": null,
+          "tag": "customer_service"
+        },
+        "C": {
+          "score": null,
+          "tag": "workforce"
+        },
+        "D": {
+          "score": null,
+          "tag": "automation"
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "OPS05": {
+      "facet": "ai_experience",
+      "direction_id": "OPS",
+      "options": {
+        "A": {
+          "score": 0,
+          "tag": null
+        },
+        "B": {
+          "score": 1,
+          "tag": null
+        },
+        "C": {
+          "score": 2,
+          "tag": null
+        },
+        "D": {
+          "score": 3,
+          "tag": null
+        },
+        "E": {
+          "score": 4,
+          "tag": null
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "OPS06": {
+      "facet": "ai_judgement",
+      "direction_id": "OPS",
+      "options": {
+        "A": {
+          "score": 0,
+          "tag": null
+        },
+        "B": {
+          "score": 2,
+          "tag": null
+        },
+        "C": {
+          "score": 3,
+          "tag": null
+        },
+        "D": {
+          "score": 1,
+          "tag": null
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "OPS07": {
+      "facet": "scenario_preference",
+      "direction_id": "OPS",
+      "options": {
+        "A": {
+          "score": null,
+          "tag": "bottleneck"
+        },
+        "B": {
+          "score": null,
+          "tag": "staffing"
+        },
+        "C": {
+          "score": null,
+          "tag": "service"
+        },
+        "D": {
+          "score": null,
+          "tag": "self_service"
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    },
+    "OPS08": {
+      "facet": "growth_tradeoff",
+      "direction_id": "OPS",
+      "options": {
+        "A": {
+          "score": null,
+          "tag": "root_cause"
+        },
+        "B": {
+          "score": null,
+          "tag": "training"
+        },
+        "C": {
+          "score": null,
+          "tag": "process_design"
+        },
+        "D": {
+          "score": null,
+          "tag": "metrics"
+        },
+        "U": {
+          "score": null,
+          "tag": "unknown"
+        }
+      }
+    }
+  }
+}

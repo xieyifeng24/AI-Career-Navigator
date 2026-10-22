@@ -1,12 +1,21 @@
+import {analyzeExploration} from '../exploration/engine.js';
 // Ephemeral per-tab deduplication; no profiles or tokens written to storage.
 import {requestAnalysis} from '../live.js';
 
 export function createOptionalAI(request=requestAnalysis,{timeoutMs=90000,cooldownMs=60000}={}){
  const attempts=new Map(),pending=new Map(),complete=new Map();
  return function run(profile,locale='en'){
-  const {assessment,education,...legacy}=structuredClone(profile);
+  const {assessment,education,exploration,...legacy}=structuredClone(profile);
   // Keep the unchanged backend profile contract; describe extra self-reports as context.
-  legacy.additionalContext=((legacy.additionalContext||'')+'\nSelf-reported questionnaire levels (not verified): '+JSON.stringify({assessment,education})).slice(0,1600);
+  legacy.additionalContext=exploration?.version==='2.0.0'?'V2 exploration, not validated aptitude. Paraphrase only the selected direction; do not rank other careers or alter tags/stages. '+JSON.stringify(analyzeExploration(exploration).selected.map(q=>[q.questionId,q.optionId,q.text,q.tag,q.score])):((legacy.additionalContext||'')+'\nSelf-reported questionnaire levels (not verified): '+JSON.stringify({assessment,education})).slice(0,1600);
+  if(exploration?.version==='2.0.0'){
+   legacy.skills='Not assessed by V2 exploration; no skills have been independently verified.';
+   legacy.concerns='Not collected by the V2 exploration questionnaire.';
+   legacy.tasks='Proposed practice, not reported professional work: '+legacy.tasks;
+   legacy.aiUse='Self-reported exposure stage, not verified ability: '+legacy.aiUse;
+  }
+  if(legacy.additionalContext.length>1600)return Promise.reject(new Error('AI_CONTEXT_TOO_LONG'));
+  legacy.hours=Math.max(1,Number(legacy.hours)||1); // Legacy optional inference contract only; never changes the local report budget.
   const payload={...legacy,language:locale},key=JSON.stringify(payload);
   if(complete.has(key))return Promise.resolve(complete.get(key));
   if(pending.has(key))return pending.get(key);

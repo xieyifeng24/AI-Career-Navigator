@@ -2638,5 +2638,77 @@
   "No verified market outlook is available for this route.": {
     "zh-CN": "此路线暂无已核实的就业市场展望。",
     "ms": "Tiada prospek pasaran kerja yang disahkan untuk laluan ini."
+  },
+  "Exploration route from selected preferences": {
+    "zh-CN": "基于所选偏好的探索路线",
+    "ms": "Laluan penerokaan berdasarkan keutamaan dipilih"
+  },
+  "Selected-direction experiment; not an occupation match score.": {
+    "zh-CN": "所选方向的体验，不是职业匹配分数。",
+    "ms": "Eksperimen dalam arah dipilih, bukan skor padanan pekerjaan."
+  },
+  "Reported experience clues": {
+    "zh-CN": "自述经历线索",
+    "ms": "Petunjuk pengalaman dilaporkan"
+  },
+  "Practice to try / verify": {
+    "zh-CN": "可尝试／核验的实践",
+    "ms": "Latihan untuk dicuba / disahkan"
+  },
+  "Compare two exercises in the direction you answered. No unassessed direction or career fit is ranked.": {
+    "zh-CN": "比较你回答方向内的两种体验，不对未回答的方向或职业适合度排名。",
+    "ms": "Bandingkan dua latihan dalam arah yang dijawab. Arah belum dinilai atau kesesuaian kerjaya tidak diberi kedudukan."
+  },
+  "Choices guide exercises; exposure stages are not skill scores.": {
+    "zh-CN": "选择引导体验任务；接触阶段不是技能分数。",
+    "ms": "Pilihan membimbing latihan; tahap pendedahan bukan skor kemahiran."
+  },
+  "Connect experience clues with practice routes.": {
+    "zh-CN": "连接经历线索与实践路线。",
+    "ms": "Hubungkan petunjuk pengalaman dengan laluan latihan."
+  },
+  "Explore reported experience and suggested practice. These connections are not verified skills.": {
+    "zh-CN": "探索自述经历和建议实践；这些连接不代表已验证技能。",
+    "ms": "Terokai pengalaman dilaporkan dan latihan dicadangkan. Hubungan ini bukan kemahiran disahkan."
+  },
+  "Reported experience clue": {
+    "zh-CN": "自述经历线索",
+    "ms": "Petunjuk pengalaman dilaporkan"
+  },
+  "Practice to try or verify": {
+    "zh-CN": "可尝试或核验的实践",
+    "ms": "Latihan untuk dicuba atau disahkan"
+  },
+  "SELECTED CLUE": {
+    "zh-CN": "所选线索",
+    "ms": "PETUNJUK DIPILIH"
+  },
+  "Editorial practice task, not an official occupational requirement.": {
+    "zh-CN": "团队设计的实践任务，不是官方职业要求。",
+    "ms": "Tugas latihan editorial, bukan keperluan pekerjaan rasmi."
+  },
+  "Explore where your interests could lead.": {
+    "zh-CN": "探索兴趣可以引向哪些体验。",
+    "ms": "Terokai hala tuju minat anda."
+  },
+  "Explore two practice routes in the direction you answered. No other direction has been assessed.": {
+    "zh-CN": "探索已回答方向内的两条实践路线，其他方向尚未测评。",
+    "ms": "Terokai dua laluan latihan dalam arah yang dijawab. Arah lain belum dinilai."
+  },
+  "Skills were not directly assessed": {
+    "zh-CN": "本问卷未直接验证技能",
+    "ms": "Kemahiran tidak dinilai secara langsung"
+  },
+  "Follow your selected interest": {
+    "zh-CN": "从所选兴趣出发",
+    "ms": "Ikuti minat dipilih"
+  },
+  "Try your selected task": {
+    "zh-CN": "尝试所选任务",
+    "ms": "Cuba tugas dipilih"
+  },
+  "Why try this exercise": {
+    "zh-CN": "为什么尝试这项体验",
+    "ms": "Mengapa mencuba latihan ini"
   }
 }

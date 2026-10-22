@@ -150,7 +150,7 @@ export function renderCareerStarMap(report, selectedPath = 'A') {
       ${path.market ? `<span class="star-route-signal">${e(path.market.growth)} · ${e(path.market.geography)}</span>` : `<span class="star-route-signal star-no-signal">No verified market signal in this report</span>`}
     </button>`;
   }).join('');
-  return `<div class="star-map-page">
+  let html=`<div class="star-map-page">
     <div class="report-head"><div class="report-head-top"><span class="kicker">YOUR CAREER CONSTELLATION</span><span class="demo-badge">${model.mode === 'demo' ? 'DEMO / MOCK' : 'BASED ON THIS REPORT'}</span></div><h1>Explore where your skills can take you.</h1><p>Start from your current experience, then explore paths from your assessment and source-based role matches.</p></div>
     <section class="star-map-stage" aria-label="Career star map">
       <svg class="star-map-edges" viewBox="0 0 1000 520" preserveAspectRatio="none" aria-hidden="true"><path d="M500 154 C500 210 170 205 170 268"/><path d="M500 154 C500 210 500 215 500 268"/><path d="M500 154 C500 210 830 205 830 268"/><circle cx="500" cy="154" r="5"/><circle cx="170" cy="268" r="5"/><circle cx="500" cy="268" r="5"/><circle cx="830" cy="268" r="5"/></svg>
@@ -161,4 +161,6 @@ export function renderCareerStarMap(report, selectedPath = 'A') {
     ${selected ? renderRouteDetail(selected, selected.id === selectedPath) : '<p class="star-empty">No career paths are available in this report yet.</p>'}
     ${modeNote}
   </div>`;
+  if(report.questionnaireVersion==='2.0.0')html=html.replace('Explore where your skills can take you.','Explore where your interests could lead.').replace('Start from your current experience, then explore paths from your assessment and source-based role matches.','Explore two practice routes in the direction you answered. No other direction has been assessed.').replace('Add skills to your profile','Skills were not directly assessed').replace('Build on your current direction','Follow your selected interest').replace('Explore an adjacent direction','Try your selected task').replace('Why this path may fit','Why try this exercise').replace('Skills you can carry forward','Reported experience clues').replace('Skills to develop','Practice to try / verify');
+  return html;
 }

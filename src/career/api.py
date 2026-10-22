@@ -160,6 +160,11 @@ async def knowledge_current():
 async def knowledge_bundle():
     return FileResponse(ROOT/'data/knowledge/current.json')
 
+@app.get('/exploration/{filename}')
+async def exploration_asset(filename: str):
+    if filename not in {'bank.json','scoring.json','projects.json','engine.js','report.js','ui.js'}: raise HTTPException(404)
+    return FileResponse(ROOT/'prototype/exploration'/filename)
+
 @app.get('/local/{filename}')
 async def local_asset(filename: str):
     if filename not in {'engine.js','ui.js','questions.js','optional-ai.js','careers.json'}:

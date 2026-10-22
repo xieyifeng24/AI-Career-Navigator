@@ -1,0 +1,2780 @@
+{
+  "metadata": {
+    "name": "AI Career Navigator — 十方向职业探索与AI协作问卷 V2.0",
+    "version": "2.0.0",
+    "language": "zh-CN",
+    "not_a_test": "本问卷不是心理测量量表、职业资格考试或AI技能认证，不以没有经验推断没有潜力。",
+    "design_scope": "10个职业方向；用户选择1个主要方向；每人3道通用探索+1道通用AI+8道方向题，共12道。可选多方向时建议轮流完成各方向题，不直接比较未经回答的方向。",
+    "structure": {
+      "common_exploration": 3,
+      "common_ai": 1,
+      "direction_interest_experience_workstyle": 4,
+      "direction_ai": 2,
+      "direction_scenarios": 2,
+      "per_user_if_one_direction": 12,
+      "total_question_bank": 84
+    },
+    "directions": [
+      {
+        "id": "SW",
+        "name_zh": "软件开发与AI工程",
+        "name_en": "Software & AI Engineering",
+        "name_ms": "Pembangunan Perisian dan Kejuruteraan AI"
+      },
+      {
+        "id": "DATA",
+        "name_zh": "数据分析与数据科学",
+        "name_en": "Data Analytics & Data Science",
+        "name_ms": "Analitik dan Sains Data"
+      },
+      {
+        "id": "FIN",
+        "name_zh": "金融与会计",
+        "name_en": "Finance & Accounting",
+        "name_ms": "Kewangan dan Perakaunan"
+      },
+      {
+        "id": "PM",
+        "name_zh": "商业管理与产品",
+        "name_en": "Business Management & Product",
+        "name_ms": "Pengurusan Perniagaan dan Produk"
+      },
+      {
+        "id": "MKT",
+        "name_zh": "市场营销与销售",
+        "name_en": "Marketing & Sales",
+        "name_ms": "Pemasaran dan Jualan"
+      },
+      {
+        "id": "DES",
+        "name_zh": "设计与数字内容",
+        "name_en": "Design & Digital Content",
+        "name_ms": "Reka Bentuk dan Kandungan Digital"
+      },
+      {
+        "id": "ENG",
+        "name_zh": "工程与智能制造",
+        "name_en": "Engineering & Smart Manufacturing",
+        "name_ms": "Kejuruteraan dan Pembuatan Pintar"
+      },
+      {
+        "id": "HLT",
+        "name_zh": "医疗健康与生命科学",
+        "name_en": "Healthcare & Life Sciences",
+        "name_ms": "Penjagaan Kesihatan dan Sains Hayat"
+      },
+      {
+        "id": "EDU",
+        "name_zh": "教育与科研",
+        "name_en": "Education & Research",
+        "name_ms": "Pendidikan dan Penyelidikan"
+      },
+      {
+        "id": "OPS",
+        "name_zh": "运营、供应链与客户服务",
+        "name_en": "Operations, Supply Chain & Customer Service",
+        "name_ms": "Operasi, Rantaian Bekalan dan Khidmat Pelanggan"
+      }
+    ],
+    "report_rules": [
+      "展示职业兴趣线索、相关经历阶段、AI使用经历、AI可靠性判断策略、现实时间预算、建议探索任务。",
+      "不提供未经验证的所谓准确职业匹配百分比、人格类型或认证水平。",
+      "只对用户作答的方向提供深度建议；不得因未作答其他方向而宣称不适合。",
+      "设置证据充分程度：关键题（方向经历、AI经验、AI判断）若未作答，显示资料不足。",
+      "What If模拟只改变假设的学习投入/经验阶段，不把模拟结果当真实能力增长。",
+      "每个方向给出一周内即可完成、无需专业背景的体验式微项目。",
+      "如未来接入AI API，仅用于文本表达和引用解释，不改变本地确定性题目标签计算。"
+    ],
+    "update_note": "本题库为原创产品原型内容，非经信效度验证的职业测评量表；不以此做录用、升学或医疗等高风险决策。"
+  },
+  "questions": [
+    {
+      "id": "G01",
+      "direction_id": "COMMON",
+      "group": "通用职业探索",
+      "facet": "motivation",
+      "question": "如果未来一个月可以自由尝试一项活动，你最想体验哪一种？",
+      "options": [
+        {
+          "id": "A",
+          "text": "把一个想法做成可以使用的作品或工具"
+        },
+        {
+          "id": "B",
+          "text": "研究一个现象，找到背后的规律"
+        },
+        {
+          "id": "C",
+          "text": "与人交流需求，把各方想法组织起来"
+        },
+        {
+          "id": "D",
+          "text": "创造一段内容或一种新体验"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "记录动机类型，不用单一选项判断职业是否适合。",
+      "required": false
+    },
+    {
+      "id": "G02",
+      "direction_id": "COMMON",
+      "group": "通用职业探索",
+      "facet": "career_goal",
+      "question": "你希望这次职业探索最先帮你解决什么？",
+      "options": [
+        {
+          "id": "A",
+          "text": "发现自己可能喜欢但尚不了解的方向"
+        },
+        {
+          "id": "B",
+          "text": "在几个感兴趣的方向之间做选择"
+        },
+        {
+          "id": "C",
+          "text": "找到下一步能尝试的课程、项目或实习"
+        },
+        {
+          "id": "D",
+          "text": "了解现有方向受AI影响后如何调整"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "用于调整结果建议的深度和阶段，不计分。",
+      "required": false
+    },
+    {
+      "id": "G03",
+      "direction_id": "COMMON",
+      "group": "通用职业探索",
+      "facet": "constraints",
+      "question": "未来一个月，你能比较稳定地投入职业探索的时间是？",
+      "options": [
+        {
+          "id": "A",
+          "text": "每周不到1小时，希望先轻量了解"
+        },
+        {
+          "id": "B",
+          "text": "每周1—3小时，可以做小体验"
+        },
+        {
+          "id": "C",
+          "text": "每周3—6小时，愿意完成简单项目"
+        },
+        {
+          "id": "D",
+          "text": "每周6小时以上，可以持续实践"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "只决定学习建议的节奏，不代表能力高低。",
+      "required": false
+    },
+    {
+      "id": "G04",
+      "direction_id": "COMMON",
+      "group": "通用AI素养",
+      "facet": "ai_experience",
+      "question": "过去一个月，你通常如何使用AI工具来完成学习或生活任务？",
+      "options": [
+        {
+          "id": "A",
+          "text": "基本没有用过，暂时不了解如何开始"
+        },
+        {
+          "id": "B",
+          "text": "试过提问或生成内容，但很少继续修改"
+        },
+        {
+          "id": "C",
+          "text": "会补充背景、细化要求，让结果更有用"
+        },
+        {
+          "id": "D",
+          "text": "会检查关键事实、比较来源，再决定采用什么"
+        },
+        {
+          "id": "E",
+          "text": "会把AI整合进多步骤流程，并自己承担最终核查"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "衡量AI工具使用经验；没用过不等于没有学习潜力。",
+      "required": false
+    },
+    {
+      "id": "SW01",
+      "direction_id": "SW",
+      "group": "方向探索",
+      "facet": "interest",
+      "question": "如果参加一个轻松的小组项目，哪一类任务最能让你投入？",
+      "options": [
+        {
+          "id": "A",
+          "text": "把想法做成能点击使用的网页或工具"
+        },
+        {
+          "id": "B",
+          "text": "找出程序为什么没有按预期工作"
+        },
+        {
+          "id": "C",
+          "text": "梳理用户真正需要什么功能"
+        },
+        {
+          "id": "D",
+          "text": "把重复步骤变成自动化流程"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "四类偏好分别对应产品实现、调试质量、需求协作和自动化。",
+      "required": false
+    },
+    {
+      "id": "SW02",
+      "direction_id": "SW",
+      "group": "方向探索",
+      "facet": "experience",
+      "question": "你以前在编程或数字工具制作方面，最接近哪种经历？",
+      "options": [
+        {
+          "id": "A",
+          "text": "还没有正式尝试过"
+        },
+        {
+          "id": "B",
+          "text": "跟着教学完成过一个小例子"
+        },
+        {
+          "id": "C",
+          "text": "改动过现成模板或脚本"
+        },
+        {
+          "id": "D",
+          "text": "独立完成过可运行的小作品"
+        },
+        {
+          "id": "E",
+          "text": "持续修改、测试或维护过自己的作品"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "仅反映接触程度；初学者不会因为缺乏经历被排除。",
+      "required": false
+    },
+    {
+      "id": "SW03",
+      "direction_id": "SW",
+      "group": "方向探索",
+      "facet": "problem_style",
+      "question": "当你尝试做的小工具运行失败时，你通常最愿意怎么处理？",
+      "options": [
+        {
+          "id": "A",
+          "text": "逐步缩小问题范围，查找是哪一步出错"
+        },
+        {
+          "id": "B",
+          "text": "请人一起看，讨论不同解决办法"
+        },
+        {
+          "id": "C",
+          "text": "先重新整理需求和执行步骤"
+        },
+        {
+          "id": "D",
+          "text": "记录问题，先完成其他能推进的部分"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "描述解决问题风格，不存在统一最佳答案。",
+      "required": false
+    },
+    {
+      "id": "SW04",
+      "direction_id": "SW",
+      "group": "方向探索",
+      "facet": "subdomain",
+      "question": "下面哪一类作品会让你最想持续改进？",
+      "options": [
+        {
+          "id": "A",
+          "text": "让普通人日常使用的应用"
+        },
+        {
+          "id": "B",
+          "text": "能帮助人做判断的AI功能"
+        },
+        {
+          "id": "C",
+          "text": "更稳定安全的软件基础设施"
+        },
+        {
+          "id": "D",
+          "text": "连接不同工具的自动化服务"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "用于细分软件与AI工程方向。",
+      "required": false
+    },
+    {
+      "id": "SW05",
+      "direction_id": "SW",
+      "group": "AI应用与判断",
+      "facet": "ai_experience",
+      "question": "如果让AI协助你做一个小型软件项目，你现在最接近哪种使用方式？",
+      "options": [
+        {
+          "id": "A",
+          "text": "还没有尝试过让AI协助编程"
+        },
+        {
+          "id": "B",
+          "text": "让AI解释术语或代码片段"
+        },
+        {
+          "id": "C",
+          "text": "让AI写出初稿，自己再作修改"
+        },
+        {
+          "id": "D",
+          "text": "运行、测试并检查AI代码是否满足需求"
+        },
+        {
+          "id": "E",
+          "text": "会拆解任务、控制版本、验证并整合多次AI输出"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "记录AI协作经历，并非编程水平考试。",
+      "required": false
+    },
+    {
+      "id": "SW06",
+      "direction_id": "SW",
+      "group": "AI应用与判断",
+      "facet": "ai_judgement",
+      "question": "AI告诉你“登录功能已经完成”，但没有展示任何测试过程。你最可能怎么做？",
+      "options": [
+        {
+          "id": "A",
+          "text": "先上线，出现问题再解决"
+        },
+        {
+          "id": "B",
+          "text": "再问AI一次“你确定没问题吗”"
+        },
+        {
+          "id": "C",
+          "text": "自己按正常和异常情况试用，并检查关键行为"
+        },
+        {
+          "id": "D",
+          "text": "先阅读生成代码，确认大致结构后再决定"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "比较不同的AI验证策略；情境选择不等于实际开发能力。",
+      "required": false
+    },
+    {
+      "id": "SW07",
+      "direction_id": "SW",
+      "group": "职业情境",
+      "facet": "scenario_preference",
+      "question": "一个校园App项目刚开始，你最想主动承担哪部分？",
+      "options": [
+        {
+          "id": "A",
+          "text": "实现一个看得见的功能"
+        },
+        {
+          "id": "B",
+          "text": "设计如何让产品更易使用"
+        },
+        {
+          "id": "C",
+          "text": "与同学沟通需求、安排版本"
+        },
+        {
+          "id": "D",
+          "text": "测出可能让产品失效的问题"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "反映团队任务偏好。",
+      "required": false
+    },
+    {
+      "id": "SW08",
+      "direction_id": "SW",
+      "group": "职业情境",
+      "facet": "growth_tradeoff",
+      "question": "如果只能选一个方向投入一个月，你更愿意承担哪种挑战？",
+      "options": [
+        {
+          "id": "A",
+          "text": "反复修改细节，让功能真正可用"
+        },
+        {
+          "id": "B",
+          "text": "理解一个新AI工具，再做出小演示"
+        },
+        {
+          "id": "C",
+          "text": "解决影响稳定性的隐蔽问题"
+        },
+        {
+          "id": "D",
+          "text": "把多个零散工具组合成完整流程"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "反映愿意投入的挑战，而非能力高低。",
+      "required": false
+    },
+    {
+      "id": "DATA01",
+      "direction_id": "DATA",
+      "group": "方向探索",
+      "facet": "interest",
+      "question": "当别人给你一大堆杂乱的信息时，哪种工作最吸引你？",
+      "options": [
+        {
+          "id": "A",
+          "text": "找出反复出现的规律"
+        },
+        {
+          "id": "B",
+          "text": "把信息整理成清楚的图表"
+        },
+        {
+          "id": "C",
+          "text": "设计一个方法判断某种做法是否有效"
+        },
+        {
+          "id": "D",
+          "text": "让混乱的数据变得可用"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "分别对应洞察、可视化、实验和数据整理。",
+      "required": false
+    },
+    {
+      "id": "DATA02",
+      "direction_id": "DATA",
+      "group": "方向探索",
+      "facet": "experience",
+      "question": "你过去接触数据整理或分析任务的程度是？",
+      "options": [
+        {
+          "id": "A",
+          "text": "尚未接触过"
+        },
+        {
+          "id": "B",
+          "text": "看过别人分析数据的示例"
+        },
+        {
+          "id": "C",
+          "text": "用过表格筛选、排序或简单统计"
+        },
+        {
+          "id": "D",
+          "text": "独立做过一份数据总结或图表"
+        },
+        {
+          "id": "E",
+          "text": "曾反复修正数据口径并解释分析限制"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "评估经历，不考统计公式。",
+      "required": false
+    },
+    {
+      "id": "DATA03",
+      "direction_id": "DATA",
+      "group": "方向探索",
+      "facet": "problem_style",
+      "question": "当两张图表看起来得出了相反结论，你最想先做什么？",
+      "options": [
+        {
+          "id": "A",
+          "text": "检查它们是否用了不同时间段或统计口径"
+        },
+        {
+          "id": "B",
+          "text": "请制作图表的人解释各自思路"
+        },
+        {
+          "id": "C",
+          "text": "尝试找一种更清晰的表达方法"
+        },
+        {
+          "id": "D",
+          "text": "先明确大家到底想回答哪个问题"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "反映探索矛盾信息时的工作风格。",
+      "required": false
+    },
+    {
+      "id": "DATA04",
+      "direction_id": "DATA",
+      "group": "方向探索",
+      "facet": "subdomain",
+      "question": "你更想用数据帮助别人解决哪类问题？",
+      "options": [
+        {
+          "id": "A",
+          "text": "发现用户在产品里遇到的困难"
+        },
+        {
+          "id": "B",
+          "text": "理解商业经营的变化"
+        },
+        {
+          "id": "C",
+          "text": "理解社会、环境或公共议题"
+        },
+        {
+          "id": "D",
+          "text": "改善日常流程和资源分配"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "用于数据行业细分建议。",
+      "required": false
+    },
+    {
+      "id": "DATA05",
+      "direction_id": "DATA",
+      "group": "AI应用与判断",
+      "facet": "ai_experience",
+      "question": "如果AI可以分析一份表格，你现在通常会如何利用它？",
+      "options": [
+        {
+          "id": "A",
+          "text": "尚未尝试过"
+        },
+        {
+          "id": "B",
+          "text": "让AI解释数据字段的意思"
+        },
+        {
+          "id": "C",
+          "text": "让AI帮助整理结果或制作图表"
+        },
+        {
+          "id": "D",
+          "text": "会回到原始数据检查重要数值与结论"
+        },
+        {
+          "id": "E",
+          "text": "会明确分析口径、复核结果，并记录AI参与了什么步骤"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "记录AI数据协作成熟度。",
+      "required": false
+    },
+    {
+      "id": "DATA06",
+      "direction_id": "DATA",
+      "group": "AI应用与判断",
+      "facet": "ai_judgement",
+      "question": "AI生成一张“用户满意度显著提升”的图，但没有说明样本和时间段。你更倾向于？",
+      "options": [
+        {
+          "id": "A",
+          "text": "先核对原始数据、样本定义和时间范围"
+        },
+        {
+          "id": "B",
+          "text": "让AI把标题写得更有说服力"
+        },
+        {
+          "id": "C",
+          "text": "先在汇报里引用这张图"
+        },
+        {
+          "id": "D",
+          "text": "先检查图形是否与数值大体一致，再追问数据来源"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "强调来源与统计口径的重要性。",
+      "required": false
+    },
+    {
+      "id": "DATA07",
+      "direction_id": "DATA",
+      "group": "职业情境",
+      "facet": "scenario_preference",
+      "question": "一个社团想了解活动为什么报名少，你最想做哪件事？",
+      "options": [
+        {
+          "id": "A",
+          "text": "整理报名流程每一步的变化"
+        },
+        {
+          "id": "B",
+          "text": "访谈参与者，了解他们的想法"
+        },
+        {
+          "id": "C",
+          "text": "画出一张一眼看懂的问题图"
+        },
+        {
+          "id": "D",
+          "text": "设计一次小调整，看能否改善报名"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "探索分析、访谈、沟通与实验偏好。",
+      "required": false
+    },
+    {
+      "id": "DATA08",
+      "direction_id": "DATA",
+      "group": "职业情境",
+      "facet": "growth_tradeoff",
+      "question": "若连续几天都在清理杂乱表格，你会怎么判断这项工作值不值得继续？",
+      "options": [
+        {
+          "id": "A",
+          "text": "只要能找出有用结论，我愿意耐心处理"
+        },
+        {
+          "id": "B",
+          "text": "我更想把清理流程自动化"
+        },
+        {
+          "id": "C",
+          "text": "我偏好把结果讲给别人听，而不是长期处理细节"
+        },
+        {
+          "id": "D",
+          "text": "我会先确认问题重要，再决定投入多少时间"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "为用户解释数据工作的真实日常。",
+      "required": false
+    },
+    {
+      "id": "FIN01",
+      "direction_id": "FIN",
+      "group": "方向探索",
+      "facet": "interest",
+      "question": "谈到金钱和商业决策，最让你好奇的是什么？",
+      "options": [
+        {
+          "id": "A",
+          "text": "一家企业为什么会赚钱或亏钱"
+        },
+        {
+          "id": "B",
+          "text": "如何在不确定性下管理风险"
+        },
+        {
+          "id": "C",
+          "text": "如何规划预算与资源"
+        },
+        {
+          "id": "D",
+          "text": "如何把复杂财务信息解释给其他人"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "描述兴趣分支，不是金融知识检测。",
+      "required": false
+    },
+    {
+      "id": "FIN02",
+      "direction_id": "FIN",
+      "group": "方向探索",
+      "facet": "experience",
+      "question": "你曾经做过和预算、记账或财务信息有关的事情吗？",
+      "options": [
+        {
+          "id": "A",
+          "text": "还没有特别关注过"
+        },
+        {
+          "id": "B",
+          "text": "看过一些财经或理财入门内容"
+        },
+        {
+          "id": "C",
+          "text": "管理过个人或社团的简单预算"
+        },
+        {
+          "id": "D",
+          "text": "做过持续的预算比较或开支分析"
+        },
+        {
+          "id": "E",
+          "text": "曾整理数据并向他人解释过财务选择依据"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "只记录经历；不询问真实收入、存款或账户。",
+      "required": false
+    },
+    {
+      "id": "FIN03",
+      "direction_id": "FIN",
+      "group": "方向探索",
+      "facet": "problem_style",
+      "question": "当两个方案都说自己“更划算”，你最想怎么比较？",
+      "options": [
+        {
+          "id": "A",
+          "text": "拆出短期和长期的不同成本"
+        },
+        {
+          "id": "B",
+          "text": "先问清可能承受的最坏情况"
+        },
+        {
+          "id": "C",
+          "text": "了解做决定的人真正看重什么"
+        },
+        {
+          "id": "D",
+          "text": "把比较结果做成能让别人理解的说明"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "探索成本、风险、需求与沟通风格。",
+      "required": false
+    },
+    {
+      "id": "FIN04",
+      "direction_id": "FIN",
+      "group": "方向探索",
+      "facet": "subdomain",
+      "question": "未来你更想深入哪一种工作？",
+      "options": [
+        {
+          "id": "A",
+          "text": "理解企业财务与经营表现"
+        },
+        {
+          "id": "B",
+          "text": "帮助团队做预算和资源安排"
+        },
+        {
+          "id": "C",
+          "text": "研究市场与风险变化"
+        },
+        {
+          "id": "D",
+          "text": "利用数据工具优化财务流程"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "细分兴趣，不提供投资建议。",
+      "required": false
+    },
+    {
+      "id": "FIN05",
+      "direction_id": "FIN",
+      "group": "AI应用与判断",
+      "facet": "ai_experience",
+      "question": "如果AI帮你整理一份财务比较表，你目前会怎样使用？",
+      "options": [
+        {
+          "id": "A",
+          "text": "还没有尝试过"
+        },
+        {
+          "id": "B",
+          "text": "让AI解释陌生的财务术语"
+        },
+        {
+          "id": "C",
+          "text": "让AI汇总公开资料并做初步比较"
+        },
+        {
+          "id": "D",
+          "text": "会自行核对关键数字、时间和来源"
+        },
+        {
+          "id": "E",
+          "text": "会列出假设、复核数据并明确说明结论的局限"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "反映AI辅助分析经验。",
+      "required": false
+    },
+    {
+      "id": "FIN06",
+      "direction_id": "FIN",
+      "group": "AI应用与判断",
+      "facet": "ai_judgement",
+      "question": "AI写道：“这个方案回报高而且没有任何风险。”你最可能采取什么行动？",
+      "options": [
+        {
+          "id": "A",
+          "text": "因为说得有把握，先照着做"
+        },
+        {
+          "id": "B",
+          "text": "核对可信来源、风险与假设，再决定是否参考"
+        },
+        {
+          "id": "C",
+          "text": "让AI把这段建议说得更简洁"
+        },
+        {
+          "id": "D",
+          "text": "先暂不采用，并与其他独立资料作比较"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "识别AI过度确定性；不涉及用户个人投资状况。",
+      "required": false
+    },
+    {
+      "id": "FIN07",
+      "direction_id": "FIN",
+      "group": "职业情境",
+      "facet": "scenario_preference",
+      "question": "一个校园组织的预算被削减，你最希望负责哪部分？",
+      "options": [
+        {
+          "id": "A",
+          "text": "重新安排有限资金的使用顺序"
+        },
+        {
+          "id": "B",
+          "text": "找出哪些项目存在浪费"
+        },
+        {
+          "id": "C",
+          "text": "向成员解释预算取舍"
+        },
+        {
+          "id": "D",
+          "text": "比较不同方案可能带来的风险"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "探索财务规划相关任务偏好。",
+      "required": false
+    },
+    {
+      "id": "FIN08",
+      "direction_id": "FIN",
+      "group": "职业情境",
+      "facet": "growth_tradeoff",
+      "question": "如果工作需要经常面对没有确定答案的预测，你更愿意？",
+      "options": [
+        {
+          "id": "A",
+          "text": "设定不同情境，准备多种方案"
+        },
+        {
+          "id": "B",
+          "text": "收集信息，让预测依据更充分"
+        },
+        {
+          "id": "C",
+          "text": "将不确定性清楚告诉决策者"
+        },
+        {
+          "id": "D",
+          "text": "偏好财务流程明确、规则清楚的工作"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "展示金融职业内部对不确定性的不同偏好。",
+      "required": false
+    },
+    {
+      "id": "PM01",
+      "direction_id": "PM",
+      "group": "方向探索",
+      "facet": "interest",
+      "question": "做一个新产品或组织活动时，你最享受哪件事？",
+      "options": [
+        {
+          "id": "A",
+          "text": "理解大家真正的痛点"
+        },
+        {
+          "id": "B",
+          "text": "把模糊想法拆成执行步骤"
+        },
+        {
+          "id": "C",
+          "text": "协调不同人的目标和资源"
+        },
+        {
+          "id": "D",
+          "text": "判断哪种方案更可能创造价值"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "反映研究、执行、协作及商业判断偏好。",
+      "required": false
+    },
+    {
+      "id": "PM02",
+      "direction_id": "PM",
+      "group": "方向探索",
+      "facet": "experience",
+      "question": "你在组织项目或解决他人需求方面有哪些经历？",
+      "options": [
+        {
+          "id": "A",
+          "text": "暂时没有"
+        },
+        {
+          "id": "B",
+          "text": "参与过一次小组任务"
+        },
+        {
+          "id": "C",
+          "text": "曾负责某个明确的小任务"
+        },
+        {
+          "id": "D",
+          "text": "曾独立推动一件事从开始到交付"
+        },
+        {
+          "id": "E",
+          "text": "曾根据反馈多次调整方案并复盘结果"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "不以职位头衔代替真实经历。",
+      "required": false
+    },
+    {
+      "id": "PM03",
+      "direction_id": "PM",
+      "group": "方向探索",
+      "facet": "problem_style",
+      "question": "如果团队成员对下一步意见不同，你最先会？",
+      "options": [
+        {
+          "id": "A",
+          "text": "澄清大家到底想解决什么问题"
+        },
+        {
+          "id": "B",
+          "text": "列出可行选项和时间限制"
+        },
+        {
+          "id": "C",
+          "text": "分别了解成员的主要顾虑"
+        },
+        {
+          "id": "D",
+          "text": "找一个低成本试验先验证猜想"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "不存在普遍最佳答案，反映协作风格。",
+      "required": false
+    },
+    {
+      "id": "PM04",
+      "direction_id": "PM",
+      "group": "方向探索",
+      "facet": "subdomain",
+      "question": "你最想参与哪类决策？",
+      "options": [
+        {
+          "id": "A",
+          "text": "规划新产品功能"
+        },
+        {
+          "id": "B",
+          "text": "改善用户服务体验"
+        },
+        {
+          "id": "C",
+          "text": "研究企业新的增长机会"
+        },
+        {
+          "id": "D",
+          "text": "提升团队执行效率"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "帮助区分产品、用户体验、战略和运营。",
+      "required": false
+    },
+    {
+      "id": "PM05",
+      "direction_id": "PM",
+      "group": "AI应用与判断",
+      "facet": "ai_experience",
+      "question": "如果AI能帮你做项目规划，你目前的使用习惯更接近？",
+      "options": [
+        {
+          "id": "A",
+          "text": "还没有使用过"
+        },
+        {
+          "id": "B",
+          "text": "让AI列出待办事项"
+        },
+        {
+          "id": "C",
+          "text": "让AI比较方案并生成计划初稿"
+        },
+        {
+          "id": "D",
+          "text": "会检查资源、期限和团队反馈是否支持计划"
+        },
+        {
+          "id": "E",
+          "text": "会把假设、风险、验证方式与后续调整一起纳入AI协作"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "反映AI辅助项目决策经验。",
+      "required": false
+    },
+    {
+      "id": "PM06",
+      "direction_id": "PM",
+      "group": "AI应用与判断",
+      "facet": "ai_judgement",
+      "question": "AI声称“80%的用户都喜欢这个功能”，但没有用户调研记录。你会？",
+      "options": [
+        {
+          "id": "A",
+          "text": "先找真实反馈和数据确认这个说法"
+        },
+        {
+          "id": "B",
+          "text": "直接把80%放进方案汇报"
+        },
+        {
+          "id": "C",
+          "text": "请AI改写成更漂亮的宣传句"
+        },
+        {
+          "id": "D",
+          "text": "先把它作为猜想，设计小范围验证"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "核查凭空出现的用户数据。",
+      "required": false
+    },
+    {
+      "id": "PM07",
+      "direction_id": "PM",
+      "group": "职业情境",
+      "facet": "scenario_preference",
+      "question": "一款校园工具只剩一周上线，你最希望负责？",
+      "options": [
+        {
+          "id": "A",
+          "text": "决定哪些功能优先做"
+        },
+        {
+          "id": "B",
+          "text": "和实际用户确认最重要的需求"
+        },
+        {
+          "id": "C",
+          "text": "协调开发与设计的进度"
+        },
+        {
+          "id": "D",
+          "text": "安排小范围试用并收集问题"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "反映产品管理日常选择。",
+      "required": false
+    },
+    {
+      "id": "PM08",
+      "direction_id": "PM",
+      "group": "职业情境",
+      "facet": "growth_tradeoff",
+      "question": "如果一个产品上线后没多少人使用，你最愿意先投入时间做什么？",
+      "options": [
+        {
+          "id": "A",
+          "text": "找人聊天，了解使用障碍"
+        },
+        {
+          "id": "B",
+          "text": "看用户从哪里流失"
+        },
+        {
+          "id": "C",
+          "text": "修改最重要的功能体验"
+        },
+        {
+          "id": "D",
+          "text": "重新思考它解决的问题是否真的存在"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "展示用户研究、数据、体验与战略侧重点。",
+      "required": false
+    },
+    {
+      "id": "MKT01",
+      "direction_id": "MKT",
+      "group": "方向探索",
+      "facet": "interest",
+      "question": "如果要让更多人知道一个校园活动，你更愿意做哪件事？",
+      "options": [
+        {
+          "id": "A",
+          "text": "想一句让人记住的传播主题"
+        },
+        {
+          "id": "B",
+          "text": "研究谁最有可能感兴趣"
+        },
+        {
+          "id": "C",
+          "text": "与潜在参与者沟通和说服"
+        },
+        {
+          "id": "D",
+          "text": "比较不同传播渠道的表现"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "探索创意、洞察、沟通、数据偏好。",
+      "required": false
+    },
+    {
+      "id": "MKT02",
+      "direction_id": "MKT",
+      "group": "方向探索",
+      "facet": "experience",
+      "question": "你过去有过推广、销售或社群运营的经历吗？",
+      "options": [
+        {
+          "id": "A",
+          "text": "还没有"
+        },
+        {
+          "id": "B",
+          "text": "关注过别人的推广案例"
+        },
+        {
+          "id": "C",
+          "text": "发过活动宣传、作品或商品信息"
+        },
+        {
+          "id": "D",
+          "text": "独立策划过一次小规模推广"
+        },
+        {
+          "id": "E",
+          "text": "做过推广复盘，并根据反馈调整内容或渠道"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "记录实践经历，不以粉丝数或销售额代表潜力。",
+      "required": false
+    },
+    {
+      "id": "MKT03",
+      "direction_id": "MKT",
+      "group": "方向探索",
+      "facet": "problem_style",
+      "question": "当一条宣传内容几乎没人关注，你最愿意？",
+      "options": [
+        {
+          "id": "A",
+          "text": "重写表达方式，试试新创意"
+        },
+        {
+          "id": "B",
+          "text": "研究真正需要这项活动的人是谁"
+        },
+        {
+          "id": "C",
+          "text": "直接请几个人给出真实反馈"
+        },
+        {
+          "id": "D",
+          "text": "查看曝光到报名在哪个环节流失"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "描述面对低反馈时的改进风格。",
+      "required": false
+    },
+    {
+      "id": "MKT04",
+      "direction_id": "MKT",
+      "group": "方向探索",
+      "facet": "subdomain",
+      "question": "你更喜欢哪种长期工作内容？",
+      "options": [
+        {
+          "id": "A",
+          "text": "讲品牌故事、制作内容"
+        },
+        {
+          "id": "B",
+          "text": "理解消费者行为"
+        },
+        {
+          "id": "C",
+          "text": "与客户建立关系"
+        },
+        {
+          "id": "D",
+          "text": "用数据持续优化推广"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "区分内容、研究、销售、增长。",
+      "required": false
+    },
+    {
+      "id": "MKT05",
+      "direction_id": "MKT",
+      "group": "AI应用与判断",
+      "facet": "ai_experience",
+      "question": "如果用AI帮助推广活动，你目前最接近？",
+      "options": [
+        {
+          "id": "A",
+          "text": "还没有尝试过"
+        },
+        {
+          "id": "B",
+          "text": "让AI想标题或文案"
+        },
+        {
+          "id": "C",
+          "text": "会提供目标受众和场景，让AI生成几个版本"
+        },
+        {
+          "id": "D",
+          "text": "会核实宣传事实并用真实反馈比较不同版本"
+        },
+        {
+          "id": "E",
+          "text": "会把AI用于调研、创作、审核与复盘多个环节"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "衡量AI协作经验。",
+      "required": false
+    },
+    {
+      "id": "MKT06",
+      "direction_id": "MKT",
+      "group": "AI应用与判断",
+      "facet": "ai_judgement",
+      "question": "AI生成的宣传文案说“所有参与者都能保证获奖”，但活动规则并非如此。你会？",
+      "options": [
+        {
+          "id": "A",
+          "text": "先发布，之后再解释例外"
+        },
+        {
+          "id": "B",
+          "text": "删除不实承诺并对照正式规则核查其他内容"
+        },
+        {
+          "id": "C",
+          "text": "让AI再换一种更吸引人的表达"
+        },
+        {
+          "id": "D",
+          "text": "先提交人工审核并标出可疑陈述"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "情境判断关注真实性与审核。",
+      "required": false
+    },
+    {
+      "id": "MKT07",
+      "direction_id": "MKT",
+      "group": "职业情境",
+      "facet": "scenario_preference",
+      "question": "你负责帮助一家小店吸引新顾客，第一周更愿意做什么？",
+      "options": [
+        {
+          "id": "A",
+          "text": "观察顾客为什么进店或离开"
+        },
+        {
+          "id": "B",
+          "text": "设计一次小规模内容活动"
+        },
+        {
+          "id": "C",
+          "text": "主动和可能的顾客交流"
+        },
+        {
+          "id": "D",
+          "text": "建立简单表格记录渠道效果"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "探索现场研究、内容、销售、分析。",
+      "required": false
+    },
+    {
+      "id": "MKT08",
+      "direction_id": "MKT",
+      "group": "职业情境",
+      "facet": "growth_tradeoff",
+      "question": "如果一种营销方式很有效但需要反复做细节工作，你更倾向？",
+      "options": [
+        {
+          "id": "A",
+          "text": "愿意不断优化，追求更稳定的效果"
+        },
+        {
+          "id": "B",
+          "text": "更想探索新的创意和渠道"
+        },
+        {
+          "id": "C",
+          "text": "希望把重复工作自动化"
+        },
+        {
+          "id": "D",
+          "text": "喜欢面对面沟通和建立关系"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "检验个人工作节奏偏好。",
+      "required": false
+    },
+    {
+      "id": "DES01",
+      "direction_id": "DES",
+      "group": "方向探索",
+      "facet": "interest",
+      "question": "面对一款不好用的应用，你最想动手改善哪里？",
+      "options": [
+        {
+          "id": "A",
+          "text": "界面排版、颜色和整体观感"
+        },
+        {
+          "id": "B",
+          "text": "页面流程是否容易理解"
+        },
+        {
+          "id": "C",
+          "text": "信息是否表达得清晰"
+        },
+        {
+          "id": "D",
+          "text": "互动细节是否让人感到自然"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "探索视觉、交互、内容与体验侧重点。",
+      "required": false
+    },
+    {
+      "id": "DES02",
+      "direction_id": "DES",
+      "group": "方向探索",
+      "facet": "experience",
+      "question": "你在制作设计或数字内容方面的经历更接近？",
+      "options": [
+        {
+          "id": "A",
+          "text": "还没有尝试过"
+        },
+        {
+          "id": "B",
+          "text": "用模板做过简单图片或视频"
+        },
+        {
+          "id": "C",
+          "text": "改过界面、海报或剪辑作品"
+        },
+        {
+          "id": "D",
+          "text": "独立完成过一个有明确目标的作品"
+        },
+        {
+          "id": "E",
+          "text": "根据用户或观众反馈反复迭代过作品"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "设计经历不要求先有作品集。",
+      "required": false
+    },
+    {
+      "id": "DES03",
+      "direction_id": "DES",
+      "group": "方向探索",
+      "facet": "problem_style",
+      "question": "别人说“这个设计不好看”，你更愿意先？",
+      "options": [
+        {
+          "id": "A",
+          "text": "问清楚不喜欢的是哪里"
+        },
+        {
+          "id": "B",
+          "text": "观察用户完成任务是否方便"
+        },
+        {
+          "id": "C",
+          "text": "尝试几种视觉风格进行比较"
+        },
+        {
+          "id": "D",
+          "text": "回头确认设计想传达什么信息"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "探索理解反馈的方法，无单一标准。",
+      "required": false
+    },
+    {
+      "id": "DES04",
+      "direction_id": "DES",
+      "group": "方向探索",
+      "facet": "subdomain",
+      "question": "你更想长期创作哪类成果？",
+      "options": [
+        {
+          "id": "A",
+          "text": "真实可用的网站或App界面"
+        },
+        {
+          "id": "B",
+          "text": "海报、品牌视觉和图形"
+        },
+        {
+          "id": "C",
+          "text": "短视频、动画或互动内容"
+        },
+        {
+          "id": "D",
+          "text": "信息图、说明页面或教育内容"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "细分UI/UX、平面、媒体与信息设计。",
+      "required": false
+    },
+    {
+      "id": "DES05",
+      "direction_id": "DES",
+      "group": "AI应用与判断",
+      "facet": "ai_experience",
+      "question": "如果AI能生成图片、界面或视频，你目前最接近？",
+      "options": [
+        {
+          "id": "A",
+          "text": "还没用过"
+        },
+        {
+          "id": "B",
+          "text": "试过生成创意参考"
+        },
+        {
+          "id": "C",
+          "text": "会调整要求，挑选和修改生成作品"
+        },
+        {
+          "id": "D",
+          "text": "会检查需求、可用性、真实性和素材授权"
+        },
+        {
+          "id": "E",
+          "text": "会把AI用于构思、迭代、用户反馈与最终人工把关"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "将生成熟练度和作品可靠性区分。",
+      "required": false
+    },
+    {
+      "id": "DES06",
+      "direction_id": "DES",
+      "group": "AI应用与判断",
+      "facet": "ai_judgement",
+      "question": "AI说“这个页面对所有用户都易用”，但没有进行用户测试。你会？",
+      "options": [
+        {
+          "id": "A",
+          "text": "先检查实际使用流程，并找代表性用户试用"
+        },
+        {
+          "id": "B",
+          "text": "直接认为AI已经验证了可用性"
+        },
+        {
+          "id": "C",
+          "text": "再让AI解释为什么易用"
+        },
+        {
+          "id": "D",
+          "text": "把它作为初稿，并明确标注还没验证"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "不把AI生成的评价当作真实用户证据。",
+      "required": false
+    },
+    {
+      "id": "DES07",
+      "direction_id": "DES",
+      "group": "职业情境",
+      "facet": "scenario_preference",
+      "question": "设计一个给新生使用的校园指引页，你最想先做什么？",
+      "options": [
+        {
+          "id": "A",
+          "text": "画出他们最常用的路线与操作"
+        },
+        {
+          "id": "B",
+          "text": "整理复杂信息，让重点更突出"
+        },
+        {
+          "id": "C",
+          "text": "寻找能让页面亲切有趣的视觉风格"
+        },
+        {
+          "id": "D",
+          "text": "跟新生聊一聊他们最容易迷路的地方"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "探索流程、信息、视觉与调研偏好。",
+      "required": false
+    },
+    {
+      "id": "DES08",
+      "direction_id": "DES",
+      "group": "职业情境",
+      "facet": "growth_tradeoff",
+      "question": "如果一份作品看起来漂亮，但用户经常操作失败，你会更愿意？",
+      "options": [
+        {
+          "id": "A",
+          "text": "优先修改操作流程，即使牺牲部分视觉效果"
+        },
+        {
+          "id": "B",
+          "text": "研究为什么用户会误解页面"
+        },
+        {
+          "id": "C",
+          "text": "重新设计引导文案与提示"
+        },
+        {
+          "id": "D",
+          "text": "先比较不同改法，再选最平衡的方案"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "理解设计是解决问题，不只追求美观。",
+      "required": false
+    },
+    {
+      "id": "ENG01",
+      "direction_id": "ENG",
+      "group": "方向探索",
+      "facet": "interest",
+      "question": "当你看到一种新的硬件或智能设备，最吸引你的是什么？",
+      "options": [
+        {
+          "id": "A",
+          "text": "它内部的结构和工作原理"
+        },
+        {
+          "id": "B",
+          "text": "怎样把它做得更实用"
+        },
+        {
+          "id": "C",
+          "text": "怎样让生产过程更稳定"
+        },
+        {
+          "id": "D",
+          "text": "怎样用传感器和软件实现自动控制"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "探索工程设计、应用、制造、自动化。",
+      "required": false
+    },
+    {
+      "id": "ENG02",
+      "direction_id": "ENG",
+      "group": "方向探索",
+      "facet": "experience",
+      "question": "你以前参加过动手制作或工程类活动吗？",
+      "options": [
+        {
+          "id": "A",
+          "text": "暂时没有"
+        },
+        {
+          "id": "B",
+          "text": "看过拆解、实验或制作演示"
+        },
+        {
+          "id": "C",
+          "text": "跟着教程完成过简单模型或装置"
+        },
+        {
+          "id": "D",
+          "text": "独立设计并制作过一个可用原型"
+        },
+        {
+          "id": "E",
+          "text": "测量结果并根据失败经验多次修改过原型"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "没有器材或实验条件的人不会被判定不适合。",
+      "required": false
+    },
+    {
+      "id": "ENG03",
+      "direction_id": "ENG",
+      "group": "方向探索",
+      "facet": "problem_style",
+      "question": "一件制作出来的装置不稳定，你更愿意先？",
+      "options": [
+        {
+          "id": "A",
+          "text": "拆分可能影响结果的因素"
+        },
+        {
+          "id": "B",
+          "text": "观察并记录它在什么条件下出错"
+        },
+        {
+          "id": "C",
+          "text": "向有经验的人请教安全和结构问题"
+        },
+        {
+          "id": "D",
+          "text": "重新规划测试流程和改进顺序"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "反映工程问题探索风格。",
+      "required": false
+    },
+    {
+      "id": "ENG04",
+      "direction_id": "ENG",
+      "group": "方向探索",
+      "facet": "subdomain",
+      "question": "哪一种工程成果更让你有成就感？",
+      "options": [
+        {
+          "id": "A",
+          "text": "让一个小机器人完成真实动作"
+        },
+        {
+          "id": "B",
+          "text": "改善机器或设备的可靠性"
+        },
+        {
+          "id": "C",
+          "text": "设计更节能或更环保的方案"
+        },
+        {
+          "id": "D",
+          "text": "让工厂或物流流程更智能"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "细分机器人、可靠性、可持续工程和智能制造。",
+      "required": false
+    },
+    {
+      "id": "ENG05",
+      "direction_id": "ENG",
+      "group": "AI应用与判断",
+      "facet": "ai_experience",
+      "question": "如果AI能帮助你构思装置或工程流程，你的使用经验是？",
+      "options": [
+        {
+          "id": "A",
+          "text": "还没有使用过"
+        },
+        {
+          "id": "B",
+          "text": "让AI解释基本概念或提供思路"
+        },
+        {
+          "id": "C",
+          "text": "让AI生成草图、零件清单或步骤初稿"
+        },
+        {
+          "id": "D",
+          "text": "会检查材料、条件和安全限制是否吻合"
+        },
+        {
+          "id": "E",
+          "text": "会结合实际测量、人工评审与验证结果持续改进方案"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "强调现实物理世界需验证。",
+      "required": false
+    },
+    {
+      "id": "ENG06",
+      "direction_id": "ENG",
+      "group": "AI应用与判断",
+      "facet": "ai_judgement",
+      "question": "AI建议直接修改设备运行参数以提升速度，但没有说明安全依据。你会？",
+      "options": [
+        {
+          "id": "A",
+          "text": "先在设备上试试，看看是否真的更快"
+        },
+        {
+          "id": "B",
+          "text": "再问AI是否保证绝对安全"
+        },
+        {
+          "id": "C",
+          "text": "按规范寻求合格人员审查，并安排安全可控的验证"
+        },
+        {
+          "id": "D",
+          "text": "先查设备手册和已有操作流程，列出可能风险"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "实体系统遵循安全优先原则。",
+      "required": false
+    },
+    {
+      "id": "ENG07",
+      "direction_id": "ENG",
+      "group": "职业情境",
+      "facet": "scenario_preference",
+      "question": "团队要做一个帮助宿舍节能的装置，你最希望负责？",
+      "options": [
+        {
+          "id": "A",
+          "text": "想出装置要如何实现"
+        },
+        {
+          "id": "B",
+          "text": "调研实际使用条件"
+        },
+        {
+          "id": "C",
+          "text": "制作并测试原型"
+        },
+        {
+          "id": "D",
+          "text": "评估成本、维护和长期使用"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "探索概念、需求、实验和实施。",
+      "required": false
+    },
+    {
+      "id": "ENG08",
+      "direction_id": "ENG",
+      "group": "职业情境",
+      "facet": "growth_tradeoff",
+      "question": "一个原型要修改很多次才能稳定，你更能接受哪部分反复工作？",
+      "options": [
+        {
+          "id": "A",
+          "text": "动手调整结构与零件"
+        },
+        {
+          "id": "B",
+          "text": "记录数据，找失败规律"
+        },
+        {
+          "id": "C",
+          "text": "编写控制和自动化逻辑"
+        },
+        {
+          "id": "D",
+          "text": "协调材料、成本与测试进度"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "展示工程项目中的多种分工。",
+      "required": false
+    },
+    {
+      "id": "HLT01",
+      "direction_id": "HLT",
+      "group": "方向探索",
+      "facet": "interest",
+      "question": "如果参与改善人们的健康体验，你最想做哪种工作？",
+      "options": [
+        {
+          "id": "A",
+          "text": "帮助人更容易理解健康信息"
+        },
+        {
+          "id": "B",
+          "text": "研究某种现象为什么发生"
+        },
+        {
+          "id": "C",
+          "text": "改进就医或健康服务流程"
+        },
+        {
+          "id": "D",
+          "text": "开发帮助健康管理的数字工具"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "探索健康传播、研究、服务、技术。",
+      "required": false
+    },
+    {
+      "id": "HLT02",
+      "direction_id": "HLT",
+      "group": "方向探索",
+      "facet": "experience",
+      "question": "你曾经接触健康科普、生命科学或公益服务的经历是？",
+      "options": [
+        {
+          "id": "A",
+          "text": "还没有相关经历"
+        },
+        {
+          "id": "B",
+          "text": "读过或看过一些入门科普"
+        },
+        {
+          "id": "C",
+          "text": "参与过课程实验、公益或相关活动"
+        },
+        {
+          "id": "D",
+          "text": "独立完成过科普整理、调研或相关小项目"
+        },
+        {
+          "id": "E",
+          "text": "做过持续整理、核对证据或服务改进工作"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "绝不询问本人病史、药物或其他敏感健康信息。",
+      "required": false
+    },
+    {
+      "id": "HLT03",
+      "direction_id": "HLT",
+      "group": "方向探索",
+      "facet": "problem_style",
+      "question": "看到两篇对同一健康话题说法不同的文章，你更愿意？",
+      "options": [
+        {
+          "id": "A",
+          "text": "了解它们各自使用了什么证据"
+        },
+        {
+          "id": "B",
+          "text": "找可信专业人士解释差异"
+        },
+        {
+          "id": "C",
+          "text": "研究怎样把差异清楚告诉大众"
+        },
+        {
+          "id": "D",
+          "text": "关注不同说法会怎样影响实际服务"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "反映证据意识、协作、传播、服务偏好。",
+      "required": false
+    },
+    {
+      "id": "HLT04",
+      "direction_id": "HLT",
+      "group": "方向探索",
+      "facet": "subdomain",
+      "question": "你未来最想参与哪类任务？",
+      "options": [
+        {
+          "id": "A",
+          "text": "生命科学研究与资料整理"
+        },
+        {
+          "id": "B",
+          "text": "健康科普及患者沟通"
+        },
+        {
+          "id": "C",
+          "text": "健康服务组织与改进"
+        },
+        {
+          "id": "D",
+          "text": "数字健康产品的设计与评估"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "提供大类探索，不推定专业执照或资格。",
+      "required": false
+    },
+    {
+      "id": "HLT05",
+      "direction_id": "HLT",
+      "group": "AI应用与判断",
+      "facet": "ai_experience",
+      "question": "如果AI帮你整理健康研究或科普内容，你目前通常会？",
+      "options": [
+        {
+          "id": "A",
+          "text": "还没有用过"
+        },
+        {
+          "id": "B",
+          "text": "让AI解释一个陌生词语"
+        },
+        {
+          "id": "C",
+          "text": "让AI整理资料做阅读提纲"
+        },
+        {
+          "id": "D",
+          "text": "会核对可信原始来源并注意适用范围"
+        },
+        {
+          "id": "E",
+          "text": "会记录引用、复核关键内容，并交由合格人员处理专业判断"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "衡量对高风险信息的谨慎使用方式。",
+      "required": false
+    },
+    {
+      "id": "HLT06",
+      "direction_id": "HLT",
+      "group": "AI应用与判断",
+      "facet": "ai_judgement",
+      "question": "AI生成了一段面向公众的健康建议，却没有来源或适用条件。你会？",
+      "options": [
+        {
+          "id": "A",
+          "text": "先查可信指南和适用范围，并请合格专业人员审核"
+        },
+        {
+          "id": "B",
+          "text": "直接发布，因为AI表达很清楚"
+        },
+        {
+          "id": "C",
+          "text": "让AI把口吻改得更肯定"
+        },
+        {
+          "id": "D",
+          "text": "先标为待核查草稿，暂停作为建议发布"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "避免未经核查的健康建议被当成专业意见。",
+      "required": false
+    },
+    {
+      "id": "HLT07",
+      "direction_id": "HLT",
+      "group": "职业情境",
+      "facet": "scenario_preference",
+      "question": "校园希望做一次健康科普活动，你最喜欢？",
+      "options": [
+        {
+          "id": "A",
+          "text": "查找并整理可靠资料"
+        },
+        {
+          "id": "B",
+          "text": "把复杂概念设计成易懂图文"
+        },
+        {
+          "id": "C",
+          "text": "和同学沟通他们最困惑的问题"
+        },
+        {
+          "id": "D",
+          "text": "规划活动流程与反馈收集"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "探索研究、设计、沟通、组织偏好。",
+      "required": false
+    },
+    {
+      "id": "HLT08",
+      "direction_id": "HLT",
+      "group": "职业情境",
+      "facet": "growth_tradeoff",
+      "question": "如果投入这个方向需要长期学习、并遵守严格流程，你最希望未来的工作强调？",
+      "options": [
+        {
+          "id": "A",
+          "text": "理解科学问题并耐心研究"
+        },
+        {
+          "id": "B",
+          "text": "直接帮助人理解或解决困难"
+        },
+        {
+          "id": "C",
+          "text": "改善系统，让更多人受益"
+        },
+        {
+          "id": "D",
+          "text": "研发更好的工具与方法"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "展示不同价值追求，不作职业资格预测。",
+      "required": false
+    },
+    {
+      "id": "EDU01",
+      "direction_id": "EDU",
+      "group": "方向探索",
+      "facet": "interest",
+      "question": "当你理解一个新知识后，最让你满足的下一步是？",
+      "options": [
+        {
+          "id": "A",
+          "text": "讲给别人听，让他们也能理解"
+        },
+        {
+          "id": "B",
+          "text": "继续追问为什么，寻找更深入的答案"
+        },
+        {
+          "id": "C",
+          "text": "设计更有趣的学习活动"
+        },
+        {
+          "id": "D",
+          "text": "整理成一套清楚、易查的知识材料"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "探索教学、研究、教学设计和知识整理。",
+      "required": false
+    },
+    {
+      "id": "EDU02",
+      "direction_id": "EDU",
+      "group": "方向探索",
+      "facet": "experience",
+      "question": "你过去的教学、讲解或研究经历更接近？",
+      "options": [
+        {
+          "id": "A",
+          "text": "还没有尝试过"
+        },
+        {
+          "id": "B",
+          "text": "为同学解释过一个简单问题"
+        },
+        {
+          "id": "C",
+          "text": "整理过学习笔记、教程或资料"
+        },
+        {
+          "id": "D",
+          "text": "组织过一次讲解、辅导或小型调研"
+        },
+        {
+          "id": "E",
+          "text": "根据他人的理解情况或证据多次改进方法"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "无证书或论文并不意味着没有教育科研潜力。",
+      "required": false
+    },
+    {
+      "id": "EDU03",
+      "direction_id": "EDU",
+      "group": "方向探索",
+      "facet": "problem_style",
+      "question": "如果别人听不懂你的解释，你最愿意？",
+      "options": [
+        {
+          "id": "A",
+          "text": "换一种例子重新说明"
+        },
+        {
+          "id": "B",
+          "text": "先了解他卡在了哪一步"
+        },
+        {
+          "id": "C",
+          "text": "用图表或互动活动展示"
+        },
+        {
+          "id": "D",
+          "text": "先确认原来的解释是否正确"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "对应沟通、诊断、设计与准确性偏好。",
+      "required": false
+    },
+    {
+      "id": "EDU04",
+      "direction_id": "EDU",
+      "group": "方向探索",
+      "facet": "subdomain",
+      "question": "哪类长期问题更让你有兴趣？",
+      "options": [
+        {
+          "id": "A",
+          "text": "怎样把复杂概念讲清楚"
+        },
+        {
+          "id": "B",
+          "text": "怎样设计有吸引力的课程"
+        },
+        {
+          "id": "C",
+          "text": "怎样通过证据回答新的研究问题"
+        },
+        {
+          "id": "D",
+          "text": "怎样让学习资源更公平、易获得"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "区分教学、课程、研究、教育服务。",
+      "required": false
+    },
+    {
+      "id": "EDU05",
+      "direction_id": "EDU",
+      "group": "AI应用与判断",
+      "facet": "ai_experience",
+      "question": "如果AI能协助教学或研究，你目前的使用方式更接近？",
+      "options": [
+        {
+          "id": "A",
+          "text": "还没有尝试过"
+        },
+        {
+          "id": "B",
+          "text": "让AI解释知识或总结资料"
+        },
+        {
+          "id": "C",
+          "text": "让AI生成讲解提纲或活动创意"
+        },
+        {
+          "id": "D",
+          "text": "会对照教材、论文或可信材料核查内容"
+        },
+        {
+          "id": "E",
+          "text": "会根据真实学习反馈与证据迭代AI辅助方案"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "AI可辅助生成，但不能替代事实与教学效果验证。",
+      "required": false
+    },
+    {
+      "id": "EDU06",
+      "direction_id": "EDU",
+      "group": "AI应用与判断",
+      "facet": "ai_judgement",
+      "question": "AI生成了一份讲义，表达流畅但没有提供可靠出处。你更愿意？",
+      "options": [
+        {
+          "id": "A",
+          "text": "直接发给同学，因为读起来没有问题"
+        },
+        {
+          "id": "B",
+          "text": "让AI再生成一个版本"
+        },
+        {
+          "id": "C",
+          "text": "对照可信教材或原始来源，核查关键结论"
+        },
+        {
+          "id": "D",
+          "text": "先抽查其中几个重点并标为草稿"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "检验对流畅但未经核查文本的处理策略。",
+      "required": false
+    },
+    {
+      "id": "EDU07",
+      "direction_id": "EDU",
+      "group": "职业情境",
+      "facet": "scenario_preference",
+      "question": "你要帮助一位总在某类题目上犯错的同学，最想先？",
+      "options": [
+        {
+          "id": "A",
+          "text": "观察他究竟在哪一步开始误解"
+        },
+        {
+          "id": "B",
+          "text": "换一种更生动的解释"
+        },
+        {
+          "id": "C",
+          "text": "设计几个逐步变难的练习"
+        },
+        {
+          "id": "D",
+          "text": "陪他讨论并鼓励继续尝试"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "反映诊断、表达、教学设计、支持偏好。",
+      "required": false
+    },
+    {
+      "id": "EDU08",
+      "direction_id": "EDU",
+      "group": "职业情境",
+      "facet": "growth_tradeoff",
+      "question": "如果长期做教育或研究，你更愿意面对哪种挑战？",
+      "options": [
+        {
+          "id": "A",
+          "text": "同一个知识点需要重复讲很多遍"
+        },
+        {
+          "id": "B",
+          "text": "花很多时间验证一个不确定的想法"
+        },
+        {
+          "id": "C",
+          "text": "持续改进教学材料与方法"
+        },
+        {
+          "id": "D",
+          "text": "与不同背景的人合作推动改变"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "了解对职业真实过程的接受程度。",
+      "required": false
+    },
+    {
+      "id": "OPS01",
+      "direction_id": "OPS",
+      "group": "方向探索",
+      "facet": "interest",
+      "question": "看到一件事情经常拖延或出错时，你最想做什么？",
+      "options": [
+        {
+          "id": "A",
+          "text": "找到流程里最容易卡住的环节"
+        },
+        {
+          "id": "B",
+          "text": "让不同人的交接更清楚"
+        },
+        {
+          "id": "C",
+          "text": "设计提醒或自动化工具"
+        },
+        {
+          "id": "D",
+          "text": "直接帮助受到影响的用户解决问题"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "对应流程、协作、自动化、服务偏好。",
+      "required": false
+    },
+    {
+      "id": "OPS02",
+      "direction_id": "OPS",
+      "group": "方向探索",
+      "facet": "experience",
+      "question": "你在组织事务、物流或客户沟通方面有过什么经历？",
+      "options": [
+        {
+          "id": "A",
+          "text": "还没有相关经历"
+        },
+        {
+          "id": "B",
+          "text": "参与过一次活动筹备或物品安排"
+        },
+        {
+          "id": "C",
+          "text": "负责过排班、登记或客户回应等简单事务"
+        },
+        {
+          "id": "D",
+          "text": "独立管理过一段工作流程"
+        },
+        {
+          "id": "E",
+          "text": "做过复盘，改进流程并持续跟踪结果"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "只记录参与经历，不要求在公司任职。",
+      "required": false
+    },
+    {
+      "id": "OPS03",
+      "direction_id": "OPS",
+      "group": "方向探索",
+      "facet": "problem_style",
+      "question": "如果两个人都说任务已经交给对方，你最愿意怎么处理？",
+      "options": [
+        {
+          "id": "A",
+          "text": "先画清楚交接节点与负责人"
+        },
+        {
+          "id": "B",
+          "text": "与双方核实实际发生了什么"
+        },
+        {
+          "id": "C",
+          "text": "建立简单的确认和记录机制"
+        },
+        {
+          "id": "D",
+          "text": "先保证眼前任务有人完成，再处理流程"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "探索结构、沟通、系统化、现场处理风格。",
+      "required": false
+    },
+    {
+      "id": "OPS04",
+      "direction_id": "OPS",
+      "group": "方向探索",
+      "facet": "subdomain",
+      "question": "下面哪种运营问题更想长期研究？",
+      "options": [
+        {
+          "id": "A",
+          "text": "让库存和配送更顺畅"
+        },
+        {
+          "id": "B",
+          "text": "让客户问题更快解决"
+        },
+        {
+          "id": "C",
+          "text": "让团队排班与协作更合理"
+        },
+        {
+          "id": "D",
+          "text": "让重复任务更容易自动执行"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "区分供应链、客服、协调、自动化。",
+      "required": false
+    },
+    {
+      "id": "OPS05",
+      "direction_id": "OPS",
+      "group": "AI应用与判断",
+      "facet": "ai_experience",
+      "question": "如果AI能协助处理订单或客户咨询，你目前最接近？",
+      "options": [
+        {
+          "id": "A",
+          "text": "还没有用过"
+        },
+        {
+          "id": "B",
+          "text": "让AI帮忙写简单回复"
+        },
+        {
+          "id": "C",
+          "text": "让AI归纳常见问题并生成处理建议"
+        },
+        {
+          "id": "D",
+          "text": "会核对订单、规则和客户需求再采用AI建议"
+        },
+        {
+          "id": "E",
+          "text": "会设置权限、人工复核点及异常升级处理流程"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "评估AI工作流应用经验。",
+      "required": false
+    },
+    {
+      "id": "OPS06",
+      "direction_id": "OPS",
+      "group": "AI应用与判断",
+      "facet": "ai_judgement",
+      "question": "AI建议直接自动批准所有异常退款请求，以缩短处理时间。你会？",
+      "options": [
+        {
+          "id": "A",
+          "text": "直接启用，先追求效率"
+        },
+        {
+          "id": "B",
+          "text": "交给主管决定，但不核对细节"
+        },
+        {
+          "id": "C",
+          "text": "先核对政策与操作权限，设置人工复核和小范围验证"
+        },
+        {
+          "id": "D",
+          "text": "让AI再确认一次这个方案没有风险"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "将自动化边界与实际权限纳入考量。",
+      "required": false
+    },
+    {
+      "id": "OPS07",
+      "direction_id": "OPS",
+      "group": "职业情境",
+      "facet": "scenario_preference",
+      "question": "校园活动现场突然排起长队，你最想立刻做什么？",
+      "options": [
+        {
+          "id": "A",
+          "text": "观察哪一环节最慢"
+        },
+        {
+          "id": "B",
+          "text": "重新安排人员分工"
+        },
+        {
+          "id": "C",
+          "text": "向排队的人说明情况并提供帮助"
+        },
+        {
+          "id": "D",
+          "text": "增加简化流程或自助登记方式"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "反映系统诊断、调度、服务与自动化偏好。",
+      "required": false
+    },
+    {
+      "id": "OPS08",
+      "direction_id": "OPS",
+      "group": "职业情境",
+      "facet": "growth_tradeoff",
+      "question": "如果新流程上线后偶尔出错，你最愿意负责？",
+      "options": [
+        {
+          "id": "A",
+          "text": "检查出错情况，寻找共同原因"
+        },
+        {
+          "id": "B",
+          "text": "培训相关人员，减少误操作"
+        },
+        {
+          "id": "C",
+          "text": "完善规则和异常处理步骤"
+        },
+        {
+          "id": "D",
+          "text": "设计指标跟踪改进效果"
+        },
+        {
+          "id": "U",
+          "text": "还不确定／暂时没有相关体验"
+        }
+      ],
+      "interpretation_note": "探索运营质量与持续改进兴趣。",
+      "required": false
+    }
+  ]
+}

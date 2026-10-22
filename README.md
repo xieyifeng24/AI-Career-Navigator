@@ -1,3 +1,5 @@
+> 问卷 V2.0（本地候选版）：使用用户提供的十方向原题，每次 4+8 题，分开解释兴趣、经历和 AI 策略。题干目前仅中文，英／马翻译待审阅。详见 [V2 问卷说明与验收](docs/QUESTIONNAIRE_V2.md)。
+
 > 三来源知识库（本地候选版）：O*NET / ESCO 已导入真实资料；MYFutureJobs 等待授权导入。双周更新代码已配置，远程调度尚未启用。详见 [知识库与启用说明](docs/CAREER_KNOWLEDGE.md)。
 
 ## Local-first assessment candidate (22 October 2026)

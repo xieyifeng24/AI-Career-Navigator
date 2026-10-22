@@ -1,3 +1,4 @@
+import {buildExplorationReport} from '../exploration/report.js';
 import bundledKnowledge from '../../data/knowledge/current.json' with {type:'json'};
 import database from './careers.json' with {type:'json'};
 import optionCatalog from '../questionnaire.json' with {type:'json'};
@@ -50,6 +51,7 @@ const common={
  reality:T('Check local job requirements, qualification routes, accessibility, costs and available time before deciding.','决定前核实当地岗位要求、资格路径、可访问性、费用和可用时间。','Semak syarat pekerjaan tempatan, laluan kelayakan, akses, kos dan masa sebelum membuat keputusan.'),
 };
 export function buildLocalReport(profile,locale='en',assumptions={},knowledge=activeKnowledge) {
+ if(profile.exploration?.version==='2.0.0')return buildExplorationReport(profile,locale,assumptions,knowledge);
  const L=x=>tr(x,locale), scored=scoreProfile(profile,assumptions),sources={};
  const resources={
  'learn-ai':{title:'Microsoft Learn: AI learning hub',url:'https://learn.microsoft.com/en-us/ai/',tool:'Microsoft Copilot'},

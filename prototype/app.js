@@ -1,3 +1,5 @@
+import {createDraft,isV2,exampleProfile,validateExploration} from './exploration/engine.js';
+import {renderExplorationIntake,collectExploration,V2_STEPS,renderExplorationSimulator,explorationNotice,translationNotice} from './exploration/ui.js';
 import {buildLocalReport,refreshKnowledge} from './local/engine.js';
 import {rulesNotice,renderRatings,collectRatings,localErrors,renderLocalReport,renderRuleSimulator,provenancePanel,localText} from './local/ui.js';
 import {optionalAI} from './local/optional-ai.js';
@@ -39,6 +41,7 @@ function samples() {
   return `<main class="subpage shell"><div class="back-row">${button('← Back to home','home','text-button')}</div><div class="intro-narrow"><span class="kicker">EXPLORE THE PROTOTYPE</span><h1>Choose a starting point.</h1><p>${state.mode==='demo'?'Scripted V0.1 demo: no AI inference.':'Choose a fictional starting profile for a local assessment. You can edit every answer before submission.'}</p>${badge('TWO FICTIONAL DEMO CASES')}</div><div class="sample-grid">${Object.entries(cases).map(([id,c]) => `<button class="sample-card ${c.color}" type="button" data-action="sample:${id}"><span class="sample-top"><span class="sample-icon">${id==='marketing'?'✳':'◇'}</span><span>${t('CASE {number}',{number:id==='marketing'?'01':'02'})}</span></span><strong>${esc(c.label)}</strong><p>${id==='marketing'?'Wants to use AI to move from content production toward strategy.':'Wants to explore a move from administration into operations.'}</p><span class="sample-link">Load this profile ↗</span></button>`).join('')}</div><div class="info-banner"><span>ⓘ</span><p>${state.mode==='demo'?'Insights in this mode are scripted, not model inference.':'Base reports use local rules and dated occupational sources. Only optional AI analysis sends fictional inputs to the backend and RunPod.'}</p></div></main>`;
 }
 function profile() {
+  if(isV2(state.profile))return renderExplorationIntake(state.profile,state.step,state.errors);
   const step = steps[state.step];
   const intro = [
     'Your work is more than a job title. Start with the context that feels closest to you.',
@@ -65,7 +68,7 @@ function reportShell(content, active) {
   const next = activeIndex === reportPages.length-1
     ? button('Start again ↗','restart','button primary')
     : button(t('Next: {section} →',{section:t(pageLabels[reportPages[activeIndex+1]])}),`page:${reportPages[activeIndex+1]}`,'button primary');
-  return `<main class="report-page shell"><aside class="report-sidebar"><div class="sidebar-sticky"><div class="report-person"><span class="person-avatar">${esc((r.scenario?.short||r.profile.background).slice(0,1))}</span><div><span>${r.mode==='rules'?t('LOCAL RULES · FICTIONAL SELF-REPORT'):r.mode==='real-ai'?'FICTIONAL INPUT · REAL INFERENCE':'SCRIPTED DEMO PROFILE'}</span><strong><span data-user-content>${esc(answerText(r.profile,'background'))}</span></strong></div></div><nav aria-label="Report sections" class="report-nav">${nav}</nav><div class="sidebar-bottom"><span>YOUR INPUT</span><p><span data-user-content>${esc(answerText(r.profile,'experience'))}</span> · ${t('{hours} hours / week',{hours:r.weeklyHours})}</p>${button('Edit your answers ↗','edit','text-button')}</div></div></aside><div class="report-main">${notice}${r.mode==='rules'&&!['capability','impact','paths','plan'].includes(active)?rulesNotice()+provenancePanel(r):''}${content}${r.mode==='rules'?aiPanel():''}<div class="report-bottom-nav">${previous}${next}</div></div></main>`;
+  return `<main class="report-page shell"><aside class="report-sidebar"><div class="sidebar-sticky"><div class="report-person"><span class="person-avatar">${esc((r.scenario?.short||r.profile.background).slice(0,1))}</span><div><span>${r.mode==='rules'?t('LOCAL RULES · FICTIONAL SELF-REPORT'):r.mode==='real-ai'?'FICTIONAL INPUT · REAL INFERENCE':'SCRIPTED DEMO PROFILE'}</span><strong><span data-user-content>${esc(answerText(r.profile,'background'))}</span></strong></div></div><nav aria-label="Report sections" class="report-nav">${nav}</nav><div class="sidebar-bottom"><span>YOUR INPUT</span><p><span data-user-content>${esc(answerText(r.profile,'experience'))}</span> · ${r.questionnaireVersion==='2.0.0'?localText.T('Planning assumption','排期假设','Andaian perancangan')+': '+r.weeklyHours+'h':t('{hours} hours / week',{hours:r.weeklyHours})}</p>${button('Edit your answers ↗','edit','text-button')}</div></div></aside><div class="report-main">${notice}${r.mode==='rules'&&!['capability','impact','paths','plan'].includes(active)?(r.questionnaireVersion==='2.0.0'?explorationNotice()+translationNotice():rulesNotice())+provenancePanel(r):''}${content}${r.mode==='rules'?aiPanel():''}<div class="report-bottom-nav">${previous}${next}</div></div></main>`;
 }
 function methodology() { return `<div class="method-note"><span class="method-icon">ⓘ</span><div><strong>How to read this demo</strong><p>${esc(t(state.report.evidenceLimit))} ${t('Treat each suggestion as a hypothesis to test, not a prediction.')}</p></div></div>`; }
 function capability() {
@@ -114,8 +117,12 @@ function render() {
   document.querySelector('meta[name=description]')?.setAttribute('content',t('Explore your skills, understand how AI changes work tasks, and compare practical career paths.'));
 }
 function go(page) { state.page=page; render(); window.scrollTo({top:0,behavior:'instant'}); }
-function collectForm(changed) {const form=document.getElementById('profile-form');if(form) {collectAnswers(form,state.profile,changed);collectRatings(form,state.profile);const data=new FormData(form);if(data.has('scenario')) state.profile.scenario=String(data.get('scenario'));}}
+function collectForm(changed) {const form=document.getElementById('profile-form');if(form && isV2(state.profile))return collectExploration(form,state.profile);if(form) {collectAnswers(form,state.profile,changed);collectRatings(form,state.profile);const data=new FormData(form);if(data.has('scenario')) state.profile.scenario=String(data.get('scenario'));}}
 root.addEventListener('change',event=>{
+ if(event.target.matches('[data-v2-control]')){
+  const key=event.target.dataset.v2Control;state.localScenario[key]=key==='hours'?Number(event.target.value):event.target.value;
+  const panel=event.target.closest('[data-v2-simulator]');panel.outerHTML=renderExplorationSimulator(state.report,state.localScenario);root.querySelector(`[data-v2-control="${key}"]`)?.focus();return;
+ }
  if(event.target.id==='ai-consent'){state.ai.consent=event.target.checked;return;}
  if(event.target.matches('[data-local-rating],[data-local-education]')) {
   const key=event.target.dataset.localRating;
@@ -127,6 +134,7 @@ root.addEventListener('change',event=>{
  if(event.target.id==='language-select') {collectForm();setLanguage(event.target.value);if(state.simulator)state.simulator.language=language==='zh-CN'?'zh':language;return render();}
  if(event.target.closest('#profile-form')) {
    collectForm(event.target);
+   if(isV2(state.profile)){const name=event.target.name,value=event.target.value;render();[...document.getElementsByName(name)].find(el=>el.value===value)?.focus();return;}
    if(event.target.name.startsWith('answer-')) {
      const {name,value,checked}=event.target;render();
      const custom=value==='other' && checked!==false ? document.getElementById(`custom-${name.slice(7)}`) : null;
@@ -140,6 +148,7 @@ root.addEventListener('click', event=>{
   if(state.busy && action!=='cancel') return;
   if(action==='cancel') { state.controller?.abort(); state.busy=false; return go('profile'); }
   if(action==='ai-deep')return deepen();
+  if(action==='v2-reset'){state.localScenario={};return render();}
   if(action==='local-reset'){state.localScenario={ratings:{}};return render();}
   if(action==='retry') return generate();
   if(action==='sim-reset' && ['real-ai','rules'].includes(state.report?.mode)) { state.simulator={...simulatorDefaults(state.report,state.path),language:language==='zh-CN'?'zh':language}; render(); root.querySelector('[data-action="sim-reset"]')?.focus(); return; }
@@ -147,9 +156,9 @@ root.addEventListener('click', event=>{
   if(action==='legacy') {state.mode='demo'; return go('samples');}
   if(action==='radar' || action==='refresh-radar') return loadRadar(action==='refresh-radar');
   if(action==='home') { state.report=null; return go('home'); }
-  if(action==='start') { state.mode='live'; state.profile=emptyProfile(); state.report=null; state.step=0; state.errors={}; return go('profile'); }
+  if(action==='start') { state.mode='live'; state.profile=createDraft(); state.report=null; state.step=0; state.errors={}; return go('profile'); }
   if(action==='samples') {state.mode='live'; return go('samples');}
-  if(action.startsWith('sample:')) { state.profile=sampleProfile(action.split(':')[1]); initialAnswers(state.profile); state.report=null; state.step=0; state.errors={}; return go('profile'); }
+  if(action.startsWith('sample:')) { state.profile=state.mode==='live'?exampleProfile(action.split(':')[1]):sampleProfile(action.split(':')[1]); if(!isV2(state.profile))initialAnswers(state.profile); state.report=null; state.step=0; state.errors={}; return go('profile'); }
   if(action==='prev') { collectForm(); state.errors={}; state.step=Math.max(0,state.step-1); return go('profile'); }
   if(action==='edit') { state.report=null; state.errors={}; state.step=0; return go('profile'); }
   if(action==='restart') { state.report=null; state.profile=emptyProfile(); state.step=0; state.path='A'; state.errors={}; return go('home'); }
@@ -180,12 +189,30 @@ function updateSimulator(event) {
     localize(panel);
   }
 }
-root.addEventListener('input',updateSimulator);
+root.addEventListener('input',event=>{
+ if(event.target.matches('[data-v2-control="hours"]')){
+  state.localScenario.hours=Number(event.target.value);
+  const panel=event.target.closest('[data-v2-simulator]'),probe=document.createElement('div');
+  probe.innerHTML=renderExplorationSimulator(state.report,state.localScenario);
+  panel.querySelector('.sim-comparison').outerHTML=probe.querySelector('.sim-comparison').outerHTML;
+  panel.querySelector('output').textContent=event.target.value+'h';
+  return;
+ }
+ updateSimulator(event);
+});
 root.addEventListener('change',updateSimulator);
 
 root.addEventListener('submit', event=>{
   if(event.target.id!=='profile-form') return;
-  event.preventDefault(); collectForm(); state.errors={...validateStep(state.profile,state.step,state.mode),...(state.mode==='live'?localErrors(state.profile,state.step):{})};
+  event.preventDefault(); collectForm();
+  if(isV2(state.profile)){
+   state.errors=validateExploration(state.profile,state.step);
+   if(Object.keys(state.errors).length){render();document.getElementById('exploration-direction')?.focus();return;}
+   if(state.step===0)state.profile.synthetic=true; // The entry button acknowledges the single fictional-demo notice.
+   if(state.step<V2_STEPS-1){state.step++;return go('profile');}
+   state.report=buildLocalReport(state.profile,language);state.simulator=null;state.localScenario={};state.ai={busy:false,result:null,error:'',consent:false};state.path='A';state.comparePath='B';state.selectedSkill='';return go('capability');
+  }
+  state.errors={...validateStep(state.profile,state.step,state.mode),...(state.mode==='live'?localErrors(state.profile,state.step):{})};
   if(Object.keys(state.errors).length) { render(); (document.getElementById(`field-${Object.keys(state.errors)[0]==='aiUse'?'aiUsage':Object.keys(state.errors)[0]}`)||document.getElementById('synthetic'))?.focus(); return; }
   if(state.step<steps.length-1) {state.step++; return go('profile');}
   if(state.mode==='live') {state.report=buildLocalReport(state.profile,language);state.simulator=null;state.localScenario={ratings:{}};state.ai={busy:false,result:null,error:'',consent:false};state.path='A';state.comparePath='B';state.selectedSkill='';return go('star-map');}
@@ -198,7 +225,7 @@ function failure() { return `<main class="subpage shell"><div class="form-card s
 function generate(){return deepen();}
 function aiPanel(){
  const T=localText.T,a=state.ai;
- return `<section class="plan-mini optional-ai"><h2>${T('Optional AI deep analysis','可选 AI 深度分析','Analisis mendalam AI pilihan')}</h2><p>${T('Your local report is complete. Only this button sends fictional answers to RunPod; AI output never replaces rule scores. Waiting stops after 90 seconds, although a provider request may continue. Existing server quotas still apply.','你的本地报告已经完整生成。只有此按钮会将虚构答案发送至 RunPod，AI 结果不会替换规则评分。界面最多等待 90 秒，但服务端请求可能继续；现有额度保护仍有效。','Laporan tempatan anda sudah lengkap. Hanya butang ini menghantar jawapan rekaan ke RunPod; output AI tidak menggantikan skor peraturan. Penantian tamat selepas 90 saat, namun permintaan penyedia mungkin berterusan. Kuota pelayan masih terpakai。')}</p><label class="consent"><input id="ai-consent" type="checkbox" ${a.consent?'checked':''}>${T('I choose to send this fictional profile to RunPod for optional analysis.','我选择将本份虚构资料发送至 RunPod 进行可选分析。','Saya memilih menghantar profil rekaan ini ke RunPod untuk analisis pilihan。')}</label><button class="button secondary" data-action="ai-deep" ${a.busy?'disabled':''}>${a.busy?T('AI is working… Local report remains available.','AI 正在分析……本地报告仍可使用。','AI sedang memproses… Laporan tempatan kekal tersedia。'):T('AI deep analysis','AI 深度分析','Analisis mendalam AI')}</button>${a.error?`<p role="alert">${a.error==='consent'?T('Choose optional data sharing first. Your local report is unchanged.','请先选择是否分享虚构资料。本地报告保持不变。','Pilih perkongsian data pilihan dahulu. Laporan tempatan tidak berubah。'):T('AI is unavailable, timed out or rate-limited. Your complete local report is preserved. Please wait before retrying.','AI 暂不可用、超时或达到频率限制。完整本地报告已保留，请稍后重试。','AI tidak tersedia, tamat masa atau dihadkan kadar. Laporan tempatan lengkap anda dikekalkan. Tunggu sebelum mencuba lagi。')}</p>`:''}${a.result?`<details><summary>${T('View separate AI interpretation','查看独立 AI 解读','Lihat tafsiran AI berasingan')}</summary><p data-user-content>${esc(a.result.analysis.summary.text)}</p>${a.result.analysis.paths.map(p=>`<h3>${esc(a.result.ranking.find(r=>r.id===p.role_id)?.title||p.role_id)}</h3><p data-user-content>${esc(p.why.text)}</p>`).join('')}<p>${esc(a.result.inference.model)}</p></details>`:''}</section>`;
+ return `<section class="plan-mini optional-ai"><h2>${T('Optional AI deep analysis','可选 AI 深度分析','Analisis mendalam AI pilihan')}</h2><p>${state.report.questionnaireVersion==='2.0.0'?T('Your V2 report is complete. Optional AI provides a separate interpretation only; it cannot change local tags or exposure stages. If it fails, your report remains available.','V2 本地报告已完整生成。可选 AI 只提供独立文字解读，不改变本地标签或接触阶段；失败也不影响已有报告。','Laporan V2 tempatan sudah lengkap. AI pilihan hanya memberi tafsiran berasingan; ia tidak mengubah tag atau tahap pendedahan. Jika gagal, laporan kekal tersedia.'):T('Your local report is complete. Only this button sends fictional answers to RunPod; AI output never replaces rule scores. Waiting stops after 90 seconds, although a provider request may continue. Existing server quotas still apply.','你的本地报告已经完整生成。只有此按钮会将虚构答案发送至 RunPod，AI 结果不会替换规则评分。界面最多等待 90 秒，但服务端请求可能继续；现有额度保护仍有效。','Laporan tempatan anda sudah lengkap. Hanya butang ini menghantar jawapan rekaan ke RunPod; output AI tidak menggantikan skor peraturan. Penantian tamat selepas 90 saat, namun permintaan penyedia mungkin berterusan. Kuota pelayan masih terpakai。')}</p><label class="consent"><input id="ai-consent" type="checkbox" ${a.consent?'checked':''}>${T('I choose to send this fictional profile to RunPod for optional analysis.','我选择将本份虚构资料发送至 RunPod 进行可选分析。','Saya memilih menghantar profil rekaan ini ke RunPod untuk analisis pilihan。')}</label><button class="button secondary" data-action="ai-deep" ${a.busy?'disabled':''}>${a.busy?T('AI is working… Local report remains available.','AI 正在分析……本地报告仍可使用。','AI sedang memproses… Laporan tempatan kekal tersedia。'):T('AI deep analysis','AI 深度分析','Analisis mendalam AI')}</button>${a.error?`<p role="alert">${a.error==='consent'?T('Choose optional data sharing first. Your local report is unchanged.','请先选择是否分享虚构资料。本地报告保持不变。','Pilih perkongsian data pilihan dahulu. Laporan tempatan tidak berubah。'):T('AI is unavailable, timed out or rate-limited. Your complete local report is preserved. Please wait before retrying.','AI 暂不可用、超时或达到频率限制。完整本地报告已保留，请稍后重试。','AI tidak tersedia, tamat masa atau dihadkan kadar. Laporan tempatan lengkap anda dikekalkan. Tunggu sebelum mencuba lagi。')}</p>`:''}${a.result?`<details><summary>${T('View separate AI interpretation','查看独立 AI 解读','Lihat tafsiran AI berasingan')}</summary><p data-user-content>${esc(a.result.analysis.summary.text)}</p>${(state.report.questionnaireVersion==='2.0.0'?[]:a.result.analysis.paths).map(p=>`<h3>${esc(a.result.ranking.find(r=>r.id===p.role_id)?.title||p.role_id)}</h3><p data-user-content>${esc(p.why.text)}</p>`).join('')}<p>${esc(a.result.inference.model)}</p></details>`:''}</section>`;
 }
 async function deepen(){
  const base=state.report,T=localText.T,ai=state.ai;if(base?.mode!=='rules'||ai.busy)return;
