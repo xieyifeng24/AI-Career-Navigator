@@ -3302,5 +3302,21 @@
   "Career rankings use your background choices. The V3 responses below are unverified self-report and do not change those rankings.": {
     "zh-CN": "职业排序沿用基础选择题的既有规则。下方 V3 回答属于未经客观验证的自述，不改变职业排序。",
     "ms": "Kedudukan kerjaya menggunakan peraturan sedia ada bagi pilihan latar belakang. Jawapan V3 di bawah ialah laporan kendiri yang belum disahkan secara objektif dan tidak mengubah kedudukan tersebut."
+  },
+  "Career Star Map": {
+    "zh-CN": "职业星图",
+    "ms": "Peta Bintang Kerjaya"
+  },
+  "Skill Tree": {
+    "zh-CN": "技能树",
+    "ms": "Pokok Kemahiran"
+  },
+  "What If": {
+    "zh-CN": "假设情景",
+    "ms": "Bagaimana Jika"
+  },
+  "Previous assessment versions": {
+    "zh-CN": "早期测评版本",
+    "ms": "Versi penilaian terdahulu"
   }
 }
