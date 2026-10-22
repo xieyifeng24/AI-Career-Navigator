@@ -1,0 +1,227 @@
+{
+  "version": "local-careers-2026-10-22.1",
+  "reviewedAt": "2026-10-22",
+  "license": "Paraphrased occupational summaries adapted from O*NET OnLine, USDOL/ETA, CC BY 4.0. Translations and all numerical rules are Team Nexus editorial additions.",
+  "roles": [
+    {
+      "id": "13-1161.00",
+      "title": {
+        "en": "Market research analyst",
+        "zh-CN": "市场研究分析师",
+        "ms": "Penganalisis penyelidikan pasaran"
+      },
+      "summary": {
+        "en": "Study markets and customer needs to inform marketing decisions.",
+        "zh-CN": "研究市场和客户需求，为营销决策提供依据。",
+        "ms": "Kaji pasaran dan keperluan pelanggan untuk menyokong keputusan pemasaran。"
+      },
+      "source": {
+        "url": "https://www.onetonline.org/link/summary/13-1161.00",
+        "reviewedAt": "2026-10-22",
+        "geography": "US",
+        "kind": "official occupational context; paraphrased"
+      },
+      "editorial": {
+        "requirements": {
+          "analysis": 4,
+          "communication": 4,
+          "planning": 2,
+          "technical": 2
+        },
+        "interests": {
+          "research": 5,
+          "people": 3,
+          "creative": 4
+        },
+        "preferences": {
+          "structure": 2,
+          "autonomy": 3
+        },
+        "education": 2,
+        "note": "Team Nexus illustrative targets on 1–5 scales, NOT official O*NET ratings or validated entry requirements."
+      },
+      "resource": "learn-data",
+      "project": {
+        "en": "Compare fictional survey responses and present an evidence-based campaign brief.",
+        "zh-CN": "比较虚构问卷结果，提交有证据依据的营销简报。",
+        "ms": "Bandingkan jawapan tinjauan rekaan dan bentangkan ringkasan kempen berasaskan bukti."
+      }
+    },
+    {
+      "id": "13-1082.00",
+      "title": {
+        "en": "Project management specialist",
+        "zh-CN": "项目管理专员",
+        "ms": "Pakar pengurusan projek"
+      },
+      "summary": {
+        "en": "Coordinate project schedules, resources, budgets and communication.",
+        "zh-CN": "协调项目进度、资源、预算与沟通。",
+        "ms": "Selaraskan jadual, sumber, belanjawan dan komunikasi projek."
+      },
+      "source": {
+        "url": "https://www.onetonline.org/link/summary/13-1082.00",
+        "reviewedAt": "2026-10-22",
+        "geography": "US",
+        "kind": "official occupational context; paraphrased"
+      },
+      "editorial": {
+        "requirements": {
+          "analysis": 3,
+          "communication": 4,
+          "planning": 5,
+          "technical": 2
+        },
+        "interests": {
+          "research": 2,
+          "people": 5,
+          "creative": 2
+        },
+        "preferences": {
+          "structure": 5,
+          "autonomy": 3
+        },
+        "education": 2,
+        "note": "Team Nexus illustrative targets on 1–5 scales, NOT official O*NET ratings or validated entry requirements."
+      },
+      "resource": "learn-sheets",
+      "project": {
+        "en": "Plan a fictional event with milestones, dependencies and a risk log.",
+        "zh-CN": "为虚构活动制定里程碑、依赖关系和风险清单。",
+        "ms": "Rancang acara rekaan dengan pencapaian, kebergantungan dan daftar risiko."
+      }
+    },
+    {
+      "id": "13-1111.00",
+      "title": {
+        "en": "Management analyst",
+        "zh-CN": "管理分析师",
+        "ms": "Penganalisis pengurusan"
+      },
+      "summary": {
+        "en": "Study organizational procedures and propose ways to improve efficiency.",
+        "zh-CN": "研究组织流程，提出提高效率的方案。",
+        "ms": "Kaji prosedur organisasi dan cadangkan penambahbaikan kecekapan."
+      },
+      "source": {
+        "url": "https://www.onetonline.org/link/summary/13-1111.00",
+        "reviewedAt": "2026-10-22",
+        "geography": "US",
+        "kind": "official occupational context; paraphrased"
+      },
+      "editorial": {
+        "requirements": {
+          "analysis": 4,
+          "communication": 4,
+          "planning": 4,
+          "technical": 2
+        },
+        "interests": {
+          "research": 4,
+          "people": 4,
+          "creative": 3
+        },
+        "preferences": {
+          "structure": 3,
+          "autonomy": 5
+        },
+        "education": 2,
+        "note": "Team Nexus illustrative targets on 1–5 scales, NOT official O*NET ratings or validated entry requirements."
+      },
+      "resource": "learn-data",
+      "project": {
+        "en": "Map a fictional service workflow and compare two improvement options.",
+        "zh-CN": "梳理虚构服务流程，对比两项改进方案。",
+        "ms": "Petakan aliran kerja perkhidmatan rekaan dan bandingkan dua pilihan penambahbaikan."
+      }
+    },
+    {
+      "id": "43-6014.00",
+      "title": {
+        "en": "Administrative assistant",
+        "zh-CN": "行政助理",
+        "ms": "Pembantu pentadbiran"
+      },
+      "summary": {
+        "en": "Arrange appointments, correspondence, documents and routine office information.",
+        "zh-CN": "安排日程、往来函件、文档和日常办公信息。",
+        "ms": "Urus janji temu, surat-menyurat, dokumen dan maklumat pejabat rutin."
+      },
+      "source": {
+        "url": "https://www.onetonline.org/link/summary/43-6014.00",
+        "reviewedAt": "2026-10-22",
+        "geography": "US",
+        "kind": "official occupational context; paraphrased"
+      },
+      "editorial": {
+        "requirements": {
+          "analysis": 2,
+          "communication": 3,
+          "planning": 4,
+          "technical": 1
+        },
+        "interests": {
+          "research": 1,
+          "people": 4,
+          "creative": 1
+        },
+        "preferences": {
+          "structure": 5,
+          "autonomy": 2
+        },
+        "education": 1,
+        "note": "Team Nexus illustrative targets on 1–5 scales, NOT official O*NET ratings or validated entry requirements."
+      },
+      "resource": "learn-sheets",
+      "project": {
+        "en": "Create a fictional request tracker and resolve scheduling conflicts.",
+        "zh-CN": "建立虚构事务跟踪表，解决日程冲突。",
+        "ms": "Cipta penjejak permintaan rekaan dan selesaikan konflik jadual."
+      }
+    },
+    {
+      "id": "15-2051.00",
+      "title": {
+        "en": "Data scientist",
+        "zh-CN": "数据科学家",
+        "ms": "Saintis data"
+      },
+      "summary": {
+        "en": "Use programming, statistical analysis and visualization to interpret data.",
+        "zh-CN": "运用编程、统计分析和可视化解读数据。",
+        "ms": "Gunakan pengaturcaraan, analisis statistik dan visualisasi untuk mentafsir data."
+      },
+      "source": {
+        "url": "https://www.onetonline.org/link/summary/15-2051.00",
+        "reviewedAt": "2026-10-22",
+        "geography": "US",
+        "kind": "official occupational context; paraphrased"
+      },
+      "editorial": {
+        "requirements": {
+          "analysis": 5,
+          "communication": 3,
+          "planning": 2,
+          "technical": 5
+        },
+        "interests": {
+          "research": 5,
+          "people": 1,
+          "creative": 2
+        },
+        "preferences": {
+          "structure": 2,
+          "autonomy": 5
+        },
+        "education": 2,
+        "note": "Team Nexus illustrative targets on 1–5 scales, NOT official O*NET ratings or validated entry requirements."
+      },
+      "resource": "learn-python",
+      "project": {
+        "en": "Explore a public or synthetic dataset with a reproducible notebook and error checks.",
+        "zh-CN": "使用可复现笔记本探索公开或合成数据，记录误差检查。",
+        "ms": "Terokai data awam atau sintetik melalui buku nota boleh diulang dan semakan ralat."
+      }
+    }
+  ]
+}

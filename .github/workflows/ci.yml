@@ -56,4 +56,5 @@ jobs:
           node --check prototype/simulator.js
           node --check prototype/questionnaire.js
           node --check prototype/i18n.js
+          for file in prototype/local/*.js; do node --check "$file"; done
           node --test prototype/*.test.mjs

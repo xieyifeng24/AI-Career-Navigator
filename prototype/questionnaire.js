@@ -68,7 +68,7 @@ export function validateAnswers(profile,index) {
 }
 
 export function submissionProfile(profile) {
- const {scenario,...payload}=structuredClone(profile);
+ const {scenario,assessment,education,...payload}=structuredClone(profile);
  if(payload.answers) {
    payload.answers.custom=Object.fromEntries(Object.entries(payload.answers.custom).filter(([key])=>{
      const values=payload.answers[key];return Array.isArray(values)?values.includes('other'):values==='other';

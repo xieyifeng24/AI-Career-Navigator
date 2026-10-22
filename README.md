@@ -1,3 +1,13 @@
+## Local-first assessment candidate (22 October 2026)
+
+The default questionnaire now generates a full rule-based report in the browser.
+RunPod is optional, invoked only by an explicit deep-analysis button. The existing
+AI integration and deployment configuration remain. This change is local on
+`codex/local-first-assessment` and has not been deployed.
+
+Rules, source provenance, privacy decisions, acceptance tests and startup commands:
+[docs/LOCAL_FIRST_ASSESSMENT.md](docs/LOCAL_FIRST_ASSESSMENT.md).
+
 # AI Career Navigator
 
 **Your Skills. Your Future. Your Choice.** Team Nexus · SDC Hackathon 2026 · Domain 1.

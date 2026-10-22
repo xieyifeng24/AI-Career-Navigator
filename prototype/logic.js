@@ -9,6 +9,7 @@ export function sampleProfile(scenario) {
   const p={ ...emptyProfile(), ...cases[scenario].sample, scenario };
   const marketing=scenario==='marketing';
   p.answers={background:marketing?'marketing':'admin',experience:marketing?'3to5':'1to2',tasks:marketing?['write','data','communicate']:['coordinate','data','communicate'],skills:marketing?['writing','analysis','communication']:['coordination','time','communication'],aiUsage:'occasional',concerns:['automation','skills'],goal:marketing?'upgrade':'explore',constraints:['time','budget'],custom:{}};
+  p.assessment=marketing?{analysis:3,communication:4,planning:3,technical:2,aiCollaboration:2,research:4,people:4,creative:5,structure:3,autonomy:4}:{analysis:2,communication:3,planning:4,technical:2,aiCollaboration:2,research:2,people:5,creative:2,structure:5,autonomy:2};p.education='diploma';
   p.additionalContext=['tasks','skills','aiUse','concerns','goal','constraints'].map(key=>`${key}: ${p[key]}`).join('\n');
   return p;
 }

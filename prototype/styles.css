@@ -83,3 +83,9 @@
 .site-header {height:auto;min-height:92px}
 .header-inner {min-height:92px;padding-top:14px;padding-bottom:14px}
 @media(max-width:650px){.site-header,.header-inner{min-height:76px}.header-actions{gap:8px}.header-inner{justify-content:space-between}.top-nav{order:3;max-width:100%;overflow-x:auto}}
+
+/* Local assessment reuses existing choices/cards and responsive tokens. */
+.rating-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.rating-grid .choice{align-items:flex-start}.rating-grid .choice input{margin-top:3px}.local-dimensions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:24px 0}.local-dimensions .plan-mini{margin:0;padding:18px}.local-dimensions p{margin:10px 0}.local-dimensions progress{width:100%;accent-color:var(--accent)}.rule-table{width:100%;font-size:12px;border-collapse:collapse}.rule-table td,.rule-table th{padding:8px 3px;text-align:left;border-bottom:1px solid var(--line)}.optional-ai{margin-top:32px;border:1px solid var(--line)}
+@media(max-width:650px){.rating-grid,.local-dimensions{grid-template-columns:1fr}.rule-table{font-size:11px}}
+
+.rating-grid .choice:has(input:checked){background:#eaf5ef;border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}

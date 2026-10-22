@@ -150,6 +150,12 @@ async def match(profile: Profile):
 @app.get('/')
 async def index(): return FileResponse(ROOT/'prototype/index.html')
 
+@app.get('/local/{filename}')
+async def local_asset(filename: str):
+    if filename not in {'engine.js','ui.js','questions.js','optional-ai.js','careers.json'}:
+        raise HTTPException(404)
+    return FileResponse(ROOT/'prototype/local'/filename)
+
 @app.get('/{filename}')
 async def asset(filename: str):
     # Serve only explicit frontend assets, never repository files, secrets or tests.

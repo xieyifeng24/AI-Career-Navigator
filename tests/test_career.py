@@ -127,6 +127,9 @@ class API(unittest.TestCase):
         for path in ['/.env','/requirements.txt','/server.py','/logic.test.mjs']:self.assertEqual(self.client.get(path).status_code,404)
         for asset in ['simulator.js','i18n.js','questionnaire.js','questionnaire.json','translations.json','star-map.js','star-map.css','career-explorer.js','career-explorer.css']:
             self.assertEqual(self.client.get('/'+asset).status_code,200)
+        for asset in ['engine.js','ui.js','questions.js','optional-ai.js','careers.json']:
+            self.assertEqual(self.client.get('/local/'+asset).status_code,200)
+        self.assertEqual(self.client.get('/local/private.env').status_code,404)
         self.assertEqual(self.client.post('/api/analyze',content='x'*19000).status_code,413)
         self.assertIn("script-src 'self'",self.client.get('/').headers['Content-Security-Policy'])
     def auth(self,client=None):

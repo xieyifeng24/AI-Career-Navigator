@@ -2570,5 +2570,65 @@
   "DATA LIMIT": {
     "zh-CN": "数据局限",
     "ms": "BATAS DATA"
+  },
+  "LOCAL RULES · AI OPTIONAL": {
+    "zh-CN": "本地规则 · AI 可选",
+    "ms": "PERATURAN TEMPATAN · AI PILIHAN"
+  },
+  "LOCAL-FIRST · AI OPTIONAL": {
+    "zh-CN": "本地优先 · AI 可选",
+    "ms": "UTAMAKAN TEMPATAN · AI PILIHAN"
+  },
+  "LOCAL RULES · FICTIONAL SELF-REPORT": {
+    "zh-CN": "本地规则 · 虚构自述",
+    "ms": "PERATURAN TEMPATAN · LAPORAN KENDIRI REKAAN"
+  },
+  "Local assessment runs in your browser. AI is optional. Competition mode: fictional profiles only.": {
+    "zh-CN": "本地测评在浏览器中运行，AI 为可选功能。比赛模式仅使用虚构资料。",
+    "ms": "Penilaian tempatan berjalan dalam pelayar. AI ialah pilihan. Mod pertandingan: profil rekaan sahaja."
+  },
+  "Your base assessment stays in this browser tab. No upload, account or AI request is needed. Use fictional details for this competition demo.": {
+    "zh-CN": "基础测评仅在当前浏览器标签页处理，无需上传、账户或 AI 请求。比赛演示请使用虚构资料。",
+    "ms": "Penilaian asas kekal dalam tab pelayar ini. Tiada muat naik, akaun atau permintaan AI diperlukan. Gunakan butiran rekaan untuk demo pertandingan."
+  },
+  "Unknown is a valid answer. Scores are exploratory rules, not a validated personality test. Optional AI requires separate consent.": {
+    "zh-CN": "可以回答“不确定”。分数来自探索性规则，并非经验证的人格测试。可选 AI 需要另行同意。",
+    "ms": "Tidak pasti ialah jawapan sah. Skor ialah peraturan penerokaan, bukan ujian personaliti yang disahkan. AI pilihan memerlukan persetujuan berasingan."
+  },
+  "Competition rules require fictional profiles. Base answers are processed only in this tab; optional AI sends fictional details to our backend and RunPod. Do not enter real names, CVs or contact details.": {
+    "zh-CN": "比赛规则要求使用虚构资料。基础答案仅在本标签页处理；可选 AI 会将虚构内容发送至后端及 RunPod。请勿填写真实姓名、简历或联系方式。",
+    "ms": "Peraturan pertandingan memerlukan profil rekaan. Jawapan asas diproses dalam tab ini sahaja; AI pilihan menghantar butiran rekaan ke pelayan kami dan RunPod. Jangan masukkan nama, CV atau maklumat hubungan sebenar."
+  },
+  "I understand and will use fictional details for this demo.": {
+    "zh-CN": "我已了解，本次演示将使用虚构资料。",
+    "ms": "Saya faham dan akan menggunakan butiran rekaan untuk demo ini."
+  },
+  "View local report": {
+    "zh-CN": "查看本地报告",
+    "ms": "Lihat laporan tempatan"
+  },
+  "About 4–6 minutes · choices and clear level descriptions": {
+    "zh-CN": "约 4–6 分钟 · 选择题配清晰等级说明",
+    "ms": "Kira-kira 4–6 minit · pilihan dengan penerangan tahap jelas"
+  },
+  "Choose a fictional starting profile for a local assessment. You can edit every answer before submission.": {
+    "zh-CN": "选择一份虚构资料开始本地测评。提交前可修改每项答案。",
+    "ms": "Pilih profil rekaan untuk penilaian tempatan. Anda boleh menyunting setiap jawapan sebelum dihantar."
+  },
+  "Base reports use local rules and dated occupational sources. Only optional AI analysis sends fictional inputs to the backend and RunPod.": {
+    "zh-CN": "基础报告使用本地规则和有日期的职业资料。只有可选 AI 分析会将虚构内容发送至后端及 RunPod。",
+    "ms": "Laporan asas menggunakan peraturan tempatan dan sumber pekerjaan bertarikh. Hanya analisis AI pilihan menghantar input rekaan ke pelayan dan RunPod。"
+  },
+  "Offline occupational context": {
+    "zh-CN": "离线职业背景",
+    "ms": "Konteks pekerjaan luar talian"
+  },
+  "Matching scores and path explanations are editorial rules.": {
+    "zh-CN": "匹配分数和路线说明来自团队编辑规则。",
+    "ms": "Skor padanan dan penjelasan laluan berdasarkan peraturan editorial."
+  },
+  "the SDG relation is an editorial hypothesis and should be reviewed.": {
+    "zh-CN": "SDG 关联属于编辑假设，需要人工审视。",
+    "ms": "hubungan SDG ialah hipotesis editorial yang memerlukan semakan."
   }
 }

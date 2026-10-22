@@ -1,3 +1,4 @@
+import {answerText} from './questionnaire.js';
 import { buildCareerExplorerModel } from './career-explorer.js';
 
 const escapeHTML = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -25,7 +26,7 @@ function asSkillList(items, sources) {
 
 export function buildCareerStarMapModel(report) {
   const profile = report?.profile ?? {};
-  const live = report?.mode === 'real-ai' && report?.analysis;
+  const live = ['real-ai','rules'].includes(report?.mode) && report?.analysis;
   const sources = report?.evidence?.sources ?? {};
   const ids = ['A', 'B', 'C'];
   const paths = ids.map(id => {
@@ -38,7 +39,7 @@ export function buildCareerStarMapModel(report) {
         ? { growth: role.growth, period: role.period, geography: report.evidence?.geography || 'Geography not specified', source: marketSource.title || 'Occupational source', url: marketSource.url }
         : null;
       return {
-        id,
+        id, local:report.mode==='rules',
         title: role?.title || path.role_id,
         reason: text(path.why), reasonSources: sourceLinks(path.why?.source_ids, sources),
         strengths: asSkillList(path.transferable, sources),
@@ -69,7 +70,7 @@ export function buildCareerStarMapModel(report) {
   for (const route of buildCareerExplorerModel(report).paths) {
     if (mapped.has(route.id)) continue;
     paths.push({
-      id: route.id, title: route.title, reason: route.reason, reasonSources: '',
+      id: route.id, local:report.mode==='rules', title: route.title, reason: route.reason, reasonSources: '',
       strengths: route.strengths.map(skill => ({skill, advice:''})),
       gaps: route.gaps.map(skill => ({skill, advice:''})),
       next: route.next, nextSources: '', constraint: route.constraint, constraintSources: '',
@@ -79,8 +80,8 @@ export function buildCareerStarMapModel(report) {
   }
   return {
     mode: live ? 'live' : 'demo',
-    currentRole: profile.background || 'Your current role',
-    experience: profile.experience || '',
+    currentRole: (report.mode==='rules'?answerText(profile,'background'):profile.background) || 'Your current role',
+    experience: (report.mode==='rules'?answerText(profile,'experience'):profile.experience) || '',
     skills: parseSkills(profile.skills),
     paths,
     sources
@@ -108,8 +109,8 @@ function renderSDG(sdg) {
 
 function renderRouteDetail(path, selected) {
   const market = path.market
-    ? `<div class="star-market"><span class="star-detail-label">PUBLISHED OUTLOOK</span><strong>${e(path.market.growth)}</strong><p>${e(path.market.geography)} · ${e(path.market.period)}</p><a href="${e(path.market.url)}" target="_blank" rel="noopener noreferrer">${e(path.market.source)} ↗</a></div>`
-    : `<div class="star-market star-empty"><span class="star-detail-label">PUBLISHED OUTLOOK</span><p>Market trend data is not available for this route in this report.</p></div>`;
+    ? `<div class="star-market"><span class="star-detail-label">${path.local?'Offline occupational context':'PUBLISHED OUTLOOK'}</span><strong>${e(path.market.growth)}</strong><p>${e(path.market.geography)} · ${e(path.market.period)}</p><a href="${e(path.market.url)}" target="_blank" rel="noopener noreferrer">${e(path.market.source)} ↗</a></div>`
+    : `<div class="star-market star-empty"><span class="star-detail-label">${path.local?'Offline occupational context':'PUBLISHED OUTLOOK'}</span><p>Market trend data is not available for this route in this report.</p></div>`;
   return `<section class="star-route-detail" id="star-map-detail" aria-live="polite" aria-label="Path ${e(path.id)} details">
     <div class="star-detail-heading"><div><span class="kicker">PATH ${e(path.id)} · ${selected ? 'CURRENT FOCUS' : 'EXPLORE THIS PATH'}</span><h2>${e(path.title)}</h2></div><span class="star-route-mark" aria-hidden="true">✦</span></div>
     <div class="star-detail-grid">
