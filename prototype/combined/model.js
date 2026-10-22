@@ -1,10 +1,11 @@
 // Only compose existing engines. V3 never supplies inputs to PR8's career scoring.
 import {catalog,blankProfile,validateProfile,generateOfflineReport,updateChoice} from '../explorer-engine.js';
+import {deriveResult,scenarioResult} from './results.js';
 import {newSession,changeLanguage,restoreSession,answeredCount,bank} from '../v3/engine.js';
 export const STORAGE_KEY='career-combined-pr8-pr9-v1';
 export const VERSION='combined-pr8-pr9-1';
 export function fresh(language='en') {
- return {version:VERSION,phase:'background',step:0,profile:blankProfile(),v3:changeLanguage(newSession(),language),page:'overview',focus:null,goal:9,allCareers:false};
+ return {version:VERSION,phase:'background',step:0,profile:blankProfile(),v3:changeLanguage(newSession(),language),page:'overview',focus:null,goal:9,allCareers:false,notes:'',scenarioPatch:{},assumedSkills:[],selectedSkill:''};
 }
 export function updateBackground(state,key,value,checked=true) {
  const profile=structuredClone(state.profile);
@@ -12,7 +13,7 @@ export function updateBackground(state,key,value,checked=true) {
   if(value!=='undisclosed'&&!catalog.countries.includes(value))throw Error('INVALID_COUNTRY');
   profile.nationality=value;
  }else updateChoice(profile,key,value,checked);
- return {...state,profile};
+ return {...state,profile,scenarioPatch:{},assumedSkills:[]};
 }
 export function nextBackground(state) {
  const errors=validateProfile(state.profile,state.step);
@@ -36,8 +37,13 @@ export function restore(raw,language='en') {
   const v3=restoreSession(JSON.stringify(state.v3));
   if(JSON.stringify(v3)!==JSON.stringify(state.v3))return fresh(language);
   if(state.phase!=='background'&&Object.keys(validateProfile(state.profile)).length)return fresh(language);
-  const clean={...fresh(v3.language),phase:state.phase,step:state.step,profile:structuredClone(state.profile),v3,page:['overview','ai','careers','plan','sdg','catalog'].includes(state.page)?state.page:'overview',focus:catalog.careers.some(c=>c.id===state.focus)?state.focus:null,goal:catalog.goals.some(g=>g.id===state.goal)?state.goal:9,allCareers:state.allCareers===true};
-  if(clean.phase==='report')reportFor(clean);
+  const clean={...fresh(v3.language),phase:state.phase,step:state.step,profile:structuredClone(state.profile),v3,page:['overview','ai','careers','plan','sdg','catalog','map','tree','whatif'].includes(state.page)?state.page:'overview',focus:catalog.careers.some(c=>c.id===state.focus)?state.focus:null,goal:catalog.goals.some(g=>g.id===state.goal)?state.goal:9,allCareers:state.allCareers===true};
+  clean.notes=typeof state.notes==='string'?state.notes.slice(0,1500):'';
+  clean.selectedSkill=typeof state.selectedSkill==='string'?state.selectedSkill:'';
+  if(clean.phase==='report'){
+   reportFor(clean);
+   try{const original=deriveResult(clean.profile);scenarioResult(original,state.scenarioPatch||{},state.assumedSkills||[]);clean.scenarioPatch=state.scenarioPatch||{};clean.assumedSkills=state.assumedSkills||[];}catch{}
+  }
   return clean;
  }catch{return fresh(language);}
 }

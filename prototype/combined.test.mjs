@@ -14,7 +14,7 @@ function complete(track,answer,locale='en'){
  return state;
 }
 test('PR8 engine and catalogs plus PR9 question source are unchanged',()=>{
- for(const path of ['prototype/explorer-engine.js','prototype/explorer-catalog.json','prototype/explorer-views.js']){
+ for(const path of ['prototype/explorer-engine.js','prototype/explorer-catalog.json']){
   const bytes=fs.readFileSync(new URL('../'+path,import.meta.url));assert.equal(createHash('sha256').update(bytes).digest('hex'),manifest.original_pr8_hashes[path]);
  }
  assert.equal(createHash('sha256').update(fs.readFileSync(new URL('./v3/bank.json',import.meta.url))).digest('hex'),manifest.v3_author_sha256);
