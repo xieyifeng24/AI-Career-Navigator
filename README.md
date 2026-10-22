@@ -1,5 +1,18 @@
 # AI Career Navigator
 
+> **22 October local candidate: offline career + SDG exploration.**
+> The default page now uses a versioned local rule engine, 24 career directions,
+> 32 advice modules and 17 illustrated SDG companions. Same answers give the same
+> result. No online prediction or API key is needed. This candidate is not deployed.
+>
+> Preview: `python3 prototype/server.py`, then open http://127.0.0.1:4173 .
+>
+> [Complete output catalog](docs/OFFLINE_OUTCOMES.md) ·
+> [Implementation and verification](docs/OFFLINE_IMPLEMENTATION.md)
+>
+> The online release described below is retained historical context and backend
+> integration, not a claim that the new local candidate is published.
+
 **Your Skills. Your Future. Your Choice.** Team Nexus · SDC Hackathon 2026 · Domain 1.
 
 A career exploration application for fictional marketing/administration profiles and
@@ -64,7 +77,7 @@ The working candidate supports:
    model generation and semantic quality remain to be verified after provisioning.**
 5. A separate, explicitly labelled V0.1 scripted mode. It is never an API-failure fallback.
 
-## Run locally
+## Run the retained optional backend
 
 Use Python **3.12** and Node **24** for checks. No frontend dependency installation.
 
@@ -93,7 +106,7 @@ In the current maintainer workspace the tested virtual environment is `.venv312`
 python -m unittest discover tests -v
 node --check prototype/app.js
 node --check prototype/live.js
-node --test prototype/logic.test.mjs
+node --test prototype/*.test.mjs
 python -m pip check
 ```
 

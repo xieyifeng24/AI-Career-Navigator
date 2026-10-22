@@ -53,4 +53,7 @@ jobs:
           node --check prototype/live.js
           node --check prototype/questionnaire.js
           node --check prototype/i18n.js
+          node --check prototype/offline-app.js
+          node --check prototype/explorer-engine.js
+          node --check prototype/explorer-views.js
           node --test prototype/*.test.mjs

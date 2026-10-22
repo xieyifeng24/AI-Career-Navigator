@@ -1,23 +1,30 @@
 # Frontend
 
-The existing HTML/CSS/ES-module visual design is preserved. No frontend build tool
-is required. Start the full app with the Python 3.12 commands in the root README.
+The default page is the offline questionnaire and report candidate. The established
+ivory/green design system and three-language architecture are preserved. No frontend
+build tool, package installation, backend or API key is required for the new flow.
 
-- `app.js`: navigation, four-step fictional profile, consent, loading and errors.
-- `live.js`: API boundary, safe report rendering, public source and matching views.
-- `logic.js`: form validation and explicit legacy demo assembly.
-- `data.js`: two fictional scripted V0.1 cases, never imported by the backend.
-- `styles.css`: shared responsive visual system.
+```bash
+python3 prototype/server.py
+```
 
-The landing page exposes live-source matching and real-AI analysis separately.
-“Open scripted V0.1 demo” is the only intended route to the old mock reports.
-There is no automatic fallback from a failed model request.
+Open http://127.0.0.1:4173 . The four steps lead to local career exploration, AI-use
+advice, a selectable four-week plan and 17 illustrated SDG companions.
 
-`python3 prototype/server.py` remains available as an offline static preview at
-port 4173. Only the explicitly selected scripted mode works without the API;
-public source and real AI features require `src.career.api:app` on port 8000.
+- `offline-app.js`: local routing, form state, report generation, export and print.
+- `explorer-engine.js`: pure, versioned validation, normalisation and ranking rules.
+- `explorer-catalog.json`: all trilingual field options and possible output modules.
+- `explorer-views.js`: translated, escaped questionnaire and report templates.
+- `explorer.css`: responsive additions using the existing `styles.css` design tokens.
+- `sdg-characters.png`: original 17-character illustration sheet, displayed by CSS.
+- `i18n.js` / `translations.json`: shared language detection, persistence and copy.
+- `app.js`, `live.js`, `logic.js`, `data.js`, `questionnaire.js`: retained previous
+  online/demonstration implementation; not imported by the new entrypoint.
 
-Frontend checks: `node --test prototype/*.test.mjs`.
+Checks: `node --test prototype/*.test.mjs`.
 
-The structured questionnaire, language behavior, API compatibility and verification
-limits are documented in [QUESTIONNAIRE_I18N](../docs/QUESTIONNAIRE_I18N.md).
+[Complete output catalog](../docs/OFFLINE_OUTCOMES.md) and
+[implementation + verification](../docs/OFFLINE_IMPLEMENTATION.md) describe the
+rules, all result components, demographic boundaries and executed browser checks.
+The previous upgrade remains documented in
+[QUESTIONNAIRE_I18N](../docs/QUESTIONNAIRE_I18N.md).

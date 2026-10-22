@@ -38,3 +38,6 @@ export function errorMessage(detail, status) {
   if(typeof detail==='string' && catalog[detail]) return detail;
   return (status===429 ? 'Too many requests. Please wait and try again.' : status===403 ? 'Your session expired. Refresh and try again.' : status===422 ? 'Check your answers and confirm the fictional profile.' : 'The service is temporarily unavailable. Your answers are preserved. Please try again.');
 }
+
+// Localised business catalog entries use the same active locale as interface copy.
+export function text(value){return Array.isArray(value)?value[{en:0,'zh-CN':1,ms:2}[language]]:t(value);}
