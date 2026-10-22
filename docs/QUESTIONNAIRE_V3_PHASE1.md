@@ -74,3 +74,7 @@ node --test prototype/*.test.mjs
 /Users/mac/黑客松/.venv312/bin/python -m unittest discover tests -q
 RUNPOD_API_KEY='' RUNPOD_ENDPOINT_ID='' /Users/mac/黑客松/.venv312/bin/python -m uvicorn src.career.api:app --host 127.0.0.1 --port 8046
 ```
+
+## GitHub CI portability follow-up
+
+The first uploaded PR run exposed two pre-existing knowledge-runtime tests that depended on host uptime. A newly started runner with monotonic time below 300 seconds serves the bundled snapshot before its first refresh, so tests expecting a remote failure/new release had not reached their intended branch. The same two failures were reproduced locally with a 60-second clock. Only test fixtures were changed: those refresh tests now use a controlled 1000-second clock. A separate boundary test preserves and verifies startup bundle delivery and the 300-second retry interval. Product/runtime/data/CI configuration are unchanged. The full Python suite now has 59 tests; the Node suite remains 103.

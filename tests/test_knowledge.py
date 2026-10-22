@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 import tempfile
 import unittest
+from unittest.mock import patch
 import httpx
 from pydantic import ValidationError
 from src.career.knowledge.schema import Snapshot, Occupation
@@ -88,7 +89,10 @@ class KnowledgeTests(unittest.TestCase):
             self.assertEqual(http.get(url),'public data');self.assertEqual(http.get(url),'public data')
             self.assertEqual(len(requests),2)
             with self.assertRaises(ValueError):http.get('https://unapproved.invalid/')
-    def test_runtime_remote_outage_or_corruption_preserves_bundle(self):
+    @patch("src.career.knowledge.runtime.time")
+    def test_runtime_remote_outage_or_corruption_preserves_bundle(self, clock):
+        # Exercise the refresh branch, independent of host uptime on fresh CI runners.
+        clock.monotonic.return_value=1000.0
         async def run():
             for response in [httpx.Response(503),httpx.Response(200,json={'bad':'schema'})]:
                 async with httpx.AsyncClient(transport=httpx.MockTransport(lambda req:response)) as client:
@@ -96,7 +100,9 @@ class KnowledgeTests(unittest.TestCase):
                     self.assertEqual(result['snapshot']['version'],self.snapshot.version)
                     self.assertEqual(result['delivery'],'last_valid');self.assertTrue(result['warning'])
         asyncio.run(run())
-    def test_runtime_accepts_new_valid_release_and_rejects_record_loss(self):
+    @patch("src.career.knowledge.runtime.time")
+    def test_runtime_accepts_new_valid_release_and_rejects_record_loss(self, clock):
+        clock.monotonic.return_value=1000.0
         async def run():
             payload=self.snapshot.model_dump(mode='json');payload['version']='TEST-NEW'
             payload['verified_at']=(NOW+timedelta(days=30)).isoformat()
@@ -110,6 +116,29 @@ class KnowledgeTests(unittest.TestCase):
                 store=KnowledgeStore(client,ROOT/'data/knowledge/current.json')
                 result=await store.get();self.assertEqual(result['snapshot']['version'],self.snapshot.version)
                 self.assertEqual(result['delivery'],'last_valid')
+        asyncio.run(run())
+    @patch("src.career.knowledge.runtime.time")
+    def test_runtime_refresh_cache_boundary_is_deterministic(self, clock):
+        async def run():
+            requests=[]
+            def respond(request):
+                requests.append(request)
+                return httpx.Response(503)
+            async with httpx.AsyncClient(transport=httpx.MockTransport(respond)) as client:
+                store=KnowledgeStore(client,ROOT/'data/knowledge/current.json')
+                # Preserve existing startup behavior: bundled data is usable before first refresh.
+                clock.monotonic.return_value=60.0
+                self.assertEqual((await store.get())['delivery'],'bundled')
+                self.assertEqual(len(requests),0)
+                clock.monotonic.return_value=1000.0
+                self.assertEqual((await store.get())['delivery'],'last_valid')
+                self.assertEqual(len(requests),1)
+                clock.monotonic.return_value=1299.999
+                self.assertEqual((await store.get())['delivery'],'last_valid')
+                self.assertEqual(len(requests),1)
+                clock.monotonic.return_value=1300.0
+                self.assertEqual((await store.get())['delivery'],'last_valid')
+                self.assertEqual(len(requests),2)
         asyncio.run(run())
     def test_daily_workflow_uses_persistent_due_branch_and_global_concurrency(self):
         workflow=(ROOT/'.github/workflows/career-data-sync.yml').read_text()
