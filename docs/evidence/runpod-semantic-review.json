@@ -1,0 +1,21 @@
+{
+  "date": "2026-10-21",
+  "request_id": "chatcmpl-bec48287722f94a5",
+  "model": "Qwen/Qwen3-4B-Instruct-2507",
+  "duration_seconds": 75.67,
+  "usage": {
+    "completion_tokens": 4577,
+    "completion_tokens_details": null,
+    "prompt_tokens": 6466,
+    "prompt_tokens_details": null,
+    "total_tokens": 11043
+  },
+  "schema_validation": "passed at that contract revision",
+  "semantic_review": "release blocked",
+  "findings": [
+    "Capabilities discussed research prototypes instead of assessing the fictional self-report.",
+    "Unmentioned skills were incorrectly described as lacking.",
+    "SDG measure contained target number rather than an observable check."
+  ],
+  "fix": "Constrain research citations to the radar; require person-centred verification exercises, non-deficiency language, measurable SDG checks, and catalog tool choices."
+}

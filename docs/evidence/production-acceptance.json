@@ -1,0 +1,32 @@
+{
+  "date": "2026-10-21",
+  "url": "https://ai-career-navigator-xyf20070924.replit.app/",
+  "acceptance": "passed",
+  "report_id": "cc313db4-4184-4e0e-9f47-241170349519",
+  "source_version": "36cc020805d9b004",
+  "profile": "Fictional marketing specialist, 3h per week",
+  "verified_interactions": [
+    "four-step intake",
+    "real RunPod report rendered",
+    "capabilities",
+    "task impact and two scenarios",
+    "path A/B switch",
+    "four-week action plan"
+  ],
+  "health": {
+    "status": "ok",
+    "inference_configured": true,
+    "inference_verified": true,
+    "last_successful_inference_at": "2026-10-21T11:13:08.494886+00:00",
+    "model": "Qwen/Qwen3-4B-Instruct-2507",
+    "mode": "real-ai",
+    "note": "Configuration does not prove inference health. A successful report is required."
+  },
+  "gpu_after_acceptance": {
+    "running_workers": 0,
+    "jobs_running": 0,
+    "jobs_queued": 0,
+    "observed_total_test_spend_usd": 0.34,
+    "approved_test_limit_usd": 2
+  }
+}

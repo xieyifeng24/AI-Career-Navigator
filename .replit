@@ -1,5 +1,16 @@
-run = "python src/main.py"
-entrypoint = "src/main.py"
+run = "sh scripts/replit_start.sh"
+entrypoint = "src/career/api.py"
+modules = ["python-3.12"]
 
 [nix]
 channel = "stable-24_05"
+packages = ["git"]
+
+[deployment]
+deploymentTarget = "cloudrun"
+build = ["sh", "-c", "uv venv .venv-replit && uv pip install --python .venv-replit/bin/python -r requirements.txt"]
+run = ["sh", "scripts/replit_start.sh"]
+
+[[ports]]
+localPort = 8000
+externalPort = 80

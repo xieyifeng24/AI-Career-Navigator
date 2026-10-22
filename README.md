@@ -1,207 +1,205 @@
-> [!IMPORTANT]
-> ## 📁 Submission Documents & Templates
-> **All required submission templates are in the Google Drive folder below. Download them before you start.**
+# AI Career Navigator
+
+> **22 October local candidate: offline career + SDG exploration.**
+> The default page now uses a versioned local rule engine, 24 career directions,
+> 32 advice modules and 17 illustrated SDG companions. Same answers give the same
+> result. No online prediction or API key is needed. This candidate is not deployed.
 >
-> ### 👉 [**OPEN THE GOOGLE DRIVE FOLDER**](https://drive.google.com/drive/folders/1xw7c2aN8N-at8hPEULzkcU76e_FFb0Ef) 👈
+> Preview: `python3 prototype/server.py`, then open http://127.0.0.1:4173 .
+>
+> [Complete output catalog](docs/OFFLINE_OUTCOMES.md) ·
+> [Implementation and verification](docs/OFFLINE_IMPLEMENTATION.md)
+>
+> The online release described below is retained historical context and backend
+> integration, not a claim that the new local candidate is published.
 
----
+**Your Skills. Your Future. Your Choice.** Team Nexus · SDC Hackathon 2026 · Domain 1.
 
-# Project Name
+A career exploration application for fictional marketing/administration profiles and
+adjacent analytical roles. It combines current public occupational sources,
+explainable matching, and a server-side RunPod inference integration.
 
-> A one-sentence description of what your project does and who it is for.
+**Status (21 October 2026):** published to the existing Replit project using
+Autoscale and real RunPod inference. A production Chrome journey passed: fictional
+profile → real GPU report → both paths → four-week plan. No mock fallback.
+[Open the app](https://ai-career-navigator-xyf20070924.replit.app/).
+No team access code is required in the updated candidate. Anonymous sessions and
+server-side quotas protect inference. Allow several minutes for GPU cold start.
+See [release evidence](docs/RELEASE.md) and [known limitations](docs/KNOWN_ISSUES.md).
 
----
+## Team information
 
-## Team Information
+| Field | Value |
+|---|---|
+| Team | Nexus, 5 members |
+| Domain | 1 — The Aiversecity Future-Ready Workforce Domain |
+| SDG focus | 4.4 (employment-related skills), 8.2 (productivity), 8.5 (decent work); team must confirm the final submission track |
+| Leader | XIE YIFENG |
+| University | Xiamen University Malaysia |
 
-| Field                  | Details                                     |
-| ---------------------- | ------------------------------------------- |
-| **Team Name**          | Your Team Name                              |
-| **Team Domain**        | Domain 1 / Domain 2 *(choose one)*          |
-| **SDG Track (1–17)**   | e.g. SDG 11 — Sustainable Cities and Communities |
-| **Team Leader**        | Leader Name                                 |
-| **University**         | University Name(s)                          |
-| **Number of Members**  | e.g. 4                                      |
+| Member | Responsibility |
+|---|---|
+| XIE YIFENG | Product lead, strategy, final submission approval |
+| YANG XUHUI | Backend and integration |
+| CHEN QIANYU | Frontend and UX |
+| LAI HAILU | AI engineering and evaluation |
+| ZHANG XINAO | Research, source verification and QA |
 
 ## Links
 
-| Resource          | Link                                           |
-| ----------------- | ---------------------------------------------- |
-| GitHub Repository | https://github.com/your-username/your-project  |
-| Replit Project    | https://replit.com/@your-username/your-project |
-| Live Demo         | https://your-project.replit.app                |
-| RunPod Endpoint   | https://api.runpod.ai/v2/your-endpoint-id      |
-| Slide Deck        | https://example.com/slides                     |
-| Demo Video        | https://example.com/demo-video                 |
+- [Canonical GitHub repository](https://github.com/xieyifeng24/AI-Career-Navigator)
+- [Existing Replit project](https://replit.com/@xyf20070924/AI-Career-Navigator)
+- [Public V0.1 scripted demo](https://ai-career-navigator-xyf20070924.replit.app/)
+- [Original prototype PR #2](https://github.com/xieyifeng24/AI-Career-Navigator/pull/2) — not merged blindly.
+- [Official submission template](https://github.com/michaelzhngg/SDC_Hackathon_Submission_Template)
+- [Official submission document folder](https://drive.google.com/drive/folders/1xw7c2aN8N-at8hPEULzkcU76e_FFb0Ef)
+- RunPod endpoint, demo video and slides: **pending**.
 
----
+## Problem and solution
 
-## Overview
+Workers need to connect changing tasks to specific learning choices. Whole-job
+replacement probabilities obscure uncertainty. Our initial scope is a small,
+explainable exploration of five reference occupations rather than a universal
+career adviser. Users stay in control; the application does not make hiring decisions.
 
-### Problem
+The working candidate supports:
 
-Describe the real-world problem you are solving in 2–4 sentences. Who is affected, and why does it matter?
+1. A four-step fictional profile: background, experience, tasks, skills, AI use,
+   concerns, goal, weekly hours and constraints.
+2. An updatable source radar: five O*NET occupational pages (including US employment
+   projections) and four recent arXiv cs.AI research entries, with source dates,
+   retrieval time and content version. Public-source failures are visible.
+3. Source-based role ranking and skill gaps, usable **without an AI model**. Scores
+   expose all components: 70 points skill overlap, 20 task context, 10 published
+   growth category. These weights are an editorial heuristic, not validated fit.
+4. A real RunPod API path for structured capability/task analysis, two career paths,
+   two adoption scenarios, SDG links and four weeks covering days 1–30. **Successful
+   model generation and semantic quality remain to be verified after provisioning.**
+5. A separate, explicitly labelled V0.1 scripted mode. It is never an API-failure fallback.
 
-### Solution
+## Run the retained optional backend
 
-Explain how your project uses AI to solve the problem and what makes it valuable.
-
-### Key Features
-
-- **Feature 1** — Short description.
-- **Feature 2** — Short description.
-- **Feature 3** — Short description.
-
-### Tech Stack
-
-| Layer         | Technology                   |
-| ------------- | ---------------------------- |
-| Frontend      | e.g. HTML, React             |
-| Backend       | e.g. Python, Flask / FastAPI |
-| Database      | e.g. PostgreSQL, SQLite      |
-| AI / Compute  | RunPod (GPU)                 |
-| Hosting / Dev | Replit                       |
-
----
-
-## Project Structure
-
-```
-.
-├── docs/                    # Screenshots, diagrams
-├── runpod/
-│   └── handler.py           # RunPod serverless handler (GPU workload)
-├── src/
-│   ├── main.py              # Application entry point
-│   └── utils.py             # Helper functions
-├── submission/              # Required submission documents
-│   ├── SDC2026_TeamName_Preliminary.pdf      # Preliminary submission
-│   ├── SDC2026_TeamName_TechDeclaration.pdf  # Technology declaration
-│   ├── SDC2026_TeamName_Replit_POU.pdf       # Replit proof of use
-│   └── SDC2026_TeamName_Runpod_POU.pdf       # RunPod proof of use
-├── tests/
-│   └── test_utils.py        # Unit tests
-├── .env.example             # Example environment variables
-├── .gitignore
-├── .replit                  # Replit run configuration
-├── LICENSE
-├── requirements.txt         # Python dependencies
-└── README.md
-```
-
-### Architecture
-
-```
-User ──► Replit (App / API) ──► RunPod Endpoint (GPU model)
-                │
-                └──► Response returned to user
-```
-
----
-
-## How to Run
-
-### Option 1 — Run on Replit (Recommended)
-
-1. Open the [Replit Project](https://replit.com/@your-username/your-project), or import this repository via **Create Repl → Import from GitHub**.
-2. Open the **Secrets** tab (🔒) and add the variables listed in `.env.example`:
-   - `RUNPOD_API_KEY`
-   - `RUNPOD_ENDPOINT_ID`
-3. Click **Run**. Replit uses the `.replit` file to start `python src/main.py`.
-
-### Option 2 — Run Locally
+Use Python **3.12** and Node **24** for checks. No frontend dependency installation.
 
 ```bash
-# 1. Clone the repository
-git clone https://github.com/your-username/your-project.git
-cd your-project
-
-# 2. Create and activate a virtual environment
-python -m venv venv
-source venv/bin/activate        # Windows: venv\Scripts\activate
-
-# 3. Install dependencies
-pip install -r requirements.txt
-
-# 4. Configure environment variables
-cp .env.example .env            # then fill in your values
-
-# 5. Run the app
-python src/main.py
+python3.12 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.txt
+cp .env.example .env
+python -m uvicorn src.career.api:app --host 127.0.0.1 --port 8000 --workers 1
 ```
 
-### Run Tests
+Open http://127.0.0.1:8000. With blank secrets, real AI correctly reports setup
+required; live sources, source matching and explicitly selected scripted demos work.
+
+To enable real inference, follow [RunPod setup](runpod/README.md), configure the
+server-only `RUNPOD_API_KEY`, `RUNPOD_ENDPOINT_ID` and `RUNPOD_MODEL`, and restart.
+Never put keys in JavaScript, commits or screenshots. Users do not enter a password.
+See [anonymous access and limits](docs/ACCESS_CONTROL.md).
+
+In the current maintainer workspace the tested virtual environment is `.venv312`:
+`.venv312/bin/python -m uvicorn src.career.api:app --host 127.0.0.1 --port 8000`.
+
+## Tests and actual evidence
 
 ```bash
-python -m unittest discover tests
+python -m unittest discover tests -v
+node --check prototype/app.js
+node --check prototype/live.js
+node --test prototype/*.test.mjs
+python -m pip check
 ```
 
----
+CI runs these offline Python/JavaScript tests on PRs to `main`. It never makes paid
+inference calls. Fixtures under `tests/` are test data, not model evidence.
 
-## How We Use Replit *(Required)*
-
-Describe how your team used Replit. For example:
-
-- **Development:** Collaborative coding in a shared Repl using Multiplayer.
-- **Hosting:** The app is deployed with Replit Deployments at the Live Demo link above.
-- **Secrets:** API keys are stored in Replit Secrets, never in the code.
-
-📄 Proof of use: [`submission/SDC2026_TeamName_Replit_POU.pdf`](submission/SDC2026_TeamName_Replit_POU.pdf)
-
-## How We Use RunPod *(Required)*
-
-Describe how your team used RunPod. For example:
-
-- **Workload:** Model inference (e.g. text generation, image processing) runs on a RunPod GPU.
-- **Setup:** `runpod/handler.py` is deployed as a **RunPod Serverless Endpoint**.
-- **Integration:** The Replit app sends requests to the endpoint using `RUNPOD_API_KEY` and `RUNPOD_ENDPOINT_ID`.
-
-Example request:
+After provisioning, explicitly run the five-case live evaluation (incurs GPU use):
 
 ```bash
-curl -X POST https://api.runpod.ai/v2/$RUNPOD_ENDPOINT_ID/runsync \
-  -H "Authorization: Bearer $RUNPOD_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{"input": {"prompt": "Hello"}}'
+python scripts/live_check.py --run
 ```
 
-📄 Proof of use: [`submission/SDC2026_TeamName_Runpod_POU.pdf`](submission/SDC2026_TeamName_Runpod_POU.pdf)
+Reports are written to ignored `.cache/live-evaluation`. Review task relevance,
+changed skill gaps, time budgets, citations and SDG meaning manually. Schema tests
+cannot establish semantic quality. See [test/release evidence](docs/EVIDENCE.md).
 
----
+## Architecture and project structure
 
-## Challenges & Learnings
+```text
+Browser (fictional profile, explicit consent)
+  → Replit FastAPI backend
+    → O*NET + arXiv (fixed public queries; hourly in-memory snapshot)
+    → deterministic, explained role matching
+    → RunPod vLLM / Qwen3-4B-Instruct-2507 (pending provisioning)
+    → schema, citation, quote and time-budget validation → report
+```
 
-- What challenges did you face, and how did you overcome them?
-- What did your team learn?
+- `prototype/`: preserved visual design and explicit scripted examples, plus live UI.
+- `src/career/`: API, contracts, public-source retrieval, matching, RunPod adapter.
+- `src/main.py`, `src/utils.py`: retained official starter; not the app entry point.
+- `runpod/handler.py`: retained official echo example, **not deployed or counted as AI**.
+- `runpod/README.md`: official vLLM worker setup and verification instructions.
+- `scripts/live_check.py`: explicit live evaluation; never run by CI.
+- `tests/`: contract, business-rule and failure tests.
+- `submission/`: original four PDFs retained. The proof PDFs say EXAMPLE ONLY.
+- `docs/`: manifesto, team workflow, architecture, requirement audit, evidence,
+  deployment runbook, technical declaration and proposal drafts.
 
-## Future Improvements
+## How We Use Replit (Required)
 
-- [ ] Improvement 1
-- [ ] Improvement 2
+The existing project currently publishes the original static V0.1. The new `.replit`
+configuration prepares a single-worker FastAPI **Autoscale** candidate with port
+8000 and a locked dependency build. It has **not** replaced production. Follow
+[release and rollback instructions](docs/DEPLOYMENT.md) after live inference passes.
+The original `submission/SDC2026_TeamName_Replit_POU.pdf` is still an unfilled example.
 
-## Team
+## How We Use RunPod (Required)
 
-| Name        | Role                | GitHub                                   |
-| ----------- | ------------------- | ---------------------------------------- |
-| Member Name | Team Lead / Backend | [@username](https://github.com/username) |
-| Member Name | Frontend            | [@username](https://github.com/username) |
-| Member Name | AI / RunPod         | [@username](https://github.com/username) |
+RunPod will run the actual Qwen model on the official vLLM Serverless worker. The
+backend securely calls its OpenAI-compatible API with real profile/source context
+and a JSON schema. The owner has provisioned the endpoint and approved a US$2 evaluation budget. No GPU
+inference or RunPod proof of use has been claimed yet; the original proof PDF is
+still an unfilled example. See [setup](runpod/README.md).
 
----
+## Data, models and responsible use
 
-## Submission Checklist
+- **Competition data is fictional/public only.** No CV upload or real personal data.
+  A confirmation is required; contact-like strings are rejected, but automated PII
+  detection is incomplete. The team must still enforce the competition rule.
+- No profile database or application profile logs. Inputs live in tab/request memory;
+  successful submissions go to RunPod. Hosting/provider logs follow their policies.
+- O*NET is US occupational data, not Malaysian demand. It does not measure AI replacement.
+  ESCO was evaluated and is reachable; O*NET was chosen because it combines skills,
+  tasks and employment outlook in the first cohort. See [architecture](docs/ARCHITECTURE.md).
+- arXiv entries are preprints: a dated research signal is not validated workplace
+  adoption. If evidence is weak, model instructions require uncertainty.
+- Model output is labelled inference. Sources and resources are allowlisted;
+  roles/skills must come from retrieved evidence. Citation membership is validated,
+  but **citation entailment and hallucination risk still require human evaluation**.
+- Proposed model: [Qwen3-4B-Instruct-2507](https://huggingface.co/Qwen/Qwen3-4B-Instruct-2507),
+  Apache-2.0, pretrained; no fine-tuning. Actual image digest/model revision pending.
+- Adapted O*NET content: USDOL/ETA, [O*NET Database](https://www.onetcenter.org/database.html),
+  [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). O*NET® is a USDOL/ETA trademark.
+  Matching and SDG interpretations are Team Nexus additions, without endorsement.
+- SDGs represent proposed learning/productivity contributions, not measured social impact.
 
-- [ ] Team name, domain (Domain 1 / Domain 2) and SDG track filled in
-- [ ] Slide deck link added
-- [ ] Demo video link added
-- [ ] Replit used, with proof of use in `submission/`
-- [ ] RunPod used, with proof of use in `submission/`
-- [ ] Preliminary submission completed (`SDC2026_TeamName_Preliminary.pdf`)
-- [ ] Technology declaration completed (`SDC2026_TeamName_TechDeclaration.pdf`)
-- [ ] Submission files renamed with your team name (replace `TeamName`)
-- [ ] "How to Run" steps verified
-- [ ] No API keys or secrets committed to the repository
+## Submission checklist
+
+See [Domain 1 audit](docs/COMPETITION_REQUIREMENTS.md) and [submission drafts](docs/SUBMISSION_DRAFT.md).
+
+- [x] Official template structure and original PDFs preserved.
+- [x] Domain 1 six requirements identified; candidate code and gaps documented.
+- [x] Live public-source retrieval and explainable matching implemented.
+- [ ] RunPod endpoint, successful real inference and semantic evaluation.
+- [ ] Candidate Replit Autoscale release and public end-to-end verification.
+- [ ] Genuine RunPod/Replit proof-of-use PDFs with secrets redacted.
+- [ ] Final proposal, tech declaration, slide/video links and team approvals.
+- [ ] Confirm workshop completion, IP declarations, contact fields and signatures.
+- [ ] Export `SDC2026_Nexus_*` PDFs; retain original template PDFs.
+
+The preliminary template lists **25 October 2026** as the deadline. The supplied
+Domain 1 rubric is for preliminaries; the final-round rubric has not been supplied.
 
 ## License
 
-This project is licensed under the [Apache License 2.0](LICENSE).
+Project code: [Apache-2.0](LICENSE). Third-party sources retain their own licences.

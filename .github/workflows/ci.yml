@@ -25,8 +25,35 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
-      # Current tests use only unittest and src/utils.py (standard library).
-      # When tests import third-party packages, add an explicit dependency install.
+          python-version: '3.12'
+          cache: pip
+      - name: Install locked backend dependencies
+        run: python -m pip install -r requirements.txt
       - name: Run existing unit tests
         run: python -m unittest discover tests -v
+
+  prototype-tests:
+    name: Prototype JavaScript tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Check syntax and scenario logic
+        run: |
+          node --check prototype/app.js
+          node --check prototype/data.js
+          node --check prototype/logic.js
+          node --check prototype/live.js
+          node --check prototype/questionnaire.js
+          node --check prototype/i18n.js
+          node --check prototype/offline-app.js
+          node --check prototype/explorer-engine.js
+          node --check prototype/explorer-views.js
+          node --test prototype/*.test.mjs

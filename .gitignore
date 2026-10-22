@@ -3,6 +3,10 @@ __pycache__/
 *.py[cod]
 venv/
 .venv/
+.venv312/
+.venv-replit/
+# Local credential-permission screenshot; may include private account details.
+docs/evidence/runpod-key-permissions.png
 
 # Environment
 .env

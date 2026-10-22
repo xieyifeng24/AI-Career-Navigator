@@ -1,0 +1,3577 @@
+{
+  "version": "offline-1.0.0",
+  "steps": [
+    {
+      "title": [
+        "Your starting point",
+        "基础与学业",
+        "Asas dan pengajian"
+      ],
+      "fields": [
+        "gender",
+        "age",
+        "nationality",
+        "education",
+        "status",
+        "major",
+        "stream"
+      ]
+    },
+    {
+      "title": [
+        "What makes you curious",
+        "性格与兴趣",
+        "Personaliti dan minat"
+      ],
+      "fields": [
+        "social",
+        "planning",
+        "decision",
+        "interests"
+      ]
+    },
+    {
+      "title": [
+        "You and AI",
+        "你与人工智能",
+        "Anda dan AI"
+      ],
+      "fields": [
+        "aiPurposes",
+        "aiDuration",
+        "reliance"
+      ]
+    },
+    {
+      "title": [
+        "Your learning rhythm",
+        "学习与成长",
+        "Rentak pembelajaran anda"
+      ],
+      "fields": [
+        "learningAbility",
+        "weeklyTime",
+        "learningStyles",
+        "mindsets"
+      ]
+    }
+  ],
+  "fields": [
+    {
+      "id": "gender",
+      "label": [
+        "Gender (optional)",
+        "性别（可不透露）",
+        "Jantina (pilihan)"
+      ],
+      "options": [
+        {
+          "id": "male",
+          "label": [
+            "Male",
+            "男",
+            "Lelaki"
+          ]
+        },
+        {
+          "id": "female",
+          "label": [
+            "Female",
+            "女",
+            "Perempuan"
+          ]
+        },
+        {
+          "id": "undisclosed",
+          "label": [
+            "Prefer not to say",
+            "不透露",
+            "Tidak mahu menyatakan"
+          ]
+        }
+      ],
+      "multi": false,
+      "optional": true
+    },
+    {
+      "id": "age",
+      "label": [
+        "Age group",
+        "年龄段",
+        "Kumpulan umur"
+      ],
+      "options": [
+        {
+          "id": "child",
+          "label": [
+            "0–11",
+            "0–11 岁",
+            "0–11 tahun"
+          ]
+        },
+        {
+          "id": "teen",
+          "label": [
+            "12–17",
+            "12–17 岁",
+            "12–17 tahun"
+          ]
+        },
+        {
+          "id": "young",
+          "label": [
+            "18–23",
+            "18–23 岁",
+            "18–23 tahun"
+          ]
+        },
+        {
+          "id": "adult",
+          "label": [
+            "24–39",
+            "24–39 岁",
+            "24–39 tahun"
+          ]
+        },
+        {
+          "id": "mature",
+          "label": [
+            "40+",
+            "40 岁及以上",
+            "40 tahun ke atas"
+          ]
+        }
+      ],
+      "multi": false,
+      "optional": false
+    },
+    {
+      "id": "education",
+      "label": [
+        "Education level",
+        "学历阶段",
+        "Tahap pendidikan"
+      ],
+      "options": [
+        {
+          "id": "primary",
+          "label": [
+            "Primary school",
+            "小学",
+            "Sekolah rendah"
+          ]
+        },
+        {
+          "id": "junior",
+          "label": [
+            "Lower secondary",
+            "初中",
+            "Menengah rendah"
+          ]
+        },
+        {
+          "id": "senior",
+          "label": [
+            "Upper secondary",
+            "高中",
+            "Menengah atas"
+          ]
+        },
+        {
+          "id": "bachelor",
+          "label": [
+            "University / bachelor’s",
+            "大学／本科",
+            "Universiti / sarjana muda"
+          ]
+        },
+        {
+          "id": "master",
+          "label": [
+            "Master’s",
+            "硕士研究生",
+            "Sarjana"
+          ]
+        },
+        {
+          "id": "doctor",
+          "label": [
+            "Doctorate",
+            "博士",
+            "Kedoktoran"
+          ]
+        }
+      ],
+      "multi": false,
+      "optional": false
+    },
+    {
+      "id": "status",
+      "label": [
+        "Study status",
+        "学业状态",
+        "Status pengajian"
+      ],
+      "options": [
+        {
+          "id": "enrolled",
+          "label": [
+            "Currently studying",
+            "在读",
+            "Sedang belajar"
+          ]
+        },
+        {
+          "id": "graduated",
+          "label": [
+            "Graduated",
+            "已毕业",
+            "Telah tamat pengajian"
+          ]
+        }
+      ],
+      "multi": false,
+      "optional": false
+    },
+    {
+      "id": "major",
+      "label": [
+        "University subject area",
+        "大学专业方向",
+        "Bidang pengajian universiti"
+      ],
+      "options": [
+        {
+          "id": "software",
+          "label": [
+            "Computing / software / AI",
+            "计算机／软件／人工智能",
+            "Komputer / perisian / AI"
+          ]
+        },
+        {
+          "id": "science",
+          "label": [
+            "Mathematics / natural sciences",
+            "数学／自然科学",
+            "Matematik / sains tulen"
+          ]
+        },
+        {
+          "id": "engineering",
+          "label": [
+            "Engineering / energy",
+            "工程／能源",
+            "Kejuruteraan / tenaga"
+          ]
+        },
+        {
+          "id": "business",
+          "label": [
+            "Business / economics / finance",
+            "商科／经济／金融",
+            "Perniagaan / ekonomi / kewangan"
+          ]
+        },
+        {
+          "id": "humanities",
+          "label": [
+            "Languages / humanities / communication",
+            "语言／人文／传播",
+            "Bahasa / kemanusiaan / komunikasi"
+          ]
+        },
+        {
+          "id": "law",
+          "label": [
+            "Law / social sciences",
+            "法律／社会科学",
+            "Undang-undang / sains sosial"
+          ]
+        },
+        {
+          "id": "health",
+          "label": [
+            "Health / medicine",
+            "健康／医学",
+            "Kesihatan / perubatan"
+          ]
+        },
+        {
+          "id": "education",
+          "label": [
+            "Education",
+            "教育",
+            "Pendidikan"
+          ]
+        },
+        {
+          "id": "art",
+          "label": [
+            "Art / design",
+            "艺术／设计",
+            "Seni / reka bentuk"
+          ]
+        },
+        {
+          "id": "environment",
+          "label": [
+            "Environment / geography",
+            "环境／地理",
+            "Alam sekitar / geografi"
+          ]
+        },
+        {
+          "id": "agriculture",
+          "label": [
+            "Agriculture / food",
+            "农业／食品",
+            "Pertanian / makanan"
+          ]
+        },
+        {
+          "id": "undecided",
+          "label": [
+            "Other / still exploring",
+            "其他／尚未确定",
+            "Lain-lain / masih meneroka"
+          ]
+        }
+      ],
+      "multi": false,
+      "optional": false
+    },
+    {
+      "id": "stream",
+      "label": [
+        "School subject stream",
+        "高中文理方向",
+        "Aliran mata pelajaran"
+      ],
+      "options": [
+        {
+          "id": "humanities",
+          "label": [
+            "Humanities / arts stream",
+            "文科",
+            "Aliran sastera"
+          ]
+        },
+        {
+          "id": "science",
+          "label": [
+            "Science stream",
+            "理科",
+            "Aliran sains"
+          ]
+        },
+        {
+          "id": "undecided",
+          "label": [
+            "Not decided / mixed curriculum",
+            "未分科／综合课程",
+            "Belum memilih / kurikulum gabungan"
+          ]
+        }
+      ],
+      "multi": false,
+      "optional": false
+    },
+    {
+      "id": "social",
+      "label": [
+        "Social energy",
+        "社交倾向",
+        "Kecenderungan sosial"
+      ],
+      "options": [
+        {
+          "id": "introvert",
+          "label": [
+            "Introverted",
+            "偏内向",
+            "Cenderung introvert"
+          ]
+        },
+        {
+          "id": "extrovert",
+          "label": [
+            "Extroverted",
+            "偏外向",
+            "Cenderung ekstrovert"
+          ]
+        }
+      ],
+      "multi": false,
+      "optional": false
+    },
+    {
+      "id": "planning",
+      "label": [
+        "Planning style",
+        "行动风格",
+        "Gaya perancangan"
+      ],
+      "options": [
+        {
+          "id": "planned",
+          "label": [
+            "Prefer a plan",
+            "喜欢做计划",
+            "Suka merancang"
+          ]
+        },
+        {
+          "id": "spontaneous",
+          "label": [
+            "Prefer to improvise",
+            "喜欢随机应变",
+            "Suka menyesuaikan diri mengikut keadaan"
+          ]
+        }
+      ],
+      "multi": false,
+      "optional": false
+    },
+    {
+      "id": "decision",
+      "label": [
+        "Decision style",
+        "决策倾向",
+        "Gaya membuat keputusan"
+      ],
+      "options": [
+        {
+          "id": "rational",
+          "label": [
+            "Lead with reasoning",
+            "偏理性",
+            "Mengutamakan penaakulan"
+          ]
+        },
+        {
+          "id": "empathetic",
+          "label": [
+            "Lead with feelings and empathy",
+            "偏感性与共情",
+            "Mengutamakan perasaan dan empati"
+          ]
+        }
+      ],
+      "multi": false,
+      "optional": false
+    },
+    {
+      "id": "interests",
+      "label": [
+        "Interests",
+        "爱好（可多选）",
+        "Minat"
+      ],
+      "options": [
+        {
+          "id": "art",
+          "label": [
+            "Art and creativity",
+            "艺术类",
+            "Seni dan kreativiti"
+          ]
+        },
+        {
+          "id": "sport",
+          "label": [
+            "Sport and wellbeing",
+            "体育类",
+            "Sukan dan kesejahteraan"
+          ]
+        },
+        {
+          "id": "tech",
+          "label": [
+            "Technology",
+            "科技类",
+            "Teknologi"
+          ]
+        },
+        {
+          "id": "business",
+          "label": [
+            "Business",
+            "商业类",
+            "Perniagaan"
+          ]
+        },
+        {
+          "id": "learning",
+          "label": [
+            "Learning and discovery",
+            "学习类",
+            "Pembelajaran dan penemuan"
+          ]
+        },
+        {
+          "id": "life",
+          "label": [
+            "Everyday life and community",
+            "生活类",
+            "Kehidupan harian dan komuniti"
+          ]
+        },
+        {
+          "id": "entertainment",
+          "label": [
+            "Entertainment and games",
+            "娱乐类",
+            "Hiburan dan permainan"
+          ]
+        }
+      ],
+      "multi": true,
+      "optional": false
+    },
+    {
+      "id": "aiPurposes",
+      "label": [
+        "How do you use AI?",
+        "你用 AI 做什么？（可多选）",
+        "Bagaimanakah anda menggunakan AI?"
+      ],
+      "options": [
+        {
+          "id": "homework",
+          "label": [
+            "Homework support",
+            "辅助完成作业",
+            "Bantuan kerja rumah"
+          ]
+        },
+        {
+          "id": "summary",
+          "label": [
+            "Summarise lessons",
+            "总结课程",
+            "Merumuskan pelajaran"
+          ]
+        },
+        {
+          "id": "coding",
+          "label": [
+            "Vibe coding / programming",
+            "Vibe coding／编程",
+            "Vibe coding / pengaturcaraan"
+          ]
+        },
+        {
+          "id": "creative",
+          "label": [
+            "Art and creative work",
+            "艺术创作",
+            "Seni dan karya kreatif"
+          ]
+        },
+        {
+          "id": "none",
+          "label": [
+            "Not using AI yet",
+            "尚未使用 AI",
+            "Belum menggunakan AI"
+          ]
+        }
+      ],
+      "multi": true,
+      "optional": false
+    },
+    {
+      "id": "aiDuration",
+      "label": [
+        "How long have you used AI?",
+        "使用 AI 多久了？",
+        "Berapa lama anda menggunakan AI?"
+      ],
+      "options": [
+        {
+          "id": "under1",
+          "label": [
+            "Less than 1 month",
+            "不足 1 个月",
+            "Kurang daripada 1 bulan"
+          ]
+        },
+        {
+          "id": "1to6",
+          "label": [
+            "1 to under 6 months",
+            "1 至不足 6 个月",
+            "1 hingga kurang daripada 6 bulan"
+          ]
+        },
+        {
+          "id": "6to12",
+          "label": [
+            "6 to under 12 months",
+            "6 至不足 12 个月",
+            "6 hingga kurang daripada 12 bulan"
+          ]
+        },
+        {
+          "id": "over12",
+          "label": [
+            "1 year or more",
+            "1 年及以上",
+            "1 tahun atau lebih"
+          ]
+        }
+      ],
+      "multi": false,
+      "optional": false
+    },
+    {
+      "id": "reliance",
+      "label": [
+        "How much do you rely on AI?",
+        "对 AI 的依赖程度",
+        "Tahap kebergantungan pada AI"
+      ],
+      "options": [
+        {
+          "id": "light",
+          "label": [
+            "Light",
+            "轻度",
+            "Ringan"
+          ]
+        },
+        {
+          "id": "moderate",
+          "label": [
+            "Moderate",
+            "中度",
+            "Sederhana"
+          ]
+        },
+        {
+          "id": "heavy",
+          "label": [
+            "Heavy",
+            "重度",
+            "Tinggi"
+          ]
+        }
+      ],
+      "multi": false,
+      "optional": false
+    },
+    {
+      "id": "learningAbility",
+      "label": [
+        "How does learning feel right now?",
+        "自评学习能力（不是固定标签）",
+        "Bagaimanakah pembelajaran anda sekarang?"
+      ],
+      "options": [
+        {
+          "id": "support",
+          "label": [
+            "Weak — I need more guidance",
+            "弱：需要更多指导",
+            "Lemah — memerlukan lebih bimbingan"
+          ]
+        },
+        {
+          "id": "steady",
+          "label": [
+            "Average — steady progress",
+            "普通：循序渐进",
+            "Biasa — kemajuan beransur-ansur"
+          ]
+        },
+        {
+          "id": "confident",
+          "label": [
+            "Strong — I enjoy independent challenges",
+            "强：愿意自主挑战",
+            "Kuat — suka cabaran kendiri"
+          ]
+        }
+      ],
+      "multi": false,
+      "optional": false
+    },
+    {
+      "id": "weeklyTime",
+      "label": [
+        "Sustainable learning time each week",
+        "每周可持续投入的学习时间",
+        "Masa belajar yang mampan setiap minggu"
+      ],
+      "options": [
+        {
+          "id": "under10",
+          "label": [
+            "Under 10 hours",
+            "不足 10 小时",
+            "Kurang daripada 10 jam"
+          ]
+        },
+        {
+          "id": "10to20",
+          "label": [
+            "10 to under 20 hours",
+            "10 至不足 20 小时",
+            "10 hingga kurang daripada 20 jam"
+          ]
+        },
+        {
+          "id": "20to30",
+          "label": [
+            "20 to under 30 hours",
+            "20 至不足 30 小时",
+            "20 hingga kurang daripada 30 jam"
+          ]
+        },
+        {
+          "id": "30to40",
+          "label": [
+            "30 to under 40 hours",
+            "30 至不足 40 小时",
+            "30 hingga kurang daripada 40 jam"
+          ]
+        },
+        {
+          "id": "over40",
+          "label": [
+            "40 hours or more",
+            "40 小时及以上",
+            "40 jam atau lebih"
+          ]
+        }
+      ],
+      "multi": false,
+      "optional": false
+    },
+    {
+      "id": "learningStyles",
+      "label": [
+        "Preferred learning methods",
+        "偏好的学习方式（可多选）",
+        "Kaedah pembelajaran pilihan"
+      ],
+      "options": [
+        {
+          "id": "practice",
+          "label": [
+            "Exercises and practice",
+            "做题与练习",
+            "Latihan dan amali"
+          ]
+        },
+        {
+          "id": "lecture",
+          "label": [
+            "Lessons and explanations",
+            "听讲与讲解",
+            "Kuliah dan penerangan"
+          ]
+        },
+        {
+          "id": "explore",
+          "label": [
+            "Independent exploration",
+            "自我探索",
+            "Penerokaan kendiri"
+          ]
+        }
+      ],
+      "multi": true,
+      "optional": false
+    },
+    {
+      "id": "mindsets",
+      "label": [
+        "Ways of thinking you enjoy",
+        "思维偏好（可多选，不代表天赋）",
+        "Gaya berfikir pilihan (bukan ukuran bakat)"
+      ],
+      "options": [
+        {
+          "id": "humanities",
+          "label": [
+            "Humanities and language",
+            "文科思维",
+            "Kemanusiaan dan bahasa"
+          ]
+        },
+        {
+          "id": "science",
+          "label": [
+            "Scientific and analytical",
+            "理科思维",
+            "Sains dan analitik"
+          ]
+        },
+        {
+          "id": "art",
+          "label": [
+            "Artistic and visual",
+            "艺术思维",
+            "Seni dan visual"
+          ]
+        }
+      ],
+      "multi": true,
+      "optional": false
+    }
+  ],
+  "countries": [
+    "AD",
+    "AE",
+    "AF",
+    "AG",
+    "AI",
+    "AL",
+    "AM",
+    "AO",
+    "AQ",
+    "AR",
+    "AS",
+    "AT",
+    "AU",
+    "AW",
+    "AX",
+    "AZ",
+    "BA",
+    "BB",
+    "BD",
+    "BE",
+    "BF",
+    "BG",
+    "BH",
+    "BI",
+    "BJ",
+    "BL",
+    "BM",
+    "BN",
+    "BO",
+    "BQ",
+    "BR",
+    "BS",
+    "BT",
+    "BV",
+    "BW",
+    "BY",
+    "BZ",
+    "CA",
+    "CC",
+    "CD",
+    "CF",
+    "CG",
+    "CH",
+    "CI",
+    "CK",
+    "CL",
+    "CM",
+    "CN",
+    "CO",
+    "CR",
+    "CU",
+    "CV",
+    "CW",
+    "CX",
+    "CY",
+    "CZ",
+    "DE",
+    "DJ",
+    "DK",
+    "DM",
+    "DO",
+    "DZ",
+    "EC",
+    "EE",
+    "EG",
+    "EH",
+    "ER",
+    "ES",
+    "ET",
+    "FI",
+    "FJ",
+    "FK",
+    "FM",
+    "FO",
+    "FR",
+    "GA",
+    "GB",
+    "GD",
+    "GE",
+    "GF",
+    "GG",
+    "GH",
+    "GI",
+    "GL",
+    "GM",
+    "GN",
+    "GP",
+    "GQ",
+    "GR",
+    "GS",
+    "GT",
+    "GU",
+    "GW",
+    "GY",
+    "HK",
+    "HM",
+    "HN",
+    "HR",
+    "HT",
+    "HU",
+    "ID",
+    "IE",
+    "IL",
+    "IM",
+    "IN",
+    "IO",
+    "IQ",
+    "IR",
+    "IS",
+    "IT",
+    "JE",
+    "JM",
+    "JO",
+    "JP",
+    "KE",
+    "KG",
+    "KH",
+    "KI",
+    "KM",
+    "KN",
+    "KP",
+    "KR",
+    "KW",
+    "KY",
+    "KZ",
+    "LA",
+    "LB",
+    "LC",
+    "LI",
+    "LK",
+    "LR",
+    "LS",
+    "LT",
+    "LU",
+    "LV",
+    "LY",
+    "MA",
+    "MC",
+    "MD",
+    "ME",
+    "MF",
+    "MG",
+    "MH",
+    "MK",
+    "ML",
+    "MM",
+    "MN",
+    "MO",
+    "MP",
+    "MQ",
+    "MR",
+    "MS",
+    "MT",
+    "MU",
+    "MV",
+    "MW",
+    "MX",
+    "MY",
+    "MZ",
+    "NA",
+    "NC",
+    "NE",
+    "NF",
+    "NG",
+    "NI",
+    "NL",
+    "NO",
+    "NP",
+    "NR",
+    "NU",
+    "NZ",
+    "OM",
+    "PA",
+    "PE",
+    "PF",
+    "PG",
+    "PH",
+    "PK",
+    "PL",
+    "PM",
+    "PN",
+    "PR",
+    "PS",
+    "PT",
+    "PW",
+    "PY",
+    "QA",
+    "RE",
+    "RO",
+    "RS",
+    "RU",
+    "RW",
+    "SA",
+    "SB",
+    "SC",
+    "SD",
+    "SE",
+    "SG",
+    "SH",
+    "SI",
+    "SJ",
+    "SK",
+    "SL",
+    "SM",
+    "SN",
+    "SO",
+    "SR",
+    "SS",
+    "ST",
+    "SV",
+    "SX",
+    "SY",
+    "SZ",
+    "TC",
+    "TD",
+    "TF",
+    "TG",
+    "TH",
+    "TJ",
+    "TK",
+    "TL",
+    "TM",
+    "TN",
+    "TO",
+    "TR",
+    "TT",
+    "TV",
+    "TW",
+    "TZ",
+    "UA",
+    "UG",
+    "UM",
+    "US",
+    "UY",
+    "UZ",
+    "VA",
+    "VC",
+    "VE",
+    "VG",
+    "VI",
+    "VN",
+    "VU",
+    "WF",
+    "WS",
+    "YE",
+    "YT",
+    "ZA",
+    "ZM",
+    "ZW"
+  ],
+  "source": {
+    "url": "https://sdgs.un.org/goals",
+    "checked": "2026-10-22"
+  },
+  "careers": [
+    {
+      "id": "software",
+      "title": [
+        "Software developer",
+        "软件开发工程师",
+        "Pembangun perisian"
+      ],
+      "interests": [
+        "tech",
+        "learning"
+      ],
+      "majors": [
+        "software",
+        "engineering"
+      ],
+      "mindsets": [
+        "science"
+      ],
+      "purposes": [
+        "coding"
+      ],
+      "sdgs": [
+        9,
+        8,
+        4
+      ],
+      "skills": [
+        [
+          "Programming",
+          "编程基础",
+          "Asas pengaturcaraan"
+        ],
+        [
+          "Testing",
+          "软件测试",
+          "Pengujian perisian"
+        ],
+        [
+          "Version control",
+          "版本控制",
+          "Kawalan versi"
+        ]
+      ],
+      "project": [
+        "Build a local study tracker with add, edit and delete actions; verify five edge cases.",
+        "制作可新增、编辑和删除记录的本地学习跟踪器，验证五种边界情况。",
+        "Bina penjejak belajar setempat dengan fungsi tambah, sunting dan padam; uji lima kes sempadan."
+      ],
+      "ai": [
+        "Use AI to explain an error or draft a test; run the code yourself.",
+        "用 AI 解释报错或起草测试，自己运行代码验证。",
+        "Gunakan AI untuk menerangkan ralat atau mendraf ujian; jalankan kod sendiri."
+      ],
+      "human": [
+        "Own requirements, privacy choices and correctness; never ship code you cannot explain.",
+        "自主确定需求、隐私与正确性，不交付无法解释的代码。",
+        "Tentukan keperluan, privasi dan ketepatan; jangan serahkan kod yang tidak dapat diterangkan."
+      ],
+      "entry": [
+        "Start with one language and a small portfolio; verify each role’s technical requirements.",
+        "先掌握一种语言并积累小作品，再核实具体岗位要求。",
+        "Mulakan dengan satu bahasa dan portfolio kecil; semak keperluan teknikal setiap jawatan."
+      ]
+    },
+    {
+      "id": "data",
+      "title": [
+        "Data analyst",
+        "数据分析师",
+        "Penganalisis data"
+      ],
+      "interests": [
+        "tech",
+        "business",
+        "learning"
+      ],
+      "majors": [
+        "science",
+        "software",
+        "business"
+      ],
+      "mindsets": [
+        "science"
+      ],
+      "purposes": [
+        "coding",
+        "summary"
+      ],
+      "sdgs": [
+        8,
+        9,
+        12
+      ],
+      "skills": [
+        [
+          "Spreadsheets",
+          "电子表格",
+          "Hamparan"
+        ],
+        [
+          "Statistics",
+          "统计基础",
+          "Asas statistik"
+        ],
+        [
+          "Data storytelling",
+          "数据表达",
+          "Penceritaan data"
+        ]
+      ],
+      "project": [
+        "Analyse a fictional monthly budget, check totals manually and explain three spending patterns.",
+        "分析一份虚构月度预算，手动核对总额并解释三种支出规律。",
+        "Analisis belanjawan bulanan rekaan, semak jumlah secara manual dan jelaskan tiga corak perbelanjaan."
+      ],
+      "ai": [
+        "Ask AI for formula alternatives and chart drafts; compare them with known answers.",
+        "让 AI 提供公式与图表草稿，再与已知结果对照。",
+        "Minta AI mencadangkan formula dan carta; bandingkan dengan jawapan yang diketahui."
+      ],
+      "human": [
+        "Check sampling, missing data and causal claims before presenting conclusions.",
+        "展示结论前核查样本、缺失值和因果表述。",
+        "Semak pensampelan, data hilang dan dakwaan sebab akibat sebelum membentangkan kesimpulan."
+      ],
+      "entry": [
+        "Build spreadsheet, SQL and basic statistics evidence; a certificate alone is not enough.",
+        "用作品体现表格、SQL 和统计能力，证书本身不能代替实践。",
+        "Tunjukkan kemahiran hamparan, SQL dan statistik; sijil sahaja tidak menggantikan amali."
+      ]
+    },
+    {
+      "id": "ai-research",
+      "title": [
+        "AI / machine-learning engineer",
+        "AI／机器学习工程师",
+        "Jurutera AI / pembelajaran mesin"
+      ],
+      "interests": [
+        "tech",
+        "learning"
+      ],
+      "majors": [
+        "software",
+        "science",
+        "engineering"
+      ],
+      "mindsets": [
+        "science"
+      ],
+      "purposes": [
+        "coding"
+      ],
+      "sdgs": [
+        9,
+        4,
+        8
+      ],
+      "skills": [
+        [
+          "Linear algebra",
+          "线性代数",
+          "Algebra linear"
+        ],
+        [
+          "Machine learning",
+          "机器学习",
+          "Pembelajaran mesin"
+        ],
+        [
+          "Evaluation",
+          "模型评估",
+          "Penilaian model"
+        ]
+      ],
+      "project": [
+        "Compare a simple classifier with a majority baseline on a public practice dataset; document errors.",
+        "在公开练习数据上比较简单分类器与多数类基线，记录错误。",
+        "Bandingkan pengelas mudah dengan garis dasar majoriti menggunakan data latihan awam; catat ralat."
+      ],
+      "ai": [
+        "Use AI to explain methods and propose experiments, then reproduce each result.",
+        "用 AI 理解方法和设计实验，并自行复现结果。",
+        "Gunakan AI untuk memahami kaedah dan mencadangkan eksperimen; hasilkan semula setiap keputusan."
+      ],
+      "human": [
+        "Control data leakage, bias and unsupported conclusions; more AI use does not prove competence.",
+        "控制数据泄漏、偏差和过度结论，使用 AI 多不等于能力强。",
+        "Kawal kebocoran data, bias dan kesimpulan tanpa bukti; penggunaan AI yang banyak bukan bukti kecekapan."
+      ],
+      "entry": [
+        "Develop mathematics, programming and experimental design; research roles may require postgraduate study.",
+        "建立数学、编程和实验设计基础；研究岗位可能需要研究生训练。",
+        "Kukuhkan matematik, pengaturcaraan dan reka bentuk eksperimen; peranan penyelidikan mungkin memerlukan pengajian lanjutan."
+      ]
+    },
+    {
+      "id": "security",
+      "title": [
+        "Cybersecurity analyst",
+        "网络安全分析师",
+        "Penganalisis keselamatan siber"
+      ],
+      "interests": [
+        "tech",
+        "learning"
+      ],
+      "majors": [
+        "software",
+        "engineering",
+        "law"
+      ],
+      "mindsets": [
+        "science"
+      ],
+      "purposes": [
+        "coding"
+      ],
+      "sdgs": [
+        9,
+        16
+      ],
+      "skills": [
+        [
+          "Networks",
+          "网络基础",
+          "Asas rangkaian"
+        ],
+        [
+          "Threat modelling",
+          "威胁建模",
+          "Pemodelan ancaman"
+        ],
+        [
+          "Incident documentation",
+          "事件记录",
+          "Dokumentasi insiden"
+        ]
+      ],
+      "project": [
+        "Threat-model a fictional school website and propose five defensive controls without attacking a real system.",
+        "为虚构校园网站建立威胁模型并提出五项防护措施，不攻击真实系统。",
+        "Modelkan ancaman laman sekolah rekaan dan cadangkan lima kawalan pertahanan tanpa menyerang sistem sebenar."
+      ],
+      "ai": [
+        "Use AI to summarise synthetic logs or explain defensive concepts.",
+        "用 AI 总结虚构日志或解释防护概念。",
+        "Gunakan AI untuk merumus log rekaan atau menerangkan konsep pertahanan."
+      ],
+      "human": [
+        "Verify alerts, protect secrets and work only within explicit authorisation.",
+        "核实告警、保护秘密，并严格在授权范围内操作。",
+        "Sahkan amaran, lindungi rahsia dan bekerja hanya dalam skop kebenaran yang jelas."
+      ],
+      "entry": [
+        "Study networking, operating systems and authorised labs before seeking security work.",
+        "先学习网络、操作系统与授权实验环境，再准备安全岗位。",
+        "Pelajari rangkaian, sistem operasi dan makmal berizin sebelum memohon kerja keselamatan."
+      ]
+    },
+    {
+      "id": "ux",
+      "title": [
+        "UX / accessibility designer",
+        "用户体验／无障碍设计师",
+        "Pereka UX / kebolehcapaian"
+      ],
+      "interests": [
+        "art",
+        "tech",
+        "life"
+      ],
+      "majors": [
+        "art",
+        "software",
+        "humanities"
+      ],
+      "mindsets": [
+        "art",
+        "humanities"
+      ],
+      "purposes": [
+        "creative"
+      ],
+      "sdgs": [
+        10,
+        9,
+        11
+      ],
+      "skills": [
+        [
+          "User research",
+          "用户研究",
+          "Penyelidikan pengguna"
+        ],
+        [
+          "Prototyping",
+          "原型设计",
+          "Prototaip"
+        ],
+        [
+          "Accessibility",
+          "无障碍设计",
+          "Kebolehcapaian"
+        ]
+      ],
+      "project": [
+        "Redesign a fictional university form and check keyboard navigation, contrast and clear labels.",
+        "重新设计虚构大学表单，检查键盘操作、对比度与标签。",
+        "Reka semula borang universiti rekaan; semak navigasi papan kekunci, kontras dan label yang jelas."
+      ],
+      "ai": [
+        "Use AI to draft interface copy and alternative layouts, not invented user interviews.",
+        "用 AI 起草界面文案和布局备选，不编造用户访谈。",
+        "Gunakan AI untuk mendraf teks antara muka dan susun atur, bukan mereka-reka temu bual pengguna."
+      ],
+      "human": [
+        "Observe real consented feedback and test usability rather than assuming all users are alike.",
+        "在获得同意后收集反馈并测试可用性，不假设所有用户相同。",
+        "Kumpulkan maklum balas dengan persetujuan dan uji kebolehgunaan; jangan anggap semua pengguna sama."
+      ],
+      "entry": [
+        "Show a research-to-design case study and basic accessibility knowledge.",
+        "用案例展示从研究到设计的过程，并掌握基础无障碍知识。",
+        "Tunjukkan kajian kes daripada penyelidikan kepada reka bentuk serta pengetahuan kebolehcapaian."
+      ]
+    },
+    {
+      "id": "creative",
+      "title": [
+        "Digital artist / visual communicator",
+        "数字艺术／视觉传播设计师",
+        "Seniman digital / pereka komunikasi visual"
+      ],
+      "interests": [
+        "art",
+        "entertainment"
+      ],
+      "majors": [
+        "art",
+        "humanities"
+      ],
+      "mindsets": [
+        "art"
+      ],
+      "purposes": [
+        "creative"
+      ],
+      "sdgs": [
+        4,
+        12
+      ],
+      "skills": [
+        [
+          "Visual composition",
+          "视觉构图",
+          "Komposisi visual"
+        ],
+        [
+          "Original storytelling",
+          "原创叙事",
+          "Penceritaan asli"
+        ],
+        [
+          "Copyright literacy",
+          "版权意识",
+          "Literasi hak cipta"
+        ]
+      ],
+      "project": [
+        "Create three original posters about repairing objects; explain the visual choices and source assets.",
+        "制作三张倡导修复旧物的原创海报，说明视觉选择与素材来源。",
+        "Cipta tiga poster asli tentang membaiki barangan; jelaskan pilihan visual dan sumber aset."
+      ],
+      "ai": [
+        "Use AI for mood exploration and rough drafts; retain authorship decisions and disclose AI use.",
+        "用 AI 探索氛围和草稿，保留创作判断并说明 AI 使用。",
+        "Gunakan AI untuk meneroka suasana dan draf; kekalkan keputusan kreatif dan nyatakan penggunaan AI."
+      ],
+      "human": [
+        "Check rights, stereotypes and factual messages; a generated image is not automatically licensed.",
+        "核查版权、刻板印象和事实信息，生成图像不等于自动获得所有授权。",
+        "Semak hak, stereotaip dan mesej fakta; imej janaan tidak semestinya mempunyai semua lesen."
+      ],
+      "entry": [
+        "Build an original portfolio with process notes; software skill and authorship both matter.",
+        "建立包含过程说明的原创作品集，兼顾软件技能与创作能力。",
+        "Bina portfolio asli dengan nota proses; kemahiran perisian dan kepengarangan sama penting."
+      ]
+    },
+    {
+      "id": "game",
+      "title": [
+        "Game / interactive-experience designer",
+        "游戏／交互体验设计师",
+        "Pereka permainan / pengalaman interaktif"
+      ],
+      "interests": [
+        "entertainment",
+        "art",
+        "tech"
+      ],
+      "majors": [
+        "software",
+        "art"
+      ],
+      "mindsets": [
+        "art",
+        "science"
+      ],
+      "purposes": [
+        "coding",
+        "creative"
+      ],
+      "sdgs": [
+        4,
+        9
+      ],
+      "skills": [
+        [
+          "Game systems",
+          "游戏系统设计",
+          "Sistem permainan"
+        ],
+        [
+          "Interaction design",
+          "交互设计",
+          "Reka bentuk interaksi"
+        ],
+        [
+          "Playtesting",
+          "试玩测试",
+          "Ujian permainan"
+        ]
+      ],
+      "project": [
+        "Prototype a five-minute recycling game; observe one consenting tester and revise one confusing rule.",
+        "制作五分钟回收主题小游戏，观察一位自愿试玩者并修改一条不清晰规则。",
+        "Prototaipkan permainan kitar semula lima minit; perhatikan seorang penguji sukarela dan baiki satu peraturan yang mengelirukan."
+      ],
+      "ai": [
+        "Use AI to brainstorm mechanics or explain prototype code; verify the actual play experience.",
+        "用 AI 构思机制或解释原型代码，实际测试游玩体验。",
+        "Gunakan AI untuk mencetuskan mekanik atau menerangkan kod; uji pengalaman bermain sebenar."
+      ],
+      "human": [
+        "Design fair progression and accessible interactions; avoid manipulative spending loops.",
+        "设计公平进度与可访问交互，避免诱导消费循环。",
+        "Reka kemajuan yang adil dan interaksi mudah diakses; elakkan gelung perbelanjaan manipulatif."
+      ],
+      "entry": [
+        "Produce a playable prototype and documented playtest; choose a design or engineering track later.",
+        "先完成可玩原型和测试记录，再选择设计或工程方向。",
+        "Hasilkan prototaip boleh main dan rekod ujian sebelum memilih laluan reka bentuk atau kejuruteraan."
+      ]
+    },
+    {
+      "id": "product",
+      "title": [
+        "Product / project coordinator",
+        "产品／项目协调员",
+        "Penyelaras produk / projek"
+      ],
+      "interests": [
+        "business",
+        "tech",
+        "life"
+      ],
+      "majors": [
+        "business",
+        "software",
+        "engineering"
+      ],
+      "mindsets": [
+        "science",
+        "humanities"
+      ],
+      "purposes": [
+        "summary"
+      ],
+      "sdgs": [
+        8,
+        9,
+        17
+      ],
+      "skills": [
+        [
+          "Prioritisation",
+          "优先级管理",
+          "Penentuan keutamaan"
+        ],
+        [
+          "Requirements",
+          "需求分析",
+          "Analisis keperluan"
+        ],
+        [
+          "Stakeholder communication",
+          "相关方沟通",
+          "Komunikasi pihak berkepentingan"
+        ]
+      ],
+      "project": [
+        "Plan a fictional campus app: define three user needs, milestones and a clear acceptance checklist.",
+        "规划虚构校园应用，明确三项用户需求、里程碑和验收清单。",
+        "Rancang aplikasi kampus rekaan: tentukan tiga keperluan pengguna, pencapaian utama dan senarai penerimaan."
+      ],
+      "ai": [
+        "Use AI to organise requirements and meeting notes; confirm decisions with the people responsible.",
+        "用 AI 整理需求与会议记录，并向负责人核实决策。",
+        "Gunakan AI untuk menyusun keperluan dan nota mesyuarat; sahkan keputusan dengan pihak bertanggungjawab."
+      ],
+      "human": [
+        "Own trade-offs, consent and scope; fluent AI prose does not establish user demand.",
+        "负责取舍、同意与范围控制；流畅的 AI 文案不能证明真实需求。",
+        "Tanggungjawabkan pertimbangan, persetujuan dan skop; teks AI yang lancar tidak membuktikan permintaan pengguna."
+      ],
+      "entry": [
+        "Demonstrate delivery and communication in a small team; requirements vary by organisation.",
+        "通过小团队项目展示交付与沟通能力，具体要求因组织而异。",
+        "Tunjukkan penyampaian dan komunikasi dalam pasukan kecil; keperluan berbeza mengikut organisasi."
+      ]
+    },
+    {
+      "id": "marketing",
+      "title": [
+        "Marketing / communication strategist",
+        "营销／传播策划",
+        "Perancang pemasaran / komunikasi"
+      ],
+      "interests": [
+        "business",
+        "art",
+        "entertainment"
+      ],
+      "majors": [
+        "business",
+        "humanities",
+        "art"
+      ],
+      "mindsets": [
+        "humanities",
+        "art"
+      ],
+      "purposes": [
+        "creative",
+        "summary"
+      ],
+      "sdgs": [
+        8,
+        12
+      ],
+      "skills": [
+        [
+          "Audience research",
+          "受众研究",
+          "Penyelidikan khalayak"
+        ],
+        [
+          "Campaign design",
+          "活动策划",
+          "Reka bentuk kempen"
+        ],
+        [
+          "Measurement",
+          "效果衡量",
+          "Pengukuran"
+        ]
+      ],
+      "project": [
+        "Design a fictional repair campaign with two message versions and a plan to test comprehension.",
+        "设计虚构修复宣传活动，制作两版信息并制定理解度测试计划。",
+        "Reka kempen pembaikan rekaan dengan dua versi mesej dan pelan menguji kefahaman."
+      ],
+      "ai": [
+        "Use AI to draft message alternatives, then check claims, tone and accessibility.",
+        "用 AI 起草不同文案，核查事实、语气与可访问性。",
+        "Gunakan AI untuk mendraf variasi mesej; semak dakwaan, nada dan kebolehcapaian."
+      ],
+      "human": [
+        "Avoid deceptive claims and unsupported environmental promises; measure rather than invent outcomes.",
+        "避免误导宣传与无依据的环保承诺，实际衡量效果而非编造结果。",
+        "Elakkan dakwaan mengelirukan dan janji alam sekitar tanpa bukti; ukur hasil, jangan mereka-rekanya."
+      ],
+      "entry": [
+        "Build evidence of research, clear writing and a measured campaign experiment.",
+        "积累受众研究、清晰写作与可衡量营销实验的证据。",
+        "Bina bukti penyelidikan, penulisan jelas dan eksperimen kempen yang diukur."
+      ]
+    },
+    {
+      "id": "business-analysis",
+      "title": [
+        "Business / operations analyst",
+        "业务／运营分析师",
+        "Penganalisis perniagaan / operasi"
+      ],
+      "interests": [
+        "business",
+        "learning",
+        "life"
+      ],
+      "majors": [
+        "business",
+        "engineering",
+        "software"
+      ],
+      "mindsets": [
+        "science",
+        "humanities"
+      ],
+      "purposes": [
+        "summary",
+        "coding"
+      ],
+      "sdgs": [
+        8,
+        9,
+        12
+      ],
+      "skills": [
+        [
+          "Process mapping",
+          "流程梳理",
+          "Pemetaan proses"
+        ],
+        [
+          "Spreadsheet modelling",
+          "表格建模",
+          "Pemodelan hamparan"
+        ],
+        [
+          "Problem framing",
+          "问题定义",
+          "Perumusan masalah"
+        ]
+      ],
+      "project": [
+        "Map a fictional library request process, measure delays with sample data and propose one improvement.",
+        "梳理虚构图书馆需求流程，用样例数据衡量延迟并提出一项改进。",
+        "Petakan proses permintaan perpustakaan rekaan, ukur kelewatan dengan data contoh dan cadangkan satu penambahbaikan."
+      ],
+      "ai": [
+        "Use AI to organise assumptions and draft process diagrams; verify every calculation.",
+        "用 AI 整理假设和流程图草稿，逐项核实计算。",
+        "Gunakan AI untuk menyusun andaian dan mendraf rajah proses; sahkan setiap pengiraan."
+      ],
+      "human": [
+        "Check who benefits, who bears costs and whether a proposed change can actually be tested.",
+        "核查谁获益、谁承担成本，以及改进方案是否可检验。",
+        "Semak siapa mendapat manfaat, siapa menanggung kos dan sama ada perubahan boleh diuji."
+      ],
+      "entry": [
+        "Show a bounded process case with an explicit baseline and validation method.",
+        "展示范围清晰、基线明确并包含验证方法的流程案例。",
+        "Tunjukkan kes proses berskop jelas dengan garis dasar dan kaedah pengesahan."
+      ]
+    },
+    {
+      "id": "finance",
+      "title": [
+        "Financial / impact-data analyst",
+        "财务／影响力数据分析师",
+        "Penganalisis kewangan / data impak"
+      ],
+      "interests": [
+        "business",
+        "learning"
+      ],
+      "majors": [
+        "business",
+        "science"
+      ],
+      "mindsets": [
+        "science"
+      ],
+      "purposes": [
+        "summary"
+      ],
+      "sdgs": [
+        8,
+        1,
+        12
+      ],
+      "skills": [
+        [
+          "Accounting basics",
+          "会计基础",
+          "Asas perakaunan"
+        ],
+        [
+          "Financial modelling",
+          "财务建模",
+          "Pemodelan kewangan"
+        ],
+        [
+          "Assumption testing",
+          "假设检验",
+          "Pengujian andaian"
+        ]
+      ],
+      "project": [
+        "Create a fictional community project budget and compare three cost scenarios without investment advice.",
+        "制作虚构社区项目预算并比较三种成本情景，不涉及投资建议。",
+        "Sediakan belanjawan projek komuniti rekaan dan bandingkan tiga senario kos tanpa nasihat pelaburan."
+      ],
+      "ai": [
+        "Use AI for formula explanations and report drafts; calculate totals independently.",
+        "用 AI 解释公式和起草报告，独立计算总额。",
+        "Gunakan AI untuk menerangkan formula dan mendraf laporan; kira jumlah secara kendiri."
+      ],
+      "human": [
+        "Verify figures, disclose assumptions and avoid treating projections as guaranteed returns.",
+        "核实数字、披露假设，不把预测当作收益保证。",
+        "Sahkan angka, nyatakan andaian dan jangan anggap unjuran sebagai pulangan terjamin."
+      ],
+      "entry": [
+        "Develop accounting and spreadsheet skills; regulated financial roles may require local qualifications.",
+        "发展会计与表格能力；受监管金融岗位可能要求当地资质。",
+        "Kembangkan perakaunan dan kemahiran hamparan; peranan kewangan terkawal mungkin memerlukan kelayakan tempatan."
+      ]
+    },
+    {
+      "id": "education",
+      "title": [
+        "Educator / learning designer",
+        "教育工作者／学习设计师",
+        "Pendidik / pereka pembelajaran"
+      ],
+      "interests": [
+        "learning",
+        "life",
+        "art"
+      ],
+      "majors": [
+        "education",
+        "humanities",
+        "science"
+      ],
+      "mindsets": [
+        "humanities",
+        "art",
+        "science"
+      ],
+      "purposes": [
+        "homework",
+        "summary"
+      ],
+      "sdgs": [
+        4,
+        10
+      ],
+      "skills": [
+        [
+          "Lesson design",
+          "课程设计",
+          "Reka bentuk pengajaran"
+        ],
+        [
+          "Assessment",
+          "学习评价",
+          "Penilaian pembelajaran"
+        ],
+        [
+          "Clear explanation",
+          "清晰讲解",
+          "Penerangan jelas"
+        ]
+      ],
+      "project": [
+        "Teach one concept using a one-page lesson and five practice questions; check every answer.",
+        "用一页课程和五道练习讲解一个概念，逐题验证答案。",
+        "Ajar satu konsep dengan pelajaran satu halaman dan lima soalan latihan; semak setiap jawapan."
+      ],
+      "ai": [
+        "Use AI to suggest examples and question variants; verify accuracy and age suitability.",
+        "用 AI 提供例子和题目变式，核实正确性与年龄适宜性。",
+        "Gunakan AI untuk mencadangkan contoh dan variasi soalan; sahkan ketepatan dan kesesuaian umur."
+      ],
+      "human": [
+        "Support learner understanding and fairness; do not replace feedback with automatic labels.",
+        "关注学习者理解与公平，不用自动标签代替反馈。",
+        "Utamakan pemahaman dan keadilan; jangan gantikan maklum balas dengan label automatik."
+      ],
+      "entry": [
+        "Teaching posts may require recognised training; start with supervised tutoring or a learning portfolio.",
+        "正式教学岗位可能需要认可资质；可从指导下辅导或学习作品集开始。",
+        "Jawatan mengajar mungkin memerlukan latihan diiktiraf; mulakan dengan bimbingan terselia atau portfolio pembelajaran."
+      ]
+    },
+    {
+      "id": "writing",
+      "title": [
+        "Technical writer / knowledge editor",
+        "技术写作者／知识编辑",
+        "Penulis teknikal / penyunting pengetahuan"
+      ],
+      "interests": [
+        "learning",
+        "art",
+        "tech"
+      ],
+      "majors": [
+        "humanities",
+        "software",
+        "education"
+      ],
+      "mindsets": [
+        "humanities"
+      ],
+      "purposes": [
+        "summary",
+        "homework"
+      ],
+      "sdgs": [
+        4,
+        9,
+        16
+      ],
+      "skills": [
+        [
+          "Source checking",
+          "来源核查",
+          "Semakan sumber"
+        ],
+        [
+          "Information structure",
+          "信息结构",
+          "Struktur maklumat"
+        ],
+        [
+          "Technical explanation",
+          "技术解释",
+          "Penerangan teknikal"
+        ]
+      ],
+      "project": [
+        "Write a beginner guide for a small open-source tool; test each instruction in a clean example.",
+        "为小型开源工具编写入门指南，在干净样例中逐步测试。",
+        "Tulis panduan pemula untuk alat sumber terbuka kecil; uji setiap arahan dalam contoh bersih."
+      ],
+      "ai": [
+        "Use AI to outline and simplify wording while keeping source references.",
+        "用 AI 构建提纲和简化表述，同时保留来源。",
+        "Gunakan AI untuk merangka dan memudahkan bahasa sambil mengekalkan rujukan sumber."
+      ],
+      "human": [
+        "Check facts, executable steps and attribution; plausible language is not evidence.",
+        "核查事实、可执行步骤与署名，听起来合理不等于有依据。",
+        "Semak fakta, langkah boleh laksana dan atribusi; bahasa munasabah bukan bukti."
+      ],
+      "entry": [
+        "Combine subject knowledge with a tested writing portfolio in your intended language.",
+        "结合专业知识与目标语言写作作品，并验证文档可用性。",
+        "Gabungkan pengetahuan bidang dengan portfolio penulisan yang diuji dalam bahasa sasaran."
+      ]
+    },
+    {
+      "id": "health",
+      "title": [
+        "Health-informatics / wellbeing project specialist",
+        "健康信息／身心健康项目专员",
+        "Pakar informatik kesihatan / projek kesejahteraan"
+      ],
+      "interests": [
+        "sport",
+        "tech",
+        "life",
+        "learning"
+      ],
+      "majors": [
+        "health",
+        "software",
+        "science"
+      ],
+      "mindsets": [
+        "science",
+        "humanities"
+      ],
+      "purposes": [
+        "summary"
+      ],
+      "sdgs": [
+        3,
+        10
+      ],
+      "skills": [
+        [
+          "Health-data literacy",
+          "健康数据素养",
+          "Literasi data kesihatan"
+        ],
+        [
+          "Privacy",
+          "隐私保护",
+          "Privasi"
+        ],
+        [
+          "Evidence appraisal",
+          "证据评估",
+          "Penilaian bukti"
+        ]
+      ],
+      "project": [
+        "Build a fictional exercise-log dashboard; label it as educational and avoid medical conclusions.",
+        "制作虚构运动日志看板，明确教育用途，不作医疗结论。",
+        "Bina papan pemuka log senaman rekaan; labelkan sebagai pendidikan dan elakkan kesimpulan perubatan."
+      ],
+      "ai": [
+        "Use AI to organise non-sensitive notes and explain data fields, not diagnose symptoms.",
+        "用 AI 整理非敏感笔记和解释字段，不用于诊断症状。",
+        "Gunakan AI untuk menyusun nota tidak sensitif dan menerangkan medan data, bukan mendiagnosis gejala."
+      ],
+      "human": [
+        "Protect health privacy and seek qualified review for clinical content.",
+        "保护健康隐私，临床内容须由合格专业人员复核。",
+        "Lindungi privasi kesihatan dan dapatkan semakan berkelayakan bagi kandungan klinikal."
+      ],
+      "entry": [
+        "Clinical practice requires separate professional licensing; this route starts with data and project work.",
+        "临床执业需要独立专业许可；本方向从数据与项目工作入手。",
+        "Amalan klinikal memerlukan lesen profesional berasingan; laluan ini bermula dengan data dan kerja projek."
+      ]
+    },
+    {
+      "id": "environment",
+      "title": [
+        "Environmental / sustainability analyst",
+        "环境／可持续发展分析师",
+        "Penganalisis alam sekitar / kelestarian"
+      ],
+      "interests": [
+        "life",
+        "tech",
+        "learning"
+      ],
+      "majors": [
+        "environment",
+        "science",
+        "engineering"
+      ],
+      "mindsets": [
+        "science"
+      ],
+      "purposes": [
+        "coding",
+        "summary"
+      ],
+      "sdgs": [
+        13,
+        12,
+        15
+      ],
+      "skills": [
+        [
+          "Environmental science",
+          "环境科学",
+          "Sains alam sekitar"
+        ],
+        [
+          "Data interpretation",
+          "数据解读",
+          "Tafsiran data"
+        ],
+        [
+          "Impact boundaries",
+          "影响边界",
+          "Sempadan impak"
+        ]
+      ],
+      "project": [
+        "Compare fictional campus waste scenarios and document assumptions, units and measurement limits.",
+        "比较虚构校园垃圾情景，记录假设、单位与测量限制。",
+        "Bandingkan senario sisa kampus rekaan dan catat andaian, unit serta batas pengukuran."
+      ],
+      "ai": [
+        "Use AI to organise evidence and propose checks; verify numerical and scientific claims.",
+        "用 AI 整理证据和提出检查点，核实数字与科学表述。",
+        "Gunakan AI untuk menyusun bukti dan mencadangkan semakan; sahkan dakwaan angka dan saintifik."
+      ],
+      "human": [
+        "Avoid greenwashing; distinguish a proposed improvement from measured environmental impact.",
+        "避免漂绿，区分拟议改进与已测量环境影响。",
+        "Elakkan dakwaan hijau mengelirukan; bezakan cadangan penambahbaikan daripada impak terukur."
+      ],
+      "entry": [
+        "Build environmental and quantitative foundations; specialist fieldwork may need formal training.",
+        "建立环境与定量基础，专业实地工作可能需要正式训练。",
+        "Bina asas alam sekitar dan kuantitatif; kerja lapangan khusus mungkin memerlukan latihan formal."
+      ]
+    },
+    {
+      "id": "energy",
+      "title": [
+        "Renewable-energy engineer",
+        "可再生能源工程师",
+        "Jurutera tenaga boleh baharu"
+      ],
+      "interests": [
+        "tech",
+        "learning"
+      ],
+      "majors": [
+        "engineering",
+        "science",
+        "environment"
+      ],
+      "mindsets": [
+        "science"
+      ],
+      "purposes": [
+        "coding"
+      ],
+      "sdgs": [
+        7,
+        9,
+        13
+      ],
+      "skills": [
+        [
+          "Physics and circuits",
+          "物理与电路",
+          "Fizik dan litar"
+        ],
+        [
+          "Energy modelling",
+          "能源建模",
+          "Pemodelan tenaga"
+        ],
+        [
+          "Safety analysis",
+          "安全分析",
+          "Analisis keselamatan"
+        ]
+      ],
+      "project": [
+        "Model a fictional building’s daily electricity use and compare a small solar scenario on paper.",
+        "建模虚构建筑每日用电量，在纸面上比较小型太阳能情景。",
+        "Modelkan penggunaan elektrik harian bangunan rekaan dan bandingkan senario solar kecil di atas kertas."
+      ],
+      "ai": [
+        "Use AI to explain calculations and explore design alternatives; verify units and assumptions.",
+        "用 AI 解释计算与探索方案，核实单位和假设。",
+        "Gunakan AI untuk menerangkan pengiraan dan meneroka reka bentuk; sahkan unit dan andaian."
+      ],
+      "human": [
+        "Keep engineering safety and compliance under qualified human review; do not improvise electrical installations.",
+        "工程安全与合规须由专业人员复核，不自行试装电气设施。",
+        "Pastikan keselamatan dan pematuhan disemak pihak berkelayakan; jangan memasang sistem elektrik secara cuba-cuba."
+      ],
+      "entry": [
+        "Study engineering fundamentals; professional sign-off may require accredited education and registration.",
+        "学习工程基础；专业签署可能需要认可学历与注册。",
+        "Pelajari asas kejuruteraan; pengesahan profesional mungkin memerlukan pendidikan diiktiraf dan pendaftaran."
+      ]
+    },
+    {
+      "id": "urban",
+      "title": [
+        "Urban / community planner",
+        "城市／社区规划师",
+        "Perancang bandar / komuniti"
+      ],
+      "interests": [
+        "life",
+        "art",
+        "tech"
+      ],
+      "majors": [
+        "environment",
+        "engineering",
+        "art"
+      ],
+      "mindsets": [
+        "art",
+        "science",
+        "humanities"
+      ],
+      "purposes": [
+        "creative"
+      ],
+      "sdgs": [
+        11,
+        10,
+        13
+      ],
+      "skills": [
+        [
+          "Spatial thinking",
+          "空间思维",
+          "Pemikiran ruang"
+        ],
+        [
+          "Community research",
+          "社区研究",
+          "Penyelidikan komuniti"
+        ],
+        [
+          "Mapping",
+          "地图表达",
+          "Pemetaan"
+        ]
+      ],
+      "project": [
+        "Sketch a safer fictional campus walking route and check lighting, access and crossing assumptions.",
+        "绘制更安全的虚构校园步行路线，检查照明、可达性与过街假设。",
+        "Lakar laluan berjalan kaki kampus rekaan yang lebih selamat; semak andaian pencahayaan, akses dan lintasan."
+      ],
+      "ai": [
+        "Use AI for layout alternatives and note synthesis; ground decisions in observed conditions.",
+        "用 AI 探索布局和整理笔记，决策仍应基于观察。",
+        "Gunakan AI untuk pilihan susun atur dan rumusan nota; asaskan keputusan pada keadaan yang diperhatikan."
+      ],
+      "human": [
+        "Include accessibility and community consent; an attractive map does not establish safety.",
+        "考虑无障碍与社区同意，美观地图不等于安全证明。",
+        "Ambil kira kebolehcapaian dan persetujuan komuniti; peta menarik bukan bukti keselamatan."
+      ],
+      "entry": [
+        "Build a spatial portfolio; planning and design practice may have local qualification requirements.",
+        "建立空间作品集，规划设计执业可能受当地资质要求约束。",
+        "Bina portfolio ruang; amalan perancangan dan reka bentuk mungkin tertakluk kepada kelayakan tempatan."
+      ]
+    },
+    {
+      "id": "agri",
+      "title": [
+        "Food / agricultural technology specialist",
+        "食品／农业技术专员",
+        "Pakar teknologi makanan / pertanian"
+      ],
+      "interests": [
+        "life",
+        "tech",
+        "learning"
+      ],
+      "majors": [
+        "agriculture",
+        "science",
+        "engineering"
+      ],
+      "mindsets": [
+        "science"
+      ],
+      "purposes": [
+        "coding",
+        "summary"
+      ],
+      "sdgs": [
+        2,
+        12,
+        15
+      ],
+      "skills": [
+        [
+          "Food systems",
+          "食品系统",
+          "Sistem makanan"
+        ],
+        [
+          "Measurement",
+          "测量记录",
+          "Pengukuran"
+        ],
+        [
+          "Process improvement",
+          "流程改进",
+          "Penambahbaikan proses"
+        ]
+      ],
+      "project": [
+        "Track fictional cafeteria food waste for seven days and design a small measurement-based reduction trial.",
+        "记录七天虚构食堂浪费数据，设计基于测量的小型减量试验。",
+        "Jejak sisa makanan kafeteria rekaan selama tujuh hari dan reka ujian pengurangan berasaskan pengukuran."
+      ],
+      "ai": [
+        "Use AI to organise observations and suggest data checks; validate food-safety claims independently.",
+        "用 AI 整理观察和提出数据检查，独立核实食品安全表述。",
+        "Gunakan AI untuk menyusun pemerhatian dan semakan data; sahkan dakwaan keselamatan makanan secara berasingan."
+      ],
+      "human": [
+        "Protect food safety and distinguish simulated results from measured agricultural outcomes.",
+        "保护食品安全，区分模拟结果与实测农业成果。",
+        "Utamakan keselamatan makanan dan bezakan simulasi daripada hasil pertanian terukur."
+      ],
+      "entry": [
+        "Learn food or agricultural science; specialist processing roles may require relevant qualifications.",
+        "学习食品或农业科学，专业加工岗位可能需要相关资质。",
+        "Pelajari sains makanan atau pertanian; peranan pemprosesan khusus mungkin memerlukan kelayakan berkaitan."
+      ]
+    },
+    {
+      "id": "water",
+      "title": [
+        "Water-resources / sanitation specialist",
+        "水资源／环境卫生技术专员",
+        "Pakar sumber air / sanitasi"
+      ],
+      "interests": [
+        "tech",
+        "life",
+        "learning"
+      ],
+      "majors": [
+        "environment",
+        "engineering",
+        "science"
+      ],
+      "mindsets": [
+        "science"
+      ],
+      "purposes": [
+        "coding"
+      ],
+      "sdgs": [
+        6,
+        11,
+        13
+      ],
+      "skills": [
+        [
+          "Water systems",
+          "水系统基础",
+          "Asas sistem air"
+        ],
+        [
+          "Sampling literacy",
+          "采样知识",
+          "Literasi pensampelan"
+        ],
+        [
+          "Engineering calculations",
+          "工程计算",
+          "Pengiraan kejuruteraan"
+        ]
+      ],
+      "project": [
+        "Audit a fictional building’s water use on paper and propose a leak-detection checklist.",
+        "纸面审计虚构建筑用水，提出漏水排查清单。",
+        "Audit penggunaan air bangunan rekaan di atas kertas dan cadangkan senarai pengesanan kebocoran."
+      ],
+      "ai": [
+        "Use AI to structure calculations and inspection notes; check units and source guidance.",
+        "用 AI 整理计算和检查笔记，核对单位与权威指南。",
+        "Gunakan AI untuk menyusun pengiraan dan nota pemeriksaan; semak unit dan panduan sumber."
+      ],
+      "human": [
+        "Do not declare water drinkable from a chatbot or home observation; testing requires qualified procedures.",
+        "不能凭聊天机器人或居家观察判断饮用水安全，检测须遵循专业程序。",
+        "Jangan tentukan air selamat diminum melalui chatbot atau pemerhatian rumah; ujian memerlukan prosedur berkelayakan."
+      ],
+      "entry": [
+        "Build science and engineering foundations; laboratory and public-health work needs relevant training.",
+        "建立科学与工程基础，实验室和公共卫生工作需相关训练。",
+        "Bina asas sains dan kejuruteraan; kerja makmal dan kesihatan awam memerlukan latihan berkaitan."
+      ]
+    },
+    {
+      "id": "marine",
+      "title": [
+        "Marine-conservation analyst",
+        "海洋保护分析员",
+        "Penganalisis pemuliharaan marin"
+      ],
+      "interests": [
+        "life",
+        "sport",
+        "learning"
+      ],
+      "majors": [
+        "environment",
+        "science"
+      ],
+      "mindsets": [
+        "science"
+      ],
+      "purposes": [
+        "summary",
+        "coding"
+      ],
+      "sdgs": [
+        14,
+        13
+      ],
+      "skills": [
+        [
+          "Marine ecology",
+          "海洋生态",
+          "Ekologi marin"
+        ],
+        [
+          "Field-data quality",
+          "实地数据质量",
+          "Kualiti data lapangan"
+        ],
+        [
+          "Mapping",
+          "地图分析",
+          "Pemetaan"
+        ]
+      ],
+      "project": [
+        "Classify fictional coastal litter observations and explain sampling limits without disturbing wildlife.",
+        "分类虚构海岸垃圾观察数据，说明采样限制，不干扰野生动物。",
+        "Kelaskan pemerhatian sampah pantai rekaan dan jelaskan batas pensampelan tanpa mengganggu hidupan liar."
+      ],
+      "ai": [
+        "Use AI to organise categories and draft figures; verify species and geographic claims.",
+        "用 AI 整理类别和图表草稿，核实物种与地理信息。",
+        "Gunakan AI untuk menyusun kategori dan mendraf rajah; sahkan dakwaan spesies dan geografi."
+      ],
+      "human": [
+        "Follow conservation protocols and distinguish observations from inferred ecosystem change.",
+        "遵守保护规范，区分观察与推断的生态变化。",
+        "Ikuti protokol pemuliharaan dan bezakan pemerhatian daripada perubahan ekosistem yang disimpulkan."
+      ],
+      "entry": [
+        "Study ecology and statistics; field research may require supervision, permits and safety training.",
+        "学习生态与统计，实地研究可能需要监督、许可和安全训练。",
+        "Pelajari ekologi dan statistik; penyelidikan lapangan mungkin memerlukan penyeliaan, permit dan latihan keselamatan."
+      ]
+    },
+    {
+      "id": "biodiversity",
+      "title": [
+        "Biodiversity / conservation researcher",
+        "生物多样性／自然保护研究员",
+        "Penyelidik biodiversiti / pemuliharaan"
+      ],
+      "interests": [
+        "life",
+        "learning",
+        "sport"
+      ],
+      "majors": [
+        "environment",
+        "science",
+        "agriculture"
+      ],
+      "mindsets": [
+        "science"
+      ],
+      "purposes": [
+        "summary"
+      ],
+      "sdgs": [
+        15,
+        13
+      ],
+      "skills": [
+        [
+          "Ecology",
+          "生态学",
+          "Ekologi"
+        ],
+        [
+          "Observation protocols",
+          "观察规范",
+          "Protokol pemerhatian"
+        ],
+        [
+          "Data recording",
+          "数据记录",
+          "Perekodan data"
+        ]
+      ],
+      "project": [
+        "Design a non-invasive fictional campus species survey and a table that separates sightings from guesses.",
+        "设计非侵扰式虚构校园物种调查，将实际观察与猜测分开记录。",
+        "Reka tinjauan spesies kampus rekaan tanpa gangguan dan asingkan pemerhatian daripada tekaan."
+      ],
+      "ai": [
+        "Use AI to draft recording templates; validate identification with trusted guides.",
+        "用 AI 起草记录模板，结合可靠指南核实鉴定。",
+        "Gunakan AI untuk mendraf templat rekod; sahkan pengecaman dengan panduan dipercayai."
+      ],
+      "human": [
+        "Avoid disturbing organisms or revealing sensitive habitats; uncertain identifications stay uncertain.",
+        "不干扰生物、不泄露敏感栖息地，不能确定的鉴定应保留不确定性。",
+        "Jangan ganggu organisma atau dedahkan habitat sensitif; kekalkan ketidakpastian pengecaman."
+      ],
+      "entry": [
+        "Build biology and research skills; advanced conservation research often needs relevant study.",
+        "建立生物与研究技能，高阶保护研究通常需要相关训练。",
+        "Bina kemahiran biologi dan penyelidikan; penyelidikan pemuliharaan lanjutan lazimnya memerlukan pengajian berkaitan."
+      ]
+    },
+    {
+      "id": "social-impact",
+      "title": [
+        "Community / social-impact coordinator",
+        "社区／社会影响项目协调员",
+        "Penyelaras komuniti / impak sosial"
+      ],
+      "interests": [
+        "life",
+        "business",
+        "learning"
+      ],
+      "majors": [
+        "law",
+        "humanities",
+        "education",
+        "business"
+      ],
+      "mindsets": [
+        "humanities"
+      ],
+      "purposes": [
+        "summary"
+      ],
+      "sdgs": [
+        1,
+        10,
+        5
+      ],
+      "skills": [
+        [
+          "Community listening",
+          "社区倾听",
+          "Mendengar komuniti"
+        ],
+        [
+          "Programme design",
+          "项目设计",
+          "Reka bentuk program"
+        ],
+        [
+          "Outcome evaluation",
+          "结果评估",
+          "Penilaian hasil"
+        ]
+      ],
+      "project": [
+        "Design a fictional textbook-sharing project with access rules, consent and a simple outcome measure.",
+        "设计虚构教材共享项目，明确使用规则、同意机制与简单成果指标。",
+        "Reka projek perkongsian buku teks rekaan dengan peraturan akses, persetujuan dan ukuran hasil ringkas."
+      ],
+      "ai": [
+        "Use AI to draft outreach alternatives and logistics; never infer who deserves assistance.",
+        "用 AI 起草宣传备选与后勤计划，不推断谁值得获得帮助。",
+        "Gunakan AI untuk mendraf pilihan hebahan dan logistik; jangan tentukan siapa layak dibantu melalui AI."
+      ],
+      "human": [
+        "Include affected people in decisions and protect dignity, consent and access.",
+        "让受影响的人参与决策，保护尊严、同意与可及性。",
+        "Libatkan komuniti terjejas dalam keputusan dan lindungi maruah, persetujuan serta akses."
+      ],
+      "entry": [
+        "Start with supervised volunteering and evaluation; social-work practice may require registration.",
+        "从指导下志愿服务和评估入手，社会工作执业可能需要注册。",
+        "Mulakan dengan kesukarelawanan terselia dan penilaian; amalan kerja sosial mungkin memerlukan pendaftaran."
+      ]
+    },
+    {
+      "id": "policy",
+      "title": [
+        "Policy / legal-research analyst",
+        "政策／法律研究分析员",
+        "Penganalisis dasar / penyelidikan undang-undang"
+      ],
+      "interests": [
+        "learning",
+        "life",
+        "business"
+      ],
+      "majors": [
+        "law",
+        "humanities",
+        "business"
+      ],
+      "mindsets": [
+        "humanities",
+        "science"
+      ],
+      "purposes": [
+        "summary"
+      ],
+      "sdgs": [
+        16,
+        5,
+        10
+      ],
+      "skills": [
+        [
+          "Evidence synthesis",
+          "证据综合",
+          "Sintesis bukti"
+        ],
+        [
+          "Argument analysis",
+          "论证分析",
+          "Analisis hujah"
+        ],
+        [
+          "Careful citation",
+          "严谨引用",
+          "Rujukan teliti"
+        ]
+      ],
+      "project": [
+        "Compare two public campus policy proposals; separate facts, values and assumptions in a short brief.",
+        "比较两份公开校园政策提案，在简报中区分事实、价值与假设。",
+        "Bandingkan dua cadangan dasar kampus awam; asingkan fakta, nilai dan andaian dalam taklimat ringkas."
+      ],
+      "ai": [
+        "Use AI to organise arguments; check every quotation against the original document.",
+        "用 AI 整理论点，对照原文核实每一条引用。",
+        "Gunakan AI untuk menyusun hujah; semak setiap petikan dengan dokumen asal."
+      ],
+      "human": [
+        "Identify uncertainty and conflicting interests; a generated brief is not legal advice.",
+        "标明不确定性与利益冲突，生成简报不能代替法律意见。",
+        "Kenal pasti ketidakpastian dan kepentingan bercanggah; taklimat janaan bukan nasihat undang-undang."
+      ],
+      "entry": [
+        "Build research and writing evidence; legal practice requires jurisdiction-specific qualifications.",
+        "积累研究写作证据；法律执业须符合具体司法辖区资质要求。",
+        "Bina bukti penyelidikan dan penulisan; amalan undang-undang memerlukan kelayakan bidang kuasa berkenaan."
+      ]
+    },
+    {
+      "id": "partnerships",
+      "title": [
+        "International / community partnerships coordinator",
+        "国际／社区合作协调员",
+        "Penyelaras perkongsian antarabangsa / komuniti"
+      ],
+      "interests": [
+        "business",
+        "life",
+        "learning"
+      ],
+      "majors": [
+        "business",
+        "humanities",
+        "law",
+        "education"
+      ],
+      "mindsets": [
+        "humanities"
+      ],
+      "purposes": [
+        "summary"
+      ],
+      "sdgs": [
+        17,
+        8,
+        4
+      ],
+      "skills": [
+        [
+          "Cross-cultural communication",
+          "跨文化沟通",
+          "Komunikasi rentas budaya"
+        ],
+        [
+          "Project coordination",
+          "项目协调",
+          "Penyelarasan projek"
+        ],
+        [
+          "Shared measurement",
+          "共同衡量",
+          "Pengukuran bersama"
+        ]
+      ],
+      "project": [
+        "Draft a fictional two-club collaboration with shared goals, responsibilities and a review meeting.",
+        "设计虚构双社团合作，明确共同目标、职责与复盘会议。",
+        "Rangka kerjasama dua kelab rekaan dengan matlamat bersama, tanggungjawab dan mesyuarat semakan."
+      ],
+      "ai": [
+        "Use AI for translation drafts and agenda options; have people verify meaning and commitments.",
+        "用 AI 起草翻译和议程，由人核实含义与承诺。",
+        "Gunakan AI untuk draf terjemahan dan agenda; minta manusia mengesahkan makna serta komitmen."
+      ],
+      "human": [
+        "Build trust, confirm consent and make sure each partner can question the plan.",
+        "建立信任、确认同意，确保每个伙伴都能质询计划。",
+        "Bina kepercayaan, sahkan persetujuan dan pastikan setiap rakan boleh mempersoalkan pelan."
+      ],
+      "entry": [
+        "Demonstrate language, coordination and follow-through; international roles have varied entry routes.",
+        "展示语言、协调与跟进能力，国际岗位的进入路径多样。",
+        "Tunjukkan bahasa, penyelarasan dan tindakan susulan; peranan antarabangsa mempunyai pelbagai laluan kemasukan."
+      ]
+    }
+  ],
+  "goals": [
+    {
+      "id": 1,
+      "code": "CARE",
+      "color": "#E5243B",
+      "title": [
+        "No poverty",
+        "无贫穷",
+        "Tiada kemiskinan"
+      ],
+      "name": [
+        "The Community Guardian",
+        "社区守望者",
+        "Penjaga Komuniti"
+      ],
+      "interests": [
+        "life",
+        "business"
+      ],
+      "description": [
+        "Makes essential resources easier to reach.",
+        "让基本资源更容易被需要的人获得。",
+        "Memudahkan akses kepada sumber asas."
+      ],
+      "action": [
+        "Map free campus support resources without collecting anyone’s income or identity; check that every link works.",
+        "整理校园免费支持资源，不收集收入或身份信息，并核实每个链接可用。",
+        "Petakan sumber sokongan kampus percuma tanpa mengumpul pendapatan atau identiti sesiapa; semak setiap pautan."
+      ],
+      "url": "https://sdgs.un.org/goals/goal1"
+    },
+    {
+      "id": 2,
+      "code": "SEED",
+      "color": "#DDA63A",
+      "title": [
+        "Zero hunger",
+        "零饥饿",
+        "Kelaparan sifar"
+      ],
+      "name": [
+        "The Harvest Keeper",
+        "丰收守护者",
+        "Penjaga Hasil Tani"
+      ],
+      "interests": [
+        "life",
+        "learning"
+      ],
+      "description": [
+        "Turns care for food into practical systems.",
+        "将对食物的珍惜转化为可行系统。",
+        "Menukar kepedulian terhadap makanan menjadi sistem praktikal."
+      ],
+      "action": [
+        "Record a fictional week of food waste and propose one measurable way to reduce leftovers.",
+        "记录一周虚构食物浪费数据，提出一项可衡量的减剩方案。",
+        "Rekod sisa makanan rekaan selama seminggu dan cadangkan satu cara terukur untuk mengurangkannya."
+      ],
+      "url": "https://sdgs.un.org/goals/goal2"
+    },
+    {
+      "id": 3,
+      "code": "VITA",
+      "color": "#4C9F38",
+      "title": [
+        "Good health and well-being",
+        "良好健康与福祉",
+        "Kesihatan baik dan kesejahteraan"
+      ],
+      "name": [
+        "The Wellbeing Companion",
+        "健康同行者",
+        "Teman Kesejahteraan"
+      ],
+      "interests": [
+        "sport",
+        "life"
+      ],
+      "description": [
+        "Builds everyday routines that support wellbeing.",
+        "通过日常习惯支持身心健康。",
+        "Membina rutin harian yang menyokong kesejahteraan."
+      ],
+      "action": [
+        "Design a balanced study-break reminder with an opt-out; assess usability, not medical outcomes.",
+        "设计可退出的学习休息提醒，评估可用性，不声称医疗效果。",
+        "Reka peringatan rehat belajar dengan pilihan keluar; nilai kebolehgunaan, bukan hasil perubatan."
+      ],
+      "url": "https://sdgs.un.org/goals/goal3"
+    },
+    {
+      "id": 4,
+      "code": "LUMA",
+      "color": "#C5192D",
+      "title": [
+        "Quality education",
+        "优质教育",
+        "Pendidikan berkualiti"
+      ],
+      "name": [
+        "The Learning Illuminator",
+        "学习点灯人",
+        "Penerang Pembelajaran"
+      ],
+      "interests": [
+        "learning",
+        "art"
+      ],
+      "description": [
+        "Helps a difficult idea become understandable.",
+        "让难懂的想法变得可理解。",
+        "Menjadikan idea sukar lebih mudah difahami."
+      ],
+      "action": [
+        "Create a one-page lesson and five checked exercises for a concept you understand.",
+        "为自己理解的概念制作一页讲义和五道核验过的练习。",
+        "Cipta pelajaran satu halaman dan lima latihan yang disemak untuk konsep yang difahami."
+      ],
+      "url": "https://sdgs.un.org/goals/goal4"
+    },
+    {
+      "id": 5,
+      "code": "EQLY",
+      "color": "#FF3A21",
+      "title": [
+        "Gender equality",
+        "性别平等",
+        "Kesaksamaan gender"
+      ],
+      "name": [
+        "The Equality Advocate",
+        "平等倡议者",
+        "Penyokong Kesaksamaan"
+      ],
+      "interests": [
+        "life",
+        "business",
+        "learning"
+      ],
+      "description": [
+        "Notices barriers and shares opportunities fairly.",
+        "看见阻碍，让机会更公平地被分享。",
+        "Mengenal pasti halangan dan berkongsi peluang secara adil."
+      ],
+      "action": [
+        "Review a fictional club recruitment poster for stereotypes and rewrite it with inclusive language.",
+        "检查虚构社团招募海报中的刻板印象，改写为包容性文案。",
+        "Semak stereotaip dalam poster pengambilan kelab rekaan dan tulis semula dengan bahasa inklusif."
+      ],
+      "url": "https://sdgs.un.org/goals/goal5"
+    },
+    {
+      "id": 6,
+      "code": "AQUA",
+      "color": "#26BDE2",
+      "title": [
+        "Clean water and sanitation",
+        "清洁饮水和卫生设施",
+        "Air bersih dan sanitasi"
+      ],
+      "name": [
+        "The Water Steward",
+        "清流工程师",
+        "Penjaga Air"
+      ],
+      "interests": [
+        "tech",
+        "life"
+      ],
+      "description": [
+        "Protects precious water through careful observation.",
+        "用细致观察珍惜水资源。",
+        "Melindungi air melalui pemerhatian teliti."
+      ],
+      "action": [
+        "Build a fictional water-use checklist and calculate one conservation scenario; do not make drinking-safety claims.",
+        "建立虚构用水清单并计算一种节水情景，不作饮水安全判断。",
+        "Bina senarai penggunaan air rekaan dan kira satu senario penjimatan; jangan buat dakwaan keselamatan minuman."
+      ],
+      "url": "https://sdgs.un.org/goals/goal6"
+    },
+    {
+      "id": 7,
+      "code": "SOLA",
+      "color": "#FCC30B",
+      "title": [
+        "Affordable and clean energy",
+        "经济适用的清洁能源",
+        "Tenaga bersih dan mampu milik"
+      ],
+      "name": [
+        "The Solar Inventor",
+        "逐光发明家",
+        "Pencipta Suria"
+      ],
+      "interests": [
+        "tech",
+        "learning"
+      ],
+      "description": [
+        "Looks for efficient ways to power useful ideas.",
+        "寻找高效能源，支持有用的想法。",
+        "Mencari cara cekap untuk membekalkan tenaga kepada idea berguna."
+      ],
+      "action": [
+        "Compare fictional device energy use with clear units and propose a safe habit change.",
+        "用明确单位比较虚构设备能耗，提出安全的习惯调整。",
+        "Bandingkan tenaga peranti rekaan dengan unit jelas dan cadangkan perubahan tabiat yang selamat."
+      ],
+      "url": "https://sdgs.un.org/goals/goal7"
+    },
+    {
+      "id": 8,
+      "code": "GROW",
+      "color": "#A21942",
+      "title": [
+        "Decent work and economic growth",
+        "体面工作和经济增长",
+        "Pekerjaan layak dan pertumbuhan ekonomi"
+      ],
+      "name": [
+        "The Opportunity Builder",
+        "机会开拓者",
+        "Pembina Peluang"
+      ],
+      "interests": [
+        "business",
+        "tech"
+      ],
+      "description": [
+        "Connects useful skills with responsible work.",
+        "把实用技能与负责任的工作连接起来。",
+        "Menghubungkan kemahiran berguna dengan kerja bertanggungjawab."
+      ],
+      "action": [
+        "Map a fictional workflow and test one improvement while retaining fair workloads and human review.",
+        "梳理虚构工作流程，测试一项改进，同时保留合理工作量和人工复核。",
+        "Petakan aliran kerja rekaan dan uji satu penambahbaikan sambil mengekalkan beban adil dan semakan manusia."
+      ],
+      "url": "https://sdgs.un.org/goals/goal8"
+    },
+    {
+      "id": 9,
+      "code": "NOVA",
+      "color": "#FD6925",
+      "title": [
+        "Industry, innovation and infrastructure",
+        "产业、创新和基础设施",
+        "Industri, inovasi dan infrastruktur"
+      ],
+      "name": [
+        "The Inventive Architect",
+        "创新构筑师",
+        "Arkitek Inovasi"
+      ],
+      "interests": [
+        "tech",
+        "learning"
+      ],
+      "description": [
+        "Builds and tests tools that solve a concrete problem.",
+        "构建并测试解决具体问题的工具。",
+        "Membina dan menguji alat untuk menyelesaikan masalah khusus."
+      ],
+      "action": [
+        "Prototype an offline campus tool and document three tests, including a failure case.",
+        "制作离线校园工具原型，记录三项测试，包含失败情景。",
+        "Prototaipkan alat kampus luar talian dan catat tiga ujian termasuk kes kegagalan."
+      ],
+      "url": "https://sdgs.un.org/goals/goal9"
+    },
+    {
+      "id": 10,
+      "code": "LINK",
+      "color": "#DD1367",
+      "title": [
+        "Reduced inequalities",
+        "减少不平等",
+        "Mengurangkan ketidaksamaan"
+      ],
+      "name": [
+        "The Inclusive Bridge",
+        "共融搭桥人",
+        "Jambatan Inklusif"
+      ],
+      "interests": [
+        "life",
+        "art",
+        "learning"
+      ],
+      "description": [
+        "Finds design choices that help more people participate.",
+        "寻找让更多人能够参与的设计。",
+        "Mencari pilihan reka bentuk yang membolehkan lebih ramai menyertai."
+      ],
+      "action": [
+        "Check a sample form for keyboard access, contrast and plain language; record three improvements.",
+        "检查样例表单的键盘访问、对比度和通俗语言，记录三项改进。",
+        "Semak akses papan kekunci, kontras dan bahasa mudah pada borang contoh; catat tiga penambahbaikan."
+      ],
+      "url": "https://sdgs.un.org/goals/goal10"
+    },
+    {
+      "id": 11,
+      "code": "URBN",
+      "color": "#FD9D24",
+      "title": [
+        "Sustainable cities and communities",
+        "可持续城市和社区",
+        "Bandar dan komuniti mampan"
+      ],
+      "name": [
+        "The Neighbourhood Designer",
+        "社区造梦师",
+        "Pereka Kejiranan"
+      ],
+      "interests": [
+        "life",
+        "art",
+        "tech"
+      ],
+      "description": [
+        "Makes shared places more welcoming and practical.",
+        "让共享空间更友好、更实用。",
+        "Menjadikan ruang bersama lebih mesra dan praktikal."
+      ],
+      "action": [
+        "Sketch a fictional walkable campus corner and explain access, shade and waste-bin placement.",
+        "绘制虚构校园步行角落，说明通行、遮阴和垃圾桶布局。",
+        "Lakar sudut kampus rekaan yang mesra pejalan kaki dan jelaskan akses, teduhan serta lokasi tong sampah."
+      ],
+      "url": "https://sdgs.un.org/goals/goal11"
+    },
+    {
+      "id": 12,
+      "code": "LOOP",
+      "color": "#BF8B2E",
+      "title": [
+        "Responsible consumption and production",
+        "负责任消费和生产",
+        "Penggunaan dan pengeluaran bertanggungjawab"
+      ],
+      "name": [
+        "The Circular Maker",
+        "循环修造家",
+        "Pembuat Kitaran"
+      ],
+      "interests": [
+        "life",
+        "business",
+        "art"
+      ],
+      "description": [
+        "Gives materials and objects another useful chapter.",
+        "让材料与物品拥有新的使用篇章。",
+        "Memberi bahan dan barangan peluang guna baharu."
+      ],
+      "action": [
+        "Create a repair-or-reuse guide for one ordinary object and record the limits of your material claims.",
+        "为一件日常物品制作修复或再利用指南，说明材料判断的局限。",
+        "Cipta panduan membaiki atau menggunakan semula satu barangan biasa dan nyatakan batas dakwaan bahan."
+      ],
+      "url": "https://sdgs.un.org/goals/goal12"
+    },
+    {
+      "id": 13,
+      "code": "CLIM",
+      "color": "#3F7E44",
+      "title": [
+        "Climate action",
+        "气候行动",
+        "Tindakan iklim"
+      ],
+      "name": [
+        "The Climate Pathfinder",
+        "气候领航员",
+        "Perintis Iklim"
+      ],
+      "interests": [
+        "tech",
+        "life",
+        "learning"
+      ],
+      "description": [
+        "Turns climate curiosity into careful small experiments.",
+        "把气候关切变成谨慎的小实验。",
+        "Menukar minat iklim kepada eksperimen kecil yang teliti."
+      ],
+      "action": [
+        "Compare two fictional travel scenarios; list data sources and avoid claiming unmeasured carbon savings.",
+        "比较两种虚构出行情景，列明数据来源，不声称未经测量的减排。",
+        "Bandingkan dua senario perjalanan rekaan; senaraikan sumber dan elakkan dakwaan penjimatan karbon yang tidak diukur."
+      ],
+      "url": "https://sdgs.un.org/goals/goal13"
+    },
+    {
+      "id": 14,
+      "code": "TIDE",
+      "color": "#0A97D9",
+      "title": [
+        "Life below water",
+        "水下生物",
+        "Hidupan di bawah air"
+      ],
+      "name": [
+        "The Ocean Explorer",
+        "蔚蓝探索者",
+        "Peneroka Lautan"
+      ],
+      "interests": [
+        "life",
+        "sport",
+        "learning"
+      ],
+      "description": [
+        "Observes the ocean while respecting its living systems.",
+        "在尊重海洋生态的前提下探索蔚蓝。",
+        "Memerhati lautan sambil menghormati sistem hidupnya."
+      ],
+      "action": [
+        "Classify fictional beach-litter records and propose a non-invasive observation protocol.",
+        "分类虚构海滩垃圾记录，提出不干扰生态的观察规范。",
+        "Kelaskan rekod sampah pantai rekaan dan cadangkan protokol pemerhatian tanpa gangguan."
+      ],
+      "url": "https://sdgs.un.org/goals/goal14"
+    },
+    {
+      "id": 15,
+      "code": "ROOT",
+      "color": "#56C02B",
+      "title": [
+        "Life on land",
+        "陆地生物",
+        "Hidupan di darat"
+      ],
+      "name": [
+        "The Forest Guardian",
+        "森林守护者",
+        "Penjaga Hutan"
+      ],
+      "interests": [
+        "life",
+        "sport",
+        "learning"
+      ],
+      "description": [
+        "Cares for habitats by noticing small living details.",
+        "通过留意生命细节关心栖息地。",
+        "Menjaga habitat dengan memerhatikan butiran kecil kehidupan."
+      ],
+      "action": [
+        "Design a fictional plant-observation journal with uncertain identifications clearly marked.",
+        "设计虚构植物观察日志，清楚标注尚未确定的鉴定。",
+        "Reka jurnal pemerhatian tumbuhan rekaan dengan pengecaman tidak pasti ditandakan jelas."
+      ],
+      "url": "https://sdgs.un.org/goals/goal15"
+    },
+    {
+      "id": 16,
+      "code": "JUST",
+      "color": "#00689D",
+      "title": [
+        "Peace, justice and strong institutions",
+        "和平、正义与强大机构",
+        "Keamanan, keadilan dan institusi kukuh"
+      ],
+      "name": [
+        "The Fairness Mediator",
+        "公正调解者",
+        "Pengantara Keadilan"
+      ],
+      "interests": [
+        "learning",
+        "life",
+        "business"
+      ],
+      "description": [
+        "Makes rules clearer and decisions easier to question.",
+        "让规则更清晰，让决定能够被质询。",
+        "Menjelaskan peraturan dan membolehkan keputusan dipersoalkan."
+      ],
+      "action": [
+        "Draft a fictional club decision policy with clear reasons, an appeal route and privacy boundaries.",
+        "起草虚构社团决策规则，明确理由、申诉路径和隐私边界。",
+        "Draf dasar keputusan kelab rekaan dengan alasan jelas, saluran rayuan dan batas privasi."
+      ],
+      "url": "https://sdgs.un.org/goals/goal16"
+    },
+    {
+      "id": 17,
+      "code": "ALLY",
+      "color": "#19486A",
+      "title": [
+        "Partnerships for the goals",
+        "促进目标实现的伙伴关系",
+        "Perkongsian demi matlamat"
+      ],
+      "name": [
+        "The Partnership Connector",
+        "伙伴联结者",
+        "Penghubung Perkongsian"
+      ],
+      "interests": [
+        "business",
+        "life",
+        "learning"
+      ],
+      "description": [
+        "Connects different strengths around a shared goal.",
+        "围绕共同目标连接不同优势。",
+        "Menghubungkan kekuatan berbeza untuk matlamat bersama."
+      ],
+      "action": [
+        "Plan a fictional two-club SDG project with shared responsibilities and one checkable deliverable.",
+        "规划虚构双社团 SDG 项目，明确共同责任和一项可检验成果。",
+        "Rancang projek SDG dua kelab rekaan dengan tanggungjawab bersama dan satu hasil boleh disemak."
+      ],
+      "url": "https://sdgs.un.org/goals/goal17"
+    }
+  ],
+  "advice": {
+    "stage-child": {
+      "title": [
+        "Explore through play",
+        "以游戏探索兴趣",
+        "Teroka melalui bermain"
+      ],
+      "body": [
+        "These are long-term possibilities. Try varied subjects and short projects with a trusted adult; no career commitment is needed.",
+        "这些是长期可能性。可与可信赖的成年人尝试不同学科和小项目，不需要过早确定职业。",
+        "Ini kemungkinan jangka panjang. Cuba pelbagai subjek dan projek ringkas bersama orang dewasa dipercayai; belum perlu menetapkan kerjaya."
+      ]
+    },
+    "stage-teen": {
+      "title": [
+        "Keep your options open",
+        "保留学科与职业选择",
+        "Kekalkan pilihan terbuka"
+      ],
+      "body": [
+        "Build reading, mathematics, digital literacy and a small portfolio while checking subject prerequisites with a teacher.",
+        "建立阅读、数学与数字素养，积累小作品，并与老师核实选科前提。",
+        "Bina bacaan, matematik, literasi digital dan portfolio kecil sambil menyemak prasyarat subjek dengan guru."
+      ]
+    },
+    "stage-student": {
+      "title": [
+        "Connect study to a portfolio",
+        "把在读学习连接到作品",
+        "Hubungkan pengajian dengan portfolio"
+      ],
+      "body": [
+        "Keep the degree foundations, complete one small project, then compare course choices and supervised internship requirements.",
+        "保留专业基础，完成一个小项目，再比较课程选择与有指导的实习要求。",
+        "Kekalkan asas pengajian, siapkan satu projek kecil, kemudian bandingkan pilihan kursus dan keperluan latihan industri terselia."
+      ]
+    },
+    "stage-graduate": {
+      "title": [
+        "Test a direction before a large move",
+        "先验证方向，再决定转变",
+        "Uji hala tuju sebelum perubahan besar"
+      ],
+      "body": [
+        "Compare actual entry requirements, build a relevant work sample and seek feedback before committing to a job change or further study.",
+        "比较真实准入要求、完成相关工作样本并征求反馈，再决定转职或深造。",
+        "Bandingkan syarat kemasukan sebenar, bina sampel kerja berkaitan dan dapatkan maklum balas sebelum bertukar kerja atau melanjutkan pengajian."
+      ]
+    },
+    "school-foundation": {
+      "title": [
+        "Foundations before specialisation",
+        "先打基础，再逐步专门化",
+        "Asas sebelum pengkhususan"
+      ],
+      "body": [
+        "Your current education stage shapes the starting steps, not your eventual ceiling. Keep broad skills and explore accessible projects.",
+        "当前学历阶段影响起步步骤，不决定未来上限。保留通用技能，先做可接近的小项目。",
+        "Tahap pendidikan semasa menentukan langkah permulaan, bukan had masa depan. Kekalkan kemahiran luas dan terokai projek mudah dicapai."
+      ]
+    },
+    "research-extension": {
+      "title": [
+        "Add a research or evaluation angle",
+        "增加研究或评估视角",
+        "Tambah sudut penyelidikan atau penilaian"
+      ],
+      "body": [
+        "At postgraduate level, connect a project to a literature question, reproducible baseline and limitations; ask a supervisor to review scope.",
+        "研究生阶段可把项目连接到文献问题、可复现基线与局限，并请导师审阅范围。",
+        "Pada peringkat pascasiswazah, hubungkan projek dengan soalan literatur, garis dasar boleh ulang dan batasan; minta penyelia menyemak skop."
+      ]
+    },
+    "social-introvert": {
+      "title": [
+        "Prepare, then share",
+        "先准备，再表达",
+        "Bersedia, kemudian berkongsi"
+      ],
+      "body": [
+        "Use a short independent work block and written notes before asking for one focused piece of feedback. Introversion does not exclude people-facing careers.",
+        "先独立工作并写下要点，再征求一项具体反馈。内向不排除需要沟通的职业。",
+        "Gunakan masa kerja kendiri dan nota ringkas sebelum meminta satu maklum balas khusus. Introversi tidak mengecualikan kerjaya melibatkan orang ramai."
+      ]
+    },
+    "social-extrovert": {
+      "title": [
+        "Discuss, then verify independently",
+        "先交流，再独立验证",
+        "Berbincang, kemudian sahkan sendiri"
+      ],
+      "body": [
+        "Explain an idea to a willing peer, then do one independent check so group enthusiasm does not replace evidence.",
+        "向自愿交流的同伴解释想法，再做一次独立检查，避免团队热情代替证据。",
+        "Jelaskan idea kepada rakan yang sudi, kemudian lakukan satu semakan kendiri supaya semangat kumpulan tidak menggantikan bukti."
+      ]
+    },
+    "planning-planned": {
+      "title": [
+        "Use a visible checklist",
+        "使用清晰检查清单",
+        "Gunakan senarai semak jelas"
+      ],
+      "body": [
+        "Define the next deliverable and a stopping point before each session; reserve time for unexpected mistakes.",
+        "每次学习前确定下一项成果与停止点，并为意外错误预留时间。",
+        "Tentukan hasil seterusnya dan titik berhenti sebelum setiap sesi; sediakan masa untuk ralat tidak dijangka."
+      ]
+    },
+    "planning-spontaneous": {
+      "title": [
+        "Choose from a small experiment menu",
+        "从小实验菜单中灵活选择",
+        "Pilih daripada menu eksperimen kecil"
+      ],
+      "body": [
+        "Keep three small tasks available and choose one per session; finish a tiny artifact before switching topics.",
+        "保留三个小任务供每次选择，切换主题前先完成一个微型成果。",
+        "Sediakan tiga tugas kecil dan pilih satu setiap sesi; siapkan hasil kecil sebelum bertukar topik."
+      ]
+    },
+    "decision-rational": {
+      "title": [
+        "Make assumptions inspectable",
+        "让假设可以被检查",
+        "Jadikan andaian boleh disemak"
+      ],
+      "body": [
+        "Write your assumptions and comparison criteria, then also check who is affected by the decision.",
+        "写下假设与比较标准，同时检查决策会影响谁。",
+        "Tulis andaian dan kriteria perbandingan, kemudian semak juga pihak yang terkesan."
+      ]
+    },
+    "decision-empathetic": {
+      "title": [
+        "Pair empathy with evidence",
+        "让共情与证据相互补充",
+        "Gabungkan empati dengan bukti"
+      ],
+      "body": [
+        "Start with a person’s needs, then check facts and practical constraints before choosing a solution.",
+        "先理解人的需要，再核实事实和现实条件，最后选择方案。",
+        "Mulakan dengan keperluan seseorang, kemudian semak fakta dan kekangan praktikal sebelum memilih penyelesaian."
+      ]
+    },
+    "ability-support": {
+      "title": [
+        "Build one success at a time",
+        "一次建立一个小进展",
+        "Bina satu kejayaan pada satu masa"
+      ],
+      "body": [
+        "Use a worked example, a small repeatable exercise and feedback. This self-rating describes your current support needs, not fixed ability.",
+        "先看完整例题，再做可重复的小练习并获得反馈。自评描述当前支持需求，不是固定能力。",
+        "Gunakan contoh lengkap, latihan kecil berulang dan maklum balas. Penilaian kendiri ini menggambarkan keperluan sokongan semasa, bukan keupayaan tetap."
+      ]
+    },
+    "ability-steady": {
+      "title": [
+        "Alternate examples and practice",
+        "交替使用示例与练习",
+        "Selang-selikan contoh dan latihan"
+      ],
+      "body": [
+        "Study one example, solve a similar problem without help and review the difference before adding complexity.",
+        "学习一个示例，独立解决相似问题并复盘差异，再增加难度。",
+        "Pelajari satu contoh, selesaikan masalah serupa tanpa bantuan dan semak perbezaan sebelum menambah kerumitan."
+      ]
+    },
+    "ability-confident": {
+      "title": [
+        "Add a testable challenge",
+        "增加可验证挑战",
+        "Tambah cabaran boleh diuji"
+      ],
+      "body": [
+        "Choose an extension with an explicit success check; speed alone is not mastery, so keep a baseline and error log.",
+        "选择一项有明确验证标准的拓展任务，保留基线与错误记录；速度本身不等于掌握。",
+        "Pilih pengembangan dengan semakan kejayaan jelas; kelajuan sahaja bukan penguasaan, jadi kekalkan garis dasar dan log ralat."
+      ]
+    },
+    "style-practice": {
+      "title": [
+        "Practice-first route",
+        "练习优先路径",
+        "Laluan amali dahulu"
+      ],
+      "body": [
+        "Attempt a short exercise before reading the solution; record the mistake and retry a changed version.",
+        "先做短练习再看解答，记录错误并重试变式。",
+        "Cuba latihan ringkas sebelum membaca penyelesaian; catat kesilapan dan cuba versi berlainan."
+      ]
+    },
+    "style-lecture": {
+      "title": [
+        "Explanation-first route",
+        "讲解优先路径",
+        "Laluan penerangan dahulu"
+      ],
+      "body": [
+        "Use a short lesson, close it and explain the idea in your own words before trying an exercise.",
+        "学习一段短讲解，关闭资料后用自己的话复述，再完成练习。",
+        "Ikuti pelajaran ringkas, tutup bahan dan terangkan semula dengan kata sendiri sebelum berlatih."
+      ]
+    },
+    "style-explore": {
+      "title": [
+        "Exploration-first route",
+        "探索优先路径",
+        "Laluan penerokaan dahulu"
+      ],
+      "body": [
+        "Choose a small question, make a prediction, run a bounded experiment and compare its outcome with your prediction.",
+        "选一个小问题，先预测，再做有边界的实验并比较结果。",
+        "Pilih soalan kecil, buat jangkaan, jalankan eksperimen berskop dan bandingkan hasil dengan jangkaan."
+      ]
+    },
+    "mindset-note": {
+      "title": [
+        "A preference, not a brain type",
+        "偏好不等于固定脑型",
+        "Keutamaan, bukan jenis otak tetap"
+      ],
+      "body": [
+        "Language, analytical and visual approaches can be combined and trained. These selections suggest starting points, not biological categories.",
+        "语言、分析和视觉方法可以组合与训练。这些选择只是切入口，不是生物学分类。",
+        "Pendekatan bahasa, analitik dan visual boleh digabung dan dilatih. Pilihan ini mencadangkan titik mula, bukan kategori biologi."
+      ]
+    },
+    "ai-none": {
+      "title": [
+        "Start with AI literacy, if you want",
+        "可从 AI 素养开始",
+        "Mulakan dengan literasi AI jika mahu"
+      ],
+      "body": [
+        "You do not need AI to complete this plan. Learn what generative tools can get wrong and try a tiny fictional example only when useful.",
+        "完成本计划不需要使用 AI。先了解生成工具的常见错误，确有帮助时再尝试微型虚构示例。",
+        "Anda tidak memerlukan AI untuk menyiapkan pelan ini. Pelajari kesilapan alat generatif dan cuba contoh rekaan kecil hanya jika berguna."
+      ]
+    },
+    "ai-light": {
+      "title": [
+        "AI as an optional assistant",
+        "将 AI 作为可选助手",
+        "AI sebagai pembantu pilihan"
+      ],
+      "body": [
+        "Keep a manual baseline, use AI for a bounded alternative and verify facts, sources and calculations yourself.",
+        "保留人工基线，只让 AI 提供有边界的备选，并自行核实事实、来源与计算。",
+        "Kekalkan garis dasar manual, gunakan AI untuk pilihan berskop dan sahkan fakta, sumber serta pengiraan sendiri."
+      ]
+    },
+    "ai-moderate": {
+      "title": [
+        "Build a repeatable review routine",
+        "建立可重复复核流程",
+        "Bina rutin semakan berulang"
+      ],
+      "body": [
+        "Separate drafting from checking. For each AI-assisted output, note what you accepted, rejected and verified independently.",
+        "将起草与检查分开，对每份 AI 辅助输出记录接受、拒绝及独立验证的部分。",
+        "Asingkan pendrafan daripada semakan. Bagi setiap output berbantu AI, catat perkara diterima, ditolak dan disahkan sendiri."
+      ]
+    },
+    "ai-heavy": {
+      "title": [
+        "Strengthen independent control",
+        "加强独立掌控能力",
+        "Kukuhkan kawalan kendiri"
+      ],
+      "body": [
+        "Try one short task without AI, identify where you need help, then use hints rather than a full answer. Heavy reliance is not a diagnosis or proof of low ability.",
+        "先独立尝试一个短任务，识别需要帮助的环节，再使用提示而非整份答案。重度依赖不是诊断，也不能证明能力低。",
+        "Cuba satu tugas ringkas tanpa AI, kenal pasti bantuan diperlukan, kemudian gunakan petunjuk dan bukan jawapan penuh. Kebergantungan tinggi bukan diagnosis atau bukti keupayaan rendah."
+      ]
+    },
+    "duration-under1": {
+      "title": [
+        "First-month habit",
+        "第一个月的习惯",
+        "Amalan bulan pertama"
+      ],
+      "body": [
+        "Learn tool limits and check a simple output against a trusted reference before expanding the task.",
+        "先了解工具边界，用可靠参考核实简单输出，再扩大任务范围。",
+        "Pelajari batas alat dan semak output mudah dengan rujukan dipercayai sebelum meluaskan tugas."
+      ]
+    },
+    "duration-1to6": {
+      "title": [
+        "Early workflow habit",
+        "早期流程习惯",
+        "Amalan aliran kerja awal"
+      ],
+      "body": [
+        "Create a small checklist for checking AI outputs and keep examples of errors you have caught.",
+        "建立 AI 输出检查清单，并保留发现错误的例子。",
+        "Bina senarai semak output AI dan simpan contoh ralat yang berjaya dikenal pasti."
+      ]
+    },
+    "duration-6to12": {
+      "title": [
+        "Compare alternatives",
+        "比较不同方法",
+        "Bandingkan alternatif"
+      ],
+      "body": [
+        "Compare one AI-assisted workflow with a manual one using the same evaluation criteria.",
+        "用同一评价标准比较 AI 辅助与人工流程。",
+        "Bandingkan satu aliran berbantu AI dengan aliran manual menggunakan kriteria sama."
+      ]
+    },
+    "duration-over12": {
+      "title": [
+        "Audit established habits",
+        "复核长期使用习惯",
+        "Audit amalan sedia ada"
+      ],
+      "body": [
+        "Review a familiar AI workflow for stale assumptions, hidden errors and skills you still want to practise independently.",
+        "复核熟悉的 AI 流程，检查过时假设、隐藏错误和仍需独立练习的技能。",
+        "Semak aliran AI biasa untuk andaian lapuk, ralat tersembunyi dan kemahiran yang masih mahu dilatih sendiri."
+      ]
+    },
+    "purpose-homework": {
+      "title": [
+        "Homework: hints before answers",
+        "作业：先提示，后核对",
+        "Kerja rumah: petunjuk sebelum jawapan"
+      ],
+      "body": [
+        "Attempt the question first, follow your course rules and use AI to explain a step; submit only work you understand and may use.",
+        "先独立尝试并遵守课程规则，用 AI 解释某一步，只提交自己理解且获准使用的内容。",
+        "Cuba soalan dahulu, ikuti peraturan kursus dan gunakan AI untuk menerangkan langkah; hantar hanya kerja yang difahami dan dibenarkan."
+      ]
+    },
+    "purpose-summary": {
+      "title": [
+        "Summaries: verify the original",
+        "课程总结：回到原文核实",
+        "Ringkasan: sahkan sumber asal"
+      ],
+      "body": [
+        "Check a summary against the lesson, restore missing caveats and retrieve key points from memory afterwards.",
+        "对照课件检查摘要，补回遗漏的限定条件，然后尝试凭记忆提取重点。",
+        "Semak ringkasan dengan pelajaran asal, pulihkan batasan tertinggal dan cuba ingat kembali isi utama."
+      ]
+    },
+    "purpose-coding": {
+      "title": [
+        "Vibe coding: explain and test",
+        "Vibe coding：解释并测试",
+        "Vibe coding: terangkan dan uji"
+      ],
+      "body": [
+        "Read each changed block, test boundaries and protect keys. Ask AI for explanations when you cannot trace the code.",
+        "读懂每处修改，测试边界并保护密钥；不能追踪代码时，先让 AI 解释。",
+        "Baca setiap blok diubah, uji sempadan dan lindungi kunci. Minta penerangan apabila tidak dapat menjejaki kod."
+      ]
+    },
+    "purpose-creative": {
+      "title": [
+        "Creative work: direct the result",
+        "艺术创作：保留创作判断",
+        "Karya kreatif: arahkan hasil"
+      ],
+      "body": [
+        "Make original choices, check licensing and representation, and disclose AI assistance when the context requires it.",
+        "保留原创选择，检查授权与呈现方式，并在适当场景说明 AI 辅助。",
+        "Buat pilihan asli, semak lesen dan representasi, serta nyatakan bantuan AI apabila konteks memerlukannya."
+      ]
+    },
+    "cross-border": {
+      "title": [
+        "Check location-specific pathways",
+        "核实地区相关路径",
+        "Semak laluan mengikut lokasi"
+      ],
+      "body": [
+        "Nationality is not used for ranking. Entry, language, professional registration and work permission depend on the destination and must be checked separately.",
+        "国籍不参与排序。入学、语言、职业注册和工作许可要求取决于目的地，需要另行核实。",
+        "Kewarganegaraan tidak digunakan untuk pemeringkatan. Kemasukan, bahasa, pendaftaran profesional dan kebenaran bekerja bergantung pada destinasi dan perlu disemak berasingan."
+      ]
+    }
+  }
+}

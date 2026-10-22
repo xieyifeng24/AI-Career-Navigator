@@ -1,0 +1,641 @@
+{
+  "mode": "real-ai",
+  "analysis": {
+    "summary": {
+      "text": "SYNTHETIC CONTRACT FIXTURE",
+      "source_ids": [
+        "onet:marketing"
+      ]
+    },
+    "capabilities": [
+      {
+        "lens": "independent",
+        "assessment": {
+          "text": "SYNTHETIC CONTRACT FIXTURE",
+          "source_ids": [
+            "onet:marketing"
+          ]
+        },
+        "evidence_quote": "Writing, critical thinking",
+        "verify_next": {
+          "text": "SYNTHETIC CONTRACT FIXTURE",
+          "source_ids": [
+            "onet:marketing"
+          ]
+        }
+      },
+      {
+        "lens": "collaboration",
+        "assessment": {
+          "text": "SYNTHETIC CONTRACT FIXTURE",
+          "source_ids": [
+            "onet:marketing"
+          ]
+        },
+        "evidence_quote": "Writing, critical thinking",
+        "verify_next": {
+          "text": "SYNTHETIC CONTRACT FIXTURE",
+          "source_ids": [
+            "onet:marketing"
+          ]
+        }
+      },
+      {
+        "lens": "extended",
+        "assessment": {
+          "text": "SYNTHETIC CONTRACT FIXTURE",
+          "source_ids": [
+            "onet:marketing"
+          ]
+        },
+        "evidence_quote": "Writing, critical thinking",
+        "verify_next": {
+          "text": "SYNTHETIC CONTRACT FIXTURE",
+          "source_ids": [
+            "onet:marketing"
+          ]
+        }
+      }
+    ],
+    "tasks": [
+      {
+        "input_quote": "Write campaign reports",
+        "category": "assist",
+        "assessment": {
+          "text": "SYNTHETIC CONTRACT FIXTURE",
+          "source_ids": [
+            "onet:marketing"
+          ]
+        },
+        "human_check": {
+          "text": "SYNTHETIC CONTRACT FIXTURE",
+          "source_ids": [
+            "onet:marketing"
+          ]
+        }
+      },
+      {
+        "input_quote": "review survey data.",
+        "category": "assist",
+        "assessment": {
+          "text": "SYNTHETIC CONTRACT FIXTURE",
+          "source_ids": [
+            "onet:marketing"
+          ]
+        },
+        "human_check": {
+          "text": "SYNTHETIC CONTRACT FIXTURE",
+          "source_ids": [
+            "onet:marketing"
+          ]
+        }
+      }
+    ],
+    "radar": [
+      {
+        "skill": "Writing",
+        "direction": "uncertain",
+        "reasoning": {
+          "text": "SYNTHETIC CONTRACT FIXTURE",
+          "source_ids": [
+            "ai:1"
+          ]
+        },
+        "sdg": {
+          "target": "4.4",
+          "rationale": "Practice a skill using synthetic evidence.",
+          "measure": "Complete and review one sample."
+        }
+      },
+      {
+        "skill": "Coordination",
+        "direction": "uncertain",
+        "reasoning": {
+          "text": "SYNTHETIC CONTRACT FIXTURE",
+          "source_ids": [
+            "ai:1"
+          ]
+        },
+        "sdg": {
+          "target": "4.4",
+          "rationale": "Practice a skill using synthetic evidence.",
+          "measure": "Complete and review one sample."
+        }
+      }
+    ],
+    "paths": [
+      {
+        "kind": "A",
+        "role_id": "marketing",
+        "why": {
+          "text": "SYNTHETIC CONTRACT FIXTURE",
+          "source_ids": [
+            "onet:marketing"
+          ]
+        },
+        "transferable": [
+          {
+            "skill": "Writing",
+            "advice": {
+              "text": "SYNTHETIC CONTRACT FIXTURE",
+              "source_ids": [
+                "onet:marketing"
+              ]
+            },
+            "sdg": {
+              "target": "4.4",
+              "rationale": "Practice a skill using synthetic evidence.",
+              "measure": "Complete and review one sample."
+            }
+          }
+        ],
+        "gaps": [
+          {
+            "skill": "Writing",
+            "advice": {
+              "text": "SYNTHETIC CONTRACT FIXTURE",
+              "source_ids": [
+                "onet:marketing"
+              ]
+            },
+            "sdg": {
+              "target": "4.4",
+              "rationale": "Practice a skill using synthetic evidence.",
+              "measure": "Complete and review one sample."
+            }
+          }
+        ],
+        "challenge": {
+          "text": "SYNTHETIC CONTRACT FIXTURE",
+          "source_ids": [
+            "onet:marketing"
+          ]
+        },
+        "next_step": {
+          "text": "SYNTHETIC CONTRACT FIXTURE",
+          "source_ids": [
+            "onet:marketing"
+          ]
+        },
+        "sdg": {
+          "target": "4.4",
+          "rationale": "Practice a skill using synthetic evidence.",
+          "measure": "Complete and review one sample."
+        },
+        "tools": [
+          {
+            "resource_id": "learn-ai",
+            "purpose": {
+              "text": "SYNTHETIC CONTRACT FIXTURE",
+              "source_ids": [
+                "learn-ai"
+              ]
+            }
+          }
+        ],
+        "weeks": [
+          {
+            "week": 1,
+            "hours": 3.0,
+            "action": {
+              "text": "SYNTHETIC CONTRACT FIXTURE",
+              "source_ids": [
+                "learn-sheets"
+              ]
+            },
+            "deliverable": "One synthetic worksheet",
+            "validation": "Check five rows against source",
+            "resource_id": "learn-sheets"
+          },
+          {
+            "week": 2,
+            "hours": 3.0,
+            "action": {
+              "text": "SYNTHETIC CONTRACT FIXTURE",
+              "source_ids": [
+                "learn-sheets"
+              ]
+            },
+            "deliverable": "One synthetic worksheet",
+            "validation": "Check five rows against source",
+            "resource_id": "learn-sheets"
+          },
+          {
+            "week": 3,
+            "hours": 3.0,
+            "action": {
+              "text": "SYNTHETIC CONTRACT FIXTURE",
+              "source_ids": [
+                "learn-sheets"
+              ]
+            },
+            "deliverable": "One synthetic worksheet",
+            "validation": "Check five rows against source",
+            "resource_id": "learn-sheets"
+          },
+          {
+            "week": 4,
+            "hours": 3.0,
+            "action": {
+              "text": "SYNTHETIC CONTRACT FIXTURE",
+              "source_ids": [
+                "learn-sheets"
+              ]
+            },
+            "deliverable": "One synthetic worksheet",
+            "validation": "Check five rows against source",
+            "resource_id": "learn-sheets"
+          }
+        ],
+        "day30_review": {
+          "text": "SYNTHETIC CONTRACT FIXTURE",
+          "source_ids": [
+            "onet:marketing"
+          ]
+        }
+      },
+      {
+        "kind": "B",
+        "role_id": "project",
+        "why": {
+          "text": "SYNTHETIC CONTRACT FIXTURE",
+          "source_ids": [
+            "onet:project"
+          ]
+        },
+        "transferable": [
+          {
+            "skill": "Coordination",
+            "advice": {
+              "text": "SYNTHETIC CONTRACT FIXTURE",
+              "source_ids": [
+                "onet:project"
+              ]
+            },
+            "sdg": {
+              "target": "4.4",
+              "rationale": "Practice a skill using synthetic evidence.",
+              "measure": "Complete and review one sample."
+            }
+          }
+        ],
+        "gaps": [
+          {
+            "skill": "Coordination",
+            "advice": {
+              "text": "SYNTHETIC CONTRACT FIXTURE",
+              "source_ids": [
+                "onet:project"
+              ]
+            },
+            "sdg": {
+              "target": "4.4",
+              "rationale": "Practice a skill using synthetic evidence.",
+              "measure": "Complete and review one sample."
+            }
+          }
+        ],
+        "challenge": {
+          "text": "SYNTHETIC CONTRACT FIXTURE",
+          "source_ids": [
+            "onet:project"
+          ]
+        },
+        "next_step": {
+          "text": "SYNTHETIC CONTRACT FIXTURE",
+          "source_ids": [
+            "onet:project"
+          ]
+        },
+        "sdg": {
+          "target": "4.4",
+          "rationale": "Practice a skill using synthetic evidence.",
+          "measure": "Complete and review one sample."
+        },
+        "tools": [
+          {
+            "resource_id": "learn-ai",
+            "purpose": {
+              "text": "SYNTHETIC CONTRACT FIXTURE",
+              "source_ids": [
+                "learn-ai"
+              ]
+            }
+          }
+        ],
+        "weeks": [
+          {
+            "week": 1,
+            "hours": 3.0,
+            "action": {
+              "text": "SYNTHETIC CONTRACT FIXTURE",
+              "source_ids": [
+                "learn-sheets"
+              ]
+            },
+            "deliverable": "One synthetic worksheet",
+            "validation": "Check five rows against source",
+            "resource_id": "learn-sheets"
+          },
+          {
+            "week": 2,
+            "hours": 3.0,
+            "action": {
+              "text": "SYNTHETIC CONTRACT FIXTURE",
+              "source_ids": [
+                "learn-sheets"
+              ]
+            },
+            "deliverable": "One synthetic worksheet",
+            "validation": "Check five rows against source",
+            "resource_id": "learn-sheets"
+          },
+          {
+            "week": 3,
+            "hours": 3.0,
+            "action": {
+              "text": "SYNTHETIC CONTRACT FIXTURE",
+              "source_ids": [
+                "learn-sheets"
+              ]
+            },
+            "deliverable": "One synthetic worksheet",
+            "validation": "Check five rows against source",
+            "resource_id": "learn-sheets"
+          },
+          {
+            "week": 4,
+            "hours": 3.0,
+            "action": {
+              "text": "SYNTHETIC CONTRACT FIXTURE",
+              "source_ids": [
+                "learn-sheets"
+              ]
+            },
+            "deliverable": "One synthetic worksheet",
+            "validation": "Check five rows against source",
+            "resource_id": "learn-sheets"
+          }
+        ],
+        "day30_review": {
+          "text": "SYNTHETIC CONTRACT FIXTURE",
+          "source_ids": [
+            "onet:project"
+          ]
+        }
+      }
+    ],
+    "scenarios": [
+      {
+        "pace": "moderate",
+        "assumption": "Hypothetical adoption",
+        "implication": {
+          "text": "SYNTHETIC CONTRACT FIXTURE",
+          "source_ids": [
+            "onet:marketing"
+          ]
+        },
+        "watch_for": {
+          "text": "SYNTHETIC CONTRACT FIXTURE",
+          "source_ids": [
+            "onet:marketing"
+          ]
+        }
+      },
+      {
+        "pace": "fast",
+        "assumption": "Hypothetical adoption",
+        "implication": {
+          "text": "SYNTHETIC CONTRACT FIXTURE",
+          "source_ids": [
+            "onet:marketing"
+          ]
+        },
+        "watch_for": {
+          "text": "SYNTHETIC CONTRACT FIXTURE",
+          "source_ids": [
+            "onet:marketing"
+          ]
+        }
+      }
+    ],
+    "uncertainties": [
+      "Synthetic fixture, no model inference.",
+      "Source support needs human review."
+    ]
+  },
+  "profile": {
+    "background": "Marketing specialist",
+    "experience": "3 years",
+    "tasks": "Write campaign reports; review survey data.",
+    "skills": "Writing, critical thinking",
+    "aiUse": "Tried summaries",
+    "concerns": "Repetitive tasks",
+    "goal": "Improve campaign research",
+    "hours": 3.0,
+    "constraints": "Free resources only",
+    "synthetic": true
+  },
+  "weeklyHours": 3.0,
+  "ranking": [
+    {
+      "id": "marketing",
+      "title": "Market Research Analysts",
+      "skills": [
+        "Writing",
+        "Critical Thinking"
+      ],
+      "tasks": [
+        "Write campaign reports",
+        "Review survey data"
+      ],
+      "growth": "Faster than average",
+      "period": "2025-2035",
+      "updated": "2026",
+      "url": "https://www.onetonline.org/link/summary/13-1161.00",
+      "source_id": "onet:marketing",
+      "score": 90,
+      "components": {
+        "skill_overlap": 70,
+        "task_context": 12,
+        "published_trend": 8
+      },
+      "matched_skills": [
+        "Writing",
+        "Critical Thinking"
+      ],
+      "gaps": [],
+      "overlap_terms": [
+        "campaign",
+        "data",
+        "reports",
+        "review",
+        "survey",
+        "write"
+      ],
+      "sdg": {
+        "target": "8.2",
+        "rationale": "Explore a measurable workflow improvement in Market Research Analysts; a proposed productivity contribution, not measured impact."
+      }
+    },
+    {
+      "id": "project",
+      "title": "Project Management Specialists",
+      "skills": [
+        "Coordination",
+        "Time Management"
+      ],
+      "tasks": [
+        "Coordinate project schedules",
+        "Plan project resources"
+      ],
+      "growth": "Average",
+      "period": "2025-2035",
+      "updated": "2026",
+      "url": "https://www.onetonline.org/link/summary/13-1082.00",
+      "source_id": "onet:project",
+      "score": 5,
+      "components": {
+        "skill_overlap": 0,
+        "task_context": 0,
+        "published_trend": 5
+      },
+      "matched_skills": [],
+      "gaps": [
+        "Coordination",
+        "Time Management"
+      ],
+      "overlap_terms": [],
+      "sdg": {
+        "target": "8.2",
+        "rationale": "Explore a measurable workflow improvement in Project Management Specialists; a proposed productivity contribution, not measured impact."
+      }
+    }
+  ],
+  "evidence": {
+    "roles": [
+      {
+        "id": "marketing",
+        "title": "Market Research Analysts",
+        "skills": [
+          "Writing",
+          "Critical Thinking"
+        ],
+        "tasks": [
+          "Write campaign reports",
+          "Review survey data"
+        ],
+        "growth": "Faster than average",
+        "period": "2025-2035",
+        "updated": "2026",
+        "url": "https://www.onetonline.org/link/summary/13-1161.00",
+        "source_id": "onet:marketing"
+      },
+      {
+        "id": "project",
+        "title": "Project Management Specialists",
+        "skills": [
+          "Coordination",
+          "Time Management"
+        ],
+        "tasks": [
+          "Coordinate project schedules",
+          "Plan project resources"
+        ],
+        "growth": "Average",
+        "period": "2025-2035",
+        "updated": "2026",
+        "url": "https://www.onetonline.org/link/summary/13-1082.00",
+        "source_id": "onet:project"
+      }
+    ],
+    "sources": {
+      "onet:marketing": {
+        "title": "Market Research Analysts",
+        "url": "https://www.onetonline.org/link/summary/13-1161.00",
+        "kind": "occupation",
+        "text": "SYNTHETIC TEST SOURCE",
+        "date": "2026"
+      },
+      "onet:project": {
+        "title": "Project Management Specialists",
+        "url": "https://www.onetonline.org/link/summary/13-1082.00",
+        "kind": "occupation",
+        "text": "SYNTHETIC TEST SOURCE",
+        "date": "2026"
+      },
+      "learn-ai": {
+        "title": "Microsoft Learn: AI learning hub",
+        "url": "https://learn.microsoft.com/en-us/ai/",
+        "note": "Free reading modules; paid exams or cloud usage excluded.",
+        "tool": "Microsoft Copilot",
+        "kind": "learning"
+      },
+      "learn-data": {
+        "title": "Microsoft Learn: Power BI learning",
+        "url": "https://learn.microsoft.com/en-us/training/powerplatform/power-bi",
+        "note": "Free learning materials; use public sample data, check tool licensing.",
+        "tool": "Power BI",
+        "kind": "learning"
+      },
+      "learn-python": {
+        "title": "Python official tutorial",
+        "url": "https://docs.python.org/3/tutorial/",
+        "note": "Free documentation; no certificate or employment promise.",
+        "tool": "Python",
+        "kind": "learning"
+      },
+      "learn-sheets": {
+        "title": "Google Sheets training and help",
+        "url": "https://support.google.com/a/users/answer/9282959",
+        "note": "Free help materials; use synthetic spreadsheet data.",
+        "tool": "Google Sheets",
+        "kind": "learning"
+      },
+      "sdg4": {
+        "title": "UN SDG 4, target 4.4",
+        "url": "https://sdgs.un.org/goals/goal4",
+        "date": "Target framework",
+        "kind": "sdg",
+        "text": "Relevant technical and vocational skills for employment, decent jobs and entrepreneurship."
+      },
+      "sdg8": {
+        "title": "UN SDG 8, targets 8.2 and 8.5",
+        "url": "https://sdgs.un.org/goals/goal8",
+        "date": "Target framework",
+        "kind": "sdg",
+        "text": "Productivity through upgrading and innovation; productive employment and decent work."
+      },
+      "ai:1": {
+        "title": "SYNTHETIC RESEARCH FIXTURE",
+        "url": "https://arxiv.org/abs/0000.00000",
+        "date": "2026-01-01",
+        "text": "Test only",
+        "kind": "research"
+      }
+    },
+    "research": [
+      {
+        "title": "SYNTHETIC RESEARCH FIXTURE",
+        "url": "https://arxiv.org/abs/0000.00000",
+        "date": "2026-01-01",
+        "text": "Test only",
+        "kind": "research"
+      }
+    ],
+    "warnings": [],
+    "version": "TEST-ONLY",
+    "retrieved_at": "2026-01-01",
+    "geography": "US",
+    "attribution": "TEST FIXTURE"
+  },
+  "inference": {
+    "model": "TEST FIXTURE \u2014 NO MODEL INFERENCE",
+    "request_id": "TEST-FIXTURE"
+  },
+  "generated_at": "2026-01-01",
+  "report_id": "TEST-ONLY",
+  "limitations": [
+    "Synthetic contract fixture; not evidence of AI quality."
+  ]
+}
