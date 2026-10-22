@@ -1,0 +1,30 @@
+import {bank, questionsFor, answeredCount} from './engine.js';
+// Reuse the already translated shared interface; author content comes ONLY from bank.json.
+import catalog from '../translations.json' with {type:'json'};
+const escape = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+export function common(key, language) {
+  if (language === 'en') return key;
+  if (!catalog[key]?.[language]) throw new Error('MISSING_SHARED_TRANSLATION: '+key+'.'+language);
+  return catalog[key][language];
+}
+export function progress(state, current = state.index + 1) {
+  return bank.uiText.progress[state.language].replace('{current}', String(current)).replace('{total}', '12');
+}
+export function renderPreview(state, error = '', entering = false) {
+  const language = state.language, L = value => escape(value[language]), C = key => escape(common(key, language));
+  const header = `<header class="site-header"><div class="shell header-inner"><a class="brand" href="/?intro=off"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span>AI Career<br><b>Navigator</b></span></a><div class="header-actions"><span class="v3-version">V3 · 3.0.0</span><label class="language-switch"><span class="sr-only">${C('Language')}</span><select id="v3-language" aria-label="${C('Language')}">${[['en','English'],['zh-CN','简体中文'],['ms','Bahasa Melayu']].map(([code, name]) => `<option value="${code}" ${code === language ? 'selected' : ''}>${name}</option>`).join('')}</select></label></div></div></header>`;
+  const track = bank.tracks.find(track => track.id === state.trackId);
+  const context = track ? L(track.label) : C('Choose a starting point.');
+  const nav = `<div class="v3-page-top"><a class="text-button" href="/?intro=off">${C('← Back to home')}</a><span>${context}</span></div>`;
+  const notice = `<p class="v3-notice">${C('Team Nexus · Domain 1 · Fictional profiles only')}</p>`;
+  let body;
+  if (state.screen === 'tracks') {
+    body = `<section class="v3-entry"><span class="kicker">V3 · 12</span><h1>${C('Choose a starting point.')}</h1><p>${L(bank.uiText.intro)}</p>${notice}<div class="v3-tracks" role="group" aria-label="${C('Choose a starting point.')}">${bank.tracks.map((track, i) => `<button class="v3-track ${state.trackId === track.id ? 'is-selected' : ''}" data-track="${track.id}" aria-pressed="${state.trackId === track.id}"><span class="v3-track-index">${String(i + 1).padStart(2,'0')}</span><span>${L(track.label)}</span><span aria-hidden="true">↗</span></button>`).join('')}</div></section>`;
+  } else if (state.screen === 'review') {
+    body = `<section class="v3-review"><div class="v3-review-top"><div><span class="kicker">V3 · ${answeredCount(state)} / 12</span><h1 tabindex="-1" id="v3-heading">${C('Your profile')}</h1><p>${C('Check your answers and confirm the fictional profile.')}</p></div><button class="button secondary" data-v3-action="back">${L(bank.uiText.back)}</button></div><ol class="v3-review-list">${questionsFor(state.trackId).map((question, index) => `<li><div><span class="small-label">${L(bank.constructLabels[question.construct])}</span><h2>${index + 1}. ${L(question.statement)}</h2><p>${state.answers[question.id] === null ? L(bank.uiText.unfamiliar) : `${state.answers[question.id]} · ${L(bank.scale.find(option => option.value === state.answers[question.id]).label)}`}</p></div><button class="text-button" data-v3-edit="${index}">${C('Edit your answers ↗')}</button></li>`).join('')}</ol><button class="text-button" data-v3-action="reset">${C('Start over')}</button></section>`;
+  } else {
+    const question = questionsFor(state.trackId)[state.index], selected = state.answers[question.id];
+    body = `<section class="v3-question-page${entering ? ' is-entering' : ''}"><div class="v3-progress-label"><span>${L(bank.constructLabels[question.construct])}</span><span>${escape(progress(state))}</span></div><div class="v3-progress" role="progressbar" aria-label="${escape(progress(state))}" aria-valuemin="0" aria-valuemax="12" aria-valuenow="${answeredCount(state)}"><i style="width:${answeredCount(state) / 12 * 100}%"></i></div><article class="v3-question" data-question-id="${question.id}"><div class="v3-statement"><h1 id="v3-heading" tabindex="-1">${L(question.statement)}</h1><p id="v3-question-help">${L(question.helpKey ? bank.uiText[question.helpKey] : bank.uiText.intro)}</p></div><fieldset class="v3-options" aria-labelledby="v3-heading" aria-describedby="v3-question-help"><legend class="sr-only">${L(question.statement)}</legend><div class="v3-scale">${bank.scale.map(option => `<label class="v3-level ${selected === option.value ? 'is-selected' : ''}" data-level="${option.value}"><input type="radio" name="v3-answer" value="${option.value}" ${selected === option.value ? 'checked' : ''}><span class="v3-circle" aria-hidden="true"><span>${option.value}</span></span><span class="v3-level-label">${L(option.label)}</span></label>`).join('')}</div><div class="v3-unknown-wrap"><label class="v3-unknown ${selected === null ? 'is-selected' : ''}"><input type="radio" name="v3-answer" value="unknown" ${selected === null ? 'checked' : ''}><span>${L(bank.uiText.unfamiliar)}</span></label><p>${L(bank.uiText.unfamiliar_help)}</p></div></fieldset>${error ? `<p class="v3-error" role="alert">${C(error)}</p>` : ''}<div class="v3-question-actions"><button class="button secondary" data-v3-action="back">← ${L(bank.uiText.back)}</button><span>${answeredCount(state)} / 12</span><button class="button primary" data-v3-action="next">${L(bank.uiText.next)} ↗</button></div></article></section>`;
+  }
+  return `<div class="v3-app" lang="${language}">${header}<main class="shell v3-shell">${nav}${body}</main><footer class="v3-footer">${C('Your answers are safe in this tab.')}</footer></div>`;
+}
