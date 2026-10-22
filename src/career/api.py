@@ -174,5 +174,5 @@ async def local_asset(filename: str):
 @app.get('/{filename}')
 async def asset(filename: str):
     # Serve only explicit frontend assets, never repository files, secrets or tests.
-    if filename not in {'app.js','data.js','logic.js','live.js','styles.css','simulator.js','star-map.js','star-map.css','career-explorer.js','career-explorer.css','i18n.js','questionnaire.js','questionnaire.json','translations.json'}: raise HTTPException(404)
+    if filename not in {'intro.js','intro.css','app.js','data.js','logic.js','live.js','styles.css','simulator.js','star-map.js','star-map.css','career-explorer.js','career-explorer.css','i18n.js','questionnaire.js','questionnaire.json','translations.json'}: raise HTTPException(404)
     return FileResponse(ROOT/'prototype'/filename)
