@@ -1,0 +1,10 @@
+{
+  "scope": "Five existing demo occupations; contextual links reviewed by Team Nexus, not official SOC–ESCO equivalences. Editorial scoring targets remain separately maintained.",
+  "esco": {
+    "13-1161.00": "http://data.europa.eu/esco/occupation/66fb9704-0d56-4673-8e69-7823816b73e1",
+    "13-1082.00": "http://data.europa.eu/esco/occupation/bea99fea-0383-4c63-b944-70d4799de2c5",
+    "13-1111.00": "http://data.europa.eu/esco/occupation/60082a99-d8ef-4e84-9290-78902681b6ed",
+    "43-6014.00": "http://data.europa.eu/esco/occupation/044d78cc-f62f-4532-83a5-8e04f2889652",
+    "15-2051.00": "http://data.europa.eu/esco/occupation/258e46f9-0075-4a2e-adae-1ff0477e0f30"
+  }
+}

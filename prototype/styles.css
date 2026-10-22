@@ -89,3 +89,10 @@
 @media(max-width:650px){.rating-grid,.local-dimensions{grid-template-columns:1fr}.rule-table{font-size:11px}}
 
 .rating-grid .choice:has(input:checked){background:#eaf5ef;border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
+
+/* Source provenance follows existing report colors with a readable single-column disclosure. */
+.knowledge-provenance { display:block; overflow-wrap:anywhere; }
+.knowledge-provenance > summary { cursor:pointer; font-weight:600; }
+.knowledge-provenance details { margin-block:1rem; }
+.knowledge-provenance li { margin-block:.5rem; }
+.knowledge-provenance a { text-decoration:underline; }

@@ -1,3 +1,5 @@
+> 三来源知识库（本地候选版）：O*NET / ESCO 已导入真实资料；MYFutureJobs 等待授权导入。双周更新代码已配置，远程调度尚未启用。详见 [知识库与启用说明](docs/CAREER_KNOWLEDGE.md)。
+
 ## Local-first assessment candidate (22 October 2026)
 
 The default questionnaire now generates a full rule-based report in the browser.

@@ -2630,5 +2630,13 @@
   "the SDG relation is an editorial hypothesis and should be reviewed.": {
     "zh-CN": "SDG 关联属于编辑假设，需要人工审视。",
     "ms": "hubungan SDG ialah hipotesis editorial yang memerlukan semakan."
+  },
+  "No verified market signal in this report": {
+    "zh-CN": "本报告未包含已核实的就业市场信号",
+    "ms": "Laporan ini tidak mengandungi isyarat pasaran kerja yang disahkan"
+  },
+  "No verified market outlook is available for this route.": {
+    "zh-CN": "此路线暂无已核实的就业市场展望。",
+    "ms": "Tiada prospek pasaran kerja yang disahkan untuk laluan ini."
   }
 }

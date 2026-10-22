@@ -10,6 +10,7 @@ from dotenv import load_dotenv
 from fastapi import FastAPI, Request, HTTPException
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import FileResponse, JSONResponse
+from .knowledge.runtime import KnowledgeStore
 from .models import Profile
 from .sources import SourceStore, SourceUnavailable
 from .matching import rank_roles
@@ -23,6 +24,7 @@ load_dotenv(ROOT/'.env')
 async def lifespan(app):
     async with httpx.AsyncClient(follow_redirects=False, headers={'User-Agent':'AI-Career-Navigator/0.2 educational research'}) as client:
         app.state.sources=SourceStore(client)
+        app.state.knowledge=KnowledgeStore(client, ROOT/'data/knowledge/current.json')
         app.state.inference=RunPod(client)
         app.state.busy=False
         app.state.access=AccessPolicy(os.getenv('LIMIT_STATE_DIR', str(ROOT/'.cache/runtime')))
@@ -149,6 +151,14 @@ async def match(profile: Profile):
 
 @app.get('/')
 async def index(): return FileResponse(ROOT/'prototype/index.html')
+
+@app.get('/api/knowledge/current')
+async def knowledge_current():
+    return await app.state.knowledge.get()
+
+@app.get('/data/knowledge/current.json')
+async def knowledge_bundle():
+    return FileResponse(ROOT/'data/knowledge/current.json')
 
 @app.get('/local/{filename}')
 async def local_asset(filename: str):
