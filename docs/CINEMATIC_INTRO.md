@@ -27,7 +27,7 @@ Scene 5 preserves “Test your skills” but labels the experience as explorator
 
 `prototype/intro.js` owns the presentation lifecycle and pure timeline helpers. `prototype/intro.css` isolates its design from the application. Existing `app.js` prepares the V2 direction page underneath the overlay and focuses the selector on completion. The backend's strict same-origin asset allowlist serves these two assets; API behavior and credentials are unchanged.
 
-One persistent background contains gradient light, sixteen small particles (eight on narrow screens) and three SVG paths with source nodes. Scene transitions overlap through opacity/transform; the questions stagger. No external fonts, media, animation packages, audio or AI requests are added. A single requestAnimationFrame clock advances the timeline and progress; it pauses on tab visibility changes. All animation, event handlers and overlay DOM are removed after playback. The application is inert only while the overlay is present, and keyboard focus is contained in the dialog. Reduced-motion CSS disables ambient movement and transforms, shortens fades and removes progress movement.
+The introduction now shares the real homepage’s warm-white/sage palette, system font, heavier heading weight, three-circle brand mark, left-aligned copy and mint orbit card. It reads the existing CSS tokens rather than defining a competing dark identity. One persistent orbit illustration contains three familiar task/skills nodes and restrained paths; source labels appear in the data scene. Scene transitions overlap through opacity/transform; the questions stagger. The final dissolve shares the questionnaire’s background color. On narrow screens the illustration becomes a quiet, reduced background ornament, leaving room for the copy. No external fonts, media, animation packages, audio or AI requests are added. A single requestAnimationFrame clock advances the timeline and progress; it pauses on tab visibility changes. All animation, event handlers and overlay DOM are removed after playback. The application is inert only while the overlay is present, and keyboard focus is contained in the dialog. Reduced-motion CSS disables ambient movement and transforms, shortens fades and removes progress movement.
 
 ## Verification
 
@@ -44,3 +44,7 @@ Run locally from the repository root:
 node --test prototype/*.test.mjs
 .venv312/bin/python -m unittest discover tests -q
 ```
+
+## Visual continuity revision
+
+Following feedback that the initial dark launch aesthetic conflicted with the actual site, only `prototype/intro.css` and presentation markup in `prototype/intro.js` were revised. The standalone compass identity and blue/purple treatment were removed. Timing, routing, scoring, source disclosures and assessment behavior are unchanged. The screenshot has been refreshed to show the product-aligned design.
