@@ -1,0 +1,334 @@
+.explorer-page {max-width:100%;}
+.explorer-heading {margin:8px 0 22px;}
+.explorer-heading h1 {margin:8px 0;font-size:clamp(30px,4vw,43px);letter-spacing:-.045em;line-height:1.08;}
+.explorer-heading>p {max-width:760px;color:#6c786e;font-size:13px;line-height:1.65;}
+.compare-picker {display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1.3fr);align-items:center;gap:18px;padding:18px 20px;border:1px solid #e1e6df;border-radius:16px;background:#fff;margin:18px 0;}
+.compare-picker>div {display:grid;gap:6px;min-width:0;}
+.compare-picker>div>span {color:#77857b;font-size:9px;font-weight:800;letter-spacing:.13em;}
+.compare-picker>div>strong {overflow-wrap:anywhere;font-size:14px;}
+.compare-vs {color:#7a6be6;font-size:17px;font-weight:900;}
+.compare-options {display:flex;flex-wrap:wrap;gap:6px;}
+.compare-option {padding:8px 10px;border:1px solid #dfe4e0;border-radius:9px;background:#f8f9f7;color:#48554d;text-align:left;font-size:10px;cursor:pointer;}
+.compare-option.active {border-color:#8979ee;background:#f0edff;color:#5744c8;}
+.compare-option:focus-visible,.dna-skill-node:focus-visible,.dna-route:focus-visible,.year-timeline button:focus-visible,.scenario-tabs button:focus-visible,.sdg-route-picker button:focus-visible {outline:3px solid #7868e8;outline-offset:3px;}
+.compare-grid {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;}
+.compare-card {display:flex;flex-direction:column;gap:15px;padding:23px;border:1px solid #e2e5e2;border-radius:17px;background:#fff;min-width:0;}
+.compare-card.compare-primary {border-color:#8b7cf0;box-shadow:0 10px 30px #5744c80f;}
+.compare-card-top {display:flex;justify-content:space-between;align-items:flex-start;gap:10px;color:#5e51cb;font-size:10px;font-weight:850;letter-spacing:.12em;}
+.evidence-tag {padding:5px 8px;border-radius:99px;background:#f0edff;color:#6153c2;font-size:8px;letter-spacing:0;text-align:right;}
+.compare-card h2 {margin:0;font-size:22px;line-height:1.2;overflow-wrap:anywhere;}
+.compare-card>p {margin:0;color:#657168;font-size:12px;line-height:1.65;}
+.compare-facts {display:grid;gap:9px;}
+.compare-facts>div {display:grid;gap:4px;padding:10px 12px;border-radius:10px;background:#f7f8f6;}
+.compare-facts b {color:#55645a;font-size:9px;text-transform:uppercase;letter-spacing:.08em;}
+.compare-facts span {color:#425148;font-size:11px;line-height:1.55;overflow-wrap:anywhere;}
+.market-fact {display:grid;gap:4px;padding:12px;border-radius:11px;background:#f1f8f3;}
+.market-fact strong {color:#285c3a;font-size:14px;}
+.market-fact span {color:#69766c;font-size:10px;}
+.market-fact a,.time-source a,.sdg-chain a {width:max-content;color:#506d59;font-size:10px;text-decoration:underline;text-underline-offset:2px;}
+.data-limit,.truth-note {color:#758177;font-size:10px;line-height:1.6;}
+.compare-card>.button {margin-top:auto;}
+.dna-layout {display:grid;grid-template-columns:minmax(0,1.45fr) minmax(260px,.8fr);gap:16px;align-items:start;}
+.dna-branch-picker {display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px;}
+.dna-branch-tab {display:grid;gap:4px;min-width:150px;max-width:230px;padding:10px 13px;border:1px solid #dce2e7;border-radius:12px;background:#fff;color:#29344c;text-align:left;cursor:pointer;}
+.dna-branch-tab span,.dna-branch-tab small {color:#778299;font-size:8px;letter-spacing:.09em;}
+.dna-branch-tab strong {font-size:11px;overflow-wrap:anywhere;}
+.dna-branch-tab.active {border-color:#9270f5;background:#f4f0ff;box-shadow:0 0 0 2px #9270f51c;}
+.dna-branch-tab:focus-visible,.dna-career-node:focus-visible,.dna-tree-skill:focus-visible {outline:3px solid #55e5fa;outline-offset:3px;}
+.dna-network {position:relative;min-width:0;padding:17px;border:1px solid #283552;border-radius:18px;overflow:hidden;background:radial-gradient(ellipse at 50% 45%,#182f50,#101626 72%);}
+.dna-network:before {content:"";position:absolute;inset:0;background-image:radial-gradient(#91a9ff25 1px,transparent 1px);background-size:22px 22px;pointer-events:none;}
+.dna-network:after {content:"";position:absolute;inset:0;background:radial-gradient(ellipse at center,#31d9ee10,transparent 56%);pointer-events:none;}
+.dna-origin {position:relative;z-index:2;display:grid;gap:4px;width:max-content;max-width:min(100%,400px);margin:0 auto 10px;padding:10px 16px;border:1px solid #56dff2;border-radius:13px;background:#13253a;color:#e9fbff;text-align:center;box-shadow:0 0 20px #34dff455,inset 0 0 18px #35dff21c;overflow-wrap:anywhere;}
+.dna-origin>span:nth-child(2),.dna-origin small {color:#96a9cc;font-size:8px;letter-spacing:.12em;}
+.dna-origin strong {font-size:12px;}
+.dna-origin-pulse {position:absolute;top:50%;left:-4px;width:7px;height:7px;border-radius:50%;background:#57f1ff;box-shadow:0 0 10px #57f1ff;}
+.dna-profile-skills {position:relative;z-index:2;display:flex;justify-content:center;flex-wrap:wrap;gap:6px;max-width:520px;margin:0 auto 8px;}
+.dna-profile-skills span {display:flex;align-items:center;gap:5px;padding:5px 8px;border:1px solid #3c9eae;border-radius:99px;background:#102b39;color:#baf8ff;font-size:8px;box-shadow:0 0 9px #3acde522;}
+.dna-profile-skills i {font-style:normal;color:#64eff5;}
+.dna-profile-empty {position:relative;z-index:2;margin:0 0 7px;color:#a3afcb;text-align:center;font-size:9px;}
+.dna-tree-stage {position:relative;z-index:1;height:510px;min-width:590px;}
+.dna-tree-lines {position:absolute;inset:0;width:100%;height:100%;overflow:visible;}
+.dna-tree-line {fill:none;stroke:url(#dnaGlow);stroke-width:2;stroke-dasharray:5 6;opacity:.45;filter:drop-shadow(0 0 5px #42e9ff);transition:opacity .2s,stroke-width .2s;}
+.dna-tree-line.active {stroke-width:3;opacity:.95;}
+.dna-tree-junction {fill:#74f2ff;filter:drop-shadow(0 0 7px #43e8ff);}
+.dna-tree-career-dot {fill:#c0a0ff;stroke:#f4eaff;stroke-width:2;filter:drop-shadow(0 0 9px #9c65ff);}
+.dna-tree-core {position:absolute;top:50%;left:50%;display:grid;place-content:center;gap:4px;width:105px;height:105px;border:1px solid #54e8f8;border-radius:50%;background:radial-gradient(circle,#16475e,#131c32 73%);color:#fff;text-align:center;transform:translate(-50%,-50%);box-shadow:0 0 0 9px #34dff20d,0 0 28px #37dff375;}
+.dna-tree-core span {color:#6eeeff;font-size:8px;letter-spacing:.18em;}
+.dna-tree-core strong {max-width:85px;font-size:10px;line-height:1.25;overflow-wrap:anywhere;}
+.dna-tree-branches {position:absolute;inset:0;}
+.dna-branch {position:absolute;top:50%;left:50%;display:grid;justify-items:center;gap:8px;width:190px;max-height:290px;transform:translate(-50%,-50%) rotate(var(--branch-angle)) translateY(-173px) rotate(calc(var(--branch-angle) * -1));}
+.dna-career-node {display:grid;gap:4px;width:100%;padding:9px 11px;border:1px solid #b58cff;border-radius:13px;background:linear-gradient(135deg,#342753,#17283e);color:#f4edff;text-align:center;cursor:pointer;box-shadow:0 0 13px #9e62ff66,inset 0 0 16px #a875ff1c;}
+.dna-career-node small {color:#d4c0ff;font-size:8px;letter-spacing:.12em;}
+.dna-career-node strong {font-size:11px;line-height:1.3;overflow-wrap:anywhere;}
+.dna-branch.selected .dna-career-node {border-color:#60eaff;box-shadow:0 0 20px #5ceaff77,inset 0 0 18px #49dff52b;}
+.dna-branch-skills {display:grid;gap:5px;width:calc(100% - 7px);max-height:212px;margin-left:7px;padding:3px 5px 5px;border-left:1px solid #7166ad;overflow:auto;scrollbar-color:#65569b transparent;}
+.dna-tree-skill {display:grid;grid-template-columns:19px 1fr;align-items:center;gap:2px 7px;width:100%;padding:6px 8px;border:1px solid #485674;border-radius:10px;background:#161e31eF;color:#dce5ff;text-align:left;font:inherit;font-size:9px;line-height:1.25;cursor:pointer;transition:box-shadow .16s,border-color .16s,opacity .16s;}
+.dna-tree-skill>span:nth-child(2) {overflow-wrap:anywhere;}
+.dna-tree-skill small {grid-column:2;color:#8998bb;font-size:7px;letter-spacing:.08em;}
+.dna-node-dot {grid-row:span 2;display:grid;place-items:center;width:18px;height:18px;border:1px solid #8998bf;border-radius:50%;color:#b8c8eb;font-size:8px;}
+.dna-tree-skill.dna-current,.dna-tree-skill.dna-done {border-color:#58dce6;background:#102e3b;color:#efffff;box-shadow:inset 0 0 12px #46e6f21c;}
+.dna-tree-skill.dna-current .dna-node-dot,.dna-tree-skill.dna-done .dna-node-dot {border-color:#61f3fa;background:#1a6470;color:#fff;box-shadow:0 0 8px #50eaf4;}
+.dna-tree-skill.dna-next {border-color:#a887ff;background:#2a2043;color:#fff;box-shadow:0 0 12px #9f71ff55;}
+.dna-tree-skill.dna-next .dna-node-dot {border-color:#c9aaff;color:#fff;box-shadow:0 0 8px #af83ff;}
+.dna-tree-skill.dna-locked {opacity:.72;border-style:dashed;}
+.dna-tree-skill.is-focused {border-color:#fff;box-shadow:0 0 0 2px #60eaff,0 0 16px #60eaff66;}
+.dna-branch-empty {margin:0;color:#98a5c3;font-size:9px;}
+.dna-map-caption {margin:2px 0 0;color:#9aa8c7;text-align:center;font-size:9px;line-height:1.5;}
+.dna-detail {padding:21px;border:1px solid #e0e6df;border-radius:16px;background:#fff;}
+.dna-detail h2 {margin:8px 0;font-size:22px;overflow-wrap:anywhere;}
+.dna-detail>p {color:#68756b;font-size:11px;line-height:1.65;}
+.dna-detail h3 {margin:20px 0 9px;font-size:12px;}
+.dna-route-list {display:grid;gap:8px;}
+.dna-route {display:grid;gap:4px;padding:11px;border:1px solid #e0e6e0;border-radius:10px;background:#f9faf8;color:#34453a;text-align:left;cursor:pointer;}
+.dna-route.active {border-color:#8071e2;background:#f3f0ff;}
+.dna-route span,.dna-route small {color:#747f75;font-size:9px;}
+.dna-route strong {font-size:11px;}
+.dna-detail-path {display:grid;gap:5px;margin:15px 0;padding:12px;border:1px solid #ded5ff;border-radius:11px;background:#f7f4ff;}
+.dna-detail-path>span {color:#6c5bc2;font-size:8px;font-weight:850;letter-spacing:.12em;}
+.dna-detail-path strong {font-size:12px;}
+.dna-detail-path p {margin:0;color:#6b7180;font-size:10px;line-height:1.55;}
+.dna-progress-button {width:100%;margin:8px 0;white-space:normal;line-height:1.4;}
+.dna-prerequisite {padding:10px;border-radius:9px;background:#f3f0ff;color:#6756b8;font-size:10px;line-height:1.5;}
+.skill-state-legend {display:flex;flex-wrap:wrap;gap:10px 18px;padding:13px 0;color:#718076;font-size:10px;}
+.skill-state-legend span {display:flex;align-items:center;gap:7px;}
+.skill-state-legend i {width:9px;height:9px;border-radius:50%;background:#57cddd;}
+.skill-state-legend .legend-develop {background:#a18cff;}
+.skill-state-legend .legend-locked {background:transparent;border:1px dashed #7583a6;}
+.time-controls {display:grid;gap:14px;margin:18px 0;}
+.year-timeline,.scenario-tabs {display:flex;flex-wrap:wrap;gap:8px;}
+.year-timeline button,.scenario-tabs button {padding:10px 14px;border:1px solid #dfe4e0;border-radius:10px;background:#fff;color:#4d5e51;font:inherit;font-size:11px;cursor:pointer;}
+.year-timeline button[aria-pressed="true"],.scenario-tabs button[aria-pressed="true"] {border-color:#8172e6;background:#f0edff;color:#5b4dcc;box-shadow:0 0 0 2px #8172e61c;}
+.time-scenario-card {padding:24px;border:1px solid #2b3857;border-radius:17px;background:radial-gradient(ellipse at 100% 0%,#382f62,#172039 65%);color:#f4f4ff;}
+.time-year-label {color:#b9b2ff;font-size:9px;font-weight:850;letter-spacing:.14em;}
+.time-scenario-card h2 {margin:9px 0;font-size:24px;}
+.scenario-status {display:inline-block;padding:5px 8px;border:1px solid #7268aa;border-radius:99px;color:#dedaff;font-size:8px;letter-spacing:.08em;}
+.time-scenario-card>p,.time-watch p {max-width:760px;color:#d2d6e6;font-size:12px;line-height:1.7;}
+.time-watch {margin-top:19px;padding-top:14px;border-top:1px solid #ffffff26;}
+.time-watch strong {font-size:11px;}
+.section-space {margin:26px 0 11px;font-size:17px;}
+.time-sources {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;}
+.time-source {display:grid;gap:6px;padding:14px;border:1px solid #e0e6df;border-radius:12px;background:#fff;}
+.time-source strong {font-size:11px;}
+.time-source span {color:#6b786d;font-size:10px;line-height:1.5;}
+.sdg-route-picker {display:flex;flex-wrap:wrap;gap:7px;margin:16px 0;}
+.sdg-route-picker button {padding:9px 11px;border:1px solid #dedfe4;border-radius:9px;background:#fff;color:#4b5660;font:inherit;font-size:10px;cursor:pointer;}
+.sdg-route-picker button[aria-pressed="true"] {border-color:#7b6add;background:#f1eeff;color:#5746bb;}
+.sdg-chain {display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1.2fr);gap:9px;align-items:stretch;}
+.sdg-chain article {display:flex;flex-direction:column;gap:8px;min-width:0;padding:15px;border:1px solid #dfe5df;border-radius:13px;background:#fff;overflow-wrap:anywhere;}
+.sdg-chain article>span {color:#65756a;font-size:8px;font-weight:850;letter-spacing:.1em;}
+.sdg-chain h2 {margin:0;font-size:14px;line-height:1.35;}
+.sdg-chain p {margin:0;color:#69766d;font-size:10px;line-height:1.6;}
+.sdg-chain>i {align-self:center;color:#8978e8;font-style:normal;font-size:18px;}
+.sdg-chain .sdg-goal-card {border-color:#c7bdf6;background:#f6f3ff;}
+.sdg-goal-card small {margin-top:auto;color:#798278;font-size:8px;line-height:1.5;}
+.sdg-evidence-note {margin-top:15px;padding:15px 17px;border-left:3px solid #8978e8;border-radius:0 10px 10px 0;background:#f3f1fb;}
+.sdg-evidence-note strong {font-size:11px;}
+.sdg-evidence-note p {margin:5px 0 0;color:#69736e;font-size:10px;line-height:1.6;}
+.explorer-plan-grid {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;}
+.explorer-plan-grid .plan-mini p {color:#657269;font-size:11px;line-height:1.65;}
+.empty-panel {padding:18px;border:1px solid #e2e6e1;border-radius:12px;background:#fff;color:#68756b;}
+@media(max-width:900px) {
+  .dna-layout {grid-template-columns:1fr;}
+  .dna-tree-stage {height:490px;}
+  .sdg-chain {grid-template-columns:1fr 20px 1fr;}
+  .sdg-chain>i:nth-of-type(2) {display:none;}
+  .sdg-chain .sdg-goal-card {grid-column:3;}
+  .time-sources {grid-template-columns:1fr;}
+}
+@media(max-width:700px) {
+  .compare-picker {grid-template-columns:1fr auto 1fr;gap:8px;padding:13px;}
+  .compare-grid,.explorer-plan-grid {grid-template-columns:1fr;}
+  .compare-card {padding:18px;}
+  .compare-card h2 {font-size:20px;}
+  .dna-network {padding:12px;}
+  .dna-branch-tab {flex:1;min-width:135px;}
+  .dna-tree-stage {display:block;height:auto;min-width:0;}
+  .dna-tree-lines,.dna-tree-core {display:none;}
+  .dna-tree-branches {position:static;display:grid;gap:10px;}
+  .dna-branch-picker {display:grid;grid-template-columns:1fr;}
+  .dna-branch-tab {max-width:none;}
+  .dna-branch-picker .dna-branch-tab:after {content:"Select branch to inspect its skills";color:#7b8196;font-size:9px;}
+  .dna-network .dna-map-caption {text-align:left;}
+  .dna-origin {margin-bottom:8px;}
+  .dna-branch {position:static;display:grid;width:100%;max-height:none;transform:none;margin:10px 0;padding:12px;border:1px solid #3a4969;border-radius:14px;background:#121a2b;}
+  .dna-branch.selected {border-color:#59dfea;box-shadow:0 0 15px #4ce7f22b;}
+  .dna-branch-skills {max-height:none;overflow:visible;}
+  .dna-career-node {text-align:left;}
+  .dna-branch-picker {margin-bottom:8px;}
+  .year-timeline button,.scenario-tabs button {flex:1;}
+  .time-scenario-card {padding:18px;}
+  .sdg-chain {grid-template-columns:1fr;}
+  .sdg-chain>i,.sdg-chain>i:nth-of-type(2) {display:block;justify-self:center;transform:rotate(90deg);}
+  .sdg-chain .sdg-goal-card {grid-column:auto;}
+}
+@media(prefers-reduced-motion:reduce) {
+  .dna-skill-node {transition:none;}
+}
+
+/* Skill DNA workspace: dark neon radial graph based on the approved reference. */
+.report-page-skill-dna {display:block;max-width:none;padding:18px 24px 36px;}
+.report-page-skill-dna>.report-sidebar {display:none;}
+.report-page-skill-dna>.report-main {width:100%;min-width:0;}
+.report-page-skill-dna .report-bottom-nav {max-width:1480px;margin:18px auto 0;}
+.dna-workspace {display:grid;grid-template-columns:190px minmax(0,1fr);min-height:800px;overflow:hidden;border:1px solid #202945;border-radius:18px;background:#080c18;color:#edf1ff;box-shadow:0 24px 60px #090f1d22;}
+.dna-workspace-nav {display:flex;flex-direction:column;min-width:0;padding:23px 14px 15px;border-right:1px solid #1c2741;background:linear-gradient(180deg,#0d1324,#0a0f1d);}
+.dna-brand-mark {display:grid;place-items:center;width:32px;height:32px;margin-bottom:11px;border:1px solid #66dfff66;border-radius:10px;background:#152640;color:#78e9ff;box-shadow:0 0 18px #5a8cff44;font-size:17px;}
+.dna-workspace-nav>strong {font-size:12px;letter-spacing:-.02em;}
+.dna-workspace-nav>small {margin:3px 0 26px;color:#6f7e9f;font-size:7px;letter-spacing:.16em;}
+.dna-workspace-nav nav {display:grid;gap:5px;}
+.dna-workspace-nav nav button {display:flex;align-items:center;gap:10px;width:100%;padding:10px 9px;border:1px solid transparent;border-radius:9px;background:transparent;color:#96a2bd;text-align:left;font:inherit;font-size:10px;cursor:pointer;}
+.dna-workspace-nav nav button span {width:18px;color:#8294c2;text-align:center;font-size:14px;}
+.dna-workspace-nav nav button.active,.dna-workspace-nav nav button:hover {border-color:#303f69;background:#1a2540;color:#f2f4ff;box-shadow:inset 2px 0 #6a7cff;}
+.dna-workspace-nav nav button.active span {color:#8adfff;}
+.dna-nav-profile {display:flex;align-items:center;gap:9px;margin-top:auto;padding:10px 3px 0;border-top:1px solid #202942;}
+.dna-avatar {display:grid;place-items:center;flex:none;width:29px;height:29px;border:1px solid #7a71ea;border-radius:50%;background:#252751;color:#fff;font-size:11px;}
+.dna-nav-profile>span:last-child {display:grid;gap:2px;min-width:0;}
+.dna-nav-profile strong {overflow:hidden;color:#dce3f7;font-size:9px;text-overflow:ellipsis;white-space:nowrap;}
+.dna-nav-profile small {color:#7785a5;font-size:8px;}
+.dna-workspace-main {min-width:0;padding:0 20px 17px;background:radial-gradient(ellipse at 48% 37%,#111c35,#090e1b 68%);}
+.dna-toolbar {display:flex;align-items:center;gap:14px;min-height:67px;border-bottom:1px solid #202942;}
+.dna-toolbar>div {margin-right:auto;}
+.dna-toolbar-kicker {color:#dee6ff;font-size:10px;font-weight:800;letter-spacing:.1em;}
+.dna-toolbar p {margin:4px 0 0;color:#8491ad;font-size:9px;}
+.dna-search {display:flex;align-items:center;gap:8px;width:min(290px,42vw);padding:8px 11px;border:1px solid #253250;border-radius:9px;background:#10182a;color:#8d9aba;}
+.dna-search>span {font-size:17px;line-height:1;}
+.dna-search input {width:100%;min-width:0;border:0;outline:none;background:transparent;color:#eff2ff;font:inherit;font-size:9px;}
+.dna-search input::placeholder {color:#7d8aa8;}
+.dna-live-dot {color:#62d7ff;font-size:12px;text-shadow:0 0 9px #46dbff;}
+.dna-canvas-layout {display:grid;grid-template-columns:minmax(0,1fr) 252px;gap:13px;align-items:stretch;padding-top:14px;}
+.dna-canvas-panel {position:relative;min-width:0;overflow:hidden;border:1px solid #202a47;border-radius:14px;background:radial-gradient(ellipse at 50% 48%,#111e38 0,#0c1427 51%,#0a1020 100%);}
+.dna-canvas-panel:before {position:absolute;inset:0;content:"";pointer-events:none;background-image:linear-gradient(#7284bd0c 1px,transparent 1px),linear-gradient(90deg,#7284bd0c 1px,transparent 1px);background-size:38px 38px;mask-image:radial-gradient(ellipse,#000 23%,transparent 83%);}
+.dna-canvas-label {position:absolute;z-index:3;top:14px;left:16px;right:16px;display:flex;justify-content:space-between;gap:10px;color:#8292b6;font-size:8px;font-weight:800;letter-spacing:.13em;}
+.dna-canvas-label span:last-child {overflow:hidden;color:#aeb9d7;font-weight:600;text-align:right;text-overflow:ellipsis;white-space:nowrap;}
+.dna-graph-canvas {position:relative;width:100%;height:610px;min-width:760px;overflow:hidden;}
+.dna-graph-lines {position:absolute;inset:0;width:100%;height:100%;overflow:visible;}
+.dna-link {fill:none;stroke:url(#dnaPathGlow);stroke-width:1.6;opacity:.28;filter:drop-shadow(0 0 4px #56cfff);transition:opacity .2s,stroke-width .2s;}
+.dna-link.active {stroke-width:2.4;opacity:.78;}
+.dna-link-skill {stroke-dasharray:2 4;opacity:.48;}
+.dna-link-skill.active {opacity:.85;}
+.dna-profile-core,.dna-role-node,.dna-map-node {position:absolute;z-index:2;transform:translate(-50%,-50%);}
+.dna-profile-core {display:grid;place-content:center;gap:4px;width:108px;height:108px;border:1px solid #7d68e9;border-radius:50%;background:radial-gradient(circle,#25204a,#12192d 73%);color:#fbf7ff;text-align:center;box-shadow:0 0 0 7px #8572ef0d,0 0 25px #826aff77,inset 0 0 19px #9c64ff27;}
+.dna-profile-core>span {color:#d2b5ff;font-size:20px;}
+.dna-profile-core small {color:#a99bd8;font-size:7px;letter-spacing:.16em;}
+.dna-profile-core strong {max-width:91px;font-size:9px;line-height:1.25;overflow-wrap:anywhere;}
+.dna-role-node {display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;width:124px;height:106px;padding:13px 16px;clip-path:polygon(25% 3%,75% 3%,98% 50%,75% 97%,25% 97%,2% 50%);background:linear-gradient(135deg,#181d3b,#302358 58%,#151e38);color:#f2efff;text-align:center;filter:drop-shadow(0 0 9px #8d65ff88);cursor:pointer;}
+.dna-role-node:before {position:absolute;inset:3px;content:"";clip-path:inherit;border:1px solid #a989ff;background:linear-gradient(140deg,#17203b,#2a2049 55%,#16243e);z-index:-1;}
+.dna-role-node>span {color:#b493ff;font-size:16px;line-height:1;}
+.dna-role-node small {color:#bcb0e8;font-size:7px;letter-spacing:.15em;}
+.dna-role-node strong {max-width:100px;font-size:9px;line-height:1.2;overflow-wrap:anywhere;}
+.dna-role-node.active {background:linear-gradient(135deg,#152940,#263d66 54%,#28204d);filter:drop-shadow(0 0 13px #50dfffcc);}
+.dna-role-node.active:before {border-color:#74eaff;}
+.dna-map-node {display:grid;justify-items:center;gap:3px;width:88px;min-height:77px;padding:2px;border:0;background:transparent;color:#cbd8f8;text-align:center;font:inherit;cursor:pointer;transition:filter .15s,opacity .15s;}
+.dna-map-icon {display:grid;place-items:center;width:41px;height:41px;border:1px solid #74cfff;border-radius:50%;background:radial-gradient(circle,#183956,#111a31 74%);color:#a5e9ff;font-size:14px;box-shadow:0 0 10px #49cfff70,inset 0 0 11px #49cfff20;}
+.dna-node-match .dna-map-icon {border-color:#7d8eff;background:radial-gradient(circle,#242957,#11182d 74%);color:#c4c9ff;box-shadow:0 0 11px #7a78ff88;}
+.dna-node-next .dna-map-icon,.dna-node-locked .dna-map-icon {border-color:#a579ff;background:radial-gradient(circle,#2c204b,#11182d 74%);color:#d1b3ff;box-shadow:0 0 11px #a254ff88;}
+.dna-node-locked {opacity:.66;}
+.dna-map-node:hover,.dna-map-node.is-focused {filter:drop-shadow(0 0 10px #83eaff);}
+.dna-map-node.is-focused .dna-map-icon {outline:2px solid #effaff;outline-offset:3px;}
+.dna-map-label {max-width:88px;color:#c4cde3;font-size:8px;line-height:1.15;text-shadow:0 2px 5px #070b17;overflow-wrap:anywhere;}
+.dna-search-hidden {opacity:.1!important;filter:none!important;pointer-events:none!important;}
+.dna-role-node:focus-visible,.dna-map-node:focus-visible,.dna-workspace-nav button:focus-visible,.dna-inspector button:focus-visible,.dna-gap-pill:focus-visible {outline:2px solid #79edff;outline-offset:4px;}
+.dna-graph-title {position:absolute;top:58%;left:50%;display:grid;gap:4px;transform:translateX(-50%);color:#828daf;text-align:center;pointer-events:none;}
+.dna-graph-title span {font-size:8px;letter-spacing:.25em;}
+.dna-graph-title strong {color:#b4a4ff;font-size:11px;letter-spacing:.14em;text-shadow:0 0 12px #9879ff77;}
+.dna-graph-legend {position:relative;z-index:2;display:flex;flex-wrap:wrap;gap:8px 14px;padding:0 14px 13px;color:#909cba;font-size:8px;}
+.dna-graph-legend span {display:flex;align-items:center;gap:5px;}
+.dna-graph-legend i {width:8px;height:8px;border-radius:50%;background:#54ceff;box-shadow:0 0 7px #42cfff;}
+.dna-graph-legend i.build {background:#a66aff;box-shadow:0 0 7px #9c56ff;}
+.dna-graph-legend i.dim {background:#6a608d;box-shadow:none;}
+.dna-inspector {position:relative;display:flex;flex-direction:column;min-width:0;padding:18px;border:1px solid #252e4b;border-radius:14px;background:linear-gradient(180deg,#0e1526,#0a101d);}
+.dna-inspector-close {position:absolute;top:10px;right:11px;width:25px;height:25px;border:0;background:transparent;color:#8996b2;font-size:19px;}
+.dna-inspector-icon {display:grid;place-items:center;width:43px;height:43px;margin:3px 0 11px;border:1px solid #735be2;border-radius:12px;background:#1b1c3d;color:#b7a1ff;box-shadow:0 0 18px #8b63ff55;font-size:18px;}
+.dna-inspector-type {color:#8290af;font-size:7px;font-weight:800;letter-spacing:.18em;}
+.dna-inspector h2 {margin:4px 0 9px;color:#f0f2ff;font-size:18px;line-height:1.15;overflow-wrap:anywhere;}
+.dna-status-pill {width:max-content;max-width:100%;padding:5px 8px;border:1px solid #5968a1;border-radius:99px;background:#191e38;color:#bbcaff;font-size:8px;}
+.dna-status-pill.known {border-color:#3f94b3;background:#10283b;color:#92e8ff;}
+.dna-status-pill.done {border-color:#6e5cc8;background:#241c42;color:#d0b6ff;}
+.dna-inspector-copy,.dna-inspector-section>p {color:#a0abc3;font-size:9px;line-height:1.65;}
+.dna-inspector-copy {margin:10px 0 14px;}
+.dna-inspector-section {padding-top:12px;border-top:1px solid #242c44;}
+.dna-inspector h3 {margin:0 0 6px;color:#edf0ff;font-size:10px;letter-spacing:0;}
+.dna-inspector-section>p {margin:0 0 8px;font-size:8px;}
+.dna-connected-list {display:grid;gap:5px;}
+.dna-connected-role {display:grid;grid-template-columns:25px 1fr 12px;align-items:center;gap:7px;padding:7px;border:1px solid #202b44;border-radius:8px;background:#10192a;color:#dae3f8;text-align:left;cursor:pointer;}
+.dna-connected-role.active {border-color:#6158a8;background:#1c203b;}
+.dna-connected-icon {display:grid;place-items:center;width:23px;height:23px;border:1px solid #6978bf;border-radius:7px;color:#b4b9ff;font-size:10px;}
+.dna-connected-role>span:nth-child(2) {display:grid;gap:3px;min-width:0;}
+.dna-connected-role small {color:#8b98b5;font-size:6px;letter-spacing:.1em;}
+.dna-connected-role strong {font-size:8px;overflow-wrap:anywhere;}
+.dna-connected-role>b {color:#9daed4;font-size:14px;}
+.dna-experiment {display:grid;gap:6px;margin-top:12px;padding:11px;border:1px solid #252e49;border-radius:10px;background:linear-gradient(140deg,#131b31,#101626);}
+.dna-experiment>span {color:#a99af3;font-size:7px;font-weight:800;letter-spacing:.12em;}
+.dna-experiment strong {color:#f0efff;font-size:9px;}
+.dna-experiment p {margin:0;color:#98a4be;font-size:8px;line-height:1.5;}
+.dna-experiment button,.dna-progress-card button {display:flex;justify-content:space-between;align-items:center;padding:7px 8px;border:1px solid #4b4485;border-radius:7px;background:#1c1b39;color:#d7caff;text-align:left;font-size:8px;cursor:pointer;}
+.dna-action-button {margin-top:10px;padding:9px;border:1px solid #8e6be9;border-radius:8px;background:#37255c;color:#f1eaff;font-size:8px;font-weight:800;cursor:pointer;box-shadow:0 0 14px #945cff44;}
+.dna-hint,.dna-truth-note,.dna-no-data {color:#8794af;font-size:8px;line-height:1.55;}
+.dna-truth-note {margin:auto 0 0;padding-top:12px;}
+.dna-insight-cards {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:12px;}
+.dna-mini-card {display:grid;align-content:start;gap:7px;min-width:0;min-height:118px;padding:12px;border:1px solid #222c47;border-radius:11px;background:linear-gradient(140deg,#10192b,#0c1322);}
+.dna-mini-card>span {color:#8997b6;font-size:7px;font-weight:800;letter-spacing:.12em;}
+.dna-mini-card>strong {color:#f1efff;font-size:14px;}
+.dna-mini-chips,.dna-gap-list {display:flex;flex-wrap:wrap;gap:5px;}
+.dna-profile-chip,.dna-gap-pill {padding:4px 6px;border:1px solid #334366;border-radius:99px;background:#15243a;color:#b9dbf5;font-size:7px;}
+.dna-profile-chip.empty {color:#8592ac;}
+.dna-gap-pill {border-color:#564083;background:#201a38;color:#d1baff;cursor:pointer;}
+.dna-gap-pill.next {border-color:#a77aff;box-shadow:0 0 9px #9f68ff6b;}
+.dna-gap-pill.done {border-color:#458fa6;background:#122b38;color:#a2efff;}
+.dna-progress-card>strong {font-size:10px;}
+.dna-progress-card>p {margin:0;color:#99a6c0;font-size:8px;}
+.dna-progress-track {height:5px;overflow:hidden;border-radius:99px;background:#202943;}
+.dna-progress-track i {display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,#38d9ee,#ab69ff);box-shadow:0 0 8px #5adbf5;}
+.dna-footnote {margin:10px 0 0;color:#7887a4;font-size:7px;line-height:1.5;}
+.dna-all-skills {position:relative;z-index:3;margin:0 13px 12px;border-top:1px solid #202a43;padding-top:8px;}
+.dna-all-skills summary {width:max-content;max-width:100%;color:#a8b5d2;font-size:8px;cursor:pointer;}
+.dna-all-skills>div {display:flex;flex-wrap:wrap;gap:5px;margin-top:8px;}
+.dna-all-skills button {display:grid;gap:2px;padding:5px 7px;border:1px solid #2a3859;border-radius:7px;background:#111b2d;color:#cdd8f1;text-align:left;font-size:8px;cursor:pointer;}
+.dna-all-skills button small {color:#8795b1;font-size:6px;}
+.star-choice-prompt {display:flex;align-items:center;gap:11px;margin:-5px 0 14px;padding:12px 15px;border:1px solid #c9dce0;border-radius:12px;background:linear-gradient(90deg,#e9f7fa,#f4f0ff);}
+.star-choice-prompt>span {color:#6b68cc;font-size:19px;}
+.star-choice-prompt strong {font-size:11px;}
+.star-choice-prompt p {margin:3px 0 0;color:#687482;font-size:10px;line-height:1.5;}
+.skill-dna-guide {display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:13px;padding:15px;border:1px solid #332c5a;border-radius:13px;background:radial-gradient(ellipse at 0 50%,#222044,#101829 75%);color:#f0edff;}
+.skill-dna-guide-icon {display:grid;place-items:center;width:37px;height:37px;border:1px solid #876bdf;border-radius:10px;background:#28204b;color:#d0b4ff;box-shadow:0 0 16px #9060ff55;font-size:17px;}
+.skill-dna-guide .small-label {color:#b8a5ff;font-size:7px;letter-spacing:.13em;}
+.skill-dna-guide h2 {margin:4px 0;font-size:12px;letter-spacing:-.02em;}
+.skill-dna-guide p {margin:0;color:#a6b0c6;font-size:9px;line-height:1.5;}
+.skill-dna-guide .button {min-height:36px;padding:8px 10px;border:1px solid #7f67d0;background:#29214c;color:#f1eaff;font-size:8px;white-space:nowrap;}
+button:disabled {opacity:.42;cursor:not-allowed!important;transform:none!important;box-shadow:none!important;}
+@media(max-width:1100px) {
+  .dna-workspace {grid-template-columns:150px minmax(0,1fr);}
+  .dna-workspace-main {padding-right:12px;padding-left:12px;}
+  .dna-canvas-layout {grid-template-columns:minmax(0,1fr) 220px;}
+  .dna-inspector {padding:13px;}
+}
+@media(max-width:850px) {
+  .dna-workspace {grid-template-columns:1fr;}
+  .dna-workspace-nav {display:none;}
+  .dna-canvas-layout {grid-template-columns:1fr;}
+  .dna-inspector {display:grid;grid-template-columns:1fr 1fr;column-gap:14px;}
+  .dna-inspector-close {display:none;}
+  .dna-inspector-section,.dna-experiment,.dna-inspector-copy,.dna-truth-note,.dna-action-button,.dna-hint {grid-column:1/-1;}
+  .dna-insight-cards {grid-template-columns:1fr 1fr;}
+}
+@media(max-width:600px) {
+  .report-page-skill-dna {padding:8px 6px 22px;}
+  .dna-workspace-main {padding:0 8px 12px;}
+  .dna-toolbar {min-height:60px;gap:8px;}
+  .dna-toolbar p {font-size:8px;}
+  .dna-search {width:45%;padding:7px;}
+  .dna-search input {font-size:8px;}
+  .dna-canvas-layout {padding-top:8px;}
+  .dna-canvas-panel {overflow-x:auto;}
+  .dna-graph-canvas {height:540px;min-width:760px;}
+  .dna-canvas-label {position:sticky;left:12px;}
+  .dna-graph-legend {min-width:760px;}
+  .dna-inspector {grid-template-columns:1fr;padding:13px;}
+  .dna-insight-cards {grid-template-columns:1fr;}
+  .skill-dna-guide {grid-template-columns:auto 1fr;}
+  .skill-dna-guide .button {grid-column:1/-1;}
+  .star-choice-prompt {align-items:flex-start;}
+}
+@media(prefers-reduced-motion:reduce) {
+  .dna-link,.dna-map-node {transition:none;}
+}
