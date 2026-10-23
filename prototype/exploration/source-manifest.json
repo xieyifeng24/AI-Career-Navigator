@@ -1,0 +1,12 @@
+{
+  "source_directory": "AI_Career_Navigator_%E5%8D%81%E6%96%B9%E5%90%91%E8%81%8C%E4%B8%9A%E6%8E%A2%E7%B4%A2%E9%A2%98%E5%BA%93_V2_%E5%AE%8C%E6%95%B4%E4%BA%A4%E4%BB%98%E5%8C%85",
+  "sha256": {
+    "AI_Career_Navigator_十方向职业探索题库_V2_评分映射.json": "5528e934faf4e12c7e3d4eaf140814bc5fac4856cb8f6bb890ea3e8a86ccb7bc",
+    "AI_Career_Navigator_十方向职业探索题库_V2_质检摘要.json": "f3390932a9c9c0315e22c008b69d96ad65c3faccd068f11beb91dd6c97ea0eaa",
+    "AI_Career_Navigator_十方向题库_V2_使用说明.txt": "1cf23aca2708049480287092ab955a108b92b791c71c2357c8e3a708e98c1150",
+    "AI_Career_Navigator_十方向职业探索题库_V2_前端展示.json": "95d363fc386cf1fba98cc0e7b3d4ac94debe9704ccfdcdce31057da92366920a",
+    "AI_Career_Navigator_十方向职业探索题库_V2.json": "2b3dcb737ac360f2c628868bedebc37b8a01321949a00eb6fcd67cfdca8f1198",
+    "AI_Career_Navigator_十方向职业探索题库_V2_完整审阅.md": "7e058de7943393adb75a0989e9f8b5b7aeaa59675fa124cfd4fd9c3fb086f453"
+  },
+  "note": "bank.json and scoring.json are byte-for-byte supplied copies. No question translations added."
+}

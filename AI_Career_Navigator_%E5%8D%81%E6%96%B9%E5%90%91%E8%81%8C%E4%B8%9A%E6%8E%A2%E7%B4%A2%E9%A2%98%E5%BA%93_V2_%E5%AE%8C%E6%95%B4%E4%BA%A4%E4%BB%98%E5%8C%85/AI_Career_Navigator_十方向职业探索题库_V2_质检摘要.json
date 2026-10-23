@@ -1,0 +1,30 @@
+{
+  "common": 4,
+  "by_direction": {
+    "SW": 8,
+    "DATA": 8,
+    "FIN": 8,
+    "PM": 8,
+    "MKT": 8,
+    "DES": 8,
+    "ENG": 8,
+    "HLT": 8,
+    "EDU": 8,
+    "OPS": 8
+  },
+  "total": 84,
+  "unique_ids": 84,
+  "types": {
+    "motivation": 1,
+    "career_goal": 1,
+    "constraints": 1,
+    "ai_experience": 11,
+    "interest": 10,
+    "experience": 10,
+    "problem_style": 10,
+    "subdomain": 10,
+    "ai_judgement": 10,
+    "scenario_preference": 10,
+    "growth_tradeoff": 10
+  }
+}

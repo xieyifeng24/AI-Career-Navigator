@@ -1,0 +1,839 @@
+{
+  "mode": "offline-rules",
+  "version": "offline-1.0.0",
+  "reportId": "LOCAL-068d351f",
+  "profile": {
+    "gender": "undisclosed",
+    "age": "young",
+    "education": "bachelor",
+    "status": "enrolled",
+    "major": "software",
+    "social": "introvert",
+    "planning": "planned",
+    "decision": "rational",
+    "interests": [
+      "tech",
+      "learning"
+    ],
+    "aiPurposes": [
+      "summary",
+      "coding"
+    ],
+    "aiDuration": "1to6",
+    "reliance": "moderate",
+    "learningAbility": "steady",
+    "weeklyTime": "under10",
+    "learningStyles": [
+      "practice",
+      "explore"
+    ],
+    "mindsets": [
+      "science"
+    ],
+    "nationality": "undisclosed"
+  },
+  "stage": "stage-student",
+  "preferenceCode": "IJR",
+  "ranking": [
+    {
+      "id": "data",
+      "score": 18,
+      "components": {
+        "interests": 8,
+        "major": 6,
+        "stream": 0,
+        "mindsets": 2,
+        "aiPurposes": 2
+      },
+      "reasons": {
+        "interests": [
+          "tech",
+          "learning"
+        ],
+        "mindsets": [
+          "science"
+        ],
+        "aiPurposes": [
+          "summary",
+          "coding"
+        ],
+        "major": "software",
+        "stream": null
+      }
+    },
+    {
+      "id": "software",
+      "score": 17,
+      "components": {
+        "interests": 8,
+        "major": 6,
+        "stream": 0,
+        "mindsets": 2,
+        "aiPurposes": 1
+      },
+      "reasons": {
+        "interests": [
+          "tech",
+          "learning"
+        ],
+        "mindsets": [
+          "science"
+        ],
+        "aiPurposes": [
+          "coding"
+        ],
+        "major": "software",
+        "stream": null
+      }
+    },
+    {
+      "id": "ai-research",
+      "score": 17,
+      "components": {
+        "interests": 8,
+        "major": 6,
+        "stream": 0,
+        "mindsets": 2,
+        "aiPurposes": 1
+      },
+      "reasons": {
+        "interests": [
+          "tech",
+          "learning"
+        ],
+        "mindsets": [
+          "science"
+        ],
+        "aiPurposes": [
+          "coding"
+        ],
+        "major": "software",
+        "stream": null
+      }
+    },
+    {
+      "id": "security",
+      "score": 17,
+      "components": {
+        "interests": 8,
+        "major": 6,
+        "stream": 0,
+        "mindsets": 2,
+        "aiPurposes": 1
+      },
+      "reasons": {
+        "interests": [
+          "tech",
+          "learning"
+        ],
+        "mindsets": [
+          "science"
+        ],
+        "aiPurposes": [
+          "coding"
+        ],
+        "major": "software",
+        "stream": null
+      }
+    },
+    {
+      "id": "health",
+      "score": 17,
+      "components": {
+        "interests": 8,
+        "major": 6,
+        "stream": 0,
+        "mindsets": 2,
+        "aiPurposes": 1
+      },
+      "reasons": {
+        "interests": [
+          "tech",
+          "learning"
+        ],
+        "mindsets": [
+          "science"
+        ],
+        "aiPurposes": [
+          "summary"
+        ],
+        "major": "software",
+        "stream": null
+      }
+    },
+    {
+      "id": "writing",
+      "score": 15,
+      "components": {
+        "interests": 8,
+        "major": 6,
+        "stream": 0,
+        "mindsets": 0,
+        "aiPurposes": 1
+      },
+      "reasons": {
+        "interests": [
+          "tech",
+          "learning"
+        ],
+        "mindsets": [],
+        "aiPurposes": [
+          "summary"
+        ],
+        "major": "software",
+        "stream": null
+      }
+    },
+    {
+      "id": "business-analysis",
+      "score": 14,
+      "components": {
+        "interests": 4,
+        "major": 6,
+        "stream": 0,
+        "mindsets": 2,
+        "aiPurposes": 2
+      },
+      "reasons": {
+        "interests": [
+          "learning"
+        ],
+        "mindsets": [
+          "science"
+        ],
+        "aiPurposes": [
+          "summary",
+          "coding"
+        ],
+        "major": "software",
+        "stream": null
+      }
+    },
+    {
+      "id": "game",
+      "score": 13,
+      "components": {
+        "interests": 4,
+        "major": 6,
+        "stream": 0,
+        "mindsets": 2,
+        "aiPurposes": 1
+      },
+      "reasons": {
+        "interests": [
+          "tech"
+        ],
+        "mindsets": [
+          "science"
+        ],
+        "aiPurposes": [
+          "coding"
+        ],
+        "major": "software",
+        "stream": null
+      }
+    },
+    {
+      "id": "product",
+      "score": 13,
+      "components": {
+        "interests": 4,
+        "major": 6,
+        "stream": 0,
+        "mindsets": 2,
+        "aiPurposes": 1
+      },
+      "reasons": {
+        "interests": [
+          "tech"
+        ],
+        "mindsets": [
+          "science"
+        ],
+        "aiPurposes": [
+          "summary"
+        ],
+        "major": "software",
+        "stream": null
+      }
+    },
+    {
+      "id": "environment",
+      "score": 12,
+      "components": {
+        "interests": 8,
+        "major": 0,
+        "stream": 0,
+        "mindsets": 2,
+        "aiPurposes": 2
+      },
+      "reasons": {
+        "interests": [
+          "tech",
+          "learning"
+        ],
+        "mindsets": [
+          "science"
+        ],
+        "aiPurposes": [
+          "summary",
+          "coding"
+        ],
+        "major": null,
+        "stream": null
+      }
+    },
+    {
+      "id": "agri",
+      "score": 12,
+      "components": {
+        "interests": 8,
+        "major": 0,
+        "stream": 0,
+        "mindsets": 2,
+        "aiPurposes": 2
+      },
+      "reasons": {
+        "interests": [
+          "tech",
+          "learning"
+        ],
+        "mindsets": [
+          "science"
+        ],
+        "aiPurposes": [
+          "summary",
+          "coding"
+        ],
+        "major": null,
+        "stream": null
+      }
+    },
+    {
+      "id": "energy",
+      "score": 11,
+      "components": {
+        "interests": 8,
+        "major": 0,
+        "stream": 0,
+        "mindsets": 2,
+        "aiPurposes": 1
+      },
+      "reasons": {
+        "interests": [
+          "tech",
+          "learning"
+        ],
+        "mindsets": [
+          "science"
+        ],
+        "aiPurposes": [
+          "coding"
+        ],
+        "major": null,
+        "stream": null
+      }
+    },
+    {
+      "id": "water",
+      "score": 11,
+      "components": {
+        "interests": 8,
+        "major": 0,
+        "stream": 0,
+        "mindsets": 2,
+        "aiPurposes": 1
+      },
+      "reasons": {
+        "interests": [
+          "tech",
+          "learning"
+        ],
+        "mindsets": [
+          "science"
+        ],
+        "aiPurposes": [
+          "coding"
+        ],
+        "major": null,
+        "stream": null
+      }
+    },
+    {
+      "id": "ux",
+      "score": 10,
+      "components": {
+        "interests": 4,
+        "major": 6,
+        "stream": 0,
+        "mindsets": 0,
+        "aiPurposes": 0
+      },
+      "reasons": {
+        "interests": [
+          "tech"
+        ],
+        "mindsets": [],
+        "aiPurposes": [],
+        "major": "software",
+        "stream": null
+      }
+    },
+    {
+      "id": "marine",
+      "score": 8,
+      "components": {
+        "interests": 4,
+        "major": 0,
+        "stream": 0,
+        "mindsets": 2,
+        "aiPurposes": 2
+      },
+      "reasons": {
+        "interests": [
+          "learning"
+        ],
+        "mindsets": [
+          "science"
+        ],
+        "aiPurposes": [
+          "summary",
+          "coding"
+        ],
+        "major": null,
+        "stream": null
+      }
+    },
+    {
+      "id": "finance",
+      "score": 7,
+      "components": {
+        "interests": 4,
+        "major": 0,
+        "stream": 0,
+        "mindsets": 2,
+        "aiPurposes": 1
+      },
+      "reasons": {
+        "interests": [
+          "learning"
+        ],
+        "mindsets": [
+          "science"
+        ],
+        "aiPurposes": [
+          "summary"
+        ],
+        "major": null,
+        "stream": null
+      }
+    },
+    {
+      "id": "education",
+      "score": 7,
+      "components": {
+        "interests": 4,
+        "major": 0,
+        "stream": 0,
+        "mindsets": 2,
+        "aiPurposes": 1
+      },
+      "reasons": {
+        "interests": [
+          "learning"
+        ],
+        "mindsets": [
+          "science"
+        ],
+        "aiPurposes": [
+          "summary"
+        ],
+        "major": null,
+        "stream": null
+      }
+    },
+    {
+      "id": "biodiversity",
+      "score": 7,
+      "components": {
+        "interests": 4,
+        "major": 0,
+        "stream": 0,
+        "mindsets": 2,
+        "aiPurposes": 1
+      },
+      "reasons": {
+        "interests": [
+          "learning"
+        ],
+        "mindsets": [
+          "science"
+        ],
+        "aiPurposes": [
+          "summary"
+        ],
+        "major": null,
+        "stream": null
+      }
+    },
+    {
+      "id": "policy",
+      "score": 7,
+      "components": {
+        "interests": 4,
+        "major": 0,
+        "stream": 0,
+        "mindsets": 2,
+        "aiPurposes": 1
+      },
+      "reasons": {
+        "interests": [
+          "learning"
+        ],
+        "mindsets": [
+          "science"
+        ],
+        "aiPurposes": [
+          "summary"
+        ],
+        "major": null,
+        "stream": null
+      }
+    },
+    {
+      "id": "urban",
+      "score": 6,
+      "components": {
+        "interests": 4,
+        "major": 0,
+        "stream": 0,
+        "mindsets": 2,
+        "aiPurposes": 0
+      },
+      "reasons": {
+        "interests": [
+          "tech"
+        ],
+        "mindsets": [
+          "science"
+        ],
+        "aiPurposes": [],
+        "major": null,
+        "stream": null
+      }
+    },
+    {
+      "id": "social-impact",
+      "score": 5,
+      "components": {
+        "interests": 4,
+        "major": 0,
+        "stream": 0,
+        "mindsets": 0,
+        "aiPurposes": 1
+      },
+      "reasons": {
+        "interests": [
+          "learning"
+        ],
+        "mindsets": [],
+        "aiPurposes": [
+          "summary"
+        ],
+        "major": null,
+        "stream": null
+      }
+    },
+    {
+      "id": "partnerships",
+      "score": 5,
+      "components": {
+        "interests": 4,
+        "major": 0,
+        "stream": 0,
+        "mindsets": 0,
+        "aiPurposes": 1
+      },
+      "reasons": {
+        "interests": [
+          "learning"
+        ],
+        "mindsets": [],
+        "aiPurposes": [
+          "summary"
+        ],
+        "major": null,
+        "stream": null
+      }
+    },
+    {
+      "id": "marketing",
+      "score": 1,
+      "components": {
+        "interests": 0,
+        "major": 0,
+        "stream": 0,
+        "mindsets": 0,
+        "aiPurposes": 1
+      },
+      "reasons": {
+        "interests": [],
+        "mindsets": [],
+        "aiPurposes": [
+          "summary"
+        ],
+        "major": null,
+        "stream": null
+      }
+    },
+    {
+      "id": "creative",
+      "score": 0,
+      "components": {
+        "interests": 0,
+        "major": 0,
+        "stream": 0,
+        "mindsets": 0,
+        "aiPurposes": 0
+      },
+      "reasons": {
+        "interests": [],
+        "mindsets": [],
+        "aiPurposes": [],
+        "major": null,
+        "stream": null
+      }
+    }
+  ],
+  "goals": [
+    {
+      "id": 9,
+      "score": 13,
+      "reasons": {
+        "interests": [
+          "tech",
+          "learning"
+        ],
+        "careers": [
+          "data",
+          "software",
+          "ai-research"
+        ]
+      }
+    },
+    {
+      "id": 8,
+      "score": 11,
+      "reasons": {
+        "interests": [
+          "tech"
+        ],
+        "careers": [
+          "data",
+          "software",
+          "ai-research"
+        ]
+      }
+    },
+    {
+      "id": 4,
+      "score": 8,
+      "reasons": {
+        "interests": [
+          "learning"
+        ],
+        "careers": [
+          "software",
+          "ai-research"
+        ]
+      }
+    },
+    {
+      "id": 7,
+      "score": 4,
+      "reasons": {
+        "interests": [
+          "tech",
+          "learning"
+        ],
+        "careers": []
+      }
+    },
+    {
+      "id": 13,
+      "score": 4,
+      "reasons": {
+        "interests": [
+          "tech",
+          "learning"
+        ],
+        "careers": []
+      }
+    },
+    {
+      "id": 12,
+      "score": 3,
+      "reasons": {
+        "interests": [],
+        "careers": [
+          "data"
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "score": 2,
+      "reasons": {
+        "interests": [
+          "learning"
+        ],
+        "careers": []
+      }
+    },
+    {
+      "id": 5,
+      "score": 2,
+      "reasons": {
+        "interests": [
+          "learning"
+        ],
+        "careers": []
+      }
+    },
+    {
+      "id": 6,
+      "score": 2,
+      "reasons": {
+        "interests": [
+          "tech"
+        ],
+        "careers": []
+      }
+    },
+    {
+      "id": 10,
+      "score": 2,
+      "reasons": {
+        "interests": [
+          "learning"
+        ],
+        "careers": []
+      }
+    },
+    {
+      "id": 11,
+      "score": 2,
+      "reasons": {
+        "interests": [
+          "tech"
+        ],
+        "careers": []
+      }
+    },
+    {
+      "id": 14,
+      "score": 2,
+      "reasons": {
+        "interests": [
+          "learning"
+        ],
+        "careers": []
+      }
+    },
+    {
+      "id": 15,
+      "score": 2,
+      "reasons": {
+        "interests": [
+          "learning"
+        ],
+        "careers": []
+      }
+    },
+    {
+      "id": 16,
+      "score": 2,
+      "reasons": {
+        "interests": [
+          "learning"
+        ],
+        "careers": []
+      }
+    },
+    {
+      "id": 17,
+      "score": 2,
+      "reasons": {
+        "interests": [
+          "learning"
+        ],
+        "careers": []
+      }
+    },
+    {
+      "id": 1,
+      "score": 0,
+      "reasons": {
+        "interests": [],
+        "careers": []
+      }
+    },
+    {
+      "id": 3,
+      "score": 0,
+      "reasons": {
+        "interests": [],
+        "careers": []
+      }
+    }
+  ],
+  "learning": [
+    "stage-student",
+    "social-introvert",
+    "planning-planned",
+    "decision-rational",
+    "ability-steady",
+    "style-practice",
+    "style-explore",
+    "mindset-note",
+    "cross-border"
+  ],
+  "ai": [
+    "ai-moderate",
+    "duration-1to6",
+    "purpose-summary",
+    "purpose-coding"
+  ],
+  "plan": {
+    "roleId": "data",
+    "weeklyHours": 3,
+    "totalHours": 12,
+    "split": {
+      "foundation": 1,
+      "project": 1,
+      "review": 1
+    },
+    "weeks": [
+      {
+        "week": 1,
+        "hours": 3,
+        "action": "baseline"
+      },
+      {
+        "week": 2,
+        "hours": 3,
+        "action": "prototype"
+      },
+      {
+        "week": 3,
+        "hours": 3,
+        "action": "verify"
+      },
+      {
+        "week": 4,
+        "hours": 3,
+        "action": "reflect"
+      }
+    ]
+  }
+}

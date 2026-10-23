@@ -1,0 +1,248 @@
+{
+  "url": "http://127.0.0.1:8046/?assessment=v3",
+  "cases": [
+    {
+      "track": "SW",
+      "language": "en",
+      "questions": 12,
+      "review": 12,
+      "refreshPreserved": true,
+      "passed": true
+    },
+    {
+      "track": "SW",
+      "language": "zh-CN",
+      "questions": 12,
+      "review": 12,
+      "refreshPreserved": true,
+      "passed": true
+    },
+    {
+      "track": "SW",
+      "language": "ms",
+      "questions": 12,
+      "review": 12,
+      "refreshPreserved": true,
+      "passed": true
+    },
+    {
+      "track": "DATA",
+      "language": "en",
+      "questions": 12,
+      "review": 12,
+      "refreshPreserved": true,
+      "passed": true
+    },
+    {
+      "track": "DATA",
+      "language": "zh-CN",
+      "questions": 12,
+      "review": 12,
+      "refreshPreserved": true,
+      "passed": true
+    },
+    {
+      "track": "DATA",
+      "language": "ms",
+      "questions": 12,
+      "review": 12,
+      "refreshPreserved": true,
+      "passed": true
+    },
+    {
+      "track": "FIN",
+      "language": "en",
+      "questions": 12,
+      "review": 12,
+      "refreshPreserved": true,
+      "passed": true
+    },
+    {
+      "track": "FIN",
+      "language": "zh-CN",
+      "questions": 12,
+      "review": 12,
+      "refreshPreserved": true,
+      "passed": true
+    },
+    {
+      "track": "FIN",
+      "language": "ms",
+      "questions": 12,
+      "review": 12,
+      "refreshPreserved": true,
+      "passed": true
+    },
+    {
+      "track": "PM",
+      "language": "en",
+      "questions": 12,
+      "review": 12,
+      "refreshPreserved": true,
+      "passed": true
+    },
+    {
+      "track": "PM",
+      "language": "zh-CN",
+      "questions": 12,
+      "review": 12,
+      "refreshPreserved": true,
+      "passed": true
+    },
+    {
+      "track": "PM",
+      "language": "ms",
+      "questions": 12,
+      "review": 12,
+      "refreshPreserved": true,
+      "passed": true
+    },
+    {
+      "track": "MKT",
+      "language": "en",
+      "questions": 12,
+      "review": 12,
+      "refreshPreserved": true,
+      "passed": true
+    },
+    {
+      "track": "MKT",
+      "language": "zh-CN",
+      "questions": 12,
+      "review": 12,
+      "refreshPreserved": true,
+      "passed": true
+    },
+    {
+      "track": "MKT",
+      "language": "ms",
+      "questions": 12,
+      "review": 12,
+      "refreshPreserved": true,
+      "passed": true
+    },
+    {
+      "track": "DES",
+      "language": "en",
+      "questions": 12,
+      "review": 12,
+      "refreshPreserved": true,
+      "passed": true
+    },
+    {
+      "track": "DES",
+      "language": "zh-CN",
+      "questions": 12,
+      "review": 12,
+      "refreshPreserved": true,
+      "passed": true
+    },
+    {
+      "track": "DES",
+      "language": "ms",
+      "questions": 12,
+      "review": 12,
+      "refreshPreserved": true,
+      "passed": true
+    },
+    {
+      "track": "ENG",
+      "language": "en",
+      "questions": 12,
+      "review": 12,
+      "refreshPreserved": true,
+      "passed": true
+    },
+    {
+      "track": "ENG",
+      "language": "zh-CN",
+      "questions": 12,
+      "review": 12,
+      "refreshPreserved": true,
+      "passed": true
+    },
+    {
+      "track": "ENG",
+      "language": "ms",
+      "questions": 12,
+      "review": 12,
+      "refreshPreserved": true,
+      "passed": true
+    },
+    {
+      "track": "HLT",
+      "language": "en",
+      "questions": 12,
+      "review": 12,
+      "refreshPreserved": true,
+      "passed": true
+    },
+    {
+      "track": "HLT",
+      "language": "zh-CN",
+      "questions": 12,
+      "review": 12,
+      "refreshPreserved": true,
+      "passed": true
+    },
+    {
+      "track": "HLT",
+      "language": "ms",
+      "questions": 12,
+      "review": 12,
+      "refreshPreserved": true,
+      "passed": true
+    },
+    {
+      "track": "EDU",
+      "language": "en",
+      "questions": 12,
+      "review": 12,
+      "refreshPreserved": true,
+      "passed": true
+    },
+    {
+      "track": "EDU",
+      "language": "zh-CN",
+      "questions": 12,
+      "review": 12,
+      "refreshPreserved": true,
+      "passed": true
+    },
+    {
+      "track": "EDU",
+      "language": "ms",
+      "questions": 12,
+      "review": 12,
+      "refreshPreserved": true,
+      "passed": true
+    },
+    {
+      "track": "OPS",
+      "language": "en",
+      "questions": 12,
+      "review": 12,
+      "refreshPreserved": true,
+      "passed": true
+    },
+    {
+      "track": "OPS",
+      "language": "zh-CN",
+      "questions": 12,
+      "review": 12,
+      "refreshPreserved": true,
+      "passed": true
+    },
+    {
+      "track": "OPS",
+      "language": "ms",
+      "questions": 12,
+      "review": 12,
+      "refreshPreserved": true,
+      "passed": true
+    }
+  ],
+  "questionChecks": 360,
+  "source": "Original V3 bank, exact rendered statement comparison; read-only DOM assertions and actual radio/button interactions",
+  "scope": "Phase 1 questionnaire/review only; no scoring or reports"
+}

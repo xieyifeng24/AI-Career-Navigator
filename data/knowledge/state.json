@@ -1,0 +1,31 @@
+{
+  "sources": {
+    "onet": {
+      "checked_at": "2026-10-22T03:45:23.978329+00:00",
+      "status": "current",
+      "last_success": "2026-10-22T03:45:23.978329+00:00",
+      "error": null,
+      "records": 5,
+      "content_changed": true
+    },
+    "esco": {
+      "checked_at": "2026-10-22T03:45:23.978329+00:00",
+      "status": "current",
+      "last_success": "2026-10-22T03:45:23.978329+00:00",
+      "error": null,
+      "records": 5,
+      "content_changed": true
+    },
+    "myfuturejobs": {
+      "checked_at": "2026-10-22T03:45:23.978329+00:00",
+      "status": "manual_import_required",
+      "error": "No confirmed public API or approved import. Obtain PERKESO/SOCSO reuse permission; website terms restrict republication. https://myfuturejobs.gov.my/wp-content/uploads/2024/03/TermsAndConditions.pdf",
+      "records": 0
+    }
+  },
+  "last_attempt": "2026-10-22T03:45:23.978329+00:00",
+  "next_due": "2026-11-05T03:45:23.978329+00:00",
+  "publication": "verified",
+  "version": "knowledge-20261022T034523Z-c11ab1d3c9fdc2bb",
+  "last_publication": "2026-10-22T03:45:23.978329+00:00"
+}

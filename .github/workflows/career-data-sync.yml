@@ -1,0 +1,86 @@
+name: Career knowledge · 14 day sync
+on:
+  schedule:
+    # Cron has no reliable */14-day cadence across months. Poll daily, durable UTC due ledger gates work.
+    - cron: '23 4 * * *'
+  workflow_dispatch:
+    inputs:
+      force:
+        description: Run before the next 14-day due date
+        type: boolean
+        default: false
+permissions:
+  contents: write
+concurrency:
+  group: career-knowledge-publication
+  cancel-in-progress: false
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - run: python -m pip install -r requirements.txt
+      - name: Ensure independent durable data branch exists
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPOSITORY: ${{ github.repository }}
+          BASE_SHA: ${{ github.sha }}
+        run: |
+          if ! gh api "repos/$REPOSITORY/git/ref/heads/career-data" > /dev/null; then
+            gh api --method POST "repos/$REPOSITORY/git/refs" -f ref=refs/heads/career-data -f sha="$BASE_SHA" > /dev/null
+          fi
+      - uses: actions/checkout@v4
+        with:
+          ref: career-data
+          path: data-store
+      - name: Restore durable versions and due ledger
+        run: |
+          cp -R data-store/data/knowledge/versions data/knowledge/
+          cp data-store/data/knowledge/current.json data/knowledge/current.json
+          cp data-store/data/knowledge/state.json data/knowledge/state.json
+          cp -R data-store/data/knowledge/imports/. data/knowledge/imports/
+      - uses: actions/cache@v4
+        with:
+          path: .cache/knowledge/http
+          key: career-http-${{ github.run_id }}
+          restore-keys: career-http-
+      - name: Synchronize only when due
+        id: sync
+        continue-on-error: true
+        env:
+          FORCE: ${{ inputs.force || false }}
+        run: |
+          if [ "$FORCE" = true ]; then
+            python -m src.career.knowledge.sync --force
+          else
+            python -m src.career.knowledge.sync
+          fi
+      - name: Persist valid release and source failures without changing main
+        if: always() && steps.sync.outcome != 'skipped'
+        working-directory: data-store
+        run: |
+          cp ../data/knowledge/current.json data/knowledge/current.json
+          cp ../data/knowledge/state.json data/knowledge/state.json
+          cp -R ../data/knowledge/versions/. data/knowledge/versions/
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/knowledge/current.json data/knowledge/state.json data/knowledge/versions
+          if ! git diff --cached --quiet; then
+            git commit -m 'data: verify occupational knowledge and sync status'
+            git push origin HEAD:career-data
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: knowledge-source-status
+          path: data/knowledge/state.json
+      - name: Signal unavailable automated source
+        if: steps.sync.outcome == 'failure'
+        run: exit 1

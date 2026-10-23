@@ -1,0 +1,18 @@
+{
+  "pr8": "b8a7610",
+  "pr9": "ca3cd48",
+  "original_pr8_hashes": {
+    "prototype/explorer-catalog.json": "837ea7d2fd41e22af5176a619eb6258b757f0ecd2c23e45df153078b27b38485",
+    "prototype/explorer-engine.js": "a9a660e6c807d1834644fc4a0f3ae692748eb7c4347d28b69af4422d2b1bb8e3",
+    "prototype/explorer-views.js": "3e85ce30e436680a0bc2814f6429e88bae80086510c5c5f61036c185fe023bde",
+    "prototype/explorer.css": "fd27dd5fba6dc47069033851aed04537a160a78d1ec8ff82a04c7d4b0e53571a",
+    "prototype/offline-app.js": "34b20ad8589ce984bbd825a722706bfad12075e350b300df84a1ef244a2b6c95",
+    "prototype/sdg-characters.png": "a7cd0519e3c8ca8b0774e7cedd7d7f2ede38ef4c8efa1d9833486fce49f7de1f",
+    "prototype/explorer.test.mjs": "a39621e2d292cbc1050206cbc2ea19964d378f125b34a040ce49e5dfd41060ad",
+    "tests/fixtures/offline-report.json": "e19b86d70fbbd02235cc1b282be61b37264bf05b36a43ab24114c767196de521",
+    "docs/OFFLINE_IMPLEMENTATION.md": "7b0eb7303137d6d9364605064f3db7089b57ef087490b4e0bb7bf6b214cab900",
+    "docs/OFFLINE_OUTCOMES.md": "995e02674c2cc26c5fc46659203cdd29098e56545eed1d703c46599897004094",
+    "docs/offline-output-inventory.json": "fe1f7c8dbbf2cd73add272d4b2cabac97a6069f0284463ba912fbaaba4831433"
+  },
+  "v3_author_sha256": "0e1c448c6605e60a40364fd8c7cb1f0546470611f66f11c7d37d99802ff0cd3d"
+}

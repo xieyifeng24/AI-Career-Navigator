@@ -1,0 +1,348 @@
+{
+  "background": [
+    [
+      "student",
+      "Student / exploring",
+      "学生／探索职业方向",
+      "Pelajar / meneroka kerjaya"
+    ],
+    [
+      "software",
+      "Software / IT",
+      "软件／信息技术",
+      "Perisian / teknologi maklumat"
+    ],
+    [
+      "marketing",
+      "Marketing / communications",
+      "市场营销／传播",
+      "Pemasaran / komunikasi"
+    ],
+    [
+      "admin",
+      "Administration / operations",
+      "行政／运营",
+      "Pentadbiran / operasi"
+    ],
+    [
+      "business",
+      "Business / finance",
+      "商业／金融",
+      "Perniagaan / kewangan"
+    ],
+    [
+      "education",
+      "Education / research",
+      "教育／研究",
+      "Pendidikan / penyelidikan"
+    ],
+    [
+      "design",
+      "Design / creative work",
+      "设计／创意",
+      "Reka bentuk / kerja kreatif"
+    ],
+    [
+      "other",
+      "Other",
+      "其他",
+      "Lain-lain"
+    ]
+  ],
+  "experience": [
+    [
+      "student",
+      "Student / exploring",
+      "学生／尚在探索",
+      "Pelajar / masih meneroka"
+    ],
+    [
+      "under1",
+      "Less than 1 year",
+      "不足 1 年",
+      "Kurang daripada 1 tahun"
+    ],
+    [
+      "1to2",
+      "1–2 years",
+      "1–2 年",
+      "1–2 tahun"
+    ],
+    [
+      "3to5",
+      "3–5 years",
+      "3–5 年",
+      "3–5 tahun"
+    ],
+    [
+      "6to10",
+      "6–10 years",
+      "6–10 年",
+      "6–10 tahun"
+    ],
+    [
+      "over10",
+      "10+ years",
+      "10 年以上",
+      "Lebih daripada 10 tahun"
+    ]
+  ],
+  "tasks": [
+    [
+      "study",
+      "Study course materials and solve exercises",
+      "学习课程内容并完成练习",
+      "Mempelajari bahan kursus dan menyelesaikan latihan"
+    ],
+    [
+      "code",
+      "Write and debug software",
+      "编写与调试代码",
+      "Menulis dan menyahpepijat perisian"
+    ],
+    [
+      "research",
+      "Research information and compare sources",
+      "检索资料并比较来源",
+      "Menyelidik maklumat dan membandingkan sumber"
+    ],
+    [
+      "write",
+      "Write reports or create content",
+      "撰写报告或制作内容",
+      "Menulis laporan atau menghasilkan kandungan"
+    ],
+    [
+      "data",
+      "Analyze data and prepare spreadsheets",
+      "分析数据并制作电子表格",
+      "Menganalisis data dan menyediakan hamparan"
+    ],
+    [
+      "coordinate",
+      "Coordinate schedules and project resources",
+      "协调日程与项目资源",
+      "Menyelaras jadual dan sumber projek"
+    ],
+    [
+      "communicate",
+      "Present recommendations and communicate with stakeholders",
+      "提出建议并与相关人员沟通",
+      "Membentangkan cadangan dan berkomunikasi dengan pihak berkepentingan"
+    ],
+    [
+      "design",
+      "Create and review designs",
+      "制作并评审设计",
+      "Menghasilkan dan menilai reka bentuk"
+    ],
+    [
+      "service",
+      "Respond to customer requests",
+      "处理客户需求",
+      "Menangani permintaan pelanggan"
+    ],
+    [
+      "other",
+      "Other",
+      "其他",
+      "Lain-lain"
+    ]
+  ],
+  "skills": [
+    [
+      "writing",
+      "Writing",
+      "写作",
+      "Penulisan"
+    ],
+    [
+      "critical",
+      "Critical Thinking",
+      "批判性思维",
+      "Pemikiran kritis"
+    ],
+    [
+      "programming",
+      "Programming",
+      "编程",
+      "Pengaturcaraan"
+    ],
+    [
+      "analysis",
+      "Data Analysis",
+      "数据分析",
+      "Analisis data"
+    ],
+    [
+      "communication",
+      "Speaking",
+      "口头表达",
+      "Kemahiran bertutur"
+    ],
+    [
+      "coordination",
+      "Coordination",
+      "协调",
+      "Penyelarasan"
+    ],
+    [
+      "time",
+      "Time Management",
+      "时间管理",
+      "Pengurusan masa"
+    ],
+    [
+      "research",
+      "Active Learning",
+      "主动学习",
+      "Pembelajaran aktif"
+    ],
+    [
+      "design",
+      "Design",
+      "设计",
+      "Reka bentuk"
+    ],
+    [
+      "other",
+      "Other",
+      "其他",
+      "Lain-lain"
+    ]
+  ],
+  "aiUsage": [
+    [
+      "never",
+      "Never used AI tools",
+      "从未使用过 AI 工具",
+      "Belum pernah menggunakan alat AI"
+    ],
+    [
+      "occasional",
+      "Occasionally use AI",
+      "偶尔使用 AI",
+      "Menggunakan AI sekali-sekala"
+    ],
+    [
+      "frequent",
+      "Frequently use AI",
+      "经常使用 AI",
+      "Kerap menggunakan AI"
+    ],
+    [
+      "advanced",
+      "Advanced AI user",
+      "熟练使用 AI",
+      "Pengguna AI mahir"
+    ]
+  ],
+  "concerns": [
+    [
+      "automation",
+      "AI may replace parts of my work",
+      "AI 可能替代我的部分工作",
+      "AI mungkin menggantikan sebahagian tugas saya"
+    ],
+    [
+      "skills",
+      "I don’t know which AI skills to learn",
+      "不知道应该学习哪些 AI 技能",
+      "Saya tidak tahu kemahiran AI yang patut dipelajari"
+    ],
+    [
+      "direction",
+      "My future career direction is unclear",
+      "未来职业方向不明确",
+      "Hala tuju kerjaya saya belum jelas"
+    ],
+    [
+      "falling_behind",
+      "I’m worried about falling behind",
+      "担心自己跟不上变化",
+      "Saya bimbang akan ketinggalan"
+    ],
+    [
+      "none",
+      "No major concerns",
+      "暂时没有明显担忧",
+      "Tiada kebimbangan utama"
+    ],
+    [
+      "other",
+      "Other",
+      "其他",
+      "Lain-lain"
+    ]
+  ],
+  "goal": [
+    [
+      "upgrade",
+      "Improve my current work with AI",
+      "用 AI 提升当前工作能力",
+      "Meningkatkan prestasi kerja semasa dengan AI"
+    ],
+    [
+      "explore",
+      "Explore a new career direction",
+      "探索新的职业方向",
+      "Meneroka hala tuju kerjaya baharu"
+    ],
+    [
+      "internship",
+      "Prepare for internships or a first job",
+      "准备实习或第一份工作",
+      "Bersedia untuk latihan industri atau pekerjaan pertama"
+    ],
+    [
+      "foundation",
+      "Build practical AI skills",
+      "建立实用的 AI 技能",
+      "Membina kemahiran AI yang praktikal"
+    ],
+    [
+      "other",
+      "Other",
+      "其他",
+      "Lain-lain"
+    ]
+  ],
+  "constraints": [
+    [
+      "time",
+      "Limited time alongside study or work",
+      "学习或工作之外时间有限",
+      "Masa terhad di luar pengajian atau kerja"
+    ],
+    [
+      "budget",
+      "Free learning resources only",
+      "仅使用免费学习资源",
+      "Sumber pembelajaran percuma sahaja"
+    ],
+    [
+      "access",
+      "Limited access to software or equipment",
+      "软件或设备使用受限",
+      "Akses kepada perisian atau peralatan terhad"
+    ],
+    [
+      "beginner",
+      "Prefer beginner-friendly materials",
+      "希望从入门材料开始",
+      "Mengutamakan bahan untuk pemula"
+    ],
+    [
+      "none",
+      "No major constraints",
+      "没有明显限制",
+      "Tiada kekangan utama"
+    ],
+    [
+      "other",
+      "Other",
+      "其他",
+      "Lain-lain"
+    ]
+  ]
+}

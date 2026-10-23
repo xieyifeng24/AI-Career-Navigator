@@ -1,0 +1,21 @@
+{
+  "date": "2026-10-21",
+  "endpoint_id": "cckbk8134lpxf8",
+  "worker_version": "v2.29.0",
+  "model_revision": "cdbee75f17c01a7cc42f958dc650907174af0554",
+  "request_id": "chatcmpl-a71573c2671223a6",
+  "model": "Qwen/Qwen3-4B-Instruct-2507",
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 10,
+    "completion_tokens_details": null,
+    "prompt_tokens": 21,
+    "prompt_tokens_details": null,
+    "total_tokens": 31
+  },
+  "output": {
+    "status": "ready"
+  },
+  "duration_seconds": 117.6,
+  "note": "Actual RunPod GPU smoke inference; not a full career-report quality test."
+}

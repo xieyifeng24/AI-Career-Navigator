@@ -1,0 +1,52 @@
+{
+  "SW": {
+    "title": {"zh-CN":"制作一个三项任务的小网页原型","en":"Prototype a three-task mini webpage","ms":"Prototaip halaman kecil dengan tiga tugas"},
+    "task": {"zh-CN":"用纸面或现成模板画出一个校园工具的三个操作，手动走通正常与异常情况；有编程经历时再实现其中一个功能。","en":"Sketch three interactions for a campus tool on paper or a template. Walk through normal and error cases; implement one only if you have coding experience.","ms":"Lakar tiga interaksi alat kampus pada kertas atau templat. Cuba keadaan biasa dan ralat; laksanakan satu fungsi jika mempunyai pengalaman pengekodan."},
+    "resource":"mdn"
+  },
+  "DATA": {
+    "title":{"zh-CN":"从十行虚构活动数据制作一张图","en":"Chart ten rows of fictional event data","ms":"Carta sepuluh baris data acara rekaan"},
+    "task":{"zh-CN":"创建十行虚构报名记录，标明字段含义，检查缺失项，做一张图并写出一条结论与一条限制。","en":"Create ten fictional registration records, define the fields, check missing entries, and make a chart with one finding and one limitation.","ms":"Cipta sepuluh rekod pendaftaran rekaan, takrif medan, semak nilai hilang, dan hasilkan carta dengan satu dapatan serta satu batasan."},
+    "resource":"sheets"
+  },
+  "FIN": {
+    "title":{"zh-CN":"比较两份虚构活动预算","en":"Compare two fictional event budgets","ms":"Bandingkan dua belanjawan acara rekaan"},
+    "task":{"zh-CN":"为一场虚构活动列出两份预算，比较成本与假设，检查加总，并解释一项取舍；不使用个人财务信息。","en":"Draft two fictional event budgets, compare costs and assumptions, check totals, and explain one trade-off without personal financial data.","ms":"Sediakan dua belanjawan acara rekaan, banding kos dan andaian, semak jumlah, dan jelaskan satu pertimbangan tanpa data kewangan peribadi."},
+    "resource":"sheets"
+  },
+  "PM": {
+    "title":{"zh-CN":"为校园小工具设计一周验证计划","en":"Plan a one-week campus-tool experiment","ms":"Rancang eksperimen alat kampus selama seminggu"},
+    "task":{"zh-CN":"用虚构场景写出一个待解决问题、两个方案和一张任务表，列出可用资源、取舍与验证问题，不宣称收集过真实用户反馈。","en":"Use a fictional scenario to define a problem, two options and a task board. List resources, trade-offs and validation questions; do not claim real user feedback.","ms":"Gunakan senario rekaan untuk mentakrif masalah, dua pilihan dan papan tugas. Senaraikan sumber, pertimbangan dan soalan pengesahan; jangan dakwa maklum balas pengguna sebenar."},
+    "resource":"learn-ai"
+  },
+  "MKT": {
+    "title":{"zh-CN":"为虚构校园活动做一份传播小样","en":"Draft a fictional campus-event campaign sample","ms":"Draf sampel kempen acara kampus rekaan"},
+    "task":{"zh-CN":"选定虚构受众，制作两个传播版本，列出活动事实核查表与反馈问题。没有实际反馈时，只记录待验证假设。","en":"Choose a fictional audience, draft two campaign versions, and list fact checks and feedback questions. Without actual feedback, record hypotheses only.","ms":"Pilih khalayak rekaan, draf dua versi kempen, dan senaraikan semakan fakta serta soalan maklum balas. Tanpa maklum balas sebenar, catat hipotesis sahaja."},
+    "resource":"learn-ai"
+  },
+  "DES": {
+    "title":{"zh-CN":"用纸面重做一页校园指引","en":"Redesign a campus guide on paper","ms":"Reka semula panduan kampus pada kertas"},
+    "task":{"zh-CN":"用纸或免费模板画一页校园指引，列出三个使用任务，自己逐步试走并记录问题；区分自查与真实用户测试。","en":"Sketch a campus guide on paper or a free template. Walk through three tasks and log issues; distinguish self-review from actual user testing.","ms":"Lakar panduan kampus pada kertas atau templat percuma. Cuba tiga tugas dan catat masalah; bezakan semakan kendiri daripada ujian pengguna sebenar."},
+    "resource":"mdn"
+  },
+  "ENG": {
+    "title":{"zh-CN":"画出宿舍节能装置的纸面方案","en":"Sketch a dorm energy-saving device concept","ms":"Lakar konsep alat penjimatan tenaga asrama"},
+    "task":{"zh-CN":"只用纸面方案描述输入、输出和失效情况，列出需要合格人员核实的安全条件；不修改实际设备或电路。","en":"Use paper only to describe inputs, outputs and failure cases. List safety conditions for qualified review; do not modify real equipment or circuits.","ms":"Gunakan kertas sahaja untuk menerangkan input, output dan kegagalan. Senaraikan syarat keselamatan untuk semakan berkelayakan; jangan ubah peralatan atau litar sebenar."},
+    "resource":"learn-ai"
+  },
+  "HLT": {
+    "title":{"zh-CN":"整理一页健康信息来源核查笔记","en":"Make a health-information source-review note","ms":"Sediakan nota semakan sumber maklumat kesihatan"},
+    "task":{"zh-CN":"选择公开科普主题，记录两项官方资料的日期、适用范围和不确定性，制作阅读提纲；不提供诊断或治疗建议。","en":"Choose a public education topic, record dates, scope and uncertainty from two official resources, and create a reading outline. Do not provide diagnosis or treatment advice.","ms":"Pilih topik pendidikan awam, catat tarikh, skop dan ketidakpastian daripada dua sumber rasmi, dan buat rangka bacaan. Jangan berikan diagnosis atau nasihat rawatan."},
+    "resource":"who"
+  },
+  "EDU": {
+    "title":{"zh-CN":"制作一个概念的三步讲解卡","en":"Create a three-step concept explanation card","ms":"Cipta kad penerangan konsep dalam tiga langkah"},
+    "task":{"zh-CN":"选一个熟悉的非敏感概念，对照可信材料写出解释、例子和一道自查练习；记录如何发现解释中的错误。","en":"Choose a familiar, non-sensitive concept. Check reliable material and write an explanation, example and self-check exercise; record how you detect explanation errors.","ms":"Pilih konsep biasa yang tidak sensitif. Semak bahan boleh dipercayai dan tulis penerangan, contoh serta latihan kendiri; catat cara mengesan kesilapan penerangan."},
+    "resource":"unesco"
+  },
+  "OPS": {
+    "title":{"zh-CN":"为虚构活动画一张交接流程图","en":"Map a fictional event handover workflow","ms":"Petakan aliran serah tugas acara rekaan"},
+    "task":{"zh-CN":"用十条虚构登记记录画出负责人、交接点和异常处理，手动试走两种异常；自动化前标明权限与人工复核点。","en":"Use ten fictional registrations to map owners, handovers and exceptions. Walk through two exceptions and mark permissions and human-review points before automation.","ms":"Gunakan sepuluh pendaftaran rekaan untuk memetakan pemilik, serah tugas dan pengecualian. Cuba dua pengecualian dan tandakan kebenaran serta semakan manusia sebelum automasi."},
+    "resource":"sheets"
+  }
+}

@@ -1,0 +1,1353 @@
+{
+  "schemaVersion": "3.0.0",
+  "title": "AI Career Navigator – Career Discovery Likert Questionnaire, Trilingual",
+  "languageCodes": [
+    "en",
+    "zh-CN",
+    "ms"
+  ],
+  "defaultLanguage": "en",
+  "design": {
+    "model": "7-point agreement Likert-style self-report; not MBTI instrument",
+    "totalBankItems": 84,
+    "itemsPerSession": 12,
+    "sessionRule": "4 COMMON + 8 from selected track",
+    "notPsychometricallyValidated": true,
+    "notACapabilityExam": true,
+    "aboutScoring": "Separate interest, work-style, practical experience, AI-practice and AI-verification. Never interpret lack of experience as low potential. Do not assert verified competence from self-report.",
+    "missingValue": null,
+    "responseCodes": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "legacyAnswers": "Do not silently migrate old V2 A/B/C/D answers to V3 scale."
+  },
+  "tracks": [
+    {
+      "id": "SW",
+      "label": {
+        "zh-CN": "软件开发与AI工程",
+        "en": "Software & AI Engineering",
+        "ms": "Pembangunan Perisian & Kejuruteraan AI"
+      }
+    },
+    {
+      "id": "DATA",
+      "label": {
+        "zh-CN": "数据分析与数据科学",
+        "en": "Data Analytics & Data Science",
+        "ms": "Analitik Data & Sains Data"
+      }
+    },
+    {
+      "id": "FIN",
+      "label": {
+        "zh-CN": "金融与会计",
+        "en": "Finance & Accounting",
+        "ms": "Kewangan & Perakaunan"
+      }
+    },
+    {
+      "id": "PM",
+      "label": {
+        "zh-CN": "商业管理与产品",
+        "en": "Business Management & Product",
+        "ms": "Pengurusan Perniagaan & Produk"
+      }
+    },
+    {
+      "id": "MKT",
+      "label": {
+        "zh-CN": "市场营销与销售",
+        "en": "Marketing & Sales",
+        "ms": "Pemasaran & Jualan"
+      }
+    },
+    {
+      "id": "DES",
+      "label": {
+        "zh-CN": "设计与数字内容",
+        "en": "Design & Digital Content",
+        "ms": "Reka Bentuk & Kandungan Digital"
+      }
+    },
+    {
+      "id": "ENG",
+      "label": {
+        "zh-CN": "工程与智能制造",
+        "en": "Engineering & Smart Manufacturing",
+        "ms": "Kejuruteraan & Pembuatan Pintar"
+      }
+    },
+    {
+      "id": "HLT",
+      "label": {
+        "zh-CN": "医疗健康与生命科学",
+        "en": "Healthcare & Life Sciences",
+        "ms": "Penjagaan Kesihatan & Sains Hayat"
+      }
+    },
+    {
+      "id": "EDU",
+      "label": {
+        "zh-CN": "教育与科研",
+        "en": "Education & Research",
+        "ms": "Pendidikan & Penyelidikan"
+      }
+    },
+    {
+      "id": "OPS",
+      "label": {
+        "zh-CN": "运营、供应链与客户服务",
+        "en": "Operations, Supply Chain & Customer Service",
+        "ms": "Operasi, Rantaian Bekalan & Khidmat Pelanggan"
+      }
+    }
+  ],
+  "constructLabels": {
+    "exploration": {
+      "zh-CN": "探索意愿",
+      "en": "Exploration mindset",
+      "ms": "Kesediaan meneroka"
+    },
+    "adaptability": {
+      "zh-CN": "变化适应",
+      "en": "Adaptability",
+      "ms": "Kebolehsuaian"
+    },
+    "ai_practice": {
+      "zh-CN": "AI使用经验",
+      "en": "AI practice",
+      "ms": "Pengalaman menggunakan AI"
+    },
+    "ai_verification": {
+      "zh-CN": "AI核验习惯",
+      "en": "AI verification habits",
+      "ms": "Amalan menyemak hasil AI"
+    },
+    "interest": {
+      "zh-CN": "职业兴趣",
+      "en": "Career interest",
+      "ms": "Minat kerjaya"
+    },
+    "workstyle": {
+      "zh-CN": "工作方式偏好",
+      "en": "Work-style preference",
+      "ms": "Keutamaan cara bekerja"
+    },
+    "experience": {
+      "zh-CN": "实际经历证据",
+      "en": "Hands-on experience evidence",
+      "ms": "Bukti pengalaman praktikal"
+    }
+  },
+  "scale": [
+    {
+      "value": 1,
+      "label": {
+        "zh-CN": "非常不同意",
+        "en": "Strongly disagree",
+        "ms": "Sangat tidak setuju"
+      }
+    },
+    {
+      "value": 2,
+      "label": {
+        "zh-CN": "不同意",
+        "en": "Disagree",
+        "ms": "Tidak setuju"
+      }
+    },
+    {
+      "value": 3,
+      "label": {
+        "zh-CN": "比较不同意",
+        "en": "Slightly disagree",
+        "ms": "Agak tidak setuju"
+      }
+    },
+    {
+      "value": 4,
+      "label": {
+        "zh-CN": "中立",
+        "en": "Neutral",
+        "ms": "Neutral"
+      }
+    },
+    {
+      "value": 5,
+      "label": {
+        "zh-CN": "比较同意",
+        "en": "Slightly agree",
+        "ms": "Agak setuju"
+      }
+    },
+    {
+      "value": 6,
+      "label": {
+        "zh-CN": "同意",
+        "en": "Agree",
+        "ms": "Setuju"
+      }
+    },
+    {
+      "value": 7,
+      "label": {
+        "zh-CN": "非常同意",
+        "en": "Strongly agree",
+        "ms": "Sangat setuju"
+      }
+    }
+  ],
+  "uiText": {
+    "intro": {
+      "zh-CN": "这不是考试，也没有标准答案。请选择与你真实情况最接近的程度。",
+      "en": "This is not a test, and there are no right answers. Choose what best reflects your experience.",
+      "ms": "Ini bukan peperiksaan dan tiada jawapan betul atau salah. Pilih tahap yang paling menggambarkan pengalaman anda."
+    },
+    "unfamiliar": {
+      "zh-CN": "不确定／不适用",
+      "en": "Not sure / Not applicable",
+      "ms": "Tidak pasti / Tidak berkenaan"
+    },
+    "unfamiliar_help": {
+      "zh-CN": "如果从未遇到题目描述的情境，且无法判断自己会怎样做，请选此项；它不计为中立或低分。",
+      "en": "If you have not encountered this situation and cannot tell how you would respond, select this option. It is not treated as neutral or a low score.",
+      "ms": "Jika anda belum pernah menghadapi situasi ini dan tidak pasti bagaimana anda akan bertindak, pilih pilihan ini. Ia tidak dikira sebagai neutral atau skor rendah."
+    },
+    "experience_help": {
+      "zh-CN": "涉及“曾经做过”的题目，请根据真实经历回答；没有尝试过可以选“非常不同意”，这不会被解释成没有潜力。",
+      "en": "For statements about things you have done, answer based on actual experience. If you have not tried it, “Strongly disagree” is valid and does not mean you lack potential.",
+      "ms": "Bagi pernyataan tentang perkara yang pernah anda lakukan, jawab berdasarkan pengalaman sebenar. Jika belum mencubanya, “Sangat tidak setuju” ialah jawapan yang sah dan tidak bermaksud anda tiada potensi."
+    },
+    "scenario_help": {
+      "zh-CN": "如果尚未经历过这种情境，请判断自己会怎么做；实在无法判断再选“不确定／不适用”。",
+      "en": "If you have not encountered this situation, answer based on what you would do. Choose “Not sure / Not applicable” only if you truly cannot tell.",
+      "ms": "Jika anda belum pernah menghadapi situasi ini, jawab berdasarkan tindakan yang mungkin anda ambil. Pilih “Tidak pasti / Tidak berkenaan” hanya jika anda benar-benar tidak dapat menentukannya."
+    },
+    "progress": {
+      "zh-CN": "第 {current} 题，共 {total} 题",
+      "en": "Question {current} of {total}",
+      "ms": "Soalan {current} daripada {total}"
+    },
+    "next": {
+      "zh-CN": "下一题",
+      "en": "Next",
+      "ms": "Seterusnya"
+    },
+    "back": {
+      "zh-CN": "上一题",
+      "en": "Back",
+      "ms": "Kembali"
+    },
+    "submit": {
+      "zh-CN": "查看我的探索报告",
+      "en": "View my exploration report",
+      "ms": "Lihat laporan penerokaan saya"
+    },
+    "low_evidence": {
+      "zh-CN": "相关经历有限；以下是探索方向，不是职业能力定论。",
+      "en": "Limited evidence of hands-on experience. These are exploration directions, not a verdict on ability.",
+      "ms": "Bukti pengalaman praktikal masih terhad. Ini ialah cadangan penerokaan, bukan keputusan muktamad tentang keupayaan."
+    }
+  },
+  "questions": [
+    {
+      "id": "G01",
+      "trackId": "GENERAL",
+      "construct": "exploration",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "面对自己还不了解的职业方向，我愿意先通过小项目亲身体验，再决定是否适合继续探索。",
+        "en": "When exploring an unfamiliar career path, I would rather try a small project before deciding whether to pursue it.",
+        "ms": "Apabila meneroka bidang kerjaya yang belum saya kenali, saya lebih suka mencuba projek kecil sebelum memutuskan sama ada mahu meneruskannya."
+      },
+      "helpKey": null
+    },
+    {
+      "id": "G02",
+      "trackId": "GENERAL",
+      "construct": "adaptability",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "即使某种技能因为技术变化而不再那么重要，我也愿意调整计划、学习新的方法。",
+        "en": "If technology makes one of my skills less relevant, I am willing to adjust my plans and learn a new approach.",
+        "ms": "Jika perubahan teknologi menjadikan sesuatu kemahiran saya kurang relevan, saya sanggup menyesuaikan rancangan dan mempelajari pendekatan baharu."
+      },
+      "helpKey": null
+    },
+    {
+      "id": "G03",
+      "trackId": "GENERAL",
+      "construct": "ai_practice",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "过去一个月，我曾主动用 AI 工具帮助自己完成学习、工作或生活中的具体任务。",
+        "en": "In the past month, I have actively used AI tools to help complete specific study, work, or everyday tasks.",
+        "ms": "Dalam sebulan yang lalu, saya telah menggunakan alat AI secara aktif untuk membantu menyiapkan tugasan pembelajaran, kerja atau kehidupan harian."
+      },
+      "helpKey": null
+    },
+    {
+      "id": "G04",
+      "trackId": "GENERAL",
+      "construct": "ai_verification",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "当 AI 给出看似合理的答案时，我会核对其中重要的事实、来源或结果，而不只是相信它的表述。",
+        "en": "When AI gives a plausible answer, I check important facts, sources or results rather than relying on how convincing it sounds.",
+        "ms": "Apabila AI memberikan jawapan yang nampak munasabah, saya menyemak fakta, sumber atau hasil penting dan tidak sekadar mempercayai jawapannya."
+      },
+      "helpKey": "scenario_help"
+    },
+    {
+      "id": "SW01",
+      "trackId": "SW",
+      "construct": "interest",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "相比只讨论产品创意，我更想亲手把一个想法变成能实际运行的工具。",
+        "en": "Rather than only discussing product ideas, I would like to turn an idea into a working tool myself.",
+        "ms": "Daripada sekadar membincangkan idea produk, saya lebih berminat membina sendiri alat yang benar-benar berfungsi."
+      },
+      "helpKey": null
+    },
+    {
+      "id": "SW02",
+      "trackId": "SW",
+      "construct": "interest",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "发现一段程序为什么出错，会让我产生想继续追查的兴趣。",
+        "en": "Figuring out why a piece of software fails is something I would find genuinely interesting.",
+        "ms": "Mencari punca sesuatu perisian gagal berfungsi benar-benar menarik minat saya."
+      },
+      "helpKey": null
+    },
+    {
+      "id": "SW03",
+      "trackId": "SW",
+      "construct": "workstyle",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "遇到复杂功能时，我倾向于先拆成几个可以分别测试的小步骤。",
+        "en": "When facing a complex feature, I prefer breaking it into smaller steps that can be tested separately.",
+        "ms": "Apabila berdepan dengan fungsi yang rumit, saya lebih suka membahagikannya kepada langkah kecil yang boleh diuji secara berasingan."
+      },
+      "helpKey": null
+    },
+    {
+      "id": "SW04",
+      "trackId": "SW",
+      "construct": "workstyle",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "为了让产品可靠，我愿意反复修改同一个功能，而不急着添加新功能。",
+        "en": "To make a product reliable, I am willing to refine the same feature repeatedly instead of rushing to add new ones.",
+        "ms": "Untuk memastikan produk boleh dipercayai, saya sanggup memperbaiki fungsi yang sama berulang kali dan tidak tergesa-gesa menambah fungsi baharu."
+      },
+      "helpKey": null
+    },
+    {
+      "id": "SW05",
+      "trackId": "SW",
+      "construct": "experience",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "我亲自制作或修改过能运行的程序、网页、脚本或自动化工具。",
+        "en": "I have personally built or modified a working program, webpage, script or automation tool.",
+        "ms": "Saya pernah membina atau mengubah suai sendiri program, laman web, skrip atau alat automasi yang berfungsi."
+      },
+      "helpKey": "experience_help"
+    },
+    {
+      "id": "SW06",
+      "trackId": "SW",
+      "construct": "experience",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "我曾通过运行结果、报错信息或测试，自己定位并修复一个技术问题。",
+        "en": "I have used test results, error messages or program output to locate and fix a technical problem myself.",
+        "ms": "Saya pernah menggunakan hasil ujian, mesej ralat atau output program untuk mengenal pasti dan membaiki masalah teknikal sendiri."
+      },
+      "helpKey": "experience_help"
+    },
+    {
+      "id": "SW07",
+      "trackId": "SW",
+      "construct": "ai_practice",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "让 AI 生成代码时，我会根据实际需求修改它，而不是直接采用第一版。",
+        "en": "When AI generates code, I revise it to fit the actual requirements rather than accepting the first draft unchanged.",
+        "ms": "Apabila AI menjana kod, saya mengubah suainya mengikut keperluan sebenar dan bukannya terus menggunakan draf pertama."
+      },
+      "helpKey": null
+    },
+    {
+      "id": "SW08",
+      "trackId": "SW",
+      "construct": "ai_verification",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "如果 AI 声称登录功能已经完成，我会检查正常登录、错误密码等情况，再认为它可以使用。",
+        "en": "If AI says a login feature is finished, I would test normal logins and cases such as incorrect passwords before treating it as ready.",
+        "ms": "Jika AI mengatakan fungsi log masuk sudah siap, saya akan menguji log masuk biasa dan kes seperti kata laluan salah sebelum menganggapnya sedia digunakan."
+      },
+      "helpKey": "scenario_help"
+    },
+    {
+      "id": "DATA01",
+      "trackId": "DATA",
+      "construct": "interest",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "看到某个数字突然变化时，我会好奇它背后真正发生了什么。",
+        "en": "When a metric changes unexpectedly, I want to understand what actually caused the change.",
+        "ms": "Apabila sesuatu metrik berubah secara mendadak, saya ingin mengetahui punca sebenar perubahan itu."
+      },
+      "helpKey": null
+    },
+    {
+      "id": "DATA02",
+      "trackId": "DATA",
+      "construct": "interest",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "我享受从杂乱信息中发现规律或解释一个看似矛盾的现象。",
+        "en": "I enjoy discovering patterns in messy information or explaining an apparent contradiction.",
+        "ms": "Saya gemar mencari corak dalam maklumat yang berselerak atau menjelaskan perkara yang kelihatan bercanggah."
+      },
+      "helpKey": null
+    },
+    {
+      "id": "DATA03",
+      "trackId": "DATA",
+      "construct": "workstyle",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "在分析数据之前，我倾向于先说清楚想回答的究竟是什么问题。",
+        "en": "Before analyzing data, I prefer to define the exact question the analysis should answer.",
+        "ms": "Sebelum menganalisis data, saya lebih suka menjelaskan soalan sebenar yang ingin dijawab."
+      },
+      "helpKey": null
+    },
+    {
+      "id": "DATA04",
+      "trackId": "DATA",
+      "construct": "workstyle",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "相比立刻制作漂亮图表，我愿意先检查数据有没有缺失、重复或口径不一致。",
+        "en": "I would rather check for missing, duplicated or inconsistently defined data before making polished charts.",
+        "ms": "Saya lebih suka menyemak data yang hilang, berulang atau mempunyai takrif tidak konsisten sebelum menghasilkan carta yang menarik."
+      },
+      "helpKey": null
+    },
+    {
+      "id": "DATA05",
+      "trackId": "DATA",
+      "construct": "experience",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "我曾用表格、图表或简单统计，亲自分析过某个实际问题。",
+        "en": "I have personally used spreadsheets, charts or basic statistics to investigate a real question.",
+        "ms": "Saya pernah menggunakan hamparan, carta atau statistik asas sendiri untuk mengkaji sesuatu persoalan sebenar."
+      },
+      "helpKey": "experience_help"
+    },
+    {
+      "id": "DATA06",
+      "trackId": "DATA",
+      "construct": "experience",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "我曾比较不同时间段或不同群体的数据，而不是只凭一个数字下结论。",
+        "en": "I have compared data across periods or groups rather than drawing a conclusion from a single number.",
+        "ms": "Saya pernah membandingkan data antara tempoh atau kumpulan dan tidak membuat kesimpulan berdasarkan satu angka sahaja."
+      },
+      "helpKey": "experience_help"
+    },
+    {
+      "id": "DATA07",
+      "trackId": "DATA",
+      "construct": "ai_practice",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "让 AI 帮我分析表格时，我会回到原始数据核对重要数值与结论。",
+        "en": "When AI helps analyze a spreadsheet, I check important figures and conclusions against the original data.",
+        "ms": "Apabila AI membantu menganalisis hamparan, saya menyemak angka dan kesimpulan penting dengan data asal."
+      },
+      "helpKey": null
+    },
+    {
+      "id": "DATA08",
+      "trackId": "DATA",
+      "construct": "ai_verification",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "如果 AI 说“满意度显著提升”，但没有交代样本和时间范围，我会先要求这些信息。",
+        "en": "If AI claims that satisfaction has increased significantly without specifying the sample or time period, I would ask for those details first.",
+        "ms": "Jika AI mendakwa kepuasan meningkat dengan ketara tanpa menyatakan sampel atau tempoh masa, saya akan meminta butiran itu terlebih dahulu."
+      },
+      "helpKey": "scenario_help"
+    },
+    {
+      "id": "FIN01",
+      "trackId": "FIN",
+      "construct": "interest",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "看到一项计划的收益时，我也会自然想到它需要付出的成本和承担的风险。",
+        "en": "When I see the potential return of a plan, I naturally consider its costs and risks as well.",
+        "ms": "Apabila melihat potensi pulangan sesuatu rancangan, saya juga memikirkan kos dan risikonya."
+      },
+      "helpKey": null
+    },
+    {
+      "id": "FIN02",
+      "trackId": "FIN",
+      "construct": "interest",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "我喜欢比较不同方案的长期代价，而不是只关注眼前哪个数字最好看。",
+        "en": "I like comparing the long-term trade-offs of different options, not just which number looks best today.",
+        "ms": "Saya suka membandingkan kesan jangka panjang beberapa pilihan, bukan hanya melihat angka yang paling menarik pada masa ini."
+      },
+      "helpKey": null
+    },
+    {
+      "id": "FIN03",
+      "trackId": "FIN",
+      "construct": "workstyle",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "处理金额或预算时，我倾向于追问数字是怎样计算出来的。",
+        "en": "When working with amounts or budgets, I want to know how the figures were calculated.",
+        "ms": "Apabila mengurus jumlah wang atau bajet, saya ingin tahu bagaimana angka tersebut dikira."
+      },
+      "helpKey": null
+    },
+    {
+      "id": "FIN04",
+      "trackId": "FIN",
+      "construct": "workstyle",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "即使差异很小，我也愿意核对账目或假设中不一致的地方。",
+        "en": "Even when a discrepancy is small, I am willing to investigate inconsistencies in records or assumptions.",
+        "ms": "Walaupun perbezaannya kecil, saya sanggup menyemak ketidakselarasan dalam rekod atau andaian."
+      },
+      "helpKey": null
+    },
+    {
+      "id": "FIN05",
+      "trackId": "FIN",
+      "construct": "experience",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "我曾为活动、个人项目或小组任务亲自制作过预算或收支记录。",
+        "en": "I have created a budget or income-and-expense record for an event, personal project or group task.",
+        "ms": "Saya pernah menyediakan bajet atau rekod pendapatan dan perbelanjaan untuk acara, projek peribadi atau tugasan berkumpulan."
+      },
+      "helpKey": "experience_help"
+    },
+    {
+      "id": "FIN06",
+      "trackId": "FIN",
+      "construct": "experience",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "我曾在做选择时，主动比较成本、可能收益与不确定性。",
+        "en": "I have actively compared costs, possible benefits and uncertainty when making a decision.",
+        "ms": "Saya pernah membandingkan kos, manfaat yang mungkin diperoleh dan ketidakpastian secara aktif ketika membuat keputusan."
+      },
+      "helpKey": "experience_help"
+    },
+    {
+      "id": "FIN07",
+      "trackId": "FIN",
+      "construct": "ai_practice",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "如果 AI 生成财务预测，我会调整关键假设，看看结论是否会明显改变。",
+        "en": "If AI generates a financial forecast, I would vary the key assumptions to see whether the conclusion changes.",
+        "ms": "Jika AI menjana unjuran kewangan, saya akan mengubah andaian utama untuk melihat sama ada kesimpulannya berubah."
+      },
+      "helpKey": null
+    },
+    {
+      "id": "FIN08",
+      "trackId": "FIN",
+      "construct": "ai_verification",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "如果 AI 推荐某项财务决策却没有说明数据来源和风险，我不会直接把它当作可靠建议。",
+        "en": "If AI recommends a financial decision without explaining its sources or risks, I would not treat it as reliable advice on its own.",
+        "ms": "Jika AI mencadangkan keputusan kewangan tanpa menjelaskan sumber data atau risiko, saya tidak akan terus menganggapnya sebagai nasihat yang boleh dipercayai."
+      },
+      "helpKey": "scenario_help"
+    },
+    {
+      "id": "PM01",
+      "trackId": "PM",
+      "construct": "interest",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "相比先做功能，我更想先弄清楚人们为什么需要这个产品。",
+        "en": "Before building features, I would rather understand why people need the product in the first place.",
+        "ms": "Sebelum membina fungsi, saya lebih suka memahami sebab orang memerlukan produk tersebut."
+      },
+      "helpKey": null
+    },
+    {
+      "id": "PM02",
+      "trackId": "PM",
+      "construct": "interest",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "当一个团队有多种想法时，我喜欢找出哪些真正值得优先做。",
+        "en": "When a team has many ideas, I enjoy working out which ones are truly worth prioritizing.",
+        "ms": "Apabila pasukan mempunyai banyak idea, saya gemar menentukan idea yang benar-benar patut diberi keutamaan."
+      },
+      "helpKey": null
+    },
+    {
+      "id": "PM03",
+      "trackId": "PM",
+      "construct": "workstyle",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "遇到不确定的需求时，我倾向于先做一个小实验，再投入大量资源。",
+        "en": "When a requirement is uncertain, I prefer a small experiment before committing substantial resources.",
+        "ms": "Apabila keperluan masih tidak pasti, saya lebih suka menjalankan eksperimen kecil sebelum menggunakan sumber yang banyak."
+      },
+      "helpKey": null
+    },
+    {
+      "id": "PM04",
+      "trackId": "PM",
+      "construct": "workstyle",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "即使某个想法很吸引人，只要证据不足，我也愿意暂时不做它。",
+        "en": "Even if an idea sounds exciting, I am comfortable putting it aside when there is not enough evidence.",
+        "ms": "Walaupun sesuatu idea kedengaran menarik, saya sanggup menangguhkannya jika bukti masih tidak mencukupi."
+      },
+      "helpKey": null
+    },
+    {
+      "id": "PM05",
+      "trackId": "PM",
+      "construct": "experience",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "我曾负责协调一次团队活动或项目，把目标拆成具体任务。",
+        "en": "I have coordinated a group activity or project by turning a goal into specific tasks.",
+        "ms": "Saya pernah menyelaras aktiviti atau projek berkumpulan dengan membahagikan matlamat kepada tugasan khusus."
+      },
+      "helpKey": "experience_help"
+    },
+    {
+      "id": "PM06",
+      "trackId": "PM",
+      "construct": "experience",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "我曾主动询问真实使用者或参与者的反馈，并据此调整方案。",
+        "en": "I have asked real users or participants for feedback and changed a plan based on what I learned.",
+        "ms": "Saya pernah meminta maklum balas pengguna atau peserta sebenar dan mengubah rancangan berdasarkan maklum balas itu."
+      },
+      "helpKey": "experience_help"
+    },
+    {
+      "id": "PM07",
+      "trackId": "PM",
+      "construct": "ai_practice",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "我愿意用 AI 整理大量用户反馈，但会亲自查看原始意见，避免忽略少数人的重要问题。",
+        "en": "I would use AI to organize user feedback, but I would review original comments so important minority concerns are not lost.",
+        "ms": "Saya sanggup menggunakan AI untuk menyusun maklum balas pengguna, tetapi tetap menyemak komen asal supaya isu penting daripada kumpulan kecil tidak terlepas pandang."
+      },
+      "helpKey": null
+    },
+    {
+      "id": "PM08",
+      "trackId": "PM",
+      "construct": "ai_verification",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "如果 AI 说“用户最想要这个功能”，我会先确认它依据了哪些反馈或测试。",
+        "en": "If AI says “this is the feature users want most,” I would first check which feedback or tests support that claim.",
+        "ms": "Jika AI mengatakan “inilah fungsi yang paling dikehendaki pengguna”, saya akan menyemak maklum balas atau ujian yang menyokong dakwaan itu terlebih dahulu."
+      },
+      "helpKey": "scenario_help"
+    },
+    {
+      "id": "MKT01",
+      "trackId": "MKT",
+      "construct": "interest",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "我喜欢琢磨怎样把同一个想法讲给不同的人听，让他们真正理解。",
+        "en": "I enjoy finding different ways to communicate an idea so it makes sense to different audiences.",
+        "ms": "Saya gemar mencari cara yang berbeza untuk menyampaikan sesuatu idea supaya difahami oleh pelbagai khalayak."
+      },
+      "helpKey": null
+    },
+    {
+      "id": "MKT02",
+      "trackId": "MKT",
+      "construct": "interest",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "我对“为什么有人被某条信息打动，而另一些人没有”很感兴趣。",
+        "en": "I am curious why a message resonates with some people but not with others.",
+        "ms": "Saya ingin tahu mengapa sesuatu mesej menarik perhatian sesetengah orang tetapi tidak kepada orang lain."
+      },
+      "helpKey": null
+    },
+    {
+      "id": "MKT03",
+      "trackId": "MKT",
+      "construct": "workstyle",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "介绍一个产品时，我倾向于先了解对方需要什么，而不是直接背熟悉的话术。",
+        "en": "When presenting a product, I would rather learn what the other person needs than repeat a fixed pitch.",
+        "ms": "Apabila memperkenalkan produk, saya lebih suka memahami keperluan orang lain daripada mengulang skrip jualan yang tetap."
+      },
+      "helpKey": null
+    },
+    {
+      "id": "MKT04",
+      "trackId": "MKT",
+      "construct": "workstyle",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "即使我很喜欢某个创意，如果反馈不好，我也愿意换一种表达方式。",
+        "en": "Even when I love a creative idea, I am willing to change it if audience feedback is weak.",
+        "ms": "Walaupun saya menyukai sesuatu idea kreatif, saya sanggup mengubahnya jika maklum balas khalayak kurang baik."
+      },
+      "helpKey": null
+    },
+    {
+      "id": "MKT05",
+      "trackId": "MKT",
+      "construct": "experience",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "我曾亲自制作过宣传文案、短视频、海报或介绍产品的内容。",
+        "en": "I have created promotional copy, a short video, a poster or content introducing a product.",
+        "ms": "Saya pernah menghasilkan teks promosi, video pendek, poster atau kandungan yang memperkenalkan produk."
+      },
+      "helpKey": "experience_help"
+    },
+    {
+      "id": "MKT06",
+      "trackId": "MKT",
+      "construct": "experience",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "我曾根据观看、点击、询问或实际参与的反馈来调整传播方式。",
+        "en": "I have changed how I communicate based on views, clicks, questions or actual participation.",
+        "ms": "Saya pernah mengubah cara penyampaian berdasarkan tontonan, klik, pertanyaan atau penyertaan sebenar."
+      },
+      "helpKey": "experience_help"
+    },
+    {
+      "id": "MKT07",
+      "trackId": "MKT",
+      "construct": "ai_practice",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "让 AI 写宣传内容时，我会检查它是否适合目标人群，以及有没有夸大事实。",
+        "en": "When AI drafts promotional content, I check whether it fits the intended audience and whether any claim is exaggerated.",
+        "ms": "Apabila AI menghasilkan kandungan promosi, saya menyemak kesesuaiannya dengan khalayak sasaran dan memastikan tiada dakwaan yang dibesar-besarkan."
+      },
+      "helpKey": null
+    },
+    {
+      "id": "MKT08",
+      "trackId": "MKT",
+      "construct": "ai_verification",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "如果 AI 断言某个广告带来了销售增长，我会先弄清楚比较基准和衡量方法。",
+        "en": "If AI claims an ad increased sales, I would first examine the baseline and how the increase was measured.",
+        "ms": "Jika AI mendakwa sesuatu iklan meningkatkan jualan, saya akan menyemak asas perbandingan dan cara peningkatan itu diukur terlebih dahulu."
+      },
+      "helpKey": "scenario_help"
+    },
+    {
+      "id": "DES01",
+      "trackId": "DES",
+      "construct": "interest",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "我很在意信息能不能通过画面、布局或互动方式被清楚传达。",
+        "en": "I care about whether visuals, layouts or interactions communicate information clearly.",
+        "ms": "Saya mengambil berat sama ada visual, susun atur atau interaksi menyampaikan maklumat dengan jelas."
+      },
+      "helpKey": null
+    },
+    {
+      "id": "DES02",
+      "trackId": "DES",
+      "construct": "interest",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "我喜欢把抽象的想法转化成别人看得见、听得见或能体验到的作品。",
+        "en": "I enjoy turning abstract ideas into something people can see, hear or experience.",
+        "ms": "Saya gemar menukar idea abstrak menjadi hasil yang boleh dilihat, didengar atau dialami orang lain."
+      },
+      "helpKey": null
+    },
+    {
+      "id": "DES03",
+      "trackId": "DES",
+      "construct": "workstyle",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "设计作品时，我更愿意观察真实用户怎样理解它，而不只依靠自己的审美。",
+        "en": "When designing something, I prefer observing how real users understand it rather than relying only on my own taste.",
+        "ms": "Apabila mereka bentuk sesuatu, saya lebih suka memerhati cara pengguna sebenar memahaminya daripada bergantung pada cita rasa sendiri semata-mata."
+      },
+      "helpKey": null
+    },
+    {
+      "id": "DES04",
+      "trackId": "DES",
+      "construct": "workstyle",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "为了让作品更易读、更易用，我愿意多次修改那些看起来不起眼的细节。",
+        "en": "I am willing to revise small details repeatedly to make a design easier to understand and use.",
+        "ms": "Saya sanggup memperbaiki butiran kecil berulang kali supaya reka bentuk lebih mudah difahami dan digunakan."
+      },
+      "helpKey": null
+    },
+    {
+      "id": "DES05",
+      "trackId": "DES",
+      "construct": "experience",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "我曾独立做过一件视觉、交互、音视频或其他数字创意作品。",
+        "en": "I have independently created a visual, interactive, audio, video or other digital creative piece.",
+        "ms": "Saya pernah menghasilkan sendiri karya visual, interaktif, audio, video atau karya kreatif digital yang lain."
+      },
+      "helpKey": "experience_help"
+    },
+    {
+      "id": "DES06",
+      "trackId": "DES",
+      "construct": "experience",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "我曾根据他人的具体反馈修改作品，而不只是按照自己的喜好调整。",
+        "en": "I have revised creative work in response to specific feedback from others, not only my own preferences.",
+        "ms": "Saya pernah mengubah karya berdasarkan maklum balas khusus daripada orang lain, bukan sekadar mengikut cita rasa sendiri."
+      },
+      "helpKey": "experience_help"
+    },
+    {
+      "id": "DES07",
+      "trackId": "DES",
+      "construct": "ai_practice",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "使用 AI 生成创意草稿后，我愿意重新加工，让作品符合自己的意图和风格。",
+        "en": "After using AI to create a draft, I am willing to rework it so the result reflects my intent and style.",
+        "ms": "Selepas menggunakan AI untuk menghasilkan draf kreatif, saya sanggup mengolahnya semula supaya hasilnya mencerminkan tujuan dan gaya saya."
+      },
+      "helpKey": null
+    },
+    {
+      "id": "DES08",
+      "trackId": "DES",
+      "construct": "ai_verification",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "如果 AI 生成的作品包含似曾相识的品牌元素或难以核实的信息，我会先检查再公开使用。",
+        "en": "If AI-generated work contains familiar-looking brand elements or unverifiable information, I would check before publishing it.",
+        "ms": "Jika karya yang dijana AI mengandungi unsur jenama yang kelihatan dikenali atau maklumat yang sukar disahkan, saya akan menyemaknya sebelum menerbitkannya."
+      },
+      "helpKey": "scenario_help"
+    },
+    {
+      "id": "ENG01",
+      "trackId": "ENG",
+      "construct": "interest",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "看到机器、设备或现实系统运作时，我会好奇它们内部如何配合。",
+        "en": "When I see machines, devices or physical systems at work, I wonder how their parts work together.",
+        "ms": "Apabila melihat mesin, peranti atau sistem fizikal berfungsi, saya ingin tahu bagaimana bahagian-bahagiannya bekerjasama."
+      },
+      "helpKey": null
+    },
+    {
+      "id": "ENG02",
+      "trackId": "ENG",
+      "construct": "interest",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "我喜欢研究怎样让一个现实流程更稳定、更省资源或更高效。",
+        "en": "I enjoy exploring how to make a physical process more reliable, efficient or resource-conscious.",
+        "ms": "Saya gemar mengkaji cara menjadikan proses fizikal lebih boleh dipercayai, cekap atau menjimatkan sumber."
+      },
+      "helpKey": null
+    },
+    {
+      "id": "ENG03",
+      "trackId": "ENG",
+      "construct": "workstyle",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "对实际设备或系统作判断时，我更信任测量和测试，而不是漂亮的参数介绍。",
+        "en": "When assessing physical equipment or systems, I trust measurements and tests more than impressive specifications.",
+        "ms": "Apabila menilai peralatan atau sistem fizikal, saya lebih mempercayai pengukuran dan ujian berbanding spesifikasi yang kelihatan hebat."
+      },
+      "helpKey": null
+    },
+    {
+      "id": "ENG04",
+      "trackId": "ENG",
+      "construct": "workstyle",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "即使进度会变慢，我也愿意先弄清楚一个设计有哪些安全与可靠性限制。",
+        "en": "Even if it slows progress, I want to understand the safety and reliability constraints of a design first.",
+        "ms": "Walaupun kemajuan menjadi perlahan, saya mahu memahami batasan keselamatan dan kebolehpercayaan sesuatu reka bentuk terlebih dahulu."
+      },
+      "helpKey": null
+    },
+    {
+      "id": "ENG05",
+      "trackId": "ENG",
+      "construct": "experience",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "我曾亲手组装、调试或改造过模型、电子设备或其他实体作品。",
+        "en": "I have personally assembled, adjusted or modified a model, electronic device or other physical build.",
+        "ms": "Saya pernah memasang, melaras atau mengubah suai sendiri model, peranti elektronik atau binaan fizikal yang lain."
+      },
+      "helpKey": "experience_help"
+    },
+    {
+      "id": "ENG06",
+      "trackId": "ENG",
+      "construct": "experience",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "我曾记录过实测结果，并根据结果改变设计或操作方法。",
+        "en": "I have recorded test results and used them to change a design or procedure.",
+        "ms": "Saya pernah merekodkan hasil ujian dan menggunakannya untuk mengubah reka bentuk atau prosedur."
+      },
+      "helpKey": "experience_help"
+    },
+    {
+      "id": "ENG07",
+      "trackId": "ENG",
+      "construct": "ai_practice",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "如果 AI 建议改变设备参数，我会先核对约束条件，再通过适当的模拟或测试验证。",
+        "en": "If AI suggests changing equipment settings, I would check constraints and verify the change through suitable simulation or testing.",
+        "ms": "Jika AI mencadangkan perubahan tetapan peralatan, saya akan menyemak batasan dan mengesahkannya melalui simulasi atau ujian yang sesuai."
+      },
+      "helpKey": null
+    },
+    {
+      "id": "ENG08",
+      "trackId": "ENG",
+      "construct": "ai_verification",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "如果 AI 说某个工程方案“完全安全”，我会要求依据，并遵循相关标准及专业审核。",
+        "en": "If AI calls an engineering design “completely safe,” I would look for evidence and follow relevant standards and professional review.",
+        "ms": "Jika AI menyatakan reka bentuk kejuruteraan “selamat sepenuhnya”, saya akan meminta bukti serta merujuk piawaian berkaitan dan semakan profesional."
+      },
+      "helpKey": "scenario_help"
+    },
+    {
+      "id": "HLT01",
+      "trackId": "HLT",
+      "construct": "interest",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "我对科学发现怎样真正改善人的健康和生活质量很感兴趣。",
+        "en": "I am interested in how scientific discoveries can genuinely improve people's health and quality of life.",
+        "ms": "Saya berminat mengetahui bagaimana penemuan sains benar-benar boleh meningkatkan kesihatan dan kualiti hidup manusia."
+      },
+      "helpKey": null
+    },
+    {
+      "id": "HLT02",
+      "trackId": "HLT",
+      "construct": "interest",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "面对与健康有关的复杂问题，我愿意花时间理解证据，而不是只找一个简单答案。",
+        "en": "When facing a complex health-related question, I am willing to explore the evidence rather than settle for an easy answer.",
+        "ms": "Apabila menghadapi persoalan kesihatan yang rumit, saya sanggup memahami bukti dan tidak sekadar mencari jawapan yang mudah."
+      },
+      "helpKey": null
+    },
+    {
+      "id": "HLT03",
+      "trackId": "HLT",
+      "construct": "workstyle",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "对于可能影响他人健康的任务，我愿意严格遵守流程并记录重要细节。",
+        "en": "For work that could affect someone's health, I am willing to follow procedures carefully and document important details.",
+        "ms": "Bagi tugasan yang boleh menjejaskan kesihatan orang lain, saya sanggup mematuhi prosedur dengan teliti dan merekodkan butiran penting."
+      },
+      "helpKey": null
+    },
+    {
+      "id": "HLT04",
+      "trackId": "HLT",
+      "construct": "workstyle",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "即使一个健康说法非常流行，我也想知道相关研究有哪些局限。",
+        "en": "Even when a health claim is popular, I want to know the limitations of the research behind it.",
+        "ms": "Walaupun sesuatu dakwaan kesihatan sangat popular, saya ingin mengetahui batasan penyelidikan yang menyokongnya."
+      },
+      "helpKey": null
+    },
+    {
+      "id": "HLT05",
+      "trackId": "HLT",
+      "construct": "experience",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "我曾主动完成与生物、医学、公共卫生或生命科学有关的学习或小项目。",
+        "en": "I have actively completed learning or a small project related to biology, medicine, public health or life sciences.",
+        "ms": "Saya pernah mengikuti pembelajaran atau menyiapkan projek kecil berkaitan biologi, perubatan, kesihatan awam atau sains hayat secara aktif."
+      },
+      "helpKey": "experience_help"
+    },
+    {
+      "id": "HLT06",
+      "trackId": "HLT",
+      "construct": "experience",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "我曾比较过不同资料对同一健康或科学问题的说法，并尝试找出证据差异。",
+        "en": "I have compared different sources on a health or science question and tried to understand why their evidence differs.",
+        "ms": "Saya pernah membandingkan sumber berbeza tentang persoalan kesihatan atau sains dan cuba memahami perbezaan buktinya."
+      },
+      "helpKey": "experience_help"
+    },
+    {
+      "id": "HLT07",
+      "trackId": "HLT",
+      "construct": "ai_practice",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "让 AI 总结健康或科研资料时，我会回看可靠原始资料，而不只阅读摘要。",
+        "en": "When AI summarizes health or research material, I go back to reliable original sources rather than reading only the summary.",
+        "ms": "Apabila AI merumuskan bahan kesihatan atau penyelidikan, saya merujuk semula sumber asal yang boleh dipercayai dan tidak hanya membaca ringkasannya."
+      },
+      "helpKey": null
+    },
+    {
+      "id": "HLT08",
+      "trackId": "HLT",
+      "construct": "ai_verification",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "如果 AI 提出具体健康建议却没有可靠依据，我不会把它直接当成专业诊断或治疗意见。",
+        "en": "If AI gives specific health advice without reliable evidence, I would not treat it as a professional diagnosis or treatment recommendation.",
+        "ms": "Jika AI memberikan nasihat kesihatan khusus tanpa bukti yang boleh dipercayai, saya tidak akan menganggapnya sebagai diagnosis atau cadangan rawatan profesional."
+      },
+      "helpKey": "scenario_help"
+    },
+    {
+      "id": "EDU01",
+      "trackId": "EDU",
+      "construct": "interest",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "当别人终于理解我解释的一个难点时，我会感到很有成就感。",
+        "en": "I find it rewarding when someone finally understands a difficult idea I have explained.",
+        "ms": "Saya berasa puas apabila seseorang akhirnya memahami perkara sukar yang saya terangkan."
+      },
+      "helpKey": null
+    },
+    {
+      "id": "EDU02",
+      "trackId": "EDU",
+      "construct": "interest",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "我喜欢追问一个问题为什么会这样，而不只记住现成的结论。",
+        "en": "I enjoy asking why something works the way it does rather than simply memorizing a conclusion.",
+        "ms": "Saya gemar bertanya mengapa sesuatu berlaku sedemikian dan bukan sekadar menghafal kesimpulan."
+      },
+      "helpKey": null
+    },
+    {
+      "id": "EDU03",
+      "trackId": "EDU",
+      "construct": "workstyle",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "如果别人听不懂我的解释，我愿意换个例子或方法重新讲，而不是重复原话。",
+        "en": "If someone does not understand my explanation, I am willing to try a different example or approach instead of repeating the same words.",
+        "ms": "Jika seseorang tidak memahami penerangan saya, saya sanggup menggunakan contoh atau pendekatan lain dan bukannya mengulang perkataan yang sama."
+      },
+      "helpKey": null
+    },
+    {
+      "id": "EDU04",
+      "trackId": "EDU",
+      "construct": "workstyle",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "遇到与我原来想法不一致的证据时，我愿意重新审视自己的观点。",
+        "en": "When evidence challenges my existing view, I am willing to reconsider it.",
+        "ms": "Apabila bukti bercanggah dengan pandangan asal saya, saya sanggup menilai semula pandangan tersebut."
+      },
+      "helpKey": null
+    },
+    {
+      "id": "EDU05",
+      "trackId": "EDU",
+      "construct": "experience",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "我曾主动帮助别人理解某个知识点，或制作过教学、学习分享内容。",
+        "en": "I have helped someone understand a topic or created teaching or study-sharing material.",
+        "ms": "Saya pernah membantu seseorang memahami sesuatu topik atau menghasilkan bahan pengajaran atau perkongsian pembelajaran."
+      },
+      "helpKey": "experience_help"
+    },
+    {
+      "id": "EDU06",
+      "trackId": "EDU",
+      "construct": "experience",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "我曾围绕一个问题主动查找不同资料，并整理出有依据的解释。",
+        "en": "I have researched a question using multiple sources and put together an evidence-based explanation.",
+        "ms": "Saya pernah menyelidik sesuatu persoalan menggunakan pelbagai sumber dan menyediakan penjelasan berasaskan bukti."
+      },
+      "helpKey": "experience_help"
+    },
+    {
+      "id": "EDU07",
+      "trackId": "EDU",
+      "construct": "ai_practice",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "用 AI 帮忙制作学习材料时，我会亲自检查知识点和例子是否正确。",
+        "en": "When AI helps create learning materials, I check the accuracy of key concepts and examples myself.",
+        "ms": "Apabila AI membantu menyediakan bahan pembelajaran, saya menyemak sendiri ketepatan konsep utama dan contoh."
+      },
+      "helpKey": null
+    },
+    {
+      "id": "EDU08",
+      "trackId": "EDU",
+      "construct": "ai_verification",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "如果 AI 列出一篇看起来很权威的论文，我会核实论文是否真实存在、是否支持相关结论。",
+        "en": "If AI cites an impressive-looking research paper, I would verify that it exists and actually supports the claim.",
+        "ms": "Jika AI memetik kertas penyelidikan yang kelihatan berwibawa, saya akan memastikan kertas itu benar-benar wujud dan menyokong dakwaan tersebut."
+      },
+      "helpKey": "scenario_help"
+    },
+    {
+      "id": "OPS01",
+      "trackId": "OPS",
+      "construct": "interest",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "我喜欢观察一项服务从开始到结束的流程，找出哪里最容易卡住。",
+        "en": "I enjoy tracing how a service works from start to finish to find where delays or bottlenecks occur.",
+        "ms": "Saya gemar meneliti aliran sesuatu perkhidmatan dari awal hingga akhir untuk mengenal pasti kelewatan atau kesesakan proses."
+      },
+      "helpKey": null
+    },
+    {
+      "id": "OPS02",
+      "trackId": "OPS",
+      "construct": "interest",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "我会对怎样同时兼顾速度、成本和服务体验产生兴趣。",
+        "en": "I find it interesting to balance speed, cost and the quality of a service.",
+        "ms": "Saya berminat mencari keseimbangan antara kelajuan, kos dan kualiti perkhidmatan."
+      },
+      "helpKey": null
+    },
+    {
+      "id": "OPS03",
+      "trackId": "OPS",
+      "construct": "workstyle",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "多人协作时，我倾向于先弄清楚每一步由谁负责，以及何时交接。",
+        "en": "In collaborative work, I prefer clarifying who owns each step and when responsibilities are handed over.",
+        "ms": "Dalam kerja berkumpulan, saya lebih suka menjelaskan siapa bertanggungjawab pada setiap langkah dan bila tugas perlu diserahkan."
+      },
+      "helpKey": null
+    },
+    {
+      "id": "OPS04",
+      "trackId": "OPS",
+      "construct": "workstyle",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "当订单、安排或需求突然发生变化时，我愿意重新规划，而不是坚持原方案。",
+        "en": "When orders, schedules or needs suddenly change, I am willing to re-plan rather than cling to the original plan.",
+        "ms": "Apabila pesanan, jadual atau keperluan berubah secara tiba-tiba, saya sanggup merancang semula dan tidak berkeras dengan rancangan asal."
+      },
+      "helpKey": null
+    },
+    {
+      "id": "OPS05",
+      "trackId": "OPS",
+      "construct": "experience",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "我曾亲自安排过多人任务、物资、活动流程或客户请求的跟进。",
+        "en": "I have organized group tasks, supplies, event workflows or follow-up on service requests myself.",
+        "ms": "Saya pernah mengurus sendiri tugasan berkumpulan, bekalan, aliran acara atau tindakan susulan permintaan perkhidmatan."
+      },
+      "helpKey": "experience_help"
+    },
+    {
+      "id": "OPS06",
+      "trackId": "OPS",
+      "construct": "experience",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "我曾根据延误、出错或用户反馈，调整过一项实际流程。",
+        "en": "I have changed a real workflow in response to delays, errors or user feedback.",
+        "ms": "Saya pernah mengubah aliran kerja sebenar berdasarkan kelewatan, kesilapan atau maklum balas pengguna."
+      },
+      "helpKey": "experience_help"
+    },
+    {
+      "id": "OPS07",
+      "trackId": "OPS",
+      "construct": "ai_practice",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "如果 AI 帮我分类大量请求或预测需求，我会抽查不确定的结果，而不是全盘自动采用。",
+        "en": "If AI groups service requests or forecasts demand, I would review uncertain outputs rather than accepting everything automatically.",
+        "ms": "Jika AI mengelaskan permintaan perkhidmatan atau meramalkan permintaan, saya akan menyemak hasil yang tidak pasti dan tidak menerima semuanya secara automatik."
+      },
+      "helpKey": null
+    },
+    {
+      "id": "OPS08",
+      "trackId": "OPS",
+      "construct": "ai_verification",
+      "responseType": "likert7",
+      "allowNotApplicable": true,
+      "statement": {
+        "zh-CN": "如果 AI 推荐一套看似高效的运输或排班方案，我会先核对现实中的容量、时间和人员限制。",
+        "en": "If AI suggests an efficient-looking delivery or staffing plan, I would first check real capacity, timing and staffing constraints.",
+        "ms": "Jika AI mencadangkan pelan penghantaran atau penjadualan kakitangan yang kelihatan cekap, saya akan menyemak dahulu had kapasiti, masa dan tenaga kerja sebenar."
+      },
+      "helpKey": "scenario_help"
+    }
+  ]
+}

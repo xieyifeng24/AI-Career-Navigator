@@ -37,7 +37,7 @@ PR 尽量小且单一目的，至少一名非作者审核人批准；共享接�
 1. 团队独立仓库已建立：https://github.com/xieyifeng24/AI-Career-Navigator ，当前公开。确认 main 为默认分支，邀请其他四人的实际 GitHub 账号。按比赛规则选择可见性。
 2. 本地 origin 已关联团队仓库；通过配置分支 PR 导入协作文件，配置合入 main 后供全员作为起点。
 3. 启用 Issues 和 GitHub Actions，允许本工作流使用 checkout、setup-python，Workflow permissions 采用只读。CI 不需要任何 Secret。
-4. 为 main 建立 active ruleset 或 branch protection：必须通过 PR、至少 1 人批准、推送新改动后撤销旧批准、讨论全部解决、要求分支更新、要求 `Python unit tests` 状态检查通过、禁止 force push 和删除 main；限制绕过权限，管理员也遵守。先跑一次 PR，才可能在界面选到检查名称。若当前仓库套餐或可见性不支持强制规则，需要调整方案；本地文件不会自动启用保护。
+4. 为 main 建立 active ruleset 或 branch protection：必须通过 PR、至少 1 人批准、推送新改动后撤销旧批准、讨论全部解决、要求分支更新、要求 `Python unit tests` 和 `Prototype JavaScript tests` 状态检查通过、禁止 force push 和删除 main；限制绕过权限，管理员也遵守。先跑一次 PR，才可能在界面选到检查名称。若当前仓库套餐或可见性不支持强制规则，需要调整方案；本地文件不会自动启用保护。
 5. 建议启用 Squash merge 和自动删除已合并分支；启用可用的 Secret scanning / Push protection。保护功能是否可用以仓库界面和套餐为准。
 6. 将真实运行密钥放在 Replit Secrets、RunPod 等对应平台；将来确有 CI 集成测试时再配置受限的 Actions Secrets，并另行设计外部调用与费用控制。
 
