@@ -85,10 +85,10 @@ export function mountCombined({root,onHome}) {
    if(action.startsWith('page:')){const page=action.slice(5);if(compatiblePages.includes(page)){state={...state,page};render(true);}return;}
   }
   if(action==='home'){onHome();return;}
-  if(action==='start'||action==='edit'||action==='edit-background'){state={...state,phase:'background',step:0};render(true);return;}
+  if(action==='start'||action==='edit'||action==='edit-background'){v2Options={path:'A',assumptions:{}};state={...state,phase:'background',step:0};render(true);return;}
   if(action==='reset'){v2Options={path:'A',assumptions:{}};state=fresh(language);render(true);return;}
   if(action==='prev'){if(state.step>0){state={...state,step:state.step-1};render(true);}else onHome();return;}
-  if(action==='edit-v3'){state={...state,phase:'v3',v3:{...state.v3,screen:'review'}};render(true);return;}
+  if(action==='edit-v3'){v2Options={path:'A',assumptions:{}};state={...state,phase:'v3',v3:{...state.v3,screen:'review'}};render(true);return;}
   if(action==='finish'){const {base}=reportFor(state);state={...state,phase:'report',page:'overview',focus:base.ranking[0].id,goal:base.goals[0].id};render(true);return;}
   if(action.startsWith('goal:')&&catalog.goals.some(g=>g.id===Number(action.slice(5)))){state={...state,goal:Number(action.slice(5))};render();return;}
   if(action==='print'){window.print();return;}

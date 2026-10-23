@@ -162,7 +162,7 @@ async def knowledge_bundle():
 
 @app.get('/combined/{filename}')
 async def combined_asset(filename: str):
-    if filename not in {'app.js','model.js','styles.css','results.js','ui.js','copy.js','v2-report.js'}: raise HTTPException(404)
+    if filename not in {'app.js','model.js','styles.css','results.js','ui.js','copy.js','v2-report.js','current-analysis.js'}: raise HTTPException(404)
     return FileResponse(ROOT/'prototype/combined'/filename)
 
 @app.get('/v3/{filename}')
