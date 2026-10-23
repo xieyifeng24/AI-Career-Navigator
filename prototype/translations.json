@@ -3318,5 +3318,9 @@
   "Previous assessment versions": {
     "zh-CN": "早期测评版本",
     "ms": "Versi penilaian terdahulu"
+  },
+  "These fictional profiles use the earlier V2 assessment. Start assessment on the homepage opens the current questionnaire.": {
+    "zh-CN": "这些虚构资料使用早期 V2 测评。首页的“开始测评”会打开当前问卷。",
+    "ms": "Profil rekaan ini menggunakan penilaian V2 terdahulu. 'Mulakan penilaian' di laman utama membuka soal selidik semasa."
   }
 }

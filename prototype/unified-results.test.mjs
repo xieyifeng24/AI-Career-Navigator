@@ -6,9 +6,10 @@ import {deriveResult,scenarioResult,compareResults,exportResult} from './combine
 import {fresh,restore} from './combined/model.js';
 import {chooseTrack,selectAnswer,advance,questionsFor} from './v3/engine.js';
 import {setLanguage,text} from './i18n.js';
+import {renderReport,escapeHTML} from './explorer-views.js';
 import {renderResultStarMap} from './star-map.js';
 import {renderResultSkillTree} from './career-explorer.js';
-import {renderUnifiedPage} from './combined/ui.js';
+import {renderUnifiedPage,resultToolbar} from './combined/ui.js';
 import {copy,u} from './combined/copy.js';
 const base=()=>deriveResult(sampleProfile());
 test('adapter exactly preserves existing engine scores, ties, IDs and plans',()=>{
@@ -55,6 +56,28 @@ test('map order, selected skills and scenario comparison share stable career IDs
  }
  setLanguage('en');
  for(const [key,values] of Object.entries(copy)){assert.equal(values.length,3,key);assert.ok(values.every(v=>v.trim()),key);assert.ok(!/[\u3400-\u9fff]/.test(values[0]+values[2]),key);}
+});
+test('changing the selected career keeps AI context, tree and roadmap on the same result in three languages',()=>{
+ const original=base(),focus=original.recommendations[1].id,role=original.recommendations[1];
+ assert.notEqual(focus,original.recommendations[0].id);
+ for(const locale of ['en','zh-CN','ms']){
+  setLanguage(locale);
+  const result=scenarioResult(original,{weeklyTime:'over40'});
+  const ai=renderReport({report:result.baseReport,page:'ai',focus});
+  const plan=renderReport({report:result.baseReport,page:'plan',focus});
+  const tree=renderUnifiedPage('tree',original,result,{focus,selectedSkill:''});
+  const title=escapeHTML(text(role.title));
+  assert.ok(ai.includes(`<section class="ex-feature"><h2>${title}</h2>`),locale);
+  assert.ok(plan.includes(`<h2>${title}</h2>`),locale);
+  assert.ok(tree.includes(title),locale);
+  assert.deepEqual(result.baseReport.ranking,original.baseReport.ranking);
+ }
+ setLanguage('en');
+});
+test('What If presents one restore control for an active scenario',()=>{
+ const original=base(),active=scenarioResult(original,{interests:['business']});
+ const controls=resultToolbar(active,active.recommendations[0].id)+renderUnifiedPage('whatif',original,active,{focus:active.recommendations[0].id});
+ assert.equal([...controls.matchAll(/data-action="scenario-reset"/g)].length,1);
 });
 test('saved original answers, optional notes, V3 and scenario restore independently; invalid scenario does not erase answers',()=>{
  let state={...fresh('ms'),profile:sampleProfile(),phase:'report',notes:'Fictional context <script>',page:'tree',focus:'data',scenarioPatch:{weeklyTime:'over40'},assumedSkills:['data:skill:0']};
