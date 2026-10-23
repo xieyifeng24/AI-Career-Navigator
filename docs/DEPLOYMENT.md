@@ -1,94 +1,33 @@
-# Anonymous-access update
+# Replit deployment and version tracking
 
-The current candidate removes the team password. Keep the existing RunPod secrets
-and endpoint unchanged. Existing DEMO_ACCESS_CODE can remain in Secrets but is
-ignored. Existing SESSION_SECRET may sign anonymous cookies. Use one instance and
-one process; see ACCESS_CONTROL.md for caps, disk persistence and proxy limitations.
-Previous access-code instructions below are historical.
+Current audit: 23 October 2026. Production is [Live](https://ai-career-navigator-xyf20070924.replit.app/) on the existing [AI-Career-Navigator Replit project](https://replit.com/@xyf20070924/AI-Career-Navigator), with public Autoscale in the Asia region (1 vCPU, 0.5 GiB). The release shown in Replit publish history is b1677f91. This document replaces the earlier Static-to-Autoscale instructions, which remain available in Git history.
 
-# Current release
+## Source currently observed
 
-Production is now Autoscale and accepted. See RELEASE.md for the actual result.
-The owner explicitly approved the required Static unpublish operation and its
-history/domain risks; the domain was retained. Code rollback branch remains.
-The runbook below includes historical pre-release notes. Do not restart repeated
-GPU quality optimisation as a condition of this delivery.
+GitHub main (5bdb965) contains the SDC submission scaffold. The reviewed product candidate is 63a3fbb on codex/unified-career-results, under Draft PR #11 stacked on Draft PR #10. The Replit workspace is on release/unified-results-20261022 at 5d26943. Its first parent is f4a89cd, which only preserves Replit runtime packages in .replit; the product parent is 63a3fbb. A file diff from the workspace HEAD to 63a3fbb shows only .replit.
 
-# Replit release runbook and rollback
+The live site served five public assets with hashes identical to 63a3fbb, including the result adapter and data/knowledge/current.json. This is stronger evidence than a visual comparison. Replit's publish view does not disclose the complete Git SHA used for b1677f91, so do not claim that its exact deployment commit has been proven. Full audit and hashes: [Phase 1 version recovery](VERSION_RECOVERY_PHASE1.md).
 
-Target only the existing project:
-https://replit.com/@xyf20070924/AI-Career-Navigator
+The existing .replit runs sh scripts/replit_start.sh, which starts src.career.api:app on port 8000. Its deployment build creates .venv-replit with uv and installs requirements.txt. The Replit-only configuration currently includes nodejs-20, python-3.12, cacert, git, and libxcrypt. Do not replace it with the leaner GitHub .replit file during a release without testing the runtime difference.
 
-Production URL:
-https://ai-career-navigator-xyf20070924.replit.app/
+## Reviewed release procedure
 
-As audited on 21 October 2026, production is **Static**, North America, public,
-serving V0.1. Local Replit release commit: `cc8efba`. Core prototype commit:
-`7db7c84a785165a6e8195f2ec579be4e925dca4d`. These are the rollback references;
-confirm current status again immediately before any release.
+1. Choose an exact reviewed Git commit and record the PR, source SHA, test results, and knowledge snapshot version. Keep open branches and previous publish history.
+2. In the existing Replit workspace, check git status and create a backup branch at the current HEAD. Phase 1 created backup/phase1-current-live-20261023 at 5d26943; backup/before-unified-results-20261022 and older branches also remain. Do not reset or overwrite uncommitted work.
+3. Create a separate release branch from the reviewed source SHA. Carry forward only the necessary Replit runtime configuration, and record its file diff. Do not put credentials in Git. Preserve existing server-side RunPod Secrets and endpoint configuration.
+4. Verify the development preview or a separate test deployment first: start command, public assets, four-step choices, 12 V3 questions, local report, map, tree, What If reset, roadmap, export, and three languages. Basic reports must work with the optional AI service unavailable. Run the existing Python and JavaScript suites.
+5. For a production release, use the existing Autoscale project. After publication, verify the public URL, release history ID, visible content, and production health. Run the exact comparison command below against the reviewed checkout. Record the results and any Replit-only commit in a dated release record. A successful publish click alone is not acceptance.
 
-## Candidate preparation
+~~~sh
+python scripts/verify_live_assets.py --url https://ai-career-navigator-xyf20070924.replit.app
+~~~
 
-1. Complete RunPod setup in `runpod/README.md`; record current pricing and obtain
-   owner approval before paid resources. No keys in Git or chat.
-2. Run basic offline checks. Following the owner’s release instruction, perform
-   one real end-to-end acceptance on production; record non-blocking advice issues
-   in KNOWN_ISSUES.md instead of delaying release for repeated GPU evaluation.
-3. Deploy the exact feature-branch SHA to the existing project. Main remains
-   protected; PR review can proceed independently of the hackathon release.
-4. In Replit Shell, inspect `git status` and preserve the current release with a new
-   local backup branch. Do not overwrite uncommitted work. Fetch GitHub and check
-   out the reviewed exact candidate SHA on a new branch. No force push/reset.
-5. Install `uv venv .venv-replit && uv pip install --python .venv-replit/bin/python -r requirements.txt`. Configure Replit **Secrets**:
-   `RUNPOD_API_KEY`, `RUNPOD_ENDPOINT_ID`, `RUNPOD_MODEL`, `DEMO_ACCESS_CODE`,
-   `MAX_DAILY_ANALYSES=20`. Do not expose these through screenshot/debug output.
-6. Start `sh scripts/replit_start.sh`.
-   Verify the development preview and all required pages. Configuration health is
-   not a model health test; generate a real report.
+The checker reads only five allowlisted public files. It neither calls RunPod nor reads Secrets. A future reviewed build should expose a release manifest with the source SHA, configuration SHA, and knowledge version. Until that is deployed, public asset matches and Replit publish history are the available provenance evidence.
 
-## Production release gate
+## Security and rollback
 
-- Offline CI green, exact release SHA recorded, source feed live.
-- RunPod configured; model disclosed; basic contract/security checks pass.
-- Real inference required, no accidental scripted fallback. One production journey is the acceptance check.
-- Current production configuration/screenshots and rollback branch retained.
-- Owner explicitly requested immediate release on 21 October 2026; existing budget and rollback points retained.
+Keep RUNPOD_API_KEY and other sensitive settings in Replit Secrets or a local ignored .env. DEMO_ACCESS_CODE is no longer used by the current anonymous-access path; existing rate and concurrency limits still protect paid inference. Never print Secret values in logs or release evidence. Keep the default local assessment independent of RunPod.
 
-Then switch Publishing from Static to **Autoscale** in this same project. The
-candidate `.replit` uses `deploymentTarget="cloudrun"` per Replit documentation.
-Build: `uv venv .venv-replit && uv pip install --python .venv-replit/bin/python -r requirements.txt`. Run command as above. Port 8000,
-one instance/worker for the prototype's in-process concurrency/quota controls.
-Keep the existing domain; confirm the Publishing UI allows the type change without
-losing it. If the UI requires deleting the existing deployment, stop for review of
-the downtime/domain consequences rather than deleting it blindly.
+If a new release fails, prefer Replit's previous deployment rollback and verify the restored public site. The workspace backup branch lets maintainers recover its source and runtime configuration. Rolling back browser code alone does not necessarily stop or refund RunPod usage; check provider usage separately. Do not delete Git branches or Replit release history as a cleanup step.
 
-Publish only after the gate. Open the public URL, inspect health, refresh sources,
-complete the primary flow and both paths, repeat with changed skills/hours, and
-capture dated screenshots. Record actual deployment/release SHA in EVIDENCE.md.
-A publish button click is not proof of a successful release.
-
-## Rollback
-
-Prefer Replit's previous deployment rollback if available. Otherwise select the
-preserved V0.1 release branch/commit, restore Static publication with `prototype`
-as public directory, and verify the same public domain. Do not rewrite GitHub
-history. Turn off/scale down unused RunPod workers to prevent unintended usage;
-check account usage, without assuming that a frontend rollback stops GPU billing.
-
-## Replit dependency runtime
-
-The actual workspace provides uv 0.9.5 and an externally managed Nix Python 3.12.12.
-System pip installation is rejected; even `python -m venv` inherits a user-install
-setting. Use the verified uv virtual environment instead of weakening system protection.
-`.venv-replit/` is ignored by Git.
-
-## Current blockers
-
-RunPod endpoint is provisioned and an endpoint-restricted key is stored locally.
-The owner approved up to US$2 in live evaluation. The short real-model smoke
-request passed; Replit Secrets are configured; full report evaluation is in progress.
-Candidate has not been published over production. Retaining the
-working demo is intentional until the release gate is satisfied.
-
-References: https://docs.replit.com/features/project-setup/configuration and
-https://docs.replit.com/features/publishing/deployment-types
+This Phase 1 audit did not republish, alter Secrets, change the RunPod endpoint, merge GitHub main, or run a paid GPU request.

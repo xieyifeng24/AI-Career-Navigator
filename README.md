@@ -1,218 +1,53 @@
-> 问卷 V2.0（本地候选版）：使用用户提供的十方向原题，每次 4+8 题，分开解释兴趣、经历和 AI 策略。题干目前仅中文，英／马翻译待审阅。详见 [V2 问卷说明与验收](docs/QUESTIONNAIRE_V2.md)。
-
-> 三来源知识库（本地候选版）：O*NET / ESCO 已导入真实资料；MYFutureJobs 等待授权导入。双周更新代码已配置，远程调度尚未启用。详见 [知识库与启用说明](docs/CAREER_KNOWLEDGE.md)。
-
-## Local-first assessment candidate (22 October 2026)
-
-The default questionnaire now generates a full rule-based report in the browser.
-RunPod is optional, invoked only by an explicit deep-analysis button. The existing
-AI integration and deployment configuration remain. This change is local on
-`codex/local-first-assessment` and has not been deployed.
-
-Rules, source provenance, privacy decisions, acceptance tests and startup commands:
-[docs/LOCAL_FIRST_ASSESSMENT.md](docs/LOCAL_FIRST_ASSESSMENT.md).
-
 # AI Career Navigator
 
 **Your Skills. Your Future. Your Choice.** Team Nexus · SDC Hackathon 2026 · Domain 1.
 
-A career exploration application for fictional marketing/administration profiles and
-adjacent analytical roles. It combines current public occupational sources,
-explainable matching, and a server-side RunPod inference integration.
+AI Career Navigator helps people explore career directions, understand their reported strengths and learning needs, and compare practical next steps in an AI-changing workplace. It is an **evidence-informed exploration tool**, not a validated aptitude test, employment probability, or forecast of jobs lost to AI. The competition demo accepts fictional profiles only.
 
-**Status (21 October 2026):** published to the existing Replit project using
-Autoscale and real RunPod inference. A production Chrome journey passed: fictional
-profile → real GPU report → both paths → four-week plan. No mock fallback.
-[Open the app](https://ai-career-navigator-xyf20070924.replit.app/).
-No team access code is required in the updated candidate. Anonymous sessions and
-server-side quotas protect inference. Allow several minutes for GPU cold start.
-See [release evidence](docs/RELEASE.md) and [known limitations](docs/KNOWN_ISSUES.md).
+## Current product and source of truth
 
-## Team information
+The [public app](https://ai-career-navigator-xyf20070924.replit.app/) runs in the [existing Replit project](https://replit.com/@xyf20070924/AI-Career-Navigator). The current recovery base is GitHub commit 63a3fbb on [codex/unified-career-results](https://github.com/xieyifeng24/AI-Career-Navigator/tree/codex/unified-career-results), under [Draft PR #11](https://github.com/xieyifeng24/AI-Career-Navigator/pull/11). PR #11 is stacked on [Draft PR #10](https://github.com/xieyifeng24/AI-Career-Navigator/pull/10). GitHub main is still the original submission scaffold (5bdb965); it does **not** contain this product application.
 
-| Field | Value |
-|---|---|
-| Team | Nexus, 5 members |
-| Domain | 1 — The Aiversecity Future-Ready Workforce Domain |
-| SDG focus | 4.4 (employment-related skills), 8.2 (productivity), 8.5 (decent work); team must confirm the final submission track |
-| Leader | XIE YIFENG |
-| University | Xiamen University Malaysia |
+On 23 October 2026, the Replit workspace was on release/unified-results-20261022 at 5d26943, two commits after 63a3fbb. The only file difference from the GitHub product commit is Replit's .replit runtime configuration. The live release is b1677f91; five public assets, including the result adapter and bundled knowledge snapshot, matched 63a3fbb byte for byte. Replit's publish view does not disclose a complete Git commit for that release, so the exact deployment commit remains unproven. See [Phase 1 version recovery](docs/VERSION_RECOVERY_PHASE1.md) for evidence, backups, and remaining gates.
 
-| Member | Responsibility |
-|---|---|
-| XIE YIFENG | Product lead, strategy, final submission approval |
-| YANG XUHUI | Backend and integration |
-| CHEN QIANYU | Frontend and UX |
-| LAI HAILU | AI engineering and evaluation |
-| ZHANG XINAO | Research, source verification and QA |
+The current main journey is introduction → four-step background choices → 12 seven-level questions (4 common + 8 selected direction) → local report → career map, skill tree, What If, roadmap, SDG view, and JSON/print export. English, Simplified Chinese, and Malay are supported in the assessment flow. The V3 answers are retained as **unverified self-report**; they do not currently change the 24-career ranking. The ranking comes from the earlier deterministic background-choice engine, with raw rule points rather than percentages. What If recalculates supported background choices through that same engine. More study time changes the study plan, not mastered skills or career fit.
 
-## Links
-
-- [Canonical GitHub repository](https://github.com/xieyifeng24/AI-Career-Navigator)
-- [Existing Replit project](https://replit.com/@xyf20070924/AI-Career-Navigator)
-- [Public V0.1 scripted demo](https://ai-career-navigator-xyf20070924.replit.app/)
-- [Original prototype PR #2](https://github.com/xieyifeng24/AI-Career-Navigator/pull/2) — not merged blindly.
-- [Official submission template](https://github.com/michaelzhngg/SDC_Hackathon_Submission_Template)
-- [Official submission document folder](https://drive.google.com/drive/folders/1xw7c2aN8N-at8hPEULzkcU76e_FFb0Ef)
-- RunPod endpoint, demo video and slides: **pending**.
-
-## Problem and solution
-
-Workers need to connect changing tasks to specific learning choices. Whole-job
-replacement probabilities obscure uncertainty. Our initial scope is a small,
-explainable exploration of five reference occupations rather than a universal
-career adviser. Users stay in control; the application does not make hiring decisions.
-
-The working candidate supports:
-
-1. A four-step fictional profile: background, experience, tasks, skills, AI use,
-   concerns, goal, weekly hours and constraints.
-2. An updatable source radar: five O*NET occupational pages (including US employment
-   projections) and four recent arXiv cs.AI research entries, with source dates,
-   retrieval time and content version. Public-source failures are visible.
-3. Source-based role ranking and skill gaps, usable **without an AI model**. Scores
-   expose all components: 70 points skill overlap, 20 task context, 10 published
-   growth category. These weights are an editorial heuristic, not validated fit.
-4. A real RunPod API path for structured capability/task analysis, two career paths,
-   two adoption scenarios, SDG links and four weeks covering days 1–30. **Successful
-   model generation and semantic quality remain to be verified after provisioning.**
-5. A separate, explicitly labelled V0.1 scripted mode. It is never an API-failure fallback.
+The bundled [knowledge snapshot](data/knowledge/current.json) contains five O*NET and five ESCO occupation records. In the current default flow, reviewed mappings attach selected official records to three of the 24 career entries **for context only**. Those records do not yet affect the default career score or calculated skill gap. MYFutureJobs has no approved imported dataset (zero records); its site is an external resource, not a live market feed. AI exposure and measured skill readiness are marked unavailable. The older source-based matching endpoint and local report engine remain in the repository for careful reuse during the next integration phase. [Knowledge source status](docs/CAREER_KNOWLEDGE.md) describes source geography, licences, update code, and scheduling limits.
 
 ## Run locally
 
-Use Python **3.12** and Node **24** for checks. No frontend dependency installation.
+Use Python 3.12 and Node.js 20 or newer. No frontend build step is needed.
 
-```bash
+~~~sh
 python3.12 -m venv .venv
-source .venv/bin/activate
-python -m pip install -r requirements.txt
-cp .env.example .env
-python -m uvicorn src.career.api:app --host 127.0.0.1 --port 8000 --workers 1
-```
+.venv/bin/python -m pip install -r requirements.txt
+.venv/bin/python -m uvicorn src.career.api:app --host 127.0.0.1 --port 8000 --workers 1
+~~~
 
-Open http://127.0.0.1:8000. With blank secrets, real AI correctly reports setup
-required; live sources, source matching and explicitly selected scripted demos work.
+Open http://127.0.0.1:8000/. The main questionnaire and report work without RunPod credentials. The server-only RunPod path is optional and requires explicit user consent. Never put RUNPOD_API_KEY in browser code, Git, or screenshots. See [RunPod setup](runpod/README.md) and [access controls](docs/ACCESS_CONTROL.md).
 
-To enable real inference, follow [RunPod setup](runpod/README.md), configure the
-server-only `RUNPOD_API_KEY`, `RUNPOD_ENDPOINT_ID` and `RUNPOD_MODEL`, and restart.
-Never put keys in JavaScript, commits or screenshots. Users do not enter a password.
-See [anonymous access and limits](docs/ACCESS_CONTROL.md).
-
-In the current maintainer workspace the tested virtual environment is `.venv312`:
-`.venv312/bin/python -m uvicorn src.career.api:app --host 127.0.0.1 --port 8000`.
-
-## Tests and actual evidence
-
-```bash
-python -m unittest discover tests -v
-node --check prototype/app.js
-node --check prototype/live.js
+~~~sh
+.venv/bin/python -m unittest discover tests -q
 node --test prototype/*.test.mjs
-python -m pip check
-```
+~~~
 
-CI runs these offline Python/JavaScript tests on PRs to `main`. It never makes paid
-inference calls. Fixtures under `tests/` are test data, not model evidence.
+The current recovery baseline passed 61 Python and 132 JavaScript tests on 23 October 2026. To compare a reviewed checkout with a public test or production URL, run the source check below. It fetches only five allowlisted public files and reports their SHA-256 matches. Matching files support provenance, but they do not prove the complete deployment Git SHA.
 
-After provisioning, explicitly run the five-case live evaluation (incurs GPU use):
+~~~sh
+python scripts/verify_live_assets.py --url https://example.replit.app
+~~~
 
-```bash
-python scripts/live_check.py --run
-```
+## Repository and release flow
 
-Reports are written to ignored `.cache/live-evaluation`. Review task relevance,
-changed skill gaps, time budgets, citations and SDG meaning manually. Schema tests
-cannot establish semantic quality. See [test/release evidence](docs/EVIDENCE.md).
+- prototype/ contains the browser UI, questionnaire, deterministic scoring, result views, and legacy routes. prototype/combined/ is the default integrated assessment path.
+- src/career/ contains the FastAPI server, older source-based matching, protected optional RunPod inference, and the knowledge snapshot reader. scripts/replit_start.sh starts the server on port 8000.
+- data/knowledge/ stores the versioned O*NET and ESCO snapshot and per-source sync state. The update workflow is coded, but GitHub's scheduled workflow is not active while it remains outside the default branch.
+- src/main.py, src/utils.py, runpod/handler.py, submission/, and the original template files remain for SDC submission requirements. src/main.py is **not** the web entry point.
 
-## Architecture and project structure
+Work on short-lived branches, run tests, and review a PR before advancing the product baseline. Keep a Replit backup branch and prior release history. For each future publication, record the reviewed Git commit, any Replit-only config difference, release ID, and public asset comparison in a release record. Do not merge open PRs wholesale or republish simply because a branch is newer. See [team workflow](docs/TEAM_WORKFLOW.md) and [deployment guide](docs/DEPLOYMENT.md).
 
-```text
-Browser (fictional profile, explicit consent)
-  → Replit FastAPI backend
-    → O*NET + arXiv (fixed public queries; hourly in-memory snapshot)
-    → deterministic, explained role matching
-    → RunPod vLLM / Qwen3-4B-Instruct-2507 (pending provisioning)
-    → schema, citation, quote and time-budget validation → report
-```
+## Evidence limits and next work
 
-- `prototype/`: preserved visual design and explicit scripted examples, plus live UI.
-- `src/career/`: API, contracts, public-source retrieval, matching, RunPod adapter.
-- `src/main.py`, `src/utils.py`: retained official starter; not the app entry point.
-- `runpod/handler.py`: retained official echo example, **not deployed or counted as AI**.
-- `runpod/README.md`: official vLLM worker setup and verification instructions.
-- `scripts/live_check.py`: explicit live evaluation; never run by CI.
-- `tests/`: contract, business-rule and failure tests.
-- `submission/`: original four PDFs retained. The proof PDFs say EXAMPLE ONLY.
-- `docs/`: manifesto, team workflow, architecture, requirement audit, evidence,
-  deployment runbook, technical declaration and proposal drafts.
+The priority is to connect verified occupation skills and tasks to at least one complete default-flow matching and gap calculation, then extend the reviewed mapping. Keep self-report, official facts, editorial rules, and hypothetical What If inputs distinct. Do not infer Malaysian demand from US or EU data, or label a rule score as an AI replacement probability. The exact live deployment commit needs an explicit build/version marker in a later reviewed release. The [Phase 1 audit](docs/VERSION_RECOVERY_PHASE1.md) records what has been verified and what remains open.
 
-## How We Use Replit (Required)
-
-The existing project currently publishes the original static V0.1. The new `.replit`
-configuration prepares a single-worker FastAPI **Autoscale** candidate with port
-8000 and a locked dependency build. It has **not** replaced production. Follow
-[release and rollback instructions](docs/DEPLOYMENT.md) after live inference passes.
-The original `submission/SDC2026_TeamName_Replit_POU.pdf` is still an unfilled example.
-
-## How We Use RunPod (Required)
-
-RunPod will run the actual Qwen model on the official vLLM Serverless worker. The
-backend securely calls its OpenAI-compatible API with real profile/source context
-and a JSON schema. The owner has provisioned the endpoint and approved a US$2 evaluation budget. No GPU
-inference or RunPod proof of use has been claimed yet; the original proof PDF is
-still an unfilled example. See [setup](runpod/README.md).
-
-## Data, models and responsible use
-
-- **Competition data is fictional/public only.** No CV upload or real personal data.
-  A confirmation is required; contact-like strings are rejected, but automated PII
-  detection is incomplete. The team must still enforce the competition rule.
-- No profile database or application profile logs. Inputs live in tab/request memory;
-  successful submissions go to RunPod. Hosting/provider logs follow their policies.
-- O*NET is US occupational data, not Malaysian demand. It does not measure AI replacement.
-  ESCO was evaluated and is reachable; O*NET was chosen because it combines skills,
-  tasks and employment outlook in the first cohort. See [architecture](docs/ARCHITECTURE.md).
-- arXiv entries are preprints: a dated research signal is not validated workplace
-  adoption. If evidence is weak, model instructions require uncertainty.
-- Model output is labelled inference. Sources and resources are allowlisted;
-  roles/skills must come from retrieved evidence. Citation membership is validated,
-  but **citation entailment and hallucination risk still require human evaluation**.
-- Proposed model: [Qwen3-4B-Instruct-2507](https://huggingface.co/Qwen/Qwen3-4B-Instruct-2507),
-  Apache-2.0, pretrained; no fine-tuning. Actual image digest/model revision pending.
-- Adapted O*NET content: USDOL/ETA, [O*NET Database](https://www.onetcenter.org/database.html),
-  [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). O*NET® is a USDOL/ETA trademark.
-  Matching and SDG interpretations are Team Nexus additions, without endorsement.
-- SDGs represent proposed learning/productivity contributions, not measured social impact.
-
-## Submission checklist
-
-See [Domain 1 audit](docs/COMPETITION_REQUIREMENTS.md) and [submission drafts](docs/SUBMISSION_DRAFT.md).
-
-- [x] Official template structure and original PDFs preserved.
-- [x] Domain 1 six requirements identified; candidate code and gaps documented.
-- [x] Live public-source retrieval and explainable matching implemented.
-- [ ] RunPod endpoint, successful real inference and semantic evaluation.
-- [ ] Candidate Replit Autoscale release and public end-to-end verification.
-- [ ] Genuine RunPod/Replit proof-of-use PDFs with secrets redacted.
-- [ ] Final proposal, tech declaration, slide/video links and team approvals.
-- [ ] Confirm workshop completion, IP declarations, contact fields and signatures.
-- [ ] Export `SDC2026_Nexus_*` PDFs; retain original template PDFs.
-
-The preliminary template lists **25 October 2026** as the deadline. The supplied
-Domain 1 rubric is for preliminaries; the final-round rubric has not been supplied.
-
-## License
-
-Project code: [Apache-2.0](LICENSE). Third-party sources retain their own licences.
-
-## What-if simulator (local candidate, not deployed)
-
-After a report, Career paths and Action plan include an interactive schedule and
-priority simulator. It reuses the current report and official links without another
-AI call or changes to matching scores. Simulator controls support English, Chinese
-and Malay; original report content retains its existing language. See
-[behaviour, limits and verification](docs/WHAT_IF_SIMULATOR.md).
-
-## Integrated team candidate
-
-`codex/integration-hackathon` combines the existing visual prototype, real AI backend, choice-based trilingual questionnaire, newer career-star-map UI/explorer views and What-if planning. The questionnaire has one optional supplement field. Integration provenance, verification and remaining limitations: [docs/INTEGRATION_REPORT.md](docs/INTEGRATION_REPORT.md). This branch is for review; it has not been deployed.
+Project code is licensed under [Apache 2.0](LICENSE); third-party data retains its own attribution and licence terms.
