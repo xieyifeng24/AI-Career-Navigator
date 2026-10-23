@@ -1,0 +1,23 @@
+{
+  "sourceCommit": "6909514d9690eef676a024bf8cf5f27a4db6b3bf",
+  "sha256": {
+    "prototype/v3/bank.json": "0e1c448c6605e60a40364fd8c7cb1f0546470611f66f11c7d37d99802ff0cd3d",
+    "prototype/v3/engine.js": "5c7ccbd561c516faec1040bcb0ac38bb6e0460665b82bba93ba17a0506c1b65f",
+    "prototype/v3/ui.js": "f0704139bc4f1b7d23890a357982ca5f1a9955e4e606acc3e683ed068408eef1",
+    "prototype/v3/styles.css": "1527bfbd93339b8c51f4e4acd529c5fed08ef70213cde06a73054a1c9392c258",
+    "prototype/combined/model.js": "9d4dcf3f868865fb0794d4b4ebd275ff33f042de6906eac5a65fe14f105f6dfe",
+    "prototype/combined/styles.css": "80e80912a430d1a3f4975ddd48e310e2ffd26829d5f6642930882c707a7925fb",
+    "prototype/explorer-views.js": "6f83089a4e92f6b889d0a6ff2bf461ac2bfae3f3e1fb855b43d21ea702667abd",
+    "prototype/explorer-engine.js": "a9a660e6c807d1834644fc4a0f3ae692748eb7c4347d28b69af4422d2b1bb8e3",
+    "prototype/explorer-catalog.json": "837ea7d2fd41e22af5176a619eb6258b757f0ecd2c23e45df153078b27b38485",
+    "prototype/explorer.css": "fd27dd5fba6dc47069033851aed04537a160a78d1ec8ff82a04c7d4b0e53571a",
+    "prototype/sdg-characters.png": "a7cd0519e3c8ca8b0774e7cedd7d7f2ede38ef4c8efa1d9833486fce49f7de1f",
+    "prototype/exploration/bank.json": "95d363fc386cf1fba98cc0e7b3d4ac94debe9704ccfdcdce31057da92366920a",
+    "prototype/exploration/scoring.json": "5528e934faf4e12c7e3d4eaf140814bc5fac4856cb8f6bb890ea3e8a86ccb7bc",
+    "prototype/exploration/engine.js": "c838395b239458f6e2912a6c5c74374356c1d0276a7379878bb7d9fdef6fb96b",
+    "prototype/exploration/report.js": "f66c4a5df5c3bfaa2726863528c3ff0896fb9235e532c25d61e08bb85f414621",
+    "prototype/exploration/ui.js": "2d243accffd8ea359161d54603e8a21787f116252a6d363d8aa221a73808696a",
+    "prototype/translations.json": "cdad83612cba6841fb7687168a543d92840c5c2691235bd2700ca6620bc82221",
+    "prototype/questionnaire.js": "c520cafc79cb73e30fe0c516a468afb2a1aa07a4a99e456aa3da66e22349931c"
+  }
+}

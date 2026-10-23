@@ -203,6 +203,7 @@ function updateSimulator(event) {
   }
 }
 root.addEventListener('input',event=>{
+ if(combinedActive)return;
  if(event.target.matches('[data-v2-control="hours"]')){
   state.localScenario.hours=Number(event.target.value);
   const panel=event.target.closest('[data-v2-simulator]'),probe=document.createElement('div');
