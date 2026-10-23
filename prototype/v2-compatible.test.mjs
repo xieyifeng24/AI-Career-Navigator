@@ -1,7 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import {execFileSync} from 'node:child_process';
+import {createHash} from 'node:crypto';
+import baseline from './combined/v2-protected-files.json' with {type:'json'};
 import {fresh,restore,nextBackground} from './combined/model.js';
 import {sampleProfile,generateOfflineReport} from './explorer-engine.js';
 import {bank,chooseTrack,selectAnswer,advance} from './v3/engine.js';
@@ -20,7 +21,7 @@ function complete(track='SW',answer=7,locale='en'){
 }
 test('question banks, intake, storage, V2 engines and SDG sources stay byte-identical to main baseline',()=>{
  for(const path of ['prototype/v3/bank.json','prototype/v3/engine.js','prototype/v3/ui.js','prototype/v3/styles.css','prototype/combined/model.js','prototype/combined/styles.css','prototype/explorer-views.js','prototype/explorer-engine.js','prototype/explorer-catalog.json','prototype/explorer.css','prototype/sdg-characters.png','prototype/exploration/bank.json','prototype/exploration/scoring.json','prototype/exploration/engine.js','prototype/exploration/report.js','prototype/exploration/ui.js','prototype/translations.json','prototype/questionnaire.js']){
-  assert.deepEqual(fs.readFileSync(new URL('../'+path,import.meta.url)),execFileSync('git',['show','6909514:'+path],{maxBuffer:32*1024*1024}));
+  assert.equal(createHash('sha256').update(fs.readFileSync(new URL('../'+path,import.meta.url))).digest('hex'),baseline.sha256[path],path);
  }
 });
 test('every direction and locale renders all V2 pages and unchanged SDG without inferring missing answers',()=>{
