@@ -1,0 +1,14 @@
+{
+  "date": "2026-10-21",
+  "url": "https://ai-career-navigator-xyf20070924.replit.app",
+  "anonymous_session": 200,
+  "cookie_flags": [
+    "HttpOnly",
+    "Secure",
+    "SameSite=Strict"
+  ],
+  "missing_csrf": 403,
+  "missing_synthetic_consent": 422,
+  "access_code_field_removed": true,
+  "paid_inference_requests": 0
+}

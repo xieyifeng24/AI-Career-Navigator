@@ -10,7 +10,8 @@ explainable matching, and a server-side RunPod inference integration.
 Autoscale and real RunPod inference. A production Chrome journey passed: fictional
 profile → real GPU report → both paths → four-week plan. No mock fallback.
 [Open the app](https://ai-career-navigator-xyf20070924.replit.app/).
-Team access code is required. Allow several minutes for GPU cold start.
+No team access code is required in the updated candidate. Anonymous sessions and
+server-side quotas protect inference. Allow several minutes for GPU cold start.
 See [release evidence](docs/RELEASE.md) and [known limitations](docs/KNOWN_ISSUES.md).
 
 ## Team information
@@ -79,9 +80,9 @@ Open http://127.0.0.1:8000. With blank secrets, real AI correctly reports setup
 required; live sources, source matching and explicitly selected scripted demos work.
 
 To enable real inference, follow [RunPod setup](runpod/README.md), configure the
-server-only `RUNPOD_API_KEY`, `RUNPOD_ENDPOINT_ID`, `RUNPOD_MODEL` and
-`DEMO_ACCESS_CODE`, and restart. Never put keys in JavaScript, commits or screenshots.
-Only the access code (not the provider key) is entered by judges in the form.
+server-only `RUNPOD_API_KEY`, `RUNPOD_ENDPOINT_ID` and `RUNPOD_MODEL`, and restart.
+Never put keys in JavaScript, commits or screenshots. Users do not enter a password.
+See [anonymous access and limits](docs/ACCESS_CONTROL.md).
 
 In the current maintainer workspace the tested virtual environment is `.venv312`:
 `.venv312/bin/python -m uvicorn src.career.api:app --host 127.0.0.1 --port 8000`.

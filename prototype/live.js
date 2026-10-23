@@ -2,17 +2,24 @@
 export const escapeHTML = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const e=escapeHTML;
 const safeURL=value=>String(value).startsWith('https://') ? e(value) : '#';
-export async function requestAnalysis(profile, code, signal) {
+export async function requestAnalysis(profile, signal) {
   const {scenario, ...fields}=profile;
-  const headers={'Content-Type':'application/json','X-Demo-Code':code};
-  const response=await fetch('/api/analyses',{method:'POST',headers,body:JSON.stringify({...fields,hours:Number(fields.hours)}),signal});
+  const session=await fetch('/api/session',{credentials:'same-origin',signal});
+  const sessionData=await session.json();
+  if(!session.ok || !sessionData.csrf_token) throw new Error(sessionData.detail||'Could not start a secure browser session. Please refresh and try again.');
+  const headers={'Content-Type':'application/json','X-CSRF-Token':sessionData.csrf_token};
+  const response=await fetch('/api/analyses',{method:'POST',credentials:'same-origin',headers,body:JSON.stringify({...fields,hours:Number(fields.hours)}),signal});
   let data=await response.json().catch(()=>({detail:'The server returned an unreadable response.'}));
   if(!response.ok) throw new Error(typeof data.detail==='string'?data.detail:'Analysis failed. Check your answers and try again.');
   if(data.job_id){
     const jobId=data.job_id;
     for(let attempt=0;attempt<160;attempt++){
-      await new Promise((resolve,reject)=>{const timer=setTimeout(resolve,3000);signal?.addEventListener('abort',()=>{clearTimeout(timer);reject(new DOMException('Aborted','AbortError'));},{once:true});});
-      const poll=await fetch(`/api/analyses/${encodeURIComponent(jobId)}`,{headers,signal});
+      await new Promise((resolve,reject)=>{
+        const abort=()=>{clearTimeout(timer);reject(new DOMException('Aborted','AbortError'));};
+        const timer=setTimeout(()=>{signal?.removeEventListener('abort',abort);resolve();},3000);
+        if(signal?.aborted) abort(); else signal?.addEventListener('abort',abort,{once:true});
+      });
+      const poll=await fetch(`/api/analyses/${encodeURIComponent(jobId)}`,{credentials:'same-origin',headers,signal});
       const status=await poll.json();
       if(!poll.ok||status.status==='error') throw new Error(status.detail||'Analysis is unavailable. Please retry.');
       if(status.status==='complete'){data=status.result;break;}

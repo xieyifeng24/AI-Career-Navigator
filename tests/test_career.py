@@ -3,6 +3,7 @@ import copy
 import json
 import os
 import unittest
+import tempfile
 from unittest.mock import patch, AsyncMock
 import httpx
 from fastapi.testclient import TestClient
@@ -112,12 +113,13 @@ class Provider(unittest.IsolatedAsyncioTestCase):
 
 class API(unittest.TestCase):
     def setUp(self):
-        self.env=patch.dict(os.environ,{'RUNPOD_API_KEY':'','RUNPOD_ENDPOINT_ID':'','DEMO_ACCESS_CODE':''});self.env.start()
+        self.runtime=tempfile.TemporaryDirectory()
+        self.env=patch.dict(os.environ,{'RUNPOD_API_KEY':'','RUNPOD_ENDPOINT_ID':'','SESSION_SECRET':'test-session-secret-not-production','LIMIT_STATE_DIR':self.runtime.name});self.env.start()
         self.client=TestClient(app);self.client.__enter__()
-    def tearDown(self): self.client.__exit__(None,None,None);self.env.stop()
+    def tearDown(self): self.client.__exit__(None,None,None);self.env.stop();self.runtime.cleanup()
     def test_no_configuration_returns_503_not_demo(self):
         self.assertFalse(self.client.get('/api/health').json()['inference_configured'])
-        r=self.client.post('/api/analyze',json=profile().model_dump());self.assertEqual(r.status_code,503);self.assertNotIn('analysis',r.json())
+        r=self.client.post('/api/analyze',json=profile().model_dump(),headers=self.auth());self.assertEqual(r.status_code,503);self.assertNotIn('analysis',r.json())
     def test_validation_does_not_echo_personal_details(self):
         r=self.client.post('/api/analyze',json={'background':'private@example.com'})
         self.assertEqual(r.status_code,422);self.assertNotIn('private@example.com',r.text)
@@ -125,10 +127,20 @@ class API(unittest.TestCase):
         for path in ['/.env','/requirements.txt','/server.py','/logic.test.mjs']:self.assertEqual(self.client.get(path).status_code,404)
         self.assertEqual(self.client.post('/api/analyze',content='x'*19000).status_code,413)
         self.assertIn("script-src 'self'",self.client.get('/').headers['Content-Security-Policy'])
-    def test_access_code_blocks_paid_requests(self):
-        with patch.dict(os.environ,{'DEMO_ACCESS_CODE':'secret-test'}):
-            self.client.app.state.inference.key='test';self.client.app.state.inference.endpoint='test-id'
-            r=self.client.post('/api/analyze',json=profile().model_dump());self.assertEqual(r.status_code,401)
+    def auth(self,client=None):
+        client=client or self.client
+        session=client.get('/api/session')
+        self.assertIn('HttpOnly',session.headers['set-cookie'])
+        self.assertIn('SameSite=strict',session.headers['set-cookie'])
+        return {'Origin':'http://testserver','X-CSRF-Token':session.json()['csrf_token']}
+
+    def test_session_and_csrf_block_paid_requests(self):
+        app.state.inference.key='test';app.state.inference.endpoint='test-id'
+        self.assertEqual(self.client.post('/api/analyze',json=profile().model_dump()).status_code,403)
+        headers=self.auth()
+        for changed in [headers|{'Origin':'https://attacker.example'},headers|{'X-CSRF-Token':'wrong'}]:
+            self.assertEqual(self.client.post('/api/analyses',json=profile().model_dump(),headers=changed).status_code,403)
+        self.assertEqual(self.client.post('/api/analyses',json=profile(synthetic=True).model_dump()|{'synthetic':False},headers=headers).status_code,422)
 
     def test_source_matching_is_explicitly_non_ai(self):
         with patch.object(self.client.app.state.sources,'get',new=AsyncMock(return_value=snapshot())):
@@ -140,13 +152,17 @@ class API(unittest.TestCase):
         from src.career.models import Analysis
         with patch.dict(os.environ,{'DEMO_ACCESS_CODE':'test-code'}):
             app.state.inference.key='test';app.state.inference.endpoint='test-id'
-            self.assertEqual(self.client.post('/api/analyses',json=profile().model_dump()).status_code,401)
+            self.assertEqual(self.client.post('/api/analyses',json=profile().model_dump()).status_code,403)
             with patch.object(app.state.sources,'get',new=AsyncMock(return_value=snapshot())),patch.object(app.state.inference,'analyze',new=AsyncMock(return_value=(Analysis.model_validate(analysis()),{'request_id':'TEST-FIXTURE-NOT-LIVE','model':'FIXTURE'}))):
-                response=self.client.post('/api/analyses',json=profile().model_dump(),headers={'X-Demo-Code':'test-code'})
+                response=self.client.post('/api/analyses',json=profile().model_dump(),headers=self.auth())
                 self.assertEqual(response.status_code,202)
                 url='/api/analyses/'+response.json()['job_id']
-                self.assertEqual(self.client.get(url).status_code,401)
-                result=self.client.get(url,headers={'X-Demo-Code':'test-code'}).json()
+                self.assertEqual(self.client.get(url).status_code,200)
+                other=TestClient(app)
+                other.get('/api/session')
+                self.assertEqual(other.get(url).status_code,404)
+                other.close()
+                result=self.client.get(url,headers=self.auth()).json()
                 self.assertEqual(result['status'],'complete')
                 self.assertEqual(result['result']['mode'],'real-ai')
 
@@ -155,6 +171,6 @@ class API(unittest.TestCase):
         with patch.dict(os.environ,{'DEMO_ACCESS_CODE':'test-code'}):
             self.client.app.state.inference.key='test';self.client.app.state.inference.endpoint='test-id'
             with patch.object(self.client.app.state.sources,'get',new=AsyncMock(return_value=snapshot())),patch.object(self.client.app.state.inference,'analyze',new=AsyncMock(return_value=(Analysis.model_validate(analysis()),{'request_id':'TEST-FIXTURE-NOT-LIVE','model':'FIXTURE'}))):
-                r=self.client.post('/api/analyze',json=profile().model_dump(),headers={'X-Demo-Code':'test-code'})
+                r=self.client.post('/api/analyze',json=profile().model_dump(),headers=self.auth())
             self.assertEqual(r.status_code,200);self.assertEqual(r.json()['inference']['request_id'],'TEST-FIXTURE-NOT-LIVE')
             self.assertNotIn('test-code',r.text);self.assertFalse(self.client.app.state.busy)

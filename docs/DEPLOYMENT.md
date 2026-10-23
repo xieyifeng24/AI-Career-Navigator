@@ -1,3 +1,11 @@
+# Anonymous-access update
+
+The current candidate removes the team password. Keep the existing RunPod secrets
+and endpoint unchanged. Existing DEMO_ACCESS_CODE can remain in Secrets but is
+ignored. Existing SESSION_SECRET may sign anonymous cookies. Use one instance and
+one process; see ACCESS_CONTROL.md for caps, disk persistence and proxy limitations.
+Previous access-code instructions below are historical.
+
 # Current release
 
 Production is now Autoscale and accepted. See RELEASE.md for the actual result.
