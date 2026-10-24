@@ -46,6 +46,12 @@ jobs:
           cp data-store/data/knowledge/current.json data/knowledge/current.json
           cp data-store/data/knowledge/state.json data/knowledge/state.json
           cp -R data-store/data/knowledge/imports/. data/knowledge/imports/
+          if [ -f data-store/data/regional/current.json ]; then
+            mkdir -p data/regional/versions
+            cp data-store/data/regional/current.json data/regional/current.json
+            cp data-store/data/regional/state.json data/regional/state.json
+            cp -R data-store/data/regional/versions/. data/regional/versions/
+          fi
       - uses: actions/cache@v4
         with:
           path: .cache/knowledge/http
@@ -62,16 +68,31 @@ jobs:
           else
             python -m src.career.knowledge.sync
           fi
+      - name: Check regional sources when due
+        id: regional
+        continue-on-error: true
+        env:
+          FORCE: ${{ inputs.force || false }}
+        run: |
+          if [ "$FORCE" = true ]; then
+            python -m src.career.regional --force
+          else
+            python -m src.career.regional
+          fi
       - name: Persist valid release and source failures without changing main
-        if: always() && steps.sync.outcome != 'skipped'
+        if: always() && (steps.sync.outcome != 'skipped' || steps.regional.outcome != 'skipped')
         working-directory: data-store
         run: |
           cp ../data/knowledge/current.json data/knowledge/current.json
           cp ../data/knowledge/state.json data/knowledge/state.json
           cp -R ../data/knowledge/versions/. data/knowledge/versions/
+          mkdir -p data/regional/versions
+          cp ../data/regional/current.json data/regional/current.json
+          cp ../data/regional/state.json data/regional/state.json
+          cp -R ../data/regional/versions/. data/regional/versions/
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add data/knowledge/current.json data/knowledge/state.json data/knowledge/versions
+          git add data/knowledge/current.json data/knowledge/state.json data/knowledge/versions data/regional/current.json data/regional/state.json data/regional/versions
           if ! git diff --cached --quiet; then
             git commit -m 'data: verify occupational knowledge and sync status'
             git push origin HEAD:career-data
@@ -80,7 +101,9 @@ jobs:
         if: always()
         with:
           name: knowledge-source-status
-          path: data/knowledge/state.json
+          path: |
+            data/knowledge/state.json
+            data/regional/state.json
       - name: Signal unavailable automated source
-        if: steps.sync.outcome == 'failure'
+        if: steps.sync.outcome == 'failure' || steps.regional.outcome == 'failure'
         run: exit 1

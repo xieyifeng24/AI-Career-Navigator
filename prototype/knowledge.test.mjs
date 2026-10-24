@@ -9,11 +9,11 @@ const profile=()=>sampleProfile('marketing');
 test('real source facts and geography/date/official links remain visible in all three languages',()=>{
  for(const locale of ['en','zh-CN','ms']){
   setLanguage(locale);const r=buildLocalReport(profile(),locale);
-  assert.equal(r.knowledge.records.length,10);assert.ok(r.ranking.every(row=>row.facts.length===2));
+  assert.equal(r.knowledge.records.length,14);assert.ok(r.ranking.every(row=>row.facts.length===2));
   const html=provenancePanel(r);
   assert.ok(html.includes('MYFutureJobs'));assert.ok(html.includes('https://www.onetonline.org/'));assert.ok(html.includes('https://esco.ec.europa.eu/'));
   assert.ok(html.includes('US'));assert.ok(html.includes('EU'));assert.ok(!html.includes('undefined'));assert.ok(html.includes('CC BY 4.0'));
-  for(const fact of r.knowledge.records)assert.ok(html.includes(fact.verified_at));
+  for(const row of r.ranking)for(const fact of row.facts)assert.ok(html.includes(fact.verified_at));
  }setLanguage('en');
 });
 test('a new validated fact updates report modules without changing editorial matching scores',()=>{

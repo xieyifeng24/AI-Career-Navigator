@@ -27,7 +27,7 @@ class KnowledgeTests(unittest.TestCase):
         def manual():raise adapters.ManualImportRequired('No approved import')
         return {'onet':lambda:source('onet'),'esco':lambda:source('esco'),'myfuturejobs':manual}
     def test_actual_seed_has_two_real_sources_and_no_invented_malaysian_market(self):
-        self.assertEqual(len(self.snapshot.records),10)
+        self.assertEqual(len(self.snapshot.records),14)
         for record in self.snapshot.records:
             self.assertTrue(record.skills);self.assertEqual(record.geography,{'onet':'US','esco':'EU'}[record.source])
             self.assertFalse(record.trends);self.assertIsNone(record.published_at)

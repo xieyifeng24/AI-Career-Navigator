@@ -63,3 +63,4 @@ coverage/
 
 # Advisory lock belongs to the local sync process, not a published snapshot
 data/knowledge/.sync.lock
+.sync.lock

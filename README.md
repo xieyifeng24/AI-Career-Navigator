@@ -6,13 +6,11 @@ AI Career Navigator helps people explore career directions, understand their rep
 
 ## Current product and source of truth
 
-The [public app](https://ai-career-navigator-xyf20070924.replit.app/) runs in the [existing Replit project](https://replit.com/@xyf20070924/AI-Career-Navigator). The current recovery base is GitHub commit 63a3fbb on [codex/unified-career-results](https://github.com/xieyifeng24/AI-Career-Navigator/tree/codex/unified-career-results), under [Draft PR #11](https://github.com/xieyifeng24/AI-Career-Navigator/pull/11). PR #11 is stacked on [Draft PR #10](https://github.com/xieyifeng24/AI-Career-Navigator/pull/10). GitHub main is still the original submission scaffold (5bdb965); it does **not** contain this product application.
+The [public app](https://ai-career-navigator-xyf20070924.replit.app/) runs in the [existing Replit project](https://replit.com/@xyf20070924/AI-Career-Navigator). GitHub `main` now contains the integrated product; the local `main` may include work that has not yet been pushed or deployed. A production URL alone does not prove its running commit. See [Phase 1 version recovery](docs/VERSION_RECOVERY_PHASE1.md) for the original audit and backups.
 
-On 23 October 2026, the Replit workspace was on release/unified-results-20261022 at 5d26943, two commits after 63a3fbb. The only file difference from the GitHub product commit is Replit's .replit runtime configuration. The live release is b1677f91; five public assets, including the result adapter and bundled knowledge snapshot, matched 63a3fbb byte for byte. Replit's publish view does not disclose a complete Git commit for that release, so the exact deployment commit remains unproven. See [Phase 1 version recovery](docs/VERSION_RECOVERY_PHASE1.md) for evidence, backups, and remaining gates. The [Phase 2 consolidation record](docs/PRODUCT_CONSOLIDATION_PHASE2.md) describes the selected-career and legacy-entry fixes on this recovery branch; these changes are not yet deployed.
+The current main journey is introduction → four-step background choices → 12 seven-level questions (4 common + 8 selected direction) → local report → career map, skill tree, What If, roadmap, SDG view, and JSON/print export. English, Simplified Chinese, and Malay are supported. V3 answers are **unverified self-report**. The software direction uses reviewed O*NET and ESCO tasks and skills for exploratory route comparison; other directions retain the earlier bounded behavior. What If keeps hypothetical inputs separate from original answers. More study time changes the study plan, not mastered skills or career fit.
 
-The current main journey is introduction → four-step background choices → 12 seven-level questions (4 common + 8 selected direction) → local report → career map, skill tree, What If, roadmap, SDG view, and JSON/print export. English, Simplified Chinese, and Malay are supported in the assessment flow. The V3 answers are retained as **unverified self-report**; they do not currently change the 24-career ranking. The ranking comes from the earlier deterministic background-choice engine, with raw rule points rather than percentages. What If recalculates supported background choices through that same engine. More study time changes the study plan, not mastered skills or career fit.
-
-The bundled [knowledge snapshot](data/knowledge/current.json) contains five O*NET and five ESCO occupation records. In the current default flow, reviewed mappings attach selected official records to three of the 24 career entries **for context only**. Those records do not yet affect the default career score or calculated skill gap. MYFutureJobs has no approved imported dataset (zero records); its site is an external resource, not a live market feed. AI exposure and measured skill readiness are marked unavailable. The older source-based matching endpoint and local report engine remain in the repository for careful reuse during the next integration phase. [Knowledge source status](docs/CAREER_KNOWLEDGE.md) describes source geography, licences, update code, and scheduling limits.
+The bundled [knowledge snapshot](data/knowledge/current.json) contains seven O*NET and seven ESCO occupation records. The [Malaysia to Global pilot](docs/MALAYSIA_GLOBAL_PILOT.md) adds separate, attributed Malaysia/US/international evidence for the software direction. DOSM and World Bank data are refreshed from official APIs; reviewed MyCOL, MASCO and BLS records are marked as official-file/page extracts with their actual statistical scope. MYFutureJobs has no approved imported dataset. Optional RunPod interpretation never replaces the deterministic base report.
 
 ## Run locally
 
@@ -31,7 +29,7 @@ Open http://127.0.0.1:8000/. The main questionnaire and report work without RunP
 node --test prototype/*.test.mjs
 ~~~
 
-The Phase 2 recovery branch passed 61 Python and 134 JavaScript tests on 23 October 2026. To compare a reviewed checkout with a public test or production URL, run the source check below. It fetches only five allowlisted public files and reports their SHA-256 matches. Matching files support provenance, but they do not prove the complete deployment Git SHA.
+To compare a reviewed checkout with a public test or production URL, run the source check below. Matching files support provenance, but they do not prove the complete deployment Git SHA.
 
 ~~~sh
 python scripts/verify_live_assets.py --url https://example.replit.app
@@ -41,13 +39,13 @@ python scripts/verify_live_assets.py --url https://example.replit.app
 
 - prototype/ contains the browser UI, questionnaire, deterministic scoring, result views, and legacy routes. prototype/combined/ is the default integrated assessment path.
 - src/career/ contains the FastAPI server, older source-based matching, protected optional RunPod inference, and the knowledge snapshot reader. scripts/replit_start.sh starts the server on port 8000.
-- data/knowledge/ stores the versioned O*NET and ESCO snapshot and per-source sync state. The update workflow is coded, but GitHub's scheduled workflow is not active while it remains outside the default branch.
+- data/knowledge/ stores the versioned O*NET and ESCO snapshot. data/regional/ stores the bounded regional pilot facts, source status and 14-day due ledger. The scheduled workflow's actual execution must be checked in GitHub Actions.
 - src/main.py, src/utils.py, runpod/handler.py, submission/, and the original template files remain for SDC submission requirements. src/main.py is **not** the web entry point.
 
 Work on short-lived branches, run tests, and review a PR before advancing the product baseline. Keep a Replit backup branch and prior release history. For each future publication, record the reviewed Git commit, any Replit-only config difference, release ID, and public asset comparison in a release record. Do not merge open PRs wholesale or republish simply because a branch is newer. See [team workflow](docs/TEAM_WORKFLOW.md) and [deployment guide](docs/DEPLOYMENT.md).
 
 ## Evidence limits and next work
 
-The priority is to connect verified occupation skills and tasks to at least one complete default-flow matching and gap calculation, then extend the reviewed mapping. Keep self-report, official facts, editorial rules, and hypothetical What If inputs distinct. Do not infer Malaysian demand from US or EU data, or label a rule score as an AI replacement probability. The exact live deployment commit needs an explicit build/version marker in a later reviewed release. The [Phase 1 audit](docs/VERSION_RECOVERY_PHASE1.md) records what has been verified and what remains open.
+Extend the reviewed mapping only when an exact classification and legitimate source can be verified. Keep self-report, official facts, editorial rules, and hypothetical What If inputs distinct. Do not infer Malaysian demand from US or EU data, or label a rule score as an AI replacement probability. The exact live deployment commit needs an explicit build/version marker in a later reviewed release.
 
 Project code is licensed under [Apache 2.0](LICENSE); third-party data retains its own attribution and licence terms.

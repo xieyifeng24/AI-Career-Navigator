@@ -25,7 +25,17 @@
   },
   "last_attempt": "2026-10-22T03:45:23.978329+00:00",
   "next_due": "2026-11-05T03:45:23.978329+00:00",
-  "publication": "verified",
-  "version": "knowledge-20261022T034523Z-c11ab1d3c9fdc2bb",
-  "last_publication": "2026-10-22T03:45:23.978329+00:00"
+  "publication": "manual_reviewed_sw_extension",
+  "version": "knowledge-20261023T181607Z-afaae13f29bea3e9",
+  "last_publication": "2026-10-23T18:16:07.134968Z",
+  "manual_review": {
+    "verified_at": "2026-10-23T18:16:07.134968Z",
+    "added_codes": [
+      "15-1252.00",
+      "15-1221.00"
+    ],
+    "onet_release": "31.0",
+    "esco_channel": "official_public_api_default",
+    "note": "Four SW contextual records were validated with the existing adapters and appended without changing the scheduled source checks; O*NET-ESCO links are contextual, not official equivalences."
+  }
 }

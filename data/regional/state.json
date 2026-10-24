@@ -1,0 +1,46 @@
+{
+  "last_attempt": "2026-10-24T02:13:38.200323+00:00",
+  "next_due": "2026-11-07T02:13:38.200323+00:00",
+  "version": "regional-5b92e0e0305b4a1a",
+  "sources": {
+    "onet": {
+      "status": "official-file-import",
+      "version": "31.0"
+    },
+    "esco": {
+      "status": "official-api-snapshot"
+    },
+    "dosm": {
+      "status": "verified-api",
+      "checked_at": "2026-10-24T02:13:38.200323+00:00",
+      "last_success": "2026-10-24T02:13:38.200323+00:00",
+      "reference_period": "2025",
+      "source_version": null
+    },
+    "world_bank": {
+      "status": "verified-api",
+      "checked_at": "2026-10-24T02:13:38.200323+00:00",
+      "last_success": "2026-10-24T02:13:38.200323+00:00",
+      "reference_period": "2025",
+      "source_version": "World Bank API source 2; last updated 2026-10-08"
+    },
+    "bls": {
+      "status": "reviewed-official-table",
+      "reference_period": "2025–2035"
+    },
+    "mycol": {
+      "status": "reviewed-official-file",
+      "reference_period": "2024/2025"
+    },
+    "masco": {
+      "status": "reviewed-official-page",
+      "reference_period": "MASCO 2020"
+    },
+    "ilostat": {
+      "status": "not-integrated"
+    },
+    "onet_v2": {
+      "status": "credentials-not-configured"
+    }
+  }
+}

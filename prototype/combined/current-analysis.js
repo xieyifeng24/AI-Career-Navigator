@@ -22,11 +22,25 @@ export function analyzeCurrentAnswers(session,locale='en'){
 }
 export function careerContexts(direction,knowledge,locale='en'){
  const idx={en:0,'zh-CN':1,ms:2}[locale]??0;
- const ids=(contextRoles[direction]||[]).flatMap(id=>knowledge.links?.[id]||[]);
+ const ids=(direction==='SW'?['15-1252.00','15-1221.00']:contextRoles[direction]||[]).flatMap(id=>knowledge.links?.[id]||[]);
  const records=Array.isArray(knowledge.records)?knowledge.records:[];
  const official=records.filter(r=>ids.includes(r.source+':'+r.id));
  const onet=official.filter(r=>r.source==='onet');
  const editorial=(directionRoles[direction]||[]).map(id=>catalog.careers.find(r=>r.id===id)).filter(Boolean);
+ // Keep product role IDs stable for the star map while attaching reviewed, related
+ // O*NET and ESCO records. These pairs are contextual, not official equivalences.
+ if(direction==='SW'&&official.length===4){
+  const pairs=[['software','15-1252.00'],['ai-research','15-1221.00']];
+  const candidates=pairs.map(([id,code])=>{
+   const primary=onet.find(r=>r.id===code),refs=knowledge.links[code],related=refs.map(key=>official.find(r=>r.source+':'+r.id===key)).filter(Boolean);
+   return {id,title:editorial.find(r=>r.id===id).title[idx],description:primary.description,tasks:primary.tasks,skills:related.flatMap(r=>r.skills),education:primary.education,url:primary.url,sourceKind:'official-context',sourceId:'onet:'+code,sourceIds:refs,geography:primary.geography,verifiedAt:primary.verified_at,classificationNote:id==='ai-research'?'Related research and intelligent-systems contexts; not an exact Machine Learning Engineer classification.':'Software Developers occupation context.'};
+  });
+  return {official,editorial,candidates,knowledgeVersion:knowledge.version,dataStatus:'loaded',officialStatus:'available',ranking:'not-ranked'};
+ }
+ if(direction==='SW'){
+  const candidates=editorial.map(r=>({id:r.id,title:r.title[idx],description:r.entry[idx],tasks:[{label:r.project[idx]}],skills:r.skills.map(label=>({label:label[idx]})),education:[],url:null,sourceKind:'editorial-direction-example',sourceId:'catalog:'+r.id}));
+  return {official,editorial,candidates,knowledgeVersion:knowledge.version||'unavailable',dataStatus:records.length?'loaded':'unavailable',officialStatus:official.length?'incomplete-reviewed-mapping':'no-reviewed-direction-mapping',ranking:'not-ranked'};
+ }
  const candidates=onet.length?onet.map(r=>({id:r.source+':'+r.id,title:r.title,description:r.description,tasks:r.tasks||[],skills:r.skills||[],education:r.education||[],url:r.url,sourceKind:'official-context',sourceId:r.source+':'+r.id,geography:r.geography,verifiedAt:r.verified_at})):
   editorial.map(r=>({id:r.id,title:r.title[idx],description:r.entry[idx],tasks:[{label:r.project[idx]}],skills:r.skills.map(label=>({label:label[idx]})),education:[],url:null,sourceKind:'editorial-direction-example',sourceId:'catalog:'+r.id}));
  return {official,editorial,candidates,knowledgeVersion:knowledge.version||'unavailable',dataStatus:records.length?'loaded':'unavailable',officialStatus:official.length?'available':'no-reviewed-direction-mapping',ranking:'not-ranked'};

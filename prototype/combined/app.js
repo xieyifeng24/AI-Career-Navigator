@@ -7,14 +7,15 @@ import {renderPreview} from '../v3/ui.js';
 import {fresh,load,save,updateBackground,nextBackground,reportFor} from './model.js';
 export {STORAGE_KEY} from './model.js';
 import {supplementaryInput} from './ui.js';
+import regional from '../../data/regional/current.json' with {type:'json'};
 const e=escapeHTML;
 export function hasCombinedDraft(){try{return !!sessionStorage.getItem('career-combined-pr8-pr9-v1');}catch{return false;}}
 export function mountCombined({root,onHome}) {
  let storage;try{storage=sessionStorage;}catch{storage=null;}
  let state=load(storage,language),errors={};
- let v2Options={path:'A',assumptions:{}};
+ let v2Options={path:'A',assumptions:{},region:'MY',aiConsent:false,ai:{status:'idle'}};
  setLanguage(state.v3.language);
- for(const path of ['explorer.css','v3/styles.css','star-map.css','career-explorer.css','combined/styles.css']) {
+ for(const path of ['explorer.css','v3/styles.css','star-map.css','career-explorer.css','combined/styles.css','combined/regional.css']) {
   if(!document.querySelector(`link[data-combined-style="${path}"]`)){
    const link=document.createElement('link');link.rel='stylesheet';link.href='./'+path;link.dataset.combinedStyle=path;document.head.append(link);
   }
@@ -46,12 +47,13 @@ export function mountCombined({root,onHome}) {
  }
  function change(event) {
   const target=event.target;
+  if(target.dataset.regionalConsent!==undefined){v2Options.aiConsent=target.checked;return;}
   if(state.phase==='report'&&target.dataset.v2Control){
    const key=target.dataset.v2Control;
    v2Options.assumptions={...v2Options.assumptions,[key]:key==='hours'?Number(target.value):target.value};
    render();root.querySelector(`[data-v2-control="${key}"]`)?.focus();return;
   }
-  if(['combined-language-select','v3-language'].includes(target.id)){setLanguage(target.value);errors={};render();root.querySelector('#combined-language-select,#v3-language')?.focus();return;}
+  if(['combined-language-select','v3-language'].includes(target.id)){setLanguage(target.value);errors={};v2Options.ai={status:'idle'};render();root.querySelector('#combined-language-select,#v3-language')?.focus();return;}
   if(state.phase==='background'&&target.dataset.field){state=updateBackground(state,target.dataset.field,target.value,target.checked!==false);delete errors[target.dataset.field];render();[...document.getElementsByName(target.name)].find(el=>el.value===target.value)?.focus();return;}
   if(state.phase==='v3'&&target.name==='v3-answer'){
    state={...state,v3:selectAnswer(state.v3,questionsFor(state.v3.trackId)[state.v3.index].id,target.value==='unknown'?null:Number(target.value))};errors={};render();root.querySelector(`input[name="v3-answer"][value="${target.value}"]`)?.focus({preventScroll:true});
@@ -75,6 +77,8 @@ export function mountCombined({root,onHome}) {
   }
   const action=target.dataset.combinedAction;
   if(state.phase==='report'){
+   if(action?.startsWith('region:')){const region=action.slice(7);if(['MY','US','GLOBAL'].includes(region)){v2Options.region=region;v2Options.ai={status:'idle'};render();}return;}
+   if(action==='regional-ai'){requestRegionalAI();return;}
    if(action==='v2-reset'){v2Options.assumptions={};render();return;}
    if(action.startsWith('select:')||action.startsWith('route-select:')||action.startsWith('map-select:')||action.startsWith('compare-select:')){
     const value=action.slice(action.indexOf(':')+1);if(['A','B'].includes(value))v2Options.path=value;render();return;
@@ -85,22 +89,50 @@ export function mountCombined({root,onHome}) {
    if(action.startsWith('page:')){const page=action.slice(5);if(compatiblePages.includes(page)){state={...state,page};render(true);}return;}
   }
   if(action==='home'){onHome();return;}
-  if(action==='start'||action==='edit'||action==='edit-background'){v2Options={path:'A',assumptions:{}};state={...state,phase:'background',step:0};render(true);return;}
-  if(action==='reset'){v2Options={path:'A',assumptions:{}};state=fresh(language);render(true);return;}
+  if(action==='start'||action==='edit'||action==='edit-background'){v2Options={path:'A',assumptions:{},region:'MY',aiConsent:false,ai:{status:'idle'}};state={...state,phase:'background',step:0};render(true);return;}
+  if(action==='reset'){v2Options={path:'A',assumptions:{},region:'MY',aiConsent:false,ai:{status:'idle'}};state=fresh(language);render(true);return;}
   if(action==='prev'){if(state.step>0){state={...state,step:state.step-1};render(true);}else onHome();return;}
-  if(action==='edit-v3'){v2Options={path:'A',assumptions:{}};state={...state,phase:'v3',v3:{...state.v3,screen:'review'}};render(true);return;}
+  if(action==='edit-v3'){v2Options={path:'A',assumptions:{},region:'MY',aiConsent:false,ai:{status:'idle'}};state={...state,phase:'v3',v3:{...state.v3,screen:'review'}};render(true);return;}
   if(action==='finish'){const {base}=reportFor(state);state={...state,phase:'report',page:'overview',focus:base.ranking[0].id,goal:base.goals[0].id};render(true);return;}
   if(action.startsWith('goal:')&&catalog.goals.some(g=>g.id===Number(action.slice(5)))){state={...state,goal:Number(action.slice(5))};render();return;}
   if(action==='print'){window.print();return;}
   if(action==='export'){
-   const payload={...buildCompatibleReport(state,language,v2Options.assumptions),selectedCompanionGoal:state.goal,language,selectedPath:v2Options.path,planningAssumptions:structuredClone(v2Options.assumptions)};
+   const payload={...buildCompatibleReport(state,language,v2Options.assumptions),selectedCompanionGoal:state.goal,language,selectedPath:v2Options.path,planningAssumptions:structuredClone(v2Options.assumptions),
+    regionalView:{selectedRegion:v2Options.region,snapshotVersion:(v2Options.regionalSnapshot||regional).version,
+     facts:(v2Options.regionalSnapshot||regional).facts.filter(row=>row.region===v2Options.region)},
+    aiExplanation:v2Options.ai.status==='complete'?v2Options.ai.result:null};
    const url=URL.createObjectURL(new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}));
    const anchor=document.createElement('a');anchor.href=url;anchor.download='career-exploration-'+payload.report.report_id+'.json';anchor.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
   }
+ }
+ async function requestRegionalAI(){
+  if(!v2Options.aiConsent){v2Options.ai={status:'error',message:{en:'Please confirm the fictional-data notice first.','zh-CN':'请先确认虚构资料说明。',ms:'Sila sahkan notis data rekaan dahulu.'}[language]};render();return;}
+  if(v2Options.ai.status==='loading')return;
+  const model=buildCompatibleReport(state,language,v2Options.assumptions);
+  const payload={track_id:state.v3.trackId,language,region:v2Options.region,
+    answers:structuredClone(state.v3.answers),deterministic_profile:model.p0.profile.map(c=>c.text).slice(0,8),
+    scenario:Object.values(v2Options.assumptions||{}).some(v=>v==='practiced')?'Hypothetical completed practice; original answers unchanged.':null};
+  const expected=JSON.stringify({answers:payload.answers,region:payload.region,language:payload.language});
+  v2Options.ai={status:'loading'};render();
+  const controller=new AbortController(),timeout=setTimeout(()=>controller.abort(),125000);
+  try{
+   const session=await fetch('/api/session',{credentials:'same-origin',signal:controller.signal});
+   if(!session.ok)throw Error('Session unavailable');
+   const token=(await session.json()).csrf_token;
+   const response=await fetch('/api/regional/explain',{method:'POST',credentials:'same-origin',
+    headers:{'Content-Type':'application/json','X-CSRF-Token':token},body:JSON.stringify(payload),signal:controller.signal});
+   const data=await response.json();
+   if(!response.ok)throw Error(data.detail||'AI unavailable');
+   if(expected===JSON.stringify({answers:state.v3.answers,region:v2Options.region,language}))v2Options.ai={status:'complete',result:data};
+  }catch(error){v2Options.ai={status:'error',message:String(error.message||error).slice(0,180)};}
+  finally{clearTimeout(timeout);render();}
  }
  function input(event){if(event.target.dataset.v2Control==='hours'){change(event);return;}if(event.target.id==='combined-notes'){state={...state,notes:event.target.value.slice(0,1500)};save(storage,state);}}
  root.addEventListener('input',input);
  root.addEventListener('change',change);root.addEventListener('submit',submit);root.addEventListener('click',click);
  render();
+ fetch('/api/regional/current').then(r=>r.ok?r.json():null).then(data=>{
+  if(data?.snapshot?.schema_version===1&&Array.isArray(data.snapshot.facts)){v2Options.regionalSnapshot=data.snapshot;v2Options.regionalDelivery=data.delivery;if(state.phase==='report')render();}
+ }).catch(()=>{});
  return ()=>{root.removeEventListener('input',input);root.removeEventListener('change',change);root.removeEventListener('submit',submit);root.removeEventListener('click',click);};
 }

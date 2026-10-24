@@ -16,6 +16,9 @@ from .sources import SourceStore, SourceUnavailable
 from .matching import rank_roles
 from .inference import RunPod, InferenceError
 from .access import AccessPolicy, COOKIE, SESSION_SECONDS, check_origin, is_local
+from .regional import RegionalStore
+from .regional_ai import RegionalRequest, canonical_answers, cache_key, explain as explain_regional
+import json
 
 ROOT=Path(__file__).resolve().parents[2]
 load_dotenv(ROOT/'.env')
@@ -25,12 +28,14 @@ async def lifespan(app):
     async with httpx.AsyncClient(follow_redirects=False, headers={'User-Agent':'AI-Career-Navigator/0.2 educational research'}) as client:
         app.state.sources=SourceStore(client)
         app.state.knowledge=KnowledgeStore(client, ROOT/'data/knowledge/current.json')
+        app.state.regional=RegionalStore(client)
         app.state.inference=RunPod(client)
         app.state.busy=False
         app.state.access=AccessPolicy(os.getenv('LIMIT_STATE_DIR', str(ROOT/'.cache/runtime')))
         app.state.last_inference=None
         app.state.jobs={}
         app.state.tasks=set()
+        app.state.regional_ai_cache={}
         yield
         for task in app.state.tasks: task.cancel()
 
@@ -156,13 +161,43 @@ async def index(): return FileResponse(ROOT/'prototype/index.html')
 async def knowledge_current():
     return await app.state.knowledge.get()
 
+@app.get('/api/regional/current')
+async def regional_snapshot():
+    return await app.state.regional.get()
+
+@app.post('/api/regional/explain')
+async def regional_explanation(payload: RegionalRequest, request: Request):
+    try:
+        bank=json.loads((ROOT/'prototype/v3/bank.json').read_text())
+        canonical_answers(payload,bank)
+    except (OSError,ValueError) as exc:
+        raise HTTPException(422,'Use the complete twelve-question V3 software assessment.') from exc
+    regional=await app.state.regional.get()
+    owner=app.state.access.require(request,mutating=True)
+    cached=app.state.regional_ai_cache.get(cache_key(owner,payload,regional['snapshot']))
+    if cached and time.monotonic()-cached[0]<1800:
+        return {**cached[1],'cached':True}
+    owner=begin_analysis(request)
+    try:
+        result=await explain_regional(app.state.inference,payload,owner,bank,app.state.regional_ai_cache,regional['snapshot'])
+        app.state.last_inference=datetime.now(timezone.utc).isoformat()
+        return result
+    except InferenceError as exc:
+        raise HTTPException(503,str(exc)) from exc
+    finally:
+        app.state.busy=False
+
 @app.get('/data/knowledge/current.json')
 async def knowledge_bundle():
     return FileResponse(ROOT/'data/knowledge/current.json')
 
+@app.get('/data/regional/current.json')
+async def regional_bundle():
+    return FileResponse(ROOT/'data/regional/current.json')
+
 @app.get('/combined/{filename}')
 async def combined_asset(filename: str):
-    if filename not in {'app.js','model.js','styles.css','results.js','ui.js','copy.js','v2-report.js','current-analysis.js'}: raise HTTPException(404)
+    if filename not in {'app.js','model.js','styles.css','regional.css','results.js','ui.js','copy.js','v2-report.js','current-analysis.js','p0-analysis.js','sw-analysis.js','regional-view.js'}: raise HTTPException(404)
     return FileResponse(ROOT/'prototype/combined'/filename)
 
 @app.get('/v3/{filename}')

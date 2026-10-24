@@ -123,7 +123,10 @@ test('occupational tasks use reviewed source records; unmapped directions are ed
   const source=knowledge.records.find(r=>r.source+':'+r.id===c.sourceId);
   assert.deepEqual(c.tasks,source.tasks);assert.equal(c.description,source.description);assert.equal(c.url,source.url);
  }
- const unmapped=careerContexts('SW',knowledge);
+ const sw=careerContexts('SW',knowledge);
+ assert.equal(sw.officialStatus,'available');assert.equal(sw.official.length,4);
+ assert.deepEqual(sw.candidates.map(c=>c.id),['software','ai-research']);
+ const unmapped=careerContexts('FIN',knowledge);
  assert.equal(unmapped.officialStatus,'no-reviewed-direction-mapping');assert.ok(unmapped.candidates.every(c=>c.sourceKind==='editorial-direction-example'));
  const unavailable=careerContexts('DATA',{...knowledge,records:[],links:{}});
  assert.equal(unavailable.officialStatus,'no-reviewed-direction-mapping');assert.ok(unavailable.candidates.length);

@@ -6,6 +6,7 @@ import {buildP0Analysis} from './combined/p0-analysis.js';
 import {buildCompatibleReport,renderCompatibleReport} from './combined/v2-report.js';
 import {fresh} from './combined/model.js';
 import {sampleProfile} from './explorer-engine.js';
+import {buildCareerStarMapModel} from './star-map.js';
 import {setLanguage} from './i18n.js';
 import knowledge from '../data/knowledge/current.json' with {type:'json'};
 const personas={
@@ -28,13 +29,19 @@ test('real V3 bank has exact 4+8 questions and no reverse scoring metadata',()=>
 });
 test('three fictional SW users produce traceable distinct profiles, routes and plans',()=>{
  const a=analysis(personas.A),b=analysis(personas.B),c=analysis(personas.C);
- assert.equal(a.paths[0].id,'software');assert.equal(b.paths[0].id,'software');assert.equal(c.paths[0].id,'ai-research');
+ assert.equal(a.rankingStatus,'software-first');assert.equal(b.rankingStatus,'software-first');assert.equal(c.rankingStatus,'inconclusive');
+ assert.equal(c.paths[0].priority,c.paths[1].priority);
  assert.match(a.profile.find(p=>p.kind==='experience').text,/working artifact/);
- assert.doesNotMatch(b.profile.find(p=>p.kind==='experience').text,/working artifact/);
+ assert.match(b.profile.find(p=>p.kind==='experience').text,/do not report a finished program/);
+ assert.ok(b.profile.some(p=>p.kind==='interest-experience-gap'));
+ assert.ok(c.profile.some(p=>p.kind==='experience-interest-tension'));
  assert.notEqual(a.paths[0].action.task,b.paths[0].action.task);
  assert.notEqual(a.paths[0].action.check,c.paths[0].action.check);
  assert.notEqual(a.actions[0].task,a.actions[1].task);
- assert.ok(a.paths.every(p=>p.officialMapping===false));
+ assert.ok(a.paths.every(p=>p.officialMapping===true));
+ assert.equal(a.paths[0].explorationEvidence.supportedTaskPreferences,4);
+ assert.equal(c.paths[0].explorationEvidence.supportedTaskPreferences,3);
+ assert.equal(a.paths[1].explorationEvidence.unmeasuredCoreRequirements,2);
  assert.ok(a.profile.every(p=>p.evidence.every(x=>x.kind==='self-report')));
  assert.equal(a.limits.verifiedSkills,false);assert.equal(a.limits.fitIsProbability,false);
 });
@@ -45,6 +52,54 @@ test('answer sensitivity is bounded to relevant conclusions; unknown stays unkno
  const unknown=analysis({...personas.B,SW05:null,SW06:null});
  assert.equal(unknown.profile.find(p=>p.kind==='experience').evidenceLevel,'not-measured');
  assert.equal(analysis(personas.A).paths[0].id,a.paths[0].id);
+});
+test('official occupational tasks and skills drive the route evidence and shared star map',()=>{
+ const contexts=careerContexts('SW',knowledge,'en');
+ assert.deepEqual(contexts.candidates.map(c=>c.id),['software','ai-research']);
+ assert.equal(contexts.official.length,4);
+ const a=analysis(personas.A),software=a.paths[0],research=a.paths[1];
+ assert.equal(software.explorationEvidence.taskLinks[0].task.id,'21667');
+ assert.match(software.explorationEvidence.taskLinks[0].task.label,/Design, develop and modify software systems/);
+ assert.equal(software.explorationEvidence.taskLinks[0].skill.sourceId,'esco:http://data.europa.eu/esco/occupation/f2b15a0e-e65a-438a-affb-29b9d50b77d1');
+ assert.equal(research.explorationEvidence.taskLinks[1].status,'not-measured');
+ assert.match(research.source.mappingCaveat,/not an exact ML engineer code/);
+ const changed=structuredClone(knowledge);
+ changed.records.find(r=>r.source==='onet'&&r.id==='15-1252.00').tasks.find(t=>t.id==='21667').label='Updated official development task';
+ assert.equal(buildP0Analysis(stateFor(personas.A).v3,careerContexts('SW',changed,'en'),'en').paths[0].tasks[0],'Updated official development task');
+ const model=buildCompatibleReport(stateFor(personas.A));
+ const map=buildCareerStarMapModel(model.report);
+ assert.equal(map.paths[0].title,model.p0.paths[0].title);
+ assert.equal(map.paths[0].next,model.p0.paths[0].action.task);
+ assert.equal(map.paths[0].gaps[0].skill,model.p0.paths[0].requirements[0]);
+});
+test('task-affinity change can remove a lead; unrelated verification changes do not',()=>{
+ const baseline=analysis(personas.A);
+ const lessBuild=analysis({...personas.A,SW01:2});
+ const moreBuild=analysis({...personas.A,SW01:6});
+ const lessVerify=analysis({...personas.A,SW08:2});
+ assert.equal(baseline.rankingStatus,'software-first');
+ assert.equal(lessBuild.rankingStatus,'inconclusive');
+ assert.equal(moreBuild.rankingStatus,'software-first');
+ assert.equal(lessVerify.rankingStatus,baseline.rankingStatus);
+ assert.deepEqual(lessVerify.paths.map(p=>p.explorationEvidence.supportedTaskPreferences),baseline.paths.map(p=>p.explorationEvidence.supportedTaskPreferences));
+ assert.notEqual(lessVerify.profile.find(p=>p.kind==='ai-verification').text,baseline.profile.find(p=>p.kind==='ai-verification').text);
+});
+test('missing occupational records degrade to labeled team context without invented ranking',()=>{
+ const unavailable={...knowledge,records:[],links:{}};
+ const contexts=careerContexts('SW',unavailable),p=buildP0Analysis(stateFor(personas.A).v3,contexts);
+ assert.equal(contexts.officialStatus,'no-reviewed-direction-mapping');
+ assert.deepEqual(contexts.candidates.map(c=>c.id),['software','ai-research']);
+ assert.equal(p.rankingStatus,'unavailable');
+ assert.ok(p.paths.every(route=>!route.officialMapping&&route.priority===1));
+});
+test('SW What If reads the same route action while leaving original results and SDG independent',()=>{
+ setLanguage('en');const state={...stateFor(personas.A),page:'careers'},original=buildCompatibleReport(state);
+ const before=renderCompatibleReport(state),after=renderCompatibleReport(state,{assumptions:{skillEvidence:'practiced',aiPractice:'practiced'}});
+ assert.ok(before.includes(original.p0.paths[0].action.task));
+ assert.match(after,/If this exact sample has been completed and reviewed/);
+ assert.deepEqual(buildCompatibleReport(state,'en',{skillEvidence:'practiced'}).p0.paths,original.p0.paths);
+ assert.deepEqual(state.v3.answers,personas.A);
+ assert.match(renderCompatibleReport({...state,page:'sdg'}),/independent context, not a result of the V3 occupational comparison/);
 });
 test('three locales render the new profile, route comparison and action plans without changing answers',()=>{
  for(const locale of bank.languageCodes){
