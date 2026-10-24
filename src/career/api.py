@@ -197,8 +197,13 @@ async def regional_bundle():
 
 @app.get('/combined/{filename}')
 async def combined_asset(filename: str):
-    if filename not in {'app.js','model.js','styles.css','regional.css','results.js','ui.js','copy.js','v2-report.js','current-analysis.js','p0-analysis.js','sw-analysis.js','regional-view.js','starting-point.js','starting-point-bank.json','starting-point-view.js','starting-point-analysis.js','intelligence.js'}: raise HTTPException(404)
+    if filename not in {'app.js','model.js','styles.css','regional.css','results.js','ui.js','copy.js','v2-report.js','current-analysis.js','p0-analysis.js','sw-analysis.js','regional-view.js','starting-point.js','starting-point-bank.json','starting-point-view.js','starting-point-analysis.js','intelligence.js','page-map.js','report-model.js'}: raise HTTPException(404)
     return FileResponse(ROOT/'prototype/combined'/filename)
+
+@app.get('/combined/pages/{filename}')
+async def combined_page_asset(filename: str):
+    if filename not in {'shared.js','profile.js','capability.js','galaxy.js','what-if.js','impact.js'}: raise HTTPException(404)
+    return FileResponse(ROOT/'prototype/combined/pages'/filename)
 
 @app.get('/v3/{filename}')
 async def v3_preview_asset(filename: str):
