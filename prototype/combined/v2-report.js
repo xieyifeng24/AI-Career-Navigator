@@ -1,202 +1,34 @@
-import {buildIntelligence,applyIntelligence,renderIntelligence,renderScenario,renderConnections} from './intelligence.js';
-import {startingPointContext,contextualPreparation,renderStartingFocus,renderStartingCapabilities} from './starting-point-analysis.js';
-import {analyzeCurrentAnswers,careerContexts} from './current-analysis.js';
-import {buildP0Analysis} from './p0-analysis.js';
-// Reuse original V2 reports without inventing old categorical answers from Likert values.
-import {createDraft} from '../exploration/engine.js';
-import {buildExplorationReport} from '../exploration/report.js';
-import {renderCareerStarMap} from '../star-map.js';
-import {renderCareerComparison,renderSkillDNA} from '../career-explorer.js';
-import {renderHeader,renderFooter,renderGoals,escapeHTML as e} from '../explorer-views.js';
-import {questionsFor,bank} from '../v3/engine.js';
-import {reportFor} from './model.js';
-import {renderRegionalPanel} from './regional-view.js';
+// Adapter: one report model, five pages. The page modules hold the content;
+// this file only assembles the shell, navigation and footer.
+import {renderHeader,renderFooter,escapeHTML as e} from '../explorer-views.js';
+import {bank} from '../v3/engine.js';
 import {language,t} from '../i18n.js';
-import knowledge from '../../data/knowledge/current.json' with {type:'json'};
-const L=(en,zh,ms)=>({'en':en,'zh-CN':zh,ms})[language]||en;
-export const reportPages=['overview','ai','careers','map','compare','tree','future','plan','sdg'];
-const labels={overview:'Capabilities',ai:'AI & work',careers:'Career paths',map:'Career map',compare:'Compare paths',tree:'Skill DNA',future:'Time machine',plan:'Action plan',sdg:'SDG companions'};
-export function buildCompatibleReport(state,locale=language,assumptions={}){
- const {base,selfReport}=reportFor(state);
- const profile=createDraft(selfReport.trackId);
- // Shared direction identifiers are the sole exact crosswalk. No Likert-to-option conversion.
- const report=buildExplorationReport(profile,locale,assumptions,knowledge);
- const signals=analyzeCurrentAnswers(selfReport,locale),contexts=careerContexts(selfReport.trackId,knowledge,locale);
- // The legacy V2 report intentionally has no SW context mapping. Add only the
- // reviewed V3 SW source records to this compatibility report's source registry.
- if(selfReport.trackId==='SW')for(const fact of contexts.official)report.evidence.sources[fact.source+':'+fact.id]={title:fact.title,url:fact.url,kind:'official occupational context',date:fact.published_at,geography:fact.geography,verified_at:fact.verified_at,version:fact.version,text:fact.description};
- signals.explicitNoAIUse=state.profile.aiPurposes?.includes('none')===true;
- signals.conflicts=signals.explicitNoAIUse?signals.items.filter(i=>i.construct==='ai_practice'&&i.stance==='agreement').map(i=>({questionId:i.id,backgroundField:'aiPurposes',reason:'no-ai-use-vs-reported-practice'})):[];
- report.currentEvidence=signals;report.careerContexts=contexts;
- report.currentDirection=selfReport.trackId;
- attachContextPaths(report,contexts,signals,locale);
- attachCurrentEvidence(report,signals,contexts,assumptions,locale);
- const originalP0=buildP0Analysis(selfReport,contexts,locale);
- const unified=buildIntelligence(selfReport,state.startingPoint,originalP0,contexts,assumptions);
- const p0=applyIntelligence(originalP0,unified,locale);
- if(state.startingPoint?.completed){const context=startingPointContext(state.startingPoint,locale);
-  for(const path of p0.paths){const prep=contextualPreparation(context,state.startingPoint,path,locale);path.action={...path.action,why:context.focus+' '+path.action.why,task:(assumptions.skillEvidence==='practiced'&&path.id==='software'?'':prep.task+' ')+path.action.task,check:(assumptions.skillEvidence==='practiced'&&path.id==='software'?'':prep.check+' ')+path.action.check,evidenceQuestions:[...new Set([...path.action.evidenceQuestions,...prep.evidence])]};}
-  p0.actions=p0.actions.map(action=>{const path=p0.paths.find(p=>p.id===action.routeId);return path?{...action,...path.action}:action;});
- }
- if(assumptions.targetCareer)p0.actions.sort((a,b)=>(a.routeId===assumptions.targetCareer?-1:b.routeId===assumptions.targetCareer?1:0));
- if(assumptions.targetCareer&&p0.paths.some(p=>p.id===assumptions.targetCareer)){p0.paths.sort((a,b)=>(a.id===assumptions.targetCareer?-1:b.id===assumptions.targetCareer?1:0));}
- for(const action of unified.actions){const current=p0.actions.find(a=>a.routeId===action.routeId);if(current)Object.assign(action,{task:current.task,check:current.check,why:current.why});}
- report.unified=unified;
- report.p0Analysis=p0;
- report.analysis.summary={text:`${signals.answeredCount}/${signals.totalQuestions} answered. `+p0.profile.map(c=>c.text).join(' '),source_ids:[]};
- for(const route of p0.paths){const path=report.analysis.paths.find(p=>p.role_id===route.id);if(path){path.why={text:route.why.text,source_ids:route.officialMapping?route.source.relatedSourceIds||[route.source.id]:[]};path.next_step={text:route.action.task,source_ids:[]};path.unified=unified.routes.find(r=>r.id===route.id);path.challenge={text:route.unmeasured,source_ids:[]};if(selfReport.trackId==='SW'&&route.officialMapping)path.gaps=route.unverifiedRequirements.map(item=>({skill:item.skill.label,advice:{text:route.unmeasured,source_ids:[item.skill.sourceId]}}));}}
- report.ranking.sort((a,b)=>assumptions.targetCareer?p0.paths.findIndex(p=>p.id===a.id)-p0.paths.findIndex(p=>p.id===b.id):(p0.paths.find(p=>p.id===a.id)?.priority??99)-(p0.paths.find(p=>p.id===b.id)?.priority??99));
- report.analysis.paths.sort((a,b)=>assumptions.targetCareer?p0.paths.findIndex(p=>p.id===a.role_id)-p0.paths.findIndex(p=>p.id===b.role_id):(p0.paths.find(p=>p.id===a.role_id)?.priority??99)-(p0.paths.find(p=>p.id===b.role_id)?.priority??99));
- report.analysis.paths.forEach((path,index)=>{path.kind=String.fromCharCode(65+index);});
- const starting=startingPointContext(state.startingPoint,locale);
- if(starting)report.startingPoint=starting;
- return {report,signals,contexts,p0,unified,startingPointContext:starting,startingPoint:state.startingPoint?.completed?structuredClone(state.startingPoint):null,companions:base,currentAnswers:structuredClone(selfReport),background:structuredClone(state.profile),notes:String(state.startingPoint?.completed?state.startingPoint.story:state.notes||''),
-  compatibility:{version:'v2-report-current-intake-2',mappedFields:['direction'],missingV2Questions:report.exploration.selected.map(q=>q.questionId),likertConverted:false,
-   sdgBasis:'Existing background interest and career-link rules; not V2 career recommendations'}};
-}
+import {pageIds,pageLabels,pageTarget} from './page-map.js';
+import {buildCompatibleReport} from './report-model.js';
+import {renderProfilePage} from './pages/profile.js';
+import {renderCapabilityPage} from './pages/capability.js';
+import {renderGalaxyPage} from './pages/galaxy.js';
+import {renderWhatIfPage} from './pages/what-if.js';
+import {renderImpactPage} from './pages/impact.js';
+import {L} from './pages/shared.js';
+
+export {buildCompatibleReport};
+export {pageIds as reportPages};
+export {pageLabels};
+
 function reportContext(model){
  return `${model.notes?`<section class="ex-method"><h3>${L('Additional information','补充信息','Maklumat tambahan')}</h3><p style="white-space:pre-wrap">${e(model.notes)}</p></section>`:''}<button class="text-button" data-combined-action="edit-v3">${e(t('Edit your answers ↗'))}</button>`;
 }
 export function renderCompatibleReport(state,options={}){
- const model=buildCompatibleReport(state,language,options.assumptions),r=model.report;
- const page=reportPages.includes(state.page)?state.page:'overview',path=options.path||'A';
- let content;
- if(page==='sdg')content=(model.startingPoint?`<p class="ex-local-notice">${L('SDG companions are an independent educational reference. The new questionnaire does not assign a personal SDG match.','SDG 行动伙伴是独立的教育参考。新版起点问卷不生成个人 SDG 匹配。','Rakan SDG ialah rujukan pendidikan bebas. Soal selidik baharu tidak menetapkan padanan SDG peribadi.')}</p>`:`<p class="ex-local-notice">${L('SDG companions use the existing background-interest rules. They are independent context, not a result of the V3 occupational comparison.','SDG 关联沿用现有背景兴趣规则，是独立参考信息，并非 V3 职业比较的计算结果。','Kaitan SDG menggunakan peraturan minat latar sedia ada. Ia konteks berasingan, bukan hasil perbandingan pekerjaan V3.')}</p>`)+renderGoals({...state,report:model.startingPoint?null:model.companions});
- else content=renderCurrentSection(model,page,options);
- if(page==='overview')content=renderStartingFocus(model.startingPointContext,language)+content;
- if(page==='map')content+=renderConnections(model.unified,language)+renderIntelligence(model.unified,language);
- if(page==='tree')content=renderStartingCapabilities(model.startingPointContext,language)+content;
- if(['overview','careers','ai'].includes(page))content+=renderRegionalPanel(model,options,language);
- const nav=reportPages.map(key=>`<button type="button" data-action="page:${key}" class="${page===key?'active':''}" ${page===key?'aria-current="page"':''}>${e(t(labels[key]))} ↗</button>`).join('');
- return renderHeader({report:model.companions})+`<main class="report-page shell ex-report" data-compatible-analysis><aside class="report-sidebar"><div class="sidebar-sticky"><h2>${e(bank.tracks.find(track=>track.id===state.v3.trackId).label[language])}</h2><nav class="report-nav" aria-label="${e(t('Local report navigation'))}">${nav}</nav><button class="text-button" data-action="edit">${e(t('Edit your answers ↗'))}</button></div></aside><div class="report-main">${content}${reportContext(model)}<div class="ex-report-foot"><button class="button secondary" data-action="export">${e(t('Export my report'))}</button><button class="text-button" data-action="print">${e(t('Print / save PDF'))}</button><button class="text-button" data-action="reset">${e(t('Start over'))}</button></div></div></main>`+renderFooter();
-}
-
-const pick=(value,locale=language)=>Array.isArray(value)?value[{en:0,'zh-CN':1,ms:2}[locale]??0]:value?.[locale]||value?.en||String(value||'');
-const card=(title,body)=>`<article class="plan-mini"><h3>${e(title)}</h3>${body}</article>`;
-function observation(item){
- const status=item.state==='unanswered'?L('Not answered','用户未回答','Belum dijawab'):item.state==='not-assessed'?L('Not applicable / cannot assess; not zero','不适用／无法判断，不计为零','Tidak berkenaan / tidak dapat dinilai; bukan sifar'):item.response;
- return `<section class="v2-answer-row" data-evidence-question="${e(item.id)}"><small>${e(item.id)} · ${e(status)}${item.value!==null?` · ${item.value}/7`:''}</small><blockquote data-user-content>${e(item.statement)}</blockquote></section>`;
-}
-function dimensionAdvice(d,model){
- const agrees=d.items.filter(i=>i.stance==='agreement'),disagrees=d.items.filter(i=>i.stance==='disagreement'),observed=d.items.filter(i=>i.state==='self-report');
- if(!observed.length)return L('This dimension was not assessable from these answers; do not infer a low level.','这些回答无法评估此维度，不推断为低水平。','Dimensi ini tidak dapat dinilai daripada jawapan ini; jangan simpulkan tahap rendah.');
- const specific={
- interest:agrees.length?L('Use the interests you endorsed below to choose a task from this direction. Compare your willingness to repeat that task with the interests you did not endorse; this is preference evidence, not aptitude.','可从下方认同的兴趣陈述选择本方向的小任务，实际体验后再与不认同的任务比较，观察是否愿意反复做；这反映偏好而非天赋。','Pilih tugas arah ini berdasarkan minat yang dipersetujui di bawah. Banding kesediaan mengulangi tugas dengan minat yang tidak dipersetujui; ini bukti keutamaan, bukan bakat.'):L('The listed tasks are not currently endorsed interests. Try a brief sample before committing to a course or role; disagreement does not rule out the whole direction.','下列任务目前不是你认同的兴趣。投入课程或职业前先做简短体验；不同意不等于排除整个方向。','Tugas disenaraikan belum menjadi minat yang dipersetujui. Cuba sampel ringkas sebelum komitmen kursus atau kerjaya; ketidaksetujuan tidak menolak seluruh arah.'),
- workstyle:agrees.length?L('Turn the work habits you endorse into explicit steps in your next sample, then check whether your saved work demonstrates them. A preference is not proof of consistent execution.','把认同的工作方式写成下次样本的具体步骤，再核对作品中是否真的执行；偏好不证明稳定执行能力。','Jadikan amalan kerja yang dipersetujui sebagai langkah jelas dalam sampel seterusnya, kemudian semak pelaksanaannya. Keutamaan bukan bukti pelaksanaan konsisten.'):L('Try the stated work method once in a small task and compare errors and effort with your usual approach before choosing a routine.','在小任务中试用一次题目所述方法，与惯用方式比较错误和耗时，再决定采用何种流程。','Cuba kaedah kerja dinyatakan dalam tugas kecil dan banding ralat serta usaha dengan cara biasa sebelum memilih rutin.'),
- experience:agrees.length?L('You endorse at least one specific experience below. Locate one sample, log or explanation that demonstrates it. Do not infer other project experience or a proficiency level.','你认同至少一项具体经历，请找出对应作品、记录或讲解作为验证依据；不据此推断其他项目经历或熟练等级。','Anda bersetuju dengan sekurang-kurangnya satu pengalaman khusus. Cari sampel, log atau penerangan sebagai bukti; jangan simpulkan pengalaman lain atau tahap kemahiran.'):L('These statements do not establish the described experience. Begin with a guided sample; disagreement with these particular tasks does not establish a complete lack of related experience.','这些回答不能确立题目所述经历，可从有指导的小样开始；不认同这些具体任务，不等于完全没有相关经历。','Jawapan ini tidak membuktikan pengalaman dinyatakan. Mulakan dengan sampel berpandu; ketidaksetujuan tidak membuktikan ketiadaan semua pengalaman berkaitan.'),
- exploration:L('Use one reversible experiment in this direction before committing to a longer path. Your response describes willingness to explore, not whether you will succeed.','先做本方向一个可逆的小实验，再决定是否长期投入。回答描述探索意愿，不预测是否成功。','Cuba satu eksperimen yang boleh diubah dalam arah ini sebelum komitmen panjang. Jawapan menerangkan kesediaan meneroka, bukan kejayaan.'),
- adaptability:L('Compare two ways to complete the same small task and record what you would retain or change. Stated willingness to adapt is not measured learning speed.','比较完成同一小任务的两种方法，记录保留或改变的部分。自述适应意愿不是学习速度测量。','Banding dua cara menyelesaikan tugas kecil sama dan catat perkara untuk dikekalkan atau diubah. Kesediaan menyesuaikan diri bukan ukuran kelajuan belajar.'),
- ai_practice:L('Distinguish using AI from checking its output: reproduce one result manually and document where AI contributed. Your answers describe the specific practice, not general AI proficiency.','区分使用 AI 与核查 AI：手动复现一个结果，记录 AI 实际参与环节。回答只描述具体实践，不代表通用 AI 熟练度。','Bezakan penggunaan AI daripada semakan output: ulang satu hasil secara manual dan rekod sumbangan AI. Jawapan menerangkan amalan khusus, bukan kemahiran AI umum.'),
- ai_verification:agrees.length?L('You endorse the checks stated below. Apply them to a real practice artifact and keep one error or limitation found; a hypothetical response still needs observed evidence.','你认同下方核查做法。请在真实练习样本上执行并保留发现的错误或局限；情境回答仍需实际证据。','Anda bersetuju dengan semakan di bawah. Gunakannya pada hasil latihan dan simpan satu ralat atau batasan; jawapan hipotesis masih memerlukan bukti pemerhatian.'):L('Before adopting a generated result, check a key fact against original data, an independent source or a concrete test. Missing evidence is not a diagnosis of poor judgement.','采用生成结果前，使用原始数据、独立来源或具体测试核查关键事实；缺少证据不等于判断力差。','Sebelum menerima hasil dijana, semak fakta penting dengan data asal, sumber bebas atau ujian konkrit. Kekurangan bukti bukan diagnosis pertimbangan lemah.')
- };
- return specific[d.id]+(agrees.length&&disagrees.length?L(' Your mixed responses are retained separately rather than averaged into one trait.',' 认同与不认同的回答分别保留，不平均成单一人格或能力标签。',' Jawapan bercampur dikekalkan berasingan, bukan dipuratakan menjadi satu sifat.'):'');
-}
-function signalCards(model,constructs){
- return model.signals.dimensions.filter(d=>constructs.includes(d.id)).map(d=>card(d.label,d.items.map(observation).join('')+`<p>${e(dimensionAdvice(d,model))}</p><small>${L('Basis','依据','Asas')}: ${d.items.map(i=>e(i.id)).join(' · ')}</small>`)).join('');
-}
-function nextPractice(model,options={}){
- const experience=model.signals.items.filter(i=>i.construct==='experience'&&i.state==='self-report');
- const verification=model.signals.items.filter(i=>i.construct==='ai_verification'&&i.state==='self-report');
- const backed=experience.some(i=>i.stance==='agreement');
- const verify=verification.some(i=>i.stance==='agreement');
- const skillAssumed=options.assumptions?.skillEvidence==='practiced';
- const aiAssumed=options.assumptions?.aiPractice==='practiced';
- return {experience,verification,backed,verify,skillAssumed,aiAssumed,
-  scaffold:backed||skillAssumed?L('Adapt a work sample and document a failure, the correction and a test.','改造一个工作样本，记录失败、修正及测试。','Ubah sampel kerja dan rekod kegagalan, pembetulan serta ujian.'):L('Start with one worked example or a paper prototype, then attempt one step independently. This is a low-risk starting format, not a low-ability judgement.','先观察完整示例或纸面原型，再独立试做一步；这是起步形式，不是低能力判断。','Mulakan dengan contoh lengkap atau prototaip kertas, kemudian cuba satu langkah sendiri. Ini format permulaan, bukan penilaian kebolehan rendah.'),
-  ai:verify||aiAssumed?L('Retain the independent checks you report; compare one manual and AI-assisted result with the same test cases and record a limitation.','保留自述的独立核查习惯，用同一组测试比较手动与 AI 辅助结果，并记录局限。','Kekalkan semakan bebas yang dilaporkan; banding hasil manual dan bantuan AI menggunakan ujian sama serta catat batasan.'):L('Complete a manual baseline first. Before accepting AI output, check one important claim against an independent reference or a concrete test.','先完成手动基线；采用 AI 输出前，用独立资料或具体测试核查一项关键结论。','Siapkan garis dasar manual dahulu. Sebelum menerima output AI, semak satu dakwaan penting dengan rujukan bebas atau ujian konkrit.')};
-}
-function sourceLink(record){return record.url?.startsWith('https://')?`<a href="${e(record.url)}" target="_blank" rel="noopener noreferrer">${e(record.sourceId||record.source+':'+record.id)} ↗</a>`:'';}
-function occupationalCards(model){
- return model.contexts.candidates.map(c=>card(c.title,`<p data-user-content ${c.sourceKind==='official-context'?'lang="en"':''}>${e(c.description)}</p><small>${c.sourceKind==='official-context'?L('Reviewed occupational context, not a personal recommendation','已审阅的职业背景资料，不是个体匹配推荐','Konteks pekerjaan disemak, bukan cadangan peribadi'):L('Existing team catalog example for your selected direction; official mapping is not available','现有团队资料库中与所选方向相关的示例，暂无已审阅官方映射','Contoh katalog pasukan bagi arah dipilih; pemetaan rasmi belum tersedia')}</small><h4>${L('Tasks to explore','可探索的任务','Tugas untuk diterokai')}</h4><ul>${c.tasks.slice(0,3).map(x=>`<li data-user-content>${e(x.label)}</li>`).join('')}</ul><h4>${L('Skills / entry requirements to verify','技能／需核实的进入要求','Kemahiran / syarat kemasukan untuk disemak')}</h4><p>${e([...new Set(c.skills.map(x=>x.label))].slice(0,5).join(' · '))}</p>${c.education.length?`<ul>${c.education.slice(0,2).map(x=>`<li data-user-content>${e(x.label)}</li>`).join('')}</ul>`:''}${sourceLink(c)}<small>${e(c.geography||'')} ${e(c.verifiedAt||'')}</small>`)).join('');
-}
-function renderSourceStatus(model){
- return `<details class="ex-detail"><summary>${L('Career knowledge · sources & dates','职业知识库 · 来源与日期','Pengetahuan kerjaya · sumber dan tarikh')}</summary><p>${e(model.contexts.knowledgeVersion)}</p>${model.contexts.dataStatus==='unavailable'?`<p role="status">${L('The occupational snapshot is unavailable; only labeled team catalog examples can be shown.','职业数据快照不可用，仅显示已标注的团队资料库示例。','Petikan data pekerjaan tidak tersedia; hanya contoh katalog pasukan berlabel boleh dipaparkan.')}</p>`:''}<p>${model.contexts.officialStatus==='available'?L('The following reviewed records provide task and skill context. They do not establish personal fit or AI automation probabilities.','以下已审阅记录提供工作任务与技能背景，不证明个人适合度或 AI 自动化概率。','Rekod disemak berikut memberi konteks tugas dan kemahiran, bukan kesesuaian peribadi atau kebarangkalian automasi AI.'):L('No reviewed O*NET/ESCO crosswalk exists for this direction in the current dataset. Team catalog examples are labeled separately.','现有数据集尚无该方向经审阅的 O*NET／ESCO 对应关系；团队示例已单独标注。','Tiada padanan O*NET/ESCO disemak bagi arah ini dalam set data semasa. Contoh pasukan dilabel berasingan.')}</p>${model.contexts.official.map(r=>`<article><h4>${e(r.title)}</h4>${sourceLink(r)}<p>${e(r.source)} · ${e(r.version)} · ${e(r.geography)} · ${e(r.verified_at)}</p><p>${e(r.license)}</p></article>`).join('')}<p>${L('Saved US/EU context; no live refresh, Malaysian hiring forecast or AI replacement statistic is claimed.','这是已保存的欧美职业背景，不宣称实时刷新、马来西亚招聘预测或 AI 替代统计。','Konteks AS/EU tersimpan; tiada dakwaan kemas kini langsung, ramalan pengambilan Malaysia atau statistik penggantian AI.')}</p></details>`;
-}
-function renderWhatIf(model,options){
- if(model.unified&&model.currentAnswers.trackId==='SW')return renderScenario(model,options,language);
- const assumed=options.assumptions||{},current=nextPractice(model),next=nextPractice(model,options);
- if(model.currentAnswers.trackId==='SW'){
-  const route=model.p0.paths[0],practiced=assumed.skillEvidence==='practiced',checked=assumed.aiPractice==='practiced';
-  current.scaffold=route.action.task+' '+route.action.check;
-  next.scaffold=practiced?L('If this exact sample has been completed and reviewed, compare its evidence with the still-unverified route requirements; do not change the original preference answers.','若这项作品确已完成并经过复核，请将其证据与尚未验证的职业要求逐项比较；不要改写原始偏好回答。','Jika sampel ini benar-benar siap dan disemak, banding buktinya dengan keperluan laluan yang belum disahkan; jangan ubah jawapan asal.'):current.scaffold;
-  current.ai=model.p0.actions.find(a=>a.routeId==='cross-cutting').task;
-  next.ai=checked?L('If an AI-assisted attempt and independent check were actually documented, review the rejected suggestion and record the next unresolved question.','若 AI 辅助尝试与独立核查确实已有记录，请复盘被拒绝的建议并记下仍待解决的问题。','Jika percubaan bantuan AI dan semakan bebas benar-benar direkod, semak cadangan ditolak dan catat soalan seterusnya.'):current.ai;
- }
- const row=(label,key)=>`<label>${label}<select data-v2-control="${key}"><option value="baseline" ${assumed[key]!=='practiced'?'selected':''}>${L('Keep current evidence','保持当前证据','Kekalkan bukti semasa')}</option><option value="practiced" ${assumed[key]==='practiced'?'selected':''}>${L('Assume a completed, reviewed practice sample','假设完成并复核了实践样本','Andaikan sampel latihan siap dan disemak')}</option></select></label>`;
- return `<section class="whatif" data-v2-simulator><h2>What If</h2><p>${L('Change explicit planning assumptions. Completed practice is hypothetical, not a new answer, earned qualification, career score or hiring forecast.','这里只改变明确的规划假设。完成实践仅是假设，不写入原答案，不代表资格、职业分数或就业预测。','Ubah andaian perancangan jelas. Latihan siap adalah hipotesis, bukan jawapan baharu, kelayakan, skor kerjaya atau ramalan pekerjaan.')}</p><div class="sim-controls">${row(L('Skill practice evidence','技能实践证据','Bukti latihan kemahiran'),'skillEvidence')}${row(L('AI verification practice','AI 核查实践','Latihan pengesahan AI'),'aiPractice')}</div><div class="ex-two-grid">${card(L('Current next step','当前下一步','Langkah semasa'),`<p>${e(current.scaffold)}</p><p>${e(current.ai)}</p>`)}${card(L('Conditional next step','条件变化后的下一步','Langkah bersyarat'),`<p>${e(next.scaffold)}</p><p>${e(next.ai)}</p>`)}</div><p>${L('If the recommendation stays the same, your reported habits already support that practice format; no additional improvement is inferred. Career context and original SDG matches remain unchanged.','若建议不变，表示当前自述习惯已支持这种实践形式，不据此虚构额外提升。职业背景与原始 SDG 匹配保持不变。','Jika cadangan tidak berubah, amalan dilaporkan sudah menyokong format itu; tiada peningkatan tambahan disimpulkan. Konteks kerjaya dan padanan SDG asal kekal.')}</p><button class="text-button" data-action="v2-reset">${L('Reset assumptions','重置假设','Tetapkan semula andaian')}</button></section>`;
-}
-function renderCurrentSection(model,page,options){
- const signals=model.signals,next=nextPractice(model,options),role=model.contexts.editorial[0],project=model.report.project;
- const title=bank.tracks.find(t=>t.id===model.currentAnswers.trackId).label[language];
- const header=`<div class="report-head"><span class="kicker">${e(title)}</span><h1>${e(t(labels[page]))}</h1></div>`;
- const missing=signals.items.filter(i=>i.state!=='self-report');
- const missingNote=missing.length?`<p class="ex-local-notice">${L('Responses that cannot support an interpretation','无法支持解释的回答','Jawapan yang tidak menyokong tafsiran')}: ${missing.map(i=>`${e(i.id)} (${i.state==='unanswered'?L('unanswered','未回答','belum dijawab'):L('not applicable / cannot assess','不适用／无法判断','tidak berkenaan / tidak dapat dinilai')})`).join(' · ')}</p>`:'';
- let body='';
- if(page==='overview')body=`<section class="profile-summary"><p>${L('Answered questions','已回答题目','Soalan dijawab')}: ${signals.answeredCount}/${signals.totalQuestions} · ${L('Substantive self-reports','可解释的自述回答','Laporan kendiri bermakna')}: ${signals.substantiveCount} · ${L('Dimensions with at least one substantive answer','至少有一项可解释回答的维度','Dimensi dengan sekurang-kurangnya satu jawapan bermakna')}: ${signals.coveredDimensions}/${signals.totalDimensions}</p><p>${L('These are response and coverage counts, not ability scores. Objective proficiency, licences and complete project history were not measured.','以上是回答与维度覆盖数量，不是能力分数。客观熟练度、职业执照与完整项目经历没有被测量。','Ini bilangan jawapan dan liputan dimensi, bukan skor kebolehan. Kemahiran objektif, lesen dan sejarah projek lengkap tidak diukur.')}</p></section>${missingNote}<div class="local-dimensions">${signalCards(model,['interest','workstyle','experience','exploration','adaptability'])}</div>`;
- if(page==='ai')body=`<div class="task-grid">${signalCards(model,['ai_practice','ai_verification'])}</div>${model.background.aiPurposes?.includes('none')?`<p>${L('Your background choices explicitly state no AI use. This describes AI use only, not an absence of professional experience.','背景选择明确报告尚未使用 AI；这只涉及 AI 使用，不代表没有专业经历。','Pilihan latar menyatakan belum menggunakan AI; ini bukan ketiadaan pengalaman profesional.')}${signals.items.some(i=>i.construct==='ai_practice'&&i.stance==='agreement')?L(' This conflicts with an agreement response about AI practice; review the answers before drawing a conclusion.',' 这与 AI 实践陈述的同意回答存在冲突，请先核对答案。',' Ini bercanggah dengan persetujuan tentang latihan AI; semak jawapan dahulu.'):''}</p>`:''}${card(L('AI task assistance · editorial scenario','AI 任务辅助 · 团队情景示例','Bantuan tugas AI · senario editorial'),`<p>${e(pick(role?.ai))}</p><p>${e(pick(role?.human))}</p><small>${L('Source: existing team career catalog. This is a workflow example, not a forecast of job replacement.','来源：现有团队职业资料库。这是工作流程示例，不是岗位替代预测。','Sumber: katalog kerjaya pasukan sedia ada. Ini contoh aliran kerja, bukan ramalan penggantian kerja.')}</small>`)}<div class="ex-two-grid">${card(L('Task reorganization','任务重组','Penyusunan semula tugas'),`<p>${e(next.ai)}</p>`)}${card(L('A responsibility to explore','可进一步探索的责任','Tanggungjawab untuk diterokai'),`<p>${L('Try owning validation, exception handling and documenting when an AI result should be rejected in the selected task. This is a proposed practice opportunity, not evidence of hiring growth.','在所选任务中尝试负责验证、异常处理，并记录何时应拒绝 AI 输出。这是实践机会建议，不是招聘增长证据。','Cuba mengendalikan pengesahan, pengecualian dan dokumentasi bila output AI perlu ditolak. Ini cadangan latihan, bukan bukti pertumbuhan pengambilan.')}</p>`)}</div>`;
- if(['careers','map','compare'].includes(page))body=`<p>${L('Explore these direction-specific contexts side by side. They are not ranked or scored for personal suitability. Source skill requirements are not measured personal skill gaps.','可并列比较以下方向相关背景，不按个人适合度排序或计分。来源中的技能要求不等于已测量的个人能力缺口。','Banding konteks khusus arah ini. Ia tidak diberi kedudukan atau skor kesesuaian. Keperluan kemahiran sumber bukan jurang kemahiran peribadi yang diukur.')}</p>${page==='careers'||(page==='compare'&&model.contexts.candidates.length===1)?`<div class="paths-grid">${occupationalCards(model)}</div>`:''}${page==='map'?renderCareerStarMap(model.report,options.path||'A'):page==='compare'&&model.contexts.candidates.length>1?renderCareerComparison(model.report,options.path||'A',(options.path||'A')==='A'?'B':'A'):''}${page==='careers'?renderWhatIf(model,options):''}`;
- if(page==='tree')body=`<p>${L('Skills to investigate, not verified strengths or deficits. Use a work sample to check each requirement.','以下是需了解的技能，不是已验证优势或不足；请通过工作样本逐项核验。','Kemahiran untuk diterokai, bukan kekuatan atau kekurangan disahkan. Semak setiap keperluan melalui sampel kerja.')}</p><div class="local-dimensions">${occupationalCards(model)}</div>${renderSkillDNA(model.report,options.path||'A',options.skill||'')}${signalCards(model,['experience','workstyle'])}`;
- if(page==='future')body=card(L('AI changes: evidence boundaries','AI 变化：证据边界','Perubahan AI: batasan bukti'),`<p>${L('The current dataset does not provide comparable AI adoption or replacement forecasts by year. Use the cited tasks and your practice record as review checkpoints; no invented trend line is shown.','当前数据集不提供可比较的逐年 AI 采用率或替代预测。请用有来源的任务与实践记录作为复盘依据，不展示虚构趋势线。','Set data semasa tidak menyediakan ramalan penggunaan atau penggantian AI mengikut tahun yang setanding. Gunakan tugas bersumber dan rekod latihan untuk semakan; tiada garis trend rekaan.')}</p><p>${e(pick(role?.ai))}</p><p>${e(next.ai)}</p>`);
- if(page==='plan')body=`${card(pick(project.title),`<p>${e(pick(project.task))}</p><p>${e(next.scaffold)}</p><p>${e(next.ai)}</p><small>${L('Basis: selected direction; self-reported experience and AI verification answers. The scale is not converted to proficiency.','依据：所选方向、实际经历与 AI 核查题的自述。程度值不换算为熟练度。','Asas: arah dipilih serta jawapan pengalaman dan pengesahan AI kendiri. Skala tidak ditukar kepada kemahiran.')}: ${[...next.experience,...next.verification].map(i=>e(i.id)).join(', ')}</small>`)}<div class="week-list">${card(L('1 · Define the sample','1 · 确定样本','1 · Tentukan sampel'),`<p>${e(pick(project.task))}</p>`)}${card(L('2 · Keep a baseline','2 · 保留基线','2 · Simpan garis dasar'),`<p>${e(next.scaffold)}</p>`)}${card(L('3 · Verify and decide','3 · 核查并决定','3 · Sahkan dan putuskan'),`<p>${e(next.ai)}</p><p>${L('Retain one result, one failure, a correction and the next question to investigate.','保留一份成果、一处失败、一次修正和下一个待核实问题。','Simpan satu hasil, satu kegagalan, pembetulan dan soalan seterusnya.')}</p>`)}</div>${renderWhatIf(model,options)}`;
- if(page==='overview')body=renderP0Overview(model)+missingNote;
- if(page==='ai')body=renderP0AI(model);
- if(page==='careers')body=renderP0Careers(model)+renderWhatIf(model,options);
- if(page==='compare')body=renderP0Careers(model)+(model.contexts.candidates.length>1?renderCareerComparison(model.report,options.path||'A',(options.path||'A')==='A'?'B':'A'):'');
- if(page==='plan')body=renderP0Plan(model)+renderWhatIf(model,options);
- return `<section class="explorer-page v2-results">${header}${Object.values(options.assumptions||{}).includes('practiced')?`<p class="ex-local-notice">${L('Conditional practice plan: assumes completed practice; original answers are unchanged.','条件实践计划：假设已经完成相关练习；原始回答未改变。','Pelan latihan bersyarat: mengandaikan latihan siap; jawapan asal tidak berubah.')}</p>`:''}${body}${renderSourceStatus(model)}</section>`;
-}
-
-function traceLine(claim){return `<small>${L('Evidence','依据','Bukti')}: ${claim.evidence.map(x=>`${e(x.questionId)}`).join(' · ')} · ${claim.evidenceLevel==='not-measured'?L('not measured','未测量','belum diukur'):L('self-report','自述','laporan kendiri')}</small>`;}
-const p0Label=kind=>({'integrated-evidence':L('Combined evidence','综合证据','Bukti gabungan'),interest:L('Interest','兴趣','Minat'),workstyle:L('Work style','工作方式','Cara bekerja'),experience:L('Reported experience','自述经历','Pengalaman dilaporkan'),'ai-practice':L('AI practice','AI 使用','Amalan AI'),'ai-verification':L('AI verification','AI 核验','Pengesahan AI'),exploration:L('Exploration','探索意愿','Penerokaan'),'interest-experience-gap':L('Interest and experience','兴趣与经历','Minat dan pengalaman'),'experience-interest-tension':L('Experience and interest','经历与兴趣','Pengalaman dan minat'),'ai-verification-gap':L('AI use and verification','AI 使用与核验','Penggunaan dan pengesahan AI'),'task-preference-tension':L('Task preference','任务偏好','Keutamaan tugas'),'reported-method-combination':L('Reported practice and method','自述实践与方法','Amalan dan kaedah dilaporkan')})[kind]||kind;
-function renderP0Overview(model){
- const p=model.p0;
- return `<section class="profile-summary"><h2>${L('Your integrated profile','综合个人画像','Profil bersepadu anda')}</h2><p>${model.signals.answeredCount}/${model.signals.totalQuestions} · ${L('These are exploratory interpretations of your own answers, not measured ability or career-success probabilities.','以下是基于自述回答的探索性解释，并非已测量能力或职业成功概率。','Ini tafsiran penerokaan jawapan anda, bukan kebolehan diukur atau kebarangkalian kejayaan kerjaya.')}</p></section><div class="local-dimensions">${p.profile.map(c=>card(e(p0Label(c.kind)),`<p>${e(c.text)}</p>${traceLine(c)}<details><summary>${L('View evidence and interpretation','查看证据与推断','Lihat bukti dan tafsiran')}</summary><p>${c.evidence.map(x=>e(x.questionId)+': '+e(typeof x.value==='object'?JSON.stringify(x.value):String(x.value??L('Unknown','未知','Tidak diketahui')))).join(' · ')}</p><small>${e(c.rule||c.kind)}</small></details>`)).join('')}</div>${p.conflicts.map(c=>`<p class="ex-local-notice">${e(c.text)} ${traceLine(c)}</p>`).join('')}<h2>${L('Routes worth testing','值得验证的路线','Laluan untuk diuji')}</h2>${renderP0Careers(model)}`;
-}
-function renderP0Careers(model){
- const tie=model.p0.rankingStatus==='inconclusive'?`<p class="ex-local-notice">${L('The evidence does not justify putting one route first. Both are priority 1 for exploration; the second card is a display position, not a lower rank.','现有证据不足以让某条路线领先；两条路线均为探索优先级 1。第二张卡片只是显示位置，不代表排名较低。','Bukti belum cukup untuk mendahulukan satu laluan. Kedua-duanya keutamaan penerokaan 1; kad kedua hanya kedudukan paparan.')}</p>`:'';
- return renderIntelligence(model.unified,language)+`<p>${L('Exploration priority compares self-reported task preferences with cited occupational tasks. It is not measured competence, hiring probability or a validated fit score.','探索优先级比较自述任务偏好与有来源的职业任务；它不是已测能力、招聘概率或经过验证的适合度分数。','Keutamaan penerokaan membanding keutamaan tugas kendiri dengan tugas pekerjaan bersumber; ia bukan kebolehan diukur, kebarangkalian pengambilan atau skor kesesuaian sah.')}</p>${tie}<div class="paths-grid">${model.p0.paths.map(p=>card(`${p.priority}. ${p.title}`,`<p>${e(p.why.text)}</p>${traceLine(p.why)}<h4>${L('Tasks and requirements','任务与要求','Tugas dan keperluan')}</h4><p lang="en">${e(p.tasks.join(' · '))}</p><p lang="en">${e(p.requirements.join(' · '))}</p><p>${e(p.unmeasured)}</p><h4>${L('Next evidence','下一项证据','Bukti seterusnya')}</h4><p>${e(p.action.task)}</p><p>${e(p.action.check)}</p><small>${p.officialMapping?L('Reviewed occupational source; task-to-answer link is a product inference','已审阅职业来源；任务与答案关联属于产品推断','Sumber pekerjaan disemak; kaitan tugas-jawapan ialah inferens produk'):L('Team editorial catalog; official route mapping unavailable','团队职业目录；暂无已审阅的官方路线映射','Katalog editorial pasukan; pemetaan rasmi laluan tiada')}${(p.source.relatedSourceIds||[p.source.id]).map(id=>{const s=model.report.evidence.sources[id];return s?.url?` · <a href="${e(s.url)}" target="_blank" rel="noopener noreferrer">${e(id)} ↗</a>`:'';}).join('')}${p.source.mappingCaveat?` · ${e(p.source.mappingCaveat)}`:''}</small>`)).join('')}</div>`;
-}
-function renderP0AI(model){
- return `<div class="local-dimensions">${model.p0.profile.filter(c=>['ai-practice','ai-verification'].includes(c.kind)).map(c=>card(e(p0Label(c.kind)),`<p>${e(c.text)}</p>${traceLine(c)}`)).join('')}</div><p>${L('Task analysis below is a rule-based scenario using the cited occupational record where available, otherwise the team catalog. It is not an automation rate, hiring forecast or verified personal skill.','以下任务分析在有已审阅职业记录时使用该来源，否则使用团队目录构建规则情景；它不是自动化率、招聘预测或已验证的个人技能。','Analisis tugas ini ialah senario berasaskan peraturan menggunakan rekod pekerjaan disemak jika ada, jika tidak katalog pasukan. Ia bukan kadar automasi, ramalan pekerjaan atau kemahiran peribadi disahkan.')}</p><div class="paths-grid">${model.p0.paths.map(p=>card(p.title,`<h4>${L('AI may assist','AI 可能辅助','AI boleh membantu')}</h4><p>${e(p.aiTask)}</p><h4>${L('Human judgement remains','仍需人工判断','Pertimbangan manusia kekal')}</h4><p>${e(p.humanTask)}</p><small>${p.officialMapping?e(p.source.id):L('Editorial task scenario','团队任务情景','Senario tugas editorial')}</small>`)).join('')}</div>`;
-}
-function renderP0Plan(model){
- const contextual=model.startingPointContext?renderStartingFocus(model.startingPointContext,language)+`<div class="paths-grid">${model.p0.paths.map(path=>{const prep=contextualPreparation(model.startingPointContext,model.startingPoint,path,language);return card(path.title,`<div class="starting-context-task"><p>${e(prep.task)}</p><p>${e(prep.check)}</p><small>Q02 · Q05 · Q06 · Q07 · Q08</small></div>`);}).join('')}</div>`:'';
- return contextual+ `<p>${L('Now: establish a baseline. Next 30 days: collect and review a route-specific sample. Next 90 days: compare repeated evidence before committing. These are optional review windows, not completion forecasts; no time budget was supplied.','现在：建立基线。未来 30 天：收集并复核路线专属样本。未来 90 天：比较重复实践证据，再决定长期投入。这些是可选复盘窗口，不是完成预测；你尚未提供时间预算。','Sekarang: bina garis dasar. Dalam 30 hari: kumpul dan semak sampel khusus laluan. Dalam 90 hari: banding bukti berulang sebelum komitmen. Ini tempoh semakan pilihan, bukan ramalan siap; bajet masa belum diberikan.')}</p>${model.companions.plan.weeklyHours!=null&&model.background.omitLearningPreferences?`<div class="time-token"><strong>${e(String(model.companions.plan.weeklyHours))}</strong><span>${e(t('hours / week'))}</span></div>`:''}<p>${L('Each route has a different artifact and quality check. Completed work can add evidence; it does not automatically change your original answers.','两条路线分别有不同的作品和验收标准。完成作品可增加证据，但不会自动改写原始回答。','Setiap laluan mempunyai hasil dan semakan kualiti berbeza. Kerja siap menambah bukti tetapi tidak mengubah jawapan asal secara automatik.')}</p><div class="week-list">${model.p0.actions.map(a=>card(a.routeId==='cross-cutting'?L('AI collaboration check','AI 协作核验','Semakan kerjasama AI'):model.p0.paths.find(p=>p.id===a.routeId)?.title||a.routeId,`<p><strong>${L('Why','原因','Sebab')}:</strong> ${e(a.why)}</p><p><strong>${L('Do','完成','Buat')}:</strong> ${e(a.task)}</p><p><strong>${L('Quality check','验收','Semakan kualiti')}:</strong> ${e(a.check)}</p><p><strong>${L('Evidence gained','新增证据','Bukti diperoleh')}:</strong> ${e(a.evidence)}</p><small>${L('Basis','依据','Asas')}: ${a.evidenceQuestions.map(e).join(' · ')||L('role requirements','职业要求','keperluan peranan')}</small>`)).join('')}</div>`;
-}
-function attachContextPaths(report,contexts,signals,locale){
- const local=(en,zh,ms)=>({en,'zh-CN':zh,ms})[locale]||en;
- const why=local('Context linked to your selected direction, not an inferred fit or rank.','依据你主动选择的方向关联职业背景，不推断适合度或排名。','Konteks berkaitan arah dipilih, bukan kesesuaian atau kedudukan yang disimpulkan.');
- const verification=local('Use a work sample to check this requirement; it is not a measured skill gap.','用工作样本核验此项要求；这不是已测量的个人能力缺口。','Semak keperluan ini melalui sampel kerja; bukan jurang kemahiran yang diukur.');
- report.profile.background=bank.tracks.find(t=>t.id===report.currentDirection).label[locale];
- report.profile.experience=local('Unverified self-report; see the current-answer evidence.','未经验证的自述，详见当前回答依据。','Laporan kendiri belum disahkan; lihat bukti jawapan semasa.');
- report.ranking=contexts.candidates.map(c=>({id:c.id,title:c.title,score:null,coverage:null,terms:[],source_id:c.sourceId,url:c.url||'',facts:contexts.official.filter(r=>(c.sourceIds||[c.sourceId]).includes(r.source+':'+r.id)),tasks:c.tasks.map(t=>t.label),skills:[...new Set(c.skills.map(t=>t.label))],matched_skills:[],gaps:[],growth:'',period:null}));
- report.analysis.paths=report.ranking.map((r,index)=>({kind:String.fromCharCode(65+index),role_id:r.id,
-  why:{text:why,source_ids:r.facts.length?[r.source_id]:[]},transferable:[],
-  gaps:r.skills.slice(0,5).map(skill=>({skill,advice:{text:verification,source_ids:r.facts.length?[r.source_id]:[]}})),
-  next_step:{text:pick(report.project.task,locale),source_ids:[]},challenge:{text:local('Check role-specific prerequisites and local requirements; the questionnaire did not verify eligibility.','需核实具体岗位先修与当地要求；问卷未验证准入资格。','Semak prasyarat jawatan dan keperluan tempatan; soal selidik tidak mengesahkan kelayakan.'),source_ids:[]},sdg:null}));
- report.currentEvidence=signals;
-}
-
-function attachCurrentEvidence(report,signals,contexts,assumptions,locale){
- const local=(en,zh,ms)=>({en,'zh-CN':zh,ms})[locale]||en;
- const claim=(text,ids=[])=>({text,source_ids:ids});
- // Export the same current evidence as the visible report, not empty legacy V2 assessments.
- report.analysis.summary=claim(local(
-  `${signals.answeredCount}/${signals.totalQuestions} answered; ${signals.substantiveCount} substantive self-reports across ${signals.coveredDimensions}/${signals.totalDimensions} dimensions. No verified ability or suitability score is inferred.`,
-  `已回答 ${signals.answeredCount}/${signals.totalQuestions} 题；${signals.substantiveCount} 条可解释自述，覆盖 ${signals.coveredDimensions}/${signals.totalDimensions} 个维度。不推断已验证能力或适合度分数。`,
-  `${signals.answeredCount}/${signals.totalQuestions} dijawab; ${signals.substantiveCount} laporan kendiri bermakna meliputi ${signals.coveredDimensions}/${signals.totalDimensions} dimensi. Tiada skor kebolehan disahkan atau kesesuaian disimpulkan.`));
- report.analysis.capabilities=signals.dimensions.map(d=>({dimension:d.id,label:d.label,
-  assessment:claim(d.items.filter(i=>i.state==='self-report').map(i=>`${i.id}: ${i.statement} — ${i.response} (${i.value}/7)`).join(' · ')||local('Not assessed','当前未评估','Belum dinilai')),
-  evidence:d.items.map(i=>({...i.source,state:i.state,value:i.value})),verified:false}));
- report.analysis.tasks=contexts.candidates.flatMap(c=>c.tasks.slice(0,3).map(task=>({input_quote:task.label,category:'unclassified',
-  assessment:claim(c.sourceKind==='official-context'?local('Occupational task from the linked source; AI automation impact is not measured.','有来源的职业任务；AI 自动化影响未被测量。','Tugas pekerjaan daripada sumber dipautkan; impak automasi AI tidak diukur.'):
-   local('Existing editorial practice task; not an official occupational requirement or AI forecast.','现有团队实践任务，不是官方职业要求或 AI 预测。','Tugas latihan editorial sedia ada; bukan syarat pekerjaan rasmi atau ramalan AI.'),c.sourceKind==='official-context'?[c.sourceId]:[])})));
- report.practiceEvidence={
-  experienceQuestionIds:signals.items.filter(i=>i.construct==='experience'&&i.state==='self-report').map(i=>i.id),
-  verificationQuestionIds:signals.items.filter(i=>i.construct==='ai_verification'&&i.state==='self-report').map(i=>i.id),
-  reportedExperienceEndorsed:signals.items.some(i=>i.construct==='experience'&&i.stance==='agreement'),
-  reportedVerificationEndorsed:signals.items.some(i=>i.construct==='ai_verification'&&i.stance==='agreement'),
-  hypotheticalPractice:{skillEvidence:assumptions?.skillEvidence==='practiced',aiPractice:assumptions?.aiPractice==='practiced'},
-  notProficiencyScore:true};
- report.legacyV2InputStatus={categoricalAnswersAvailable:false,reason:'current-questionnaire-has-different-semantics'};
+ const model=buildCompatibleReport(state,language,options.assumptions);
+ const {page,section}=pageTarget(state.page,options.section??state.section);
+ const nav=pageIds.map((key,index)=>`<button type="button" data-action="page:${key}" class="${page===key?'active':''}" ${page===key?'aria-current="page"':''}><span>0${index+1}</span>${e(L(...pageLabels[key]))} ↗</button>`).join('');
+ let content='';
+ if(page==='profile')content=renderProfilePage(model,options);
+ if(page==='capability')content=renderCapabilityPage(model,options);
+ if(page==='galaxy')content=renderGalaxyPage(model,options,section);
+ if(page==='whatif')content=renderWhatIfPage(model,options);
+ if(page==='impact')content=renderImpactPage(model,options,state);
+ const track=bank.tracks.find(item=>item.id===state.v3?.trackId);
+ return renderHeader({report:model.companions})+`<main class="report-page shell ex-report" data-compatible-analysis><aside class="report-sidebar"><div class="sidebar-sticky"><h2>${e(track?track.label[language]:'')}</h2><nav class="report-nav" aria-label="${e(t('Local report navigation'))}">${nav}</nav><button class="text-button" data-action="edit">${e(t('Edit your answers ↗'))}</button></div></aside><div class="report-main">${content}${reportContext(model)}<div class="ex-report-foot"><button class="button secondary" data-action="export">${e(t('Export my report'))}</button><button class="text-button" data-action="print">${e(t('Print / save PDF'))}</button><button class="text-button" data-action="reset">${e(t('Start over'))}</button></div></div></main>`+renderFooter();
 }

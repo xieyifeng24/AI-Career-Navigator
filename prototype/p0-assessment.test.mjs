@@ -93,8 +93,8 @@ test('missing occupational records degrade to labeled team context without inven
  assert.ok(p.paths.every(route=>!route.officialMapping&&route.priority===1));
 });
 test('SW What If reads the same route action while leaving original results and SDG independent',()=>{
- setLanguage('en');const state={...stateFor(personas.A),page:'careers'},original=buildCompatibleReport(state);
- const before=renderCompatibleReport(state),after=renderCompatibleReport(state,{assumptions:{skillEvidence:'practiced',aiPractice:'practiced'}});
+ setLanguage('en');const state={...stateFor(personas.A),page:'galaxy'},original=buildCompatibleReport(state);
+ const before=renderCompatibleReport(state),after=renderCompatibleReport({...state,page:'whatif'},{assumptions:{skillEvidence:'practiced',aiPractice:'practiced'}});
  assert.ok(before.includes(original.p0.paths[0].action.task));
  assert.match(after,/Calculated differences/);
  assert.equal(buildCompatibleReport(state,'en',{skillEvidence:'practiced'}).unified.routes[0].dimensions.experience.status,'hypothetical');

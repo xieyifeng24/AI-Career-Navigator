@@ -38,7 +38,7 @@ test('every direction and locale renders all V2 pages and unchanged SDG without 
    assert.doesNotMatch(html,/undefined|NaN|data-scenario-field|All outcomes &amp; rules/);
    assert.match(html,/data-compatible-analysis/);
    assert.ok(html.includes('&lt;script&gt;fictional note&lt;/script&gt;'));
-   if(page==='sdg')assert.ok(html.includes(renderGoals({...state,page,report:model.companions})));
+   if(page==='impact')assert.ok(html.includes(renderGoals({...state,page,report:model.companions})));
   }
   assert.deepEqual(state,before);
  }
@@ -110,7 +110,7 @@ test('editing real answers recomputes cited advice without changing score rules 
  assert.deepEqual(low,before);
 });
 test('What If uses explicit assumptions and never changes answers, career scores or original SDG',()=>{
- setLanguage('en');const state={...complete('DATA',1),page:'careers'},saved=structuredClone(state);
+ setLanguage('en');const state={...complete('DATA',1),page:'whatif'},saved=structuredClone(state);
  const original=buildCompatibleReport(state),assumed=buildCompatibleReport(state,'en',{skillEvidence:'practiced',aiPractice:'practiced'});
  assert.deepEqual(original.signals,assumed.signals);assert.deepEqual(original.companions,assumed.companions);
  const baseline=renderCompatibleReport(state),scenario=renderCompatibleReport(state,{assumptions:{skillEvidence:'practiced',aiPractice:'practiced'}});
@@ -151,8 +151,8 @@ test('controller completes intake review, edits answers, navigates SDG, isolates
   dispose=mountCombined({root,onHome(){}});
   assert.equal(JSON.parse(values.get(STORAGE_KEY)).phase,'report');assert.match(root.innerHTML,/data-compatible-analysis/);assert.doesNotMatch(root.innerHTML,/0\/12/);
   const original=JSON.parse(values.get(STORAGE_KEY)).v3;
-  click({combinedAction:'page:paths'});assert.equal(JSON.parse(values.get(STORAGE_KEY)).page,'compare');
-  click({combinedAction:'page:plan'});
+  click({combinedAction:'page:paths'});assert.equal(JSON.parse(values.get(STORAGE_KEY)).page,'galaxy');assert.equal(JSON.parse(values.get(STORAGE_KEY)).section,'compare');
+  click({combinedAction:'page:plan'});assert.equal(JSON.parse(values.get(STORAGE_KEY)).page,'whatif');
   listeners.change({target:{dataset:{v2Control:'skillEvidence'},value:'practiced'}});
   assert.match(root.innerHTML,/Conditional practice plan/);
   assert.deepEqual(JSON.parse(values.get(STORAGE_KEY)).v3,original);

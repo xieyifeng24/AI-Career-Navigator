@@ -1,4 +1,5 @@
 import {newStartingPoint,restoreStartingPoint,startingPointBase} from './starting-point.js';
+import {canonicalPage,canonicalGalaxySection,legacyPageSections} from './page-map.js';
 // Only compose existing engines. V3 never supplies inputs to PR8's career scoring.
 import {catalog,validWeeklyHours,backgroundSteps,blankProfile,validateProfile,generateOfflineReport,updateChoice} from '../explorer-engine.js';
 import {deriveResult,scenarioResult} from './results.js';
@@ -7,7 +8,7 @@ export const STORAGE_KEY='career-combined-pr8-pr9-v1';
 export const VERSION='combined-pr8-pr9-1';
 export function withoutPersonalityInterests(profile){return {...profile,omitPersonalityInterests:true,social:'',planning:'',decision:'',interests:[],nationality:'undisclosed',omitLearningPreferences:true,learningAbility:'',learningStyles:[],mindsets:[],weeklyTime:'',exactWeeklyHours:validWeeklyHours(profile.exactWeeklyHours)?profile.exactWeeklyHours:null};}
 export function fresh(language='en') {
- return {version:VERSION,phase:'background',step:0,profile:withoutPersonalityInterests(blankProfile()),startingPoint:newStartingPoint(),v3:changeLanguage(newSession(),language),page:'overview',focus:null,goal:9,allCareers:false,notes:'',scenarioPatch:{},assumedSkills:[],selectedSkill:''};
+ return {version:VERSION,phase:'background',step:0,profile:withoutPersonalityInterests(blankProfile()),startingPoint:newStartingPoint(),v3:changeLanguage(newSession(),language),page:'profile',section:'map',focus:null,goal:9,allCareers:false,notes:'',scenarioPatch:{},assumedSkills:[],selectedSkill:''};
 }
 export function updateBackground(state,key,value,checked=true) {
  const profile=structuredClone(state.profile);
@@ -33,7 +34,7 @@ export function reportFor(state) {
 export function completeAssessment(state){
  if(state.v3.screen!=='review'||questionsFor(state.v3.trackId).some(q=>!Object.hasOwn(state.v3.answers,q.id)||(state.v3.answers[q.id]!==null&&(!Number.isInteger(state.v3.answers[q.id])||state.v3.answers[q.id]<1||state.v3.answers[q.id]>7))))throw Error('INCOMPLETE_V3');
  const {base}=reportFor(state);
- return {...state,phase:'report',page:'overview',focus:base.ranking[0]?.id||null,goal:base.goals[0]?.id||9};
+ return {...state,phase:'report',page:'profile',section:'map',focus:base.ranking[0]?.id||null,goal:base.goals[0]?.id||9};
 }
 export function restore(raw,language='en') {
  try {
@@ -50,7 +51,7 @@ export function restore(raw,language='en') {
   if(JSON.stringify(v3)!==JSON.stringify(state.v3))return fresh(language);
   const startingPoint=state.startingPoint?restoreStartingPoint(state.startingPoint):null;
   if(state.phase!=='background'&&!startingPoint?.completed&&Object.keys(validateProfile(state.profile)).length)return fresh(language);
-  const clean={...fresh(v3.language),phase:state.phase,step:state.step,startingPoint,profile:structuredClone(state.profile),v3,page:['overview','ai','careers','plan','sdg','catalog','map','tree','whatif'].includes(state.page)?state.page:'overview',focus:catalog.careers.some(c=>c.id===state.focus)?state.focus:null,goal:catalog.goals.some(g=>g.id===state.goal)?state.goal:9,allCareers:state.allCareers===true};
+  const clean={...fresh(v3.language),phase:state.phase,step:state.step,startingPoint,profile:structuredClone(state.profile),v3,page:canonicalPage(state.page),section:legacyPageSections[state.page]||canonicalGalaxySection(state.section),focus:catalog.careers.some(c=>c.id===state.focus)?state.focus:null,goal:catalog.goals.some(g=>g.id===state.goal)?state.goal:9,allCareers:state.allCareers===true};
   clean.notes=typeof state.notes==='string'?state.notes.slice(0,1500):'';
   clean.selectedSkill=typeof state.selectedSkill==='string'?state.selectedSkill:'';
   if(clean.phase==='report'){

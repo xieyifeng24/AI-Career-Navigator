@@ -1,7 +1,8 @@
 import {newStartingPoint,updateStartingPoint,advanceStartingPoint,previousStartingPoint,preferredRegion,startingQuestions} from './starting-point.js';
 import {renderStartingPoint,ui as startingUI} from './starting-point-view.js';
 import {personalAIContext} from './starting-point-analysis.js';
-import {buildCompatibleReport,renderCompatibleReport,reportPages as compatiblePages} from './v2-report.js';
+import {buildCompatibleReport,renderCompatibleReport} from './v2-report.js';
+import {pageTarget} from './page-map.js';
 import {language,setLanguage,t,localize} from '../i18n.js';
 import {renderHeader,renderFooter,renderForm,escapeHTML} from '../explorer-views.js';
 import {catalog,validWeeklyHours,backgroundSteps} from '../explorer-engine.js';
@@ -69,7 +70,7 @@ export function mountCombined({root,onHome}) {
   if(state.phase==='report'&&target.dataset.v2Control){
    const key=target.dataset.v2Control;
    aiRequestSerial++;v2Options.ai={status:'idle'};
-   v2Options.assumptions={...v2Options.assumptions,[key]:key==='hours'?Number(target.value):target.value};
+   v2Options.assumptions={...v2Options.assumptions,[key]:['hours','planHours','planHorizon'].includes(key)?Number(target.value):target.value};
    if(key==='targetMarket')v2Options.region=['MY','US','GLOBAL'].includes(target.value)?target.value:preferredRegion(state.startingPoint);
    render();root.querySelector(`[data-v2-control="${key}"]`)?.focus();return;
   }
@@ -118,7 +119,8 @@ export function mountCombined({root,onHome}) {
    if(action.startsWith('skill-select:')){try{v2Options.skill=decodeURIComponent(action.slice(13));}catch{}render();return;}
    if(action.startsWith('time-year:')){const year=action.slice(10);if(['2026','2028','2030','2035'].includes(year))v2Options.year=year;render();return;}
    if(action.startsWith('time-scenario:')){const value=action.slice(14);if(['slower','moderate','fast'].includes(value))v2Options.futureScenario=value;render();return;}
-   if(action.startsWith('page:')){const page=action.slice(5)==='paths'?'compare':action.slice(5);if(compatiblePages.includes(page)){state={...state,page};render(true);}return;}
+   if(action.startsWith('page:')){const target=pageTarget(action.slice(5));state={...state,page:target.page,section:target.section};render(true);return;}
+   if(action.startsWith('section:')){state={...state,page:'galaxy',section:action.slice(8)};render(true);return;}
   }
   if(action==='home'){onHome();return;}
   if(action==='start'||action==='edit'||action==='edit-background'){v2Options={path:'A',assumptions:{},region:'MY',aiConsent:false,ai:{status:'idle'}};state={...state,phase:'background',step:0,startingPoint:state.startingPoint?{...state.startingPoint,screen:'question',index:0,completed:false}:newStartingPoint()};render(true);return;}
@@ -174,7 +176,7 @@ export function mountCombined({root,onHome}) {
    }else{state=updateBackground(state,'exactWeeklyHours',null);save(storage,state);}
    return;
   }
-if(event.target.dataset.v2Control==='hours'){change(event);return;}if(event.target.id==='combined-notes'){state={...state,notes:event.target.value.slice(0,1500)};save(storage,state);}}
+if(['hours','planHours','planHorizon'].includes(event.target.dataset.v2Control)){change(event);return;}if(event.target.id==='combined-notes'){state={...state,notes:event.target.value.slice(0,1500)};save(storage,state);}}
  root.addEventListener('input',input);
  root.addEventListener('change',change);root.addEventListener('submit',submit);root.addEventListener('click',click);
  render();

@@ -128,7 +128,7 @@ test('current questionnaire has seven choices, desired-direction title and no re
    state.v3=advance(selectAnswer(state.v3,q.id,index%7+1));
   }
   const completed=completeAssessment(state);
-  assert.equal(completed.phase,'report');assert.equal(completed.page,'overview');
+  assert.equal(completed.phase,'report');assert.equal(completed.page,'profile');
   const unknown={...state,v3:{...state.v3,answers:{...state.v3.answers,G01:null}}};
   assert.equal(completeAssessment(unknown).phase,'report'); // V4 retains independent unknown state.
  }
