@@ -1,0 +1,90 @@
+.dna-workspace{display:grid;grid-template-columns:190px minmax(0,1fr);min-height:720px;overflow:hidden;border:1px solid #202945;border-radius:18px;background:#080c18;color:#edf1ff;box-shadow:0 24px 60px #090f1d22}
+.dna-workspace-nav{display:flex;flex-direction:column;min-width:0;padding:23px 14px 15px;border-right:1px solid #1c2741;background:linear-gradient(180deg,#0d1324,#0a0f1d)}
+.dna-brand-mark{display:grid;place-items:center;width:32px;height:32px;margin-bottom:11px;border:1px solid #66dfff66;border-radius:10px;background:#152640;color:#78e9ff;box-shadow:0 0 18px #5a8cff44;font-size:17px}
+.dna-workspace-nav>strong{font-size:12px;letter-spacing:-.02em}
+.dna-workspace-nav>small{margin:3px 0 26px;color:#6f7e9f;font-size:7px;letter-spacing:.16em}
+.dna-workspace-nav nav{display:grid;gap:5px}
+.dna-workspace-nav nav button{display:flex;align-items:center;gap:10px;width:100%;padding:10px 9px;border:1px solid transparent;border-radius:9px;background:transparent;color:#96a2bd;text-align:left;font:inherit;font-size:10px;cursor:pointer}
+.dna-workspace-nav nav button span{width:18px;color:#8294c2;text-align:center;font-size:14px}
+.dna-workspace-nav nav button.active,.dna-workspace-nav nav button:hover{border-color:#303f69;background:#1a2540;color:#f2f4ff;box-shadow:inset 2px 0 #6a7cff}
+.dna-workspace-nav nav button.active span{color:#8adfff}
+.dna-nav-profile{display:flex;align-items:center;gap:9px;margin-top:auto;padding:10px 3px 0;border-top:1px solid #202942}
+.dna-avatar{display:grid;place-items:center;flex:none;width:29px;height:29px;border:1px solid #7a71ea;border-radius:50%;background:#252751;color:#fff;font-size:11px}
+.dna-nav-profile>span:last-child{display:grid;gap:2px;min-width:0}
+.dna-nav-profile strong{overflow:hidden;color:#dce3f7;font-size:9px;text-overflow:ellipsis;white-space:nowrap}
+.dna-nav-profile small{color:#7785a5;font-size:8px}
+.dna-workspace-main{min-width:0;padding:0 20px 17px;background:radial-gradient(ellipse at 48% 37%,#111c35,#090e1b 68%)}
+.dna-toolbar{display:flex;align-items:center;gap:14px;min-height:67px;border-bottom:1px solid #202942}
+.dna-toolbar>div{margin-right:auto}
+.dna-toolbar-kicker{color:#dee6ff;font-size:10px;font-weight:800;letter-spacing:.1em}
+.dna-toolbar p{margin:4px 0 0;color:#8491ad;font-size:9px}
+.dna-search{display:flex;align-items:center;gap:8px;width:min(290px,42vw);padding:8px 11px;border:1px solid #253250;border-radius:9px;background:#10182a;color:#8d9aba}
+.dna-search>span{font-size:17px;line-height:1}
+.dna-search input{width:100%;min-width:0;border:0;outline:none;background:transparent;color:#eff2ff;font:inherit;font-size:9px}
+.dna-live-dot{color:#62d7ff;font-size:12px}
+.dna-canvas-layout{display:grid;grid-template-columns:minmax(0,1fr) 252px;gap:13px;align-items:stretch;padding-top:14px}
+.dna-canvas-panel{position:relative;min-width:0;overflow:hidden;border:1px solid #202a47;border-radius:14px;background:radial-gradient(ellipse at 50% 48%,#111e38 0,#0c1427 51%,#0a1020 100%)}
+.dna-canvas-label{position:absolute;z-index:3;top:14px;left:16px;right:16px;display:flex;justify-content:space-between;gap:10px;color:#8292b6;font-size:8px;font-weight:800;letter-spacing:.13em}
+.dna-graph-canvas{position:relative;width:100%;height:610px;min-width:760px;overflow:hidden}
+.dna-graph-lines{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.dna-link{fill:none;stroke:url(#dnaPathGlow);stroke-width:1.6;opacity:.28;filter:drop-shadow(0 0 4px #56cfff)}
+.dna-link.active{stroke-width:2.4;opacity:.78}
+.dna-link-skill{stroke-dasharray:2 4;opacity:.48}
+.dna-link-skill.active{opacity:.85}
+.dna-profile-core,.dna-role-node,.dna-map-node{position:absolute;z-index:2;transform:translate(-50%,-50%)}
+.dna-profile-core{display:grid;place-content:center;gap:4px;width:108px;height:108px;border:1px solid #7d68e9;border-radius:50%;background:radial-gradient(circle,#25204a,#12192d 73%);color:#fbf7ff;text-align:center;box-shadow:0 0 25px #826aff77}
+.dna-profile-core>span{color:#d2b5ff;font-size:20px}
+.dna-profile-core small{color:#a99bd8;font-size:7px;letter-spacing:.16em}
+.dna-profile-core strong{max-width:91px;font-size:9px;line-height:1.25;overflow-wrap:anywhere}
+.dna-role-node{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;width:124px;height:106px;padding:13px 16px;clip-path:polygon(25% 3%,75% 3%,98% 50%,75% 97%,25% 97%,2% 50%);background:linear-gradient(135deg,#181d3b,#302358 58%,#151e38);color:#f2efff;text-align:center;filter:drop-shadow(0 0 9px #8d65ff88);cursor:pointer}
+.dna-role-node>span{color:#b493ff;font-size:16px;line-height:1}
+.dna-role-node small{color:#bcb0e8;font-size:7px;letter-spacing:.15em}
+.dna-role-node strong{max-width:100px;font-size:9px;line-height:1.2;overflow-wrap:anywhere}
+.dna-role-node.active{filter:drop-shadow(0 0 13px #50dfffcc)}
+.dna-map-node{display:grid;justify-items:center;gap:3px;width:88px;min-height:77px;padding:2px;border:0;background:transparent;color:#cbd8f8;text-align:center;font:inherit;cursor:pointer}
+.dna-map-icon{display:grid;place-items:center;width:41px;height:41px;border:1px solid #74cfff;border-radius:50%;background:radial-gradient(circle,#183956,#111a31 74%);color:#a5e9ff;font-size:14px}
+.dna-node-match .dna-map-icon{border-color:#7d8eff;color:#c4c9ff}
+.dna-node-next .dna-map-icon{border-color:#a579ff;color:#d1b3ff;box-shadow:0 0 11px #a254ff88}
+.dna-node-locked{opacity:.66}
+.dna-map-node:hover,.dna-map-node.is-focused{filter:drop-shadow(0 0 10px #83eaff)}
+.dna-map-label{max-width:88px;color:#c4cde3;font-size:8px;line-height:1.15;overflow-wrap:anywhere}
+.dna-search-hidden{opacity:.1!important;pointer-events:none!important}
+.dna-graph-title{position:absolute;top:58%;left:50%;display:grid;gap:4px;transform:translateX(-50%);color:#828daf;text-align:center;pointer-events:none}
+.dna-graph-title span{font-size:8px;letter-spacing:.25em}
+.dna-graph-title strong{color:#b4a4ff;font-size:11px;letter-spacing:.14em}
+.dna-graph-legend{position:relative;z-index:2;display:flex;flex-wrap:wrap;gap:8px 14px;padding:0 14px 13px;color:#909cba;font-size:8px}
+.dna-graph-legend span{display:flex;align-items:center;gap:5px}
+.dna-graph-legend i{width:8px;height:8px;border-radius:50%;background:#54ceff}
+.dna-graph-legend i.build{background:#a66aff}
+.dna-graph-legend i.dim{background:#6a608d}
+.dna-prereq{position:relative;z-index:3;margin:0 14px 14px;border-top:1px solid #202a43;padding-top:8px;color:#a8b5d2;font-size:8px}
+.dna-prereq summary{cursor:pointer;color:#a8b5d2}
+.dna-tree-list{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:5px}
+.dna-tree-skill{display:grid;grid-template-columns:19px 1fr;align-items:center;gap:2px 7px;padding:6px 8px;border:1px solid #485674;border-radius:10px;background:#161e31ef;color:#dce5ff;font-size:9px;line-height:1.25}
+.dna-tree-skill>span:nth-child(2){overflow-wrap:anywhere}
+.dna-tree-skill small{grid-column:2;color:#8998bb;font-size:7px}
+.dna-node-dot{grid-row:span 2;display:grid;place-items:center;width:18px;height:18px;border:1px solid #8998bf;border-radius:50%;color:#b8c8eb;font-size:8px}
+.dna-tree-skill.dna-done{border-color:#58dce6;background:#102e3b;color:#efffff}
+.dna-tree-skill.dna-next{border-color:#a887ff;background:#2a2043;color:#fff}
+.dna-tree-skill.dna-locked{opacity:.72;border-style:dashed}
+.dna-inspector{position:relative;display:flex;flex-direction:column;min-width:0;padding:18px;border:1px solid #252e4b;border-radius:14px;background:linear-gradient(180deg,#0e1526,#0a101d)}
+.dna-inspector-icon{display:grid;place-items:center;width:43px;height:43px;margin:3px 0 11px;border:1px solid #735be2;border-radius:12px;background:#1b1c3d;color:#b7a1ff;font-size:18px}
+.dna-inspector-type{color:#8290af;font-size:7px;font-weight:800;letter-spacing:.18em}
+.dna-inspector h2{margin:4px 0 9px;color:#f0f2ff;font-size:18px;line-height:1.15;overflow-wrap:anywhere}
+.dna-status-pill{width:max-content;max-width:100%;padding:5px 8px;border:1px solid #5968a1;border-radius:99px;background:#191e38;color:#bbcaff;font-size:8px}
+.dna-status-pill.done{border-color:#6e5cc8;background:#241c42;color:#d0b6ff}
+.dna-inspector-copy{color:#a0abc3;font-size:9px;line-height:1.65;margin:10px 0 14px}
+.dna-inspector-section{padding-top:12px;border-top:1px solid #242c44}
+.dna-inspector-section h3{margin:0 0 6px;color:#edf0ff;font-size:10px}
+.dna-inspector-section p{margin:0;color:#a0abc3;font-size:9px}
+.dna-experiment{display:grid;gap:6px;margin-top:12px;padding:11px;border:1px solid #252e49;border-radius:10px;background:linear-gradient(140deg,#131b31,#101626)}
+.dna-experiment>span{color:#a99af3;font-size:7px;font-weight:800;letter-spacing:.12em}
+.dna-experiment strong{color:#f0efff;font-size:9px}
+.dna-experiment p{margin:0;color:#98a4be;font-size:8px;line-height:1.5}
+.dna-experiment button{display:flex;justify-content:space-between;align-items:center;padding:7px 8px;border:1px solid #4b4485;border-radius:7px;background:#1c1b39;color:#d7caff;text-align:left;font-size:8px;cursor:pointer}
+.dna-action-button{margin-top:10px;padding:9px;border:1px solid #8e6be9;border-radius:8px;background:#37255c;color:#f1eaff;font-size:8px;font-weight:800;cursor:pointer}
+.dna-truth-note{color:#8794af;font-size:8px;line-height:1.55;margin:8px 0 0}
+.dna-footnote{margin:10px 0 0;color:#7887a4;font-size:8px;line-height:1.5}
+@media(max-width:900px){.dna-workspace{grid-template-columns:150px minmax(0,1fr)}.dna-canvas-layout{grid-template-columns:minmax(0,1fr) 220px}.dna-workspace-main{padding-right:12px;padding-left:12px}}
+@media(max-width:640px){.dna-workspace{grid-template-columns:1fr}.dna-workspace-nav{display:none}.dna-canvas-layout{grid-template-columns:1fr}.dna-inspector{display:grid;grid-template-columns:1fr 1fr;column-gap:14px}.dna-inspector-copy,.dna-inspector-section,.dna-experiment,.dna-action-button,.dna-truth-note{grid-column:1/-1}.dna-canvas-panel{overflow-x:auto}.dna-graph-canvas{height:540px}}
+@media(prefers-reduced-motion:reduce){.dna-link,.dna-map-node,.dna-role-node{transition:none!important;animation:none!important}}

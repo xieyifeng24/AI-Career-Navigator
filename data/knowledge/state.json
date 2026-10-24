@@ -1,33 +1,33 @@
 {
   "sources": {
     "onet": {
-      "checked_at": "2026-10-22T03:45:23.978329+00:00",
+      "checked_at": "2026-10-24T08:17:28.319731+00:00",
       "status": "current",
-      "last_success": "2026-10-22T03:45:23.978329+00:00",
+      "last_success": "2026-10-24T08:17:28.319731+00:00",
       "error": null,
-      "records": 5,
+      "records": 20,
       "content_changed": true
     },
     "esco": {
-      "checked_at": "2026-10-22T03:45:23.978329+00:00",
-      "status": "current",
+      "checked_at": "2026-10-24T08:17:28.319731+00:00",
+      "status": "error",
       "last_success": "2026-10-22T03:45:23.978329+00:00",
-      "error": null,
-      "records": 5,
+      "error": "Redirect response '307 Temporary Redirect' for url 'https://ec.europa.eu/esco/api/resource/occupation?uri=http%3A%2F%2Fdata.europa.eu%2Fesco%2Foccupation%2F66fb9704-0d56-4673-8e69-7823816b73e1&language=en'\nRedirect location: 'https://sorry.ec.europa.eu/'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/307",
+      "records": 7,
       "content_changed": true
     },
     "myfuturejobs": {
-      "checked_at": "2026-10-22T03:45:23.978329+00:00",
+      "checked_at": "2026-10-24T08:17:28.319731+00:00",
       "status": "manual_import_required",
       "error": "No confirmed public API or approved import. Obtain PERKESO/SOCSO reuse permission; website terms restrict republication. https://myfuturejobs.gov.my/wp-content/uploads/2024/03/TermsAndConditions.pdf",
       "records": 0
     }
   },
-  "last_attempt": "2026-10-22T03:45:23.978329+00:00",
-  "next_due": "2026-11-05T03:45:23.978329+00:00",
-  "publication": "manual_reviewed_sw_extension",
-  "version": "knowledge-20261023T181607Z-afaae13f29bea3e9",
-  "last_publication": "2026-10-23T18:16:07.134968Z",
+  "last_attempt": "2026-10-24T08:17:28.319731+00:00",
+  "next_due": "2026-11-07T08:17:28.319731+00:00",
+  "publication": "verified",
+  "version": "knowledge-20261024T081728Z-d5b9e134322f0749",
+  "last_publication": "2026-10-24T08:17:28.319731+00:00",
   "manual_review": {
     "verified_at": "2026-10-23T18:16:07.134968Z",
     "added_codes": [

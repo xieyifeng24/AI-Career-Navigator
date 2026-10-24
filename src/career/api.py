@@ -19,6 +19,7 @@ from .access import AccessPolicy, COOKIE, SESSION_SECONDS, check_origin, is_loca
 from .regional import RegionalStore
 from .regional_ai import RegionalRequest, canonical_answers, cache_key, explain as explain_regional
 import json
+from .assessment_ai import GuideRequest, canonical as guide_canonical, key as guide_key, explain as explain_guide
 
 ROOT=Path(__file__).resolve().parents[2]
 load_dotenv(ROOT/'.env')
@@ -71,7 +72,7 @@ async def guard(request, call_next):
 @app.exception_handler(RequestValidationError)
 async def invalid_profile(request, exc):
     # FastAPI's default response can echo user input; return only field names.
-    return JSONResponse({'detail':('Please check the assessment fields and try again.' if request.url.path=='/api/regional/explain' else 'Use a complete fictional profile, 1–40 hours per week, and confirm synthetic data.'),
+    return JSONResponse({'detail':('Please check the assessment fields and try again.' if request.url.path in {'/api/regional/explain','/api/assessment/explain'} else 'Use a complete fictional profile, 1–40 hours per week, and confirm synthetic data.'),
                          'fields':list({str(e['loc'][-1]) for e in exc.errors()})},status_code=422)
 
 @app.get('/api/health')
@@ -165,6 +166,22 @@ async def knowledge_current():
 async def regional_snapshot():
     return await app.state.regional.get()
 
+@app.post('/api/assessment/explain')
+async def assessment_explanation(payload: GuideRequest, request: Request):
+    bank=json.loads((ROOT/'prototype/v3/bank.json').read_text())
+    try: guide_canonical(payload,bank)
+    except ValueError as exc: raise HTTPException(422,'Use a complete original direction assessment.') from exc
+    owner=app.state.access.require(request,mutating=True)
+    cached=app.state.regional_ai_cache.get(guide_key(owner,payload))
+    if cached and time.monotonic()-cached[0]<1800: return {**cached[1],'cached':True}
+    begin_analysis(request)
+    try:
+        result=await explain_guide(app.state.inference,payload,owner,bank,app.state.regional_ai_cache)
+        app.state.last_inference=datetime.now(timezone.utc).isoformat()
+        return result
+    except InferenceError as exc: raise HTTPException(503,str(exc)) from exc
+    finally: app.state.busy=False
+
 @app.post('/api/regional/explain')
 async def regional_explanation(payload: RegionalRequest, request: Request):
     try:
@@ -194,6 +211,11 @@ async def knowledge_bundle():
 @app.get('/data/regional/current.json')
 async def regional_bundle():
     return FileResponse(ROOT/'data/regional/current.json')
+
+@app.get('/assessment/{filename}')
+async def assessment_asset(filename: str):
+    if filename not in {'engine.js','views.js','adapter.js','styles.css','roles.json','skill-tree.js','dna.css','career-research.js'}: raise HTTPException(404)
+    return FileResponse(ROOT/'prototype/assessment'/filename)
 
 @app.get('/combined/{filename}')
 async def combined_asset(filename: str):

@@ -87,7 +87,7 @@ function tally(dimension){
  return {endorsed:observed.filter(i=>i.stance==='agreement').length,disagreed:observed.filter(i=>i.stance==='disagreement').length,
   neutral:observed.filter(i=>i.stance==='neutral').length,known:observed.length,total:dimension.items.length,ids:observed.map(i=>i.id)};
 }
-function stanceOf(value){return !value.known?'unknown':value.endorsed>0?'endorsed':value.disagreed===value.known?'not-endorsed':'mixed';}
+function stanceOf(value){return !value.known?'unknown':value.endorsed===value.known?'endorsed':value.disagreed===value.known?'not-endorsed':'mixed';}
 export function buildCapability(signals){
  const practice=tally(signals.dimensions.find(d=>d.id==='ai_practice'));
  const verification=tally(signals.dimensions.find(d=>d.id==='ai_verification'));

@@ -27,11 +27,17 @@ class KnowledgeTests(unittest.TestCase):
         def manual():raise adapters.ManualImportRequired('No approved import')
         return {'onet':lambda:source('onet'),'esco':lambda:source('esco'),'myfuturejobs':manual}
     def test_actual_seed_has_two_real_sources_and_no_invented_malaysian_market(self):
-        self.assertEqual(len(self.snapshot.records),14)
+        self.assertEqual(len(self.snapshot.records),27)
         for record in self.snapshot.records:
             self.assertTrue(record.skills);self.assertEqual(record.geography,{'onet':'US','esco':'EU'}[record.source])
             self.assertFalse(record.trends);self.assertIsNone(record.published_at)
-        self.assertTrue(all(len(refs)==2 for refs in self.snapshot.links.values()))
+        for code, refs in self.snapshot.links.items():
+            self.assertTrue(refs, code)
+            self.assertEqual(refs[0], 'onet:' + code, code)
+            self.assertTrue(all(ref.startswith(('onet:', 'esco:')) for ref in refs), code)
+            self.assertEqual(len(set(refs)), len(refs), code)
+        # ESCO pairings are reviewed contextual links, not automatic equivalences.
+        self.assertEqual(sum(1 for refs in self.snapshot.links.values() if any(ref.startswith('esco:') for ref in refs)), 7)
     def test_exact_fourteen_days_crosses_month_year_and_leap_day(self):
         for start in [NOW,datetime(2026,12,28,tzinfo=timezone.utc),datetime(2028,2,22,tzinfo=timezone.utc)]:
             state={'last_attempt':start.isoformat()}

@@ -1,5 +1,5 @@
 {
-  "scope": "Seven reviewed occupational contexts; O*NET–ESCO links are Team Nexus contextual pairings, not official equivalences. Software Developers is a direct software-route context; Computer and Information Research Scientists and ICT intelligent systems designer are broader related contexts for the AI/ML exploration route, not exact Machine Learning Engineer classifications. Editorial scoring targets remain separately maintained.",
+  "scope": "Reviewed O*NET occupation contexts across ten directions; ESCO pairings remain contextual, never exact equivalences. Career task-affinity mappings are product heuristics.",
   "esco": {
     "13-1161.00": "http://data.europa.eu/esco/occupation/66fb9704-0d56-4673-8e69-7823816b73e1",
     "13-1082.00": "http://data.europa.eu/esco/occupation/bea99fea-0383-4c63-b944-70d4799de2c5",
@@ -8,5 +8,27 @@
     "15-2051.00": "http://data.europa.eu/esco/occupation/258e46f9-0075-4a2e-adae-1ff0477e0f30",
     "15-1252.00": "http://data.europa.eu/esco/occupation/f2b15a0e-e65a-438a-affb-29b9d50b77d1",
     "15-1221.00": "http://data.europa.eu/esco/occupation/35553663-deab-4d9a-bf22-15c1625d28e8"
-  }
+  },
+  "onet": [
+    "13-1161.00",
+    "13-1082.00",
+    "13-1111.00",
+    "43-6014.00",
+    "15-2051.00",
+    "15-1252.00",
+    "15-1221.00",
+    "15-1253.00",
+    "13-2031.00",
+    "13-2011.00",
+    "27-3031.00",
+    "15-1255.00",
+    "27-1024.00",
+    "17-2141.00",
+    "17-2112.00",
+    "21-1091.00",
+    "19-1041.00",
+    "25-9031.00",
+    "19-3022.00",
+    "13-1081.00"
+  ]
 }

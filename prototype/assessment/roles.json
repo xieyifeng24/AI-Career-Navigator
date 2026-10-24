@@ -1,0 +1,666 @@
+{
+  "version": "task-crosswalk-1.0",
+  "rule": "Weighted ordinal self-report task association; interest 75%, work preference 25%. Readiness and region do not change task ordering. Less than 0.35 ordinal points is a tie. Not a validated fit measure.",
+  "roles": [
+    {
+      "id": "software",
+      "track": "SW",
+      "sourceId": "onet:15-1252.00",
+      "classificationId": "15-1252.00",
+      "title": [
+        "Software developer",
+        "软件开发工程师",
+        "Pembangun perisian"
+      ],
+      "project": [
+        "Build a small tool with a documented requirement",
+        "制作有明确需求的小工具",
+        "Bina alat kecil dengan keperluan bertulis"
+      ],
+      "interestWeights": {
+        "SW01": 3,
+        "SW02": 1
+      },
+      "preferenceWeights": {
+        "SW03": 3,
+        "SW04": 1
+      },
+      "mappingType": "occupation-context",
+      "exactEquivalence": false,
+      "mappingEvidence": "Compare the saved occupation tasks with the two task-interest statements; this product label is an exploration context, not a credential or classification equivalence.",
+      "effortHours": [
+        4,
+        10,
+        24,
+        12
+      ]
+    },
+    {
+      "id": "software-quality",
+      "track": "SW",
+      "sourceId": "onet:15-1253.00",
+      "classificationId": "15-1253.00",
+      "title": [
+        "Software quality analyst",
+        "软件质量分析师",
+        "Penganalisis kualiti perisian"
+      ],
+      "project": [
+        "Test a login prototype using normal and failure cases",
+        "用正常与失败用例测试登录原型",
+        "Uji prototaip log masuk dengan kes normal dan gagal"
+      ],
+      "interestWeights": {
+        "SW01": 1,
+        "SW02": 3
+      },
+      "preferenceWeights": {
+        "SW03": 1,
+        "SW04": 3
+      },
+      "mappingType": "occupation-context",
+      "exactEquivalence": false,
+      "mappingEvidence": "Compare the saved occupation tasks with the two task-interest statements; this product label is an exploration context, not a credential or classification equivalence.",
+      "effortHours": [
+        4,
+        12,
+        32,
+        12
+      ]
+    },
+    {
+      "id": "data-science",
+      "track": "DATA",
+      "sourceId": "onet:15-2051.00",
+      "classificationId": "15-2051.00",
+      "title": [
+        "Data scientist",
+        "数据科学家",
+        "Saintis data"
+      ],
+      "project": [
+        "Compare groups in an open dataset and document uncertainty",
+        "比较开放数据的群组并记录不确定性",
+        "Banding kumpulan data terbuka dan catat ketidakpastian"
+      ],
+      "interestWeights": {
+        "DATA01": 1,
+        "DATA02": 3
+      },
+      "preferenceWeights": {
+        "DATA03": 1,
+        "DATA04": 3
+      },
+      "mappingType": "occupation-context",
+      "exactEquivalence": false,
+      "mappingEvidence": "Compare the saved occupation tasks with the two task-interest statements; this product label is an exploration context, not a credential or classification equivalence.",
+      "effortHours": [
+        4,
+        14,
+        40,
+        12
+      ]
+    },
+    {
+      "id": "management-analysis",
+      "track": "DATA",
+      "sourceId": "onet:13-1111.00",
+      "classificationId": "13-1111.00",
+      "title": [
+        "Management analyst",
+        "管理分析师",
+        "Penganalisis pengurusan"
+      ],
+      "project": [
+        "Explain a changing operational metric using a baseline",
+        "用基线解释业务指标变化",
+        "Jelaskan perubahan metrik operasi dengan garis dasar"
+      ],
+      "interestWeights": {
+        "DATA01": 3,
+        "DATA02": 1
+      },
+      "preferenceWeights": {
+        "DATA03": 3,
+        "DATA04": 1
+      },
+      "mappingType": "occupation-context",
+      "exactEquivalence": false,
+      "mappingEvidence": "Compare the saved occupation tasks with the two task-interest statements; this product label is an exploration context, not a credential or classification equivalence.",
+      "effortHours": [
+        4,
+        10,
+        48,
+        12
+      ]
+    },
+    {
+      "id": "financial-analysis",
+      "track": "FIN",
+      "sourceId": "onet:13-2031.00",
+      "classificationId": "13-2031.00",
+      "title": [
+        "Budget analyst",
+        "预算分析师",
+        "Penganalisis bajet"
+      ],
+      "project": [
+        "Compare fictional budget alternatives and their assumptions",
+        "比较虚构预算方案及其假设",
+        "Banding pilihan bajet rekaan dan andaian"
+      ],
+      "interestWeights": {
+        "FIN01": 1,
+        "FIN02": 3
+      },
+      "preferenceWeights": {
+        "FIN03": 1,
+        "FIN04": 3
+      },
+      "mappingType": "occupation-context",
+      "exactEquivalence": false,
+      "mappingEvidence": "Compare the saved occupation tasks with the two task-interest statements; this product label is an exploration context, not a credential or classification equivalence.",
+      "effortHours": [
+        4,
+        12,
+        24,
+        12
+      ]
+    },
+    {
+      "id": "accounting",
+      "track": "FIN",
+      "sourceId": "onet:13-2011.00",
+      "classificationId": "13-2011.00",
+      "title": [
+        "Accountant / auditor",
+        "会计／审计师",
+        "Akauntan / juruaudit"
+      ],
+      "project": [
+        "Reconcile a fictional budget and trace discrepancies",
+        "核对虚构预算并追查差异",
+        "Selaraskan bajet rekaan dan jejaki percanggahan"
+      ],
+      "interestWeights": {
+        "FIN01": 3,
+        "FIN02": 1
+      },
+      "preferenceWeights": {
+        "FIN03": 3,
+        "FIN04": 1
+      },
+      "mappingType": "occupation-context",
+      "exactEquivalence": false,
+      "mappingEvidence": "Compare the saved occupation tasks with the two task-interest statements; this product label is an exploration context, not a credential or classification equivalence.",
+      "effortHours": [
+        4,
+        14,
+        32,
+        12
+      ]
+    },
+    {
+      "id": "project-management",
+      "track": "PM",
+      "sourceId": "onet:13-1082.00",
+      "classificationId": "13-1082.00",
+      "title": [
+        "Project management specialist",
+        "项目管理专员",
+        "Pakar pengurusan projek"
+      ],
+      "project": [
+        "Plan a small delivery with dependencies and owners",
+        "规划含依赖与负责人的小型交付",
+        "Rancang penyerahan kecil dengan kebergantungan dan pemilik"
+      ],
+      "interestWeights": {
+        "PM01": 1,
+        "PM02": 3
+      },
+      "preferenceWeights": {
+        "PM03": 1,
+        "PM04": 3
+      },
+      "mappingType": "occupation-context",
+      "exactEquivalence": false,
+      "mappingEvidence": "Compare the saved occupation tasks with the two task-interest statements; this product label is an exploration context, not a credential or classification equivalence.",
+      "effortHours": [
+        4,
+        10,
+        40,
+        12
+      ]
+    },
+    {
+      "id": "product-discovery",
+      "track": "PM",
+      "sourceId": "onet:13-1111.00",
+      "classificationId": "13-1111.00",
+      "title": [
+        "Product discovery / business analysis",
+        "产品探索／业务分析",
+        "Penemuan produk / analisis perniagaan"
+      ],
+      "project": [
+        "Prioritise user needs using interview evidence",
+        "依据访谈证据确定用户需求优先级",
+        "Utamakan keperluan pengguna berasaskan temu bual"
+      ],
+      "interestWeights": {
+        "PM01": 3,
+        "PM02": 1
+      },
+      "preferenceWeights": {
+        "PM03": 3,
+        "PM04": 1
+      },
+      "mappingType": "related-occupation",
+      "exactEquivalence": false,
+      "mappingEvidence": "Compare the saved occupation tasks with the two task-interest statements; this product label is an exploration context, not a credential or classification equivalence.",
+      "effortHours": [
+        4,
+        12,
+        48,
+        12
+      ]
+    },
+    {
+      "id": "communications",
+      "track": "MKT",
+      "sourceId": "onet:27-3031.00",
+      "classificationId": "27-3031.00",
+      "title": [
+        "Communications specialist",
+        "传播专员",
+        "Pakar komunikasi"
+      ],
+      "project": [
+        "Write two audience-specific messages and check every claim",
+        "为两类受众撰写文案并核查各项主张",
+        "Tulis dua mesej khusus khalayak dan semak dakwaan"
+      ],
+      "interestWeights": {
+        "MKT01": 3,
+        "MKT02": 1
+      },
+      "preferenceWeights": {
+        "MKT03": 3,
+        "MKT04": 1
+      },
+      "mappingType": "occupation-context",
+      "exactEquivalence": false,
+      "mappingEvidence": "Compare the saved occupation tasks with the two task-interest statements; this product label is an exploration context, not a credential or classification equivalence.",
+      "effortHours": [
+        4,
+        14,
+        24,
+        12
+      ]
+    },
+    {
+      "id": "market-research",
+      "track": "MKT",
+      "sourceId": "onet:13-1161.00",
+      "classificationId": "13-1161.00",
+      "title": [
+        "Market research analyst",
+        "市场研究分析师",
+        "Penganalisis penyelidikan pasaran"
+      ],
+      "project": [
+        "Evaluate a fictional campaign against a baseline",
+        "依据基线评估虚构营销活动",
+        "Nilai kempen rekaan berbanding garis dasar"
+      ],
+      "interestWeights": {
+        "MKT01": 1,
+        "MKT02": 3
+      },
+      "preferenceWeights": {
+        "MKT03": 1,
+        "MKT04": 3
+      },
+      "mappingType": "occupation-context",
+      "exactEquivalence": false,
+      "mappingEvidence": "Compare the saved occupation tasks with the two task-interest statements; this product label is an exploration context, not a credential or classification equivalence.",
+      "effortHours": [
+        4,
+        10,
+        32,
+        12
+      ]
+    },
+    {
+      "id": "digital-interface",
+      "track": "DES",
+      "sourceId": "onet:15-1255.00",
+      "classificationId": "15-1255.00",
+      "title": [
+        "Digital interface designer",
+        "数字界面设计师",
+        "Pereka antara muka digital"
+      ],
+      "project": [
+        "Prototype an accessible flow and observe a usability test",
+        "制作无障碍流程原型并观察可用性测试",
+        "Prototaip aliran boleh akses dan perhatikan ujian kebolehgunaan"
+      ],
+      "interestWeights": {
+        "DES01": 3,
+        "DES02": 1
+      },
+      "preferenceWeights": {
+        "DES03": 3,
+        "DES04": 1
+      },
+      "mappingType": "occupation-context",
+      "exactEquivalence": false,
+      "mappingEvidence": "Compare the saved occupation tasks with the two task-interest statements; this product label is an exploration context, not a credential or classification equivalence.",
+      "effortHours": [
+        4,
+        12,
+        40,
+        12
+      ]
+    },
+    {
+      "id": "graphic-design",
+      "track": "DES",
+      "sourceId": "onet:27-1024.00",
+      "classificationId": "27-1024.00",
+      "title": [
+        "Graphic designer",
+        "平面设计师",
+        "Pereka grafik"
+      ],
+      "project": [
+        "Create a visual concept and revise it after critique",
+        "制作视觉概念并依据评审修改",
+        "Cipta konsep visual dan semak selepas kritikan"
+      ],
+      "interestWeights": {
+        "DES01": 1,
+        "DES02": 3
+      },
+      "preferenceWeights": {
+        "DES03": 1,
+        "DES04": 3
+      },
+      "mappingType": "occupation-context",
+      "exactEquivalence": false,
+      "mappingEvidence": "Compare the saved occupation tasks with the two task-interest statements; this product label is an exploration context, not a credential or classification equivalence.",
+      "effortHours": [
+        4,
+        14,
+        48,
+        12
+      ]
+    },
+    {
+      "id": "mechanical-engineering",
+      "track": "ENG",
+      "sourceId": "onet:17-2141.00",
+      "classificationId": "17-2141.00",
+      "title": [
+        "Mechanical engineer",
+        "机械工程师",
+        "Jurutera mekanikal"
+      ],
+      "project": [
+        "Simulate a mechanism and document safety assumptions",
+        "模拟机械装置并记录安全假设",
+        "Simulasikan mekanisme dan catat andaian keselamatan"
+      ],
+      "interestWeights": {
+        "ENG01": 3,
+        "ENG02": 1
+      },
+      "preferenceWeights": {
+        "ENG03": 3,
+        "ENG04": 1
+      },
+      "mappingType": "occupation-context",
+      "exactEquivalence": false,
+      "mappingEvidence": "Compare the saved occupation tasks with the two task-interest statements; this product label is an exploration context, not a credential or classification equivalence.",
+      "effortHours": [
+        4,
+        10,
+        24,
+        12
+      ]
+    },
+    {
+      "id": "industrial-engineering",
+      "track": "ENG",
+      "sourceId": "onet:17-2112.00",
+      "classificationId": "17-2112.00",
+      "title": [
+        "Industrial engineer",
+        "工业工程师",
+        "Jurutera industri"
+      ],
+      "project": [
+        "Model a process bottleneck and test an improvement",
+        "建立流程瓶颈模型并测试改进",
+        "Modelkan kesesakan proses dan uji penambahbaikan"
+      ],
+      "interestWeights": {
+        "ENG01": 1,
+        "ENG02": 3
+      },
+      "preferenceWeights": {
+        "ENG03": 1,
+        "ENG04": 3
+      },
+      "mappingType": "occupation-context",
+      "exactEquivalence": false,
+      "mappingEvidence": "Compare the saved occupation tasks with the two task-interest statements; this product label is an exploration context, not a credential or classification equivalence.",
+      "effortHours": [
+        4,
+        12,
+        32,
+        12
+      ]
+    },
+    {
+      "id": "health-education",
+      "track": "HLT",
+      "sourceId": "onet:21-1091.00",
+      "classificationId": "21-1091.00",
+      "title": [
+        "Health education specialist",
+        "健康教育专员",
+        "Pakar pendidikan kesihatan"
+      ],
+      "project": [
+        "Create an educational explainer from reliable sources",
+        "依据可靠来源制作健康科普说明",
+        "Cipta penerangan pendidikan daripada sumber dipercayai"
+      ],
+      "interestWeights": {
+        "HLT01": 3,
+        "HLT02": 1
+      },
+      "preferenceWeights": {
+        "HLT03": 3,
+        "HLT04": 1
+      },
+      "mappingType": "occupation-context",
+      "exactEquivalence": false,
+      "mappingEvidence": "Compare the saved occupation tasks with the two task-interest statements; this product label is an exploration context, not a credential or classification equivalence.",
+      "effortHours": [
+        4,
+        14,
+        40,
+        12
+      ]
+    },
+    {
+      "id": "epidemiology",
+      "track": "HLT",
+      "sourceId": "onet:19-1041.00",
+      "classificationId": "19-1041.00",
+      "title": [
+        "Epidemiologist",
+        "流行病学研究人员",
+        "Ahli epidemiologi"
+      ],
+      "project": [
+        "Compare study designs and their limitations using public research",
+        "利用公开研究比较研究设计及其局限",
+        "Banding reka bentuk kajian dan batasan dengan penyelidikan awam"
+      ],
+      "interestWeights": {
+        "HLT01": 1,
+        "HLT02": 3
+      },
+      "preferenceWeights": {
+        "HLT03": 1,
+        "HLT04": 3
+      },
+      "mappingType": "occupation-context",
+      "exactEquivalence": false,
+      "mappingEvidence": "Compare the saved occupation tasks with the two task-interest statements; this product label is an exploration context, not a credential or classification equivalence.",
+      "effortHours": [
+        4,
+        10,
+        48,
+        12
+      ]
+    },
+    {
+      "id": "instructional-design",
+      "track": "EDU",
+      "sourceId": "onet:25-9031.00",
+      "classificationId": "25-9031.00",
+      "title": [
+        "Instructional coordinator",
+        "教学设计与协调员",
+        "Penyelaras pengajaran"
+      ],
+      "project": [
+        "Teach one concept and evaluate learner understanding",
+        "讲解一个概念并评估学习者理解",
+        "Ajar satu konsep dan nilai kefahaman pelajar"
+      ],
+      "interestWeights": {
+        "EDU01": 3,
+        "EDU02": 1
+      },
+      "preferenceWeights": {
+        "EDU03": 3,
+        "EDU04": 1
+      },
+      "mappingType": "occupation-context",
+      "exactEquivalence": false,
+      "mappingEvidence": "Compare the saved occupation tasks with the two task-interest statements; this product label is an exploration context, not a credential or classification equivalence.",
+      "effortHours": [
+        4,
+        12,
+        24,
+        12
+      ]
+    },
+    {
+      "id": "social-research",
+      "track": "EDU",
+      "sourceId": "onet:19-3022.00",
+      "classificationId": "19-3022.00",
+      "title": [
+        "Survey researcher",
+        "调查研究员",
+        "Penyelidik tinjauan"
+      ],
+      "project": [
+        "Develop a sourced explanation that considers contrary evidence",
+        "撰写考虑相反证据的有来源解释",
+        "Bina penerangan bersumber yang mengambil kira bukti bertentangan"
+      ],
+      "interestWeights": {
+        "EDU01": 1,
+        "EDU02": 3
+      },
+      "preferenceWeights": {
+        "EDU03": 1,
+        "EDU04": 3
+      },
+      "mappingType": "related-occupation",
+      "exactEquivalence": false,
+      "mappingEvidence": "Compare the saved occupation tasks with the two task-interest statements; this product label is an exploration context, not a credential or classification equivalence.",
+      "effortHours": [
+        4,
+        14,
+        32,
+        12
+      ]
+    },
+    {
+      "id": "operations-analysis",
+      "track": "OPS",
+      "sourceId": "onet:13-1111.00",
+      "classificationId": "13-1111.00",
+      "title": [
+        "Operations analyst",
+        "运营分析师",
+        "Penganalisis operasi"
+      ],
+      "project": [
+        "Map handoffs and propose a measurable service improvement",
+        "绘制交接流程并提出可衡量的服务改进",
+        "Petakan serahan dan cadangkan penambahbaikan perkhidmatan"
+      ],
+      "interestWeights": {
+        "OPS01": 3,
+        "OPS02": 1
+      },
+      "preferenceWeights": {
+        "OPS03": 3,
+        "OPS04": 1
+      },
+      "mappingType": "related-occupation",
+      "exactEquivalence": false,
+      "mappingEvidence": "Compare the saved occupation tasks with the two task-interest statements; this product label is an exploration context, not a credential or classification equivalence.",
+      "effortHours": [
+        4,
+        10,
+        40,
+        12
+      ]
+    },
+    {
+      "id": "logistics",
+      "track": "OPS",
+      "sourceId": "onet:13-1081.00",
+      "classificationId": "13-1081.00",
+      "title": [
+        "Logistician",
+        "物流规划师",
+        "Pakar logistik"
+      ],
+      "project": [
+        "Plan fictional deliveries under capacity and timing constraints",
+        "在运力与时间限制下规划虚构配送",
+        "Rancang penghantaran rekaan dengan had kapasiti dan masa"
+      ],
+      "interestWeights": {
+        "OPS01": 1,
+        "OPS02": 3
+      },
+      "preferenceWeights": {
+        "OPS03": 1,
+        "OPS04": 3
+      },
+      "mappingType": "occupation-context",
+      "exactEquivalence": false,
+      "mappingEvidence": "Compare the saved occupation tasks with the two task-interest statements; this product label is an exploration context, not a credential or classification equivalence.",
+      "effortHours": [
+        4,
+        12,
+        48,
+        12
+      ]
+    }
+  ]
+}

@@ -55,7 +55,7 @@ def synchronize(directory,cache,now=None,force=False,providers=None):
         if not force and not due(state,now): return {'result':'not_due','next_due':state['next_due']}
         old=Snapshot.model_validate(read(directory/'current.json',None)) if (directory/'current.json').exists() else None
         config=read(ROOT/'data/knowledge/catalog.json',{})
-        mapping=config['esco']; ids=list(mapping)
+        mapping=config['esco']; ids=config.get('onet',list(mapping))
         http=adapters.OfficialHTTP(Path(cache)/'http')
         providers=providers or {'onet':lambda:adapters.onet(http,ids,now),'esco':lambda:adapters.esco(http,mapping,now),'myfuturejobs':lambda:adapters.myfuturejobs(directory/'imports/myfuturejobs.json',now)}
         records=[]; statuses={**state.get('sources',{})}
@@ -77,7 +77,7 @@ def synchronize(directory,cache,now=None,force=False,providers=None):
             statuses[source]=status
         http.client.close()
         state.update(last_attempt=now.isoformat(),next_due=(now+INTERVAL).isoformat(),sources=statuses)
-        links={code:[key for key in ['onet:'+code,'esco:'+mapping[code]] if any(r.source+':'+r.id==key for r in records)] for code in ids}
+        links={code:[key for key in (['onet:'+code]+(['esco:'+mapping[code]] if code in mapping else [])) if any(r.source+':'+r.id==key for r in records)] for code in ids}
         # Manual imports explicitly identify the matching onet classification ID; no fuzzy merge.
         for r in records:
             if r.source=='myfuturejobs' and r.classification=='O*NET-SOC contextual mapping' and r.classification_id in links:

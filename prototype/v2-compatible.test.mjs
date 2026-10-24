@@ -114,7 +114,7 @@ test('What If uses explicit assumptions and never changes answers, career scores
  const original=buildCompatibleReport(state),assumed=buildCompatibleReport(state,'en',{skillEvidence:'practiced',aiPractice:'practiced'});
  assert.deepEqual(original.signals,assumed.signals);assert.deepEqual(original.companions,assumed.companions);
  const baseline=renderCompatibleReport(state),scenario=renderCompatibleReport(state,{assumptions:{skillEvidence:'practiced',aiPractice:'practiced'}});
- assert.notEqual(baseline,scenario);assert.match(scenario,/Conditional next step/);
+ assert.notEqual(baseline,scenario);assert.match(scenario,/This scenario/);
  assert.deepEqual(state,saved);
 });
 test('occupational tasks use reviewed source records; unmapped directions are editorial and never fake live data',()=>{
@@ -154,7 +154,7 @@ test('controller completes intake review, edits answers, navigates SDG, isolates
   click({combinedAction:'page:paths'});assert.equal(JSON.parse(values.get(STORAGE_KEY)).page,'galaxy');assert.equal(JSON.parse(values.get(STORAGE_KEY)).section,'compare');
   click({combinedAction:'page:plan'});assert.equal(JSON.parse(values.get(STORAGE_KEY)).page,'whatif');
   listeners.change({target:{dataset:{v2Control:'skillEvidence'},value:'practiced'}});
-  assert.match(root.innerHTML,/Conditional practice plan/);
+  assert.match(root.innerHTML,/This scenario/);
   assert.deepEqual(JSON.parse(values.get(STORAGE_KEY)).v3,original);
   click({combinedAction:'edit-v3'});click({v3Edit:'0'});
   listeners.change({target:{dataset:{},name:'v3-answer',value:'1'}});
@@ -166,8 +166,8 @@ test('controller completes intake review, edits answers, navigates SDG, isolates
   click({combinedAction:'goal:4'});assert.equal(JSON.parse(values.get(STORAGE_KEY)).goal,4);
   click({combinedAction:'export'});
   const payload=JSON.parse(await exported.text());
-  assert.equal(payload.signals.answeredCount,12);assert.equal(payload.currentAnswers.answers.G01,1);
-  assert.deepEqual(payload.planningAssumptions,{});assert.equal(payload.selectedCompanionGoal,4);
+  assert.equal(payload.assessment.evidence.filter(x=>x.dimension!=='context').length,12);assert.equal(payload.assessment.evidence.find(x=>x.id==='G01').raw,1);
+  assert.equal(payload.scenario.assumedEvidence,false);assert.equal(payload.selectedCompanionGoal,4);
  }finally{
   dispose?.();URL.createObjectURL=old.create;
   for(const [key,value] of [['document',old.document],['window',old.window],['sessionStorage',old.storage]]){if(value===undefined)delete globalThis[key];else globalThis[key]=value;}

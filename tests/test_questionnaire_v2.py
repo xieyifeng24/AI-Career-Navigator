@@ -26,7 +26,7 @@ class QuestionnaireV2Contracts(unittest.TestCase):
             self.assertEqual(client.get('/exploration/.env').status_code,404)
     def test_direction_mappings_never_replace_existing_official_database(self):
         catalog=json.loads((ROOT/'data/knowledge/current.json').read_text())
-        self.assertEqual(len(catalog['records']),14)
+        self.assertEqual(len(catalog['records']),27)
         self.assertEqual({r['source'] for r in catalog['records']},{'onet','esco'})
 
 if __name__=='__main__':unittest.main()
