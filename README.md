@@ -1,4 +1,25 @@
 # AI Career Navigator
+## SDC Hackathon 2026 — Official Submission
+
+**Team:** Nexus  
+**Domain:** Domain 1 — Aiversecity Future-Ready Workforce  
+**Project:** NEXUS — AI Career Navigator
+
+### Live Prototype
+https://ai-career-navigator-xyf20070924.replit.app/
+
+### Pitching & Prototype Demonstration Video
+https://youtu.be/L_WUuCkclPk
+
+### Official Submission Documents
+[View all submission documents](./submission/)
+
+This folder contains our Preliminary Project Proposal, Technical & Tools Declaration, Pitch Deck, and Replit/RunPod proof-of-use materials.
+
+### Source Code
+This repository contains the source code for NEXUS.
+
+---
 
 **Your Skills. Your Future. Your Choice.** Team Nexus · SDC Hackathon 2026 · Domain 1.
 
