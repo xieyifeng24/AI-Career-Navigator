@@ -18,7 +18,7 @@ Behavior evidence uses a bounded weighted mean of selected evidence strengths. S
 
 Original ordinal answers are retained as numbers, displayed as historical evidence, and never silently migrated into behavioral options. Mixed-format dimensions are marked mixed; mixed-format role indicators do not establish an ordering. Historical and new formats are not longitudinally comparable. The evidence engine is versioned `evidence-engine-1.1`, invalidating old computed-report caches while retaining answer drafts.
 
-The optional AI endpoint validates the new option IDs and returns only approved evidence statements selected by the model. A failed or unconfigured AI service leaves the deterministic report intact. No core submission invokes paid AI.
+The optional AI endpoint validates the new option IDs and returns only approved evidence statements selected by the model. A failed or unconfigured AI service leaves the deterministic report intact. No core submission invokes paid AI. Language changes, answer editing, resetting and leaving the mounted report invalidate pending interpretations; a late request can no longer overwrite the homepage.
 
 ## Source integrity and recovery
 
@@ -33,7 +33,7 @@ Supplementary view failures expose a visible recovery message and retain the tru
 - Native-module build validates JavaScript syntax, JSON and relative imports, and packages the assets into ignored `dist/site`; the existing FastAPI server continues to serve the same source assets from an explicit allowlist.
 - 208 JavaScript tests; 74 Python tests. The changed protection assertions exclude only the explicitly authorized questionnaire/model/translation edits. Original author banks, SDG logic and assets remain hash-protected.
 - Actual Chrome flows: English 1440px, Chinese 390px, Malay 820px. Each completes both questionnaires, opens all five report pages, changes a constellation node, opens comparison and Skill DNA, changes What If time, reloads the scenario and goes back. No page errors, failed resources or document-width overflow. See `browser-acceptance.json` and screenshots.
-- Controlled browser failures: occupational source transport failure, malformed source update, optional AI 503, blocked browser storage and reduced motion. Core content remains usable with no uncaught script errors. A legacy saved profile without the newer starting-point questionnaire also remains viewable; it is no longer stripped of required legacy learning values on mount.
+- Controlled browser failures: occupational source transport failure, malformed source update, optional AI 503, blocked browser storage, navigating home while an AI request is pending, and reduced motion. Core content remains usable with no uncaught script errors. A legacy saved profile without the newer starting-point questionnaire also remains viewable; it is no longer stripped of required legacy learning values on mount.
 - The local real optional-AI request accepts the multi-select request shape, then returns 503 because AI is not configured. Live AI generation quality is not certified by these tests.
 
 Reproduce with Node 22+ and Python dependencies installed:

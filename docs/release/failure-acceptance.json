@@ -32,5 +32,10 @@
         "detail": "Real AI is not connected yet. Configure RunPod; no mock analysis will be substituted."
       }
     }
+  },
+  {
+    "mode": "ai-navigate-away",
+    "coreAvailable": true,
+    "errors": []
   }
 ]

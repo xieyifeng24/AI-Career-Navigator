@@ -19,6 +19,7 @@ import regional from '../../data/regional/current.json' with {type:'json'};
 const e=escapeHTML;
 export function hasCombinedDraft(){try{return !!sessionStorage.getItem('career-combined-pr8-pr9-v1');}catch{return false;}}
 export function mountCombined({root,onHome}) {
+ let mounted=true;
  let storage;try{storage=sessionStorage;}catch{storage=null;}
  let state=load(storage,language),errors={};
  state={...state,profile:state.phase!=='background'&&!state.startingPoint?.completed?state.profile:withoutPersonalityInterests(state.profile),step:state.step===1?2:state.step};
@@ -46,6 +47,7 @@ export function mountCombined({root,onHome}) {
   }
  }
  function render(focus=false) {
+  if(!mounted)return;
   const previousMilestones=[...(root.querySelectorAll?.('.release-milestone')||[])].map(el=>el.style.width);
   const reduceMotion=globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
 
@@ -108,7 +110,7 @@ export function mountCombined({root,onHome}) {
    if(key==='planHours'&&(!Number.isFinite(Number(target.value))||Number(target.value)<0||Number(target.value)>40)){v2Options.assumptions.planHours=5;}
    render();root.querySelector(`[data-v2-control="${key}"]`)?.focus();return;
   }
-  if(['combined-language-select','v3-language'].includes(target.id)){setLanguage(target.value);errors={};v2Options.ai={status:'idle'};render();root.querySelector('#combined-language-select,#v3-language')?.focus();return;}
+  if(['combined-language-select','v3-language'].includes(target.id)){aiRequestSerial++;setLanguage(target.value);errors={};v2Options.ai={status:'idle'};render();root.querySelector('#combined-language-select,#v3-language')?.focus();return;}
   if(state.phase==='background'&&target.dataset.field){state=updateBackground(state,target.dataset.field,target.value,target.checked!==false);delete errors[target.dataset.field];render();[...document.getElementsByName(target.name)].find(el=>el.value===target.value)?.focus();return;}
   if(state.phase==='v3'&&target.name==='v3-behavior'){
    const q=questionsFor(state.v3.trackId)[state.v3.index];
@@ -137,6 +139,7 @@ export function mountCombined({root,onHome}) {
    render(true);return;
   }
   const action=target.dataset.combinedAction;
+  if(['home','start','edit','edit-background','reset','edit-v3'].includes(action))aiRequestSerial++;
   if(action==='starting-next'||action==='starting-back'){
    try{state={...state,startingPoint:action==='starting-next'?advanceStartingPoint(state.startingPoint):previousStartingPoint(state.startingPoint)};startingMotion=action==='starting-next'?'is-forward':'is-back';}catch(error){errors.starting=error.message;}
    render(true);return;
@@ -243,5 +246,5 @@ if(['hours','planHours','planHorizon'].includes(event.target.dataset.v2Control))
  fetch('/api/regional/current').then(r=>r.ok?r.json():null).then(data=>{
   if(data?.snapshot?.schema_version===1&&typeof data.snapshot.version==='string'&&Array.isArray(data.snapshot.facts)&&data.snapshot.facts.every(f=>['MY','US','GLOBAL'].includes(f.region)&&typeof f.role_id==='string'&&typeof f.source_url==='string'&&f.source_url.startsWith('https://')&&typeof f.reference_period==='string')){v2Options.regionalSnapshot=data.snapshot;v2Options.regionalDelivery=data.delivery;if(state.phase==='report')render();}
  }).catch(()=>{});
- return ()=>{window.removeEventListener?.('popstate',historyChanged);root.removeEventListener('input',input);root.removeEventListener('change',change);root.removeEventListener('submit',submit);root.removeEventListener('click',click);};
+ return ()=>{mounted=false;aiRequestSerial++;window.removeEventListener?.('popstate',historyChanged);root.removeEventListener('input',input);root.removeEventListener('change',change);root.removeEventListener('submit',submit);root.removeEventListener('click',click);};
 }
