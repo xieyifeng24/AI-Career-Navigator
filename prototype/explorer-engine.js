@@ -7,8 +7,11 @@ const TIME={under10:3,'10to20':6,'20to30':8,'30to40':10,over40:12};
 export function blankProfile(){
  return Object.fromEntries([...catalog.fields.map(f=>[f.id,f.multi?[]:f.optional?'undisclosed':'']),['nationality','undisclosed']]);
 }
+export const validWeeklyHours=value=>typeof value==='number'&&Number.isFinite(value)&&value>=0&&value<=60&&Number.isInteger(value*2);
+export function backgroundSteps(profile){return profile.omitPersonalityInterests?[0,2,3]:[0,1,2,3];}
 export function visibleFields(profile,index){
- return catalog.steps[index].fields.filter(key=>key!=='major'||higher.includes(profile.education)).filter(key=>key!=='stream'||profile.education==='senior').filter(key=>!['aiDuration','reliance'].includes(key)||!(Array.isArray(profile.aiPurposes)&&profile.aiPurposes.includes('none')));
+ if(profile.omitPersonalityInterests&&index===1)return [];
+ return catalog.steps[index].fields.filter(key=>!profile.omitLearningPreferences||!['learningAbility','learningStyles','mindsets'].includes(key)).filter(key=>key!=='major'||higher.includes(profile.education)).filter(key=>key!=='stream'||profile.education==='senior').filter(key=>!['aiDuration','reliance'].includes(key)||!(Array.isArray(profile.aiPurposes)&&profile.aiPurposes.includes('none')));
 }
 export function updateChoice(profile,key,value,checked=true){
  if(!fieldMap[key]) return profile;
@@ -27,6 +30,7 @@ export function validateProfile(profile,index=null){
  const fields=index===null?catalog.steps.flatMap((_,i)=>visibleFields(profile,i)):visibleFields(profile,index);
  for(const key of fields){
   const value=profile[key];
+  if(key==='weeklyTime'&&profile.omitLearningPreferences){if(!validWeeklyHours(profile.exactWeeklyHours))errors.weeklyTime='Choose a time from 0 to 60 hours, in 30-minute steps.';continue;}
   if(key==='nationality'){
    if(value!=='undisclosed'&&!catalog.countries.includes(value)) errors[key]='Choose a valid country or prefer not to say.';
    continue;
@@ -42,8 +46,11 @@ export function canonicalProfile(profile){
  const active=new Set(catalog.steps.flatMap((_,i)=>visibleFields(profile,i))),result={};
  for(const f of catalog.fields){
   if(!active.has(f.id))continue;
+  if(f.id==='weeklyTime'&&profile.omitLearningPreferences){result.weeklyTime='';continue;}
   result[f.id]=f.multi?f.options.map(o=>o.id).filter(id=>profile[f.id].includes(id)):profile[f.id];
  }
+ if(profile.omitPersonalityInterests){Object.assign(result,{omitPersonalityInterests:true,social:null,planning:null,decision:null,interests:[]});}
+ if(profile.omitLearningPreferences)Object.assign(result,{omitLearningPreferences:true,exactWeeklyHours:profile.exactWeeklyHours,learningAbility:null,learningStyles:[],mindsets:[]});
  result.nationality=profile.nationality;
  return result;
 }
@@ -68,6 +75,7 @@ export function rankGoals(p,ranking){
  }).sort((a,b)=>b.score-a.score||a.id-b.id);
 }
 export function weeklyHours(p){
+ if(p.omitLearningPreferences&&validWeeklyHours(p.exactWeeklyHours))return p.exactWeeklyHours;
  let hours=TIME[p.weeklyTime];
  if(p.learningAbility==='support')hours=Math.max(1,Math.floor(hours*.75));
  if(p.age==='child')hours=Math.min(hours,2);
@@ -78,15 +86,15 @@ export function buildPlan(p,roleId){
  if(!catalog.careers.some(c=>c.id===roleId))throw new RangeError('Unknown career');
  const hours=weeklyHours(p);
  // Half-hour units: the split sums exactly to the suggested weekly total.
- const units=hours*2,foundation=Math.max(1,Math.floor(units*.4)),project=Math.max(1,Math.floor(units*.4));
+ const units=hours*2,foundation=units<2?0:Math.max(1,Math.floor(units*.4)),project=units<2?0:Math.max(1,Math.floor(units*.4));
  return {roleId,weeklyHours:hours,totalHours:hours*4,split:{foundation:foundation/2,project:project/2,review:(units-foundation-project)/2},weeks:[1,2,3,4].map(week=>({week,hours,action:['baseline','prototype','verify','reflect'][week-1]}))};
 }
 export function generateOfflineReport(profile){
  const p=canonicalProfile(profile),ranking=rankCareers(p),goals=rankGoals(p,ranking);
  const stage=p.age==='child'?'stage-child':p.age==='teen'?'stage-teen':p.status==='enrolled'?'stage-student':'stage-graduate';
- const learning=[stage,...(['primary','junior','senior'].includes(p.education)?['school-foundation']:[]),...(['master','doctor'].includes(p.education)?['research-extension']:[]),`social-${p.social}`,`planning-${p.planning}`,`decision-${p.decision}`,`ability-${p.learningAbility}`,...p.learningStyles.map(x=>`style-${x}`),'mindset-note','cross-border'];
+ const learning=[stage,...(['primary','junior','senior'].includes(p.education)?['school-foundation']:[]),...(['master','doctor'].includes(p.education)?['research-extension']:[]),...(!p.omitPersonalityInterests?[`social-${p.social}`,`planning-${p.planning}`,`decision-${p.decision}`]:[]),...(!p.omitLearningPreferences?[`ability-${p.learningAbility}`,...p.learningStyles.map(x=>`style-${x}`),'mindset-note']:[]),'cross-border'];
  const ai=p.aiPurposes.includes('none')?['ai-none']:[`ai-${p.reliance}`,`duration-${p.aiDuration}`,...p.aiPurposes.map(x=>`purpose-${x}`)];
- return {mode:'offline-rules',version:catalog.version,reportId:`LOCAL-${hash(JSON.stringify(p))}`,profile:p,stage,preferenceCode:`${p.social==='introvert'?'I':'E'}${p.planning==='planned'?'J':'P'}${p.decision==='rational'?'R':'F'}`,ranking,goals,learning,ai,plan:buildPlan(p,ranking[0].id)};
+ return {mode:'offline-rules',version:catalog.version,reportId:`LOCAL-${hash(JSON.stringify(p))}`,profile:p,stage,preferenceCode:p.omitPersonalityInterests?'—':`${p.social==='introvert'?'I':'E'}${p.planning==='planned'?'J':'P'}${p.decision==='rational'?'R':'F'}`,ranking,goals,learning,ai,plan:buildPlan(p,ranking[0].id)};
 }
 export function sampleProfile(){return {...blankProfile(),age:'young',education:'bachelor',status:'enrolled',major:'software',social:'introvert',planning:'planned',decision:'rational',interests:['tech','learning'],aiPurposes:['coding','summary'],aiDuration:'1to6',reliance:'moderate',learningAbility:'steady',weeklyTime:'under10',learningStyles:['practice','explore'],mindsets:['science']};}
 export function outputInventory(){

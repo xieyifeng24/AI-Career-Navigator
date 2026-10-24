@@ -15,6 +15,11 @@ import httpx
 ROOT = Path(__file__).resolve().parents[1]
 PUBLIC_ASSETS = {
     "combined/results.js": ROOT / "prototype/combined/results.js",
+    "combined/intelligence.js": ROOT / "prototype/combined/intelligence.js",
+    "combined/starting-point.js": ROOT / "prototype/combined/starting-point.js",
+    "combined/starting-point-view.js": ROOT / "prototype/combined/starting-point-view.js",
+    "combined/starting-point-bank.json": ROOT / "prototype/combined/starting-point-bank.json",
+    "combined/v2-report.js": ROOT / "prototype/combined/v2-report.js",
     "combined/app.js": ROOT / "prototype/combined/app.js",
     "explorer-engine.js": ROOT / "prototype/explorer-engine.js",
     "intro.js": ROOT / "prototype/intro.js",

@@ -1,0 +1,5314 @@
+{
+  "A": {
+    "startingPoint": {
+      "version": "starting-point-1",
+      "screen": "bridge",
+      "index": 11,
+      "answers": {
+        "Q01": "B",
+        "Q02": {
+          "primary": "A",
+          "secondary": null
+        },
+        "Q03": "C",
+        "Q04": "A",
+        "Q05": {
+          "knowledge": "examples",
+          "execution": "examples",
+          "problemSolving": "examples",
+          "communication": "independent"
+        },
+        "Q06": "C",
+        "Q07": [
+          "B",
+          "F"
+        ],
+        "Q08": "B",
+        "Q09": "A",
+        "Q10": "B",
+        "Q11": "1"
+      },
+      "story": "",
+      "completed": true
+    },
+    "answers": {
+      "G01": 6,
+      "G02": 6,
+      "G03": 6,
+      "G04": 6,
+      "SW01": 6,
+      "SW02": 6,
+      "SW03": 6,
+      "SW04": 6,
+      "SW05": 6,
+      "SW06": 2,
+      "SW07": 6,
+      "SW08": 6
+    },
+    "unified": {
+      "version": "career-intelligence-4.0",
+      "evidence": [
+        {
+          "id": "G01",
+          "question": {
+            "zh-CN": "面对自己还不了解的职业方向，我愿意先通过小项目亲身体验，再决定是否适合继续探索。",
+            "en": "When exploring an unfamiliar career path, I would rather try a small project before deciding whether to pursue it.",
+            "ms": "Apabila meneroka bidang kerjaya yang belum saya kenali, saya lebih suka mencuba projek kecil sebelum memutuskan sama ada mahu meneruskannya."
+          },
+          "answer": 6,
+          "construct": "exploration",
+          "type": "self-report",
+          "status": "supported",
+          "rule": "literal-ordinal-v3",
+          "verified": false
+        },
+        {
+          "id": "G02",
+          "question": {
+            "zh-CN": "即使某种技能因为技术变化而不再那么重要，我也愿意调整计划、学习新的方法。",
+            "en": "If technology makes one of my skills less relevant, I am willing to adjust my plans and learn a new approach.",
+            "ms": "Jika perubahan teknologi menjadikan sesuatu kemahiran saya kurang relevan, saya sanggup menyesuaikan rancangan dan mempelajari pendekatan baharu."
+          },
+          "answer": 6,
+          "construct": "adaptability",
+          "type": "self-report",
+          "status": "supported",
+          "rule": "literal-ordinal-v3",
+          "verified": false
+        },
+        {
+          "id": "G03",
+          "question": {
+            "zh-CN": "过去一个月，我曾主动用 AI 工具帮助自己完成学习、工作或生活中的具体任务。",
+            "en": "In the past month, I have actively used AI tools to help complete specific study, work, or everyday tasks.",
+            "ms": "Dalam sebulan yang lalu, saya telah menggunakan alat AI secara aktif untuk membantu menyiapkan tugasan pembelajaran, kerja atau kehidupan harian."
+          },
+          "answer": 6,
+          "construct": "ai_practice",
+          "type": "self-report",
+          "status": "supported",
+          "rule": "literal-ordinal-v3",
+          "verified": false
+        },
+        {
+          "id": "G04",
+          "question": {
+            "zh-CN": "当 AI 给出看似合理的答案时，我会核对其中重要的事实、来源或结果，而不只是相信它的表述。",
+            "en": "When AI gives a plausible answer, I check important facts, sources or results rather than relying on how convincing it sounds.",
+            "ms": "Apabila AI memberikan jawapan yang nampak munasabah, saya menyemak fakta, sumber atau hasil penting dan tidak sekadar mempercayai jawapannya."
+          },
+          "answer": 6,
+          "construct": "ai_verification",
+          "type": "self-report",
+          "status": "supported",
+          "rule": "literal-ordinal-v3",
+          "verified": false
+        },
+        {
+          "id": "SW01",
+          "question": {
+            "zh-CN": "相比只讨论产品创意，我更想亲手把一个想法变成能实际运行的工具。",
+            "en": "Rather than only discussing product ideas, I would like to turn an idea into a working tool myself.",
+            "ms": "Daripada sekadar membincangkan idea produk, saya lebih berminat membina sendiri alat yang benar-benar berfungsi."
+          },
+          "answer": 6,
+          "construct": "interest",
+          "type": "self-report",
+          "status": "supported",
+          "rule": "literal-ordinal-v3",
+          "verified": false
+        },
+        {
+          "id": "SW02",
+          "question": {
+            "zh-CN": "发现一段程序为什么出错，会让我产生想继续追查的兴趣。",
+            "en": "Figuring out why a piece of software fails is something I would find genuinely interesting.",
+            "ms": "Mencari punca sesuatu perisian gagal berfungsi benar-benar menarik minat saya."
+          },
+          "answer": 6,
+          "construct": "interest",
+          "type": "self-report",
+          "status": "supported",
+          "rule": "literal-ordinal-v3",
+          "verified": false
+        },
+        {
+          "id": "SW03",
+          "question": {
+            "zh-CN": "遇到复杂功能时，我倾向于先拆成几个可以分别测试的小步骤。",
+            "en": "When facing a complex feature, I prefer breaking it into smaller steps that can be tested separately.",
+            "ms": "Apabila berdepan dengan fungsi yang rumit, saya lebih suka membahagikannya kepada langkah kecil yang boleh diuji secara berasingan."
+          },
+          "answer": 6,
+          "construct": "workstyle",
+          "type": "self-report",
+          "status": "supported",
+          "rule": "literal-ordinal-v3",
+          "verified": false
+        },
+        {
+          "id": "SW04",
+          "question": {
+            "zh-CN": "为了让产品可靠，我愿意反复修改同一个功能，而不急着添加新功能。",
+            "en": "To make a product reliable, I am willing to refine the same feature repeatedly instead of rushing to add new ones.",
+            "ms": "Untuk memastikan produk boleh dipercayai, saya sanggup memperbaiki fungsi yang sama berulang kali dan tidak tergesa-gesa menambah fungsi baharu."
+          },
+          "answer": 6,
+          "construct": "workstyle",
+          "type": "self-report",
+          "status": "supported",
+          "rule": "literal-ordinal-v3",
+          "verified": false
+        },
+        {
+          "id": "SW05",
+          "question": {
+            "zh-CN": "我亲自制作或修改过能运行的程序、网页、脚本或自动化工具。",
+            "en": "I have personally built or modified a working program, webpage, script or automation tool.",
+            "ms": "Saya pernah membina atau mengubah suai sendiri program, laman web, skrip atau alat automasi yang berfungsi."
+          },
+          "answer": 6,
+          "construct": "experience",
+          "type": "self-report",
+          "status": "supported",
+          "rule": "literal-ordinal-v3",
+          "verified": false
+        },
+        {
+          "id": "SW06",
+          "question": {
+            "zh-CN": "我曾通过运行结果、报错信息或测试，自己定位并修复一个技术问题。",
+            "en": "I have used test results, error messages or program output to locate and fix a technical problem myself.",
+            "ms": "Saya pernah menggunakan hasil ujian, mesej ralat atau output program untuk mengenal pasti dan membaiki masalah teknikal sendiri."
+          },
+          "answer": 2,
+          "construct": "experience",
+          "type": "self-report",
+          "status": "not-endorsed",
+          "rule": "literal-ordinal-v3",
+          "verified": false
+        },
+        {
+          "id": "SW07",
+          "question": {
+            "zh-CN": "让 AI 生成代码时，我会根据实际需求修改它，而不是直接采用第一版。",
+            "en": "When AI generates code, I revise it to fit the actual requirements rather than accepting the first draft unchanged.",
+            "ms": "Apabila AI menjana kod, saya mengubah suainya mengikut keperluan sebenar dan bukannya terus menggunakan draf pertama."
+          },
+          "answer": 6,
+          "construct": "ai_practice",
+          "type": "self-report",
+          "status": "supported",
+          "rule": "literal-ordinal-v3",
+          "verified": false
+        },
+        {
+          "id": "SW08",
+          "question": {
+            "zh-CN": "如果 AI 声称登录功能已经完成，我会检查正常登录、错误密码等情况，再认为它可以使用。",
+            "en": "If AI says a login feature is finished, I would test normal logins and cases such as incorrect passwords before treating it as ready.",
+            "ms": "Jika AI mengatakan fungsi log masuk sudah siap, saya akan menguji log masuk biasa dan kes seperti kata laluan salah sebelum menganggapnya sedia digunakan."
+          },
+          "answer": 6,
+          "construct": "ai_verification",
+          "type": "self-report",
+          "status": "supported",
+          "rule": "literal-ordinal-v3",
+          "verified": false
+        },
+        {
+          "id": "Q01",
+          "answer": "B",
+          "type": "self-report-context",
+          "status": "reported",
+          "rule": "literal-starting-point",
+          "verified": false
+        },
+        {
+          "id": "Q02",
+          "answer": {
+            "primary": "A",
+            "secondary": null
+          },
+          "type": "self-report-context",
+          "status": "reported",
+          "rule": "literal-starting-point",
+          "verified": false
+        },
+        {
+          "id": "Q03",
+          "answer": "C",
+          "type": "self-report-context",
+          "status": "reported",
+          "rule": "literal-starting-point",
+          "verified": false
+        },
+        {
+          "id": "Q04",
+          "answer": "A",
+          "type": "self-report-context",
+          "status": "reported",
+          "rule": "literal-starting-point",
+          "verified": false
+        },
+        {
+          "id": "Q05",
+          "answer": {
+            "knowledge": "examples",
+            "execution": "examples",
+            "problemSolving": "examples",
+            "communication": "independent"
+          },
+          "type": "self-report-context",
+          "status": "reported",
+          "rule": "literal-starting-point",
+          "verified": false
+        },
+        {
+          "id": "Q06",
+          "answer": "C",
+          "type": "self-report-context",
+          "status": "reported",
+          "rule": "literal-starting-point",
+          "verified": false
+        },
+        {
+          "id": "Q07",
+          "answer": [
+            "B",
+            "F"
+          ],
+          "type": "self-report-context",
+          "status": "reported",
+          "rule": "literal-starting-point",
+          "verified": false
+        },
+        {
+          "id": "Q08",
+          "answer": "B",
+          "type": "self-report-context",
+          "status": "reported",
+          "rule": "literal-starting-point",
+          "verified": false
+        },
+        {
+          "id": "Q09",
+          "answer": "A",
+          "type": "self-report-context",
+          "status": "reported",
+          "rule": "literal-starting-point",
+          "verified": false
+        },
+        {
+          "id": "Q10",
+          "answer": "B",
+          "type": "self-report-context",
+          "status": "reported",
+          "rule": "literal-starting-point",
+          "verified": false
+        },
+        {
+          "id": "Q11",
+          "answer": "1",
+          "type": "self-report-context",
+          "status": "reported",
+          "rule": "literal-starting-point",
+          "verified": false
+        }
+      ],
+      "personal": {
+        "contradictions": [
+          "artifact-without-repair"
+        ],
+        "currentSituation": {
+          "stage": "B",
+          "field": "A"
+        },
+        "primaryConcerns": {
+          "primary": "A",
+          "secondary": null,
+          "decisionContext": "C",
+          "goal": "B"
+        },
+        "interests": {
+          "status": "supported",
+          "evidenceIds": [
+            "SW01",
+            "SW02"
+          ],
+          "sourceIds": [],
+          "range": [
+            2,
+            2
+          ],
+          "verified": false
+        },
+        "workPreferences": {
+          "status": "supported",
+          "evidenceIds": [
+            "SW03",
+            "SW04"
+          ],
+          "sourceIds": [],
+          "range": [
+            2,
+            2
+          ],
+          "verified": false
+        },
+        "selfReportedCapability": {
+          "knowledge": "examples",
+          "execution": "examples",
+          "problemSolving": "examples",
+          "communication": "independent"
+        },
+        "experience": {
+          "dimension": {
+            "status": "mixed",
+            "evidenceIds": [
+              "SW05",
+              "SW06"
+            ],
+            "sourceIds": [],
+            "range": [
+              1,
+              1
+            ],
+            "verified": false
+          },
+          "artifact": "C",
+          "verified": false
+        },
+        "ai": {
+          "practice": {
+            "status": "supported",
+            "evidenceIds": [
+              "G03",
+              "SW07"
+            ],
+            "sourceIds": [],
+            "range": [
+              2,
+              2
+            ],
+            "verified": false
+          },
+          "verification": {
+            "status": "supported",
+            "evidenceIds": [
+              "G04",
+              "SW08"
+            ],
+            "sourceIds": [],
+            "range": [
+              2,
+              2
+            ],
+            "verified": false
+          },
+          "assumedVerification": false
+        },
+        "constraints": {
+          "market": "A",
+          "circumstance": "B",
+          "barriers": [
+            "B",
+            "F"
+          ],
+          "timeBudget": null
+        },
+        "unknowns": [
+          "observed-skills",
+          "mathematical-readiness",
+          "employment-eligibility",
+          "time-budget"
+        ]
+      },
+      "claims": [
+        {
+          "claim_id": "artifact-without-repair",
+          "evidence_ids": [
+            "SW05",
+            "SW06",
+            "Q06"
+          ],
+          "source_ids": [],
+          "inference_type": "product-rule",
+          "uncertainty": "self-report-unverified",
+          "copy": [
+            "A project or runnable artifact is reported, but independent repair is not. It may reflect teamwork or tutorial support. Reproduce a defect and explain your own correction before claiming independent delivery.",
+            "你报告了项目或可运行作品，却未报告独立修复经历；可能涉及团队或教程支持。先复现故障并解释自己的修正，再判断独立交付准备。",
+            "Projek atau hasil berfungsi dilaporkan tetapi pembaikan sendiri tidak. Ini mungkin melibatkan pasukan atau tutorial. Ulang kecacatan dan terangkan pembetulan sendiri sebelum menilai penghantaran bebas."
+          ],
+          "rule": "artifact-without-repair",
+          "recommended_action_ids": [
+            "software-verify"
+          ],
+          "limitations": [
+            "No observed competence test"
+          ]
+        },
+        {
+          "claim_id": "decision-context",
+          "evidence_ids": [
+            "Q02",
+            "Q08",
+            "Q09"
+          ],
+          "source_ids": [],
+          "inference_type": "product-rule",
+          "uncertainty": "self-report-unverified",
+          "copy": [
+            "Your concern and target market set the report focus, not your ability. Check local task evidence and access requirements separately from personal preparation.",
+            "困惑与目标地区决定报告重点，不改变你的能力证据。将当地职业任务与准入条件和个人准备分别核查。",
+            "Kebimbangan dan pasaran sasaran menetapkan fokus laporan, bukan kebolehan. Semak tugas tempatan dan syarat akses berasingan daripada persediaan diri."
+          ],
+          "rule": "decision-context",
+          "recommended_action_ids": [
+            "context-verify"
+          ],
+          "limitations": [
+            "No observed competence test"
+          ]
+        }
+      ],
+      "routes": [
+        {
+          "id": "software",
+          "title": "Software developer",
+          "dimensions": {
+            "interest": {
+              "status": "supported",
+              "evidenceIds": [
+                "SW01",
+                "SW02"
+              ],
+              "sourceIds": [
+                "onet:15-1252.00",
+                "esco:http://data.europa.eu/esco/occupation/f2b15a0e-e65a-438a-affb-29b9d50b77d1"
+              ],
+              "range": [
+                2,
+                2
+              ],
+              "verified": false
+            },
+            "workPreference": {
+              "status": "supported",
+              "evidenceIds": [
+                "SW04",
+                "SW03"
+              ],
+              "sourceIds": [
+                "onet:15-1252.00",
+                "esco:http://data.europa.eu/esco/occupation/f2b15a0e-e65a-438a-affb-29b9d50b77d1"
+              ],
+              "range": [
+                2,
+                2
+              ],
+              "verified": false
+            },
+            "experience": {
+              "status": "mixed",
+              "evidenceIds": [
+                "SW05",
+                "SW06"
+              ],
+              "sourceIds": [
+                "onet:15-1252.00",
+                "esco:http://data.europa.eu/esco/occupation/f2b15a0e-e65a-438a-affb-29b9d50b77d1"
+              ],
+              "range": [
+                1,
+                1
+              ],
+              "verified": false
+            },
+            "skillReadiness": {
+              "status": "unknown",
+              "range": [
+                0,
+                2
+              ],
+              "verified": false,
+              "evidenceIds": [],
+              "sourceIds": [
+                "onet:15-1252.00",
+                "esco:http://data.europa.eu/esco/occupation/f2b15a0e-e65a-438a-affb-29b9d50b77d1"
+              ]
+            },
+            "goalAlignment": {
+              "status": "contextual",
+              "evidenceIds": [
+                "Q02",
+                "Q08"
+              ]
+            },
+            "practicalFeasibility": {
+              "status": "unknown",
+              "evidenceIds": [
+                "Q10"
+              ],
+              "missing": [
+                "time-budget",
+                "entry-eligibility"
+              ]
+            },
+            "marketOutlook": {
+              "status": "separate-regional-context",
+              "sourceIds": []
+            }
+          },
+          "requirements": [
+            {
+              "id": "build",
+              "label": "develop software prototype",
+              "task": {
+                "id": "21667",
+                "label": "Design, develop and modify software systems, using scientific analysis and mathematical models to predict and measure outcomes and consequences of design.",
+                "url": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/task_statements.csv",
+                "date": "08/2025",
+                "sourceId": "onet:15-1252.00"
+              },
+              "sourceId": "esco:http://data.europa.eu/esco/occupation/f2b15a0e-e65a-438a-affb-29b9d50b77d1",
+              "status": "unverified",
+              "evidenceIds": [
+                "SW01"
+              ],
+              "mapping": "reviewed-context"
+            },
+            {
+              "id": "debug",
+              "label": "debug software",
+              "task": {
+                "id": "21670",
+                "label": "Modify existing software to correct errors, adapt it to new hardware, or upgrade interfaces and improve performance.",
+                "url": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/task_statements.csv",
+                "date": "08/2025",
+                "sourceId": "onet:15-1252.00"
+              },
+              "sourceId": "esco:http://data.europa.eu/esco/occupation/f2b15a0e-e65a-438a-affb-29b9d50b77d1",
+              "status": "unverified",
+              "evidenceIds": [
+                "SW02"
+              ],
+              "mapping": "reviewed-context"
+            },
+            {
+              "id": "test",
+              "label": "Systems Evaluation",
+              "task": {
+                "id": "21669",
+                "label": "Develop or direct software system testing or validation procedures, programming, or documentation.",
+                "url": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/task_statements.csv",
+                "date": "08/2025",
+                "sourceId": "onet:15-1252.00"
+              },
+              "sourceId": "onet:15-1252.00",
+              "status": "unverified",
+              "evidenceIds": [
+                "SW04"
+              ],
+              "mapping": "reviewed-context"
+            },
+            {
+              "id": "requirements",
+              "label": "Systems Analysis",
+              "task": {
+                "id": "21662",
+                "label": "Analyze user needs and software requirements to determine feasibility of design within time and cost constraints.",
+                "url": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/task_statements.csv",
+                "date": "08/2025",
+                "sourceId": "onet:15-1252.00"
+              },
+              "sourceId": "onet:15-1252.00",
+              "status": "unverified",
+              "evidenceIds": [
+                "SW03"
+              ],
+              "mapping": "reviewed-context"
+            }
+          ],
+          "priority": 1,
+          "label": "promising-needs-validation",
+          "sourceIds": [
+            "onet:15-1252.00",
+            "esco:http://data.europa.eu/esco/occupation/f2b15a0e-e65a-438a-affb-29b9d50b77d1"
+          ],
+          "actionId": "software-verify",
+          "officialMapping": true
+        },
+        {
+          "id": "ai-research",
+          "title": "AI / machine-learning engineer",
+          "dimensions": {
+            "interest": {
+              "status": "unknown",
+              "evidenceIds": [],
+              "sourceIds": [
+                "onet:15-1221.00",
+                "esco:http://data.europa.eu/esco/occupation/35553663-deab-4d9a-bf22-15c1625d28e8"
+              ],
+              "range": [
+                0,
+                2
+              ],
+              "verified": false
+            },
+            "workPreference": {
+              "status": "supported",
+              "evidenceIds": [
+                "SW03"
+              ],
+              "sourceIds": [
+                "onet:15-1221.00",
+                "esco:http://data.europa.eu/esco/occupation/35553663-deab-4d9a-bf22-15c1625d28e8"
+              ],
+              "range": [
+                2,
+                2
+              ],
+              "verified": false
+            },
+            "experience": {
+              "status": "unknown",
+              "evidenceIds": [
+                "SW05"
+              ],
+              "sourceIds": [
+                "onet:15-1221.00",
+                "esco:http://data.europa.eu/esco/occupation/35553663-deab-4d9a-bf22-15c1625d28e8"
+              ],
+              "range": [
+                0,
+                2
+              ],
+              "verified": false,
+              "transferableProgramming": {
+                "status": "supported",
+                "evidenceIds": [
+                  "SW05"
+                ],
+                "sourceIds": [],
+                "range": [
+                  2,
+                  2
+                ],
+                "verified": false
+              },
+              "reason": "Programming experience does not establish research or ML experience"
+            },
+            "skillReadiness": {
+              "status": "unknown",
+              "range": [
+                0,
+                2
+              ],
+              "verified": false,
+              "evidenceIds": [],
+              "sourceIds": [
+                "onet:15-1221.00",
+                "esco:http://data.europa.eu/esco/occupation/35553663-deab-4d9a-bf22-15c1625d28e8"
+              ]
+            },
+            "goalAlignment": {
+              "status": "contextual",
+              "evidenceIds": [
+                "Q02",
+                "Q08"
+              ]
+            },
+            "practicalFeasibility": {
+              "status": "unknown",
+              "evidenceIds": [
+                "Q10"
+              ],
+              "missing": [
+                "time-budget",
+                "entry-eligibility"
+              ]
+            },
+            "marketOutlook": {
+              "status": "separate-regional-context",
+              "sourceIds": []
+            }
+          },
+          "requirements": [
+            {
+              "id": "problem-solving",
+              "label": "Complex Problem Solving",
+              "task": {
+                "id": "14623",
+                "label": "Analyze problems to develop solutions involving computer hardware and software.",
+                "url": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/task_statements.csv",
+                "date": "08/2019",
+                "sourceId": "onet:15-1221.00"
+              },
+              "sourceId": "onet:15-1221.00",
+              "status": "unverified",
+              "evidenceIds": [
+                "SW03"
+              ],
+              "mapping": "reviewed-context"
+            },
+            {
+              "id": "mathematical-models",
+              "label": "Mathematics",
+              "task": {
+                "id": "14629",
+                "label": "Conduct logical analyses of business, scientific, engineering, and other technical problems, formulating mathematical models of problems for solution by computers.",
+                "url": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/task_statements.csv",
+                "date": "08/2019",
+                "sourceId": "onet:15-1221.00"
+              },
+              "sourceId": "onet:15-1221.00",
+              "status": "unverified",
+              "evidenceIds": [],
+              "mapping": "reviewed-context"
+            },
+            {
+              "id": "intelligent-systems",
+              "label": "principles of artificial intelligence",
+              "task": {
+                "id": "14626",
+                "label": "Apply theoretical expertise and innovation to create or apply new technology, such as adapting principles for applying computers to new uses.",
+                "url": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/task_statements.csv",
+                "date": "08/2019",
+                "sourceId": "onet:15-1221.00"
+              },
+              "sourceId": "esco:http://data.europa.eu/esco/occupation/35553663-deab-4d9a-bf22-15c1625d28e8",
+              "status": "unverified",
+              "evidenceIds": [],
+              "mapping": "reviewed-context"
+            }
+          ],
+          "priority": 1,
+          "label": "worth-exploring",
+          "sourceIds": [
+            "onet:15-1221.00",
+            "esco:http://data.europa.eu/esco/occupation/35553663-deab-4d9a-bf22-15c1625d28e8"
+          ],
+          "actionId": "ai-research-verify",
+          "officialMapping": true
+        }
+      ],
+      "comparison": {
+        "relation": "incomparable",
+        "compared": [
+          "workPreference"
+        ],
+        "rule": "observed-pareto-v1",
+        "limitation": "Partial task evidence only; unknown requirements remain unresolved. No overall fit score."
+      },
+      "edges": [
+        {
+          "from": "software",
+          "to": "ai-research",
+          "type": "exploration-comparison",
+          "sharedRequirements": [],
+          "migrationVerified": false,
+          "conditions": [
+            "Complex Problem Solving",
+            "Mathematics",
+            "principles of artificial intelligence"
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "id": "software-verify",
+          "routeId": "software",
+          "evidenceIds": [
+            "SW01",
+            "SW02",
+            "SW05",
+            "SW06",
+            "Q02",
+            "Q05",
+            "Q06",
+            "Q08"
+          ],
+          "sourceIds": [
+            "onet:15-1252.00",
+            "esco:http://data.europa.eu/esco/occupation/f2b15a0e-e65a-438a-affb-29b9d50b77d1"
+          ],
+          "task": "For Software developer, begin with one guided example connected to “develop software prototype”. Then change one requirement and record what you could complete and check without help. Follow a worked example to build a local study tracker, then add an edit feature without copying the example.",
+          "check": "Compare the actual work and checks with your reported level; keep differences as evidence for the next review. Show a runnable repository; test add, edit and delete, record one failure and explain the correction.",
+          "why": "Compare sourced occupational tasks with AI assistance and the human review each task still needs. Test a task before making a major change. A finished program and independent repair have not been established; the linked software tasks include development, testing and error correction.",
+          "stage": "now",
+          "verified": false
+        },
+        {
+          "id": "ai-research-verify",
+          "routeId": "ai-research",
+          "evidenceIds": [
+            "SW03",
+            "SW05",
+            "SW06",
+            "Q02",
+            "Q05",
+            "Q06",
+            "Q08"
+          ],
+          "sourceIds": [
+            "onet:15-1221.00",
+            "esco:http://data.europa.eu/esco/occupation/35553663-deab-4d9a-bf22-15c1625d28e8"
+          ],
+          "task": "For AI / machine-learning engineer, begin with one guided example connected to “Complex Problem Solving”. Then change one requirement and record what you could complete and check without help. Reproduce a guided classifier example, then calculate and compare a majority-class baseline.",
+          "check": "Compare the actual work and checks with your reported level; keep differences as evidence for the next review. Identify the dataset, baseline and one wrong prediction; explain each step you cannot yet reproduce independently.",
+          "why": "Compare sourced occupational tasks with AI assistance and the human review each task still needs. Test a task before making a major change. The linked research tasks and AI principles are unmeasured, and finished-program experience is not established.",
+          "stage": "now",
+          "verified": false
+        },
+        {
+          "id": "context-verify",
+          "routeId": "context",
+          "evidenceIds": [
+            "Q02",
+            "Q08",
+            "Q09"
+          ],
+          "sourceIds": [],
+          "task": "Compare sourced occupational tasks with AI assistance and the human review each task still needs. Test a task before making a major change.",
+          "check": "Save one source-backed comparison and identify the next unresolved access or task requirement.",
+          "stage": "now",
+          "verified": false
+        },
+        {
+          "id": "ai-verify",
+          "routeId": "cross-cutting",
+          "evidenceIds": [
+            "G04",
+            "SW08"
+          ],
+          "sourceIds": [],
+          "task": "Keep a manual baseline and one AI-assisted attempt for your chosen route; record a rejected or corrected AI suggestion.",
+          "check": "Show the original input, AI output, independent source or test, and final correction.",
+          "stage": "now",
+          "verified": false,
+          "why": "Reported AI-checking habits need an observed example before they can inform confidence."
+        }
+      ],
+      "scenario": {},
+      "coverage": {
+        "selectedDirection": "SW",
+        "unmeasuredDirections": 9,
+        "knowledgeVersion": "knowledge-20261023T181607Z-afaae13f29bea3e9"
+      },
+      "method": "Ordinal evidence / partial Pareto; no weighted average, ability score or career-success probability"
+    }
+  },
+  "B": {
+    "startingPoint": {
+      "version": "starting-point-1",
+      "screen": "bridge",
+      "index": 11,
+      "answers": {
+        "Q01": "B",
+        "Q02": {
+          "primary": "G",
+          "secondary": null
+        },
+        "Q03": "C",
+        "Q04": "A",
+        "Q05": {
+          "knowledge": "examples",
+          "execution": "examples",
+          "problemSolving": "examples",
+          "communication": "independent"
+        },
+        "Q06": "C",
+        "Q07": [
+          "B",
+          "F"
+        ],
+        "Q08": "F",
+        "Q09": "B",
+        "Q10": "B",
+        "Q11": "1"
+      },
+      "story": "",
+      "completed": true
+    },
+    "answers": {
+      "G01": 6,
+      "G02": 6,
+      "G03": 6,
+      "G04": 6,
+      "SW01": 6,
+      "SW02": 6,
+      "SW03": 6,
+      "SW04": 6,
+      "SW05": 6,
+      "SW06": 2,
+      "SW07": 6,
+      "SW08": 6
+    },
+    "unified": {
+      "version": "career-intelligence-4.0",
+      "evidence": [
+        {
+          "id": "G01",
+          "question": {
+            "zh-CN": "面对自己还不了解的职业方向，我愿意先通过小项目亲身体验，再决定是否适合继续探索。",
+            "en": "When exploring an unfamiliar career path, I would rather try a small project before deciding whether to pursue it.",
+            "ms": "Apabila meneroka bidang kerjaya yang belum saya kenali, saya lebih suka mencuba projek kecil sebelum memutuskan sama ada mahu meneruskannya."
+          },
+          "answer": 6,
+          "construct": "exploration",
+          "type": "self-report",
+          "status": "supported",
+          "rule": "literal-ordinal-v3",
+          "verified": false
+        },
+        {
+          "id": "G02",
+          "question": {
+            "zh-CN": "即使某种技能因为技术变化而不再那么重要，我也愿意调整计划、学习新的方法。",
+            "en": "If technology makes one of my skills less relevant, I am willing to adjust my plans and learn a new approach.",
+            "ms": "Jika perubahan teknologi menjadikan sesuatu kemahiran saya kurang relevan, saya sanggup menyesuaikan rancangan dan mempelajari pendekatan baharu."
+          },
+          "answer": 6,
+          "construct": "adaptability",
+          "type": "self-report",
+          "status": "supported",
+          "rule": "literal-ordinal-v3",
+          "verified": false
+        },
+        {
+          "id": "G03",
+          "question": {
+            "zh-CN": "过去一个月，我曾主动用 AI 工具帮助自己完成学习、工作或生活中的具体任务。",
+            "en": "In the past month, I have actively used AI tools to help complete specific study, work, or everyday tasks.",
+            "ms": "Dalam sebulan yang lalu, saya telah menggunakan alat AI secara aktif untuk membantu menyiapkan tugasan pembelajaran, kerja atau kehidupan harian."
+          },
+          "answer": 6,
+          "construct": "ai_practice",
+          "type": "self-report",
+          "status": "supported",
+          "rule": "literal-ordinal-v3",
+          "verified": false
+        },
+        {
+          "id": "G04",
+          "question": {
+            "zh-CN": "当 AI 给出看似合理的答案时，我会核对其中重要的事实、来源或结果，而不只是相信它的表述。",
+            "en": "When AI gives a plausible answer, I check important facts, sources or results rather than relying on how convincing it sounds.",
+            "ms": "Apabila AI memberikan jawapan yang nampak munasabah, saya menyemak fakta, sumber atau hasil penting dan tidak sekadar mempercayai jawapannya."
+          },
+          "answer": 6,
+          "construct": "ai_verification",
+          "type": "self-report",
+          "status": "supported",
+          "rule": "literal-ordinal-v3",
+          "verified": false
+        },
+        {
+          "id": "SW01",
+          "question": {
+            "zh-CN": "相比只讨论产品创意，我更想亲手把一个想法变成能实际运行的工具。",
+            "en": "Rather than only discussing product ideas, I would like to turn an idea into a working tool myself.",
+            "ms": "Daripada sekadar membincangkan idea produk, saya lebih berminat membina sendiri alat yang benar-benar berfungsi."
+          },
+          "answer": 6,
+          "construct": "interest",
+          "type": "self-report",
+          "status": "supported",
+          "rule": "literal-ordinal-v3",
+          "verified": false
+        },
+        {
+          "id": "SW02",
+          "question": {
+            "zh-CN": "发现一段程序为什么出错，会让我产生想继续追查的兴趣。",
+            "en": "Figuring out why a piece of software fails is something I would find genuinely interesting.",
+            "ms": "Mencari punca sesuatu perisian gagal berfungsi benar-benar menarik minat saya."
+          },
+          "answer": 6,
+          "construct": "interest",
+          "type": "self-report",
+          "status": "supported",
+          "rule": "literal-ordinal-v3",
+          "verified": false
+        },
+        {
+          "id": "SW03",
+          "question": {
+            "zh-CN": "遇到复杂功能时，我倾向于先拆成几个可以分别测试的小步骤。",
+            "en": "When facing a complex feature, I prefer breaking it into smaller steps that can be tested separately.",
+            "ms": "Apabila berdepan dengan fungsi yang rumit, saya lebih suka membahagikannya kepada langkah kecil yang boleh diuji secara berasingan."
+          },
+          "answer": 6,
+          "construct": "workstyle",
+          "type": "self-report",
+          "status": "supported",
+          "rule": "literal-ordinal-v3",
+          "verified": false
+        },
+        {
+          "id": "SW04",
+          "question": {
+            "zh-CN": "为了让产品可靠，我愿意反复修改同一个功能，而不急着添加新功能。",
+            "en": "To make a product reliable, I am willing to refine the same feature repeatedly instead of rushing to add new ones.",
+            "ms": "Untuk memastikan produk boleh dipercayai, saya sanggup memperbaiki fungsi yang sama berulang kali dan tidak tergesa-gesa menambah fungsi baharu."
+          },
+          "answer": 6,
+          "construct": "workstyle",
+          "type": "self-report",
+          "status": "supported",
+          "rule": "literal-ordinal-v3",
+          "verified": false
+        },
+        {
+          "id": "SW05",
+          "question": {
+            "zh-CN": "我亲自制作或修改过能运行的程序、网页、脚本或自动化工具。",
+            "en": "I have personally built or modified a working program, webpage, script or automation tool.",
+            "ms": "Saya pernah membina atau mengubah suai sendiri program, laman web, skrip atau alat automasi yang berfungsi."
+          },
+          "answer": 6,
+          "construct": "experience",
+          "type": "self-report",
+          "status": "supported",
+          "rule": "literal-ordinal-v3",
+          "verified": false
+        },
+        {
+          "id": "SW06",
+          "question": {
+            "zh-CN": "我曾通过运行结果、报错信息或测试，自己定位并修复一个技术问题。",
+            "en": "I have used test results, error messages or program output to locate and fix a technical problem myself.",
+            "ms": "Saya pernah menggunakan hasil ujian, mesej ralat atau output program untuk mengenal pasti dan membaiki masalah teknikal sendiri."
+          },
+          "answer": 2,
+          "construct": "experience",
+          "type": "self-report",
+          "status": "not-endorsed",
+          "rule": "literal-ordinal-v3",
+          "verified": false
+        },
+        {
+          "id": "SW07",
+          "question": {
+            "zh-CN": "让 AI 生成代码时，我会根据实际需求修改它，而不是直接采用第一版。",
+            "en": "When AI generates code, I revise it to fit the actual requirements rather than accepting the first draft unchanged.",
+            "ms": "Apabila AI menjana kod, saya mengubah suainya mengikut keperluan sebenar dan bukannya terus menggunakan draf pertama."
+          },
+          "answer": 6,
+          "construct": "ai_practice",
+          "type": "self-report",
+          "status": "supported",
+          "rule": "literal-ordinal-v3",
+          "verified": false
+        },
+        {
+          "id": "SW08",
+          "question": {
+            "zh-CN": "如果 AI 声称登录功能已经完成，我会检查正常登录、错误密码等情况，再认为它可以使用。",
+            "en": "If AI says a login feature is finished, I would test normal logins and cases such as incorrect passwords before treating it as ready.",
+            "ms": "Jika AI mengatakan fungsi log masuk sudah siap, saya akan menguji log masuk biasa dan kes seperti kata laluan salah sebelum menganggapnya sedia digunakan."
+          },
+          "answer": 6,
+          "construct": "ai_verification",
+          "type": "self-report",
+          "status": "supported",
+          "rule": "literal-ordinal-v3",
+          "verified": false
+        },
+        {
+          "id": "Q01",
+          "answer": "B",
+          "type": "self-report-context",
+          "status": "reported",
+          "rule": "literal-starting-point",
+          "verified": false
+        },
+        {
+          "id": "Q02",
+          "answer": {
+            "primary": "G",
+            "secondary": null
+          },
+          "type": "self-report-context",
+          "status": "reported",
+          "rule": "literal-starting-point",
+          "verified": false
+        },
+        {
+          "id": "Q03",
+          "answer": "C",
+          "type": "self-report-context",
+          "status": "reported",
+          "rule": "literal-starting-point",
+          "verified": false
+        },
+        {
+          "id": "Q04",
+          "answer": "A",
+          "type": "self-report-context",
+          "status": "reported",
+          "rule": "literal-starting-point",
+          "verified": false
+        },
+        {
+          "id": "Q05",
+          "answer": {
+            "knowledge": "examples",
+            "execution": "examples",
+            "problemSolving": "examples",
+            "communication": "independent"
+          },
+          "type": "self-report-context",
+          "status": "reported",
+          "rule": "literal-starting-point",
+          "verified": false
+        },
+        {
+          "id": "Q06",
+          "answer": "C",
+          "type": "self-report-context",
+          "status": "reported",
+          "rule": "literal-starting-point",
+          "verified": false
+        },
+        {
+          "id": "Q07",
+          "answer": [
+            "B",
+            "F"
+          ],
+          "type": "self-report-context",
+          "status": "reported",
+          "rule": "literal-starting-point",
+          "verified": false
+        },
+        {
+          "id": "Q08",
+          "answer": "F",
+          "type": "self-report-context",
+          "status": "reported",
+          "rule": "literal-starting-point",
+          "verified": false
+        },
+        {
+          "id": "Q09",
+          "answer": "B",
+          "type": "self-report-context",
+          "status": "reported",
+          "rule": "literal-starting-point",
+          "verified": false
+        },
+        {
+          "id": "Q10",
+          "answer": "B",
+          "type": "self-report-context",
+          "status": "reported",
+          "rule": "literal-starting-point",
+          "verified": false
+        },
+        {
+          "id": "Q11",
+          "answer": "1",
+          "type": "self-report-context",
+          "status": "reported",
+          "rule": "literal-starting-point",
+          "verified": false
+        }
+      ],
+      "personal": {
+        "contradictions": [
+          "artifact-without-repair"
+        ],
+        "currentSituation": {
+          "stage": "B",
+          "field": "A"
+        },
+        "primaryConcerns": {
+          "primary": "G",
+          "secondary": null,
+          "decisionContext": "C",
+          "goal": "F"
+        },
+        "interests": {
+          "status": "supported",
+          "evidenceIds": [
+            "SW01",
+            "SW02"
+          ],
+          "sourceIds": [],
+          "range": [
+            2,
+            2
+          ],
+          "verified": false
+        },
+        "workPreferences": {
+          "status": "supported",
+          "evidenceIds": [
+            "SW03",
+            "SW04"
+          ],
+          "sourceIds": [],
+          "range": [
+            2,
+            2
+          ],
+          "verified": false
+        },
+        "selfReportedCapability": {
+          "knowledge": "examples",
+          "execution": "examples",
+          "problemSolving": "examples",
+          "communication": "independent"
+        },
+        "experience": {
+          "dimension": {
+            "status": "mixed",
+            "evidenceIds": [
+              "SW05",
+              "SW06"
+            ],
+            "sourceIds": [],
+            "range": [
+              1,
+              1
+            ],
+            "verified": false
+          },
+          "artifact": "C",
+          "verified": false
+        },
+        "ai": {
+          "practice": {
+            "status": "supported",
+            "evidenceIds": [
+              "G03",
+              "SW07"
+            ],
+            "sourceIds": [],
+            "range": [
+              2,
+              2
+            ],
+            "verified": false
+          },
+          "verification": {
+            "status": "supported",
+            "evidenceIds": [
+              "G04",
+              "SW08"
+            ],
+            "sourceIds": [],
+            "range": [
+              2,
+              2
+            ],
+            "verified": false
+          },
+          "assumedVerification": false
+        },
+        "constraints": {
+          "market": "B",
+          "circumstance": "B",
+          "barriers": [
+            "B",
+            "F"
+          ],
+          "timeBudget": null
+        },
+        "unknowns": [
+          "observed-skills",
+          "mathematical-readiness",
+          "employment-eligibility",
+          "time-budget"
+        ]
+      },
+      "claims": [
+        {
+          "claim_id": "artifact-without-repair",
+          "evidence_ids": [
+            "SW05",
+            "SW06",
+            "Q06"
+          ],
+          "source_ids": [],
+          "inference_type": "product-rule",
+          "uncertainty": "self-report-unverified",
+          "copy": [
+            "A project or runnable artifact is reported, but independent repair is not. It may reflect teamwork or tutorial support. Reproduce a defect and explain your own correction before claiming independent delivery.",
+            "你报告了项目或可运行作品，却未报告独立修复经历；可能涉及团队或教程支持。先复现故障并解释自己的修正，再判断独立交付准备。",
+            "Projek atau hasil berfungsi dilaporkan tetapi pembaikan sendiri tidak. Ini mungkin melibatkan pasukan atau tutorial. Ulang kecacatan dan terangkan pembetulan sendiri sebelum menilai penghantaran bebas."
+          ],
+          "rule": "artifact-without-repair",
+          "recommended_action_ids": [
+            "software-verify"
+          ],
+          "limitations": [
+            "No observed competence test"
+          ]
+        },
+        {
+          "claim_id": "decision-context",
+          "evidence_ids": [
+            "Q02",
+            "Q08",
+            "Q09"
+          ],
+          "source_ids": [],
+          "inference_type": "product-rule",
+          "uncertainty": "self-report-unverified",
+          "copy": [
+            "Your concern and target market set the report focus, not your ability. Check local task evidence and access requirements separately from personal preparation.",
+            "困惑与目标地区决定报告重点，不改变你的能力证据。将当地职业任务与准入条件和个人准备分别核查。",
+            "Kebimbangan dan pasaran sasaran menetapkan fokus laporan, bukan kebolehan. Semak tugas tempatan dan syarat akses berasingan daripada persediaan diri."
+          ],
+          "rule": "decision-context",
+          "recommended_action_ids": [
+            "context-verify"
+          ],
+          "limitations": [
+            "No observed competence test"
+          ]
+        }
+      ],
+      "routes": [
+        {
+          "id": "software",
+          "title": "Software developer",
+          "dimensions": {
+            "interest": {
+              "status": "supported",
+              "evidenceIds": [
+                "SW01",
+                "SW02"
+              ],
+              "sourceIds": [
+                "onet:15-1252.00",
+                "esco:http://data.europa.eu/esco/occupation/f2b15a0e-e65a-438a-affb-29b9d50b77d1"
+              ],
+              "range": [
+                2,
+                2
+              ],
+              "verified": false
+            },
+            "workPreference": {
+              "status": "supported",
+              "evidenceIds": [
+                "SW04",
+                "SW03"
+              ],
+              "sourceIds": [
+                "onet:15-1252.00",
+                "esco:http://data.europa.eu/esco/occupation/f2b15a0e-e65a-438a-affb-29b9d50b77d1"
+              ],
+              "range": [
+                2,
+                2
+              ],
+              "verified": false
+            },
+            "experience": {
+              "status": "mixed",
+              "evidenceIds": [
+                "SW05",
+                "SW06"
+              ],
+              "sourceIds": [
+                "onet:15-1252.00",
+                "esco:http://data.europa.eu/esco/occupation/f2b15a0e-e65a-438a-affb-29b9d50b77d1"
+              ],
+              "range": [
+                1,
+                1
+              ],
+              "verified": false
+            },
+            "skillReadiness": {
+              "status": "unknown",
+              "range": [
+                0,
+                2
+              ],
+              "verified": false,
+              "evidenceIds": [],
+              "sourceIds": [
+                "onet:15-1252.00",
+                "esco:http://data.europa.eu/esco/occupation/f2b15a0e-e65a-438a-affb-29b9d50b77d1"
+              ]
+            },
+            "goalAlignment": {
+              "status": "contextual",
+              "evidenceIds": [
+                "Q02",
+                "Q08"
+              ]
+            },
+            "practicalFeasibility": {
+              "status": "unknown",
+              "evidenceIds": [
+                "Q10"
+              ],
+              "missing": [
+                "time-budget",
+                "entry-eligibility"
+              ]
+            },
+            "marketOutlook": {
+              "status": "separate-regional-context",
+              "sourceIds": []
+            }
+          },
+          "requirements": [
+            {
+              "id": "build",
+              "label": "develop software prototype",
+              "task": {
+                "id": "21667",
+                "label": "Design, develop and modify software systems, using scientific analysis and mathematical models to predict and measure outcomes and consequences of design.",
+                "url": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/task_statements.csv",
+                "date": "08/2025",
+                "sourceId": "onet:15-1252.00"
+              },
+              "sourceId": "esco:http://data.europa.eu/esco/occupation/f2b15a0e-e65a-438a-affb-29b9d50b77d1",
+              "status": "unverified",
+              "evidenceIds": [
+                "SW01"
+              ],
+              "mapping": "reviewed-context"
+            },
+            {
+              "id": "debug",
+              "label": "debug software",
+              "task": {
+                "id": "21670",
+                "label": "Modify existing software to correct errors, adapt it to new hardware, or upgrade interfaces and improve performance.",
+                "url": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/task_statements.csv",
+                "date": "08/2025",
+                "sourceId": "onet:15-1252.00"
+              },
+              "sourceId": "esco:http://data.europa.eu/esco/occupation/f2b15a0e-e65a-438a-affb-29b9d50b77d1",
+              "status": "unverified",
+              "evidenceIds": [
+                "SW02"
+              ],
+              "mapping": "reviewed-context"
+            },
+            {
+              "id": "test",
+              "label": "Systems Evaluation",
+              "task": {
+                "id": "21669",
+                "label": "Develop or direct software system testing or validation procedures, programming, or documentation.",
+                "url": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/task_statements.csv",
+                "date": "08/2025",
+                "sourceId": "onet:15-1252.00"
+              },
+              "sourceId": "onet:15-1252.00",
+              "status": "unverified",
+              "evidenceIds": [
+                "SW04"
+              ],
+              "mapping": "reviewed-context"
+            },
+            {
+              "id": "requirements",
+              "label": "Systems Analysis",
+              "task": {
+                "id": "21662",
+                "label": "Analyze user needs and software requirements to determine feasibility of design within time and cost constraints.",
+                "url": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/task_statements.csv",
+                "date": "08/2025",
+                "sourceId": "onet:15-1252.00"
+              },
+              "sourceId": "onet:15-1252.00",
+              "status": "unverified",
+              "evidenceIds": [
+                "SW03"
+              ],
+              "mapping": "reviewed-context"
+            }
+          ],
+          "priority": 1,
+          "label": "promising-needs-validation",
+          "sourceIds": [
+            "onet:15-1252.00",
+            "esco:http://data.europa.eu/esco/occupation/f2b15a0e-e65a-438a-affb-29b9d50b77d1"
+          ],
+          "actionId": "software-verify",
+          "officialMapping": true
+        },
+        {
+          "id": "ai-research",
+          "title": "AI / machine-learning engineer",
+          "dimensions": {
+            "interest": {
+              "status": "unknown",
+              "evidenceIds": [],
+              "sourceIds": [
+                "onet:15-1221.00",
+                "esco:http://data.europa.eu/esco/occupation/35553663-deab-4d9a-bf22-15c1625d28e8"
+              ],
+              "range": [
+                0,
+                2
+              ],
+              "verified": false
+            },
+            "workPreference": {
+              "status": "supported",
+              "evidenceIds": [
+                "SW03"
+              ],
+              "sourceIds": [
+                "onet:15-1221.00",
+                "esco:http://data.europa.eu/esco/occupation/35553663-deab-4d9a-bf22-15c1625d28e8"
+              ],
+              "range": [
+                2,
+                2
+              ],
+              "verified": false
+            },
+            "experience": {
+              "status": "unknown",
+              "evidenceIds": [
+                "SW05"
+              ],
+              "sourceIds": [
+                "onet:15-1221.00",
+                "esco:http://data.europa.eu/esco/occupation/35553663-deab-4d9a-bf22-15c1625d28e8"
+              ],
+              "range": [
+                0,
+                2
+              ],
+              "verified": false,
+              "transferableProgramming": {
+                "status": "supported",
+                "evidenceIds": [
+                  "SW05"
+                ],
+                "sourceIds": [],
+                "range": [
+                  2,
+                  2
+                ],
+                "verified": false
+              },
+              "reason": "Programming experience does not establish research or ML experience"
+            },
+            "skillReadiness": {
+              "status": "unknown",
+              "range": [
+                0,
+                2
+              ],
+              "verified": false,
+              "evidenceIds": [],
+              "sourceIds": [
+                "onet:15-1221.00",
+                "esco:http://data.europa.eu/esco/occupation/35553663-deab-4d9a-bf22-15c1625d28e8"
+              ]
+            },
+            "goalAlignment": {
+              "status": "contextual",
+              "evidenceIds": [
+                "Q02",
+                "Q08"
+              ]
+            },
+            "practicalFeasibility": {
+              "status": "unknown",
+              "evidenceIds": [
+                "Q10"
+              ],
+              "missing": [
+                "time-budget",
+                "entry-eligibility"
+              ]
+            },
+            "marketOutlook": {
+              "status": "separate-regional-context",
+              "sourceIds": []
+            }
+          },
+          "requirements": [
+            {
+              "id": "problem-solving",
+              "label": "Complex Problem Solving",
+              "task": {
+                "id": "14623",
+                "label": "Analyze problems to develop solutions involving computer hardware and software.",
+                "url": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/task_statements.csv",
+                "date": "08/2019",
+                "sourceId": "onet:15-1221.00"
+              },
+              "sourceId": "onet:15-1221.00",
+              "status": "unverified",
+              "evidenceIds": [
+                "SW03"
+              ],
+              "mapping": "reviewed-context"
+            },
+            {
+              "id": "mathematical-models",
+              "label": "Mathematics",
+              "task": {
+                "id": "14629",
+                "label": "Conduct logical analyses of business, scientific, engineering, and other technical problems, formulating mathematical models of problems for solution by computers.",
+                "url": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/task_statements.csv",
+                "date": "08/2019",
+                "sourceId": "onet:15-1221.00"
+              },
+              "sourceId": "onet:15-1221.00",
+              "status": "unverified",
+              "evidenceIds": [],
+              "mapping": "reviewed-context"
+            },
+            {
+              "id": "intelligent-systems",
+              "label": "principles of artificial intelligence",
+              "task": {
+                "id": "14626",
+                "label": "Apply theoretical expertise and innovation to create or apply new technology, such as adapting principles for applying computers to new uses.",
+                "url": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/task_statements.csv",
+                "date": "08/2019",
+                "sourceId": "onet:15-1221.00"
+              },
+              "sourceId": "esco:http://data.europa.eu/esco/occupation/35553663-deab-4d9a-bf22-15c1625d28e8",
+              "status": "unverified",
+              "evidenceIds": [],
+              "mapping": "reviewed-context"
+            }
+          ],
+          "priority": 1,
+          "label": "worth-exploring",
+          "sourceIds": [
+            "onet:15-1221.00",
+            "esco:http://data.europa.eu/esco/occupation/35553663-deab-4d9a-bf22-15c1625d28e8"
+          ],
+          "actionId": "ai-research-verify",
+          "officialMapping": true
+        }
+      ],
+      "comparison": {
+        "relation": "incomparable",
+        "compared": [
+          "workPreference"
+        ],
+        "rule": "observed-pareto-v1",
+        "limitation": "Partial task evidence only; unknown requirements remain unresolved. No overall fit score."
+      },
+      "edges": [
+        {
+          "from": "software",
+          "to": "ai-research",
+          "type": "exploration-comparison",
+          "sharedRequirements": [],
+          "migrationVerified": false,
+          "conditions": [
+            "Complex Problem Solving",
+            "Mathematics",
+            "principles of artificial intelligence"
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "id": "software-verify",
+          "routeId": "software",
+          "evidenceIds": [
+            "SW01",
+            "SW02",
+            "SW05",
+            "SW06",
+            "Q02",
+            "Q05",
+            "Q06",
+            "Q08"
+          ],
+          "sourceIds": [
+            "onet:15-1252.00",
+            "esco:http://data.europa.eu/esco/occupation/f2b15a0e-e65a-438a-affb-29b9d50b77d1"
+          ],
+          "task": "For Software developer, begin with one guided example connected to “develop software prototype”. Then change one requirement and record what you could complete and check without help. Follow a worked example to build a local study tracker, then add an edit feature without copying the example.",
+          "check": "Compare the actual work and checks with your reported level; keep differences as evidence for the next review. Show a runnable repository; test add, edit and delete, record one failure and explain the correction.",
+          "why": "Compare dated regional evidence and role requirements separately. Check language, recognised qualifications and employment eligibility rather than assuming skills guarantee access. A finished program and independent repair have not been established; the linked software tasks include development, testing and error correction.",
+          "stage": "now",
+          "verified": false
+        },
+        {
+          "id": "ai-research-verify",
+          "routeId": "ai-research",
+          "evidenceIds": [
+            "SW03",
+            "SW05",
+            "SW06",
+            "Q02",
+            "Q05",
+            "Q06",
+            "Q08"
+          ],
+          "sourceIds": [
+            "onet:15-1221.00",
+            "esco:http://data.europa.eu/esco/occupation/35553663-deab-4d9a-bf22-15c1625d28e8"
+          ],
+          "task": "For AI / machine-learning engineer, begin with one guided example connected to “Complex Problem Solving”. Then change one requirement and record what you could complete and check without help. Reproduce a guided classifier example, then calculate and compare a majority-class baseline.",
+          "check": "Compare the actual work and checks with your reported level; keep differences as evidence for the next review. Identify the dataset, baseline and one wrong prediction; explain each step you cannot yet reproduce independently.",
+          "why": "Compare dated regional evidence and role requirements separately. Check language, recognised qualifications and employment eligibility rather than assuming skills guarantee access. The linked research tasks and AI principles are unmeasured, and finished-program experience is not established.",
+          "stage": "now",
+          "verified": false
+        },
+        {
+          "id": "context-verify",
+          "routeId": "context",
+          "evidenceIds": [
+            "Q02",
+            "Q08",
+            "Q09"
+          ],
+          "sourceIds": [],
+          "task": "Compare dated regional evidence and role requirements separately. Check language, recognised qualifications and employment eligibility rather than assuming skills guarantee access.",
+          "check": "Save one source-backed comparison and identify the next unresolved access or task requirement.",
+          "stage": "now",
+          "verified": false
+        },
+        {
+          "id": "ai-verify",
+          "routeId": "cross-cutting",
+          "evidenceIds": [
+            "G04",
+            "SW08"
+          ],
+          "sourceIds": [],
+          "task": "Keep a manual baseline and one AI-assisted attempt for your chosen route; record a rejected or corrected AI suggestion.",
+          "check": "Show the original input, AI output, independent source or test, and final correction.",
+          "stage": "now",
+          "verified": false,
+          "why": "Reported AI-checking habits need an observed example before they can inform confidence."
+        }
+      ],
+      "scenario": {},
+      "coverage": {
+        "selectedDirection": "SW",
+        "unmeasuredDirections": 9,
+        "knowledgeVersion": "knowledge-20261023T181607Z-afaae13f29bea3e9"
+      },
+      "method": "Ordinal evidence / partial Pareto; no weighted average, ability score or career-success probability"
+    }
+  },
+  "C": {
+    "startingPoint": {
+      "version": "starting-point-1",
+      "screen": "bridge",
+      "index": 11,
+      "answers": {
+        "Q01": "B",
+        "Q02": {
+          "primary": "A",
+          "secondary": null
+        },
+        "Q03": "C",
+        "Q04": "A",
+        "Q05": {
+          "knowledge": "guided",
+          "execution": "untried",
+          "problemSolving": "examples",
+          "communication": "independent"
+        },
+        "Q06": "A",
+        "Q07": [
+          "B",
+          "F"
+        ],
+        "Q08": "A",
+        "Q09": "A",
+        "Q10": "B",
+        "Q11": "1"
+      },
+      "story": "",
+      "completed": true
+    },
+    "answers": {
+      "G01": 6,
+      "G02": 6,
+      "G03": 6,
+      "G04": 6,
+      "SW01": 6,
+      "SW02": 6,
+      "SW03": 6,
+      "SW04": 6,
+      "SW05": 2,
+      "SW06": 2,
+      "SW07": 6,
+      "SW08": 6
+    },
+    "unified": {
+      "version": "career-intelligence-4.0",
+      "evidence": [
+        {
+          "id": "G01",
+          "question": {
+            "zh-CN": "面对自己还不了解的职业方向，我愿意先通过小项目亲身体验，再决定是否适合继续探索。",
+            "en": "When exploring an unfamiliar career path, I would rather try a small project before deciding whether to pursue it.",
+            "ms": "Apabila meneroka bidang kerjaya yang belum saya kenali, saya lebih suka mencuba projek kecil sebelum memutuskan sama ada mahu meneruskannya."
+          },
+          "answer": 6,
+          "construct": "exploration",
+          "type": "self-report",
+          "status": "supported",
+          "rule": "literal-ordinal-v3",
+          "verified": false
+        },
+        {
+          "id": "G02",
+          "question": {
+            "zh-CN": "即使某种技能因为技术变化而不再那么重要，我也愿意调整计划、学习新的方法。",
+            "en": "If technology makes one of my skills less relevant, I am willing to adjust my plans and learn a new approach.",
+            "ms": "Jika perubahan teknologi menjadikan sesuatu kemahiran saya kurang relevan, saya sanggup menyesuaikan rancangan dan mempelajari pendekatan baharu."
+          },
+          "answer": 6,
+          "construct": "adaptability",
+          "type": "self-report",
+          "status": "supported",
+          "rule": "literal-ordinal-v3",
+          "verified": false
+        },
+        {
+          "id": "G03",
+          "question": {
+            "zh-CN": "过去一个月，我曾主动用 AI 工具帮助自己完成学习、工作或生活中的具体任务。",
+            "en": "In the past month, I have actively used AI tools to help complete specific study, work, or everyday tasks.",
+            "ms": "Dalam sebulan yang lalu, saya telah menggunakan alat AI secara aktif untuk membantu menyiapkan tugasan pembelajaran, kerja atau kehidupan harian."
+          },
+          "answer": 6,
+          "construct": "ai_practice",
+          "type": "self-report",
+          "status": "supported",
+          "rule": "literal-ordinal-v3",
+          "verified": false
+        },
+        {
+          "id": "G04",
+          "question": {
+            "zh-CN": "当 AI 给出看似合理的答案时，我会核对其中重要的事实、来源或结果，而不只是相信它的表述。",
+            "en": "When AI gives a plausible answer, I check important facts, sources or results rather than relying on how convincing it sounds.",
+            "ms": "Apabila AI memberikan jawapan yang nampak munasabah, saya menyemak fakta, sumber atau hasil penting dan tidak sekadar mempercayai jawapannya."
+          },
+          "answer": 6,
+          "construct": "ai_verification",
+          "type": "self-report",
+          "status": "supported",
+          "rule": "literal-ordinal-v3",
+          "verified": false
+        },
+        {
+          "id": "SW01",
+          "question": {
+            "zh-CN": "相比只讨论产品创意，我更想亲手把一个想法变成能实际运行的工具。",
+            "en": "Rather than only discussing product ideas, I would like to turn an idea into a working tool myself.",
+            "ms": "Daripada sekadar membincangkan idea produk, saya lebih berminat membina sendiri alat yang benar-benar berfungsi."
+          },
+          "answer": 6,
+          "construct": "interest",
+          "type": "self-report",
+          "status": "supported",
+          "rule": "literal-ordinal-v3",
+          "verified": false
+        },
+        {
+          "id": "SW02",
+          "question": {
+            "zh-CN": "发现一段程序为什么出错，会让我产生想继续追查的兴趣。",
+            "en": "Figuring out why a piece of software fails is something I would find genuinely interesting.",
+            "ms": "Mencari punca sesuatu perisian gagal berfungsi benar-benar menarik minat saya."
+          },
+          "answer": 6,
+          "construct": "interest",
+          "type": "self-report",
+          "status": "supported",
+          "rule": "literal-ordinal-v3",
+          "verified": false
+        },
+        {
+          "id": "SW03",
+          "question": {
+            "zh-CN": "遇到复杂功能时，我倾向于先拆成几个可以分别测试的小步骤。",
+            "en": "When facing a complex feature, I prefer breaking it into smaller steps that can be tested separately.",
+            "ms": "Apabila berdepan dengan fungsi yang rumit, saya lebih suka membahagikannya kepada langkah kecil yang boleh diuji secara berasingan."
+          },
+          "answer": 6,
+          "construct": "workstyle",
+          "type": "self-report",
+          "status": "supported",
+          "rule": "literal-ordinal-v3",
+          "verified": false
+        },
+        {
+          "id": "SW04",
+          "question": {
+            "zh-CN": "为了让产品可靠，我愿意反复修改同一个功能，而不急着添加新功能。",
+            "en": "To make a product reliable, I am willing to refine the same feature repeatedly instead of rushing to add new ones.",
+            "ms": "Untuk memastikan produk boleh dipercayai, saya sanggup memperbaiki fungsi yang sama berulang kali dan tidak tergesa-gesa menambah fungsi baharu."
+          },
+          "answer": 6,
+          "construct": "workstyle",
+          "type": "self-report",
+          "status": "supported",
+          "rule": "literal-ordinal-v3",
+          "verified": false
+        },
+        {
+          "id": "SW05",
+          "question": {
+            "zh-CN": "我亲自制作或修改过能运行的程序、网页、脚本或自动化工具。",
+            "en": "I have personally built or modified a working program, webpage, script or automation tool.",
+            "ms": "Saya pernah membina atau mengubah suai sendiri program, laman web, skrip atau alat automasi yang berfungsi."
+          },
+          "answer": 2,
+          "construct": "experience",
+          "type": "self-report",
+          "status": "not-endorsed",
+          "rule": "literal-ordinal-v3",
+          "verified": false
+        },
+        {
+          "id": "SW06",
+          "question": {
+            "zh-CN": "我曾通过运行结果、报错信息或测试，自己定位并修复一个技术问题。",
+            "en": "I have used test results, error messages or program output to locate and fix a technical problem myself.",
+            "ms": "Saya pernah menggunakan hasil ujian, mesej ralat atau output program untuk mengenal pasti dan membaiki masalah teknikal sendiri."
+          },
+          "answer": 2,
+          "construct": "experience",
+          "type": "self-report",
+          "status": "not-endorsed",
+          "rule": "literal-ordinal-v3",
+          "verified": false
+        },
+        {
+          "id": "SW07",
+          "question": {
+            "zh-CN": "让 AI 生成代码时，我会根据实际需求修改它，而不是直接采用第一版。",
+            "en": "When AI generates code, I revise it to fit the actual requirements rather than accepting the first draft unchanged.",
+            "ms": "Apabila AI menjana kod, saya mengubah suainya mengikut keperluan sebenar dan bukannya terus menggunakan draf pertama."
+          },
+          "answer": 6,
+          "construct": "ai_practice",
+          "type": "self-report",
+          "status": "supported",
+          "rule": "literal-ordinal-v3",
+          "verified": false
+        },
+        {
+          "id": "SW08",
+          "question": {
+            "zh-CN": "如果 AI 声称登录功能已经完成，我会检查正常登录、错误密码等情况，再认为它可以使用。",
+            "en": "If AI says a login feature is finished, I would test normal logins and cases such as incorrect passwords before treating it as ready.",
+            "ms": "Jika AI mengatakan fungsi log masuk sudah siap, saya akan menguji log masuk biasa dan kes seperti kata laluan salah sebelum menganggapnya sedia digunakan."
+          },
+          "answer": 6,
+          "construct": "ai_verification",
+          "type": "self-report",
+          "status": "supported",
+          "rule": "literal-ordinal-v3",
+          "verified": false
+        },
+        {
+          "id": "Q01",
+          "answer": "B",
+          "type": "self-report-context",
+          "status": "reported",
+          "rule": "literal-starting-point",
+          "verified": false
+        },
+        {
+          "id": "Q02",
+          "answer": {
+            "primary": "A",
+            "secondary": null
+          },
+          "type": "self-report-context",
+          "status": "reported",
+          "rule": "literal-starting-point",
+          "verified": false
+        },
+        {
+          "id": "Q03",
+          "answer": "C",
+          "type": "self-report-context",
+          "status": "reported",
+          "rule": "literal-starting-point",
+          "verified": false
+        },
+        {
+          "id": "Q04",
+          "answer": "A",
+          "type": "self-report-context",
+          "status": "reported",
+          "rule": "literal-starting-point",
+          "verified": false
+        },
+        {
+          "id": "Q05",
+          "answer": {
+            "knowledge": "guided",
+            "execution": "untried",
+            "problemSolving": "examples",
+            "communication": "independent"
+          },
+          "type": "self-report-context",
+          "status": "reported",
+          "rule": "literal-starting-point",
+          "verified": false
+        },
+        {
+          "id": "Q06",
+          "answer": "A",
+          "type": "self-report-context",
+          "status": "reported",
+          "rule": "literal-starting-point",
+          "verified": false
+        },
+        {
+          "id": "Q07",
+          "answer": [
+            "B",
+            "F"
+          ],
+          "type": "self-report-context",
+          "status": "reported",
+          "rule": "literal-starting-point",
+          "verified": false
+        },
+        {
+          "id": "Q08",
+          "answer": "A",
+          "type": "self-report-context",
+          "status": "reported",
+          "rule": "literal-starting-point",
+          "verified": false
+        },
+        {
+          "id": "Q09",
+          "answer": "A",
+          "type": "self-report-context",
+          "status": "reported",
+          "rule": "literal-starting-point",
+          "verified": false
+        },
+        {
+          "id": "Q10",
+          "answer": "B",
+          "type": "self-report-context",
+          "status": "reported",
+          "rule": "literal-starting-point",
+          "verified": false
+        },
+        {
+          "id": "Q11",
+          "answer": "1",
+          "type": "self-report-context",
+          "status": "reported",
+          "rule": "literal-starting-point",
+          "verified": false
+        }
+      ],
+      "personal": {
+        "contradictions": [],
+        "currentSituation": {
+          "stage": "B",
+          "field": "A"
+        },
+        "primaryConcerns": {
+          "primary": "A",
+          "secondary": null,
+          "decisionContext": "C",
+          "goal": "A"
+        },
+        "interests": {
+          "status": "supported",
+          "evidenceIds": [
+            "SW01",
+            "SW02"
+          ],
+          "sourceIds": [],
+          "range": [
+            2,
+            2
+          ],
+          "verified": false
+        },
+        "workPreferences": {
+          "status": "supported",
+          "evidenceIds": [
+            "SW03",
+            "SW04"
+          ],
+          "sourceIds": [],
+          "range": [
+            2,
+            2
+          ],
+          "verified": false
+        },
+        "selfReportedCapability": {
+          "knowledge": "guided",
+          "execution": "untried",
+          "problemSolving": "examples",
+          "communication": "independent"
+        },
+        "experience": {
+          "dimension": {
+            "status": "not-endorsed",
+            "evidenceIds": [
+              "SW05",
+              "SW06"
+            ],
+            "sourceIds": [],
+            "range": [
+              0,
+              0
+            ],
+            "verified": false
+          },
+          "artifact": "A",
+          "verified": false
+        },
+        "ai": {
+          "practice": {
+            "status": "supported",
+            "evidenceIds": [
+              "G03",
+              "SW07"
+            ],
+            "sourceIds": [],
+            "range": [
+              2,
+              2
+            ],
+            "verified": false
+          },
+          "verification": {
+            "status": "supported",
+            "evidenceIds": [
+              "G04",
+              "SW08"
+            ],
+            "sourceIds": [],
+            "range": [
+              2,
+              2
+            ],
+            "verified": false
+          },
+          "assumedVerification": false
+        },
+        "constraints": {
+          "market": "A",
+          "circumstance": "B",
+          "barriers": [
+            "B",
+            "F"
+          ],
+          "timeBudget": null
+        },
+        "unknowns": [
+          "observed-skills",
+          "mathematical-readiness",
+          "employment-eligibility",
+          "time-budget"
+        ]
+      },
+      "claims": [
+        {
+          "claim_id": "interest-before-artifact",
+          "evidence_ids": [
+            "SW01",
+            "SW05",
+            "Q06"
+          ],
+          "source_ids": [],
+          "inference_type": "product-rule",
+          "uncertainty": "self-report-unverified",
+          "copy": [
+            "Your interest in building is stronger than the available artifact evidence. Try a guided implementation, then change one requirement independently; evaluate the result before judging readiness.",
+            "构建兴趣比现有作品证据更明确。先完成有指导的实现，再独立改变一项要求；用成果核验准备情况，而非否定潜力。",
+            "Minat membina lebih jelas daripada bukti hasil. Cuba pelaksanaan berpandu, kemudian ubah satu keperluan sendiri; nilai hasil sebelum menilai kesediaan."
+          ],
+          "rule": "interest-before-artifact",
+          "recommended_action_ids": [
+            "software-verify"
+          ],
+          "limitations": [
+            "No observed competence test"
+          ]
+        },
+        {
+          "claim_id": "decision-context",
+          "evidence_ids": [
+            "Q02",
+            "Q08",
+            "Q09"
+          ],
+          "source_ids": [],
+          "inference_type": "product-rule",
+          "uncertainty": "self-report-unverified",
+          "copy": [
+            "Your concern and target market set the report focus, not your ability. Check local task evidence and access requirements separately from personal preparation.",
+            "困惑与目标地区决定报告重点，不改变你的能力证据。将当地职业任务与准入条件和个人准备分别核查。",
+            "Kebimbangan dan pasaran sasaran menetapkan fokus laporan, bukan kebolehan. Semak tugas tempatan dan syarat akses berasingan daripada persediaan diri."
+          ],
+          "rule": "decision-context",
+          "recommended_action_ids": [
+            "context-verify"
+          ],
+          "limitations": [
+            "No observed competence test"
+          ]
+        }
+      ],
+      "routes": [
+        {
+          "id": "software",
+          "title": "Software developer",
+          "dimensions": {
+            "interest": {
+              "status": "supported",
+              "evidenceIds": [
+                "SW01",
+                "SW02"
+              ],
+              "sourceIds": [
+                "onet:15-1252.00",
+                "esco:http://data.europa.eu/esco/occupation/f2b15a0e-e65a-438a-affb-29b9d50b77d1"
+              ],
+              "range": [
+                2,
+                2
+              ],
+              "verified": false
+            },
+            "workPreference": {
+              "status": "supported",
+              "evidenceIds": [
+                "SW04",
+                "SW03"
+              ],
+              "sourceIds": [
+                "onet:15-1252.00",
+                "esco:http://data.europa.eu/esco/occupation/f2b15a0e-e65a-438a-affb-29b9d50b77d1"
+              ],
+              "range": [
+                2,
+                2
+              ],
+              "verified": false
+            },
+            "experience": {
+              "status": "not-endorsed",
+              "evidenceIds": [
+                "SW05",
+                "SW06"
+              ],
+              "sourceIds": [
+                "onet:15-1252.00",
+                "esco:http://data.europa.eu/esco/occupation/f2b15a0e-e65a-438a-affb-29b9d50b77d1"
+              ],
+              "range": [
+                0,
+                0
+              ],
+              "verified": false
+            },
+            "skillReadiness": {
+              "status": "unknown",
+              "range": [
+                0,
+                2
+              ],
+              "verified": false,
+              "evidenceIds": [],
+              "sourceIds": [
+                "onet:15-1252.00",
+                "esco:http://data.europa.eu/esco/occupation/f2b15a0e-e65a-438a-affb-29b9d50b77d1"
+              ]
+            },
+            "goalAlignment": {
+              "status": "contextual",
+              "evidenceIds": [
+                "Q02",
+                "Q08"
+              ]
+            },
+            "practicalFeasibility": {
+              "status": "unknown",
+              "evidenceIds": [
+                "Q10"
+              ],
+              "missing": [
+                "time-budget",
+                "entry-eligibility"
+              ]
+            },
+            "marketOutlook": {
+              "status": "separate-regional-context",
+              "sourceIds": []
+            }
+          },
+          "requirements": [
+            {
+              "id": "build",
+              "label": "develop software prototype",
+              "task": {
+                "id": "21667",
+                "label": "Design, develop and modify software systems, using scientific analysis and mathematical models to predict and measure outcomes and consequences of design.",
+                "url": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/task_statements.csv",
+                "date": "08/2025",
+                "sourceId": "onet:15-1252.00"
+              },
+              "sourceId": "esco:http://data.europa.eu/esco/occupation/f2b15a0e-e65a-438a-affb-29b9d50b77d1",
+              "status": "unverified",
+              "evidenceIds": [
+                "SW01"
+              ],
+              "mapping": "reviewed-context"
+            },
+            {
+              "id": "debug",
+              "label": "debug software",
+              "task": {
+                "id": "21670",
+                "label": "Modify existing software to correct errors, adapt it to new hardware, or upgrade interfaces and improve performance.",
+                "url": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/task_statements.csv",
+                "date": "08/2025",
+                "sourceId": "onet:15-1252.00"
+              },
+              "sourceId": "esco:http://data.europa.eu/esco/occupation/f2b15a0e-e65a-438a-affb-29b9d50b77d1",
+              "status": "unverified",
+              "evidenceIds": [
+                "SW02"
+              ],
+              "mapping": "reviewed-context"
+            },
+            {
+              "id": "test",
+              "label": "Systems Evaluation",
+              "task": {
+                "id": "21669",
+                "label": "Develop or direct software system testing or validation procedures, programming, or documentation.",
+                "url": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/task_statements.csv",
+                "date": "08/2025",
+                "sourceId": "onet:15-1252.00"
+              },
+              "sourceId": "onet:15-1252.00",
+              "status": "unverified",
+              "evidenceIds": [
+                "SW04"
+              ],
+              "mapping": "reviewed-context"
+            },
+            {
+              "id": "requirements",
+              "label": "Systems Analysis",
+              "task": {
+                "id": "21662",
+                "label": "Analyze user needs and software requirements to determine feasibility of design within time and cost constraints.",
+                "url": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/task_statements.csv",
+                "date": "08/2025",
+                "sourceId": "onet:15-1252.00"
+              },
+              "sourceId": "onet:15-1252.00",
+              "status": "unverified",
+              "evidenceIds": [
+                "SW03"
+              ],
+              "mapping": "reviewed-context"
+            }
+          ],
+          "priority": 1,
+          "label": "promising-needs-validation",
+          "sourceIds": [
+            "onet:15-1252.00",
+            "esco:http://data.europa.eu/esco/occupation/f2b15a0e-e65a-438a-affb-29b9d50b77d1"
+          ],
+          "actionId": "software-verify",
+          "officialMapping": true
+        },
+        {
+          "id": "ai-research",
+          "title": "AI / machine-learning engineer",
+          "dimensions": {
+            "interest": {
+              "status": "unknown",
+              "evidenceIds": [],
+              "sourceIds": [
+                "onet:15-1221.00",
+                "esco:http://data.europa.eu/esco/occupation/35553663-deab-4d9a-bf22-15c1625d28e8"
+              ],
+              "range": [
+                0,
+                2
+              ],
+              "verified": false
+            },
+            "workPreference": {
+              "status": "supported",
+              "evidenceIds": [
+                "SW03"
+              ],
+              "sourceIds": [
+                "onet:15-1221.00",
+                "esco:http://data.europa.eu/esco/occupation/35553663-deab-4d9a-bf22-15c1625d28e8"
+              ],
+              "range": [
+                2,
+                2
+              ],
+              "verified": false
+            },
+            "experience": {
+              "status": "unknown",
+              "evidenceIds": [
+                "SW05"
+              ],
+              "sourceIds": [
+                "onet:15-1221.00",
+                "esco:http://data.europa.eu/esco/occupation/35553663-deab-4d9a-bf22-15c1625d28e8"
+              ],
+              "range": [
+                0,
+                2
+              ],
+              "verified": false,
+              "transferableProgramming": {
+                "status": "not-endorsed",
+                "evidenceIds": [
+                  "SW05"
+                ],
+                "sourceIds": [],
+                "range": [
+                  0,
+                  0
+                ],
+                "verified": false
+              },
+              "reason": "Programming experience does not establish research or ML experience"
+            },
+            "skillReadiness": {
+              "status": "unknown",
+              "range": [
+                0,
+                2
+              ],
+              "verified": false,
+              "evidenceIds": [],
+              "sourceIds": [
+                "onet:15-1221.00",
+                "esco:http://data.europa.eu/esco/occupation/35553663-deab-4d9a-bf22-15c1625d28e8"
+              ]
+            },
+            "goalAlignment": {
+              "status": "contextual",
+              "evidenceIds": [
+                "Q02",
+                "Q08"
+              ]
+            },
+            "practicalFeasibility": {
+              "status": "unknown",
+              "evidenceIds": [
+                "Q10"
+              ],
+              "missing": [
+                "time-budget",
+                "entry-eligibility"
+              ]
+            },
+            "marketOutlook": {
+              "status": "separate-regional-context",
+              "sourceIds": []
+            }
+          },
+          "requirements": [
+            {
+              "id": "problem-solving",
+              "label": "Complex Problem Solving",
+              "task": {
+                "id": "14623",
+                "label": "Analyze problems to develop solutions involving computer hardware and software.",
+                "url": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/task_statements.csv",
+                "date": "08/2019",
+                "sourceId": "onet:15-1221.00"
+              },
+              "sourceId": "onet:15-1221.00",
+              "status": "unverified",
+              "evidenceIds": [
+                "SW03"
+              ],
+              "mapping": "reviewed-context"
+            },
+            {
+              "id": "mathematical-models",
+              "label": "Mathematics",
+              "task": {
+                "id": "14629",
+                "label": "Conduct logical analyses of business, scientific, engineering, and other technical problems, formulating mathematical models of problems for solution by computers.",
+                "url": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/task_statements.csv",
+                "date": "08/2019",
+                "sourceId": "onet:15-1221.00"
+              },
+              "sourceId": "onet:15-1221.00",
+              "status": "unverified",
+              "evidenceIds": [],
+              "mapping": "reviewed-context"
+            },
+            {
+              "id": "intelligent-systems",
+              "label": "principles of artificial intelligence",
+              "task": {
+                "id": "14626",
+                "label": "Apply theoretical expertise and innovation to create or apply new technology, such as adapting principles for applying computers to new uses.",
+                "url": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/task_statements.csv",
+                "date": "08/2019",
+                "sourceId": "onet:15-1221.00"
+              },
+              "sourceId": "esco:http://data.europa.eu/esco/occupation/35553663-deab-4d9a-bf22-15c1625d28e8",
+              "status": "unverified",
+              "evidenceIds": [],
+              "mapping": "reviewed-context"
+            }
+          ],
+          "priority": 1,
+          "label": "worth-exploring",
+          "sourceIds": [
+            "onet:15-1221.00",
+            "esco:http://data.europa.eu/esco/occupation/35553663-deab-4d9a-bf22-15c1625d28e8"
+          ],
+          "actionId": "ai-research-verify",
+          "officialMapping": true
+        }
+      ],
+      "comparison": {
+        "relation": "incomparable",
+        "compared": [
+          "workPreference"
+        ],
+        "rule": "observed-pareto-v1",
+        "limitation": "Partial task evidence only; unknown requirements remain unresolved. No overall fit score."
+      },
+      "edges": [
+        {
+          "from": "software",
+          "to": "ai-research",
+          "type": "exploration-comparison",
+          "sharedRequirements": [],
+          "migrationVerified": false,
+          "conditions": [
+            "Complex Problem Solving",
+            "Mathematics",
+            "principles of artificial intelligence"
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "id": "software-verify",
+          "routeId": "software",
+          "evidenceIds": [
+            "SW01",
+            "SW02",
+            "SW05",
+            "SW06",
+            "Q02",
+            "Q05",
+            "Q06",
+            "Q08"
+          ],
+          "sourceIds": [
+            "onet:15-1252.00",
+            "esco:http://data.europa.eu/esco/occupation/f2b15a0e-e65a-438a-affb-29b9d50b77d1"
+          ],
+          "task": "For Software developer, begin with one guided example connected to “develop software prototype”. Then change one requirement and record what you could complete and check without help. Follow a worked example to build a local study tracker, then add an edit feature without copying the example.",
+          "check": "Compare the actual work and checks with your reported level; keep differences as evidence for the next review. Show a runnable repository; test add, edit and delete, record one failure and explain the correction.",
+          "why": "Compare sourced occupational tasks with AI assistance and the human review each task still needs. Test a task before making a major change. A finished program and independent repair have not been established; the linked software tasks include development, testing and error correction.",
+          "stage": "now",
+          "verified": false
+        },
+        {
+          "id": "ai-research-verify",
+          "routeId": "ai-research",
+          "evidenceIds": [
+            "SW03",
+            "SW05",
+            "SW06",
+            "Q02",
+            "Q05",
+            "Q06",
+            "Q08"
+          ],
+          "sourceIds": [
+            "onet:15-1221.00",
+            "esco:http://data.europa.eu/esco/occupation/35553663-deab-4d9a-bf22-15c1625d28e8"
+          ],
+          "task": "For AI / machine-learning engineer, begin with one guided example connected to “Complex Problem Solving”. Then change one requirement and record what you could complete and check without help. Reproduce a guided classifier example, then calculate and compare a majority-class baseline.",
+          "check": "Compare the actual work and checks with your reported level; keep differences as evidence for the next review. Identify the dataset, baseline and one wrong prediction; explain each step you cannot yet reproduce independently.",
+          "why": "Compare sourced occupational tasks with AI assistance and the human review each task still needs. Test a task before making a major change. The linked research tasks and AI principles are unmeasured, and finished-program experience is not established.",
+          "stage": "now",
+          "verified": false
+        },
+        {
+          "id": "context-verify",
+          "routeId": "context",
+          "evidenceIds": [
+            "Q02",
+            "Q08",
+            "Q09"
+          ],
+          "sourceIds": [],
+          "task": "Compare sourced occupational tasks with AI assistance and the human review each task still needs. Test a task before making a major change.",
+          "check": "Save one source-backed comparison and identify the next unresolved access or task requirement.",
+          "stage": "now",
+          "verified": false
+        },
+        {
+          "id": "ai-verify",
+          "routeId": "cross-cutting",
+          "evidenceIds": [
+            "G04",
+            "SW08"
+          ],
+          "sourceIds": [],
+          "task": "Keep a manual baseline and one AI-assisted attempt for your chosen route; record a rejected or corrected AI suggestion.",
+          "check": "Show the original input, AI output, independent source or test, and final correction.",
+          "stage": "now",
+          "verified": false,
+          "why": "Reported AI-checking habits need an observed example before they can inform confidence."
+        }
+      ],
+      "scenario": {},
+      "coverage": {
+        "selectedDirection": "SW",
+        "unmeasuredDirections": 9,
+        "knowledgeVersion": "knowledge-20261023T181607Z-afaae13f29bea3e9"
+      },
+      "method": "Ordinal evidence / partial Pareto; no weighted average, ability score or career-success probability"
+    }
+  },
+  "D": {
+    "startingPoint": {
+      "version": "starting-point-1",
+      "screen": "bridge",
+      "index": 11,
+      "answers": {
+        "Q01": "E",
+        "Q02": {
+          "primary": "F",
+          "secondary": null
+        },
+        "Q03": "C",
+        "Q04": "A",
+        "Q05": {
+          "knowledge": "examples",
+          "execution": "complex",
+          "problemSolving": "examples",
+          "communication": "independent"
+        },
+        "Q06": "F",
+        "Q07": [
+          "B",
+          "F"
+        ],
+        "Q08": "E",
+        "Q09": "A",
+        "Q10": "A",
+        "Q11": "1"
+      },
+      "story": "",
+      "completed": true
+    },
+    "answers": {
+      "G01": 6,
+      "G02": 6,
+      "G03": 6,
+      "G04": 6,
+      "SW01": 4,
+      "SW02": 6,
+      "SW03": 6,
+      "SW04": 6,
+      "SW05": 6,
+      "SW06": 6,
+      "SW07": 6,
+      "SW08": 6
+    },
+    "unified": {
+      "version": "career-intelligence-4.0",
+      "evidence": [
+        {
+          "id": "G01",
+          "question": {
+            "zh-CN": "面对自己还不了解的职业方向，我愿意先通过小项目亲身体验，再决定是否适合继续探索。",
+            "en": "When exploring an unfamiliar career path, I would rather try a small project before deciding whether to pursue it.",
+            "ms": "Apabila meneroka bidang kerjaya yang belum saya kenali, saya lebih suka mencuba projek kecil sebelum memutuskan sama ada mahu meneruskannya."
+          },
+          "answer": 6,
+          "construct": "exploration",
+          "type": "self-report",
+          "status": "supported",
+          "rule": "literal-ordinal-v3",
+          "verified": false
+        },
+        {
+          "id": "G02",
+          "question": {
+            "zh-CN": "即使某种技能因为技术变化而不再那么重要，我也愿意调整计划、学习新的方法。",
+            "en": "If technology makes one of my skills less relevant, I am willing to adjust my plans and learn a new approach.",
+            "ms": "Jika perubahan teknologi menjadikan sesuatu kemahiran saya kurang relevan, saya sanggup menyesuaikan rancangan dan mempelajari pendekatan baharu."
+          },
+          "answer": 6,
+          "construct": "adaptability",
+          "type": "self-report",
+          "status": "supported",
+          "rule": "literal-ordinal-v3",
+          "verified": false
+        },
+        {
+          "id": "G03",
+          "question": {
+            "zh-CN": "过去一个月，我曾主动用 AI 工具帮助自己完成学习、工作或生活中的具体任务。",
+            "en": "In the past month, I have actively used AI tools to help complete specific study, work, or everyday tasks.",
+            "ms": "Dalam sebulan yang lalu, saya telah menggunakan alat AI secara aktif untuk membantu menyiapkan tugasan pembelajaran, kerja atau kehidupan harian."
+          },
+          "answer": 6,
+          "construct": "ai_practice",
+          "type": "self-report",
+          "status": "supported",
+          "rule": "literal-ordinal-v3",
+          "verified": false
+        },
+        {
+          "id": "G04",
+          "question": {
+            "zh-CN": "当 AI 给出看似合理的答案时，我会核对其中重要的事实、来源或结果，而不只是相信它的表述。",
+            "en": "When AI gives a plausible answer, I check important facts, sources or results rather than relying on how convincing it sounds.",
+            "ms": "Apabila AI memberikan jawapan yang nampak munasabah, saya menyemak fakta, sumber atau hasil penting dan tidak sekadar mempercayai jawapannya."
+          },
+          "answer": 6,
+          "construct": "ai_verification",
+          "type": "self-report",
+          "status": "supported",
+          "rule": "literal-ordinal-v3",
+          "verified": false
+        },
+        {
+          "id": "SW01",
+          "question": {
+            "zh-CN": "相比只讨论产品创意，我更想亲手把一个想法变成能实际运行的工具。",
+            "en": "Rather than only discussing product ideas, I would like to turn an idea into a working tool myself.",
+            "ms": "Daripada sekadar membincangkan idea produk, saya lebih berminat membina sendiri alat yang benar-benar berfungsi."
+          },
+          "answer": 4,
+          "construct": "interest",
+          "type": "self-report",
+          "status": "mixed",
+          "rule": "literal-ordinal-v3",
+          "verified": false
+        },
+        {
+          "id": "SW02",
+          "question": {
+            "zh-CN": "发现一段程序为什么出错，会让我产生想继续追查的兴趣。",
+            "en": "Figuring out why a piece of software fails is something I would find genuinely interesting.",
+            "ms": "Mencari punca sesuatu perisian gagal berfungsi benar-benar menarik minat saya."
+          },
+          "answer": 6,
+          "construct": "interest",
+          "type": "self-report",
+          "status": "supported",
+          "rule": "literal-ordinal-v3",
+          "verified": false
+        },
+        {
+          "id": "SW03",
+          "question": {
+            "zh-CN": "遇到复杂功能时，我倾向于先拆成几个可以分别测试的小步骤。",
+            "en": "When facing a complex feature, I prefer breaking it into smaller steps that can be tested separately.",
+            "ms": "Apabila berdepan dengan fungsi yang rumit, saya lebih suka membahagikannya kepada langkah kecil yang boleh diuji secara berasingan."
+          },
+          "answer": 6,
+          "construct": "workstyle",
+          "type": "self-report",
+          "status": "supported",
+          "rule": "literal-ordinal-v3",
+          "verified": false
+        },
+        {
+          "id": "SW04",
+          "question": {
+            "zh-CN": "为了让产品可靠，我愿意反复修改同一个功能，而不急着添加新功能。",
+            "en": "To make a product reliable, I am willing to refine the same feature repeatedly instead of rushing to add new ones.",
+            "ms": "Untuk memastikan produk boleh dipercayai, saya sanggup memperbaiki fungsi yang sama berulang kali dan tidak tergesa-gesa menambah fungsi baharu."
+          },
+          "answer": 6,
+          "construct": "workstyle",
+          "type": "self-report",
+          "status": "supported",
+          "rule": "literal-ordinal-v3",
+          "verified": false
+        },
+        {
+          "id": "SW05",
+          "question": {
+            "zh-CN": "我亲自制作或修改过能运行的程序、网页、脚本或自动化工具。",
+            "en": "I have personally built or modified a working program, webpage, script or automation tool.",
+            "ms": "Saya pernah membina atau mengubah suai sendiri program, laman web, skrip atau alat automasi yang berfungsi."
+          },
+          "answer": 6,
+          "construct": "experience",
+          "type": "self-report",
+          "status": "supported",
+          "rule": "literal-ordinal-v3",
+          "verified": false
+        },
+        {
+          "id": "SW06",
+          "question": {
+            "zh-CN": "我曾通过运行结果、报错信息或测试，自己定位并修复一个技术问题。",
+            "en": "I have used test results, error messages or program output to locate and fix a technical problem myself.",
+            "ms": "Saya pernah menggunakan hasil ujian, mesej ralat atau output program untuk mengenal pasti dan membaiki masalah teknikal sendiri."
+          },
+          "answer": 6,
+          "construct": "experience",
+          "type": "self-report",
+          "status": "supported",
+          "rule": "literal-ordinal-v3",
+          "verified": false
+        },
+        {
+          "id": "SW07",
+          "question": {
+            "zh-CN": "让 AI 生成代码时，我会根据实际需求修改它，而不是直接采用第一版。",
+            "en": "When AI generates code, I revise it to fit the actual requirements rather than accepting the first draft unchanged.",
+            "ms": "Apabila AI menjana kod, saya mengubah suainya mengikut keperluan sebenar dan bukannya terus menggunakan draf pertama."
+          },
+          "answer": 6,
+          "construct": "ai_practice",
+          "type": "self-report",
+          "status": "supported",
+          "rule": "literal-ordinal-v3",
+          "verified": false
+        },
+        {
+          "id": "SW08",
+          "question": {
+            "zh-CN": "如果 AI 声称登录功能已经完成，我会检查正常登录、错误密码等情况，再认为它可以使用。",
+            "en": "If AI says a login feature is finished, I would test normal logins and cases such as incorrect passwords before treating it as ready.",
+            "ms": "Jika AI mengatakan fungsi log masuk sudah siap, saya akan menguji log masuk biasa dan kes seperti kata laluan salah sebelum menganggapnya sedia digunakan."
+          },
+          "answer": 6,
+          "construct": "ai_verification",
+          "type": "self-report",
+          "status": "supported",
+          "rule": "literal-ordinal-v3",
+          "verified": false
+        },
+        {
+          "id": "Q01",
+          "answer": "E",
+          "type": "self-report-context",
+          "status": "reported",
+          "rule": "literal-starting-point",
+          "verified": false
+        },
+        {
+          "id": "Q02",
+          "answer": {
+            "primary": "F",
+            "secondary": null
+          },
+          "type": "self-report-context",
+          "status": "reported",
+          "rule": "literal-starting-point",
+          "verified": false
+        },
+        {
+          "id": "Q03",
+          "answer": "C",
+          "type": "self-report-context",
+          "status": "reported",
+          "rule": "literal-starting-point",
+          "verified": false
+        },
+        {
+          "id": "Q04",
+          "answer": "A",
+          "type": "self-report-context",
+          "status": "reported",
+          "rule": "literal-starting-point",
+          "verified": false
+        },
+        {
+          "id": "Q05",
+          "answer": {
+            "knowledge": "examples",
+            "execution": "complex",
+            "problemSolving": "examples",
+            "communication": "independent"
+          },
+          "type": "self-report-context",
+          "status": "reported",
+          "rule": "literal-starting-point",
+          "verified": false
+        },
+        {
+          "id": "Q06",
+          "answer": "F",
+          "type": "self-report-context",
+          "status": "reported",
+          "rule": "literal-starting-point",
+          "verified": false
+        },
+        {
+          "id": "Q07",
+          "answer": [
+            "B",
+            "F"
+          ],
+          "type": "self-report-context",
+          "status": "reported",
+          "rule": "literal-starting-point",
+          "verified": false
+        },
+        {
+          "id": "Q08",
+          "answer": "E",
+          "type": "self-report-context",
+          "status": "reported",
+          "rule": "literal-starting-point",
+          "verified": false
+        },
+        {
+          "id": "Q09",
+          "answer": "A",
+          "type": "self-report-context",
+          "status": "reported",
+          "rule": "literal-starting-point",
+          "verified": false
+        },
+        {
+          "id": "Q10",
+          "answer": "A",
+          "type": "self-report-context",
+          "status": "reported",
+          "rule": "literal-starting-point",
+          "verified": false
+        },
+        {
+          "id": "Q11",
+          "answer": "1",
+          "type": "self-report-context",
+          "status": "reported",
+          "rule": "literal-starting-point",
+          "verified": false
+        }
+      ],
+      "personal": {
+        "contradictions": [],
+        "currentSituation": {
+          "stage": "E",
+          "field": "A"
+        },
+        "primaryConcerns": {
+          "primary": "F",
+          "secondary": null,
+          "decisionContext": "C",
+          "goal": "E"
+        },
+        "interests": {
+          "status": "mixed",
+          "evidenceIds": [
+            "SW01",
+            "SW02"
+          ],
+          "sourceIds": [],
+          "range": [
+            1,
+            1
+          ],
+          "verified": false
+        },
+        "workPreferences": {
+          "status": "supported",
+          "evidenceIds": [
+            "SW03",
+            "SW04"
+          ],
+          "sourceIds": [],
+          "range": [
+            2,
+            2
+          ],
+          "verified": false
+        },
+        "selfReportedCapability": {
+          "knowledge": "examples",
+          "execution": "complex",
+          "problemSolving": "examples",
+          "communication": "independent"
+        },
+        "experience": {
+          "dimension": {
+            "status": "supported",
+            "evidenceIds": [
+              "SW05",
+              "SW06"
+            ],
+            "sourceIds": [],
+            "range": [
+              2,
+              2
+            ],
+            "verified": false
+          },
+          "artifact": "F",
+          "verified": false
+        },
+        "ai": {
+          "practice": {
+            "status": "supported",
+            "evidenceIds": [
+              "G03",
+              "SW07"
+            ],
+            "sourceIds": [],
+            "range": [
+              2,
+              2
+            ],
+            "verified": false
+          },
+          "verification": {
+            "status": "supported",
+            "evidenceIds": [
+              "G04",
+              "SW08"
+            ],
+            "sourceIds": [],
+            "range": [
+              2,
+              2
+            ],
+            "verified": false
+          },
+          "assumedVerification": false
+        },
+        "constraints": {
+          "market": "A",
+          "circumstance": "A",
+          "barriers": [
+            "B",
+            "F"
+          ],
+          "timeBudget": null
+        },
+        "unknowns": [
+          "observed-skills",
+          "mathematical-readiness",
+          "employment-eligibility",
+          "time-budget"
+        ]
+      },
+      "claims": [
+        {
+          "claim_id": "decision-context",
+          "evidence_ids": [
+            "Q02",
+            "Q08",
+            "Q09"
+          ],
+          "source_ids": [],
+          "inference_type": "product-rule",
+          "uncertainty": "self-report-unverified",
+          "copy": [
+            "Your concern and target market set the report focus, not your ability. Check local task evidence and access requirements separately from personal preparation.",
+            "困惑与目标地区决定报告重点，不改变你的能力证据。将当地职业任务与准入条件和个人准备分别核查。",
+            "Kebimbangan dan pasaran sasaran menetapkan fokus laporan, bukan kebolehan. Semak tugas tempatan dan syarat akses berasingan daripada persediaan diri."
+          ],
+          "rule": "decision-context",
+          "recommended_action_ids": [
+            "context-verify"
+          ],
+          "limitations": [
+            "No observed competence test"
+          ]
+        }
+      ],
+      "routes": [
+        {
+          "id": "software",
+          "title": "Software developer",
+          "dimensions": {
+            "interest": {
+              "status": "mixed",
+              "evidenceIds": [
+                "SW01",
+                "SW02"
+              ],
+              "sourceIds": [
+                "onet:15-1252.00",
+                "esco:http://data.europa.eu/esco/occupation/f2b15a0e-e65a-438a-affb-29b9d50b77d1"
+              ],
+              "range": [
+                1,
+                1
+              ],
+              "verified": false
+            },
+            "workPreference": {
+              "status": "supported",
+              "evidenceIds": [
+                "SW04",
+                "SW03"
+              ],
+              "sourceIds": [
+                "onet:15-1252.00",
+                "esco:http://data.europa.eu/esco/occupation/f2b15a0e-e65a-438a-affb-29b9d50b77d1"
+              ],
+              "range": [
+                2,
+                2
+              ],
+              "verified": false
+            },
+            "experience": {
+              "status": "supported",
+              "evidenceIds": [
+                "SW05",
+                "SW06"
+              ],
+              "sourceIds": [
+                "onet:15-1252.00",
+                "esco:http://data.europa.eu/esco/occupation/f2b15a0e-e65a-438a-affb-29b9d50b77d1"
+              ],
+              "range": [
+                2,
+                2
+              ],
+              "verified": false
+            },
+            "skillReadiness": {
+              "status": "unknown",
+              "range": [
+                0,
+                2
+              ],
+              "verified": false,
+              "evidenceIds": [],
+              "sourceIds": [
+                "onet:15-1252.00",
+                "esco:http://data.europa.eu/esco/occupation/f2b15a0e-e65a-438a-affb-29b9d50b77d1"
+              ]
+            },
+            "goalAlignment": {
+              "status": "contextual",
+              "evidenceIds": [
+                "Q02",
+                "Q08"
+              ]
+            },
+            "practicalFeasibility": {
+              "status": "unknown",
+              "evidenceIds": [
+                "Q10"
+              ],
+              "missing": [
+                "time-budget",
+                "entry-eligibility"
+              ]
+            },
+            "marketOutlook": {
+              "status": "separate-regional-context",
+              "sourceIds": []
+            }
+          },
+          "requirements": [
+            {
+              "id": "build",
+              "label": "develop software prototype",
+              "task": {
+                "id": "21667",
+                "label": "Design, develop and modify software systems, using scientific analysis and mathematical models to predict and measure outcomes and consequences of design.",
+                "url": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/task_statements.csv",
+                "date": "08/2025",
+                "sourceId": "onet:15-1252.00"
+              },
+              "sourceId": "esco:http://data.europa.eu/esco/occupation/f2b15a0e-e65a-438a-affb-29b9d50b77d1",
+              "status": "unverified",
+              "evidenceIds": [
+                "SW01"
+              ],
+              "mapping": "reviewed-context"
+            },
+            {
+              "id": "debug",
+              "label": "debug software",
+              "task": {
+                "id": "21670",
+                "label": "Modify existing software to correct errors, adapt it to new hardware, or upgrade interfaces and improve performance.",
+                "url": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/task_statements.csv",
+                "date": "08/2025",
+                "sourceId": "onet:15-1252.00"
+              },
+              "sourceId": "esco:http://data.europa.eu/esco/occupation/f2b15a0e-e65a-438a-affb-29b9d50b77d1",
+              "status": "unverified",
+              "evidenceIds": [
+                "SW02"
+              ],
+              "mapping": "reviewed-context"
+            },
+            {
+              "id": "test",
+              "label": "Systems Evaluation",
+              "task": {
+                "id": "21669",
+                "label": "Develop or direct software system testing or validation procedures, programming, or documentation.",
+                "url": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/task_statements.csv",
+                "date": "08/2025",
+                "sourceId": "onet:15-1252.00"
+              },
+              "sourceId": "onet:15-1252.00",
+              "status": "unverified",
+              "evidenceIds": [
+                "SW04"
+              ],
+              "mapping": "reviewed-context"
+            },
+            {
+              "id": "requirements",
+              "label": "Systems Analysis",
+              "task": {
+                "id": "21662",
+                "label": "Analyze user needs and software requirements to determine feasibility of design within time and cost constraints.",
+                "url": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/task_statements.csv",
+                "date": "08/2025",
+                "sourceId": "onet:15-1252.00"
+              },
+              "sourceId": "onet:15-1252.00",
+              "status": "unverified",
+              "evidenceIds": [
+                "SW03"
+              ],
+              "mapping": "reviewed-context"
+            }
+          ],
+          "priority": 1,
+          "label": "promising-needs-validation",
+          "sourceIds": [
+            "onet:15-1252.00",
+            "esco:http://data.europa.eu/esco/occupation/f2b15a0e-e65a-438a-affb-29b9d50b77d1"
+          ],
+          "actionId": "software-verify",
+          "officialMapping": true
+        },
+        {
+          "id": "ai-research",
+          "title": "AI / machine-learning engineer",
+          "dimensions": {
+            "interest": {
+              "status": "unknown",
+              "evidenceIds": [],
+              "sourceIds": [
+                "onet:15-1221.00",
+                "esco:http://data.europa.eu/esco/occupation/35553663-deab-4d9a-bf22-15c1625d28e8"
+              ],
+              "range": [
+                0,
+                2
+              ],
+              "verified": false
+            },
+            "workPreference": {
+              "status": "supported",
+              "evidenceIds": [
+                "SW03"
+              ],
+              "sourceIds": [
+                "onet:15-1221.00",
+                "esco:http://data.europa.eu/esco/occupation/35553663-deab-4d9a-bf22-15c1625d28e8"
+              ],
+              "range": [
+                2,
+                2
+              ],
+              "verified": false
+            },
+            "experience": {
+              "status": "unknown",
+              "evidenceIds": [
+                "SW05"
+              ],
+              "sourceIds": [
+                "onet:15-1221.00",
+                "esco:http://data.europa.eu/esco/occupation/35553663-deab-4d9a-bf22-15c1625d28e8"
+              ],
+              "range": [
+                0,
+                2
+              ],
+              "verified": false,
+              "transferableProgramming": {
+                "status": "supported",
+                "evidenceIds": [
+                  "SW05"
+                ],
+                "sourceIds": [],
+                "range": [
+                  2,
+                  2
+                ],
+                "verified": false
+              },
+              "reason": "Programming experience does not establish research or ML experience"
+            },
+            "skillReadiness": {
+              "status": "unknown",
+              "range": [
+                0,
+                2
+              ],
+              "verified": false,
+              "evidenceIds": [],
+              "sourceIds": [
+                "onet:15-1221.00",
+                "esco:http://data.europa.eu/esco/occupation/35553663-deab-4d9a-bf22-15c1625d28e8"
+              ]
+            },
+            "goalAlignment": {
+              "status": "contextual",
+              "evidenceIds": [
+                "Q02",
+                "Q08"
+              ]
+            },
+            "practicalFeasibility": {
+              "status": "unknown",
+              "evidenceIds": [
+                "Q10"
+              ],
+              "missing": [
+                "time-budget",
+                "entry-eligibility"
+              ]
+            },
+            "marketOutlook": {
+              "status": "separate-regional-context",
+              "sourceIds": []
+            }
+          },
+          "requirements": [
+            {
+              "id": "problem-solving",
+              "label": "Complex Problem Solving",
+              "task": {
+                "id": "14623",
+                "label": "Analyze problems to develop solutions involving computer hardware and software.",
+                "url": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/task_statements.csv",
+                "date": "08/2019",
+                "sourceId": "onet:15-1221.00"
+              },
+              "sourceId": "onet:15-1221.00",
+              "status": "unverified",
+              "evidenceIds": [
+                "SW03"
+              ],
+              "mapping": "reviewed-context"
+            },
+            {
+              "id": "mathematical-models",
+              "label": "Mathematics",
+              "task": {
+                "id": "14629",
+                "label": "Conduct logical analyses of business, scientific, engineering, and other technical problems, formulating mathematical models of problems for solution by computers.",
+                "url": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/task_statements.csv",
+                "date": "08/2019",
+                "sourceId": "onet:15-1221.00"
+              },
+              "sourceId": "onet:15-1221.00",
+              "status": "unverified",
+              "evidenceIds": [],
+              "mapping": "reviewed-context"
+            },
+            {
+              "id": "intelligent-systems",
+              "label": "principles of artificial intelligence",
+              "task": {
+                "id": "14626",
+                "label": "Apply theoretical expertise and innovation to create or apply new technology, such as adapting principles for applying computers to new uses.",
+                "url": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/task_statements.csv",
+                "date": "08/2019",
+                "sourceId": "onet:15-1221.00"
+              },
+              "sourceId": "esco:http://data.europa.eu/esco/occupation/35553663-deab-4d9a-bf22-15c1625d28e8",
+              "status": "unverified",
+              "evidenceIds": [],
+              "mapping": "reviewed-context"
+            }
+          ],
+          "priority": 1,
+          "label": "worth-exploring",
+          "sourceIds": [
+            "onet:15-1221.00",
+            "esco:http://data.europa.eu/esco/occupation/35553663-deab-4d9a-bf22-15c1625d28e8"
+          ],
+          "actionId": "ai-research-verify",
+          "officialMapping": true
+        }
+      ],
+      "comparison": {
+        "relation": "incomparable",
+        "compared": [
+          "workPreference"
+        ],
+        "rule": "observed-pareto-v1",
+        "limitation": "Partial task evidence only; unknown requirements remain unresolved. No overall fit score."
+      },
+      "edges": [
+        {
+          "from": "software",
+          "to": "ai-research",
+          "type": "exploration-comparison",
+          "sharedRequirements": [],
+          "migrationVerified": false,
+          "conditions": [
+            "Complex Problem Solving",
+            "Mathematics",
+            "principles of artificial intelligence"
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "id": "software-verify",
+          "routeId": "software",
+          "evidenceIds": [
+            "SW01",
+            "SW05",
+            "SW06",
+            "Q02",
+            "Q05",
+            "Q06",
+            "Q08"
+          ],
+          "sourceIds": [
+            "onet:15-1252.00",
+            "esco:http://data.europa.eu/esco/occupation/f2b15a0e-e65a-438a-affb-29b9d50b77d1"
+          ],
+          "task": "For Software developer, use an existing work sample to test “develop software prototype” against a new constraint. Keep an error log and request feedback on the role-specific quality checks. Take an existing small application, reproduce one defect, add a regression test, then compare that week with building one new feature.",
+          "check": "Compare the actual work and checks with your reported level; keep differences as evidence for the next review. Keep two commits, the failing/passing test, and a short note on which task you would willingly repeat.",
+          "why": "Identify requirements shared with your current field, then test one unfamiliar requirement before committing time or income to a transition. You report software experience, but fresh-build interest is uncertain; compare maintenance work with new-feature work.",
+          "stage": "now",
+          "verified": false
+        },
+        {
+          "id": "ai-research-verify",
+          "routeId": "ai-research",
+          "evidenceIds": [
+            "SW01",
+            "SW05",
+            "SW06",
+            "SW03",
+            "Q02",
+            "Q05",
+            "Q06",
+            "Q08"
+          ],
+          "sourceIds": [
+            "onet:15-1221.00",
+            "esco:http://data.europa.eu/esco/occupation/35553663-deab-4d9a-bf22-15c1625d28e8"
+          ],
+          "task": "For AI / machine-learning engineer, use an existing work sample to test “Complex Problem Solving” against a new constraint. Keep an error log and request feedback on the role-specific quality checks. Reproduce a simple classifier result from an existing worked example, then audit its dataset split, baseline and one misleading result.",
+          "check": "Compare the actual work and checks with your reported level; keep differences as evidence for the next review. Keep a reproducible notebook, a majority-class comparison, one leakage check and a note on whether experimental analysis interests you more than feature building.",
+          "why": "Identify requirements shared with your current field, then test one unfamiliar requirement before committing time or income to a transition. You report software experience, but a new-build preference is uncertain and the research requirements are unmeasured; test the research work itself before switching paths.",
+          "stage": "now",
+          "verified": false
+        },
+        {
+          "id": "context-verify",
+          "routeId": "context",
+          "evidenceIds": [
+            "Q02",
+            "Q08",
+            "Q09"
+          ],
+          "sourceIds": [],
+          "task": "Identify requirements shared with your current field, then test one unfamiliar requirement before committing time or income to a transition.",
+          "check": "Save one source-backed comparison and identify the next unresolved access or task requirement.",
+          "stage": "now",
+          "verified": false
+        },
+        {
+          "id": "ai-verify",
+          "routeId": "cross-cutting",
+          "evidenceIds": [
+            "G04",
+            "SW08"
+          ],
+          "sourceIds": [],
+          "task": "Keep a manual baseline and one AI-assisted attempt for your chosen route; record a rejected or corrected AI suggestion.",
+          "check": "Show the original input, AI output, independent source or test, and final correction.",
+          "stage": "now",
+          "verified": false,
+          "why": "Reported AI-checking habits need an observed example before they can inform confidence."
+        }
+      ],
+      "scenario": {},
+      "coverage": {
+        "selectedDirection": "SW",
+        "unmeasuredDirections": 9,
+        "knowledgeVersion": "knowledge-20261023T181607Z-afaae13f29bea3e9"
+      },
+      "method": "Ordinal evidence / partial Pareto; no weighted average, ability score or career-success probability"
+    }
+  },
+  "E": {
+    "startingPoint": {
+      "version": "starting-point-1",
+      "screen": "bridge",
+      "index": 11,
+      "answers": {
+        "Q01": "D",
+        "Q02": {
+          "primary": "D",
+          "secondary": null
+        },
+        "Q03": "C",
+        "Q04": "A",
+        "Q05": {
+          "knowledge": "examples",
+          "execution": "independent",
+          "problemSolving": "examples",
+          "communication": "independent"
+        },
+        "Q06": "E",
+        "Q07": [
+          "B",
+          "F"
+        ],
+        "Q08": "B",
+        "Q09": "A",
+        "Q10": "A",
+        "Q11": "1"
+      },
+      "story": "",
+      "completed": true
+    },
+    "answers": {
+      "G01": 6,
+      "G02": 6,
+      "G03": 6,
+      "G04": 6,
+      "SW01": 6,
+      "SW02": 6,
+      "SW03": 6,
+      "SW04": 6,
+      "SW05": 6,
+      "SW06": 6,
+      "SW07": 6,
+      "SW08": 6
+    },
+    "unified": {
+      "version": "career-intelligence-4.0",
+      "evidence": [
+        {
+          "id": "G01",
+          "question": {
+            "zh-CN": "面对自己还不了解的职业方向，我愿意先通过小项目亲身体验，再决定是否适合继续探索。",
+            "en": "When exploring an unfamiliar career path, I would rather try a small project before deciding whether to pursue it.",
+            "ms": "Apabila meneroka bidang kerjaya yang belum saya kenali, saya lebih suka mencuba projek kecil sebelum memutuskan sama ada mahu meneruskannya."
+          },
+          "answer": 6,
+          "construct": "exploration",
+          "type": "self-report",
+          "status": "supported",
+          "rule": "literal-ordinal-v3",
+          "verified": false
+        },
+        {
+          "id": "G02",
+          "question": {
+            "zh-CN": "即使某种技能因为技术变化而不再那么重要，我也愿意调整计划、学习新的方法。",
+            "en": "If technology makes one of my skills less relevant, I am willing to adjust my plans and learn a new approach.",
+            "ms": "Jika perubahan teknologi menjadikan sesuatu kemahiran saya kurang relevan, saya sanggup menyesuaikan rancangan dan mempelajari pendekatan baharu."
+          },
+          "answer": 6,
+          "construct": "adaptability",
+          "type": "self-report",
+          "status": "supported",
+          "rule": "literal-ordinal-v3",
+          "verified": false
+        },
+        {
+          "id": "G03",
+          "question": {
+            "zh-CN": "过去一个月，我曾主动用 AI 工具帮助自己完成学习、工作或生活中的具体任务。",
+            "en": "In the past month, I have actively used AI tools to help complete specific study, work, or everyday tasks.",
+            "ms": "Dalam sebulan yang lalu, saya telah menggunakan alat AI secara aktif untuk membantu menyiapkan tugasan pembelajaran, kerja atau kehidupan harian."
+          },
+          "answer": 6,
+          "construct": "ai_practice",
+          "type": "self-report",
+          "status": "supported",
+          "rule": "literal-ordinal-v3",
+          "verified": false
+        },
+        {
+          "id": "G04",
+          "question": {
+            "zh-CN": "当 AI 给出看似合理的答案时，我会核对其中重要的事实、来源或结果，而不只是相信它的表述。",
+            "en": "When AI gives a plausible answer, I check important facts, sources or results rather than relying on how convincing it sounds.",
+            "ms": "Apabila AI memberikan jawapan yang nampak munasabah, saya menyemak fakta, sumber atau hasil penting dan tidak sekadar mempercayai jawapannya."
+          },
+          "answer": 6,
+          "construct": "ai_verification",
+          "type": "self-report",
+          "status": "supported",
+          "rule": "literal-ordinal-v3",
+          "verified": false
+        },
+        {
+          "id": "SW01",
+          "question": {
+            "zh-CN": "相比只讨论产品创意，我更想亲手把一个想法变成能实际运行的工具。",
+            "en": "Rather than only discussing product ideas, I would like to turn an idea into a working tool myself.",
+            "ms": "Daripada sekadar membincangkan idea produk, saya lebih berminat membina sendiri alat yang benar-benar berfungsi."
+          },
+          "answer": 6,
+          "construct": "interest",
+          "type": "self-report",
+          "status": "supported",
+          "rule": "literal-ordinal-v3",
+          "verified": false
+        },
+        {
+          "id": "SW02",
+          "question": {
+            "zh-CN": "发现一段程序为什么出错，会让我产生想继续追查的兴趣。",
+            "en": "Figuring out why a piece of software fails is something I would find genuinely interesting.",
+            "ms": "Mencari punca sesuatu perisian gagal berfungsi benar-benar menarik minat saya."
+          },
+          "answer": 6,
+          "construct": "interest",
+          "type": "self-report",
+          "status": "supported",
+          "rule": "literal-ordinal-v3",
+          "verified": false
+        },
+        {
+          "id": "SW03",
+          "question": {
+            "zh-CN": "遇到复杂功能时，我倾向于先拆成几个可以分别测试的小步骤。",
+            "en": "When facing a complex feature, I prefer breaking it into smaller steps that can be tested separately.",
+            "ms": "Apabila berdepan dengan fungsi yang rumit, saya lebih suka membahagikannya kepada langkah kecil yang boleh diuji secara berasingan."
+          },
+          "answer": 6,
+          "construct": "workstyle",
+          "type": "self-report",
+          "status": "supported",
+          "rule": "literal-ordinal-v3",
+          "verified": false
+        },
+        {
+          "id": "SW04",
+          "question": {
+            "zh-CN": "为了让产品可靠，我愿意反复修改同一个功能，而不急着添加新功能。",
+            "en": "To make a product reliable, I am willing to refine the same feature repeatedly instead of rushing to add new ones.",
+            "ms": "Untuk memastikan produk boleh dipercayai, saya sanggup memperbaiki fungsi yang sama berulang kali dan tidak tergesa-gesa menambah fungsi baharu."
+          },
+          "answer": 6,
+          "construct": "workstyle",
+          "type": "self-report",
+          "status": "supported",
+          "rule": "literal-ordinal-v3",
+          "verified": false
+        },
+        {
+          "id": "SW05",
+          "question": {
+            "zh-CN": "我亲自制作或修改过能运行的程序、网页、脚本或自动化工具。",
+            "en": "I have personally built or modified a working program, webpage, script or automation tool.",
+            "ms": "Saya pernah membina atau mengubah suai sendiri program, laman web, skrip atau alat automasi yang berfungsi."
+          },
+          "answer": 6,
+          "construct": "experience",
+          "type": "self-report",
+          "status": "supported",
+          "rule": "literal-ordinal-v3",
+          "verified": false
+        },
+        {
+          "id": "SW06",
+          "question": {
+            "zh-CN": "我曾通过运行结果、报错信息或测试，自己定位并修复一个技术问题。",
+            "en": "I have used test results, error messages or program output to locate and fix a technical problem myself.",
+            "ms": "Saya pernah menggunakan hasil ujian, mesej ralat atau output program untuk mengenal pasti dan membaiki masalah teknikal sendiri."
+          },
+          "answer": 6,
+          "construct": "experience",
+          "type": "self-report",
+          "status": "supported",
+          "rule": "literal-ordinal-v3",
+          "verified": false
+        },
+        {
+          "id": "SW07",
+          "question": {
+            "zh-CN": "让 AI 生成代码时，我会根据实际需求修改它，而不是直接采用第一版。",
+            "en": "When AI generates code, I revise it to fit the actual requirements rather than accepting the first draft unchanged.",
+            "ms": "Apabila AI menjana kod, saya mengubah suainya mengikut keperluan sebenar dan bukannya terus menggunakan draf pertama."
+          },
+          "answer": 6,
+          "construct": "ai_practice",
+          "type": "self-report",
+          "status": "supported",
+          "rule": "literal-ordinal-v3",
+          "verified": false
+        },
+        {
+          "id": "SW08",
+          "question": {
+            "zh-CN": "如果 AI 声称登录功能已经完成，我会检查正常登录、错误密码等情况，再认为它可以使用。",
+            "en": "If AI says a login feature is finished, I would test normal logins and cases such as incorrect passwords before treating it as ready.",
+            "ms": "Jika AI mengatakan fungsi log masuk sudah siap, saya akan menguji log masuk biasa dan kes seperti kata laluan salah sebelum menganggapnya sedia digunakan."
+          },
+          "answer": 6,
+          "construct": "ai_verification",
+          "type": "self-report",
+          "status": "supported",
+          "rule": "literal-ordinal-v3",
+          "verified": false
+        },
+        {
+          "id": "Q01",
+          "answer": "D",
+          "type": "self-report-context",
+          "status": "reported",
+          "rule": "literal-starting-point",
+          "verified": false
+        },
+        {
+          "id": "Q02",
+          "answer": {
+            "primary": "D",
+            "secondary": null
+          },
+          "type": "self-report-context",
+          "status": "reported",
+          "rule": "literal-starting-point",
+          "verified": false
+        },
+        {
+          "id": "Q03",
+          "answer": "C",
+          "type": "self-report-context",
+          "status": "reported",
+          "rule": "literal-starting-point",
+          "verified": false
+        },
+        {
+          "id": "Q04",
+          "answer": "A",
+          "type": "self-report-context",
+          "status": "reported",
+          "rule": "literal-starting-point",
+          "verified": false
+        },
+        {
+          "id": "Q05",
+          "answer": {
+            "knowledge": "examples",
+            "execution": "independent",
+            "problemSolving": "examples",
+            "communication": "independent"
+          },
+          "type": "self-report-context",
+          "status": "reported",
+          "rule": "literal-starting-point",
+          "verified": false
+        },
+        {
+          "id": "Q06",
+          "answer": "E",
+          "type": "self-report-context",
+          "status": "reported",
+          "rule": "literal-starting-point",
+          "verified": false
+        },
+        {
+          "id": "Q07",
+          "answer": [
+            "B",
+            "F"
+          ],
+          "type": "self-report-context",
+          "status": "reported",
+          "rule": "literal-starting-point",
+          "verified": false
+        },
+        {
+          "id": "Q08",
+          "answer": "B",
+          "type": "self-report-context",
+          "status": "reported",
+          "rule": "literal-starting-point",
+          "verified": false
+        },
+        {
+          "id": "Q09",
+          "answer": "A",
+          "type": "self-report-context",
+          "status": "reported",
+          "rule": "literal-starting-point",
+          "verified": false
+        },
+        {
+          "id": "Q10",
+          "answer": "A",
+          "type": "self-report-context",
+          "status": "reported",
+          "rule": "literal-starting-point",
+          "verified": false
+        },
+        {
+          "id": "Q11",
+          "answer": "1",
+          "type": "self-report-context",
+          "status": "reported",
+          "rule": "literal-starting-point",
+          "verified": false
+        }
+      ],
+      "personal": {
+        "contradictions": [],
+        "currentSituation": {
+          "stage": "D",
+          "field": "A"
+        },
+        "primaryConcerns": {
+          "primary": "D",
+          "secondary": null,
+          "decisionContext": "C",
+          "goal": "B"
+        },
+        "interests": {
+          "status": "supported",
+          "evidenceIds": [
+            "SW01",
+            "SW02"
+          ],
+          "sourceIds": [],
+          "range": [
+            2,
+            2
+          ],
+          "verified": false
+        },
+        "workPreferences": {
+          "status": "supported",
+          "evidenceIds": [
+            "SW03",
+            "SW04"
+          ],
+          "sourceIds": [],
+          "range": [
+            2,
+            2
+          ],
+          "verified": false
+        },
+        "selfReportedCapability": {
+          "knowledge": "examples",
+          "execution": "independent",
+          "problemSolving": "examples",
+          "communication": "independent"
+        },
+        "experience": {
+          "dimension": {
+            "status": "supported",
+            "evidenceIds": [
+              "SW05",
+              "SW06"
+            ],
+            "sourceIds": [],
+            "range": [
+              2,
+              2
+            ],
+            "verified": false
+          },
+          "artifact": "E",
+          "verified": false
+        },
+        "ai": {
+          "practice": {
+            "status": "supported",
+            "evidenceIds": [
+              "G03",
+              "SW07"
+            ],
+            "sourceIds": [],
+            "range": [
+              2,
+              2
+            ],
+            "verified": false
+          },
+          "verification": {
+            "status": "supported",
+            "evidenceIds": [
+              "G04",
+              "SW08"
+            ],
+            "sourceIds": [],
+            "range": [
+              2,
+              2
+            ],
+            "verified": false
+          },
+          "assumedVerification": false
+        },
+        "constraints": {
+          "market": "A",
+          "circumstance": "A",
+          "barriers": [
+            "B",
+            "F"
+          ],
+          "timeBudget": null
+        },
+        "unknowns": [
+          "observed-skills",
+          "mathematical-readiness",
+          "employment-eligibility",
+          "time-budget"
+        ]
+      },
+      "claims": [
+        {
+          "claim_id": "decision-context",
+          "evidence_ids": [
+            "Q02",
+            "Q08",
+            "Q09"
+          ],
+          "source_ids": [],
+          "inference_type": "product-rule",
+          "uncertainty": "self-report-unverified",
+          "copy": [
+            "Your concern and target market set the report focus, not your ability. Check local task evidence and access requirements separately from personal preparation.",
+            "困惑与目标地区决定报告重点，不改变你的能力证据。将当地职业任务与准入条件和个人准备分别核查。",
+            "Kebimbangan dan pasaran sasaran menetapkan fokus laporan, bukan kebolehan. Semak tugas tempatan dan syarat akses berasingan daripada persediaan diri."
+          ],
+          "rule": "decision-context",
+          "recommended_action_ids": [
+            "context-verify"
+          ],
+          "limitations": [
+            "No observed competence test"
+          ]
+        }
+      ],
+      "routes": [
+        {
+          "id": "software",
+          "title": "Software developer",
+          "dimensions": {
+            "interest": {
+              "status": "supported",
+              "evidenceIds": [
+                "SW01",
+                "SW02"
+              ],
+              "sourceIds": [
+                "onet:15-1252.00",
+                "esco:http://data.europa.eu/esco/occupation/f2b15a0e-e65a-438a-affb-29b9d50b77d1"
+              ],
+              "range": [
+                2,
+                2
+              ],
+              "verified": false
+            },
+            "workPreference": {
+              "status": "supported",
+              "evidenceIds": [
+                "SW04",
+                "SW03"
+              ],
+              "sourceIds": [
+                "onet:15-1252.00",
+                "esco:http://data.europa.eu/esco/occupation/f2b15a0e-e65a-438a-affb-29b9d50b77d1"
+              ],
+              "range": [
+                2,
+                2
+              ],
+              "verified": false
+            },
+            "experience": {
+              "status": "supported",
+              "evidenceIds": [
+                "SW05",
+                "SW06"
+              ],
+              "sourceIds": [
+                "onet:15-1252.00",
+                "esco:http://data.europa.eu/esco/occupation/f2b15a0e-e65a-438a-affb-29b9d50b77d1"
+              ],
+              "range": [
+                2,
+                2
+              ],
+              "verified": false
+            },
+            "skillReadiness": {
+              "status": "unknown",
+              "range": [
+                0,
+                2
+              ],
+              "verified": false,
+              "evidenceIds": [],
+              "sourceIds": [
+                "onet:15-1252.00",
+                "esco:http://data.europa.eu/esco/occupation/f2b15a0e-e65a-438a-affb-29b9d50b77d1"
+              ]
+            },
+            "goalAlignment": {
+              "status": "contextual",
+              "evidenceIds": [
+                "Q02",
+                "Q08"
+              ]
+            },
+            "practicalFeasibility": {
+              "status": "unknown",
+              "evidenceIds": [
+                "Q10"
+              ],
+              "missing": [
+                "time-budget",
+                "entry-eligibility"
+              ]
+            },
+            "marketOutlook": {
+              "status": "separate-regional-context",
+              "sourceIds": []
+            }
+          },
+          "requirements": [
+            {
+              "id": "build",
+              "label": "develop software prototype",
+              "task": {
+                "id": "21667",
+                "label": "Design, develop and modify software systems, using scientific analysis and mathematical models to predict and measure outcomes and consequences of design.",
+                "url": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/task_statements.csv",
+                "date": "08/2025",
+                "sourceId": "onet:15-1252.00"
+              },
+              "sourceId": "esco:http://data.europa.eu/esco/occupation/f2b15a0e-e65a-438a-affb-29b9d50b77d1",
+              "status": "unverified",
+              "evidenceIds": [
+                "SW01"
+              ],
+              "mapping": "reviewed-context"
+            },
+            {
+              "id": "debug",
+              "label": "debug software",
+              "task": {
+                "id": "21670",
+                "label": "Modify existing software to correct errors, adapt it to new hardware, or upgrade interfaces and improve performance.",
+                "url": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/task_statements.csv",
+                "date": "08/2025",
+                "sourceId": "onet:15-1252.00"
+              },
+              "sourceId": "esco:http://data.europa.eu/esco/occupation/f2b15a0e-e65a-438a-affb-29b9d50b77d1",
+              "status": "unverified",
+              "evidenceIds": [
+                "SW02"
+              ],
+              "mapping": "reviewed-context"
+            },
+            {
+              "id": "test",
+              "label": "Systems Evaluation",
+              "task": {
+                "id": "21669",
+                "label": "Develop or direct software system testing or validation procedures, programming, or documentation.",
+                "url": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/task_statements.csv",
+                "date": "08/2025",
+                "sourceId": "onet:15-1252.00"
+              },
+              "sourceId": "onet:15-1252.00",
+              "status": "unverified",
+              "evidenceIds": [
+                "SW04"
+              ],
+              "mapping": "reviewed-context"
+            },
+            {
+              "id": "requirements",
+              "label": "Systems Analysis",
+              "task": {
+                "id": "21662",
+                "label": "Analyze user needs and software requirements to determine feasibility of design within time and cost constraints.",
+                "url": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/task_statements.csv",
+                "date": "08/2025",
+                "sourceId": "onet:15-1252.00"
+              },
+              "sourceId": "onet:15-1252.00",
+              "status": "unverified",
+              "evidenceIds": [
+                "SW03"
+              ],
+              "mapping": "reviewed-context"
+            }
+          ],
+          "priority": 1,
+          "label": "promising-needs-validation",
+          "sourceIds": [
+            "onet:15-1252.00",
+            "esco:http://data.europa.eu/esco/occupation/f2b15a0e-e65a-438a-affb-29b9d50b77d1"
+          ],
+          "actionId": "software-verify",
+          "officialMapping": true
+        },
+        {
+          "id": "ai-research",
+          "title": "AI / machine-learning engineer",
+          "dimensions": {
+            "interest": {
+              "status": "unknown",
+              "evidenceIds": [],
+              "sourceIds": [
+                "onet:15-1221.00",
+                "esco:http://data.europa.eu/esco/occupation/35553663-deab-4d9a-bf22-15c1625d28e8"
+              ],
+              "range": [
+                0,
+                2
+              ],
+              "verified": false
+            },
+            "workPreference": {
+              "status": "supported",
+              "evidenceIds": [
+                "SW03"
+              ],
+              "sourceIds": [
+                "onet:15-1221.00",
+                "esco:http://data.europa.eu/esco/occupation/35553663-deab-4d9a-bf22-15c1625d28e8"
+              ],
+              "range": [
+                2,
+                2
+              ],
+              "verified": false
+            },
+            "experience": {
+              "status": "unknown",
+              "evidenceIds": [
+                "SW05"
+              ],
+              "sourceIds": [
+                "onet:15-1221.00",
+                "esco:http://data.europa.eu/esco/occupation/35553663-deab-4d9a-bf22-15c1625d28e8"
+              ],
+              "range": [
+                0,
+                2
+              ],
+              "verified": false,
+              "transferableProgramming": {
+                "status": "supported",
+                "evidenceIds": [
+                  "SW05"
+                ],
+                "sourceIds": [],
+                "range": [
+                  2,
+                  2
+                ],
+                "verified": false
+              },
+              "reason": "Programming experience does not establish research or ML experience"
+            },
+            "skillReadiness": {
+              "status": "unknown",
+              "range": [
+                0,
+                2
+              ],
+              "verified": false,
+              "evidenceIds": [],
+              "sourceIds": [
+                "onet:15-1221.00",
+                "esco:http://data.europa.eu/esco/occupation/35553663-deab-4d9a-bf22-15c1625d28e8"
+              ]
+            },
+            "goalAlignment": {
+              "status": "contextual",
+              "evidenceIds": [
+                "Q02",
+                "Q08"
+              ]
+            },
+            "practicalFeasibility": {
+              "status": "unknown",
+              "evidenceIds": [
+                "Q10"
+              ],
+              "missing": [
+                "time-budget",
+                "entry-eligibility"
+              ]
+            },
+            "marketOutlook": {
+              "status": "separate-regional-context",
+              "sourceIds": []
+            }
+          },
+          "requirements": [
+            {
+              "id": "problem-solving",
+              "label": "Complex Problem Solving",
+              "task": {
+                "id": "14623",
+                "label": "Analyze problems to develop solutions involving computer hardware and software.",
+                "url": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/task_statements.csv",
+                "date": "08/2019",
+                "sourceId": "onet:15-1221.00"
+              },
+              "sourceId": "onet:15-1221.00",
+              "status": "unverified",
+              "evidenceIds": [
+                "SW03"
+              ],
+              "mapping": "reviewed-context"
+            },
+            {
+              "id": "mathematical-models",
+              "label": "Mathematics",
+              "task": {
+                "id": "14629",
+                "label": "Conduct logical analyses of business, scientific, engineering, and other technical problems, formulating mathematical models of problems for solution by computers.",
+                "url": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/task_statements.csv",
+                "date": "08/2019",
+                "sourceId": "onet:15-1221.00"
+              },
+              "sourceId": "onet:15-1221.00",
+              "status": "unverified",
+              "evidenceIds": [],
+              "mapping": "reviewed-context"
+            },
+            {
+              "id": "intelligent-systems",
+              "label": "principles of artificial intelligence",
+              "task": {
+                "id": "14626",
+                "label": "Apply theoretical expertise and innovation to create or apply new technology, such as adapting principles for applying computers to new uses.",
+                "url": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/task_statements.csv",
+                "date": "08/2019",
+                "sourceId": "onet:15-1221.00"
+              },
+              "sourceId": "esco:http://data.europa.eu/esco/occupation/35553663-deab-4d9a-bf22-15c1625d28e8",
+              "status": "unverified",
+              "evidenceIds": [],
+              "mapping": "reviewed-context"
+            }
+          ],
+          "priority": 1,
+          "label": "worth-exploring",
+          "sourceIds": [
+            "onet:15-1221.00",
+            "esco:http://data.europa.eu/esco/occupation/35553663-deab-4d9a-bf22-15c1625d28e8"
+          ],
+          "actionId": "ai-research-verify",
+          "officialMapping": true
+        }
+      ],
+      "comparison": {
+        "relation": "incomparable",
+        "compared": [
+          "workPreference"
+        ],
+        "rule": "observed-pareto-v1",
+        "limitation": "Partial task evidence only; unknown requirements remain unresolved. No overall fit score."
+      },
+      "edges": [
+        {
+          "from": "software",
+          "to": "ai-research",
+          "type": "exploration-comparison",
+          "sharedRequirements": [],
+          "migrationVerified": false,
+          "conditions": [
+            "Complex Problem Solving",
+            "Mathematics",
+            "principles of artificial intelligence"
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "id": "software-verify",
+          "routeId": "software",
+          "evidenceIds": [
+            "SW01",
+            "SW02",
+            "SW04",
+            "SW05",
+            "SW06",
+            "Q02",
+            "Q05",
+            "Q06",
+            "Q08"
+          ],
+          "sourceIds": [
+            "onet:15-1252.00",
+            "esco:http://data.europa.eu/esco/occupation/f2b15a0e-e65a-438a-affb-29b9d50b77d1"
+          ],
+          "task": "For Software developer, use an existing work sample to test “develop software prototype” against a new constraint. Keep an error log and request feedback on the role-specific quality checks. Extend a local study tracker with one user-requested feature and an error-handling path.",
+          "check": "Compare the actual work and checks with your reported level; keep differences as evidence for the next review. Publish a runnable repository, five normal/edge-case tests, a reproduced failure and the revision commit.",
+          "why": "Choose one occupational task, try AI within a defined workflow and independently verify the result. Tool usage alone is not proof of task quality. Your reported build and repair experience can be checked against the cited software development and validation tasks.",
+          "stage": "now",
+          "verified": false
+        },
+        {
+          "id": "ai-research-verify",
+          "routeId": "ai-research",
+          "evidenceIds": [
+            "SW05",
+            "SW06",
+            "SW03",
+            "Q02",
+            "Q05",
+            "Q06",
+            "Q08"
+          ],
+          "sourceIds": [
+            "onet:15-1221.00",
+            "esco:http://data.europa.eu/esco/occupation/35553663-deab-4d9a-bf22-15c1625d28e8"
+          ],
+          "task": "For AI / machine-learning engineer, use an existing work sample to test “Complex Problem Solving” against a new constraint. Keep an error log and request feedback on the role-specific quality checks. Build a small classifier and a majority-class baseline on the same dataset; document the train/test split and one error pattern.",
+          "check": "Compare the actual work and checks with your reported level; keep differences as evidence for the next review. Provide reproducible code, baseline comparison, one leakage check and an explanation of a mathematical assumption.",
+          "why": "Choose one occupational task, try AI within a defined workflow and independently verify the result. Tool usage alone is not proof of task quality. Software experience is reported, but the research route also requires mathematical modelling and AI principles that the questionnaire does not measure.",
+          "stage": "now",
+          "verified": false
+        },
+        {
+          "id": "context-verify",
+          "routeId": "context",
+          "evidenceIds": [
+            "Q02",
+            "Q08",
+            "Q09"
+          ],
+          "sourceIds": [],
+          "task": "Choose one occupational task, try AI within a defined workflow and independently verify the result. Tool usage alone is not proof of task quality.",
+          "check": "Save one source-backed comparison and identify the next unresolved access or task requirement.",
+          "stage": "now",
+          "verified": false
+        },
+        {
+          "id": "ai-verify",
+          "routeId": "cross-cutting",
+          "evidenceIds": [
+            "G04",
+            "SW08"
+          ],
+          "sourceIds": [],
+          "task": "Keep a manual baseline and one AI-assisted attempt for your chosen route; record a rejected or corrected AI suggestion.",
+          "check": "Show the original input, AI output, independent source or test, and final correction.",
+          "stage": "now",
+          "verified": false,
+          "why": "Reported AI-checking habits need an observed example before they can inform confidence."
+        }
+      ],
+      "scenario": {},
+      "coverage": {
+        "selectedDirection": "SW",
+        "unmeasuredDirections": 9,
+        "knowledgeVersion": "knowledge-20261023T181607Z-afaae13f29bea3e9"
+      },
+      "method": "Ordinal evidence / partial Pareto; no weighted average, ability score or career-success probability"
+    }
+  },
+  "F": {
+    "startingPoint": {
+      "version": "starting-point-1",
+      "screen": "bridge",
+      "index": 10,
+      "answers": {
+        "Q01": "F",
+        "Q02": {
+          "primary": "I",
+          "secondary": null
+        },
+        "Q03": "C",
+        "Q04": "I",
+        "Q05": {
+          "knowledge": "examples",
+          "execution": "untried",
+          "problemSolving": "examples",
+          "communication": "independent"
+        },
+        "Q06": "G",
+        "Q07": [
+          "B",
+          "F"
+        ],
+        "Q08": "H",
+        "Q09": "F",
+        "Q11": "1"
+      },
+      "story": "",
+      "completed": true
+    },
+    "answers": {
+      "G01": 6,
+      "G02": 6,
+      "G03": 6,
+      "G04": 6,
+      "SW01": null,
+      "SW02": null,
+      "SW03": null,
+      "SW04": null,
+      "SW05": null,
+      "SW06": null,
+      "SW07": null,
+      "SW08": null
+    },
+    "unified": {
+      "version": "career-intelligence-4.0",
+      "evidence": [
+        {
+          "id": "G01",
+          "question": {
+            "zh-CN": "面对自己还不了解的职业方向，我愿意先通过小项目亲身体验，再决定是否适合继续探索。",
+            "en": "When exploring an unfamiliar career path, I would rather try a small project before deciding whether to pursue it.",
+            "ms": "Apabila meneroka bidang kerjaya yang belum saya kenali, saya lebih suka mencuba projek kecil sebelum memutuskan sama ada mahu meneruskannya."
+          },
+          "answer": 6,
+          "construct": "exploration",
+          "type": "self-report",
+          "status": "supported",
+          "rule": "literal-ordinal-v3",
+          "verified": false
+        },
+        {
+          "id": "G02",
+          "question": {
+            "zh-CN": "即使某种技能因为技术变化而不再那么重要，我也愿意调整计划、学习新的方法。",
+            "en": "If technology makes one of my skills less relevant, I am willing to adjust my plans and learn a new approach.",
+            "ms": "Jika perubahan teknologi menjadikan sesuatu kemahiran saya kurang relevan, saya sanggup menyesuaikan rancangan dan mempelajari pendekatan baharu."
+          },
+          "answer": 6,
+          "construct": "adaptability",
+          "type": "self-report",
+          "status": "supported",
+          "rule": "literal-ordinal-v3",
+          "verified": false
+        },
+        {
+          "id": "G03",
+          "question": {
+            "zh-CN": "过去一个月，我曾主动用 AI 工具帮助自己完成学习、工作或生活中的具体任务。",
+            "en": "In the past month, I have actively used AI tools to help complete specific study, work, or everyday tasks.",
+            "ms": "Dalam sebulan yang lalu, saya telah menggunakan alat AI secara aktif untuk membantu menyiapkan tugasan pembelajaran, kerja atau kehidupan harian."
+          },
+          "answer": 6,
+          "construct": "ai_practice",
+          "type": "self-report",
+          "status": "supported",
+          "rule": "literal-ordinal-v3",
+          "verified": false
+        },
+        {
+          "id": "G04",
+          "question": {
+            "zh-CN": "当 AI 给出看似合理的答案时，我会核对其中重要的事实、来源或结果，而不只是相信它的表述。",
+            "en": "When AI gives a plausible answer, I check important facts, sources or results rather than relying on how convincing it sounds.",
+            "ms": "Apabila AI memberikan jawapan yang nampak munasabah, saya menyemak fakta, sumber atau hasil penting dan tidak sekadar mempercayai jawapannya."
+          },
+          "answer": 6,
+          "construct": "ai_verification",
+          "type": "self-report",
+          "status": "supported",
+          "rule": "literal-ordinal-v3",
+          "verified": false
+        },
+        {
+          "id": "SW01",
+          "question": {
+            "zh-CN": "相比只讨论产品创意，我更想亲手把一个想法变成能实际运行的工具。",
+            "en": "Rather than only discussing product ideas, I would like to turn an idea into a working tool myself.",
+            "ms": "Daripada sekadar membincangkan idea produk, saya lebih berminat membina sendiri alat yang benar-benar berfungsi."
+          },
+          "answer": null,
+          "construct": "interest",
+          "type": "self-report",
+          "status": "unknown",
+          "rule": "literal-ordinal-v3",
+          "verified": false
+        },
+        {
+          "id": "SW02",
+          "question": {
+            "zh-CN": "发现一段程序为什么出错，会让我产生想继续追查的兴趣。",
+            "en": "Figuring out why a piece of software fails is something I would find genuinely interesting.",
+            "ms": "Mencari punca sesuatu perisian gagal berfungsi benar-benar menarik minat saya."
+          },
+          "answer": null,
+          "construct": "interest",
+          "type": "self-report",
+          "status": "unknown",
+          "rule": "literal-ordinal-v3",
+          "verified": false
+        },
+        {
+          "id": "SW03",
+          "question": {
+            "zh-CN": "遇到复杂功能时，我倾向于先拆成几个可以分别测试的小步骤。",
+            "en": "When facing a complex feature, I prefer breaking it into smaller steps that can be tested separately.",
+            "ms": "Apabila berdepan dengan fungsi yang rumit, saya lebih suka membahagikannya kepada langkah kecil yang boleh diuji secara berasingan."
+          },
+          "answer": null,
+          "construct": "workstyle",
+          "type": "self-report",
+          "status": "unknown",
+          "rule": "literal-ordinal-v3",
+          "verified": false
+        },
+        {
+          "id": "SW04",
+          "question": {
+            "zh-CN": "为了让产品可靠，我愿意反复修改同一个功能，而不急着添加新功能。",
+            "en": "To make a product reliable, I am willing to refine the same feature repeatedly instead of rushing to add new ones.",
+            "ms": "Untuk memastikan produk boleh dipercayai, saya sanggup memperbaiki fungsi yang sama berulang kali dan tidak tergesa-gesa menambah fungsi baharu."
+          },
+          "answer": null,
+          "construct": "workstyle",
+          "type": "self-report",
+          "status": "unknown",
+          "rule": "literal-ordinal-v3",
+          "verified": false
+        },
+        {
+          "id": "SW05",
+          "question": {
+            "zh-CN": "我亲自制作或修改过能运行的程序、网页、脚本或自动化工具。",
+            "en": "I have personally built or modified a working program, webpage, script or automation tool.",
+            "ms": "Saya pernah membina atau mengubah suai sendiri program, laman web, skrip atau alat automasi yang berfungsi."
+          },
+          "answer": null,
+          "construct": "experience",
+          "type": "self-report",
+          "status": "unknown",
+          "rule": "literal-ordinal-v3",
+          "verified": false
+        },
+        {
+          "id": "SW06",
+          "question": {
+            "zh-CN": "我曾通过运行结果、报错信息或测试，自己定位并修复一个技术问题。",
+            "en": "I have used test results, error messages or program output to locate and fix a technical problem myself.",
+            "ms": "Saya pernah menggunakan hasil ujian, mesej ralat atau output program untuk mengenal pasti dan membaiki masalah teknikal sendiri."
+          },
+          "answer": null,
+          "construct": "experience",
+          "type": "self-report",
+          "status": "unknown",
+          "rule": "literal-ordinal-v3",
+          "verified": false
+        },
+        {
+          "id": "SW07",
+          "question": {
+            "zh-CN": "让 AI 生成代码时，我会根据实际需求修改它，而不是直接采用第一版。",
+            "en": "When AI generates code, I revise it to fit the actual requirements rather than accepting the first draft unchanged.",
+            "ms": "Apabila AI menjana kod, saya mengubah suainya mengikut keperluan sebenar dan bukannya terus menggunakan draf pertama."
+          },
+          "answer": null,
+          "construct": "ai_practice",
+          "type": "self-report",
+          "status": "unknown",
+          "rule": "literal-ordinal-v3",
+          "verified": false
+        },
+        {
+          "id": "SW08",
+          "question": {
+            "zh-CN": "如果 AI 声称登录功能已经完成，我会检查正常登录、错误密码等情况，再认为它可以使用。",
+            "en": "If AI says a login feature is finished, I would test normal logins and cases such as incorrect passwords before treating it as ready.",
+            "ms": "Jika AI mengatakan fungsi log masuk sudah siap, saya akan menguji log masuk biasa dan kes seperti kata laluan salah sebelum menganggapnya sedia digunakan."
+          },
+          "answer": null,
+          "construct": "ai_verification",
+          "type": "self-report",
+          "status": "unknown",
+          "rule": "literal-ordinal-v3",
+          "verified": false
+        },
+        {
+          "id": "Q01",
+          "answer": "F",
+          "type": "self-report-context",
+          "status": "reported",
+          "rule": "literal-starting-point",
+          "verified": false
+        },
+        {
+          "id": "Q02",
+          "answer": {
+            "primary": "I",
+            "secondary": null
+          },
+          "type": "self-report-context",
+          "status": "reported",
+          "rule": "literal-starting-point",
+          "verified": false
+        },
+        {
+          "id": "Q03",
+          "answer": "C",
+          "type": "self-report-context",
+          "status": "reported",
+          "rule": "literal-starting-point",
+          "verified": false
+        },
+        {
+          "id": "Q04",
+          "answer": "I",
+          "type": "self-report-context",
+          "status": "reported",
+          "rule": "literal-starting-point",
+          "verified": false
+        },
+        {
+          "id": "Q05",
+          "answer": {
+            "knowledge": "examples",
+            "execution": "untried",
+            "problemSolving": "examples",
+            "communication": "independent"
+          },
+          "type": "self-report-context",
+          "status": "reported",
+          "rule": "literal-starting-point",
+          "verified": false
+        },
+        {
+          "id": "Q06",
+          "answer": "G",
+          "type": "self-report-context",
+          "status": "reported",
+          "rule": "literal-starting-point",
+          "verified": false
+        },
+        {
+          "id": "Q07",
+          "answer": [
+            "B",
+            "F"
+          ],
+          "type": "self-report-context",
+          "status": "reported",
+          "rule": "literal-starting-point",
+          "verified": false
+        },
+        {
+          "id": "Q08",
+          "answer": "H",
+          "type": "self-report-context",
+          "status": "reported",
+          "rule": "literal-starting-point",
+          "verified": false
+        },
+        {
+          "id": "Q09",
+          "answer": "F",
+          "type": "self-report-context",
+          "status": "reported",
+          "rule": "literal-starting-point",
+          "verified": false
+        },
+        {
+          "id": "Q11",
+          "answer": "1",
+          "type": "self-report-context",
+          "status": "reported",
+          "rule": "literal-starting-point",
+          "verified": false
+        }
+      ],
+      "personal": {
+        "contradictions": [],
+        "currentSituation": {
+          "stage": "F",
+          "field": "I"
+        },
+        "primaryConcerns": {
+          "primary": "I",
+          "secondary": null,
+          "decisionContext": "C",
+          "goal": "H"
+        },
+        "interests": {
+          "status": "unknown",
+          "evidenceIds": [
+            "SW01",
+            "SW02"
+          ],
+          "sourceIds": [],
+          "range": [
+            0,
+            2
+          ],
+          "verified": false
+        },
+        "workPreferences": {
+          "status": "unknown",
+          "evidenceIds": [
+            "SW03",
+            "SW04"
+          ],
+          "sourceIds": [],
+          "range": [
+            0,
+            2
+          ],
+          "verified": false
+        },
+        "selfReportedCapability": {
+          "knowledge": "examples",
+          "execution": "untried",
+          "problemSolving": "examples",
+          "communication": "independent"
+        },
+        "experience": {
+          "dimension": {
+            "status": "unknown",
+            "evidenceIds": [
+              "SW05",
+              "SW06"
+            ],
+            "sourceIds": [],
+            "range": [
+              0,
+              2
+            ],
+            "verified": false
+          },
+          "artifact": "G",
+          "verified": false
+        },
+        "ai": {
+          "practice": {
+            "status": "mixed",
+            "evidenceIds": [
+              "G03",
+              "SW07"
+            ],
+            "sourceIds": [],
+            "range": [
+              1,
+              1
+            ],
+            "verified": false
+          },
+          "verification": {
+            "status": "mixed",
+            "evidenceIds": [
+              "G04",
+              "SW08"
+            ],
+            "sourceIds": [],
+            "range": [
+              1,
+              1
+            ],
+            "verified": false
+          },
+          "assumedVerification": false
+        },
+        "constraints": {
+          "market": "F",
+          "barriers": [
+            "B",
+            "F"
+          ],
+          "timeBudget": null
+        },
+        "unknowns": [
+          "observed-skills",
+          "mathematical-readiness",
+          "employment-eligibility",
+          "time-budget"
+        ]
+      },
+      "claims": [
+        {
+          "claim_id": "decision-context",
+          "evidence_ids": [
+            "Q02",
+            "Q08",
+            "Q09"
+          ],
+          "source_ids": [],
+          "inference_type": "product-rule",
+          "uncertainty": "self-report-unverified",
+          "copy": [
+            "Your concern and target market set the report focus, not your ability. Check local task evidence and access requirements separately from personal preparation.",
+            "困惑与目标地区决定报告重点，不改变你的能力证据。将当地职业任务与准入条件和个人准备分别核查。",
+            "Kebimbangan dan pasaran sasaran menetapkan fokus laporan, bukan kebolehan. Semak tugas tempatan dan syarat akses berasingan daripada persediaan diri."
+          ],
+          "rule": "decision-context",
+          "recommended_action_ids": [
+            "context-verify"
+          ],
+          "limitations": [
+            "No observed competence test"
+          ]
+        }
+      ],
+      "routes": [
+        {
+          "id": "software",
+          "title": "Software developer",
+          "dimensions": {
+            "interest": {
+              "status": "unknown",
+              "evidenceIds": [
+                "SW01",
+                "SW02"
+              ],
+              "sourceIds": [
+                "onet:15-1252.00",
+                "esco:http://data.europa.eu/esco/occupation/f2b15a0e-e65a-438a-affb-29b9d50b77d1"
+              ],
+              "range": [
+                0,
+                2
+              ],
+              "verified": false
+            },
+            "workPreference": {
+              "status": "unknown",
+              "evidenceIds": [
+                "SW04",
+                "SW03"
+              ],
+              "sourceIds": [
+                "onet:15-1252.00",
+                "esco:http://data.europa.eu/esco/occupation/f2b15a0e-e65a-438a-affb-29b9d50b77d1"
+              ],
+              "range": [
+                0,
+                2
+              ],
+              "verified": false
+            },
+            "experience": {
+              "status": "unknown",
+              "evidenceIds": [
+                "SW05",
+                "SW06"
+              ],
+              "sourceIds": [
+                "onet:15-1252.00",
+                "esco:http://data.europa.eu/esco/occupation/f2b15a0e-e65a-438a-affb-29b9d50b77d1"
+              ],
+              "range": [
+                0,
+                2
+              ],
+              "verified": false
+            },
+            "skillReadiness": {
+              "status": "unknown",
+              "range": [
+                0,
+                2
+              ],
+              "verified": false,
+              "evidenceIds": [],
+              "sourceIds": [
+                "onet:15-1252.00",
+                "esco:http://data.europa.eu/esco/occupation/f2b15a0e-e65a-438a-affb-29b9d50b77d1"
+              ]
+            },
+            "goalAlignment": {
+              "status": "contextual",
+              "evidenceIds": [
+                "Q02",
+                "Q08"
+              ]
+            },
+            "practicalFeasibility": {
+              "status": "unknown",
+              "evidenceIds": [
+                "Q10"
+              ],
+              "missing": [
+                "time-budget",
+                "entry-eligibility"
+              ]
+            },
+            "marketOutlook": {
+              "status": "separate-regional-context",
+              "sourceIds": []
+            }
+          },
+          "requirements": [
+            {
+              "id": "build",
+              "label": "develop software prototype",
+              "task": {
+                "id": "21667",
+                "label": "Design, develop and modify software systems, using scientific analysis and mathematical models to predict and measure outcomes and consequences of design.",
+                "url": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/task_statements.csv",
+                "date": "08/2025",
+                "sourceId": "onet:15-1252.00"
+              },
+              "sourceId": "esco:http://data.europa.eu/esco/occupation/f2b15a0e-e65a-438a-affb-29b9d50b77d1",
+              "status": "unverified",
+              "evidenceIds": [
+                "SW01"
+              ],
+              "mapping": "reviewed-context"
+            },
+            {
+              "id": "debug",
+              "label": "debug software",
+              "task": {
+                "id": "21670",
+                "label": "Modify existing software to correct errors, adapt it to new hardware, or upgrade interfaces and improve performance.",
+                "url": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/task_statements.csv",
+                "date": "08/2025",
+                "sourceId": "onet:15-1252.00"
+              },
+              "sourceId": "esco:http://data.europa.eu/esco/occupation/f2b15a0e-e65a-438a-affb-29b9d50b77d1",
+              "status": "unverified",
+              "evidenceIds": [
+                "SW02"
+              ],
+              "mapping": "reviewed-context"
+            },
+            {
+              "id": "test",
+              "label": "Systems Evaluation",
+              "task": {
+                "id": "21669",
+                "label": "Develop or direct software system testing or validation procedures, programming, or documentation.",
+                "url": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/task_statements.csv",
+                "date": "08/2025",
+                "sourceId": "onet:15-1252.00"
+              },
+              "sourceId": "onet:15-1252.00",
+              "status": "unverified",
+              "evidenceIds": [
+                "SW04"
+              ],
+              "mapping": "reviewed-context"
+            },
+            {
+              "id": "requirements",
+              "label": "Systems Analysis",
+              "task": {
+                "id": "21662",
+                "label": "Analyze user needs and software requirements to determine feasibility of design within time and cost constraints.",
+                "url": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/task_statements.csv",
+                "date": "08/2025",
+                "sourceId": "onet:15-1252.00"
+              },
+              "sourceId": "onet:15-1252.00",
+              "status": "unverified",
+              "evidenceIds": [
+                "SW03"
+              ],
+              "mapping": "reviewed-context"
+            }
+          ],
+          "priority": 1,
+          "label": "insufficient-evidence",
+          "sourceIds": [
+            "onet:15-1252.00",
+            "esco:http://data.europa.eu/esco/occupation/f2b15a0e-e65a-438a-affb-29b9d50b77d1"
+          ],
+          "actionId": "software-verify",
+          "officialMapping": true
+        },
+        {
+          "id": "ai-research",
+          "title": "AI / machine-learning engineer",
+          "dimensions": {
+            "interest": {
+              "status": "unknown",
+              "evidenceIds": [],
+              "sourceIds": [
+                "onet:15-1221.00",
+                "esco:http://data.europa.eu/esco/occupation/35553663-deab-4d9a-bf22-15c1625d28e8"
+              ],
+              "range": [
+                0,
+                2
+              ],
+              "verified": false
+            },
+            "workPreference": {
+              "status": "unknown",
+              "evidenceIds": [
+                "SW03"
+              ],
+              "sourceIds": [
+                "onet:15-1221.00",
+                "esco:http://data.europa.eu/esco/occupation/35553663-deab-4d9a-bf22-15c1625d28e8"
+              ],
+              "range": [
+                0,
+                2
+              ],
+              "verified": false
+            },
+            "experience": {
+              "status": "unknown",
+              "evidenceIds": [
+                "SW05"
+              ],
+              "sourceIds": [
+                "onet:15-1221.00",
+                "esco:http://data.europa.eu/esco/occupation/35553663-deab-4d9a-bf22-15c1625d28e8"
+              ],
+              "range": [
+                0,
+                2
+              ],
+              "verified": false,
+              "transferableProgramming": {
+                "status": "unknown",
+                "evidenceIds": [
+                  "SW05"
+                ],
+                "sourceIds": [],
+                "range": [
+                  0,
+                  2
+                ],
+                "verified": false
+              },
+              "reason": "Programming experience does not establish research or ML experience"
+            },
+            "skillReadiness": {
+              "status": "unknown",
+              "range": [
+                0,
+                2
+              ],
+              "verified": false,
+              "evidenceIds": [],
+              "sourceIds": [
+                "onet:15-1221.00",
+                "esco:http://data.europa.eu/esco/occupation/35553663-deab-4d9a-bf22-15c1625d28e8"
+              ]
+            },
+            "goalAlignment": {
+              "status": "contextual",
+              "evidenceIds": [
+                "Q02",
+                "Q08"
+              ]
+            },
+            "practicalFeasibility": {
+              "status": "unknown",
+              "evidenceIds": [
+                "Q10"
+              ],
+              "missing": [
+                "time-budget",
+                "entry-eligibility"
+              ]
+            },
+            "marketOutlook": {
+              "status": "separate-regional-context",
+              "sourceIds": []
+            }
+          },
+          "requirements": [
+            {
+              "id": "problem-solving",
+              "label": "Complex Problem Solving",
+              "task": {
+                "id": "14623",
+                "label": "Analyze problems to develop solutions involving computer hardware and software.",
+                "url": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/task_statements.csv",
+                "date": "08/2019",
+                "sourceId": "onet:15-1221.00"
+              },
+              "sourceId": "onet:15-1221.00",
+              "status": "unverified",
+              "evidenceIds": [
+                "SW03"
+              ],
+              "mapping": "reviewed-context"
+            },
+            {
+              "id": "mathematical-models",
+              "label": "Mathematics",
+              "task": {
+                "id": "14629",
+                "label": "Conduct logical analyses of business, scientific, engineering, and other technical problems, formulating mathematical models of problems for solution by computers.",
+                "url": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/task_statements.csv",
+                "date": "08/2019",
+                "sourceId": "onet:15-1221.00"
+              },
+              "sourceId": "onet:15-1221.00",
+              "status": "unverified",
+              "evidenceIds": [],
+              "mapping": "reviewed-context"
+            },
+            {
+              "id": "intelligent-systems",
+              "label": "principles of artificial intelligence",
+              "task": {
+                "id": "14626",
+                "label": "Apply theoretical expertise and innovation to create or apply new technology, such as adapting principles for applying computers to new uses.",
+                "url": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/task_statements.csv",
+                "date": "08/2019",
+                "sourceId": "onet:15-1221.00"
+              },
+              "sourceId": "esco:http://data.europa.eu/esco/occupation/35553663-deab-4d9a-bf22-15c1625d28e8",
+              "status": "unverified",
+              "evidenceIds": [],
+              "mapping": "reviewed-context"
+            }
+          ],
+          "priority": 1,
+          "label": "insufficient-evidence",
+          "sourceIds": [
+            "onet:15-1221.00",
+            "esco:http://data.europa.eu/esco/occupation/35553663-deab-4d9a-bf22-15c1625d28e8"
+          ],
+          "actionId": "ai-research-verify",
+          "officialMapping": true
+        }
+      ],
+      "comparison": {
+        "relation": "incomparable",
+        "compared": [],
+        "rule": "observed-pareto-v1",
+        "limitation": "Partial task evidence only; unknown requirements remain unresolved. No overall fit score."
+      },
+      "edges": [
+        {
+          "from": "software",
+          "to": "ai-research",
+          "type": "exploration-comparison",
+          "sharedRequirements": [],
+          "migrationVerified": false,
+          "conditions": [
+            "Complex Problem Solving",
+            "Mathematics",
+            "principles of artificial intelligence"
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "id": "software-verify",
+          "routeId": "software",
+          "evidenceIds": [
+            "SW01",
+            "SW02",
+            "SW05",
+            "SW06",
+            "Q02",
+            "Q05",
+            "Q06",
+            "Q08"
+          ],
+          "sourceIds": [
+            "onet:15-1252.00",
+            "esco:http://data.europa.eu/esco/occupation/f2b15a0e-e65a-438a-affb-29b9d50b77d1"
+          ],
+          "task": "For Software developer, begin with one guided example connected to “develop software prototype”. Then change one requirement and record what you could complete and check without help. Follow a worked example to build a local study tracker, then add an edit feature without copying the example.",
+          "check": "Compare the actual work and checks with your reported level; keep differences as evidence for the next review. Show a runnable repository; test add, edit and delete, record one failure and explain the correction.",
+          "why": "Start with low-cost occupational task exploration and compare what you learn. A provisional direction is a trial, not a permanent choice. A finished program and independent repair have not been established; the linked software tasks include development, testing and error correction.",
+          "stage": "now",
+          "verified": false
+        },
+        {
+          "id": "ai-research-verify",
+          "routeId": "ai-research",
+          "evidenceIds": [
+            "SW03",
+            "SW05",
+            "SW06",
+            "Q02",
+            "Q05",
+            "Q06",
+            "Q08"
+          ],
+          "sourceIds": [
+            "onet:15-1221.00",
+            "esco:http://data.europa.eu/esco/occupation/35553663-deab-4d9a-bf22-15c1625d28e8"
+          ],
+          "task": "For AI / machine-learning engineer, begin with one guided example connected to “Complex Problem Solving”. Then change one requirement and record what you could complete and check without help. Reproduce a guided classifier example, then calculate and compare a majority-class baseline.",
+          "check": "Compare the actual work and checks with your reported level; keep differences as evidence for the next review. Identify the dataset, baseline and one wrong prediction; explain each step you cannot yet reproduce independently.",
+          "why": "Start with low-cost occupational task exploration and compare what you learn. A provisional direction is a trial, not a permanent choice. The linked research tasks and AI principles are unmeasured, and finished-program experience is not established.",
+          "stage": "now",
+          "verified": false
+        },
+        {
+          "id": "context-verify",
+          "routeId": "context",
+          "evidenceIds": [
+            "Q02",
+            "Q08",
+            "Q09"
+          ],
+          "sourceIds": [],
+          "task": "Start with low-cost occupational task exploration and compare what you learn. A provisional direction is a trial, not a permanent choice.",
+          "check": "Save one source-backed comparison and identify the next unresolved access or task requirement.",
+          "stage": "now",
+          "verified": false
+        },
+        {
+          "id": "ai-verify",
+          "routeId": "cross-cutting",
+          "evidenceIds": [
+            "G04",
+            "SW08"
+          ],
+          "sourceIds": [],
+          "task": "Keep a manual baseline and one AI-assisted attempt for your chosen route; record a rejected or corrected AI suggestion.",
+          "check": "Show the original input, AI output, independent source or test, and final correction.",
+          "stage": "now",
+          "verified": false,
+          "why": "Reported AI-checking habits need an observed example before they can inform confidence."
+        }
+      ],
+      "scenario": {},
+      "coverage": {
+        "selectedDirection": "SW",
+        "unmeasuredDirections": 9,
+        "knowledgeVersion": "knowledge-20261023T181607Z-afaae13f29bea3e9"
+      },
+      "method": "Ordinal evidence / partial Pareto; no weighted average, ability score or career-success probability"
+    }
+  }
+}

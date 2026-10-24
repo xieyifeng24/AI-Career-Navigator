@@ -1,10 +1,13 @@
+import {newStartingPoint,updateStartingPoint,advanceStartingPoint,previousStartingPoint,preferredRegion,startingQuestions} from './starting-point.js';
+import {renderStartingPoint,ui as startingUI} from './starting-point-view.js';
+import {personalAIContext} from './starting-point-analysis.js';
 import {buildCompatibleReport,renderCompatibleReport,reportPages as compatiblePages} from './v2-report.js';
 import {language,setLanguage,t} from '../i18n.js';
 import {renderHeader,renderFooter,renderForm,escapeHTML} from '../explorer-views.js';
-import {catalog} from '../explorer-engine.js';
+import {catalog,validWeeklyHours,backgroundSteps} from '../explorer-engine.js';
 import {bank,questionsFor,chooseTrack,changeLanguage,selectAnswer,advance,previous} from '../v3/engine.js';
 import {renderPreview} from '../v3/ui.js';
-import {fresh,load,save,updateBackground,nextBackground,reportFor} from './model.js';
+import {fresh,load,save,updateBackground,nextBackground,reportFor,withoutPersonalityInterests,completeAssessment} from './model.js';
 export {STORAGE_KEY} from './model.js';
 import {supplementaryInput} from './ui.js';
 import regional from '../../data/regional/current.json' with {type:'json'};
@@ -13,7 +16,10 @@ export function hasCombinedDraft(){try{return !!sessionStorage.getItem('career-c
 export function mountCombined({root,onHome}) {
  let storage;try{storage=sessionStorage;}catch{storage=null;}
  let state=load(storage,language),errors={};
- let v2Options={path:'A',assumptions:{},region:'MY',aiConsent:false,ai:{status:'idle'}};
+ state={...state,profile:withoutPersonalityInterests(state.profile),step:state.step===1?2:state.step};
+ if(state.phase==='background'&&!state.startingPoint)state={...state,startingPoint:newStartingPoint()};
+ let startingMotion='',aiRequestSerial=0;
+ let v2Options={path:'A',assumptions:{},region:preferredRegion(state.startingPoint),aiConsent:false,aiStoryConsent:false,ai:{status:'idle'}};
  setLanguage(state.v3.language);
  for(const path of ['explorer.css','v3/styles.css','star-map.css','career-explorer.css','combined/styles.css','combined/regional.css']) {
   if(!document.querySelector(`link[data-combined-style="${path}"]`)){
@@ -22,18 +28,24 @@ export function mountCombined({root,onHome}) {
  }
  function render(focus=false) {
   state={...state,v3:changeLanguage(state.v3,language)};
+  if(state.phase==='v3'&&state.v3.screen==='review'){
+   try{state=completeAssessment(state);}catch{state={...state,v3:{...state.v3,screen:'question',index:Math.max(0,questionsFor(state.v3.trackId).findIndex(q=>!Number.isInteger(state.v3.answers[q.id])))}};}
+  }
   let html;
   if(state.phase==='background') {
-   html=renderHeader({report:null})+renderForm({...state,errors})+renderFooter();
-   html=html.replace(e(t('View my exploration report')),e(t('Continue'))).replace(e(t('Your profile stays local; only your language choice is saved automatically.')),e(t('Your answers are safe in this tab.')));
-   if(state.step===3)html=html.replace('<div class="form-actions">',supplementaryInput(state.notes)+'<div class="form-actions">');
-   if(state.step===0)html=html.replace('<form id="explorer-form" novalidate>',`<p class="combined-demo-note">${e(t('Team Nexus · Domain 1 · Fictional profiles only'))}</p><form id="explorer-form" novalidate>`);
+   html=renderStartingPoint(state.startingPoint,language,errors.starting||'',startingMotion);startingMotion='';
   }else if(state.phase==='v3') {
-   html=renderPreview(state.v3,errors.answer||'',focus);
+   html=renderPreview(state.v3,errors.answer||'',focus,{hideUnknown:false,hideNotice:true,directionTitle:'Your preferred career direction'});
    // Context navigation stays in this local session instead of discarding background choices.
    html=html.replaceAll('href="/?intro=off"','href="#" data-combined-action="home"');
    if(state.v3.screen==='tracks')html=html.replace('<section class="v3-entry">',`<section class="v3-entry"><button class="text-button" data-combined-action="edit-background">${e(t('Edit your answers ↗'))}</button>`);
-   if(state.v3.screen==='review')html=html.replace('<ol class="v3-review-list">',`<div class="combined-finish"><button class="button primary" data-combined-action="finish">${e(bank.uiText.submit[language])} ↗</button></div><ol class="v3-review-list">`);
+
+
+   if(state.v3.screen==='tracks'){
+    const L=(en,zh,ms)=>startingUI(language,en,zh,ms);
+    const guide=`<button class="text-button" type="button" data-combined-action="starting-explore">${L('Not sure? Explore the work first','还没确定？先了解各方向的工作','Belum pasti? Terokai tugas dahulu')} ↗</button>${v2Options.directionGuide?`<section class="starting-direction-guide"><p>${L('These are task previews from the existing questionnaire, not recommendations. Try one direction and return to compare another at any time.','以下是现有题库中的任务预览，并不是职业推荐。可以先选一个方向体验，随时返回比较其他方向。','Ini pratonton tugas daripada soal selidik sedia ada, bukan cadangan. Cuba satu arah dan kembali membandingkan arah lain bila-bila masa.')}</p>${bank.tracks.map(track=>`<article><h2>${e(track.label[language])}</h2><p>${e(bank.questions.find(q=>q.trackId===track.id&&q.construct==='interest').statement[language])}</p><button type="button" class="text-button" data-track="${track.id}">${L('Try this direction','先体验这个方向','Cuba arah ini')} ↗</button></article>`).join('')}</section>`:''}`;
+    html=html.replace('<div class="v3-tracks"',guide+'<div class="v3-tracks"');
+   }
   }else {
    html=renderCompatibleReport(state,v2Options);
   }
@@ -43,14 +55,22 @@ export function mountCombined({root,onHome}) {
   root.innerHTML=html;
   document.title=e(t(state.phase==='report'?'Overview':'Your profile'))+' · AI Career Navigator';document.documentElement.lang=language;
   save(storage,state);
-  if(focus){(document.getElementById('v3-heading')||root.querySelector('main h1'))?.focus?.({preventScroll:true});window.scrollTo({top:0,behavior:'instant'});}
+  if(focus){(document.getElementById('starting-heading')||document.getElementById('v3-heading')||root.querySelector('main h1'))?.focus?.({preventScroll:true});window.scrollTo({top:0,behavior:'instant'});}
  }
  function change(event) {
   const target=event.target;
+  if(target.dataset.startingField){
+   try{state={...state,startingPoint:updateStartingPoint(state.startingPoint,target.dataset.startingField,target.value,target.checked!==false)};errors={};}catch(error){errors.starting=error.message==='MAX_TWO'?'multi':'single';}
+   render();[...root.querySelectorAll(`[name="${target.name}"]`)].find(el=>el.value===target.value)?.focus();return;
+  }
+  if(target.dataset.regionalStoryConsent!==undefined){v2Options.aiStoryConsent=target.checked;return;}
+  if(target.dataset.exactHours){input(event);return;}
   if(target.dataset.regionalConsent!==undefined){v2Options.aiConsent=target.checked;return;}
   if(state.phase==='report'&&target.dataset.v2Control){
    const key=target.dataset.v2Control;
+   aiRequestSerial++;v2Options.ai={status:'idle'};
    v2Options.assumptions={...v2Options.assumptions,[key]:key==='hours'?Number(target.value):target.value};
+   if(key==='targetMarket')v2Options.region=['MY','US','GLOBAL'].includes(target.value)?target.value:preferredRegion(state.startingPoint);
    render();root.querySelector(`[data-v2-control="${key}"]`)?.focus();return;
   }
   if(['combined-language-select','v3-language'].includes(target.id)){setLanguage(target.value);errors={};v2Options.ai={status:'idle'};render();root.querySelector('#combined-language-select,#v3-language')?.focus();return;}
@@ -60,6 +80,7 @@ export function mountCombined({root,onHome}) {
   }
  }
  function submit(event) {
+  if(event.target.id==='starting-point-form'){event.preventDefault();try{state={...state,startingPoint:advanceStartingPoint(state.startingPoint)};startingMotion='is-forward';errors={};}catch(error){errors.starting=error.message;}render(true);return;}
   if(event.target.id!=='explorer-form')return;event.preventDefault();
   const next=nextBackground(state);errors=next.errors;state=next.state;render(true);
   const key=Object.keys(errors)[0];if(key)document.getElementById('field-'+key)?.focus();
@@ -72,14 +93,25 @@ export function mountCombined({root,onHome}) {
   if(target.dataset.v3Action){
    if(target.dataset.v3Action==='back')state={...state,v3:previous(state.v3)};
    else if(target.dataset.v3Action==='reset')state={...state,v3:{...fresh(language).v3}};
-   else try{state={...state,v3:advance(state.v3)};}catch{errors.answer='Please choose an answer.';}
+   else try{const value=state.v3.answers[questionsFor(state.v3.trackId)[state.v3.index]?.id];if(value!==null&&(!Number.isInteger(value)||value<1||value>7))throw Error('ANSWER_REQUIRED');state={...state,v3:advance(state.v3)};}catch{errors.answer='Please choose an answer.';}
    render(true);return;
   }
   const action=target.dataset.combinedAction;
+  if(action==='starting-next'||action==='starting-back'){
+   try{state={...state,startingPoint:action==='starting-next'?advanceStartingPoint(state.startingPoint):previousStartingPoint(state.startingPoint)};startingMotion=action==='starting-next'?'is-forward':'is-back';}catch(error){errors.starting=error.message;}
+   render(true);return;
+  }
+  if(action==='starting-continue'){
+   if(!state.startingPoint?.completed)return;
+   v2Options={...v2Options,region:preferredRegion(state.startingPoint),ai:{status:'idle'},aiConsent:false,aiStoryConsent:false};
+   state={...state,phase:'v3'};render(true);return;
+  }
+  if(action==='starting-explore'){v2Options.directionGuide=!v2Options.directionGuide;render();return;}
+
   if(state.phase==='report'){
    if(action?.startsWith('region:')){const region=action.slice(7);if(['MY','US','GLOBAL'].includes(region)){v2Options.region=region;v2Options.ai={status:'idle'};render();}return;}
    if(action==='regional-ai'){requestRegionalAI();return;}
-   if(action==='v2-reset'){v2Options.assumptions={};render();return;}
+   if(action==='v2-reset'){aiRequestSerial++;v2Options.assumptions={};v2Options.region=preferredRegion(state.startingPoint);v2Options.ai={status:'idle'};render();return;}
    if(action.startsWith('select:')||action.startsWith('route-select:')||action.startsWith('map-select:')||action.startsWith('compare-select:')){
     const value=action.slice(action.indexOf(':')+1);if(['A','B'].includes(value))v2Options.path=value;render();return;
    }
@@ -89,11 +121,11 @@ export function mountCombined({root,onHome}) {
    if(action.startsWith('page:')){const page=action.slice(5);if(compatiblePages.includes(page)){state={...state,page};render(true);}return;}
   }
   if(action==='home'){onHome();return;}
-  if(action==='start'||action==='edit'||action==='edit-background'){v2Options={path:'A',assumptions:{},region:'MY',aiConsent:false,ai:{status:'idle'}};state={...state,phase:'background',step:0};render(true);return;}
+  if(action==='start'||action==='edit'||action==='edit-background'){v2Options={path:'A',assumptions:{},region:'MY',aiConsent:false,ai:{status:'idle'}};state={...state,phase:'background',step:0,startingPoint:state.startingPoint?{...state.startingPoint,screen:'question',index:0,completed:false}:newStartingPoint()};render(true);return;}
   if(action==='reset'){v2Options={path:'A',assumptions:{},region:'MY',aiConsent:false,ai:{status:'idle'}};state=fresh(language);render(true);return;}
-  if(action==='prev'){if(state.step>0){state={...state,step:state.step-1};render(true);}else onHome();return;}
-  if(action==='edit-v3'){v2Options={path:'A',assumptions:{},region:'MY',aiConsent:false,ai:{status:'idle'}};state={...state,phase:'v3',v3:{...state.v3,screen:'review'}};render(true);return;}
-  if(action==='finish'){const {base}=reportFor(state);state={...state,phase:'report',page:'overview',focus:base.ranking[0].id,goal:base.goals[0].id};render(true);return;}
+  if(action==='prev'){if(state.step>0){state={...state,step:backgroundSteps(state.profile)[backgroundSteps(state.profile).indexOf(state.step)-1]};render(true);}else onHome();return;}
+  if(action==='edit-v3'){v2Options={path:'A',assumptions:{},region:'MY',aiConsent:false,ai:{status:'idle'}};state={...state,phase:'v3',v3:{...state.v3,screen:'question',index:0}};render(true);return;}
+  if(action==='finish'){state=completeAssessment(state);render(true);return;}
   if(action.startsWith('goal:')&&catalog.goals.some(g=>g.id===Number(action.slice(5)))){state={...state,goal:Number(action.slice(5))};render();return;}
   if(action==='print'){window.print();return;}
   if(action==='export'){
@@ -106,15 +138,17 @@ export function mountCombined({root,onHome}) {
   }
  }
  async function requestRegionalAI(){
-  if(!v2Options.aiConsent){v2Options.ai={status:'error',message:{en:'Please confirm the fictional-data notice first.','zh-CN':'请先确认虚构资料说明。',ms:'Sila sahkan notis data rekaan dahulu.'}[language]};render();return;}
+  if(!v2Options.aiConsent){v2Options.ai={status:'error',message:{en:'Please consent to this optional AI request first.','zh-CN':'请先同意本次可选 AI 请求。',ms:'Sila beri persetujuan untuk permintaan AI pilihan ini.'}[language]};render();return;}
   if(v2Options.ai.status==='loading')return;
   const model=buildCompatibleReport(state,language,v2Options.assumptions);
   const payload={track_id:state.v3.trackId,language,region:v2Options.region,
-    answers:structuredClone(state.v3.answers),deterministic_profile:model.p0.profile.map(c=>c.text).slice(0,8),
-    scenario:Object.values(v2Options.assumptions||{}).some(v=>v==='practiced')?'Hypothetical completed practice; original answers unchanged.':null};
-  const expected=JSON.stringify({answers:payload.answers,region:payload.region,language:payload.language});
+    answers:structuredClone(state.v3.answers),understand_you:state.startingPoint?.completed?structuredClone(state.startingPoint.answers):null,deterministic_profile:personalAIContext(model,state.startingPoint,v2Options.aiStoryConsent),
+    scenario:Object.values(v2Options.assumptions||{}).some(Boolean)?JSON.stringify(v2Options.assumptions).slice(0,200):null};
+  const serial=++aiRequestSerial;
+  const signature=()=>JSON.stringify({answers:state.v3.answers,intake:state.startingPoint,assumptions:v2Options.assumptions,region:v2Options.region,language});
+  const expected=signature();
   v2Options.ai={status:'loading'};render();
-  const controller=new AbortController(),timeout=setTimeout(()=>controller.abort(),125000);
+  const controller=new AbortController(),timeout=setTimeout(()=>controller.abort(),245000);
   try{
    const session=await fetch('/api/session',{credentials:'same-origin',signal:controller.signal});
    if(!session.ok)throw Error('Session unavailable');
@@ -122,12 +156,25 @@ export function mountCombined({root,onHome}) {
    const response=await fetch('/api/regional/explain',{method:'POST',credentials:'same-origin',
     headers:{'Content-Type':'application/json','X-CSRF-Token':token},body:JSON.stringify(payload),signal:controller.signal});
    const data=await response.json();
-   if(!response.ok)throw Error(data.detail||'AI unavailable');
-   if(expected===JSON.stringify({answers:state.v3.answers,region:v2Options.region,language}))v2Options.ai={status:'complete',result:data};
-  }catch(error){v2Options.ai={status:'error',message:String(error.message||error).slice(0,180)};}
+   if(!response.ok){const error=Error('AI unavailable');error.status=response.status;throw error;}
+   if(serial===aiRequestSerial&&state.phase==='report'&&expected===signature())v2Options.ai={status:'complete',result:data};
+  }catch(error){if(serial===aiRequestSerial)v2Options.ai={status:'error',message:error.status===429?{en:'The request limit has been reached. Please try later; your base report is unchanged.','zh-CN':'已达到请求额度，请稍后再试；基础报告不受影响。',ms:'Had permintaan dicapai. Cuba kemudian; laporan asas tidak berubah.'}[language]:{en:'AI is unconfigured, timed out or unavailable. Your base report remains available.','zh-CN':'AI 未配置、超时或暂时不可用，基础报告仍可正常使用。',ms:'AI belum dikonfigurasi, tamat masa atau tidak tersedia. Laporan asas masih tersedia.'}[language]};}
   finally{clearTimeout(timeout);render();}
  }
- function input(event){if(event.target.dataset.v2Control==='hours'){change(event);return;}if(event.target.id==='combined-notes'){state={...state,notes:event.target.value.slice(0,1500)};save(storage,state);}}
+ function input(event){
+  if(event.target.dataset.startingStory!==undefined){state={...state,startingPoint:updateStartingPoint(state.startingPoint,'story',event.target.value)};save(storage,state);const count=root.querySelector('.starting-story-count');if(count)count.textContent=state.startingPoint.story.length+' / 1500';return;}
+
+  if(event.target.dataset.exactHours){
+   const value=event.target.value===''?null:Number(event.target.value);
+   if(value===null||validWeeklyHours(value)){
+    state=updateBackground(state,'exactWeeklyHours',value);delete errors.weeklyTime;save(storage,state);
+    const range=root.querySelector('[data-exact-hours="range"]'),number=root.querySelector('[data-exact-hours="number"]'),output=root.querySelector('#weekly-hours-value');
+    if(value!==null){range.value=String(value);number.value=String(value);}
+    output.textContent=value===null?t('Choose your weekly learning time'):t('{hours} hours / week',{hours:value});
+   }else{state=updateBackground(state,'exactWeeklyHours',null);save(storage,state);}
+   return;
+  }
+if(event.target.dataset.v2Control==='hours'){change(event);return;}if(event.target.id==='combined-notes'){state={...state,notes:event.target.value.slice(0,1500)};save(storage,state);}}
  root.addEventListener('input',input);
  root.addEventListener('change',change);root.addEventListener('submit',submit);root.addEventListener('click',click);
  render();

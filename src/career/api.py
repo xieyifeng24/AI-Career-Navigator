@@ -71,7 +71,7 @@ async def guard(request, call_next):
 @app.exception_handler(RequestValidationError)
 async def invalid_profile(request, exc):
     # FastAPI's default response can echo user input; return only field names.
-    return JSONResponse({'detail':'Use a complete fictional profile, 1–40 hours per week, and confirm synthetic data.',
+    return JSONResponse({'detail':('Please check the assessment fields and try again.' if request.url.path=='/api/regional/explain' else 'Use a complete fictional profile, 1–40 hours per week, and confirm synthetic data.'),
                          'fields':list({str(e['loc'][-1]) for e in exc.errors()})},status_code=422)
 
 @app.get('/api/health')
@@ -197,7 +197,7 @@ async def regional_bundle():
 
 @app.get('/combined/{filename}')
 async def combined_asset(filename: str):
-    if filename not in {'app.js','model.js','styles.css','regional.css','results.js','ui.js','copy.js','v2-report.js','current-analysis.js','p0-analysis.js','sw-analysis.js','regional-view.js'}: raise HTTPException(404)
+    if filename not in {'app.js','model.js','styles.css','regional.css','results.js','ui.js','copy.js','v2-report.js','current-analysis.js','p0-analysis.js','sw-analysis.js','regional-view.js','starting-point.js','starting-point-bank.json','starting-point-view.js','starting-point-analysis.js','intelligence.js'}: raise HTTPException(404)
     return FileResponse(ROOT/'prototype/combined'/filename)
 
 @app.get('/v3/{filename}')

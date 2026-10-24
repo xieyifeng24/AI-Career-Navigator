@@ -2,15 +2,21 @@
 
 **Your Skills. Your Future. Your Choice.** Team Nexus · SDC Hackathon 2026 · Domain 1.
 
-AI Career Navigator helps people explore career directions, understand their reported strengths and learning needs, and compare practical next steps in an AI-changing workplace. It is an **evidence-informed exploration tool**, not a validated aptitude test, employment probability, or forecast of jobs lost to AI. The competition demo accepts fictional profiles only.
+AI Career Navigator helps people explore career directions, understand their reported strengths and learning needs, and compare practical next steps in an AI-changing workplace. It is an **evidence-informed exploration tool**, not a validated aptitude test, employment probability, or forecast of jobs lost to AI. The competition demo uses fictional profiles; the local-first flow provides privacy and optional AI-sharing notices.
 
 ## Current product and source of truth
 
 The [public app](https://ai-career-navigator-xyf20070924.replit.app/) runs in the [existing Replit project](https://replit.com/@xyf20070924/AI-Career-Navigator). GitHub `main` now contains the integrated product; the local `main` may include work that has not yet been pushed or deployed. A production URL alone does not prove its running commit. See [Phase 1 version recovery](docs/VERSION_RECOVERY_PHASE1.md) for the original audit and backups.
 
-The current main journey is introduction → four-step background choices → 12 seven-level questions (4 common + 8 selected direction) → local report → career map, skill tree, What If, roadmap, SDG view, and JSON/print export. English, Simplified Chinese, and Malay are supported. V3 answers are **unverified self-report**. The software direction uses reviewed O*NET and ESCO tasks and skills for exploratory route comparison; other directions retain the earlier bounded behavior. What If keeps hypothetical inputs separate from original answers. More study time changes the study plan, not mastered skills or career fit.
+The current main journey is introduction → Understand You (one question per page, nine core questions, adaptive follow-ups, optional story) → 12 seven-level questions (4 common + 8 selected direction) → local report → career map, skill tree, What If, roadmap, SDG view, and JSON/print export. English, Simplified Chinese, and Malay are supported. V3 answers are **unverified self-report**. The software direction uses reviewed O*NET and ESCO tasks and skills for exploratory route comparison; other directions retain the earlier bounded behavior. What If keeps hypothetical inputs separate from original answers. More study time changes the study plan, not mastered skills or career fit.
 
 The bundled [knowledge snapshot](data/knowledge/current.json) contains seven O*NET and seven ESCO occupation records. The [Malaysia to Global pilot](docs/MALAYSIA_GLOBAL_PILOT.md) adds separate, attributed Malaysia/US/international evidence for the software direction. DOSM and World Bank data are refreshed from official APIs; reviewed MyCOL, MASCO and BLS records are marked as official-file/page extracts with their actual statistical scope. MYFutureJobs has no approved imported dataset. Optional RunPod interpretation never replaces the deterministic base report.
+
+## V4 evidence engine
+
+The versioned [Understand You questionnaire](prototype/combined/starting-point-bank.json) and unchanged V3 bank feed [one evidence model](prototype/combined/intelligence.js). Software/AI comparisons use separate ordinal evidence dimensions and partial Pareto comparison, with unknown research requirements and explicit ties. Optional AI validates personal evidence and source/action IDs, preserving the base report on failure. Other directions retain bounded source/catalog coverage.
+
+[Six fictional acceptance reports](docs/V4_ACCEPTANCE_REPORTS.md) are reproducible with `node scripts/v4-acceptance.mjs`. See [V4 implementation and limits](docs/CAREER_INTELLIGENCE_V4.md).
 
 ## Run locally
 

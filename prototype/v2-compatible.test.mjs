@@ -20,8 +20,8 @@ function complete(track='SW',answer=7,locale='en'){
  for(let i=0;i<12;i++){const q=bank.questions.filter(q=>q.trackId==='GENERAL'||q.trackId===track)[i];state.v3=advance(selectAnswer(state.v3,q.id,answer));}
  return {...state,phase:'report',goal:9};
 }
-test('question banks, intake, storage, V2 engines and SDG sources stay byte-identical to main baseline',()=>{
- for(const path of ['prototype/v3/bank.json','prototype/v3/engine.js','prototype/v3/ui.js','prototype/v3/styles.css','prototype/combined/model.js','prototype/combined/styles.css','prototype/explorer-views.js','prototype/explorer-engine.js','prototype/explorer-catalog.json','prototype/explorer.css','prototype/sdg-characters.png','prototype/exploration/bank.json','prototype/exploration/scoring.json','prototype/exploration/engine.js','prototype/exploration/report.js','prototype/exploration/ui.js','prototype/translations.json','prototype/questionnaire.js']){
+test('question banks, V2 engines and SDG sources stay byte-identical to main baseline',()=>{
+ for(const path of ['prototype/v3/bank.json','prototype/v3/engine.js','prototype/v3/styles.css','prototype/explorer-catalog.json','prototype/explorer.css','prototype/sdg-characters.png','prototype/exploration/bank.json','prototype/exploration/scoring.json','prototype/exploration/engine.js','prototype/exploration/report.js','prototype/exploration/ui.js','prototype/questionnaire.js']){
   assert.equal(createHash('sha256').update(fs.readFileSync(new URL('../'+path,import.meta.url))).digest('hex'),baseline.sha256[path],path);
  }
 });
@@ -36,7 +36,7 @@ test('every direction and locale renders all V2 pages and unchanged SDG without 
   for(const page of reportPages){
    const html=renderCompatibleReport({...state,page});
    assert.doesNotMatch(html,/undefined|NaN|data-scenario-field|All outcomes &amp; rules/);
-   assert.match(html,/data-compatible-evidence/);
+   assert.match(html,/data-compatible-analysis/);
    assert.ok(html.includes('&lt;script&gt;fictional note&lt;/script&gt;'));
    if(page==='sdg')assert.ok(html.includes(renderGoals({...state,page,report:model.companions})));
   }
@@ -83,7 +83,8 @@ test('12 current answers cover seven dimensions independently of absent legacy V
   setLanguage(locale);const html=renderCompatibleReport(complete('SW',7,locale));
   assert.doesNotMatch(html,/0\/12|G01.*尚未作答|Inspect all 12 selections and rules/);
   assert.match(html,/12\/12/);
-  assert.ok(html.includes(bank.questions[0].statement[locale]));
+  assert.ok(!html.includes(bank.questions[0].statement[locale]));
+  assert.doesNotMatch(html,/data-compatible-evidence|v3-review-list/);
  }
 });
 test('unanswered, not-assessed, neutral and disagreement stay distinct; no absence of experience is invented',()=>{
@@ -138,7 +139,7 @@ test('controller completes intake review, edits answers, navigates SDG, isolates
  const {mountCombined}=await import('./combined/app.js');
  const {STORAGE_KEY}=await import('./combined/model.js');
  const old={document:globalThis.document,window:globalThis.window,storage:globalThis.sessionStorage,create:URL.createObjectURL};
- const values=new Map([[STORAGE_KEY,JSON.stringify({...complete('SW',7),phase:'v3'})]]),listeners={};let exported;
+ const values=new Map([[STORAGE_KEY,JSON.stringify({...complete('SW',7),profile:{...sampleProfile(),exactWeeklyHours:7.5},phase:'v3'})]]),listeners={};let exported;
  const root={innerHTML:'',querySelector(){return {focus(){}};},addEventListener(k,f){listeners[k]=f;},removeEventListener(k){delete listeners[k];}};
  globalThis.sessionStorage={getItem:k=>values.get(k),setItem:(k,v)=>values.set(k,v)};
  globalThis.document={documentElement:{},title:'',querySelector(){return {};},getElementById(){return {focus(){}};},createElement(){return {click(){}};}};
@@ -148,7 +149,7 @@ test('controller completes intake review, edits answers, navigates SDG, isolates
  let dispose;
  try{
   dispose=mountCombined({root,onHome(){}});
-  click({combinedAction:'finish'});assert.match(root.innerHTML,/data-compatible-evidence/);assert.doesNotMatch(root.innerHTML,/0\/12/);
+  assert.equal(JSON.parse(values.get(STORAGE_KEY)).phase,'report');assert.match(root.innerHTML,/data-compatible-analysis/);assert.doesNotMatch(root.innerHTML,/0\/12/);
   const original=JSON.parse(values.get(STORAGE_KEY)).v3;
   click({combinedAction:'page:plan'});
   listeners.change({target:{dataset:{v2Control:'skillEvidence'},value:'practiced'}});
@@ -157,7 +158,8 @@ test('controller completes intake review, edits answers, navigates SDG, isolates
   click({combinedAction:'edit-v3'});click({v3Edit:'0'});
   listeners.change({target:{dataset:{},name:'v3-answer',value:'1'}});
   for(let i=0;i<12;i++)click({v3Action:'next'});
-  click({combinedAction:'finish'});
+  assert.equal(JSON.parse(values.get(STORAGE_KEY)).phase,'report');
+  assert.doesNotMatch(root.innerHTML,/v3-review-list|data-compatible-evidence/);
   assert.equal(JSON.parse(values.get(STORAGE_KEY)).v3.answers.G01,1);
   click({combinedAction:'page:sdg'});assert.match(root.innerHTML,/ex-goal-grid/);
   click({combinedAction:'goal:4'});assert.equal(JSON.parse(values.get(STORAGE_KEY)).goal,4);

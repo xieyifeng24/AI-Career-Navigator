@@ -1,15 +1,20 @@
+import {newStartingPoint,restoreStartingPoint,startingPointBase} from './starting-point.js';
 // Only compose existing engines. V3 never supplies inputs to PR8's career scoring.
-import {catalog,blankProfile,validateProfile,generateOfflineReport,updateChoice} from '../explorer-engine.js';
+import {catalog,validWeeklyHours,backgroundSteps,blankProfile,validateProfile,generateOfflineReport,updateChoice} from '../explorer-engine.js';
 import {deriveResult,scenarioResult} from './results.js';
-import {newSession,changeLanguage,restoreSession,answeredCount,bank} from '../v3/engine.js';
+import {newSession,changeLanguage,restoreSession,answeredCount,questionsFor,bank} from '../v3/engine.js';
 export const STORAGE_KEY='career-combined-pr8-pr9-v1';
 export const VERSION='combined-pr8-pr9-1';
+export function withoutPersonalityInterests(profile){return {...profile,omitPersonalityInterests:true,social:'',planning:'',decision:'',interests:[],nationality:'undisclosed',omitLearningPreferences:true,learningAbility:'',learningStyles:[],mindsets:[],weeklyTime:'',exactWeeklyHours:validWeeklyHours(profile.exactWeeklyHours)?profile.exactWeeklyHours:null};}
 export function fresh(language='en') {
- return {version:VERSION,phase:'background',step:0,profile:blankProfile(),v3:changeLanguage(newSession(),language),page:'overview',focus:null,goal:9,allCareers:false,notes:'',scenarioPatch:{},assumedSkills:[],selectedSkill:''};
+ return {version:VERSION,phase:'background',step:0,profile:withoutPersonalityInterests(blankProfile()),startingPoint:newStartingPoint(),v3:changeLanguage(newSession(),language),page:'overview',focus:null,goal:9,allCareers:false,notes:'',scenarioPatch:{},assumedSkills:[],selectedSkill:''};
 }
 export function updateBackground(state,key,value,checked=true) {
  const profile=structuredClone(state.profile);
- if(key==='nationality') {
+ if(key==='exactWeeklyHours'){
+  if(value!==null&&!validWeeklyHours(value))throw Error('INVALID_WEEKLY_HOURS');
+  profile.exactWeeklyHours=value;
+ }else if(key==='nationality') {
   if(value!=='undisclosed'&&!catalog.countries.includes(value))throw Error('INVALID_COUNTRY');
   profile.nationality=value;
  }else updateChoice(profile,key,value,checked);
@@ -18,11 +23,17 @@ export function updateBackground(state,key,value,checked=true) {
 export function nextBackground(state) {
  const errors=validateProfile(state.profile,state.step);
  if(Object.keys(errors).length)return {state,errors};
- return {state:state.step<3?{...state,step:state.step+1}:{...state,phase:'v3'},errors:{}};
+ const steps=backgroundSteps(state.profile),next=steps[steps.indexOf(state.step)+1];
+ return {state:next!==undefined?{...state,step:next}:{...state,phase:'v3'},errors:{}};
 }
 export function reportFor(state) {
  if(state.v3.version!==bank.schemaVersion || state.v3.screen!=='review' || answeredCount(state.v3)!==12)throw Error('INCOMPLETE_V3');
- return {base:generateOfflineReport(state.profile),selfReport:structuredClone(state.v3)};
+ return {base:state.startingPoint?.completed?startingPointBase(state.startingPoint):generateOfflineReport(state.profile),selfReport:structuredClone(state.v3)};
+}
+export function completeAssessment(state){
+ if(state.v3.screen!=='review'||questionsFor(state.v3.trackId).some(q=>!Object.hasOwn(state.v3.answers,q.id)||(state.v3.answers[q.id]!==null&&(!Number.isInteger(state.v3.answers[q.id])||state.v3.answers[q.id]<1||state.v3.answers[q.id]>7))))throw Error('INCOMPLETE_V3');
+ const {base}=reportFor(state);
+ return {...state,phase:'report',page:'overview',focus:base.ranking[0]?.id||null,goal:base.goals[0]?.id||9};
 }
 export function restore(raw,language='en') {
  try {
@@ -34,10 +45,12 @@ export function restore(raw,language='en') {
    if(!Array.isArray(values) || (field.multi&&new Set(values).size!==values.length) || values.some(v=>v!==''&&!field.options.some(o=>o.id===v)))return fresh(language);
   }
   if(state.profile.nationality!=='undisclosed'&&!catalog.countries.includes(state.profile.nationality))return fresh(language);
+  if(state.profile.omitLearningPreferences&&state.profile.exactWeeklyHours!==null&&!validWeeklyHours(state.profile.exactWeeklyHours))return fresh(language);
   const v3=restoreSession(JSON.stringify(state.v3));
   if(JSON.stringify(v3)!==JSON.stringify(state.v3))return fresh(language);
-  if(state.phase!=='background'&&Object.keys(validateProfile(state.profile)).length)return fresh(language);
-  const clean={...fresh(v3.language),phase:state.phase,step:state.step,profile:structuredClone(state.profile),v3,page:['overview','ai','careers','plan','sdg','catalog','map','tree','whatif'].includes(state.page)?state.page:'overview',focus:catalog.careers.some(c=>c.id===state.focus)?state.focus:null,goal:catalog.goals.some(g=>g.id===state.goal)?state.goal:9,allCareers:state.allCareers===true};
+  const startingPoint=state.startingPoint?restoreStartingPoint(state.startingPoint):null;
+  if(state.phase!=='background'&&!startingPoint?.completed&&Object.keys(validateProfile(state.profile)).length)return fresh(language);
+  const clean={...fresh(v3.language),phase:state.phase,step:state.step,startingPoint,profile:structuredClone(state.profile),v3,page:['overview','ai','careers','plan','sdg','catalog','map','tree','whatif'].includes(state.page)?state.page:'overview',focus:catalog.careers.some(c=>c.id===state.focus)?state.focus:null,goal:catalog.goals.some(g=>g.id===state.goal)?state.goal:9,allCareers:state.allCareers===true};
   clean.notes=typeof state.notes==='string'?state.notes.slice(0,1500):'';
   clean.selectedSkill=typeof state.selectedSkill==='string'?state.selectedSkill:'';
   if(clean.phase==='report'){

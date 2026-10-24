@@ -96,8 +96,9 @@ test('SW What If reads the same route action while leaving original results and 
  setLanguage('en');const state={...stateFor(personas.A),page:'careers'},original=buildCompatibleReport(state);
  const before=renderCompatibleReport(state),after=renderCompatibleReport(state,{assumptions:{skillEvidence:'practiced',aiPractice:'practiced'}});
  assert.ok(before.includes(original.p0.paths[0].action.task));
- assert.match(after,/If this exact sample has been completed and reviewed/);
- assert.deepEqual(buildCompatibleReport(state,'en',{skillEvidence:'practiced'}).p0.paths,original.p0.paths);
+ assert.match(after,/Calculated differences/);
+ assert.equal(buildCompatibleReport(state,'en',{skillEvidence:'practiced'}).unified.routes[0].dimensions.experience.status,'hypothetical');
+ assert.equal(original.unified.routes[0].dimensions.experience.status,'supported');
  assert.deepEqual(state.v3.answers,personas.A);
  assert.match(renderCompatibleReport({...state,page:'sdg'}),/independent context, not a result of the V3 occupational comparison/);
 });

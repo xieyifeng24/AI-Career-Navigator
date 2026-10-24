@@ -52,11 +52,53 @@ class RegionalPilot(unittest.TestCase):
                 self.assertEqual(client.get('/data/regional/current.json').status_code,200)
                 self.assertEqual(client.get('/combined/regional-view.js').status_code,200)
                 self.assertEqual(client.get('/combined/sw-analysis.js').status_code,200)
+            for asset in ['starting-point.js','starting-point-bank.json','starting-point-view.js','starting-point-analysis.js','intelligence.js']:
+                self.assertEqual(client.get('/combined/'+asset).status_code,200)
                 session=client.get('/api/session')
                 response=client.post('/api/regional/explain',json={'track_id':'SW','language':'en','region':'MY','answers':ANSWERS,
                     'deterministic_profile':['Fictional profile summary']},headers={'Origin':'http://testserver','X-CSRF-Token':session.json()['csrf_token']})
                 self.assertEqual(response.status_code,503)
                 self.assertEqual(client.get('/api/regional/current').status_code,200)
+
+    def test_v4_intake_validation_and_semantics(self):
+        from src.career.regional_ai import intake_semantics
+        value={'Q01':'B','Q02':{'primary':'A','secondary':None},'Q03':'C','Q04':'A',
+               'Q05':{'knowledge':'examples','execution':'guided','problemSolving':'untried','communication':'independent'},
+               'Q06':'C','Q07':['B','F'],'Q08':'B','Q09':'A','Q10':'B','Q11':'1'}
+        request=RegionalRequest(answers=ANSWERS,deterministic_profile=['Unverified self-report'],understand_you=value)
+        semantic=intake_semantics(request.understand_you)
+        self.assertEqual(len(semantic),11)
+        self.assertEqual({row['id'] for row in semantic},set(value))
+        self.assertEqual(next(row for row in semantic if row['id']=='Q02')['meaning']['primary'],'Risk of career displacement')
+        with self.assertRaises(ValueError): RegionalRequest(answers=ANSWERS,deterministic_profile=['Self-report'],understand_you={**value,'story':'private'})
+        with self.assertRaises(ValueError): RegionalRequest(answers=ANSWERS,deterministic_profile=['Self-report'],understand_you={**value,'Q05':{'execution':0}})
+
+    def test_v4_claims_reject_unknown_evidence_and_actions(self):
+        value={'Q01':'B','Q02':{'primary':'A','secondary':None},'Q03':'C','Q04':'A',
+               'Q05':{'knowledge':'examples','execution':'guided','problemSolving':'untried','communication':'independent'},
+               'Q06':'C','Q07':['B','F'],'Q08':'B','Q09':'A','Q10':'B','Q11':'1'}
+        request=RegionalRequest(answers=ANSWERS,deterministic_profile=['Unverified self-report'],understand_you=value)
+        sections={name:{'conclusion':'A grounded explanation based on self reported project experience.',
+                    'source_ids':['S1'] if name=='market_context' else [],'claim_id':name,
+                    'evidence_ids':['Q06','SW05'],'inference_type':'grounded-explanation',
+                    'uncertainty':'context-only' if name=='market_context' else 'self-report-unverified','limitations':['A work sample is still needed.'],
+                    'recommended_action_ids':['software-verify']}
+                for name in ['overview','route_tradeoff','next_step']}
+        class Response:
+            content=b'{}'
+            def raise_for_status(self): pass
+            def json(self): return {'choices':[{'finish_reason':'stop','message':{'content':json.dumps(sections)}}]}
+        provider=type('Provider',(),{'configured':True,'key':'test-only','endpoint':'test','model':'test',
+            'client':type('Client',(),{'post':AsyncMock(return_value=Response())})()})()
+        async def run():
+            valid=await explain(provider,request,'owner',BANK,{},current())
+            self.assertEqual(valid['sections']['overview']['evidence_ids'],['Q06','SW05'])
+            sections['overview']['evidence_ids']=['invented-evidence']
+            with self.assertRaises(InferenceError): await explain(provider,request,'owner',BANK,{},current())
+            sections['overview']['evidence_ids']=['Q06']
+            sections['overview']['recommended_action_ids']=['invented-action']
+            with self.assertRaises(InferenceError): await explain(provider,request,'owner',BANK,{},current())
+        __import__('asyncio').run(run())
 
     def test_optional_ai_validates_citations_and_uses_cache(self):
         request=RegionalRequest(answers=ANSWERS,deterministic_profile=['Fictional profile summary'])
