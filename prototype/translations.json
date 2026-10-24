@@ -3394,5 +3394,21 @@
   "PATH C · EXPLORE THIS PATH": {
     "zh-CN": "路线 C · 探索此路线",
     "ms": "LALUAN C · TEROKAI LALUAN INI"
+  },
+  "Market trend data is not available for this route in this report.": {
+    "zh-CN": "此报告的这条路线暂未提供市场趋势数据。",
+    "ms": "Data trend pasaran tidak tersedia untuk laluan ini dalam laporan ini."
+  },
+  "SDG CONNECTION": {
+    "zh-CN": "SDG 关联",
+    "ms": "KAITAN SDG"
+  },
+  "No supported SDG mapping is available in this report.": {
+    "zh-CN": "此报告暂未提供有依据的 SDG 映射。",
+    "ms": "Pemetaan SDG yang disokong belum tersedia dalam laporan ini."
+  },
+  "Paths are drawn from this report. Published outlooks are shown only when a matching source is available; SDG links are proposed contributions, not measured impact.": {
+    "zh-CN": "路线来自本次报告；仅在存在匹配来源时展示已发布的市场展望。SDG 关联是可能的贡献，不是已测量的影响。",
+    "ms": "Laluan diambil daripada laporan ini. Tinjauan diterbitkan hanya dipaparkan apabila sumber sepadan tersedia; kaitan SDG ialah cadangan sumbangan, bukan impak yang diukur."
   }
 }
