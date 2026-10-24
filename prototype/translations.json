@@ -3339,5 +3339,60 @@
     "zh-CN": "请选择 0 至 60 小时，以 30 分钟为一档。",
     "ms": "Pilih masa dari 0 hingga 60 jam, dalam langkah 30 minit."
   },
-  "Your preferred career direction": {"zh-CN": "你希望的职业方向", "ms": "Arah kerjaya pilihan anda"}
+  "Your preferred career direction": {
+    "zh-CN": "你希望的职业方向",
+    "ms": "Arah kerjaya pilihan anda"
+  },
+  "See path details": {
+    "zh-CN": "查看路线详情",
+    "ms": "Lihat butiran laluan"
+  },
+  "PATH A": {
+    "zh-CN": "路线 A",
+    "ms": "LALUAN A"
+  },
+  "Path A details": {
+    "zh-CN": "路线 A 详情",
+    "ms": "Butiran laluan A"
+  },
+  "PATH A · CURRENT FOCUS": {
+    "zh-CN": "路线 A · 当前关注",
+    "ms": "LALUAN A · FOKUS SEMASA"
+  },
+  "PATH A · EXPLORE THIS PATH": {
+    "zh-CN": "路线 A · 探索此路线",
+    "ms": "LALUAN A · TEROKAI LALUAN INI"
+  },
+  "PATH B": {
+    "zh-CN": "路线 B",
+    "ms": "LALUAN B"
+  },
+  "Path B details": {
+    "zh-CN": "路线 B 详情",
+    "ms": "Butiran laluan B"
+  },
+  "PATH B · CURRENT FOCUS": {
+    "zh-CN": "路线 B · 当前关注",
+    "ms": "LALUAN B · FOKUS SEMASA"
+  },
+  "PATH B · EXPLORE THIS PATH": {
+    "zh-CN": "路线 B · 探索此路线",
+    "ms": "LALUAN B · TEROKAI LALUAN INI"
+  },
+  "PATH C": {
+    "zh-CN": "路线 C",
+    "ms": "LALUAN C"
+  },
+  "Path C details": {
+    "zh-CN": "路线 C 详情",
+    "ms": "Butiran laluan C"
+  },
+  "PATH C · CURRENT FOCUS": {
+    "zh-CN": "路线 C · 当前关注",
+    "ms": "LALUAN C · FOKUS SEMASA"
+  },
+  "PATH C · EXPLORE THIS PATH": {
+    "zh-CN": "路线 C · 探索此路线",
+    "ms": "LALUAN C · TEROKAI LALUAN INI"
+  }
 }

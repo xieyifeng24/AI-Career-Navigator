@@ -2,7 +2,7 @@ import {newStartingPoint,updateStartingPoint,advanceStartingPoint,previousStarti
 import {renderStartingPoint,ui as startingUI} from './starting-point-view.js';
 import {personalAIContext} from './starting-point-analysis.js';
 import {buildCompatibleReport,renderCompatibleReport,reportPages as compatiblePages} from './v2-report.js';
-import {language,setLanguage,t} from '../i18n.js';
+import {language,setLanguage,t,localize} from '../i18n.js';
 import {renderHeader,renderFooter,renderForm,escapeHTML} from '../explorer-views.js';
 import {catalog,validWeeklyHours,backgroundSteps} from '../explorer-engine.js';
 import {bank,questionsFor,chooseTrack,changeLanguage,selectAnswer,advance,previous} from '../v3/engine.js';
@@ -52,7 +52,7 @@ export function mountCombined({root,onHome}) {
   // Avoid collisions with the retained V2 controller's delegated actions and language input.
   html=html.replaceAll('data-action=','data-combined-action=').replaceAll('id="language-select"','id="combined-language-select"');
   if(state.phase!=='report')html+=`<nav class="combined-legacy-links" aria-label="${e(t('Your profile'))}"><a href="/?assessment=v2&intro=off">${e(t('Previous assessment versions'))} ↗</a></nav>`;
-  root.innerHTML=html;
+  root.innerHTML=html;if(typeof document.createTreeWalker==='function'){localize(root);for(const label of root.querySelectorAll('.star-map-origin .star-detail-label'))label.textContent=label.textContent.replace(/^YOUR STARTING POINT/,t('Your starting point'));}
   document.title=e(t(state.phase==='report'?'Overview':'Your profile'))+' · AI Career Navigator';document.documentElement.lang=language;
   save(storage,state);
   if(focus){(document.getElementById('starting-heading')||document.getElementById('v3-heading')||root.querySelector('main h1'))?.focus?.({preventScroll:true});window.scrollTo({top:0,behavior:'instant'});}
@@ -118,7 +118,7 @@ export function mountCombined({root,onHome}) {
    if(action.startsWith('skill-select:')){try{v2Options.skill=decodeURIComponent(action.slice(13));}catch{}render();return;}
    if(action.startsWith('time-year:')){const year=action.slice(10);if(['2026','2028','2030','2035'].includes(year))v2Options.year=year;render();return;}
    if(action.startsWith('time-scenario:')){const value=action.slice(14);if(['slower','moderate','fast'].includes(value))v2Options.futureScenario=value;render();return;}
-   if(action.startsWith('page:')){const page=action.slice(5);if(compatiblePages.includes(page)){state={...state,page};render(true);}return;}
+   if(action.startsWith('page:')){const page=action.slice(5)==='paths'?'compare':action.slice(5);if(compatiblePages.includes(page)){state={...state,page};render(true);}return;}
   }
   if(action==='home'){onHome();return;}
   if(action==='start'||action==='edit'||action==='edit-background'){v2Options={path:'A',assumptions:{},region:'MY',aiConsent:false,ai:{status:'idle'}};state={...state,phase:'background',step:0,startingPoint:state.startingPoint?{...state.startingPoint,screen:'question',index:0,completed:false}:newStartingPoint()};render(true);return;}

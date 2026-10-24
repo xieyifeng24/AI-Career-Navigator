@@ -151,6 +151,7 @@ test('controller completes intake review, edits answers, navigates SDG, isolates
   dispose=mountCombined({root,onHome(){}});
   assert.equal(JSON.parse(values.get(STORAGE_KEY)).phase,'report');assert.match(root.innerHTML,/data-compatible-analysis/);assert.doesNotMatch(root.innerHTML,/0\/12/);
   const original=JSON.parse(values.get(STORAGE_KEY)).v3;
+  click({combinedAction:'page:paths'});assert.equal(JSON.parse(values.get(STORAGE_KEY)).page,'compare');
   click({combinedAction:'page:plan'});
   listeners.change({target:{dataset:{v2Control:'skillEvidence'},value:'practiced'}});
   assert.match(root.innerHTML,/Conditional practice plan/);
