@@ -1,3 +1,4 @@
+import {validResponse} from '../v3/behaviors.js';
 import {newStartingPoint,restoreStartingPoint,startingPointBase} from './starting-point.js';
 import {canonicalPage,canonicalGalaxySection,legacyPageSections} from './page-map.js';
 // Only compose existing engines. V3 never supplies inputs to PR8's career scoring.
@@ -32,7 +33,7 @@ export function reportFor(state) {
  return {base:state.startingPoint?.completed?startingPointBase(state.startingPoint):generateOfflineReport(state.profile),selfReport:structuredClone(state.v3)};
 }
 export function completeAssessment(state){
- if(state.v3.screen!=='review'||questionsFor(state.v3.trackId).some(q=>!Object.hasOwn(state.v3.answers,q.id)||(state.v3.answers[q.id]!==null&&(!Number.isInteger(state.v3.answers[q.id])||state.v3.answers[q.id]<1||state.v3.answers[q.id]>7))))throw Error('INCOMPLETE_V3');
+ if(state.v3.screen!=='review'||questionsFor(state.v3.trackId).some(q=>!Object.hasOwn(state.v3.answers,q.id)||!validResponse(q,state.v3.answers[q.id])))throw Error('INCOMPLETE_V3');
  const {base}=reportFor(state);
  return {...state,phase:'report',page:'profile',section:'map',focus:base.ranking[0]?.id||null,goal:base.goals[0]?.id||9};
 }

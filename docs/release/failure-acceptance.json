@@ -1,0 +1,36 @@
+[
+  {
+    "mode": "source-offline",
+    "coreAvailable": true,
+    "errors": []
+  },
+  {
+    "mode": "source-invalid",
+    "coreAvailable": true,
+    "errors": []
+  },
+  {
+    "mode": "ai-unavailable",
+    "coreAvailable": true,
+    "errors": []
+  },
+  {
+    "mode": "no-storage",
+    "coreAvailable": true,
+    "errors": []
+  },
+  {
+    "mode": "reduced-motion",
+    "coreAvailable": true,
+    "errors": []
+  },
+  {
+    "mode": "actual-api-multiselect",
+    "response": {
+      "status": 503,
+      "body": {
+        "detail": "Real AI is not connected yet. Configure RunPod; no mock analysis will be substituted."
+      }
+    }
+  }
+]

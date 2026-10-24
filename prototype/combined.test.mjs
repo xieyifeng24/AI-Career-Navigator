@@ -110,7 +110,7 @@ test('exact learning hours survive refresh, drive planning and never increase ca
  for(const invalid of [-1,61,1.1,'7.5',NaN])assert.throws(()=>updateBackground({...fresh(),profile:base},'exactWeeklyHours',invalid),/INVALID_WEEKLY_HOURS/);
 });
 
-test('current questionnaire has seven choices, desired-direction title and no repeat notice or answer review',async()=>{
+test('current questionnaire has behavioral choices, desired-direction title and no repeat notice or answer review',async()=>{
  const {renderPreview}=await import('./v3/ui.js');
  const {completeAssessment,withoutPersonalityInterests}=await import('./combined/model.js');
  const options={hideUnknown:true,hideNotice:true,directionTitle:'Your preferred career direction'};
@@ -122,8 +122,8 @@ test('current questionnaire has seven choices, desired-direction title and no re
   state.v3=chooseTrack(state.v3,track.id);
   for(let index=0;index<12;index++){
    const html=renderPreview(state.v3,'',false,options);
-   assert.equal((html.match(/name="v3-answer"/g)||[]).length,7);
-   assert.doesNotMatch(html,/value="unknown"|v3-unknown-wrap/);
+   assert.ok((html.match(/name="v3-behavior"/g)||[]).length>=5);
+   assert.match(html,/value="unknown"/);
    const q=bank.questions.filter(q=>q.trackId==='GENERAL'||q.trackId===track.id)[index];
    state.v3=advance(selectAnswer(state.v3,q.id,index%7+1));
   }

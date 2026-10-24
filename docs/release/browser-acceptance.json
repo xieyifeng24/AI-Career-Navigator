@@ -1,0 +1,56 @@
+[
+  {
+    "language": "en",
+    "width": 1440,
+    "intakeCount": 12,
+    "directionAnswers": 12,
+    "pages": [
+      "profile",
+      "capability",
+      "galaxy",
+      "whatif",
+      "impact"
+    ],
+    "errors": [],
+    "failed": [],
+    "overflow": [],
+    "history": "returned to whatif",
+    "scenarioRestored": true
+  },
+  {
+    "language": "zh-CN",
+    "width": 390,
+    "intakeCount": 12,
+    "directionAnswers": 12,
+    "pages": [
+      "profile",
+      "capability",
+      "galaxy",
+      "whatif",
+      "impact"
+    ],
+    "errors": [],
+    "failed": [],
+    "overflow": [],
+    "history": "returned to whatif",
+    "scenarioRestored": true
+  },
+  {
+    "language": "ms",
+    "width": 820,
+    "intakeCount": 12,
+    "directionAnswers": 12,
+    "pages": [
+      "profile",
+      "capability",
+      "galaxy",
+      "whatif",
+      "impact"
+    ],
+    "errors": [],
+    "failed": [],
+    "overflow": [],
+    "history": "returned to whatif",
+    "scenarioRestored": true
+  }
+]

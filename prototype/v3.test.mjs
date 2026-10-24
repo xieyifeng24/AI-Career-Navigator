@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {createHash} from 'node:crypto';
 import {bank,VERSION,STORAGE_KEY,validateBank,questionsFor,newSession,chooseTrack,changeLanguage,selectAnswer,answeredCount,advance,previous,restoreSession,loadSession,saveSession} from './v3/engine.js';
+import {behaviorOptions} from './v3/behaviors.js';
 import {renderPreview,progress} from './v3/ui.js';
 import {createDraft as v2Draft} from './exploration/engine.js';
 import manifest from './v3/source-manifest.json' with {type:'json'};
@@ -28,7 +29,7 @@ test('validation catches missing translations, duplicated IDs, bad options, help
   assert.ok(errors.includes('scale'));assert.ok(errors.includes('G03.helpKey'));assert.ok(errors.includes('OPS.count'));
 });
 for (const track of bank.tracks) for (const language of bank.languageCodes) {
-  test(`${track.id} / ${language}: 4+8 questions complete with exact source text, 7+unknown, language/refresh preservation and review only`, () => {
+  test(`${track.id} / ${language}: 4+8 questions complete with exact source text, semantic multiselect + unknown, language/refresh preservation and review only`, () => {
     let state=changeLanguage(newSession(),language);
     const entry=renderPreview(state);assert.equal((entry.match(/data-track=/g)||[]).length,10);
     for (const item of bank.tracks) assert.ok(entry.includes(encoded(item.label[language])));
@@ -41,11 +42,12 @@ for (const track of bank.tracks) for (const language of bank.languageCodes) {
       const question=questions[index],before=structuredClone(state);
       let html=renderPreview(state);
       assert.equal((html.match(/data-question-id=/g)||[]).length,1);
-      assert.equal((html.match(/name="v3-answer"/g)||[]).length,8);
+      assert.equal((html.match(/name="v3-answer"/g)||[]).length,1);
+      assert.ok((html.match(/name="v3-behavior"/g)||[]).length>=5);
       assert.ok(html.includes(encoded(question.statement[language])));
       assert.ok(html.includes(encoded(progress(state))));
       assert.ok(!html.includes('<textarea'));assert.ok(!html.includes('undefined'));
-      for(const option of bank.scale)assert.ok(html.includes(encoded(option.label[language])));
+      for(const option of behaviorOptions(question))assert.ok(html.includes(encoded(option.label[language])));
       if(language!=='zh-CN')assert.ok(!/[\u4e00-\u9fff]/.test(stripLanguageMenu(html)));
       assert.throws(()=>advance(state),/ANSWER_REQUIRED/);
       state=selectAnswer(state,question.id,answers[index]);
@@ -56,7 +58,8 @@ for (const track of bank.tracks) for (const language of bank.languageCodes) {
         assert.deepEqual(next.answers,state.answers);assert.equal(next.trackId,track.id);assert.equal(next.index,index);
         html=renderPreview(next);
         assert.ok(html.includes(encoded(question.statement[switched])));
-        assert.equal((html.match(/ checked/g)||[]).length,1);
+        assert.equal((html.match(/ checked/g)||[]).length,answers[index]===null?1:0);
+        if(answers[index]!==null)assert.match(html,/behavior-history/);
         if(switched!=='zh-CN')assert.ok(!/[\u4e00-\u9fff]/.test(stripLanguageMenu(html)));
       }
       assert.deepEqual(restoreSession(JSON.stringify(state)),state);

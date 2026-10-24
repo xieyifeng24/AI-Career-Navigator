@@ -1,6 +1,7 @@
 // Answer collection only. No scoring, reporting, AI, or V2 answer migration.
 import bank from './bank.json' with {type:'json'};
 export {bank};
+import {RESPONSE_VERSION,validResponse,behaviorOptions} from './behaviors.js';
 export const VERSION = '3.0.0';
 export const STORAGE_KEY = 'career-questionnaire-v3-phase1';
 export const languages = ['en','zh-CN','ms'];
@@ -45,7 +46,7 @@ export function questionsFor(trackId) {
   return [...bank.questions.filter(q => q.trackId === 'GENERAL'), ...bank.questions.filter(q => q.trackId === trackId)];
 }
 export function newSession() {
-  return {version:VERSION, language:bank.defaultLanguage, trackId:'', screen:'tracks', index:0, answers:{}};
+  return {version:VERSION, responseVersion:RESPONSE_VERSION, language:bank.defaultLanguage, trackId:'', screen:'tracks', index:0, answers:{}};
 }
 export function chooseTrack(state, trackId) {
   requireV3(state);
@@ -59,8 +60,10 @@ export function changeLanguage(state, language) {
 }
 export function selectAnswer(state, id, value) {
   requireV3(state);
-  if (!questionsFor(state.trackId).some(q => q.id === id) || !validAnswer(value)) throw new Error('INVALID_V3_ANSWER');
-  return {...state, answers:{...state.answers, [id]:value}};
+  if (!questionsFor(state.trackId).some(q => q.id === id && validResponse(q,value))) throw new Error('INVALID_V3_ANSWER');
+  const q=questionsFor(state.trackId).find(q=>q.id===id);
+  const canonical=Array.isArray(value)?behaviorOptions(q).filter(o=>value.includes(o.id)).map(o=>o.id):value;
+  return {...state, answers:{...state.answers, [id]:canonical}};
 }
 export function answeredCount(state) { return state.trackId ? questionsFor(state.trackId).filter(q => owns(state.answers, q.id)).length : 0; }
 export function advance(state) {
@@ -80,12 +83,12 @@ export function previous(state) {
 export function restoreSession(raw) {
   try {
     const state = JSON.parse(raw);
-    if (!state || state.version !== VERSION || !languages.includes(state.language) || !['tracks','question','review'].includes(state.screen)) return newSession();
+    if (!state || (state.responseVersion&&state.responseVersion!==RESPONSE_VERSION) || state.version !== VERSION || !languages.includes(state.language) || !['tracks','question','review'].includes(state.screen)) return newSession();
     if (!Number.isInteger(state.index) || state.index < 0 || state.index > 11 || !state.answers || Array.isArray(state.answers) || typeof state.answers !== 'object') return newSession();
     const allowed = new Set(state.trackId ? questionsFor(state.trackId).map(q => q.id) : []);
     if (!state.trackId && state.screen !== 'tracks') return newSession();
-    if (Object.entries(state.answers).some(([id, value]) => !allowed.has(id) || !validAnswer(value))) return newSession();
-    const clean = {version:VERSION, language:state.language, trackId:state.trackId, screen:state.screen, index:state.index, answers:{...state.answers}};
+    if (Object.entries(state.answers).some(([id, value]) => !allowed.has(id) || !validResponse(questionsFor(state.trackId).find(q=>q.id===id),value))) return newSession();
+    const clean = {version:VERSION, ...(state.responseVersion?{responseVersion:state.responseVersion}:{}), language:state.language, trackId:state.trackId, screen:state.screen, index:state.index, answers:{...state.answers}};
     if (clean.screen === 'review' && answeredCount(clean) !== 12) return newSession();
     if (clean.screen === 'question' && questionsFor(clean.trackId).slice(0,clean.index).some(q => !owns(clean.answers,q.id))) return newSession();
     return clean;

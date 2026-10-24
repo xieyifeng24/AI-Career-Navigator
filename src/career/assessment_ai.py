@@ -2,6 +2,9 @@
 import hashlib
 import json
 import time
+from pathlib import Path
+
+BEHAVIORS=json.loads((Path(__file__).resolve().parents[2]/'prototype/v3/behaviors.json').read_text())
 import httpx
 from pydantic import BaseModel, ConfigDict, field_validator
 from .inference import InferenceError
@@ -10,7 +13,7 @@ class GuideRequest(BaseModel):
     model_config=ConfigDict(extra='forbid')
     track_id: str
     language: str
-    answers: dict[str,int|None]
+    answers: dict[str,int|list[str]|None]
     @field_validator('language')
     @classmethod
     def locale(cls,v):
@@ -19,13 +22,21 @@ class GuideRequest(BaseModel):
     @field_validator('answers',mode='before')
     @classmethod
     def scale(cls,v):
-        if not isinstance(v,dict) or any(x is not None and (type(x) is not int or not 1<=x<=7) for x in v.values()): raise ValueError('Invalid original answer')
+        if not isinstance(v,dict): raise ValueError('Invalid answers')
+        for x in v.values():
+            if x is None: continue
+            if type(x) is int and 1<=x<=7: continue
+            if isinstance(x,list) and 1<=len(x)<=3 and all(type(i) is str for i in x) and len(set(x))==len(x) and not ('none' in x and len(x)>1): continue
+            raise ValueError('Invalid original answer')
         return v
 
 def canonical(request,bank):
     if request.track_id not in {t['id'] for t in bank['tracks']}: raise ValueError('Unknown track')
     rows=[q for q in bank['questions'] if q['trackId'] in {'GENERAL',request.track_id}]
     if set(request.answers)!={q['id'] for q in rows}: raise ValueError('Complete twelve-question assessment required')
+    for q in rows:
+        value=request.answers[q['id']]
+        if isinstance(value,list) and not set(value)<={o['id'] for o in BEHAVIORS['constructs'][q['construct']]}: raise ValueError('Unknown behavior option')
     return rows
 
 def candidates(request,bank):
@@ -35,10 +46,19 @@ def candidates(request,bank):
     result=[]
     for q in rows:
         value=request.answers[q['id']]
-        answer=bank['uiText']['unfamiliar'][locale] if value is None else next(x['label'][locale] for x in bank['scale'] if x['value']==value)
+        answer=(' · '.join(o['label'][locale] for o in BEHAVIORS['constructs'][q['construct']] if o['id'] in value) if isinstance(value,list) else bank['uiText']['unfamiliar'][locale] if value is None else next(x['label'][locale] for x in bank['scale'] if x['value']==value))
         result.append({'id':q['id'],'construct':q['construct'],'text':q['statement'][locale]+' — '+prefix+answer+'.'+suffix,'evidence_ids':[q['id']]})
     for kind in ['ai_practice','ai_verification']:
-        pair=[q['id'] for q in rows if q['construct']==kind];values=[request.answers[x] for x in pair if request.answers[x] is not None]
+        pair=[q['id'] for q in rows if q['construct']==kind]
+        selected=[request.answers[x] for x in pair if request.answers[x] is not None]
+        mixed=any(isinstance(x,list) for x in selected) and any(type(x) is int for x in selected)
+        values=[]
+        if not mixed:
+            for value in selected:
+                if isinstance(value,list):
+                    options=[o for o in BEHAVIORS['constructs'][kind] if o['id'] in value]
+                    values.append(sum(o['strength']*o['weight'] for o in options)/sum(o['weight'] for o in options))
+                else: values.append(value)
         if values and min(values)<=3 and max(values)>=5:
             result.append({'id':'tension-'+kind,'construct':'conflict','text':{'en':'Your general and task-specific AI responses differ. Check them with one observed work sample; neither answer is discarded.','zh-CN':'通用题与具体任务的 AI 回答存在差异。请用一次可观察的作品实践澄清，两种回答都保留。','ms':'Jawapan AI umum dan khusus tugas berbeza. Semak dengan satu sampel kerja yang diperhatikan; kedua-dua jawapan dikekalkan.'}[locale],'evidence_ids':pair})
     return result

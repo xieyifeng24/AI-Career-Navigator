@@ -21,7 +21,7 @@ function complete(track='SW',answer=7,locale='en'){
  return {...state,phase:'report',goal:9};
 }
 test('question banks, V2 engines and SDG sources stay byte-identical to main baseline',()=>{
- for(const path of ['prototype/v3/bank.json','prototype/v3/engine.js','prototype/v3/styles.css','prototype/explorer-catalog.json','prototype/explorer.css','prototype/sdg-characters.png','prototype/exploration/bank.json','prototype/exploration/scoring.json','prototype/exploration/engine.js','prototype/exploration/report.js','prototype/exploration/ui.js','prototype/questionnaire.js']){
+ for(const path of ['prototype/v3/bank.json','prototype/v3/styles.css','prototype/explorer-catalog.json','prototype/explorer.css','prototype/sdg-characters.png','prototype/exploration/bank.json','prototype/exploration/scoring.json','prototype/exploration/engine.js','prototype/exploration/report.js','prototype/exploration/ui.js','prototype/questionnaire.js']){
   assert.equal(createHash('sha256').update(fs.readFileSync(new URL('../'+path,import.meta.url))).digest('hex'),baseline.sha256[path],path);
  }
 });

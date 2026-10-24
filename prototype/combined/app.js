@@ -1,3 +1,6 @@
+import {validResponse,toggleBehavior} from '../v3/behaviors.js';
+import {currentKnowledge,refreshAssessmentKnowledge} from '../assessment/knowledge.js';
+import {executiveSummary} from '../assessment/release.js';
 import {buildAssessment,simulate} from '../assessment/engine.js';
 import {newStartingPoint,updateStartingPoint,advanceStartingPoint,previousStartingPoint,preferredRegion,startingQuestions} from './starting-point.js';
 import {renderStartingPoint,ui as startingUI} from './starting-point-view.js';
@@ -9,7 +12,7 @@ import {renderHeader,renderFooter,renderForm,escapeHTML} from '../explorer-views
 import {catalog,validWeeklyHours,backgroundSteps} from '../explorer-engine.js';
 import {bank,questionsFor,chooseTrack,changeLanguage,selectAnswer,advance,previous} from '../v3/engine.js';
 import {renderPreview} from '../v3/ui.js';
-import {fresh,load,save,updateBackground,nextBackground,reportFor,withoutPersonalityInterests,completeAssessment} from './model.js';
+import {fresh,load,save,restore,updateBackground,nextBackground,reportFor,withoutPersonalityInterests,completeAssessment} from './model.js';
 export {STORAGE_KEY} from './model.js';
 import {supplementaryInput} from './ui.js';
 import regional from '../../data/regional/current.json' with {type:'json'};
@@ -18,25 +21,37 @@ export function hasCombinedDraft(){try{return !!sessionStorage.getItem('career-c
 export function mountCombined({root,onHome}) {
  let storage;try{storage=sessionStorage;}catch{storage=null;}
  let state=load(storage,language),errors={};
- state={...state,profile:withoutPersonalityInterests(state.profile),step:state.step===1?2:state.step};
+ state={...state,profile:state.phase!=='background'&&!state.startingPoint?.completed?state.profile:withoutPersonalityInterests(state.profile),step:state.step===1?2:state.step};
  if(state.phase==='background'&&!state.startingPoint)state={...state,startingPoint:newStartingPoint()};
  let startingMotion='',aiRequestSerial=0;
+ refreshAssessmentKnowledge().catch(()=>false); // next report uses refreshed validated data; open reports remain stable
+
  let reportSignature='',cachedAssessment=null;
- try{const saved=JSON.parse(storage?.getItem('career-evidence-report-v1')||'null');if(saved?.assessment?.version==='evidence-engine-1.0'){reportSignature=saved.signature;cachedAssessment=saved.assessment;}}catch{}
- const stampReport=()=>{if(state.phase!=='report')return;const key=JSON.stringify([state.v3.trackId,state.v3.answers,state.startingPoint?.answers,state.startingPoint?.story,state.profile.exactWeeklyHours]);if(key!==reportSignature||!cachedAssessment){reportSignature=key;cachedAssessment=buildAssessment(state,{generatedAt:new Date().toISOString()});try{storage?.setItem('career-evidence-report-v1',JSON.stringify({signature:key,assessment:cachedAssessment}));}catch{}}v2Options.assessment=cachedAssessment;state.reportGeneratedAt=cachedAssessment.generatedAt;};
+ try{const saved=JSON.parse(storage?.getItem('career-evidence-report-v1')||'null');if(saved?.assessment?.version==='evidence-engine-1.1'){reportSignature=saved.signature;cachedAssessment=saved.assessment;}}catch{}
+ const stampReport=()=>{if(state.phase!=='report')return;const key=JSON.stringify([state.v3.trackId,state.v3.answers,state.startingPoint?.answers,state.startingPoint?.story,state.profile.exactWeeklyHours,currentKnowledge().version,v2Options.regionalSnapshot?.version||regional.version]);if(key!==reportSignature||!cachedAssessment){reportSignature=key;cachedAssessment=buildAssessment(state,{generatedAt:new Date().toISOString(),market:v2Options.regionalSnapshot||regional});try{storage?.setItem('career-evidence-report-v1',JSON.stringify({signature:key,assessment:cachedAssessment}));}catch{}}v2Options.assessment=cachedAssessment;state.reportGeneratedAt=cachedAssessment.generatedAt;};
 
  let skillProgress={};try{skillProgress=JSON.parse(storage?.getItem('career-skill-progress-v1')||'{}')||{};}catch{}
  let v2Options={path:'A',assumptions:{},region:preferredRegion(state.startingPoint),aiConsent:false,aiStoryConsent:false,ai:{status:'idle'},skillProgress};
+ try{const saved=JSON.parse(storage?.getItem('career-scenario-v1')||'null');if(saved?.assessmentDirection===state.v3.trackId){v2Options={...v2Options,...saved.options,ai:{status:'idle'}};}}catch{}
+ if(globalThis.location?.hash?.startsWith('#report/')){const [page,section]=location.hash.slice(8).split('/');const target=pageTarget(page,section);state={...state,page:target.page,section:target.section||'map'};}
+ let restoringHistory=false,lastNavigation='';
+ const navKey=()=>JSON.stringify([state.phase,state.v3.screen,state.v3.index,state.startingPoint?.screen,state.startingPoint?.index,state.page,state.section]);
+ const safeOptions=()=>({path:v2Options.path,assumptions:v2Options.assumptions,region:v2Options.region,skill:v2Options.skill});
+ function historyChanged(event){if(!event.state?.careerNavigator){onHome();return;}restoringHistory=true;state=restore(JSON.stringify(event.state.careerNavigator));v2Options={...v2Options,...event.state.options,ai:{status:'idle'}};aiRequestSerial++;render(true);restoringHistory=false;}
+ window.addEventListener?.('popstate',historyChanged);
  setLanguage(state.v3.language);
- for(const path of ['explorer.css','v3/styles.css','star-map.css','career-explorer.css','combined/styles.css','combined/regional.css','assessment/styles.css','assessment/dna.css']) {
+ for(const path of ['explorer.css','v3/styles.css','star-map.css','career-explorer.css','combined/styles.css','combined/regional.css','assessment/styles.css','assessment/dna.css','production.css']) {
   if(!document.querySelector(`link[data-combined-style="${path}"]`)){
    const link=document.createElement('link');link.rel='stylesheet';link.href='./'+path;link.dataset.combinedStyle=path;document.head.append(link);
   }
  }
  function render(focus=false) {
+  const previousMilestones=[...(root.querySelectorAll?.('.release-milestone')||[])].map(el=>el.style.width);
+  const reduceMotion=globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+
   state={...state,v3:changeLanguage(state.v3,language)};
   if(state.phase==='v3'&&state.v3.screen==='review'){
-   try{state=completeAssessment(state);}catch{state={...state,v3:{...state.v3,screen:'question',index:Math.max(0,questionsFor(state.v3.trackId).findIndex(q=>!Number.isInteger(state.v3.answers[q.id])))}};}
+   try{state=completeAssessment(state);}catch{state={...state,v3:{...state.v3,screen:'question',index:Math.max(0,questionsFor(state.v3.trackId).findIndex(q=>!validResponse(q,state.v3.answers[q.id])))}};}
   }
   stampReport();
   let html;
@@ -55,14 +70,24 @@ export function mountCombined({root,onHome}) {
     html=html.replace('<div class="v3-tracks"',guide+'<div class="v3-tracks"');
    }
   }else {
-   html=renderCompatibleReport(state,v2Options);
+   try{html=renderCompatibleReport(state,v2Options);}catch(error){
+    console.error('Report view failed; evidence summary preserved',error);
+    const L=(en,zh,ms)=>startingUI(language,en,zh,ms);
+    html=renderHeader({report:true})+`<main class="shell">${executiveSummary(cachedAssessment||buildAssessment(state))}<section class="production-status" role="status"><h2>${L('The detailed view could not open. Your core analysis and answers are preserved.','详细视图暂时无法打开，核心分析和回答已保留。','Paparan terperinci tidak dapat dibuka. Analisis teras dan jawapan dikekalkan.')}</h2><button class="button secondary" data-combined-action="page:profile">${L('Reopen the report','重新打开报告','Buka semula laporan')}</button><button class="text-button" data-combined-action="export">${L('Export evidence','导出证据','Eksport bukti')}</button></section></main>`+renderFooter();
+   }
   }
   // Avoid collisions with the retained V2 controller's delegated actions and language input.
   html=html.replaceAll('data-action=','data-combined-action=').replaceAll('id="language-select"','id="combined-language-select"');
-  if(state.phase!=='report')html+=`<nav class="combined-legacy-links" aria-label="${e(t('Your profile'))}"><a href="/?assessment=v2&intro=off">${e(t('Previous assessment versions'))} ↗</a></nav>`;
-  root.innerHTML=html;if(typeof document.createTreeWalker==='function'){localize(root);for(const label of root.querySelectorAll('.star-map-origin .star-detail-label'))label.textContent=label.textContent.replace(/^YOUR STARTING POINT/,t('Your starting point'));}
+  root.innerHTML=html;
+  if(focus&&!reduceMotion)root.querySelector('.report-main>.an-view')?.animate?.([{opacity:.65,transform:'translateY(7px)'},{opacity:1,transform:'translateY(0)'}],{duration:220,easing:'ease-out'});
+  if(!focus&&!reduceMotion)root.querySelectorAll?.('.release-milestone').forEach((el,i)=>{if(previousMilestones[i]&&previousMilestones[i]!==el.style.width)el.animate?.([{width:previousMilestones[i]},{width:el.style.width}],{duration:320,easing:'ease-out'});});
+  if(typeof document.createTreeWalker==='function'){localize(root);for(const label of root.querySelectorAll('.star-map-origin .star-detail-label'))label.textContent=label.textContent.replace(/^YOUR STARTING POINT/,t('Your starting point'));}
   document.title=e(t(state.phase==='report'?'Overview':'Your profile'))+' · AI Career Navigator';document.documentElement.lang=language;
   save(storage,state);
+  try{storage?.setItem('career-scenario-v1',JSON.stringify({assessmentDirection:state.v3.trackId,options:safeOptions()}));}catch{}
+  const navigation=navKey(),url=state.phase==='report'?'#report/'+state.page+'/'+(state.section||'map'):'#assessment/'+state.phase;
+  if(!restoringHistory){const method=lastNavigation&&lastNavigation!==navigation?'pushState':'replaceState';globalThis.history?.[method]?.({careerNavigator:structuredClone(state),options:safeOptions()},'',url);}
+  lastNavigation=navigation;
   if(focus){(document.getElementById('starting-heading')||document.getElementById('v3-heading')||root.querySelector('main h1'))?.focus?.({preventScroll:true});window.scrollTo({top:0,behavior:'instant'});}
  }
  function change(event) {
@@ -85,6 +110,11 @@ export function mountCombined({root,onHome}) {
   }
   if(['combined-language-select','v3-language'].includes(target.id)){setLanguage(target.value);errors={};v2Options.ai={status:'idle'};render();root.querySelector('#combined-language-select,#v3-language')?.focus();return;}
   if(state.phase==='background'&&target.dataset.field){state=updateBackground(state,target.dataset.field,target.value,target.checked!==false);delete errors[target.dataset.field];render();[...document.getElementsByName(target.name)].find(el=>el.value===target.value)?.focus();return;}
+  if(state.phase==='v3'&&target.name==='v3-behavior'){
+   const q=questionsFor(state.v3.trackId)[state.v3.index];
+   try{const values=toggleBehavior(q,state.v3.answers[q.id],target.value,target.checked);const answers={...state.v3.answers};if(values.length)answers[q.id]=values;else delete answers[q.id];state={...state,v3:{...state.v3,answers}};errors={};}catch{errors.answer='Choose up to three options.';}
+   render();root.querySelector(`input[name="v3-behavior"][value="${target.value}"]`)?.focus({preventScroll:true});return;
+  }
   if(state.phase==='v3'&&target.name==='v3-answer'){
    state={...state,v3:selectAnswer(state.v3,questionsFor(state.v3.trackId)[state.v3.index].id,target.value==='unknown'?null:Number(target.value))};errors={};render();root.querySelector(`input[name="v3-answer"][value="${target.value}"]`)?.focus({preventScroll:true});
   }
@@ -103,7 +133,7 @@ export function mountCombined({root,onHome}) {
   if(target.dataset.v3Action){
    if(target.dataset.v3Action==='back')state={...state,v3:previous(state.v3)};
    else if(target.dataset.v3Action==='reset')state={...state,v3:{...fresh(language).v3}};
-   else try{const value=state.v3.answers[questionsFor(state.v3.trackId)[state.v3.index]?.id];if(value!==null&&(!Number.isInteger(value)||value<1||value>7))throw Error('ANSWER_REQUIRED');state={...state,v3:advance(state.v3)};}catch{errors.answer='Please choose an answer.';}
+   else try{const value=state.v3.answers[questionsFor(state.v3.trackId)[state.v3.index]?.id];if(!validResponse(questionsFor(state.v3.trackId)[state.v3.index],value))throw Error('ANSWER_REQUIRED');state={...state,v3:advance(state.v3)};}catch{errors.answer='Please choose an answer.';}
    render(true);return;
   }
   const action=target.dataset.combinedAction;
@@ -135,7 +165,7 @@ export function mountCombined({root,onHome}) {
    if(action.startsWith('page:')){const target=pageTarget(action.slice(5));state={...state,page:target.page,section:target.section};render(true);return;}
    if(action.startsWith('section:')){state={...state,page:'galaxy',section:action.slice(8)};render(true);return;}
   }
-  if(action==='home'){onHome();return;}
+  if(action==='home'){history.pushState({},'','#home');onHome();return;}
   if(action==='start'||action==='edit'||action==='edit-background'){v2Options={path:'A',assumptions:{},region:'MY',aiConsent:false,ai:{status:'idle'}};state={...state,phase:'background',step:0,startingPoint:state.startingPoint?{...state.startingPoint,screen:'question',index:0,completed:false}:newStartingPoint()};render(true);return;}
   if(action==='reset'){v2Options={path:'A',assumptions:{},region:'MY',aiConsent:false,ai:{status:'idle'}};state=fresh(language);render(true);return;}
   if(action==='prev'){if(state.step>0){state={...state,step:backgroundSteps(state.profile)[backgroundSteps(state.profile).indexOf(state.step)-1]};render(true);}else onHome();return;}
@@ -163,6 +193,7 @@ export function mountCombined({root,onHome}) {
    const token=(await session.json()).csrf_token;
    const response=await fetch('/api/assessment/explain',{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json','X-CSRF-Token':token},body:JSON.stringify(payload),signal:controller.signal});
    if(!response.ok)throw Error('unavailable');const result=await response.json();
+   if(!Array.isArray(result.guide)||!result.guide.every(x=>typeof x.text==='string'&&Array.isArray(x.evidence_ids)))throw Error('invalid-guide');
    if(serial===aiRequestSerial&&language===requestLanguage&&state.phase==='report')v2Options.ai={status:'complete',result};
   }catch{if(serial===aiRequestSerial)v2Options.ai={status:'error',message:L('AI is unavailable or its response did not pass validation. Your full evidence report remains available.','AI 暂不可用或返回未通过验证；完整证据报告仍可使用。','AI tidak tersedia atau respons gagal pengesahan. Laporan bukti lengkap masih tersedia.')};}
   finally{clearTimeout(timer);render();}
@@ -210,7 +241,7 @@ if(['hours','planHours','planHorizon'].includes(event.target.dataset.v2Control))
  root.addEventListener('change',change);root.addEventListener('submit',submit);root.addEventListener('click',click);
  render();
  fetch('/api/regional/current').then(r=>r.ok?r.json():null).then(data=>{
-  if(data?.snapshot?.schema_version===1&&Array.isArray(data.snapshot.facts)){v2Options.regionalSnapshot=data.snapshot;v2Options.regionalDelivery=data.delivery;if(state.phase==='report')render();}
+  if(data?.snapshot?.schema_version===1&&typeof data.snapshot.version==='string'&&Array.isArray(data.snapshot.facts)&&data.snapshot.facts.every(f=>['MY','US','GLOBAL'].includes(f.region)&&typeof f.role_id==='string'&&typeof f.source_url==='string'&&f.source_url.startsWith('https://')&&typeof f.reference_period==='string')){v2Options.regionalSnapshot=data.snapshot;v2Options.regionalDelivery=data.delivery;if(state.phase==='report')render();}
  }).catch(()=>{});
- return ()=>{root.removeEventListener('input',input);root.removeEventListener('change',change);root.removeEventListener('submit',submit);root.removeEventListener('click',click);};
+ return ()=>{window.removeEventListener?.('popstate',historyChanged);root.removeEventListener('input',input);root.removeEventListener('change',change);root.removeEventListener('submit',submit);root.removeEventListener('click',click);};
 }

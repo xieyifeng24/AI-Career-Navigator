@@ -75,6 +75,11 @@ async def invalid_profile(request, exc):
     return JSONResponse({'detail':('Please check the assessment fields and try again.' if request.url.path in {'/api/regional/explain','/api/assessment/explain'} else 'Use a complete fictional profile, 1–40 hours per week, and confirm synthetic data.'),
                          'fields':list({str(e['loc'][-1]) for e in exc.errors()})},status_code=422)
 
+@app.get('/api/release')
+async def release_identity():
+    import json
+    return json.loads((ROOT/'prototype/release.json').read_text())
+
 @app.get('/api/health')
 async def health():
     configured=app.state.inference.configured
@@ -214,7 +219,7 @@ async def regional_bundle():
 
 @app.get('/assessment/{filename}')
 async def assessment_asset(filename: str):
-    if filename not in {'engine.js','views.js','adapter.js','styles.css','roles.json','skill-tree.js','dna.css','career-research.js'}: raise HTTPException(404)
+    if filename not in {'engine.js','views.js','adapter.js','styles.css','roles.json','skill-tree.js','dna.css','career-research.js','knowledge.js','release.js'}: raise HTTPException(404)
     return FileResponse(ROOT/'prototype/assessment'/filename)
 
 @app.get('/combined/{filename}')
@@ -230,7 +235,7 @@ async def combined_page_asset(filename: str):
 @app.get('/v3/{filename}')
 async def v3_preview_asset(filename: str):
     # Phase-one questionnaire assets only; no scoring or inference route changes.
-    if filename not in {'bank.json','engine.js','ui.js','app.js','styles.css'}: raise HTTPException(404)
+    if filename not in {'bank.json','engine.js','ui.js','app.js','styles.css','behaviors.js','behaviors.json'}: raise HTTPException(404)
     return FileResponse(ROOT/'prototype/v3'/filename)
 
 @app.get('/exploration/{filename}')
@@ -247,5 +252,5 @@ async def local_asset(filename: str):
 @app.get('/{filename}')
 async def asset(filename: str):
     # Serve only explicit frontend assets, never repository files, secrets or tests.
-    if filename not in {'explorer-catalog.json','explorer-engine.js','explorer-views.js','explorer.css','offline-app.js','sdg-characters.png','bootstrap.js','intro.js','intro.css','app.js','data.js','logic.js','live.js','styles.css','simulator.js','star-map.js','star-map.css','career-explorer.js','career-explorer.css','i18n.js','questionnaire.js','questionnaire.json','translations.json'}: raise HTTPException(404)
+    if filename not in {'explorer-catalog.json','explorer-engine.js','explorer-views.js','explorer.css','offline-app.js','sdg-characters.png','production.css','production-home.js','release.json','bootstrap.js','intro.js','intro.css','app.js','data.js','logic.js','live.js','styles.css','simulator.js','star-map.js','star-map.css','career-explorer.js','career-explorer.css','i18n.js','questionnaire.js','questionnaire.json','translations.json'}: raise HTTPException(404)
     return FileResponse(ROOT/'prototype'/filename)

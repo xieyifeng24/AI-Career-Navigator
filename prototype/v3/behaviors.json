@@ -1,0 +1,388 @@
+{
+  "version": "behavior-evidence-1",
+  "maxSelections": 3,
+  "normalization": "weighted mean of selected behavioral evidence, never a count bonus; exploratory only",
+  "constructs": {
+    "exploration": [
+      {
+        "id": "observe",
+        "strength": 4,
+        "weight": 1,
+        "label": {
+          "en": "Read role descriptions and observe someone doing the work",
+          "zh-CN": "阅读岗位要求，观察他人如何工作",
+          "ms": "Baca peranan dan perhatikan orang melakukan tugas"
+        }
+      },
+      {
+        "id": "sample",
+        "strength": 6,
+        "weight": 1,
+        "label": {
+          "en": "Try a small task before choosing a direction",
+          "zh-CN": "选择方向前试做一个小任务",
+          "ms": "Cuba tugas kecil sebelum memilih arah"
+        }
+      },
+      {
+        "id": "compare",
+        "strength": 6,
+        "weight": 1,
+        "label": {
+          "en": "Compare two paths through practical experiments",
+          "zh-CN": "通过实践比较两个方向",
+          "ms": "Banding dua laluan melalui eksperimen"
+        }
+      },
+      {
+        "id": "feedback",
+        "strength": 6,
+        "weight": 1,
+        "label": {
+          "en": "Ask someone to review my work and next steps",
+          "zh-CN": "请他人复核作品并讨论下一步",
+          "ms": "Minta seseorang menyemak hasil dan langkah seterusnya"
+        }
+      },
+      {
+        "id": "none",
+        "strength": 2,
+        "weight": 1,
+        "exclusive": true,
+        "label": {
+          "en": "I have not done this / this does not describe me yet",
+          "zh-CN": "我还没有这样做／目前不符合我的情况",
+          "ms": "Saya belum melakukan ini / belum menggambarkan saya"
+        }
+      }
+    ],
+    "adaptability": [
+      {
+        "id": "learn",
+        "strength": 5,
+        "weight": 1,
+        "label": {
+          "en": "Learn a new method when tools change",
+          "zh-CN": "工具变化时学习新方法",
+          "ms": "Belajar kaedah baharu apabila alat berubah"
+        }
+      },
+      {
+        "id": "transfer",
+        "strength": 6,
+        "weight": 1,
+        "label": {
+          "en": "Identify skills I can reuse in a different role",
+          "zh-CN": "寻找可以迁移到其他岗位的技能",
+          "ms": "Kenal pasti kemahiran untuk peranan lain"
+        }
+      },
+      {
+        "id": "test",
+        "strength": 6,
+        "weight": 1,
+        "label": {
+          "en": "Test new approaches alongside my current method",
+          "zh-CN": "在现有方法之外试验新做法",
+          "ms": "Uji pendekatan baharu bersama kaedah semasa"
+        }
+      },
+      {
+        "id": "support",
+        "strength": 4,
+        "weight": 1,
+        "label": {
+          "en": "Seek structured guidance before making a change",
+          "zh-CN": "转变之前寻求有结构的指导",
+          "ms": "Dapatkan bimbingan berstruktur sebelum berubah"
+        }
+      },
+      {
+        "id": "none",
+        "strength": 2,
+        "weight": 1,
+        "exclusive": true,
+        "label": {
+          "en": "I have not done this / this does not describe me yet",
+          "zh-CN": "我还没有这样做／目前不符合我的情况",
+          "ms": "Saya belum melakukan ini / belum menggambarkan saya"
+        }
+      }
+    ],
+    "ai_practice": [
+      {
+        "id": "learn",
+        "strength": 4,
+        "weight": 1,
+        "label": {
+          "en": "Use AI to search, understand or learn",
+          "zh-CN": "用 AI 搜索、理解或学习知识",
+          "ms": "Guna AI untuk mencari, memahami atau belajar"
+        }
+      },
+      {
+        "id": "draft",
+        "strength": 4,
+        "weight": 1,
+        "label": {
+          "en": "Use AI to draft or organise study and work material",
+          "zh-CN": "用 AI 起草或整理学习与工作材料",
+          "ms": "Guna AI untuk mendraf atau menyusun bahan"
+        }
+      },
+      {
+        "id": "code",
+        "strength": 5,
+        "weight": 1,
+        "label": {
+          "en": "Use AI to write, debug or adapt code",
+          "zh-CN": "用 AI 编写、调试或修改代码",
+          "ms": "Guna AI untuk menulis, menyahpepijat atau mengubah kod"
+        }
+      },
+      {
+        "id": "analyze",
+        "strength": 5,
+        "weight": 1,
+        "label": {
+          "en": "Use AI to analyse information and compare approaches",
+          "zh-CN": "用 AI 分析信息、比较方案",
+          "ms": "Guna AI untuk menganalisis maklumat dan membanding pendekatan"
+        }
+      },
+      {
+        "id": "workflow",
+        "strength": 6,
+        "weight": 1,
+        "label": {
+          "en": "Connect AI through an API or an automation workflow",
+          "zh-CN": "通过 API 或自动化工作流连接 AI",
+          "ms": "Sambung AI melalui API atau aliran automasi"
+        }
+      },
+      {
+        "id": "none",
+        "strength": 2,
+        "weight": 1,
+        "exclusive": true,
+        "label": {
+          "en": "I have not done this / this does not describe me yet",
+          "zh-CN": "我还没有这样做／目前不符合我的情况",
+          "ms": "Saya belum melakukan ini / belum menggambarkan saya"
+        }
+      }
+    ],
+    "ai_verification": [
+      {
+        "id": "source",
+        "strength": 5,
+        "weight": 1,
+        "label": {
+          "en": "Check important claims against independent sources",
+          "zh-CN": "对照独立来源核查重要主张",
+          "ms": "Semak dakwaan penting dengan sumber bebas"
+        }
+      },
+      {
+        "id": "test",
+        "strength": 6,
+        "weight": 1,
+        "label": {
+          "en": "Test a result, including failure cases",
+          "zh-CN": "测试结果，包括失败和边界情况",
+          "ms": "Uji hasil termasuk kes kegagalan"
+        }
+      },
+      {
+        "id": "revise",
+        "strength": 6,
+        "weight": 1,
+        "label": {
+          "en": "Correct errors and keep a record of my changes",
+          "zh-CN": "修正错误并保留修改记录",
+          "ms": "Betulkan ralat dan simpan rekod perubahan"
+        }
+      },
+      {
+        "id": "review",
+        "strength": 5,
+        "weight": 1,
+        "label": {
+          "en": "Ask a qualified person to review uncertain results",
+          "zh-CN": "请适当的专业人士复核不确定结果",
+          "ms": "Minta orang berkelayakan menyemak hasil tidak pasti"
+        }
+      },
+      {
+        "id": "none",
+        "strength": 2,
+        "weight": 1,
+        "exclusive": true,
+        "label": {
+          "en": "I have not done this / this does not describe me yet",
+          "zh-CN": "我还没有这样做／目前不符合我的情况",
+          "ms": "Saya belum melakukan ini / belum menggambarkan saya"
+        }
+      }
+    ],
+    "interest": [
+      {
+        "id": "try",
+        "strength": 5,
+        "weight": 1,
+        "label": {
+          "en": "I would like to try this kind of task",
+          "zh-CN": "我愿意尝试这类具体任务",
+          "ms": "Saya ingin mencuba tugas seperti ini"
+        }
+      },
+      {
+        "id": "learn",
+        "strength": 5,
+        "weight": 1,
+        "label": {
+          "en": "I choose to learn more about this task in my own time",
+          "zh-CN": "我会主动花时间了解这类任务",
+          "ms": "Saya memilih belajar tentang tugas ini pada masa sendiri"
+        }
+      },
+      {
+        "id": "challenge",
+        "strength": 6,
+        "weight": 1,
+        "label": {
+          "en": "I enjoy investigating difficulties in this work",
+          "zh-CN": "我享受研究这类工作中的难题",
+          "ms": "Saya suka menyiasat kesukaran dalam tugas ini"
+        }
+      },
+      {
+        "id": "project",
+        "strength": 6,
+        "weight": 1,
+        "label": {
+          "en": "I want to explore this through a practical project",
+          "zh-CN": "我想通过实际项目探索这类工作",
+          "ms": "Saya ingin menerokainya melalui projek praktikal"
+        }
+      },
+      {
+        "id": "none",
+        "strength": 2,
+        "weight": 1,
+        "exclusive": true,
+        "label": {
+          "en": "I have not done this / this does not describe me yet",
+          "zh-CN": "我还没有这样做／目前不符合我的情况",
+          "ms": "Saya belum melakukan ini / belum menggambarkan saya"
+        }
+      }
+    ],
+    "workstyle": [
+      {
+        "id": "steps",
+        "strength": 5,
+        "weight": 1,
+        "label": {
+          "en": "I break this work into smaller, testable steps",
+          "zh-CN": "我会把这项工作拆成可测试的小步骤",
+          "ms": "Saya pecahkan kerja kepada langkah kecil yang boleh diuji"
+        }
+      },
+      {
+        "id": "iterate",
+        "strength": 6,
+        "weight": 1,
+        "label": {
+          "en": "I revisit an attempt and improve it using feedback",
+          "zh-CN": "我会根据反馈反复修改和改进",
+          "ms": "Saya semak semula percubaan dengan maklum balas"
+        }
+      },
+      {
+        "id": "clarify",
+        "strength": 5,
+        "weight": 1,
+        "label": {
+          "en": "I clarify requirements before starting",
+          "zh-CN": "我会先澄清要求，再开始工作",
+          "ms": "Saya jelaskan keperluan sebelum bermula"
+        }
+      },
+      {
+        "id": "collaborate",
+        "strength": 5,
+        "weight": 1,
+        "label": {
+          "en": "I discuss tradeoffs and decisions with others",
+          "zh-CN": "我会与他人讨论取舍和决策",
+          "ms": "Saya bincang pilihan dan keputusan dengan orang lain"
+        }
+      },
+      {
+        "id": "none",
+        "strength": 2,
+        "weight": 1,
+        "exclusive": true,
+        "label": {
+          "en": "I have not done this / this does not describe me yet",
+          "zh-CN": "我还没有这样做／目前不符合我的情况",
+          "ms": "Saya belum melakukan ini / belum menggambarkan saya"
+        }
+      }
+    ],
+    "experience": [
+      {
+        "id": "guided",
+        "strength": 4,
+        "weight": 1,
+        "label": {
+          "en": "I have tried a related task with step-by-step guidance",
+          "zh-CN": "我曾在逐步指导下尝试相关任务",
+          "ms": "Saya pernah mencuba tugas berkaitan dengan panduan langkah demi langkah"
+        }
+      },
+      {
+        "id": "artifact",
+        "strength": 6,
+        "weight": 1,
+        "label": {
+          "en": "I have produced a working example or completed output",
+          "zh-CN": "我曾制作出可运行的样本或完整结果",
+          "ms": "Saya pernah menghasilkan contoh berfungsi atau hasil lengkap"
+        }
+      },
+      {
+        "id": "problem",
+        "strength": 6,
+        "weight": 1,
+        "label": {
+          "en": "I have investigated a problem and made a correction",
+          "zh-CN": "我曾排查问题并进行修正",
+          "ms": "Saya pernah menyiasat masalah dan membuat pembetulan"
+        }
+      },
+      {
+        "id": "reviewed",
+        "strength": 6,
+        "weight": 1,
+        "label": {
+          "en": "I have revised my work after testing or external feedback",
+          "zh-CN": "我曾根据测试或他人反馈改进作品",
+          "ms": "Saya pernah menambah baik hasil selepas ujian atau maklum balas"
+        }
+      },
+      {
+        "id": "none",
+        "strength": 2,
+        "weight": 1,
+        "exclusive": true,
+        "label": {
+          "en": "I have not done this / this does not describe me yet",
+          "zh-CN": "我还没有这样做／目前不符合我的情况",
+          "ms": "Saya belum melakukan ini / belum menggambarkan saya"
+        }
+      }
+    ]
+  }
+}

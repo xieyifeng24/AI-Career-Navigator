@@ -1,4 +1,5 @@
 import {loadSession,saveSession,chooseTrack,changeLanguage,selectAnswer,questionsFor,advance,previous,newSession} from './engine.js';
+import {toggleBehavior} from './behaviors.js';
 import {renderPreview,common} from './ui.js';
 const stylesheet = document.createElement('link');
 stylesheet.rel = 'stylesheet'; stylesheet.href = './v3/styles.css'; document.head.append(stylesheet);
@@ -15,6 +16,10 @@ function render(focusHeading = false) {
 root.addEventListener('change', event => {
   if (event.target.id === 'v3-language') {
     state = changeLanguage(state,event.target.value); render(); document.getElementById('v3-language')?.focus();
+  } else if(event.target.name==='v3-behavior'){
+    const q=questionsFor(state.trackId)[state.index];
+    try{const values=toggleBehavior(q,state.answers[q.id],event.target.value,event.target.checked);const answers={...state.answers};if(values.length)answers[q.id]=values;else delete answers[q.id];state={...state,answers};error='';}catch{error='Choose up to three options.';}
+    render();root.querySelector(`input[name="v3-behavior"][value="${event.target.value}"]`)?.focus({preventScroll:true});
   } else if (event.target.name === 'v3-answer') {
     const value = event.target.value === 'unknown' ? null : Number(event.target.value);
     state = selectAnswer(state,questionsFor(state.trackId)[state.index].id,value);

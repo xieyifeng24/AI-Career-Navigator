@@ -3410,5 +3410,9 @@
   "Paths are drawn from this report. Published outlooks are shown only when a matching source is available; SDG links are proposed contributions, not measured impact.": {
     "zh-CN": "路线来自本次报告；仅在存在匹配来源时展示已发布的市场展望。SDG 关联是可能的贡献，不是已测量的影响。",
     "ms": "Laluan diambil daripada laporan ini. Tinjauan diterbitkan hanya dipaparkan apabila sumber sepadan tersedia; kaitan SDG ialah cadangan sumbangan, bukan impak yang diukur."
+  },
+  "Choose up to three options.": {
+    "zh-CN": "最多选择三项。",
+    "ms": "Pilih sehingga tiga pilihan."
   }
 }

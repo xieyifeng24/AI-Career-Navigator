@@ -4,20 +4,24 @@ import {startingQuestions,preferredRegion} from '../combined/starting-point.js';
 import rules from './roles.json' with {type:'json'};
 import bundled from '../../data/knowledge/current.json' with {type:'json'};
 import regional from '../../data/regional/current.json' with {type:'json'};
-export const VERSION='evidence-engine-1.0';
+import {validResponse,responseStrength,behaviorOptions} from '../v3/behaviors.js';
+import {currentKnowledge,resolveKnowledge} from './knowledge.js';
+export const VERSION='evidence-engine-1.1';
 export const pick=(v,l='en')=>Array.isArray(v)?v[{en:0,'zh-CN':1,ms:2}[l]??0]:v?.[l]??v?.en??v??'';
 const tri=(en,zh,ms)=>[en,zh,ms];
 export const STATUS={unknown:tri('Not yet assessed','尚未评估','Belum dinilai'),limited:tri('Limited reported practice','实践自述有限','Amalan dilaporkan terhad'),mixed:tri('Context-dependent / mixed','依情境而异／回答不一致','Mengikut konteks / bercampur'),reported:tri('Reported, not verified','有自述，未经验证','Dilaporkan, belum disahkan'),conflict:tri('Needs clarification','需要澄清','Perlu penjelasan'),neutral:tri('Undecided','尚未确定','Belum pasti'),high:tri('Stronger task interest','任务兴趣较强','Minat tugas lebih kuat'),low:tri('Less task interest','任务兴趣较弱','Minat tugas lebih rendah')};
 export function summarize(items){
- const known=items.filter(x=>Number.isInteger(x.raw)),values=known.map(x=>x.raw);
- const conflict=values.length>1&&Math.max(...values)>=5&&Math.min(...values)<=3;
- return {status:!values.length?'unknown':conflict?'conflict':values.every(v=>v>=5)?'reported':values.every(v=>v<=3)?'limited':values.every(v=>v===4)?'neutral':'mixed',
- conflict,known:known.length,total:items.length,evidenceIds:items.map(x=>x.id),confidence:!known.length?'none':conflict||known.length<items.length?'limited':'self-report-only',range:values.length?[Math.min(...values),Math.max(...values)]:null,verified:false};
+ const known=items.filter(x=>Number.isFinite(x.signalValue??x.raw)),values=known.map(x=>x.signalValue??x.raw);
+ const mixedFormats=new Set(known.map(x=>x.responseFormat||'legacy-likert7')).size>1;
+ const conflict=!mixedFormats&&values.length>1&&Math.max(...values)>=5&&Math.min(...values)<=3;
+ return {status:!values.length?'unknown':mixedFormats?'mixed':conflict?'conflict':values.every(v=>v>=5)?'reported':values.every(v=>v<=3)?'limited':values.every(v=>v===4)?'neutral':'mixed',
+ conflict,known:known.length,total:items.length,evidenceIds:items.map(x=>x.id),confidence:!known.length?'none':mixedFormats||conflict||known.length<items.length?'limited':'self-report-only',range:values.length?[Math.min(...values),Math.max(...values)]:null,verified:false};
 }
 function weighted(evidence,weights){
- const terms=Object.entries(weights).map(([id,weight])=>({id,weight,value:evidence.find(e=>e.id===id)?.raw??null}));
- const known=terms.filter(x=>Number.isInteger(x.value));
- return {value:known.length===terms.length?known.reduce((n,t)=>n+t.value*t.weight,0)/known.reduce((n,t)=>n+t.weight,0):null,terms,coverage:known.length,required:terms.length};
+ const terms=Object.entries(weights).map(([id,weight])=>({id,weight,value:(evidence.find(e=>e.id===id)?.signalValue??evidence.find(e=>e.id===id)?.raw)??null}));
+ const known=terms.filter(x=>Number.isFinite(x.value));
+ const mixedFormats=new Set(known.map(t=>evidence.find(e=>e.id===t.id)?.responseFormat||'legacy-likert7')).size>1;
+ return {value:!mixedFormats&&known.length===terms.length?known.reduce((n,t)=>n+t.value*t.weight,0)/known.reduce((n,t)=>n+t.weight,0):null,terms,coverage:known.length,required:terms.length};
 }
 function fingerprint(value){let n=2166136261;for(const c of JSON.stringify(value)){n^=c.charCodeAt(0);n=Math.imul(n,16777619);}return (n>>>0).toString(16);}
 const AI_IMPACT_RULES={grow:['develop','software','program','model','machine learning','statistical','analyze','create','design','technology','system','integrat','algorithm','application','innovation'],automate:['enter','database','record','maintain','process','file','sort','schedule','routine','data entry','track','compile','transcribe','update'],human:['advise','negotiat','mentor','coach','supervis','diagnos','present','explain','collaborat','confer','communicate','lead','decision','interview','teach','care','greet','answer','solicit','mediate','resolve'],assist:['write','draft','document','prepare','summar','translat','generate','format','report','copy']};
@@ -34,23 +38,28 @@ function classifyAIImpact(tasks){
  else path='restructuring';
  return {path,counts,tasks:categorized,rule:'ai-task-impact-v1',forecast:false,verified:false};
 }
-export function buildAssessment(state,{knowledge=bundled,market=regional,generatedAt=null}={}){
+export function buildAssessment(state,{knowledge=currentKnowledge(),market=regional,generatedAt=null}={}){
+ knowledge=resolveKnowledge(knowledge);
  const direction=state.v3.trackId,answers=state.v3.answers||{},intake=state.startingPoint;
  const evidence=questionsFor(direction).map(q=>{
   const raw=answers[q.id]??null;
-  if(raw!==null&&(!Number.isInteger(raw)||raw<1||raw>7))throw Error('INVALID_EVIDENCE:'+q.id);
-  return {id:q.id,raw,dimension:q.construct,question:q.statement,response:raw===null?bank.uiText.unfamiliar:bank.scale.find(s=>s.value===raw).label,type:'self-report',verified:false,missing:raw===null,conflict:false,version:state.v3.version};
+  if(!validResponse(q,raw))throw Error('INVALID_EVIDENCE:'+q.id);
+  return {id:q.id,raw,signalValue:responseStrength(q,raw),responseFormat:Array.isArray(raw)?'behavior-evidence-1':'legacy-likert7',dimension:q.construct,question:q.statement,response:Array.isArray(raw)?behaviorOptions(q).filter(o=>raw.includes(o.id)).map(o=>o.label):raw===null?bank.uiText.unfamiliar:bank.scale.find(s=>s.value===raw).label,type:'self-report',verified:false,missing:raw===null,conflict:false,version:state.v3.version};
  });
  if(intake)for(const q of startingQuestions(intake.answers)){
   const raw=q.kind==='story'?intake.story:intake.answers[q.id]??null;
   const labels=value=>q.options?.find(o=>o.id===value)?.label??null;
-  const response=q.kind==='story'?raw:Array.isArray(raw)?raw.map(labels):raw&&typeof raw==='object'?Object.fromEntries(Object.entries(raw).map(([k,v])=>[k,labels(v)])):labels(raw);
+  const response=q.kind==='story'?raw:Array.isArray(raw)?raw.map(labels):q.kind==='matrix'&&raw&&typeof raw==='object'?q.rows.map(row=>Object.fromEntries(['en','zh-CN','ms'].map(l=>[l,(row.label[l]||row.id)+': '+(labels(raw[row.id])?.[l]||'—')]))):raw&&typeof raw==='object'?Object.fromEntries(Object.entries(raw).map(([k,v])=>[k,labels(v)])):labels(raw);
   evidence.push({id:q.id,raw,response,question:q.prompt??q.title??{},dimension:'context',type:q.kind==='story'?'unverified-free-text':'self-report',verified:false,missing:raw===null||raw==='',conflict:false,version:intake.version});
  }
  const dimension=id=>summarize(evidence.filter(e=>e.dimension===id));
  const dimensions=Object.fromEntries(['interest','workstyle','experience','ai_practice','ai_verification','adaptability','exploration'].map(id=>[id,dimension(id)]));
  // Only usage/check constructs compare general and domain responses. Different interests aren't contradictions.
  const conflicts=['ai_practice','ai_verification'].filter(k=>dimensions[k].conflict).map(k=>({rule:'general-domain-tension-v1',dimension:k,evidenceIds:dimensions[k].evidenceIds,copy:tri('Your general and task-specific answers differ. Try the same task once and record what you used and checked; neither answer is discarded.','通用题与具体任务回答存在差异。请完成一次相同任务，记录使用和核查过程；两种回答都保留。','Jawapan umum dan khusus tugas berbeza. Cuba tugas yang sama dan rekod penggunaan serta semakan; kedua-dua jawapan dikekalkan.')}));
+ if(intake?.answers.Q06==='A'&&evidence.some(e=>e.dimension==='experience'&&Array.isArray(e.raw)&&e.raw.some(id=>['artifact','reviewed'].includes(id)))){
+  conflicts.push({rule:'intake-domain-experience-tension-v1',dimension:'experience',evidenceIds:['Q06',...dimensions.experience.evidenceIds],copy:tri('Your starting answers describe theory without completed work, while your direction answers describe an artifact or reviewed work. These may concern different contexts; bring one example to clarify. Both answers are retained.','起点回答提到主要学习理论、尚未完成相关作品，方向回答却提到了作品或复核经历。这可能涉及不同情境；请用一个具体例子澄清，两种回答均保留。','Jawapan permulaan menyatakan teori tanpa hasil lengkap, tetapi jawapan arah menyatakan hasil atau kerja disemak. Konteks mungkin berbeza; bawa contoh untuk penjelasan. Kedua-dua jawapan dikekalkan.')});
+  Object.assign(dimensions.experience,{status:'conflict',conflict:true,confidence:'limited'});
+ }
  for(const c of conflicts)for(const e of evidence)if(c.evidenceIds.includes(e.id))e.conflict=true;
  const region=preferredRegion(intake),context={stage:intake?.answers.Q01??null,concern:intake?.answers.Q02??null,goal:intake?.answers.Q08??null,barriers:intake?.answers.Q07??[],field:intake?.answers.Q04??null,reportedAbilities:intake?.answers.Q05??null,experience:intake?.answers.Q06??null,region,regionAnswer:intake?.answers.Q09??null,weeklyHours:state.profile?.exactWeeklyHours??null,story:intake?.story??state.notes??''};
  const insights=[];
@@ -78,8 +87,8 @@ export function buildAssessment(state,{knowledge=bundled,market=regional,generat
  roles.forEach((r,i)=>r.priority=tied?1:i+1);
  const ai=[{id:'awareness',...summarize([])},{id:'usage',...dimensions.ai_practice},{id:'verification',...dimensions.ai_verification},{id:'workflow',...summarize([])},{id:'development',...summarize([])}];
  const priority={roleId:roles[0].id,kind:dimensions.ai_verification.status!=='reported'?'verification':dimensions.experience.status!=='reported'?'guided-sample':'reviewed-workflow',evidenceIds:[...dimensions.ai_verification.evidenceIds,...dimensions.experience.evidenceIds],verified:false};
- const input={answers,intake:intake?.answers??null,story:context.story,direction,region,version:VERSION,data:knowledge?.version??'unavailable'};
- return {version:VERSION,id:'assessment-'+fingerprint(input),generatedAt,questionnaireVersions:[state.v3.version,intake?.version].filter(Boolean),knowledgeVersion:knowledge?.version??'unavailable',regionalVersion:market?.version??'unavailable',mappingVersion:rules.version,direction,context,evidence,dimensions,conflicts,insights,roles,tied,ai,priority,missing:evidence.filter(e=>e.missing).map(e=>e.id),verifiedSkills:[],limits:tri('Exploratory product rules, not a validated psychometric test. All personal evidence is self-reported. Occupational requirements do not establish your proficiency or eligibility.','这是探索性产品规则，不是经过效度验证的心理测量。个人证据均为自述；职业要求不能证明你的熟练度或准入资格。','Peraturan penerokaan produk, bukan ujian psikometrik disahkan. Semua bukti peribadi ialah laporan kendiri. Keperluan pekerjaan tidak membuktikan kemahiran atau kelayakan anda.')};
+ const input={answers,intake:intake?.answers??null,story:context.story,direction,region,version:VERSION,data:knowledge?.version??'unavailable',market:market?.version??'unavailable'};
+ return {version:VERSION,id:'assessment-'+fingerprint(input),generatedAt,questionnaireVersions:[state.v3.version,Object.values(answers).some(Array.isArray)?'behavior-evidence-1':'legacy-likert7',intake?.version].filter(Boolean),knowledgeVersion:knowledge?.version??'unavailable',regionalVersion:market?.version??'unavailable',mappingVersion:rules.version,direction,context,evidence,dimensions,conflicts,insights,roles,tied,ai,priority,missing:evidence.filter(e=>e.missing).map(e=>e.id),verifiedSkills:[],limits:tri('Exploratory product rules, not a validated psychometric test. All personal evidence is self-reported. Occupational requirements do not establish your proficiency or eligibility.','这是探索性产品规则，不是经过效度验证的心理测量。个人证据均为自述；职业要求不能证明你的熟练度或准入资格。','Peraturan penerokaan produk, bukan ujian psikometrik disahkan. Semua bukti peribadi ialah laporan kendiri. Keperluan pekerjaan tidak membuktikan kemahiran atau kelayakan anda.')};
 }
 export function simulate(assessment,assumptions={}){
  const role=assessment.roles.find(r=>r.id===assumptions.targetCareer)||assessment.roles[0];

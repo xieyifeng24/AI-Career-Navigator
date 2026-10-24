@@ -1,4 +1,5 @@
 // Descriptive evidence adapter: preserve current scale, never manufacture V2 options or fit scores.
+import {validResponse,responseStrength,responseLabels} from '../v3/behaviors.js';
 import {bank,questionsFor} from '../v3/engine.js';
 import {contextRoles} from '../exploration/engine.js';
 import {catalog} from '../explorer-engine.js';
@@ -6,11 +7,13 @@ export const directionRoles={SW:['software','ai-research'],DATA:['data','busines
 export function analyzeCurrentAnswers(session,locale='en'){
  const questions=questionsFor(session.trackId),answers=session.answers||{};
  const items=questions.map(q=>{
-  const answered=Object.hasOwn(answers,q.id),value=answered?answers[q.id]:null;
-  if(answered&&value!==null&&(!Number.isInteger(value)||value<1||value>7))throw Error('INVALID_CURRENT_ANSWER:'+q.id);
+  const answered=Object.hasOwn(answers,q.id),raw=answered?answers[q.id]:null;
+  if(!validResponse(q,raw))throw Error('INVALID_CURRENT_ANSWER:'+q.id);
+  const value=responseStrength(q,raw);
+
   const state=!answered?'unanswered':value===null?'not-assessed':'self-report';
   return {id:q.id,construct:q.construct,statement:q.statement[locale],value,state,
-   response:state==='unanswered'?null:value===null?bank.uiText.unfamiliar[locale]:bank.scale.find(s=>s.value===value).label[locale],
+   response:state==='unanswered'?null:Array.isArray(raw)?responseLabels(q,raw,locale):value===null?bank.uiText.unfamiliar[locale]:bank.scale.find(s=>s.value===value).label[locale],
    stance:value===null?null:value<4?'disagreement':value===4?'neutral':'agreement',source:{kind:'user-answer',questionId:q.id,version:session.version}};
  });
  const dimensions=Object.keys(bank.constructLabels).map(id=>({id,label:bank.constructLabels[id][locale],items:items.filter(q=>q.construct===id)})).filter(d=>d.items.length);

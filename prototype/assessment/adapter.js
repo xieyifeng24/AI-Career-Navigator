@@ -14,10 +14,10 @@ export function attachAssessment(model,state,locale,assumptions={},saved=null){
 import {reportFor} from '../combined/model.js';
 import {buildImpact,buildProvenance} from '../combined/report-model.js';
 import {analyzeCurrentAnswers,careerContexts} from '../combined/current-analysis.js';
-import knowledge from '../../data/knowledge/current.json' with {type:'json'};
+import {currentKnowledge} from './knowledge.js';
 export function buildNavigatorReport(state,locale,assumptions={},saved=null){
  const {base,selfReport}=reportFor(state);
- const contexts=careerContexts(selfReport.trackId,knowledge,locale);
+ const contexts=careerContexts(selfReport.trackId,currentKnowledge(),locale);
  const report={mode:'rules',profile:{background:pick(base.profile?.startingPoint?['Selected career direction','所选职业方向','Arah kerjaya dipilih']:['Your starting point','你的起点','Titik permulaan anda'],locale),experience:'',skills:''},analysis:{paths:[],tasks:[]},evidence:{sources:{}},ranking:[]};
  const model={report,companions:base,startingPoint:state.startingPoint?.completed?state.startingPoint:null,currentAnswers:selfReport,background:state.profile,notes:state.startingPoint?.completed?state.startingPoint.story:state.notes||'',impact:buildImpact(selfReport.trackId),provenance:buildProvenance(contexts),signals:analyzeCurrentAnswers(selfReport,locale),contexts};
  return attachAssessment(model,state,locale,assumptions,saved);
