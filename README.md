@@ -12,7 +12,7 @@ https://ai-career-navigator-xyf20070924.replit.app/
 https://youtu.be/L_WUuCkclPk
 
 ### Official Submission Documents
-[View all submission documents](./submission/)
+https://github.com/xieyifeng24/AI-Career-Navigator/tree/main/submission
 
 This folder contains our Preliminary Project Proposal, Technical & Tools Declaration, Pitch Deck, and Replit/RunPod proof-of-use materials.
 
