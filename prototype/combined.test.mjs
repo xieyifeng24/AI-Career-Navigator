@@ -9,7 +9,7 @@ import manifest from './combined/source-manifest.json' with {type:'json'};
 function complete(track,answer,locale='en'){
  let state={...fresh(locale),profile:sampleProfile()};
  for(let i=0;i<4;i++){const next=nextBackground(state);assert.deepEqual(next.errors,{});state=next.state;}
- assert.equal(state.phase,'v3');state.v3=chooseTrack(state.v3,track);
+ assert.equal(state.phase,'v3');state.v3=chooseTrack({...state.v3,...(answer===null?{responseVersion:"legacy-likert7"}:{})},track);
  for(const q of bank.questions.filter(q=>q.trackId==='GENERAL'||q.trackId===track)){state.v3=selectAnswer(state.v3,q.id,answer);state.v3=advance(state.v3);}
  return state;
 }
@@ -110,7 +110,7 @@ test('exact learning hours survive refresh, drive planning and never increase ca
  for(const invalid of [-1,61,1.1,'7.5',NaN])assert.throws(()=>updateBackground({...fresh(),profile:base},'exactWeeklyHours',invalid),/INVALID_WEEKLY_HOURS/);
 });
 
-test('current questionnaire has behavioral choices, desired-direction title and no repeat notice or answer review',async()=>{
+test('current questionnaire has seven exclusive circles, desired-direction title and no repeat notice or answer review',async()=>{
  const {renderPreview}=await import('./v3/ui.js');
  const {completeAssessment,withoutPersonalityInterests}=await import('./combined/model.js');
  const options={hideUnknown:true,hideNotice:true,directionTitle:'Your preferred career direction'};
@@ -122,14 +122,14 @@ test('current questionnaire has behavioral choices, desired-direction title and 
   state.v3=chooseTrack(state.v3,track.id);
   for(let index=0;index<12;index++){
    const html=renderPreview(state.v3,'',false,options);
-   assert.ok((html.match(/name="v3-behavior"/g)||[]).length>=5);
-   assert.match(html,/value="unknown"/);
+   assert.equal((html.match(/name="v3-answer"/g)||[]).length,7);
+   assert.doesNotMatch(html,/value="unknown"|v3-behavior/);
    const q=bank.questions.filter(q=>q.trackId==='GENERAL'||q.trackId===track.id)[index];
    state.v3=advance(selectAnswer(state.v3,q.id,index%7+1));
   }
   const completed=completeAssessment(state);
   assert.equal(completed.phase,'report');assert.equal(completed.page,'profile');
   const unknown={...state,v3:{...state.v3,answers:{...state.v3.answers,G01:null}}};
-  assert.equal(completeAssessment(unknown).phase,'report'); // V4 retains independent unknown state.
+  assert.throws(()=>completeAssessment(unknown),/INCOMPLETE_V3/);
  }
 });

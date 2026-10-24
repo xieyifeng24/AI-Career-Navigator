@@ -1,4 +1,4 @@
-import {validResponse} from '../v3/behaviors.js';
+import {validDirectionAnswer} from '../v3/engine.js';
 import {newStartingPoint,restoreStartingPoint,startingPointBase} from './starting-point.js';
 import {canonicalPage,canonicalGalaxySection,legacyPageSections} from './page-map.js';
 // Only compose existing engines. V3 never supplies inputs to PR8's career scoring.
@@ -33,7 +33,7 @@ export function reportFor(state) {
  return {base:state.startingPoint?.completed?startingPointBase(state.startingPoint):generateOfflineReport(state.profile),selfReport:structuredClone(state.v3)};
 }
 export function completeAssessment(state){
- if(state.v3.screen!=='review'||questionsFor(state.v3.trackId).some(q=>!Object.hasOwn(state.v3.answers,q.id)||!validResponse(q,state.v3.answers[q.id])))throw Error('INCOMPLETE_V3');
+ if(state.v3.screen!=='review'||questionsFor(state.v3.trackId).some(q=>!Object.hasOwn(state.v3.answers,q.id)||!(validDirectionAnswer(state.v3.answers[q.id])||state.v3.responseVersion==='legacy-likert7'&&state.v3.answers[q.id]===null)))throw Error('INCOMPLETE_V3');
  const {base}=reportFor(state);
  return {...state,phase:'report',page:'profile',section:'map',focus:base.ranking[0]?.id||null,goal:base.goals[0]?.id||9};
 }
@@ -49,12 +49,15 @@ export function restore(raw,language='en') {
   if(state.profile.nationality!=='undisclosed'&&!catalog.countries.includes(state.profile.nationality))return fresh(language);
   if(state.profile.omitLearningPreferences&&state.profile.exactWeeklyHours!==null&&!validWeeklyHours(state.profile.exactWeeklyHours))return fresh(language);
   const v3=restoreSession(JSON.stringify(state.v3));
-  if(JSON.stringify(v3)!==JSON.stringify(state.v3))return fresh(language);
+  if(state.v3.trackId&&v3.trackId!==state.v3.trackId)return fresh(language);
   const startingPoint=state.startingPoint?restoreStartingPoint(state.startingPoint):null;
-  if(state.phase!=='background'&&!startingPoint?.completed&&Object.keys(validateProfile(state.profile)).length)return fresh(language);
+  const migratingIntake=!!startingPoint&&!startingPoint.completed&&startingPoint.migration;
+  if(state.phase!=='background'&&!startingPoint?.completed&&!migratingIntake&&Object.keys(validateProfile(state.profile)).length)return fresh(language);
   const clean={...fresh(v3.language),phase:state.phase,step:state.step,startingPoint,profile:structuredClone(state.profile),v3,page:canonicalPage(state.page),section:legacyPageSections[state.page]||canonicalGalaxySection(state.section),focus:catalog.careers.some(c=>c.id===state.focus)?state.focus:null,goal:catalog.goals.some(g=>g.id===state.goal)?state.goal:9,allCareers:state.allCareers===true};
   clean.notes=typeof state.notes==='string'?state.notes.slice(0,1500):'';
   clean.selectedSkill=typeof state.selectedSkill==='string'?state.selectedSkill:'';
+  if(migratingIntake)clean.phase='background';
+  else if(v3.needsReanswer?.length)clean.phase='v3';
   if(clean.phase==='report'){
    reportFor(clean);
    try{const original=deriveResult(clean.profile);scenarioResult(original,state.scenarioPatch||{},state.assumedSkills||[]);clean.scenarioPatch=state.scenarioPatch||{};clean.assumedSkills=state.assumedSkills||[];}catch{}

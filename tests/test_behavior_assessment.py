@@ -1,38 +1,30 @@
-"""Semantic answer API contract and optional-AI evidence validation."""
+"""Current direction assessment is scalar; behavior arrays are never scored by the API."""
 import json
 import unittest
 from pathlib import Path
 from pydantic import ValidationError
-from src.career.assessment_ai import GuideRequest, canonical, candidates, BEHAVIORS
-
+from src.career.assessment_ai import GuideRequest, canonical, candidates
 BANK=json.loads((Path(__file__).resolve().parents[1]/'prototype/v3/bank.json').read_text())
-
-class BehaviorContractTests(unittest.TestCase):
+class DirectionContractTests(unittest.TestCase):
     def request(self,track='SW',language='en'):
         rows=[q for q in BANK['questions'] if q['trackId'] in {'GENERAL',track}]
-        return GuideRequest(track_id=track,language=language,answers={q['id']:[BEHAVIORS['constructs'][q['construct']][0]['id']] for q in rows})
-    def test_all_directions_and_languages_use_approved_behavior_labels(self):
+        return GuideRequest(track_id=track,language=language,answers={q['id']:5 for q in rows})
+    def test_all_directions_and_languages_use_original_degree_semantics(self):
         for track in BANK['tracks']:
             for language in BANK['languageCodes']:
-                request=self.request(track['id'],language)
-                self.assertEqual(len(canonical(request,BANK)),12)
-                guide=candidates(request,BANK)
-                self.assertEqual(len(guide),12)
-                self.assertTrue(all(item['evidence_ids']==[item['id']] for item in guide))
-                self.assertNotIn('[object Object]',json.dumps(guide))
-    def test_exclusive_limit_duplicates_types_and_foreign_options_rejected(self):
-        for invalid in [[],['none','learn'],['learn']*2,['a','b','c','d'],[True],8,'6',True]:
-            payload=self.request().model_dump();payload['answers']['G03']=invalid
-            with self.assertRaises(ValidationError):GuideRequest(**payload)
-        request=self.request();request.answers['G03']=['artifact']
-        with self.assertRaises(ValueError):canonical(request,BANK)
-    def test_ai_conflict_is_derived_from_same_format_evidence_only(self):
-        request=self.request();request.answers['G03']=['workflow'];request.answers['SW07']=['none']
-        self.assertIn('tension-ai_practice',[c['id'] for c in candidates(request,BANK)])
-        request.answers['SW07']=2
-        self.assertNotIn('tension-ai_practice',[c['id'] for c in candidates(request,BANK)])
-    def test_historical_scale_keeps_exact_original_meaning(self):
-        request=self.request();request.answers={k:6 for k in request.answers}
-        guide=candidates(request,BANK)
-        label=next(s['label']['en'] for s in BANK['scale'] if s['value']==6)
-        self.assertTrue(all(label in item['text'] for item in guide))
+                r=self.request(track['id'],language)
+                self.assertEqual(len(canonical(r,BANK)),12)
+                label=next(s['label'][language] for s in BANK['scale'] if s['value']==5)
+                self.assertTrue(all(label in c['text'] for c in candidates(r,BANK)))
+    def test_behavior_arrays_duplicates_and_wrong_scalar_types_are_rejected(self):
+        for value in [[],['code'],['learn','workflow'],8,'6',True]:
+            p=self.request().model_dump();p['answers']['G03']=value
+            with self.assertRaises(ValidationError):GuideRequest(**p)
+    def test_daily_and_professional_differences_are_not_conflicts(self):
+        r=self.request();r.answers['G03']=7;r.answers['SW07']=1
+        self.assertFalse(any(c['id'].startswith('tension-') for c in candidates(r,BANK)))
+    def test_seven_scalar_values_keep_their_original_semantics(self):
+        for v in range(1,8):
+            r=self.request();r.answers={k:v for k in r.answers}
+            label=next(s['label']['en'] for s in BANK['scale'] if s['value']==v)
+            self.assertTrue(all(label in c['text'] for c in candidates(r,BANK)))

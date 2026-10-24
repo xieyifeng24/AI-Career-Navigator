@@ -12,6 +12,10 @@ from .inference import InferenceError
 from .regional import current
 
 
+def intake_bank(value):
+    filename='starting-point-bank.json' if value and 'Q13' in value else 'starting-point-legacy.json'
+    return json.loads((Path(__file__).resolve().parents[2]/'prototype/combined'/filename).read_text())
+
 class RegionalRequest(BaseModel):
     model_config = ConfigDict(extra='forbid')
     track_id: str = 'SW'
@@ -26,7 +30,7 @@ class RegionalRequest(BaseModel):
     @classmethod
     def valid_intake(cls, value):
         if value is None: return value
-        bank=json.loads((Path(__file__).resolve().parents[2]/'prototype/combined/starting-point-bank.json').read_text())
+        bank=intake_bank(value)
         expected={q['id'] for q in bank['questions']}|{'Q11'}
         stage=value.get('Q01')
         branch='student' if stage in {'A','B','C'} else 'working' if stage=='D' else 'transition' if stage=='E' else None
@@ -35,7 +39,13 @@ class RegionalRequest(BaseModel):
         for q in bank['questions']:
             answer=value[q['id']]
             options={o['id'] for o in q.get('options',[])}
-            if q['id']=='Q02':
+            if q['kind']=='priority' and bank['version']=='starting-point-2':
+                if not isinstance(answer,dict) or set(answer)!={'selected','primary'}: raise ValueError('Invalid priority schema')
+                selected=answer['selected']
+                if not isinstance(selected,list) or not 1<=len(selected)<=q['maxSelections'] or any(not isinstance(x,str) for x in selected) or len(set(selected))!=len(selected) or not set(selected)<=options or answer['primary'] not in selected or (len(selected)>1 and set(selected)&set(q.get('exclusive',[]))): raise ValueError('Invalid priorities')
+            elif q['kind']=='multi' and bank['version']=='starting-point-2':
+                if not isinstance(answer,list) or not 1<=len(answer)<=q['maxSelections'] or any(not isinstance(x,str) for x in answer) or len(set(answer))!=len(answer) or not set(answer)<=options or (len(answer)>1 and set(answer)&set(q.get('exclusive',[]))): raise ValueError('Invalid selections')
+            elif q['id']=='Q02':
                 if not isinstance(answer,dict) or set(answer)!={'primary','secondary'} or not isinstance(answer.get('primary'),str) or (answer.get('secondary') is not None and not isinstance(answer.get('secondary'),str)) or answer['primary'] not in options or (answer['secondary'] is not None and (answer['secondary'] not in options or answer['secondary']==answer['primary'])): raise ValueError('Invalid concern IDs')
             elif q['id']=='Q05':
                 if not isinstance(answer,dict) or set(answer)!={r['id'] for r in q['rows']} or any(not isinstance(x,str) or x not in options for x in answer.values()): raise ValueError('Invalid capability states')
@@ -82,7 +92,7 @@ class RegionalRequest(BaseModel):
 
 def intake_semantics(value):
     if value is None: return None
-    bank=json.loads((Path(__file__).resolve().parents[2]/'prototype/combined/starting-point-bank.json').read_text())
+    bank=intake_bank(value)
     out=[]
     stage=value['Q01']
     branch='student' if stage in {'A','B','C'} else 'working' if stage=='D' else 'transition' if stage=='E' else None
@@ -91,7 +101,7 @@ def intake_semantics(value):
     for q in questions:
         labels={o['id']:o['label']['en'] for o in q.get('options',[])}
         answer=value[q['id']]
-        if isinstance(answer,dict): semantic={k:labels.get(v,v) for k,v in answer.items()}
+        if isinstance(answer,dict): semantic={k:[labels[x] for x in v] if isinstance(v,list) else labels.get(v,v) for k,v in answer.items()}
         elif isinstance(answer,list): semantic=[labels[v] for v in answer]
         else: semantic=labels[answer]
         out.append({'id':q['id'],'question':q['prompt']['en'],'answer_ids':answer,'meaning':semantic,'type':'unverified-self-report'})

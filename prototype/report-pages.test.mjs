@@ -9,7 +9,7 @@ import {sampleProfile} from './explorer-engine.js';
 import {setLanguage} from './i18n.js';
 
 function stateFor(answers,locale='en',track='SW'){
- let v3=chooseTrack(newSession(),track);
+ let v3=chooseTrack(newSession({legacy:true}),track);
  for(const q of questionsFor(track))v3=advance(selectAnswer(v3,q.id,answers[q.id]??null));
  return {...fresh(locale),profile:sampleProfile(),v3,phase:'report',page:'profile'};
 }
@@ -60,7 +60,7 @@ test('one answered AI dimension never places a band',()=>{
  for(const q of practice)answers[q.id]=7;
  const cap=buildCapability(buildCompatibleReport(stateFor(answers)).signals);
  assert.equal(cap.available,false);assert.equal(cap.partial,true);assert.equal(cap.level,null);
- assert.match(renderCompatibleReport({...stateFor(answers),page:'capability'}),/Not yet assessed/);
+ assert.match(renderCompatibleReport({...stateFor(answers),page:'capability'}),/ai-inspector/);
 });
 
 test('what-if reschedules a fixed sample by budget and forecasts nothing',()=>{
@@ -76,8 +76,8 @@ test('what-if reschedules a fixed sample by budget and forecasts nothing',()=>{
  assert.deepEqual(model.milestones.map(m=>m.weeks),[8,52,104]);
  assert.equal(model.milestones[0].cycles,0);assert.equal(model.milestones[2].cycles,10);
  const html=renderCompatibleReport({...stateFor(persona),page:'whatif'},{assumptions:{planHours:2,planHorizon:8}});
- assert.match(html,/Compare with the baseline plan/);
- assert.match(html,/not official training durations/);
+ assert.match(html,/MILESTONE COMPARISON/);
+ assert.match(html,/Time schedules practice/);
  assert.doesNotMatch(html,/undefined|NaN/);
 });
 

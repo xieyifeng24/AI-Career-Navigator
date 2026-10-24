@@ -15,7 +15,7 @@ const personas={
  C:{G01:6,G02:7,G03:7,G04:5,SW01:4,SW02:5,SW03:6,SW04:6,SW05:7,SW06:7,SW07:7,SW08:5}
 };
 function stateFor(answers,locale='en',track='SW'){
- let v3=chooseTrack(newSession(),track);
+ let v3=chooseTrack(newSession({legacy:true}),track);
  for(const q of questionsFor(track))v3=advance(selectAnswer(v3,q.id,answers[q.id]??null));
  return {...fresh(locale),profile:sampleProfile(),v3,phase:'report',page:'overview'};
 }
@@ -96,7 +96,7 @@ test('SW What If reads the same route action while leaving original results and 
  setLanguage('en');const state={...stateFor(personas.A),page:'galaxy'},original=buildCompatibleReport(state);
  const before=renderCompatibleReport(state),after=renderCompatibleReport({...state,page:'whatif'},{assumptions:{skillEvidence:'practiced',aiPractice:'practiced'}});
  assert.match(before,/data-rebuild="galaxy"/);
- assert.match(after,/Compare with the baseline plan/);
+ assert.match(after,/MILESTONE COMPARISON/);
  assert.equal(buildCompatibleReport(state,'en',{skillEvidence:'practiced'}).unified.routes[0].dimensions.experience.status,'hypothetical');
  assert.equal(original.unified.routes[0].dimensions.experience.status,'supported');
  assert.deepEqual(state.v3.answers,personas.A);

@@ -1,0 +1,1313 @@
+{
+  "version": "starting-point-1",
+  "source": "docs/STARTING_POINT_QUESTIONNAIRE.md",
+  "questions": [
+    {
+      "id": "Q01",
+      "section": 0,
+      "prompt": {
+        "zh-CN": "你目前处于人生或职业发展的哪个阶段？",
+        "en": "Where are you in your career journey?",
+        "ms": "Pada tahap manakah perjalanan kerjaya anda?"
+      },
+      "kind": "single",
+      "options": [
+        {
+          "id": "A",
+          "label": {
+            "zh-CN": "我还在中学阶段，正在探索专业和未来方向",
+            "en": "I am in secondary school, exploring subjects and future directions",
+            "ms": "Saya masih di sekolah menengah, meneroka pengajian dan arah masa depan"
+          }
+        },
+        {
+          "id": "B",
+          "label": {
+            "zh-CN": "我是大学生，正在学习专业知识、规划未来职业",
+            "en": "I am a university student, building subject knowledge and planning my career",
+            "ms": "Saya pelajar universiti, mempelajari bidang dan merancang kerjaya"
+          }
+        },
+        {
+          "id": "C",
+          "label": {
+            "zh-CN": "我即将毕业或刚毕业，正在寻找职业机会",
+            "en": "I am about to graduate or recently graduated and looking for opportunities",
+            "ms": "Saya bakal atau baru bergraduasi dan mencari peluang kerjaya"
+          }
+        },
+        {
+          "id": "D",
+          "label": {
+            "zh-CN": "我已经工作，希望继续提升自己、保持竞争力",
+            "en": "I am working and want to develop further and remain competitive",
+            "ms": "Saya sudah bekerja dan mahu terus berkembang serta kekal berdaya saing"
+          }
+        },
+        {
+          "id": "E",
+          "label": {
+            "zh-CN": "我正在考虑转行、重新学习或改变职业道路",
+            "en": "I am considering a career change, reskilling or a different path",
+            "ms": "Saya mempertimbangkan pertukaran kerjaya, latihan semula atau laluan lain"
+          }
+        },
+        {
+          "id": "F",
+          "label": {
+            "zh-CN": "其他 / 暂时不确定",
+            "en": "Other / not sure yet",
+            "ms": "Lain-lain / belum pasti"
+          }
+        }
+      ]
+    },
+    {
+      "id": "Q02",
+      "section": 0,
+      "prompt": {
+        "zh-CN": "面对 AI 时代，你现在最大的困惑是什么？",
+        "en": "What worries you most about your future in the AI era?",
+        "ms": "Apakah kebimbangan utama anda tentang masa depan dalam era AI?"
+      },
+      "kind": "priority",
+      "options": [
+        {
+          "id": "A",
+          "label": {
+            "zh-CN": "职业被替代的风险",
+            "en": "Risk of career displacement",
+            "ms": "Risiko kerjaya diganti"
+          },
+          "description": {
+            "zh-CN": "我担心正在学习的专业或从事的工作，未来会因为 AI 而失去价值。",
+            "en": "I worry that AI may reduce the value of my studies or current work.",
+            "ms": "Saya bimbang AI mungkin mengurangkan nilai pengajian atau kerja semasa."
+          }
+        },
+        {
+          "id": "B",
+          "label": {
+            "zh-CN": "未来方向不明确",
+            "en": "Unclear future direction",
+            "ms": "Arah masa depan belum jelas"
+          },
+          "description": {
+            "zh-CN": "我不知道自己适合什么职业，也不确定未来应该朝哪个方向努力。",
+            "en": "I am unsure which careers suit exploration or where to focus next.",
+            "ms": "Saya tidak pasti kerjaya yang wajar diterokai atau arah usaha seterusnya."
+          }
+        },
+        {
+          "id": "C",
+          "label": {
+            "zh-CN": "技能与竞争力焦虑",
+            "en": "Skills and competitiveness",
+            "ms": "Kemahiran dan daya saing"
+          },
+          "description": {
+            "zh-CN": "技术变化太快，我不知道现有能力是否足够，也不知道应该学习什么。",
+            "en": "Technology changes quickly; I do not know whether my skills are enough or what to learn.",
+            "ms": "Teknologi berubah pantas; saya tidak tahu sama ada kemahiran saya mencukupi atau apa yang perlu dipelajari."
+          }
+        },
+        {
+          "id": "D",
+          "label": {
+            "zh-CN": "AI 应用能力不足",
+            "en": "Difficulty applying AI",
+            "ms": "Kesukaran menggunakan AI"
+          },
+          "description": {
+            "zh-CN": "我知道 AI 很重要，却不知道如何把它真正应用于学习、工作或项目。",
+            "en": "I know AI matters but do not know how to apply it in learning, work or projects.",
+            "ms": "Saya tahu AI penting tetapi tidak tahu cara menggunakannya dalam pembelajaran, kerja atau projek."
+          }
+        },
+        {
+          "id": "E",
+          "label": {
+            "zh-CN": "就业和职业发展压力",
+            "en": "Employment and career development",
+            "ms": "Pekerjaan dan perkembangan kerjaya"
+          },
+          "description": {
+            "zh-CN": "我担心找不到理想工作、无法获得实习机会，或者职业发展停滞。",
+            "en": "I worry about jobs, internships or stalled career development.",
+            "ms": "Saya bimbang tentang pekerjaan, latihan industri atau perkembangan kerjaya yang terhenti."
+          }
+        },
+        {
+          "id": "F",
+          "label": {
+            "zh-CN": "职业转型的不确定性",
+            "en": "Uncertainty about changing careers",
+            "ms": "Ketidakpastian pertukaran kerjaya"
+          },
+          "description": {
+            "zh-CN": "我想进入新的领域，却不确定自己的经验、能力和现实条件是否足以支撑转型。",
+            "en": "I want a new field but am unsure whether my experience and circumstances support it.",
+            "ms": "Saya mahu bidang baharu tetapi tidak pasti pengalaman dan keadaan saya menyokongnya."
+          }
+        },
+        {
+          "id": "G",
+          "label": {
+            "zh-CN": "国际职业发展的困惑",
+            "en": "International career development",
+            "ms": "Perkembangan kerjaya antarabangsa"
+          },
+          "description": {
+            "zh-CN": "我想了解马来西亚、美国或其他国家的职业机会，但不知道应该如何准备。",
+            "en": "I want to understand Malaysia, the US or other markets and how to prepare.",
+            "ms": "Saya mahu memahami pasaran Malaysia, AS atau pasaran lain serta cara membuat persediaan."
+          }
+        },
+        {
+          "id": "H",
+          "label": {
+            "zh-CN": "错失 AI 带来的新机会",
+            "en": "Missing new AI opportunities",
+            "ms": "Terlepas peluang baharu AI"
+          },
+          "description": {
+            "zh-CN": "我不一定害怕被替代，但担心自己错过 AI 创造的新职业、创业或个人发展机会。",
+            "en": "I may not fear replacement, but do not want to miss AI careers, entrepreneurship or development opportunities.",
+            "ms": "Saya mungkin tidak takut diganti tetapi tidak mahu terlepas kerjaya AI, keusahawanan atau peluang perkembangan."
+          }
+        },
+        {
+          "id": "I",
+          "label": {
+            "zh-CN": "我还不清楚自己真正担心什么",
+            "en": "I am not sure what concerns me yet",
+            "ms": "Saya belum pasti perkara yang membimbangkan saya"
+          },
+          "description": {
+            "zh-CN": "我希望先更全面地了解职业世界的变化，再发现自己可能的发展方向。",
+            "en": "I want to understand changing work and discover possible directions first.",
+            "ms": "Saya mahu memahami perubahan pekerjaan dan menemui arah yang mungkin dahulu."
+          }
+        }
+      ]
+    },
+    {
+      "id": "Q03",
+      "section": 0,
+      "prompt": {
+        "zh-CN": "这种困惑现在对你产生了多大影响？",
+        "en": "How is this uncertainty affecting your decisions?",
+        "ms": "Bagaimanakah ketidakpastian ini mempengaruhi keputusan anda?"
+      },
+      "kind": "single",
+      "options": [
+        {
+          "id": "A",
+          "label": {
+            "zh-CN": "我主要是好奇，想提前了解未来趋势",
+            "en": "I am mainly curious and want to understand future trends early",
+            "ms": "Saya sekadar ingin tahu dan memahami trend masa depan lebih awal"
+          }
+        },
+        {
+          "id": "B",
+          "label": {
+            "zh-CN": "我偶尔感到担忧，但暂时没有改变自己的计划",
+            "en": "I sometimes worry, but have not changed my plans",
+            "ms": "Saya kadangkala bimbang tetapi belum mengubah rancangan"
+          }
+        },
+        {
+          "id": "C",
+          "label": {
+            "zh-CN": "我已经开始重新考虑专业、技能学习或职业规划",
+            "en": "I have started reconsidering my studies, skills or career plans",
+            "ms": "Saya mula menilai semula pengajian, kemahiran atau rancangan kerjaya"
+          }
+        },
+        {
+          "id": "D",
+          "label": {
+            "zh-CN": "我正在面临重要选择，需要尽快得到更清晰的信息",
+            "en": "I face an important choice and need clearer information soon",
+            "ms": "Saya menghadapi pilihan penting dan memerlukan maklumat lebih jelas segera"
+          }
+        },
+        {
+          "id": "E",
+          "label": {
+            "zh-CN": "我因为不确定下一步怎么走，迟迟无法作出决定或开始行动",
+            "en": "I have delayed deciding or acting because the next step is unclear",
+            "ms": "Saya menangguhkan keputusan atau tindakan kerana langkah seterusnya belum jelas"
+          }
+        },
+        {
+          "id": "F",
+          "label": {
+            "zh-CN": "不确定 / 不方便回答",
+            "en": "Not sure / prefer not to answer",
+            "ms": "Tidak pasti / tidak mahu menjawab"
+          }
+        }
+      ]
+    },
+    {
+      "id": "Q04",
+      "section": 1,
+      "prompt": {
+        "zh-CN": "你目前主要在哪个领域学习、工作或积累经验？",
+        "en": "What is your current field of study or experience?",
+        "ms": "Apakah bidang pengajian atau pengalaman semasa anda?"
+      },
+      "kind": "single",
+      "options": [
+        {
+          "id": "A",
+          "label": {
+            "zh-CN": "计算机、软件开发、人工智能与数据",
+            "en": "Computing, software development, AI and data",
+            "ms": "Pengkomputeran, pembangunan perisian, AI dan data"
+          }
+        },
+        {
+          "id": "B",
+          "label": {
+            "zh-CN": "工程、制造、电子及其他技术领域",
+            "en": "Engineering, manufacturing, electronics and other technical fields",
+            "ms": "Kejuruteraan, pembuatan, elektronik dan bidang teknikal lain"
+          }
+        },
+        {
+          "id": "C",
+          "label": {
+            "zh-CN": "商业、金融、会计与管理",
+            "en": "Business, finance, accounting and management",
+            "ms": "Perniagaan, kewangan, perakaunan dan pengurusan"
+          }
+        },
+        {
+          "id": "D",
+          "label": {
+            "zh-CN": "市场营销、设计、传媒与内容创作",
+            "en": "Marketing, design, media and content creation",
+            "ms": "Pemasaran, reka bentuk, media dan penciptaan kandungan"
+          }
+        },
+        {
+          "id": "E",
+          "label": {
+            "zh-CN": "医疗、生命科学与健康相关领域",
+            "en": "Medicine, life sciences and health",
+            "ms": "Perubatan, sains hayat dan kesihatan"
+          }
+        },
+        {
+          "id": "F",
+          "label": {
+            "zh-CN": "教育、社会科学与人文领域",
+            "en": "Education, social sciences and humanities",
+            "ms": "Pendidikan, sains sosial dan kemanusiaan"
+          }
+        },
+        {
+          "id": "G",
+          "label": {
+            "zh-CN": "法律、公共管理与公共服务",
+            "en": "Law, public administration and public service",
+            "ms": "Undang-undang, pentadbiran awam dan perkhidmatan awam"
+          }
+        },
+        {
+          "id": "H",
+          "label": {
+            "zh-CN": "服务业、运营、物流与其他实际业务",
+            "en": "Services, operations, logistics and other business activities",
+            "ms": "Perkhidmatan, operasi, logistik dan aktiviti perniagaan lain"
+          }
+        },
+        {
+          "id": "I",
+          "label": {
+            "zh-CN": "我仍处于探索阶段，尚未形成明确的专业背景",
+            "en": "I am still exploring and have no clear subject background yet",
+            "ms": "Saya masih meneroka dan belum mempunyai latar bidang yang jelas"
+          }
+        },
+        {
+          "id": "J",
+          "label": {
+            "zh-CN": "其他（可选填具体方向）",
+            "en": "Other (you can describe it in the optional story at the end)",
+            "ms": "Lain-lain (boleh diterangkan dalam ruangan cerita pilihan di akhir)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "Q05",
+      "section": 1,
+      "prompt": {
+        "zh-CN": "在你目前最熟悉的领域，你认为自己实际能够做到什么程度？",
+        "en": "What can you currently do in your field?",
+        "ms": "Apakah yang anda boleh lakukan dalam bidang anda sekarang?"
+      },
+      "kind": "matrix",
+      "options": [
+        {
+          "id": "guided",
+          "label": {
+            "zh-CN": "需要指导",
+            "en": "Need guidance",
+            "ms": "Perlu bimbingan"
+          },
+          "description": {
+            "zh-CN": "通常需要他人提供具体步骤才能完成。",
+            "en": "I usually need someone to provide specific steps.",
+            "ms": "Biasanya memerlukan seseorang memberikan langkah khusus."
+          }
+        },
+        {
+          "id": "examples",
+          "label": {
+            "zh-CN": "能借助示例",
+            "en": "Can use examples",
+            "ms": "Boleh menggunakan contoh"
+          },
+          "description": {
+            "zh-CN": "参考已有案例或模板，可以完成类似任务。",
+            "en": "With a case or template, I can complete similar tasks.",
+            "ms": "Dengan contoh atau templat, saya boleh menyelesaikan tugas serupa."
+          }
+        },
+        {
+          "id": "independent",
+          "label": {
+            "zh-CN": "能独立完成",
+            "en": "Can work independently",
+            "ms": "Boleh bekerja sendiri"
+          },
+          "description": {
+            "zh-CN": "面对熟悉类型的任务，可以自行规划和完成。",
+            "en": "I can plan and complete familiar types of tasks independently.",
+            "ms": "Saya boleh merancang dan menyiapkan jenis tugas yang biasa secara sendiri."
+          }
+        },
+        {
+          "id": "complex",
+          "label": {
+            "zh-CN": "能处理复杂情况",
+            "en": "Can handle complexity",
+            "ms": "Boleh menangani kerumitan"
+          },
+          "description": {
+            "zh-CN": "面对多步骤要求或意外情况，也能进行调整与改进。",
+            "en": "I can adapt and improve work with multiple steps or unexpected conditions.",
+            "ms": "Saya boleh menyesuaikan dan menambah baik kerja berbilang langkah atau keadaan luar jangka."
+          }
+        },
+        {
+          "id": "untried",
+          "label": {
+            "zh-CN": "尚未尝试",
+            "en": "Not yet tried",
+            "ms": "Belum mencuba"
+          },
+          "description": {
+            "zh-CN": "没有足够经历判断自己的水平。",
+            "en": "I do not have enough experience to judge.",
+            "ms": "Saya belum mempunyai pengalaman mencukupi untuk menilai."
+          }
+        }
+      ],
+      "rows": [
+        {
+          "id": "knowledge",
+          "label": {
+            "zh-CN": "知识理解：理解专业概念并将其用于具体问题",
+            "en": "Knowledge: understand concepts and apply them to concrete problems",
+            "ms": "Pengetahuan: memahami konsep dan menggunakannya untuk masalah khusus"
+          }
+        },
+        {
+          "id": "execution",
+          "label": {
+            "zh-CN": "实际执行：完成一个明确的专业任务或项目",
+            "en": "Execution: complete a defined professional task or project",
+            "ms": "Pelaksanaan: menyelesaikan tugas atau projek profesional yang jelas"
+          }
+        },
+        {
+          "id": "problemSolving",
+          "label": {
+            "zh-CN": "问题解决：发现错误、分析原因并改进结果",
+            "en": "Problem solving: identify errors, analyse causes and improve results",
+            "ms": "Penyelesaian masalah: mengenal pasti ralat, menganalisis punca dan menambah baik hasil"
+          }
+        },
+        {
+          "id": "communication",
+          "label": {
+            "zh-CN": "成果表达：清楚说明自己的工作、思路和结果",
+            "en": "Communication: clearly explain your work, reasoning and results",
+            "ms": "Komunikasi: menerangkan kerja, pemikiran dan hasil dengan jelas"
+          }
+        }
+      ]
+    },
+    {
+      "id": "Q06",
+      "section": 1,
+      "prompt": {
+        "zh-CN": "到目前为止，你完成过哪类最有代表性的学习或工作成果？",
+        "en": "What is the strongest evidence of your current experience?",
+        "ms": "Apakah bukti pengalaman semasa yang paling mewakili anda?"
+      },
+      "kind": "single",
+      "options": [
+        {
+          "id": "A",
+          "label": {
+            "zh-CN": "我主要学习过一些理论或基础知识，还没有完成过相关成果",
+            "en": "I have mainly studied theory or basics, without completing related work",
+            "ms": "Saya kebanyakannya mempelajari teori atau asas tanpa menghasilkan kerja berkaitan"
+          }
+        },
+        {
+          "id": "B",
+          "label": {
+            "zh-CN": "我完成过课程作业、练习题或跟随教程制作的作品",
+            "en": "I have completed coursework, exercises or tutorial-led work",
+            "ms": "Saya menyiapkan tugasan kursus, latihan atau hasil berpandukan tutorial"
+          }
+        },
+        {
+          "id": "C",
+          "label": {
+            "zh-CN": "我曾独立完成一个有明确目标的作品或小型项目",
+            "en": "I have independently completed a goal-focused artifact or small project",
+            "ms": "Saya menyiapkan hasil atau projek kecil bermatlamat secara sendiri"
+          }
+        },
+        {
+          "id": "D",
+          "label": {
+            "zh-CN": "我参与过团队项目，承担了明确任务并交付成果",
+            "en": "I have delivered a defined contribution in a team project",
+            "ms": "Saya menyampaikan sumbangan jelas dalam projek berpasukan"
+          }
+        },
+        {
+          "id": "E",
+          "label": {
+            "zh-CN": "我在实习、工作或真实场景中交付过成果，并得到实际反馈",
+            "en": "I have delivered work in an internship, job or real setting and received feedback",
+            "ms": "Saya menghasilkan kerja dalam latihan industri, pekerjaan atau situasi sebenar dan menerima maklum balas"
+          }
+        },
+        {
+          "id": "F",
+          "label": {
+            "zh-CN": "我曾负责较复杂的项目，持续改进并解决实际使用中出现的问题",
+            "en": "I have led more complex work, improving it and solving real usage problems",
+            "ms": "Saya mengendalikan projek lebih kompleks, menambah baik dan menyelesaikan masalah penggunaan sebenar"
+          }
+        },
+        {
+          "id": "G",
+          "label": {
+            "zh-CN": "我有一些经验，但不确定它应该归入哪一类",
+            "en": "I have some experience but am unsure which category fits",
+            "ms": "Saya mempunyai pengalaman tetapi tidak pasti kategorinya"
+          }
+        }
+      ]
+    },
+    {
+      "id": "Q07",
+      "section": 1,
+      "prompt": {
+        "zh-CN": "如果你想让自己在未来更有竞争力，你认为目前最需要解决什么？",
+        "en": "What is your biggest obstacle to making progress?",
+        "ms": "Apakah halangan utama untuk anda maju?"
+      },
+      "kind": "multi",
+      "options": [
+        {
+          "id": "A",
+          "label": {
+            "zh-CN": "基础知识：缺少必要的理论、专业知识或技术基础",
+            "en": "Foundations: essential theory, subject knowledge or technical basics",
+            "ms": "Asas: teori penting, pengetahuan bidang atau asas teknikal"
+          }
+        },
+        {
+          "id": "B",
+          "label": {
+            "zh-CN": "实际经验：知道一些概念，却缺乏项目、作品或实际工作经验",
+            "en": "Practical experience: concepts without enough projects or work experience",
+            "ms": "Pengalaman praktikal: memahami konsep tetapi kurang projek atau pengalaman kerja"
+          }
+        },
+        {
+          "id": "C",
+          "label": {
+            "zh-CN": "AI应用：还不能熟练利用 AI 改进学习、工作或项目",
+            "en": "AI application: using AI effectively in learning, work or projects",
+            "ms": "Aplikasi AI: menggunakan AI dengan berkesan dalam pembelajaran, kerja atau projek"
+          }
+        },
+        {
+          "id": "D",
+          "label": {
+            "zh-CN": "专业判断：遇到复杂问题时，不确定如何分析、验证和作出决定",
+            "en": "Professional judgement: analysing, verifying and deciding in complex situations",
+            "ms": "Pertimbangan profesional: menganalisis, mengesahkan dan membuat keputusan rumit"
+          }
+        },
+        {
+          "id": "E",
+          "label": {
+            "zh-CN": "职业信息：不知道目标职业真正要求什么能力",
+            "en": "Career information: understanding what target roles really require",
+            "ms": "Maklumat kerjaya: memahami keperluan sebenar pekerjaan sasaran"
+          }
+        },
+        {
+          "id": "F",
+          "label": {
+            "zh-CN": "学习路线：想提升自己，却不知道什么最值得优先学习",
+            "en": "Learning path: deciding what is worth learning first",
+            "ms": "Laluan pembelajaran: menentukan perkara yang wajar dipelajari dahulu"
+          }
+        },
+        {
+          "id": "G",
+          "label": {
+            "zh-CN": "现实资源：缺乏时间、资金、设备、语言能力或合适的机会",
+            "en": "Resources: time, money, equipment, language or opportunities",
+            "ms": "Sumber: masa, wang, peralatan, bahasa atau peluang"
+          }
+        },
+        {
+          "id": "H",
+          "label": {
+            "zh-CN": "展示与求职：有一定能力，但不知道怎样展示成果、建立作品集或争取机会",
+            "en": "Presenting work and job seeking: portfolios, evidence and opportunities",
+            "ms": "Persembahan kerja dan pencarian pekerjaan: portfolio, bukti dan peluang"
+          }
+        },
+        {
+          "id": "I",
+          "label": {
+            "zh-CN": "暂时无法判断：我需要更清晰的能力分析，才能知道真正的短板在哪里",
+            "en": "Not sure yet: I need a clearer picture before identifying a gap",
+            "ms": "Belum pasti: saya memerlukan gambaran lebih jelas sebelum mengenal pasti jurang"
+          }
+        }
+      ]
+    },
+    {
+      "id": "Q08",
+      "section": 2,
+      "prompt": {
+        "zh-CN": "完成这次分析后，你最希望得到什么？",
+        "en": "What would make this assessment valuable to you?",
+        "ms": "Apakah hasil yang menjadikan penilaian ini berguna untuk anda?"
+      },
+      "kind": "single",
+      "options": [
+        {
+          "id": "A",
+          "label": {
+            "zh-CN": "更清楚地了解自己适合探索哪些职业方向",
+            "en": "Understand which career directions are worth exploring",
+            "ms": "Memahami arah kerjaya yang wajar diterokai"
+          }
+        },
+        {
+          "id": "B",
+          "label": {
+            "zh-CN": "了解 AI 将怎样改变我正在学习或从事的职业",
+            "en": "Understand how AI may change my current field or work",
+            "ms": "Memahami cara AI mungkin mengubah bidang atau kerja semasa"
+          }
+        },
+        {
+          "id": "C",
+          "label": {
+            "zh-CN": "了解自己目前的能力、优势以及仍需要验证的地方",
+            "en": "Understand my starting point, strengths and what still needs verification",
+            "ms": "Memahami titik permulaan, kekuatan dan perkara yang perlu disahkan"
+          }
+        },
+        {
+          "id": "D",
+          "label": {
+            "zh-CN": "找到一条实际可行的技能提升与学习路线",
+            "en": "Find a practical skills and learning pathway",
+            "ms": "Mencari laluan kemahiran dan pembelajaran yang praktikal"
+          }
+        },
+        {
+          "id": "E",
+          "label": {
+            "zh-CN": "判断是否值得转行，以及怎样降低转型风险",
+            "en": "Assess a career change and reduce transition risks",
+            "ms": "Menilai pertukaran kerjaya dan mengurangkan risiko peralihan"
+          }
+        },
+        {
+          "id": "F",
+          "label": {
+            "zh-CN": "了解不同国家的职业机会与技能要求",
+            "en": "Understand career opportunities and skill requirements across countries",
+            "ms": "Memahami peluang kerjaya dan keperluan kemahiran merentas negara"
+          }
+        },
+        {
+          "id": "G",
+          "label": {
+            "zh-CN": "发现 AI 带来的新机会，探索新的职业或个人发展可能性",
+            "en": "Discover AI opportunities for new careers or personal development",
+            "ms": "Menemui peluang AI untuk kerjaya baharu atau perkembangan diri"
+          }
+        },
+        {
+          "id": "H",
+          "label": {
+            "zh-CN": "我还没有明确目标，希望系统帮助我逐步发现",
+            "en": "I have no clear goal and would like to discover it gradually",
+            "ms": "Saya belum mempunyai matlamat jelas dan mahu menemuinya secara beransur-ansur"
+          }
+        }
+      ]
+    },
+    {
+      "id": "Q09",
+      "section": 2,
+      "prompt": {
+        "zh-CN": "你希望未来主要在哪个职业市场发展？",
+        "en": "Where would you like your career to take you?",
+        "ms": "Di pasaran manakah anda mahu mengembangkan kerjaya?"
+      },
+      "kind": "single",
+      "options": [
+        {
+          "id": "A",
+          "label": {
+            "zh-CN": "🇲🇾 Malaysia — 优先探索马来西亚本地机会",
+            "en": "🇲🇾 Malaysia — prioritise local Malaysian opportunities",
+            "ms": "🇲🇾 Malaysia — utamakan peluang tempatan Malaysia"
+          }
+        },
+        {
+          "id": "B",
+          "label": {
+            "zh-CN": "🇺🇸 United States — 希望了解美国职业发展机会",
+            "en": "🇺🇸 United States — explore US career development",
+            "ms": "🇺🇸 United States — terokai perkembangan kerjaya di AS"
+          }
+        },
+        {
+          "id": "C",
+          "label": {
+            "zh-CN": "🌏 International — 对多个国际市场开放，不限定具体国家",
+            "en": "🌏 International — open to several markets without choosing a country",
+            "ms": "🌏 International — terbuka kepada pelbagai pasaran tanpa menetapkan negara"
+          }
+        },
+        {
+          "id": "D",
+          "label": {
+            "zh-CN": "Malaysia → Global — 希望以马来西亚为起点，逐步探索国际职业发展",
+            "en": "Malaysia → Global — build experience in Malaysia, then explore internationally",
+            "ms": "Malaysia → Global — bina pengalaman di Malaysia, kemudian terokai peringkat antarabangsa"
+          }
+        },
+        {
+          "id": "E",
+          "label": {
+            "zh-CN": "Compare Markets — 想先比较不同国家的要求，再考虑方向",
+            "en": "Compare Markets — compare requirements before choosing a direction",
+            "ms": "Compare Markets — bandingkan keperluan sebelum menentukan arah"
+          }
+        },
+        {
+          "id": "F",
+          "label": {
+            "zh-CN": "Not Sure Yet — 暂时不考虑地区，先了解自己的发展可能性",
+            "en": "Not Sure Yet — understand my possibilities before considering regions",
+            "ms": "Not Sure Yet — fahami kemungkinan diri sebelum mempertimbangkan wilayah"
+          }
+        }
+      ]
+    }
+  ],
+  "followups": {
+    "Q10": {
+      "student": {
+        "prompt": {
+          "zh-CN": "目前最让你犹豫的一项选择是什么？",
+          "en": "What choice are you most unsure about right now?",
+          "ms": "Pilihan apakah yang paling membuat anda ragu sekarang?"
+        },
+        "options": [
+          {
+            "id": "A",
+            "label": {
+              "zh-CN": "专业或课程方向的选择",
+              "en": "Choosing a subject or course",
+              "ms": "Memilih bidang atau kursus"
+            }
+          },
+          {
+            "id": "B",
+            "label": {
+              "zh-CN": "应该先学习什么技能",
+              "en": "Which skill to learn first",
+              "ms": "Kemahiran yang patut dipelajari dahulu"
+            }
+          },
+          {
+            "id": "C",
+            "label": {
+              "zh-CN": "如何获得第一段实习或项目经历",
+              "en": "Finding a first internship or project",
+              "ms": "Mendapatkan latihan industri atau projek pertama"
+            }
+          },
+          {
+            "id": "D",
+            "label": {
+              "zh-CN": "毕业后就业还是继续深造",
+              "en": "Employment or further study after graduation",
+              "ms": "Bekerja atau melanjutkan pengajian selepas graduasi"
+            }
+          },
+          {
+            "id": "E",
+            "label": {
+              "zh-CN": "是否应该出国学习或工作",
+              "en": "Studying or working abroad",
+              "ms": "Belajar atau bekerja di luar negara"
+            }
+          },
+          {
+            "id": "F",
+            "label": {
+              "zh-CN": "暂时没有明确的决策节点",
+              "en": "No clear decision point yet",
+              "ms": "Belum ada keputusan khusus"
+            }
+          }
+        ]
+      },
+      "working": {
+        "prompt": {
+          "zh-CN": "最近工作中最明显的变化或压力来自哪里？",
+          "en": "Where does the clearest recent change or pressure at work come from?",
+          "ms": "Dari manakah perubahan atau tekanan kerja terkini yang paling jelas?"
+        },
+        "options": [
+          {
+            "id": "A",
+            "label": {
+              "zh-CN": "AI正在改变我原本负责的任务",
+              "en": "AI is changing my existing tasks",
+              "ms": "AI mengubah tugas sedia ada"
+            }
+          },
+          {
+            "id": "B",
+            "label": {
+              "zh-CN": "工作对新技术和技能的要求越来越高",
+              "en": "Growing expectations for new technologies and skills",
+              "ms": "Keperluan teknologi dan kemahiran baharu meningkat"
+            }
+          },
+          {
+            "id": "C",
+            "label": {
+              "zh-CN": "我希望提升效率，承担更有价值的工作",
+              "en": "Improving efficiency and doing more valuable work",
+              "ms": "Meningkatkan kecekapan dan nilai kerja"
+            }
+          },
+          {
+            "id": "D",
+            "label": {
+              "zh-CN": "晋升或职业发展遇到了瓶颈",
+              "en": "A promotion or career development bottleneck",
+              "ms": "Kebuntuan kenaikan pangkat atau perkembangan kerjaya"
+            }
+          },
+          {
+            "id": "E",
+            "label": {
+              "zh-CN": "担心岗位减少、收入不稳定或职业竞争",
+              "en": "Fewer roles, unstable income or competition",
+              "ms": "Pengurangan jawatan, pendapatan tidak stabil atau persaingan"
+            }
+          },
+          {
+            "id": "F",
+            "label": {
+              "zh-CN": "暂时没有明显变化，只想提前准备",
+              "en": "No clear change; I want to prepare early",
+              "ms": "Tiada perubahan jelas; mahu bersedia awal"
+            }
+          }
+        ]
+      },
+      "transition": {
+        "prompt": {
+          "zh-CN": "转型过程中，你最担心的是什么？",
+          "en": "What concerns you most about changing careers?",
+          "ms": "Apakah kebimbangan utama anda tentang pertukaran kerjaya?"
+        },
+        "options": [
+          {
+            "id": "A",
+            "label": {
+              "zh-CN": "不确定自己的原有经验能否迁移",
+              "en": "Whether my existing experience transfers",
+              "ms": "Sama ada pengalaman sedia ada boleh dipindahkan"
+            }
+          },
+          {
+            "id": "B",
+            "label": {
+              "zh-CN": "担心缺少必要的专业基础",
+              "en": "Missing essential foundations",
+              "ms": "Kekurangan asas penting"
+            }
+          },
+          {
+            "id": "C",
+            "label": {
+              "zh-CN": "不确定目标领域是否值得投入",
+              "en": "Whether the target field is worth the investment",
+              "ms": "Sama ada bidang sasaran berbaloi untuk diterokai"
+            }
+          },
+          {
+            "id": "D",
+            "label": {
+              "zh-CN": "担心时间、收入或其他现实成本",
+              "en": "Time, income and other practical costs",
+              "ms": "Masa, pendapatan dan kos praktikal lain"
+            }
+          },
+          {
+            "id": "E",
+            "label": {
+              "zh-CN": "不知道如何获得第一段相关经历",
+              "en": "Finding first relevant experience",
+              "ms": "Mendapatkan pengalaman berkaitan pertama"
+            }
+          },
+          {
+            "id": "F",
+            "label": {
+              "zh-CN": "还没有明确的目标职业",
+              "en": "No clear target career yet",
+              "ms": "Belum ada kerjaya sasaran jelas"
+            }
+          }
+        ]
+      }
+    },
+    "Q11": {
+      "A": {
+        "prompt": {
+          "zh-CN": "具体担心哪种职业变化？",
+          "en": "What kind of career change concerns you?",
+          "ms": "Perubahan kerjaya apakah yang membimbangkan anda?"
+        },
+        "options": [
+          {
+            "id": "1",
+            "label": {
+              "zh-CN": "日常任务被自动化",
+              "en": "Automation of routine tasks",
+              "ms": "Automasi tugas rutin"
+            }
+          },
+          {
+            "id": "2",
+            "label": {
+              "zh-CN": "入门岗位减少",
+              "en": "Fewer entry-level roles",
+              "ms": "Jawatan peringkat permulaan berkurang"
+            }
+          },
+          {
+            "id": "3",
+            "label": {
+              "zh-CN": "已有技能贬值",
+              "en": "Existing skills losing value",
+              "ms": "Nilai kemahiran sedia ada merosot"
+            }
+          },
+          {
+            "id": "4",
+            "label": {
+              "zh-CN": "未来要求不清楚",
+              "en": "Unclear future requirements",
+              "ms": "Keperluan masa depan belum jelas"
+            }
+          }
+        ]
+      },
+      "B": {
+        "prompt": {
+          "zh-CN": "为什么难以确定方向？",
+          "en": "What makes choosing a direction difficult?",
+          "ms": "Apakah yang menyukarkan pemilihan arah?"
+        },
+        "options": [
+          {
+            "id": "1",
+            "label": {
+              "zh-CN": "兴趣太广",
+              "en": "Too many interests",
+              "ms": "Minat terlalu luas"
+            }
+          },
+          {
+            "id": "2",
+            "label": {
+              "zh-CN": "不知道能力是否匹配",
+              "en": "Unsure whether my capabilities fit",
+              "ms": "Tidak pasti padanan kebolehan"
+            }
+          },
+          {
+            "id": "3",
+            "label": {
+              "zh-CN": "缺少职业体验",
+              "en": "Little career experience",
+              "ms": "Kurang pengalaman meneroka kerjaya"
+            }
+          },
+          {
+            "id": "4",
+            "label": {
+              "zh-CN": "担心选错",
+              "en": "Fear of choosing wrongly",
+              "ms": "Takut tersalah pilih"
+            }
+          }
+        ]
+      },
+      "C": {
+        "prompt": {
+          "zh-CN": "哪种能力差距最困扰你？",
+          "en": "Which gap concerns you most?",
+          "ms": "Jurang manakah paling membimbangkan anda?"
+        },
+        "options": [
+          {
+            "id": "1",
+            "label": {
+              "zh-CN": "基础知识",
+              "en": "Foundations",
+              "ms": "Asas pengetahuan"
+            }
+          },
+          {
+            "id": "2",
+            "label": {
+              "zh-CN": "实践应用",
+              "en": "Practical application",
+              "ms": "Aplikasi praktikal"
+            }
+          },
+          {
+            "id": "3",
+            "label": {
+              "zh-CN": "跟进新技术",
+              "en": "Keeping up with new technology",
+              "ms": "Mengikuti teknologi baharu"
+            }
+          },
+          {
+            "id": "4",
+            "label": {
+              "zh-CN": "判断学习优先级",
+              "en": "Choosing learning priorities",
+              "ms": "Menentukan keutamaan pembelajaran"
+            }
+          }
+        ]
+      },
+      "D": {
+        "prompt": {
+          "zh-CN": "最难跨越哪一步？",
+          "en": "Which step in applying AI is hardest?",
+          "ms": "Langkah aplikasi AI manakah paling sukar?"
+        },
+        "options": [
+          {
+            "id": "1",
+            "label": {
+              "zh-CN": "不知道选择工具",
+              "en": "Choosing tools",
+              "ms": "Memilih alat"
+            }
+          },
+          {
+            "id": "2",
+            "label": {
+              "zh-CN": "不会融入流程",
+              "en": "Integrating AI into workflows",
+              "ms": "Mengintegrasikan AI dalam aliran kerja"
+            }
+          },
+          {
+            "id": "3",
+            "label": {
+              "zh-CN": "无法判断质量",
+              "en": "Checking output quality",
+              "ms": "Menyemak kualiti output"
+            }
+          },
+          {
+            "id": "4",
+            "label": {
+              "zh-CN": "无法独立交付",
+              "en": "Delivering independently",
+              "ms": "Menghasilkan kerja secara sendiri"
+            }
+          }
+        ]
+      },
+      "E": {
+        "prompt": {
+          "zh-CN": "最明显的障碍是什么？",
+          "en": "What is the clearest employment obstacle?",
+          "ms": "Apakah halangan pekerjaan paling jelas?"
+        },
+        "options": [
+          {
+            "id": "1",
+            "label": {
+              "zh-CN": "缺少岗位信息",
+              "en": "Limited job information",
+              "ms": "Maklumat pekerjaan terhad"
+            }
+          },
+          {
+            "id": "2",
+            "label": {
+              "zh-CN": "缺少作品",
+              "en": "Few work samples",
+              "ms": "Kurang hasil kerja"
+            }
+          },
+          {
+            "id": "3",
+            "label": {
+              "zh-CN": "岗位要求过高",
+              "en": "Role requirements feel too high",
+              "ms": "Keperluan pekerjaan terasa terlalu tinggi"
+            }
+          },
+          {
+            "id": "4",
+            "label": {
+              "zh-CN": "缺少实际机会",
+              "en": "Few practical opportunities",
+              "ms": "Peluang praktikal terhad"
+            }
+          }
+        ]
+      },
+      "F": {
+        "prompt": {
+          "zh-CN": "最大的转型阻力是什么？",
+          "en": "What is the largest barrier to changing careers?",
+          "ms": "Apakah halangan terbesar untuk menukar kerjaya?"
+        },
+        "options": [
+          {
+            "id": "1",
+            "label": {
+              "zh-CN": "不确定方向",
+              "en": "Unclear direction",
+              "ms": "Arah belum jelas"
+            }
+          },
+          {
+            "id": "2",
+            "label": {
+              "zh-CN": "能力迁移困难",
+              "en": "Difficulty transferring capabilities",
+              "ms": "Kesukaran memindahkan kebolehan"
+            }
+          },
+          {
+            "id": "3",
+            "label": {
+              "zh-CN": "时间或经济成本",
+              "en": "Time or financial costs",
+              "ms": "Kos masa atau kewangan"
+            }
+          },
+          {
+            "id": "4",
+            "label": {
+              "zh-CN": "缺少进入途径",
+              "en": "Limited entry routes",
+              "ms": "Laluan kemasukan terhad"
+            }
+          }
+        ]
+      },
+      "G": {
+        "prompt": {
+          "zh-CN": "最想解决的跨国问题是什么？",
+          "en": "Which cross-border issue would you most like to resolve?",
+          "ms": "Isu rentas negara manakah paling ingin diselesaikan?"
+        },
+        "options": [
+          {
+            "id": "1",
+            "label": {
+              "zh-CN": "技能认可",
+              "en": "Recognition of skills",
+              "ms": "Pengiktirafan kemahiran"
+            }
+          },
+          {
+            "id": "2",
+            "label": {
+              "zh-CN": "职业要求",
+              "en": "Career requirements",
+              "ms": "Keperluan kerjaya"
+            }
+          },
+          {
+            "id": "3",
+            "label": {
+              "zh-CN": "语言与沟通",
+              "en": "Language and communication",
+              "ms": "Bahasa dan komunikasi"
+            }
+          },
+          {
+            "id": "4",
+            "label": {
+              "zh-CN": "签证及就业资格",
+              "en": "Visas and employment eligibility",
+              "ms": "Visa dan kelayakan bekerja"
+            }
+          },
+          {
+            "id": "5",
+            "label": {
+              "zh-CN": "成本与机会",
+              "en": "Costs and opportunities",
+              "ms": "Kos dan peluang"
+            }
+          }
+        ]
+      },
+      "H": {
+        "prompt": {
+          "zh-CN": "最想探索什么机会？",
+          "en": "Which opportunity would you like to explore?",
+          "ms": "Peluang manakah ingin diterokai?"
+        },
+        "options": [
+          {
+            "id": "1",
+            "label": {
+              "zh-CN": "新兴职业",
+              "en": "Emerging careers",
+              "ms": "Kerjaya baharu"
+            }
+          },
+          {
+            "id": "2",
+            "label": {
+              "zh-CN": "AI应用开发",
+              "en": "AI application development",
+              "ms": "Pembangunan aplikasi AI"
+            }
+          },
+          {
+            "id": "3",
+            "label": {
+              "zh-CN": "创业或自由职业",
+              "en": "Entrepreneurship or freelance work",
+              "ms": "Keusahawanan atau kerja bebas"
+            }
+          },
+          {
+            "id": "4",
+            "label": {
+              "zh-CN": "提升当前工作的价值",
+              "en": "Adding value to my current work",
+              "ms": "Menambah nilai kerja semasa"
+            }
+          }
+        ]
+      },
+      "I": {
+        "prompt": {
+          "zh-CN": "希望先从什么开始？",
+          "en": "Where would you like to start?",
+          "ms": "Dari manakah anda mahu bermula?"
+        },
+        "options": [
+          {
+            "id": "1",
+            "label": {
+              "zh-CN": "了解行业变化",
+              "en": "Understanding industry changes",
+              "ms": "Memahami perubahan industri"
+            }
+          },
+          {
+            "id": "2",
+            "label": {
+              "zh-CN": "探索兴趣",
+              "en": "Exploring interests",
+              "ms": "Meneroka minat"
+            }
+          },
+          {
+            "id": "3",
+            "label": {
+              "zh-CN": "了解职业方向",
+              "en": "Understanding career directions",
+              "ms": "Memahami arah kerjaya"
+            }
+          },
+          {
+            "id": "4",
+            "label": {
+              "zh-CN": "暂时没有偏好",
+              "en": "No preference yet",
+              "ms": "Belum ada keutamaan"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "story": {
+    "id": "Q12",
+    "prompt": {
+      "zh-CN": "有没有什么重要的事情，是前面的选项没有覆盖的？",
+      "en": "Is there anything else you'd like us to understand?",
+      "ms": "Adakah perkara penting lain yang belum diliputi oleh pilihan tadi?"
+    },
+    "placeholder": {
+      "zh-CN": "例如：我现在读计算机专业，但担心AI让初级程序员更难找工作。我希望未来在马来西亚积累经验，再探索美国的工作机会，可是不知道应该重点提高哪些技能……",
+      "en": "For example: I study computing and worry about entry-level programming jobs. I hope to gain experience in Malaysia before exploring the US, but do not know which skills to prioritise.",
+      "ms": "Contohnya: Saya belajar pengkomputeran dan bimbang tentang pekerjaan pengaturcaraan peringkat permulaan. Saya mahu membina pengalaman di Malaysia sebelum meneroka AS, tetapi tidak tahu kemahiran yang patut diutamakan."
+    }
+  }
+}

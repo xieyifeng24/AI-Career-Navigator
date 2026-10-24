@@ -1,5 +1,5 @@
 {
-  "version": "starting-point-1",
+  "version": "starting-point-2",
   "source": "docs/STARTING_POINT_QUESTIONNAIRE.md",
   "questions": [
     {
@@ -189,6 +189,10 @@
             "ms": "Saya mahu memahami perubahan pekerjaan dan menemui arah yang mungkin dahulu."
           }
         }
+      ],
+      "maxSelections": 4,
+      "exclusive": [
+        "I"
       ]
     },
     {
@@ -255,11 +259,11 @@
       "id": "Q04",
       "section": 1,
       "prompt": {
-        "zh-CN": "你目前主要在哪个领域学习、工作或积累经验？",
-        "en": "What is your current field of study or experience?",
-        "ms": "Apakah bidang pengajian atau pengalaman semasa anda?"
+        "en": "Which fields have you studied or worked in?",
+        "zh-CN": "你学习或实践过哪些领域？",
+        "ms": "Bidang manakah pernah anda pelajari atau ceburi?"
       },
-      "kind": "single",
+      "kind": "multi",
       "options": [
         {
           "id": "A",
@@ -341,6 +345,10 @@
             "ms": "Lain-lain (boleh diterangkan dalam ruangan cerita pilihan di akhir)"
           }
         }
+      ],
+      "maxSelections": 4,
+      "exclusive": [
+        "I"
       ]
     },
     {
@@ -458,11 +466,11 @@
       "id": "Q06",
       "section": 1,
       "prompt": {
-        "zh-CN": "到目前为止，你完成过哪类最有代表性的学习或工作成果？",
-        "en": "What is the strongest evidence of your current experience?",
-        "ms": "Apakah bukti pengalaman semasa yang paling mewakili anda?"
+        "en": "Which experiences and outcomes have you had?",
+        "zh-CN": "你有过哪些实际经历与成果？",
+        "ms": "Apakah pengalaman dan hasil yang anda miliki?"
       },
-      "kind": "single",
+      "kind": "multi",
       "options": [
         {
           "id": "A",
@@ -499,9 +507,17 @@
         {
           "id": "E",
           "label": {
-            "zh-CN": "我在实习、工作或真实场景中交付过成果，并得到实际反馈",
-            "en": "I have delivered work in an internship, job or real setting and received feedback",
-            "ms": "Saya menghasilkan kerja dalam latihan industri, pekerjaan atau situasi sebenar dan menerima maklum balas"
+            "en": "I have applied my learning in an internship and received feedback",
+            "zh-CN": "我曾在实习中应用所学，并获得反馈",
+            "ms": "Saya pernah mengaplikasikan pembelajaran semasa latihan industri dan menerima maklum balas"
+          }
+        },
+        {
+          "id": "W",
+          "label": {
+            "en": "I have delivered work for an employer, client or community project",
+            "zh-CN": "我曾为雇主、客户或社区项目交付实际成果",
+            "ms": "Saya pernah menghasilkan kerja untuk majikan, pelanggan atau projek komuniti"
           }
         },
         {
@@ -520,15 +536,20 @@
             "ms": "Saya mempunyai pengalaman tetapi tidak pasti kategorinya"
           }
         }
+      ],
+      "maxSelections": 5,
+      "exclusive": [
+        "A",
+        "G"
       ]
     },
     {
       "id": "Q07",
       "section": 1,
       "prompt": {
-        "zh-CN": "如果你想让自己在未来更有竞争力，你认为目前最需要解决什么？",
-        "en": "What is your biggest obstacle to making progress?",
-        "ms": "Apakah halangan utama untuk anda maju?"
+        "en": "Which obstacles would you like to work through?",
+        "zh-CN": "你目前希望突破哪些发展障碍？",
+        "ms": "Halangan manakah yang ingin anda atasi?"
       },
       "kind": "multi",
       "options": [
@@ -604,6 +625,10 @@
             "ms": "Belum pasti: saya memerlukan gambaran lebih jelas sebelum mengenal pasti jurang"
           }
         }
+      ],
+      "maxSelections": 4,
+      "exclusive": [
+        "I"
       ]
     },
     {
@@ -614,7 +639,7 @@
         "en": "What would make this assessment valuable to you?",
         "ms": "Apakah hasil yang menjadikan penilaian ini berguna untuk anda?"
       },
-      "kind": "single",
+      "kind": "multi",
       "options": [
         {
           "id": "A",
@@ -680,6 +705,10 @@
             "ms": "Saya belum mempunyai matlamat jelas dan mahu menemuinya secara beransur-ansur"
           }
         }
+      ],
+      "maxSelections": 4,
+      "exclusive": [
+        "H"
       ]
     },
     {
@@ -690,7 +719,7 @@
         "en": "Where would you like your career to take you?",
         "ms": "Di pasaran manakah anda mahu mengembangkan kerjaya?"
       },
-      "kind": "single",
+      "kind": "priority",
       "options": [
         {
           "id": "A",
@@ -738,6 +767,210 @@
             "zh-CN": "Not Sure Yet — 暂时不考虑地区，先了解自己的发展可能性",
             "en": "Not Sure Yet — understand my possibilities before considering regions",
             "ms": "Not Sure Yet — fahami kemungkinan diri sebelum mempertimbangkan wilayah"
+          }
+        }
+      ],
+      "maxSelections": 3,
+      "exclusive": [
+        "F"
+      ]
+    },
+    {
+      "id": "Q12",
+      "section": 2,
+      "kind": "multi",
+      "maxSelections": 4,
+      "exclusive": [
+        "unsure"
+      ],
+      "prompt": {
+        "en": "Which career directions would you like to explore?",
+        "zh-CN": "你同时对哪些职业方向感兴趣？",
+        "ms": "Arah kerjaya manakah ingin anda terokai?"
+      },
+      "options": [
+        {
+          "id": "SW",
+          "label": {
+            "zh-CN": "软件开发与AI工程",
+            "en": "Software & AI Engineering",
+            "ms": "Pembangunan Perisian & Kejuruteraan AI"
+          }
+        },
+        {
+          "id": "DATA",
+          "label": {
+            "zh-CN": "数据分析与数据科学",
+            "en": "Data Analytics & Data Science",
+            "ms": "Analitik Data & Sains Data"
+          }
+        },
+        {
+          "id": "FIN",
+          "label": {
+            "zh-CN": "金融与会计",
+            "en": "Finance & Accounting",
+            "ms": "Kewangan & Perakaunan"
+          }
+        },
+        {
+          "id": "PM",
+          "label": {
+            "zh-CN": "商业管理与产品",
+            "en": "Business Management & Product",
+            "ms": "Pengurusan Perniagaan & Produk"
+          }
+        },
+        {
+          "id": "MKT",
+          "label": {
+            "zh-CN": "市场营销与销售",
+            "en": "Marketing & Sales",
+            "ms": "Pemasaran & Jualan"
+          }
+        },
+        {
+          "id": "DES",
+          "label": {
+            "zh-CN": "设计与数字内容",
+            "en": "Design & Digital Content",
+            "ms": "Reka Bentuk & Kandungan Digital"
+          }
+        },
+        {
+          "id": "ENG",
+          "label": {
+            "zh-CN": "工程与智能制造",
+            "en": "Engineering & Smart Manufacturing",
+            "ms": "Kejuruteraan & Pembuatan Pintar"
+          }
+        },
+        {
+          "id": "HLT",
+          "label": {
+            "zh-CN": "医疗健康与生命科学",
+            "en": "Healthcare & Life Sciences",
+            "ms": "Penjagaan Kesihatan & Sains Hayat"
+          }
+        },
+        {
+          "id": "EDU",
+          "label": {
+            "zh-CN": "教育与科研",
+            "en": "Education & Research",
+            "ms": "Pendidikan & Penyelidikan"
+          }
+        },
+        {
+          "id": "OPS",
+          "label": {
+            "zh-CN": "运营、供应链与客户服务",
+            "en": "Operations, Supply Chain & Customer Service",
+            "ms": "Operasi, Rantaian Bekalan & Khidmat Pelanggan"
+          }
+        },
+        {
+          "id": "unsure",
+          "label": {
+            "en": "I want to discover my interests through trying different tasks",
+            "zh-CN": "我希望通过尝试不同任务发现兴趣",
+            "ms": "Saya ingin mengenal minat melalui pelbagai tugas"
+          }
+        }
+      ]
+    },
+    {
+      "id": "Q13",
+      "section": 2,
+      "kind": "multi",
+      "maxSelections": 8,
+      "exclusive": [
+        "none"
+      ],
+      "prompt": {
+        "en": "Which AI practices describe what you actually do today?",
+        "zh-CN": "哪些 AI 实践符合你目前的真实情况？",
+        "ms": "Amalan AI manakah menggambarkan keadaan sebenar anda?"
+      },
+      "options": [
+        {
+          "id": "understand",
+          "label": {
+            "en": "I can explain an AI limitation and why output quality depends on context",
+            "zh-CN": "我能说明 AI 的一项局限，以及情境为何会影响输出质量",
+            "ms": "Saya boleh menerangkan batasan AI dan sebab konteks mempengaruhi kualiti hasil"
+          }
+        },
+        {
+          "id": "learn",
+          "label": {
+            "en": "I use AI to search, understand concepts or study",
+            "zh-CN": "我用 AI 搜索资料、理解概念或辅助学习",
+            "ms": "Saya menggunakan AI untuk carian, memahami konsep atau belajar"
+          }
+        },
+        {
+          "id": "draft",
+          "label": {
+            "en": "I use AI to draft, translate or organise content",
+            "zh-CN": "我用 AI 起草、翻译或整理内容",
+            "ms": "Saya menggunakan AI untuk mendraf, menterjemah atau menyusun kandungan"
+          }
+        },
+        {
+          "id": "analyze",
+          "label": {
+            "en": "I use AI to analyse information and compare options",
+            "zh-CN": "我用 AI 分析信息、比较方案",
+            "ms": "Saya menggunakan AI untuk menganalisis maklumat dan membanding pilihan"
+          }
+        },
+        {
+          "id": "code",
+          "label": {
+            "en": "I use AI while writing or debugging code",
+            "zh-CN": "我在编写或调试代码时使用 AI",
+            "ms": "Saya menggunakan AI semasa menulis atau menyahpepijat kod"
+          }
+        },
+        {
+          "id": "check",
+          "label": {
+            "en": "I check AI outputs against sources, tests or calculations",
+            "zh-CN": "我会通过来源、测试或计算核对 AI 输出",
+            "ms": "Saya menyemak hasil AI dengan sumber, ujian atau pengiraan"
+          }
+        },
+        {
+          "id": "workflow",
+          "label": {
+            "en": "I use AI across several steps and review the handoffs",
+            "zh-CN": "我把 AI 用在多个流程步骤，并检查步骤间的交接",
+            "ms": "Saya menggunakan AI dalam beberapa langkah dan menyemak serahan antara langkah"
+          }
+        },
+        {
+          "id": "api",
+          "label": {
+            "en": "I have built an application that calls an AI API",
+            "zh-CN": "我曾构建实际调用 AI API 的应用",
+            "ms": "Saya pernah membina aplikasi yang memanggil API AI"
+          }
+        },
+        {
+          "id": "automate",
+          "label": {
+            "en": "I have built and tested an automated workflow",
+            "zh-CN": "我曾搭建并测试自动化工作流",
+            "ms": "Saya pernah membina dan menguji aliran kerja automatik"
+          }
+        },
+        {
+          "id": "none",
+          "label": {
+            "en": "I have not used AI yet",
+            "zh-CN": "我目前还没有使用过 AI",
+            "ms": "Saya belum menggunakan AI"
           }
         }
       ]
@@ -1298,7 +1531,7 @@
     }
   },
   "story": {
-    "id": "Q12",
+    "id": "Q14",
     "prompt": {
       "zh-CN": "有没有什么重要的事情，是前面的选项没有覆盖的？",
       "en": "Is there anything else you'd like us to understand?",

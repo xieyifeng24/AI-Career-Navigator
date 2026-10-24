@@ -1,13 +1,7 @@
 import spec from './behaviors.json' with {type:'json'};
 export const RESPONSE_VERSION=spec.version;
 export const behaviorOptions=q=>spec.constructs[q.construct]||[];
-export function validResponse(q,value){
- if(value===null)return true;
- if(Number.isInteger(value))return value>=1&&value<=7; // retain, never migrate historical evidence
- if(!Array.isArray(value)||!value.length||value.length>spec.maxSelections||new Set(value).size!==value.length)return false;
- const options=behaviorOptions(q);
- return value.every(id=>options.some(o=>o.id===id))&&!(value.length>1&&value.some(id=>options.find(o=>o.id===id)?.exclusive));
-}
+export function validResponse(q,value){return value===null||(Number.isInteger(value)&&value>=1&&value<=7);}
 export function responseStrength(q,value){
  if(!validResponse(q,value))throw Error('INVALID_BEHAVIOR_RESPONSE');
  if(!Array.isArray(value))return value;

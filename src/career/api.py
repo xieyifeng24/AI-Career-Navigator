@@ -219,12 +219,12 @@ async def regional_bundle():
 
 @app.get('/assessment/{filename}')
 async def assessment_asset(filename: str):
-    if filename not in {'engine.js','views.js','adapter.js','styles.css','roles.json','skill-tree.js','dna.css','career-research.js','knowledge.js','release.js'}: raise HTTPException(404)
+    if filename not in {'engine.js','views.js','adapter.js','styles.css','roles.json','skill-tree.js','dna.css','career-research.js','knowledge.js','release.js','personal-model.js','personal-view.js'}: raise HTTPException(404)
     return FileResponse(ROOT/'prototype/assessment'/filename)
 
 @app.get('/combined/{filename}')
 async def combined_asset(filename: str):
-    if filename not in {'app.js','model.js','styles.css','regional.css','results.js','ui.js','copy.js','v2-report.js','current-analysis.js','p0-analysis.js','sw-analysis.js','regional-view.js','starting-point.js','starting-point-bank.json','starting-point-view.js','starting-point-analysis.js','intelligence.js','page-map.js','report-model.js'}: raise HTTPException(404)
+    if filename not in {'app.js','model.js','styles.css','regional.css','results.js','ui.js','copy.js','v2-report.js','current-analysis.js','p0-analysis.js','sw-analysis.js','regional-view.js','starting-point.js','starting-point-bank.json','starting-point-legacy.js','starting-point-legacy.json','starting-point-view.js','starting-point-analysis.js','intelligence.js','page-map.js','report-model.js'}: raise HTTPException(404)
     return FileResponse(ROOT/'prototype/combined'/filename)
 
 @app.get('/combined/pages/{filename}')

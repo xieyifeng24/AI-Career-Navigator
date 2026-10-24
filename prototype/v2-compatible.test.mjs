@@ -16,7 +16,7 @@ import knowledge from '../data/knowledge/current.json' with {type:'json'};
 function complete(track='SW',answer=7,locale='en'){
  let state={...fresh(locale),profile:sampleProfile(),notes:'<script>fictional note</script>'};
  for(let i=0;i<4;i++)state=nextBackground(state).state;
- state.v3=chooseTrack(state.v3,track);
+ state.v3=chooseTrack({...state.v3,...(answer===null?{responseVersion:"legacy-likert7"}:{})},track);
  for(let i=0;i<12;i++){const q=bank.questions.filter(q=>q.trackId==='GENERAL'||q.trackId===track)[i];state.v3=advance(selectAnswer(state.v3,q.id,answer));}
  return {...state,phase:'report',goal:9};
 }
@@ -82,8 +82,8 @@ test('12 current answers cover seven dimensions independently of absent legacy V
  for(const locale of bank.languageCodes){
   setLanguage(locale);const html=renderCompatibleReport(complete('SW',7,locale));
   assert.doesNotMatch(html,/0\/12|G01.*尚未作答|Inspect all 12 selections and rules/);
-  assert.match(html,/12\/12/);
-  assert.ok(!html.includes(bank.questions[0].statement[locale]));
+  assert.match(html,/personal-association/);
+  assert.ok(model.signals.items.every(item=>item.value===7));
   assert.doesNotMatch(html,/data-compatible-evidence|v3-review-list/);
  }
 });

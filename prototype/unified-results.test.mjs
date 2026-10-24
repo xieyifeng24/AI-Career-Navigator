@@ -81,7 +81,7 @@ test('What If presents one restore control for an active scenario',()=>{
 });
 test('saved original answers, optional notes, V3 and scenario restore independently; invalid scenario does not erase answers',()=>{
  let state={...fresh('ms'),profile:sampleProfile(),phase:'report',notes:'Fictional context <script>',page:'tree',focus:'data',scenarioPatch:{weeklyTime:'over40'},assumedSkills:['data:skill:0']};
- state.v3=chooseTrack(state.v3,'DATA');for(const q of questionsFor('DATA')){state.v3=selectAnswer(state.v3,q.id,null);state.v3=advance(state.v3);}
+ state.v3=chooseTrack({...state.v3,responseVersion:'legacy-likert7'},'DATA');for(const q of questionsFor('DATA')){state.v3=selectAnswer(state.v3,q.id,null);state.v3=advance(state.v3);}
  const saved=restore(JSON.stringify(state));assert.deepEqual(saved.profile,state.profile);assert.deepEqual(saved.v3,state.v3);assert.equal(saved.notes,state.notes);assert.deepEqual(saved.scenarioPatch,state.scenarioPatch);
  const invalid=restore(JSON.stringify({...state,scenarioPatch:{salary:999}}));assert.deepEqual(invalid.profile,state.profile);assert.deepEqual(invalid.scenarioPatch,{});
 });

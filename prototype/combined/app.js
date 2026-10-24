@@ -28,7 +28,7 @@ export function mountCombined({root,onHome}) {
  refreshAssessmentKnowledge().catch(()=>false); // next report uses refreshed validated data; open reports remain stable
 
  let reportSignature='',cachedAssessment=null;
- try{const saved=JSON.parse(storage?.getItem('career-evidence-report-v1')||'null');if(saved?.assessment?.version==='evidence-engine-1.1'){reportSignature=saved.signature;cachedAssessment=saved.assessment;}}catch{}
+ try{const saved=JSON.parse(storage?.getItem('career-evidence-report-v1')||'null');if(saved?.assessment?.version==='evidence-engine-2.0'){reportSignature=saved.signature;cachedAssessment=saved.assessment;}}catch{}
  const stampReport=()=>{if(state.phase!=='report')return;const key=JSON.stringify([state.v3.trackId,state.v3.answers,state.startingPoint?.answers,state.startingPoint?.story,state.profile.exactWeeklyHours,currentKnowledge().version,v2Options.regionalSnapshot?.version||regional.version]);if(key!==reportSignature||!cachedAssessment){reportSignature=key;cachedAssessment=buildAssessment(state,{generatedAt:new Date().toISOString(),market:v2Options.regionalSnapshot||regional});try{storage?.setItem('career-evidence-report-v1',JSON.stringify({signature:key,assessment:cachedAssessment}));}catch{}}v2Options.assessment=cachedAssessment;state.reportGeneratedAt=cachedAssessment.generatedAt;};
 
  let skillProgress={};try{skillProgress=JSON.parse(storage?.getItem('career-skill-progress-v1')||'{}')||{};}catch{}
@@ -95,7 +95,7 @@ export function mountCombined({root,onHome}) {
  function change(event) {
   const target=event.target;
   if(target.dataset.startingField){
-   try{state={...state,startingPoint:updateStartingPoint(state.startingPoint,target.dataset.startingField,target.value,target.checked!==false)};errors={};}catch(error){errors.starting=error.message==='MAX_TWO'?'multi':'single';}
+   try{state={...state,startingPoint:updateStartingPoint(state.startingPoint,target.dataset.startingField,target.value,target.checked!==false)};errors={};}catch(error){errors.starting=error.message==='MAX_SELECTIONS'?'multi':'single';}
    render();[...root.querySelectorAll(`[name="${target.name}"]`)].find(el=>el.value===target.value)?.focus();return;
   }
   if(target.dataset.assessmentConsent!==undefined){v2Options.aiConsent=target.checked;return;}
@@ -112,13 +112,8 @@ export function mountCombined({root,onHome}) {
   }
   if(['combined-language-select','v3-language'].includes(target.id)){aiRequestSerial++;setLanguage(target.value);errors={};v2Options.ai={status:'idle'};render();root.querySelector('#combined-language-select,#v3-language')?.focus();return;}
   if(state.phase==='background'&&target.dataset.field){state=updateBackground(state,target.dataset.field,target.value,target.checked!==false);delete errors[target.dataset.field];render();[...document.getElementsByName(target.name)].find(el=>el.value===target.value)?.focus();return;}
-  if(state.phase==='v3'&&target.name==='v3-behavior'){
-   const q=questionsFor(state.v3.trackId)[state.v3.index];
-   try{const values=toggleBehavior(q,state.v3.answers[q.id],target.value,target.checked);const answers={...state.v3.answers};if(values.length)answers[q.id]=values;else delete answers[q.id];state={...state,v3:{...state.v3,answers}};errors={};}catch{errors.answer='Choose up to three options.';}
-   render();root.querySelector(`input[name="v3-behavior"][value="${target.value}"]`)?.focus({preventScroll:true});return;
-  }
   if(state.phase==='v3'&&target.name==='v3-answer'){
-   state={...state,v3:selectAnswer(state.v3,questionsFor(state.v3.trackId)[state.v3.index].id,target.value==='unknown'?null:Number(target.value))};errors={};render();root.querySelector(`input[name="v3-answer"][value="${target.value}"]`)?.focus({preventScroll:true});
+   state={...state,v3:selectAnswer(state.v3,questionsFor(state.v3.trackId)[state.v3.index].id,Number(target.value))};errors={};render();root.querySelector(`input[name="v3-answer"][value="${target.value}"]`)?.focus({preventScroll:true});
   }
  }
  function submit(event) {
@@ -152,6 +147,7 @@ export function mountCombined({root,onHome}) {
   if(action==='starting-explore'){v2Options.directionGuide=!v2Options.directionGuide;render();return;}
 
   if(state.phase==='report'){
+   if(action?.startsWith('ai-focus:')){v2Options.aiFocus=action.slice(9);render();root.querySelector(`[data-combined-action="${action}"]`)?.focus({preventScroll:true});return;}
    if(action?.startsWith('region:')){const region=action.slice(7);if(['MY','US','GLOBAL'].includes(region)){v2Options.region=region;v2Options.ai={status:'idle'};render();}return;}
    if(action==='assessment-ai'){requestAssessmentAI();return;}
    if(action.startsWith('plan:')){v2Options.assumptions={...v2Options.assumptions,targetCareer:action.slice(5)};state={...state,page:'whatif'};render(true);return;}

@@ -1,0 +1,27 @@
+[
+  {
+    "page": "profile",
+    "count": 156,
+    "failures": []
+  },
+  {
+    "page": "capability",
+    "count": 80,
+    "failures": []
+  },
+  {
+    "page": "galaxy",
+    "count": 246,
+    "failures": []
+  },
+  {
+    "page": "whatif",
+    "count": 106,
+    "failures": []
+  },
+  {
+    "page": "impact",
+    "count": 141,
+    "failures": []
+  }
+]

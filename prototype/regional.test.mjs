@@ -10,7 +10,7 @@ import {setLanguage} from './i18n.js';
 function complete(){
  let state={...fresh('en'),profile:sampleProfile()};
  for(let i=0;i<4;i++)state=nextBackground(state).state;
- state.v3=chooseTrack(state.v3,'SW');
+ state.v3=chooseTrack({...state.v3,responseVersion:'legacy-likert7'},'SW');
  for(const q of bank.questions.filter(q=>q.trackId==='GENERAL'||q.trackId==='SW'))
   state.v3=advance(selectAnswer(state.v3,q.id,q.id==='SW05'?null:5));
  return {...state,phase:'report',page:'overview'};

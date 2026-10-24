@@ -1,7 +1,8 @@
 // Answer collection only. No scoring, reporting, AI, or V2 answer migration.
 import bank from './bank.json' with {type:'json'};
 export {bank};
-import {RESPONSE_VERSION,validResponse,behaviorOptions} from './behaviors.js';
+export const RESPONSE_VERSION='likert7-2';
+export const validDirectionAnswer=value=>Number.isInteger(value)&&value>=1&&value<=7;
 export const VERSION = '3.0.0';
 export const STORAGE_KEY = 'career-questionnaire-v3-phase1';
 export const languages = ['en','zh-CN','ms'];
@@ -45,8 +46,8 @@ export function questionsFor(trackId) {
   if (!bank.tracks.some(track => track.id === trackId)) throw new Error('INVALID_TRACK');
   return [...bank.questions.filter(q => q.trackId === 'GENERAL'), ...bank.questions.filter(q => q.trackId === trackId)];
 }
-export function newSession() {
-  return {version:VERSION, responseVersion:RESPONSE_VERSION, language:bank.defaultLanguage, trackId:'', screen:'tracks', index:0, answers:{}};
+export function newSession({legacy=false}={}) {
+  return {version:VERSION, responseVersion:legacy?'legacy-likert7':RESPONSE_VERSION, language:bank.defaultLanguage, trackId:'', screen:'tracks', index:0, answers:{}};
 }
 export function chooseTrack(state, trackId) {
   requireV3(state);
@@ -58,12 +59,11 @@ export function changeLanguage(state, language) {
   if (!languages.includes(language)) throw new Error('INVALID_LANGUAGE');
   return {...state, language};
 }
-export function selectAnswer(state, id, value) {
-  requireV3(state);
-  if (!questionsFor(state.trackId).some(q => q.id === id && validResponse(q,value))) throw new Error('INVALID_V3_ANSWER');
-  const q=questionsFor(state.trackId).find(q=>q.id===id);
-  const canonical=Array.isArray(value)?behaviorOptions(q).filter(o=>value.includes(o.id)).map(o=>o.id):value;
-  return {...state, answers:{...state.answers, [id]:canonical}};
+export function selectAnswer(state,id,value){
+ requireV3(state);
+ if(!questionsFor(state.trackId).some(q=>q.id===id)||!(validDirectionAnswer(value)||value===null&&state.responseVersion==='legacy-likert7'))throw Error('INVALID_V3_ANSWER');
+ const needsReanswer=(state.needsReanswer||[]).filter(qid=>qid!==id);
+ return {...state,answers:{...state.answers,[id]:value},...(state.needsReanswer?{needsReanswer}: {})};
 }
 export function answeredCount(state) { return state.trackId ? questionsFor(state.trackId).filter(q => owns(state.answers, q.id)).length : 0; }
 export function advance(state) {
@@ -80,19 +80,27 @@ export function previous(state) {
   if (state.screen === 'review') return {...state, screen:'question', index:11};
   return state.index === 0 ? {...state, screen:'tracks'} : {...state, index:state.index - 1};
 }
-export function restoreSession(raw) {
-  try {
-    const state = JSON.parse(raw);
-    if (!state || (state.responseVersion&&state.responseVersion!==RESPONSE_VERSION) || state.version !== VERSION || !languages.includes(state.language) || !['tracks','question','review'].includes(state.screen)) return newSession();
-    if (!Number.isInteger(state.index) || state.index < 0 || state.index > 11 || !state.answers || Array.isArray(state.answers) || typeof state.answers !== 'object') return newSession();
-    const allowed = new Set(state.trackId ? questionsFor(state.trackId).map(q => q.id) : []);
-    if (!state.trackId && state.screen !== 'tracks') return newSession();
-    if (Object.entries(state.answers).some(([id, value]) => !allowed.has(id) || !validResponse(questionsFor(state.trackId).find(q=>q.id===id),value))) return newSession();
-    const clean = {version:VERSION, ...(state.responseVersion?{responseVersion:state.responseVersion}:{}), language:state.language, trackId:state.trackId, screen:state.screen, index:state.index, answers:{...state.answers}};
-    if (clean.screen === 'review' && answeredCount(clean) !== 12) return newSession();
-    if (clean.screen === 'question' && questionsFor(clean.trackId).slice(0,clean.index).some(q => !owns(clean.answers,q.id))) return newSession();
-    return clean;
-  } catch { return newSession(); }
+export function restoreSession(raw){
+ try{
+ const s=JSON.parse(raw);
+ if(!s||s.version!==VERSION||!languages.includes(s.language)||!['tracks','question','review'].includes(s.screen)||!Number.isInteger(s.index)||s.index<0||s.index>11||!s.answers||Array.isArray(s.answers)||typeof s.answers!=='object')return newSession();
+ if(s.responseVersion&&!['likert7-2','behavior-evidence-1','legacy-likert7'].includes(s.responseVersion))return newSession();
+ if(!s.trackId)return s.screen==='tracks'&&Object.keys(s.answers).length===0?{...newSession(),language:s.language}:newSession();
+ const questions=questionsFor(s.trackId),allowed=new Set(questions.map(q=>q.id));
+ if(Object.keys(s.answers).some(id=>!allowed.has(id)))return newSession();
+ const answers={},archivedAnswers={...(s.archivedAnswers||{})};let migrated=false;
+ for(const [id,v]of Object.entries(s.answers)){
+  if(validDirectionAnswer(v)||s.responseVersion==='legacy-likert7'&&v===null)answers[id]=v;
+  else if(Array.isArray(v)||v===null){archivedAnswers[id]=v;migrated=true;}
+  else return newSession();
+ }
+ const needsReanswer=questions.filter(q=>!Object.hasOwn(answers,q.id)).map(q=>q.id);
+ const clean={version:VERSION,responseVersion:s.responseVersion==='legacy-likert7'?'legacy-likert7':RESPONSE_VERSION,language:s.language,trackId:s.trackId,screen:s.screen,index:s.index,answers};
+ if(migrated||s.needsReanswer?.length||Object.keys(archivedAnswers).length){clean.needsReanswer=needsReanswer;clean.archivedAnswers=archivedAnswers;}
+ if(s.screen==='review'&&needsReanswer.length||migrated){clean.screen='question';clean.index=questions.findIndex(q=>!Object.hasOwn(answers,q.id));}
+ if(clean.screen==='question'&&questions.slice(0,clean.index).some(q=>!Object.hasOwn(answers,q.id)))clean.index=questions.findIndex(q=>!Object.hasOwn(answers,q.id));
+ return clean;
+ }catch{return newSession();}
 }
 export function loadSession(storage) {
   try { return restoreSession(storage.getItem(STORAGE_KEY)); } catch { return newSession(); }

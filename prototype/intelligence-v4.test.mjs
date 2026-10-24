@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {fresh,completeAssessment} from './combined/model.js';
-import {newStartingPoint,updateStartingPoint,advanceStartingPoint} from './combined/starting-point.js';
+import {newStartingPoint,updateStartingPoint,advanceStartingPoint} from './combined/starting-point-legacy.js';
 import {bank,chooseTrack,selectAnswer,advance} from './v3/engine.js';
 import {buildCompatibleReport,renderCompatibleReport} from './combined/v2-report.js';
 import {buildIntelligence,scenarioDifference} from './combined/intelligence.js';

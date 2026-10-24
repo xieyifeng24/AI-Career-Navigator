@@ -1,5 +1,7 @@
 {
-  "release": "career-navigator-production-20261024-behavior-1",
-  "baseline": "5ce584b410ce47c193fd6bbaca55742bb7c9e4aa",
-  "responseContract": "behavior-evidence-1"
+  "release": "career-navigator-emergency-20261024-intake2-likert2",
+  "baseline": "6d194432ea24cebc48f9cb9c305c89e757bb0349",
+  "startingPointContract": "starting-point-2",
+  "responseContract": "likert7-2",
+  "analysisContract": "evidence-engine-2.0"
 }

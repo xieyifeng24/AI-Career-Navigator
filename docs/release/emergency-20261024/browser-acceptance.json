@@ -1,0 +1,326 @@
+[
+  {
+    "id": "freshman",
+    "language": "en",
+    "width": 1440,
+    "intakeCount": 14,
+    "directionAnswers": 12,
+    "pages": 5,
+    "errors": [],
+    "failed": [],
+    "overflow": [],
+    "contrast": {
+      "min": 5.777773207330241,
+      "count": 47,
+      "failures": []
+    },
+    "profile": "YOUR FIRST PRIORITY\nUnclear future direction\n\nAlso on your mind: Skills and competitiveness\n\nSee the evidence · Q02 / Q08\nWhat you want to achieve\n\nUnderstand which career directions are worth exploring · Find a practical skills and learning pathway",
+    "scenarioRestored": true
+  },
+  {
+    "id": "intern",
+    "language": "en",
+    "width": 1440,
+    "intakeCount": 14,
+    "directionAnswers": 12,
+    "pages": 5,
+    "errors": [],
+    "failed": [],
+    "overflow": [],
+    "contrast": {
+      "min": 5.777773207330241,
+      "count": 47,
+      "failures": []
+    },
+    "profile": "YOUR FIRST PRIORITY\nEmployment and career development\n\nAlso on your mind: Skills and competitiveness\n\nSee the evidence · Q02 / Q08\nWhat you want to achieve\n\nUnderstand my starting point, strengths and what still needs verification · Find a practical skills and learning pathway",
+    "scenarioRestored": true
+  },
+  {
+    "id": "coder",
+    "language": "en",
+    "width": 1440,
+    "intakeCount": 14,
+    "directionAnswers": 12,
+    "pages": 5,
+    "errors": [],
+    "failed": [],
+    "overflow": [],
+    "contrast": {
+      "min": 5.777773207330241,
+      "count": 47,
+      "failures": []
+    },
+    "profile": "YOUR FIRST PRIORITY\nMissing new AI opportunities\n\nAlso on your mind: Difficulty applying AI\n\nSee the evidence · Q02 / Q08\nWhat you want to achieve\n\nUnderstand my starting point, strengths and what still needs verification · Discover AI opportunities for new careers or personal development",
+    "scenarioRestored": true
+  },
+  {
+    "id": "transition",
+    "language": "en",
+    "width": 1440,
+    "intakeCount": 14,
+    "directionAnswers": 12,
+    "pages": 5,
+    "errors": [],
+    "failed": [],
+    "overflow": [],
+    "contrast": {
+      "min": 5.777773207330241,
+      "count": 47,
+      "failures": []
+    },
+    "profile": "YOUR FIRST PRIORITY\nUncertainty about changing careers\n\nAlso on your mind: Difficulty applying AI · International career development\n\nSee the evidence · Q02 / Q08\nWhat you want to achieve\n\nAssess a career change and reduce transition risks · Understand career opportunities and skill requirements across countries",
+    "scenarioRestored": true
+  },
+  {
+    "id": "uncertain",
+    "language": "en",
+    "width": 1440,
+    "intakeCount": 13,
+    "directionAnswers": 12,
+    "pages": 5,
+    "errors": [],
+    "failed": [],
+    "overflow": [],
+    "contrast": {
+      "min": 5.777773207330241,
+      "count": 47,
+      "failures": []
+    },
+    "profile": "YOUR FIRST PRIORITY\nI am not sure what concerns me yet\nSee the evidence · Q02 / Q08\nWhat you want to achieve\n\nI have no clear goal and would like to discover it gradually",
+    "scenarioRestored": true
+  },
+  {
+    "id": "multiple",
+    "language": "en",
+    "width": 1440,
+    "intakeCount": 14,
+    "directionAnswers": 12,
+    "pages": 5,
+    "errors": [],
+    "failed": [],
+    "overflow": [],
+    "contrast": {
+      "min": 5.777773207330241,
+      "count": 47,
+      "failures": []
+    },
+    "profile": "YOUR FIRST PRIORITY\nUnclear future direction\n\nAlso on your mind: Employment and career development · Missing new AI opportunities\n\nSee the evidence · Q02 / Q08\nWhat you want to achieve\n\nUnderstand which career directions are worth exploring · Understand my starting point, strengths and what still needs verification · Discover AI opportunities for new careers or personal development",
+    "scenarioRestored": true
+  },
+  {
+    "id": "freshman",
+    "language": "zh-CN",
+    "width": 390,
+    "intakeCount": 14,
+    "directionAnswers": 12,
+    "pages": 5,
+    "errors": [],
+    "failed": [],
+    "overflow": [],
+    "contrast": {
+      "min": 5.777773207330241,
+      "count": 47,
+      "failures": []
+    },
+    "profile": "你的首要关注\n未来方向不明确\n\n同时关注: 技能与竞争力焦虑\n\n查看依据 · Q02 / Q08\n你希望实现的目标\n\n更清楚地了解自己适合探索哪些职业方向 · 找到一条实际可行的技能提升与学习路线",
+    "scenarioRestored": true
+  },
+  {
+    "id": "intern",
+    "language": "zh-CN",
+    "width": 390,
+    "intakeCount": 14,
+    "directionAnswers": 12,
+    "pages": 5,
+    "errors": [],
+    "failed": [],
+    "overflow": [],
+    "contrast": {
+      "min": 5.777773207330241,
+      "count": 47,
+      "failures": []
+    },
+    "profile": "你的首要关注\n就业和职业发展压力\n\n同时关注: 技能与竞争力焦虑\n\n查看依据 · Q02 / Q08\n你希望实现的目标\n\n了解自己目前的能力、优势以及仍需要验证的地方 · 找到一条实际可行的技能提升与学习路线",
+    "scenarioRestored": true
+  },
+  {
+    "id": "coder",
+    "language": "zh-CN",
+    "width": 390,
+    "intakeCount": 14,
+    "directionAnswers": 12,
+    "pages": 5,
+    "errors": [],
+    "failed": [],
+    "overflow": [],
+    "contrast": {
+      "min": 5.777773207330241,
+      "count": 47,
+      "failures": []
+    },
+    "profile": "你的首要关注\n错失 AI 带来的新机会\n\n同时关注: AI 应用能力不足\n\n查看依据 · Q02 / Q08\n你希望实现的目标\n\n了解自己目前的能力、优势以及仍需要验证的地方 · 发现 AI 带来的新机会，探索新的职业或个人发展可能性",
+    "scenarioRestored": true
+  },
+  {
+    "id": "transition",
+    "language": "zh-CN",
+    "width": 390,
+    "intakeCount": 14,
+    "directionAnswers": 12,
+    "pages": 5,
+    "errors": [],
+    "failed": [],
+    "overflow": [],
+    "contrast": {
+      "min": 5.777773207330241,
+      "count": 47,
+      "failures": []
+    },
+    "profile": "你的首要关注\n职业转型的不确定性\n\n同时关注: AI 应用能力不足 · 国际职业发展的困惑\n\n查看依据 · Q02 / Q08\n你希望实现的目标\n\n判断是否值得转行，以及怎样降低转型风险 · 了解不同国家的职业机会与技能要求",
+    "scenarioRestored": true
+  },
+  {
+    "id": "uncertain",
+    "language": "zh-CN",
+    "width": 390,
+    "intakeCount": 13,
+    "directionAnswers": 12,
+    "pages": 5,
+    "errors": [],
+    "failed": [],
+    "overflow": [],
+    "contrast": {
+      "min": 5.777773207330241,
+      "count": 47,
+      "failures": []
+    },
+    "profile": "你的首要关注\n我还不清楚自己真正担心什么\n查看依据 · Q02 / Q08\n你希望实现的目标\n\n我还没有明确目标，希望系统帮助我逐步发现",
+    "scenarioRestored": true
+  },
+  {
+    "id": "multiple",
+    "language": "zh-CN",
+    "width": 390,
+    "intakeCount": 14,
+    "directionAnswers": 12,
+    "pages": 5,
+    "errors": [],
+    "failed": [],
+    "overflow": [],
+    "contrast": {
+      "min": 5.777773207330241,
+      "count": 47,
+      "failures": []
+    },
+    "profile": "你的首要关注\n未来方向不明确\n\n同时关注: 就业和职业发展压力 · 错失 AI 带来的新机会\n\n查看依据 · Q02 / Q08\n你希望实现的目标\n\n更清楚地了解自己适合探索哪些职业方向 · 了解自己目前的能力、优势以及仍需要验证的地方 · 发现 AI 带来的新机会，探索新的职业或个人发展可能性",
+    "scenarioRestored": true
+  },
+  {
+    "id": "freshman",
+    "language": "ms",
+    "width": 820,
+    "intakeCount": 14,
+    "directionAnswers": 12,
+    "pages": 5,
+    "errors": [],
+    "failed": [],
+    "overflow": [],
+    "contrast": {
+      "min": 5.777773207330241,
+      "count": 47,
+      "failures": []
+    },
+    "profile": "KEUTAMAAN PERTAMA ANDA\nArah masa depan belum jelas\n\nJuga difikirkan: Kemahiran dan daya saing\n\nLihat bukti · Q02 / Q08\nMatlamat yang ingin dicapai\n\nMemahami arah kerjaya yang wajar diterokai · Mencari laluan kemahiran dan pembelajaran yang praktikal",
+    "scenarioRestored": true
+  },
+  {
+    "id": "intern",
+    "language": "ms",
+    "width": 820,
+    "intakeCount": 14,
+    "directionAnswers": 12,
+    "pages": 5,
+    "errors": [],
+    "failed": [],
+    "overflow": [],
+    "contrast": {
+      "min": 5.777773207330241,
+      "count": 47,
+      "failures": []
+    },
+    "profile": "KEUTAMAAN PERTAMA ANDA\nPekerjaan dan perkembangan kerjaya\n\nJuga difikirkan: Kemahiran dan daya saing\n\nLihat bukti · Q02 / Q08\nMatlamat yang ingin dicapai\n\nMemahami titik permulaan, kekuatan dan perkara yang perlu disahkan · Mencari laluan kemahiran dan pembelajaran yang praktikal",
+    "scenarioRestored": true
+  },
+  {
+    "id": "coder",
+    "language": "ms",
+    "width": 820,
+    "intakeCount": 14,
+    "directionAnswers": 12,
+    "pages": 5,
+    "errors": [],
+    "failed": [],
+    "overflow": [],
+    "contrast": {
+      "min": 5.777773207330241,
+      "count": 47,
+      "failures": []
+    },
+    "profile": "KEUTAMAAN PERTAMA ANDA\nTerlepas peluang baharu AI\n\nJuga difikirkan: Kesukaran menggunakan AI\n\nLihat bukti · Q02 / Q08\nMatlamat yang ingin dicapai\n\nMemahami titik permulaan, kekuatan dan perkara yang perlu disahkan · Menemui peluang AI untuk kerjaya baharu atau perkembangan diri",
+    "scenarioRestored": true
+  },
+  {
+    "id": "transition",
+    "language": "ms",
+    "width": 820,
+    "intakeCount": 14,
+    "directionAnswers": 12,
+    "pages": 5,
+    "errors": [],
+    "failed": [],
+    "overflow": [],
+    "contrast": {
+      "min": 5.777773207330241,
+      "count": 47,
+      "failures": []
+    },
+    "profile": "KEUTAMAAN PERTAMA ANDA\nKetidakpastian pertukaran kerjaya\n\nJuga difikirkan: Kesukaran menggunakan AI · Perkembangan kerjaya antarabangsa\n\nLihat bukti · Q02 / Q08\nMatlamat yang ingin dicapai\n\nMenilai pertukaran kerjaya dan mengurangkan risiko peralihan · Memahami peluang kerjaya dan keperluan kemahiran merentas negara",
+    "scenarioRestored": true
+  },
+  {
+    "id": "uncertain",
+    "language": "ms",
+    "width": 820,
+    "intakeCount": 13,
+    "directionAnswers": 12,
+    "pages": 5,
+    "errors": [],
+    "failed": [],
+    "overflow": [],
+    "contrast": {
+      "min": 5.777773207330241,
+      "count": 47,
+      "failures": []
+    },
+    "profile": "KEUTAMAAN PERTAMA ANDA\nSaya belum pasti perkara yang membimbangkan saya\nLihat bukti · Q02 / Q08\nMatlamat yang ingin dicapai\n\nSaya belum mempunyai matlamat jelas dan mahu menemuinya secara beransur-ansur",
+    "scenarioRestored": true
+  },
+  {
+    "id": "multiple",
+    "language": "ms",
+    "width": 820,
+    "intakeCount": 14,
+    "directionAnswers": 12,
+    "pages": 5,
+    "errors": [],
+    "failed": [],
+    "overflow": [],
+    "contrast": {
+      "min": 5.777773207330241,
+      "count": 47,
+      "failures": []
+    },
+    "profile": "KEUTAMAAN PERTAMA ANDA\nArah masa depan belum jelas\n\nJuga difikirkan: Pekerjaan dan perkembangan kerjaya · Terlepas peluang baharu AI\n\nLihat bukti · Q02 / Q08\nMatlamat yang ingin dicapai\n\nMemahami arah kerjaya yang wajar diterokai · Memahami titik permulaan, kekuatan dan perkara yang perlu disahkan · Menemui peluang AI untuk kerjaya baharu atau perkembangan diri",
+    "scenarioRestored": true
+  }
+]

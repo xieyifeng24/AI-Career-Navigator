@@ -1,0 +1,408 @@
+{
+  "freshman": {
+    "track": "SW",
+    "answers": {
+      "Q01": "B",
+      "Q02": {
+        "selected": [
+          "B",
+          "C"
+        ],
+        "primary": "B"
+      },
+      "Q03": "B",
+      "Q04": [
+        "I"
+      ],
+      "Q05": {
+        "knowledge": "untried",
+        "execution": "untried",
+        "problemSolving": "untried",
+        "communication": "untried"
+      },
+      "Q06": [
+        "A"
+      ],
+      "Q07": [
+        "A",
+        "B",
+        "F"
+      ],
+      "Q08": [
+        "A",
+        "D"
+      ],
+      "Q09": {
+        "selected": [
+          "A",
+          "B"
+        ],
+        "primary": "A"
+      },
+      "Q12": [
+        "SW",
+        "DATA"
+      ],
+      "Q13": [
+        "none"
+      ],
+      "Q10": "A",
+      "Q11": "1"
+    },
+    "directionAnswers": {
+      "G01": 4,
+      "G02": 4,
+      "G03": 1,
+      "G04": 4,
+      "SW01": 6,
+      "SW02": 5,
+      "SW03": 4,
+      "SW04": 4,
+      "SW05": 1,
+      "SW06": 1,
+      "SW07": 2,
+      "SW08": 4
+    }
+  },
+  "intern": {
+    "track": "SW",
+    "answers": {
+      "Q01": "B",
+      "Q02": {
+        "selected": [
+          "C",
+          "E"
+        ],
+        "primary": "E"
+      },
+      "Q03": "B",
+      "Q04": [
+        "A",
+        "C"
+      ],
+      "Q05": {
+        "knowledge": "examples",
+        "execution": "examples",
+        "problemSolving": "examples",
+        "communication": "examples"
+      },
+      "Q06": [
+        "B",
+        "D",
+        "E"
+      ],
+      "Q07": [
+        "F",
+        "H"
+      ],
+      "Q08": [
+        "C",
+        "D"
+      ],
+      "Q09": {
+        "selected": [
+          "A",
+          "B"
+        ],
+        "primary": "A"
+      },
+      "Q12": [
+        "SW",
+        "PM"
+      ],
+      "Q13": [
+        "learn",
+        "draft",
+        "check"
+      ],
+      "Q10": "A",
+      "Q11": "1"
+    },
+    "directionAnswers": {
+      "G01": 5,
+      "G02": 5,
+      "G03": 6,
+      "G04": 6,
+      "SW01": 5,
+      "SW02": 5,
+      "SW03": 5,
+      "SW04": 5,
+      "SW05": 4,
+      "SW06": 4,
+      "SW07": 3,
+      "SW08": 5
+    }
+  },
+  "coder": {
+    "track": "SW",
+    "answers": {
+      "Q01": "B",
+      "Q02": {
+        "selected": [
+          "D",
+          "H"
+        ],
+        "primary": "H"
+      },
+      "Q03": "B",
+      "Q04": [
+        "A"
+      ],
+      "Q05": {
+        "knowledge": "independent",
+        "execution": "independent",
+        "problemSolving": "independent",
+        "communication": "independent"
+      },
+      "Q06": [
+        "C",
+        "D"
+      ],
+      "Q07": [
+        "D",
+        "H"
+      ],
+      "Q08": [
+        "C",
+        "G"
+      ],
+      "Q09": {
+        "selected": [
+          "A",
+          "B"
+        ],
+        "primary": "A"
+      },
+      "Q12": [
+        "SW",
+        "DATA"
+      ],
+      "Q13": [
+        "understand",
+        "learn",
+        "code",
+        "check",
+        "workflow",
+        "api",
+        "automate"
+      ],
+      "Q10": "A",
+      "Q11": "1"
+    },
+    "directionAnswers": {
+      "G01": 6,
+      "G02": 6,
+      "G03": 6,
+      "G04": 6,
+      "SW01": 6,
+      "SW02": 6,
+      "SW03": 6,
+      "SW04": 6,
+      "SW05": 6,
+      "SW06": 6,
+      "SW07": 6,
+      "SW08": 6
+    }
+  },
+  "transition": {
+    "track": "SW",
+    "answers": {
+      "Q01": "E",
+      "Q02": {
+        "selected": [
+          "D",
+          "F",
+          "G"
+        ],
+        "primary": "F"
+      },
+      "Q03": "B",
+      "Q04": [
+        "C",
+        "H"
+      ],
+      "Q05": {
+        "knowledge": "independent",
+        "execution": "independent",
+        "problemSolving": "independent",
+        "communication": "independent"
+      },
+      "Q06": [
+        "W",
+        "F"
+      ],
+      "Q07": [
+        "A",
+        "C",
+        "G"
+      ],
+      "Q08": [
+        "E",
+        "F"
+      ],
+      "Q09": {
+        "selected": [
+          "A",
+          "B"
+        ],
+        "primary": "A"
+      },
+      "Q12": [
+        "SW",
+        "DATA",
+        "PM"
+      ],
+      "Q13": [
+        "learn",
+        "draft"
+      ],
+      "Q10": "A",
+      "Q11": "1"
+    },
+    "directionAnswers": {
+      "G01": 4,
+      "G02": 4,
+      "G03": 7,
+      "G04": 5,
+      "SW01": 5,
+      "SW02": 4,
+      "SW03": 4,
+      "SW04": 4,
+      "SW05": 2,
+      "SW06": 2,
+      "SW07": 2,
+      "SW08": 4
+    }
+  },
+  "uncertain": {
+    "track": "SW",
+    "answers": {
+      "Q01": "F",
+      "Q02": {
+        "selected": [
+          "I"
+        ],
+        "primary": "I"
+      },
+      "Q03": "B",
+      "Q04": [
+        "I"
+      ],
+      "Q05": {
+        "knowledge": "untried",
+        "execution": "untried",
+        "problemSolving": "untried",
+        "communication": "untried"
+      },
+      "Q06": [
+        "A"
+      ],
+      "Q07": [
+        "I"
+      ],
+      "Q08": [
+        "H"
+      ],
+      "Q09": {
+        "selected": [
+          "A",
+          "B"
+        ],
+        "primary": "A"
+      },
+      "Q12": [
+        "unsure"
+      ],
+      "Q13": [
+        "none"
+      ],
+      "Q11": "1"
+    },
+    "directionAnswers": {
+      "G01": 4,
+      "G02": 4,
+      "G03": 1,
+      "G04": 4,
+      "SW01": 4,
+      "SW02": 4,
+      "SW03": 4,
+      "SW04": 4,
+      "SW05": 4,
+      "SW06": 4,
+      "SW07": 4,
+      "SW08": 4
+    }
+  },
+  "multiple": {
+    "track": "DES",
+    "answers": {
+      "Q01": "B",
+      "Q02": {
+        "selected": [
+          "B",
+          "E",
+          "H"
+        ],
+        "primary": "B"
+      },
+      "Q03": "B",
+      "Q04": [
+        "D",
+        "F"
+      ],
+      "Q05": {
+        "knowledge": "examples",
+        "execution": "examples",
+        "problemSolving": "examples",
+        "communication": "examples"
+      },
+      "Q06": [
+        "B",
+        "C"
+      ],
+      "Q07": [
+        "E",
+        "H"
+      ],
+      "Q08": [
+        "A",
+        "C",
+        "G"
+      ],
+      "Q09": {
+        "selected": [
+          "A",
+          "B"
+        ],
+        "primary": "A"
+      },
+      "Q12": [
+        "MKT",
+        "DES",
+        "EDU"
+      ],
+      "Q13": [
+        "learn",
+        "draft",
+        "analyze",
+        "check"
+      ],
+      "Q10": "A",
+      "Q11": "1"
+    },
+    "directionAnswers": {
+      "G01": 5,
+      "G02": 5,
+      "G03": 5,
+      "G04": 5,
+      "DES01": 5,
+      "DES02": 5,
+      "DES03": 5,
+      "DES04": 5,
+      "DES05": 5,
+      "DES06": 5,
+      "DES07": 5,
+      "DES08": 5
+    }
+  }
+}
