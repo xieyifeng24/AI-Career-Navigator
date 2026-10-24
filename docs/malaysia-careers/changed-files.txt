@@ -1,0 +1,73 @@
+data/malaysia_intelligence/csv/Career Catalog 24.csv
+data/malaysia_intelligence/csv/Career Paths & What If.csv
+data/malaysia_intelligence/csv/Career Relations.csv
+data/malaysia_intelligence/csv/Evidence & Sources.csv
+data/malaysia_intelligence/csv/MASCO Occupation Mapping.csv
+data/malaysia_intelligence/csv/Malaysia AI Transformation.csv
+data/malaysia_intelligence/csv/Malaysia Career Profiles.csv
+data/malaysia_intelligence/csv/Malaysia Job Demand.csv
+data/malaysia_intelligence/csv/Malaysia Regional Opportunities.csv
+data/malaysia_intelligence/csv/Malaysia Salary & Skills.csv
+data/malaysia_intelligence/csv/Occupation Tasks.csv
+data/malaysia_intelligence/csv/Raw Observations.csv
+data/malaysia_intelligence/csv/ReadMe.csv
+data/malaysia_intelligence/csv/requirements.csv
+data/malaysia_intelligence/csv/scenarios.csv
+data/malaysia_intelligence/current.json
+data/malaysia_intelligence/pilot-original.json
+data/malaysia_intelligence/pilot-original.xlsx
+data/malaysia_intelligence/research-notes.json
+data/malaysia_intelligence/source-file-manifest.json
+docs/MALAYSIA_INTELLIGENCE_INTEGRATION.md
+docs/malaysia-careers/DELIVERY.md
+docs/malaysia-careers/Malaysia_Career_Intelligence_24.xlsx
+docs/malaysia-careers/V2-WhatIf-verification.png
+docs/malaysia-careers/agri.md
+docs/malaysia-careers/ai-research.md
+docs/malaysia-careers/biodiversity.md
+docs/malaysia-careers/business-analysis.md
+docs/malaysia-careers/changed-files.txt
+docs/malaysia-careers/creative.md
+docs/malaysia-careers/data.md
+docs/malaysia-careers/education.md
+docs/malaysia-careers/energy.md
+docs/malaysia-careers/environment.md
+docs/malaysia-careers/finance.md
+docs/malaysia-careers/game.md
+docs/malaysia-careers/health.md
+docs/malaysia-careers/marine.md
+docs/malaysia-careers/marketing.md
+docs/malaysia-careers/partnerships.md
+docs/malaysia-careers/pilot-additions.md
+docs/malaysia-careers/pilot-bridge-audit.md
+docs/malaysia-careers/policy.md
+docs/malaysia-careers/product.md
+docs/malaysia-careers/security.md
+docs/malaysia-careers/social-impact.md
+docs/malaysia-careers/software.md
+docs/malaysia-careers/urban.md
+docs/malaysia-careers/ux.md
+docs/malaysia-careers/validation.json
+docs/malaysia-careers/water.md
+docs/malaysia-careers/writing.md
+prototype/combined.test.mjs
+prototype/combined/app.js
+prototype/combined/malaysia-intelligence.js
+prototype/combined/v2-report.js
+prototype/exploration.test.mjs
+prototype/malaysia-intelligence.test.mjs
+prototype/v2-compatible.test.mjs
+prototype/v3.test.mjs
+scripts/build_malaysia_pilot.py
+scripts/export_malaysia_delivery.py
+scripts/export_malaysia_workbook.mjs
+scripts/extend_malaysia_research.py
+scripts/malaysia_research_specs.py
+src/career/api.py
+src/career/knowledge/sync.py
+src/malaysia_intelligence/__init__.py
+src/malaysia_intelligence/__main__.py
+src/malaysia_intelligence/engine.py
+tests/test_malaysia_intelligence.py
+tests/test_malaysia_routes.py
+tests/test_questionnaire_v3.py

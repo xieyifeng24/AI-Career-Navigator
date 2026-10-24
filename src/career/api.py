@@ -160,9 +160,17 @@ async def knowledge_current():
 async def knowledge_bundle():
     return FileResponse(ROOT/'data/knowledge/current.json')
 
+@app.get('/data/malaysia_intelligence/current.json')
+async def malaysia_intelligence_bundle():
+    # One explicit public research asset; no arbitrary repository paths.
+    path = ROOT/'data/malaysia_intelligence/current.json'
+    if not path.is_file():
+        return JSONResponse({'status':'unavailable'}, status_code=503)
+    return FileResponse(path, media_type='application/json', headers={'Cache-Control':'no-cache'})
+
 @app.get('/combined/{filename}')
 async def combined_asset(filename: str):
-    if filename not in {'app.js','model.js','styles.css','results.js','ui.js','copy.js','v2-report.js','current-analysis.js'}: raise HTTPException(404)
+    if filename not in {'app.js','model.js','styles.css','results.js','ui.js','copy.js','v2-report.js','current-analysis.js','malaysia-intelligence.js'}: raise HTTPException(404)
     return FileResponse(ROOT/'prototype/combined'/filename)
 
 @app.get('/v3/{filename}')

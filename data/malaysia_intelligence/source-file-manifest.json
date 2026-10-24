@@ -1,0 +1,20 @@
+[
+  {
+    "source_id": "S03-FULL",
+    "source_url": "https://www.talentcorp.com.my/images/uploads/publication/204/MyMahir-Malaysia-Critical-Occupations-List-MyCOL20242025-1773385490.pdf",
+    "filename": "mycol-2024-25.pdf",
+    "bytes": 21685713,
+    "sha256": "bada182b399ee9944231102402f5f5ce3a23c8328d99abb22ead6e1f8ec20937",
+    "verified": "2026-10-23",
+    "redistribution": "Raw third-party documents not republished; source locators and original values retained"
+  },
+  {
+    "source_id": "S01",
+    "source_url": "https://www.dosm.gov.my/portal-main/release-document-log?release_document_id=20742",
+    "filename": "dosm-jmi-q2-2026.xlsx",
+    "bytes": 349834,
+    "sha256": "965f2f20bcb33425eb43eac7f9edfcff186e7fa92048b8b26f8ee8bbe5d25764",
+    "verified": "2026-10-23",
+    "redistribution": "Raw third-party documents not republished; source locators and original values retained"
+  }
+]

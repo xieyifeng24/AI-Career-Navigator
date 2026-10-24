@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {createHash} from 'node:crypto';
+// Canonical LF checksums preserve author-content checks on Windows CRLF checkouts.
 import {bank,VERSION,STORAGE_KEY,validateBank,questionsFor,newSession,chooseTrack,changeLanguage,selectAnswer,answeredCount,advance,previous,restoreSession,loadSession,saveSession} from './v3/engine.js';
 import {renderPreview,progress} from './v3/ui.js';
 import {createDraft as v2Draft} from './exploration/engine.js';
@@ -12,7 +13,7 @@ const answers = [1,2,null,4,5,6,7,3,1,2,6,null];
 function memory() { const data = new Map(); return {data,getItem:key => data.get(key) ?? null,setItem:(key,value)=>data.set(key,value)}; }
 
 test('V3 is an unchanged author file; complete 84-item, 10-track, trilingual bank validates', () => {
-  assert.equal(createHash('sha256').update(fs.readFileSync(new URL('./v3/bank.json',import.meta.url))).digest('hex'),manifest.sha256);
+  assert.equal(createHash('sha256').update(fs.readFileSync(new URL('./v3/bank.json',import.meta.url)).toString('utf8').replace(/\r\n/g,'\n')).digest('hex'),manifest.sha256);
   assert.deepEqual(validateBank(bank),[]);
   assert.equal(bank.questions.length,84);assert.equal(bank.tracks.length,10);
   assert.deepEqual(bank.tracks.map(t=>t.id),['SW','DATA','FIN','PM','MKT','DES','ENG','HLT','EDU','OPS']);

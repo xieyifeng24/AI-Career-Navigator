@@ -22,7 +22,11 @@ function complete(track='SW',answer=7,locale='en'){
 }
 test('question banks, intake, storage, V2 engines and SDG sources stay byte-identical to main baseline',()=>{
  for(const path of ['prototype/v3/bank.json','prototype/v3/engine.js','prototype/v3/ui.js','prototype/v3/styles.css','prototype/combined/model.js','prototype/combined/styles.css','prototype/explorer-views.js','prototype/explorer-engine.js','prototype/explorer-catalog.json','prototype/explorer.css','prototype/sdg-characters.png','prototype/exploration/bank.json','prototype/exploration/scoring.json','prototype/exploration/engine.js','prototype/exploration/report.js','prototype/exploration/ui.js','prototype/translations.json','prototype/questionnaire.js']){
-  assert.equal(createHash('sha256').update(fs.readFileSync(new URL('../'+path,import.meta.url))).digest('hex'),baseline.sha256[path],path);
+  const bytes=fs.readFileSync(new URL('../'+path,import.meta.url));
+  // Git may check text out as CRLF on Windows. Compare canonical LF text;
+  // binary assets remain byte-exact. The protected source files are unedited.
+  const canonical=path.endsWith('.png')?bytes:bytes.toString('utf8').replace(/\r\n/g,'\n');
+  assert.equal(createHash('sha256').update(canonical).digest('hex'),baseline.sha256[path],path);
  }
 });
 test('every direction and locale renders all V2 pages and unchanged SDG without inferring missing answers',()=>{

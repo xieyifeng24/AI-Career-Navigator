@@ -7,9 +7,11 @@ import {renderPreview} from '../v3/ui.js';
 import {fresh,load,save,updateBackground,nextBackground,reportFor} from './model.js';
 export {STORAGE_KEY} from './model.js';
 import {supplementaryInput} from './ui.js';
+import {loadMalaysiaIntelligence} from './malaysia-intelligence.js';
 const e=escapeHTML;
 export function hasCombinedDraft(){try{return !!sessionStorage.getItem('career-combined-pr8-pr9-v1');}catch{return false;}}
 export function mountCombined({root,onHome}) {
+ let mounted=true;
  let storage;try{storage=sessionStorage;}catch{storage=null;}
  let state=load(storage,language),errors={};
  let v2Options={path:'A',assumptions:{}};
@@ -46,6 +48,15 @@ export function mountCombined({root,onHome}) {
  }
  function change(event) {
   const target=event.target;
+  if(state.phase==='report'&&target.dataset.malaysiaAssumption){
+   const field=target.dataset.malaysiaAssumption,key=target.dataset.malaysiaKey;
+   if(!['skills','projects','conditions'].includes(field)||!key||!['unknown','true','false'].includes(target.value))return;
+   const malaysia=v2Options.malaysia||{},assumptions={...(malaysia.assumptions||{})},facts={...(assumptions[field]||{})};
+   if(target.value==='unknown')delete facts[key];else facts[key]=target.value==='true';
+   const open=[...(root.querySelectorAll?.('details')||[])].map(d=>d.open);
+   assumptions[field]=facts;v2Options.malaysia={...malaysia,assumptions};render();
+   [...(root.querySelectorAll?.('details')||[])].forEach((d,i)=>{d.open=open[i]===true;});return;
+  }
   if(state.phase==='report'&&target.dataset.v2Control){
    const key=target.dataset.v2Control;
    v2Options.assumptions={...v2Options.assumptions,[key]:key==='hours'?Number(target.value):target.value};
@@ -93,7 +104,7 @@ export function mountCombined({root,onHome}) {
   if(action.startsWith('goal:')&&catalog.goals.some(g=>g.id===Number(action.slice(5)))){state={...state,goal:Number(action.slice(5))};render();return;}
   if(action==='print'){window.print();return;}
   if(action==='export'){
-   const payload={...buildCompatibleReport(state,language,v2Options.assumptions),selectedCompanionGoal:state.goal,language,selectedPath:v2Options.path,planningAssumptions:structuredClone(v2Options.assumptions)};
+   const payload={...buildCompatibleReport(state,language,v2Options.assumptions,v2Options.malaysia),selectedCompanionGoal:state.goal,language,selectedPath:v2Options.path,planningAssumptions:structuredClone(v2Options.assumptions)};
    const url=URL.createObjectURL(new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}));
    const anchor=document.createElement('a');anchor.href=url;anchor.download='career-exploration-'+payload.report.report_id+'.json';anchor.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
   }
@@ -102,5 +113,6 @@ export function mountCombined({root,onHome}) {
  root.addEventListener('input',input);
  root.addEventListener('change',change);root.addEventListener('submit',submit);root.addEventListener('click',click);
  render();
- return ()=>{root.removeEventListener('input',input);root.removeEventListener('change',change);root.removeEventListener('submit',submit);root.removeEventListener('click',click);};
+ loadMalaysiaIntelligence().then(()=>{if(mounted)render();});
+ return ()=>{mounted=false;root.removeEventListener('input',input);root.removeEventListener('change',change);root.removeEventListener('submit',submit);root.removeEventListener('click',click);};
 }

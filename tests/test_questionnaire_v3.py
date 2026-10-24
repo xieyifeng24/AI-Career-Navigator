@@ -11,7 +11,8 @@ class QuestionnaireV3Preview(unittest.TestCase):
     def test_bank_integrity_and_session_composition(self):
         raw=(ROOT/'prototype/v3/bank.json').read_bytes()
         manifest=json.loads((ROOT/'prototype/v3/source-manifest.json').read_text())
-        self.assertEqual(hashlib.sha256(raw).hexdigest(),manifest['sha256'])
+        # Git's Windows CRLF checkout does not change the author's text content.
+        self.assertEqual(hashlib.sha256(raw.replace(b'\r\n', b'\n')).hexdigest(),manifest['sha256'])
         bank=json.loads(raw)
         self.assertEqual(bank['defaultLanguage'],'en')
         self.assertEqual(len(bank['questions']),84)

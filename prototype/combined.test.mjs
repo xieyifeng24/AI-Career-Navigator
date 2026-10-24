@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {createHash} from 'node:crypto';
+// Canonical LF checksums preserve author-content checks on Windows CRLF checkouts.
 import {fresh,restore,save,load,STORAGE_KEY,VERSION,nextBackground,reportFor,updateBackground} from './combined/model.js';
 import {sampleProfile,generateOfflineReport,catalog} from './explorer-engine.js';
 import {bank,chooseTrack,selectAnswer,advance,changeLanguage} from './v3/engine.js';
@@ -15,9 +16,9 @@ function complete(track,answer,locale='en'){
 }
 test('PR8 engine and catalogs plus PR9 question source are unchanged',()=>{
  for(const path of ['prototype/explorer-engine.js','prototype/explorer-catalog.json']){
-  const bytes=fs.readFileSync(new URL('../'+path,import.meta.url));assert.equal(createHash('sha256').update(bytes).digest('hex'),manifest.original_pr8_hashes[path]);
+  const bytes=fs.readFileSync(new URL('../'+path,import.meta.url));assert.equal(createHash('sha256').update(bytes.toString('utf8').replace(/\r\n/g,'\n')).digest('hex'),manifest.original_pr8_hashes[path]);
  }
- assert.equal(createHash('sha256').update(fs.readFileSync(new URL('./v3/bank.json',import.meta.url))).digest('hex'),manifest.v3_author_sha256);
+ assert.equal(createHash('sha256').update(fs.readFileSync(new URL('./v3/bank.json',import.meta.url)).toString('utf8').replace(/\r\n/g,'\n')).digest('hex'),manifest.v3_author_sha256);
 });
 test('every direction and language composes a report without converting or scoring V3',()=>{
  const expected=generateOfflineReport(sampleProfile());

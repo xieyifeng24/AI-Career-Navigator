@@ -2,10 +2,13 @@
 import argparse
 from contextlib import contextmanager
 from datetime import datetime, timezone, timedelta
-import fcntl
 import hashlib
 import json
 import os
+if os.name == 'nt':
+    import msvcrt
+else:
+    import fcntl
 from pathlib import Path
 import tempfile
 from . import adapters
@@ -33,11 +36,23 @@ def atomic(path,value):
 @contextmanager
 def lock(path):
     path.parent.mkdir(parents=True,exist_ok=True)
-    with path.open('a') as handle:
-        try: fcntl.flock(handle,fcntl.LOCK_EX|fcntl.LOCK_NB)
-        except BlockingIOError: raise RuntimeError('Knowledge sync already running') from None
+    with path.open('a+b') as handle:
+        if os.name == 'nt':
+            if handle.tell() == 0:
+                handle.write(b'\0'); handle.flush()
+            handle.seek(0)
+        try:
+            if os.name == 'nt': msvcrt.locking(handle.fileno(),msvcrt.LK_NBLCK,1)
+            else: fcntl.flock(handle,fcntl.LOCK_EX|fcntl.LOCK_NB)
+        except OSError as exc:
+            if isinstance(exc, BlockingIOError) or (os.name == 'nt' and exc.errno in (13,36)):
+                raise RuntimeError('Knowledge sync already running') from None
+            raise
         try: yield
-        finally: fcntl.flock(handle,fcntl.LOCK_UN)
+        finally:
+            if os.name == 'nt':
+                handle.seek(0); msvcrt.locking(handle.fileno(),msvcrt.LK_UNLCK,1)
+            else: fcntl.flock(handle,fcntl.LOCK_UN)
 
 def due(state,now):
     previous=state.get('last_attempt')

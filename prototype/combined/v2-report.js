@@ -9,10 +9,12 @@ import {questionsFor,bank} from '../v3/engine.js';
 import {reportFor} from './model.js';
 import {language,t} from '../i18n.js';
 import knowledge from '../../data/knowledge/current.json' with {type:'json'};
+import {malaysiaReport,renderMalaysiaContext} from './malaysia-intelligence.js';
+import {directionRoles} from './current-analysis.js';
 const L=(en,zh,ms)=>({'en':en,'zh-CN':zh,ms})[language]||en;
 export const reportPages=['overview','ai','careers','map','compare','tree','future','plan','sdg'];
 const labels={overview:'Capabilities',ai:'AI & work',careers:'Career paths',map:'Career map',compare:'Compare paths',tree:'Skill DNA',future:'Time machine',plan:'Action plan',sdg:'SDG companions'};
-export function buildCompatibleReport(state,locale=language,assumptions={}){
+export function buildCompatibleReport(state,locale=language,assumptions={},malaysiaOptions={}){
  const {base,selfReport}=reportFor(state);
  const profile=createDraft(selfReport.trackId);
  // Shared direction identifiers are the sole exact crosswalk. No Likert-to-option conversion.
@@ -24,6 +26,7 @@ export function buildCompatibleReport(state,locale=language,assumptions={}){
  report.currentDirection=selfReport.trackId;
  attachContextPaths(report,contexts,signals,locale);
  attachCurrentEvidence(report,signals,contexts,assumptions,locale);
+ report.malaysiaIntelligence=malaysiaReport(directionRoles[selfReport.trackId]||[],malaysiaOptions.profile||{},malaysiaOptions.assumptions||{});
  return {report,signals,contexts,companions:base,currentAnswers:structuredClone(selfReport),background:structuredClone(state.profile),notes:String(state.notes||''),
   compatibility:{version:'v2-report-current-intake-2',mappedFields:['direction'],missingV2Questions:report.exploration.selected.map(q=>q.questionId),likertConverted:false,
    sdgBasis:'Existing background interest and career-link rules; not V2 career recommendations'}};
@@ -33,7 +36,7 @@ function evidence(model){
  return `<section class="ex-method" data-compatible-evidence><h2>${L('Your current answers','当前测评回答','Jawapan semasa anda')}</h2><p>${L('The original V2 report is reused. The current agreement scale cannot establish V2 situation choices or experience stages. The report uses the actual statements and response labels below as self-reported evidence. It does not translate them into old V2 answers, verified ability levels or suitability scores.','当前回答按题目原意和原始程度值参与分析，不转换为旧 V2 情境答案，不据此推断已验证能力或职业适合度分数。','Laporan V2 asal digunakan semula. Skala persetujuan semasa tidak menentukan pilihan situasi atau tahap pengalaman V2. Pernyataan dan label jawapan sebenar digunakan sebagai bukti kendiri, bukan tahap kebolehan disahkan atau skor kesesuaian.')}</p><details><summary>${e(t('Your profile'))} · ${model.signals.answeredCount} / ${model.signals.totalQuestions}</summary>${questionsFor(session.trackId).map(q=>{const value=session.answers[q.id];return `<article><h3>${e(q.statement[language])}</h3><p>${e(value===null?bank.uiText.unfamiliar[language]:`${value} · ${bank.scale.find(o=>o.value===value).label[language]}`)}</p></article>`;}).join('')}</details>${model.notes?`<section><h3>${L('Additional information','补充信息','Maklumat tambahan')}</h3><p style="white-space:pre-wrap">${e(model.notes)}</p><small>${L('Preserved verbatim, not scored.','按原文保留，不计分。','Dikekalkan tanpa perubahan, tidak diskor。')}</small></section>`:''}<button class="text-button" data-combined-action="edit-v3">${e(t('Edit your answers ↗'))}</button></section>`;
 }
 export function renderCompatibleReport(state,options={}){
- const model=buildCompatibleReport(state,language,options.assumptions),r=model.report;
+ const model=buildCompatibleReport(state,language,options.assumptions,options.malaysia),r=model.report;
  const page=reportPages.includes(state.page)?state.page:'overview',path=options.path||'A';
  let content;
  if(page==='sdg')content=renderGoals({...state,report:model.companions});
@@ -91,7 +94,7 @@ function renderWhatIf(model,options){
 function renderCurrentSection(model,page,options){
  const signals=model.signals,next=nextPractice(model,options),role=model.contexts.editorial[0],project=model.report.project;
  const title=bank.tracks.find(t=>t.id===model.currentAnswers.trackId).label[language];
- const header=`<div class="report-head"><span class="kicker">${e(title)}</span><h1>${e(t(labels[page]))}</h1></div>`;
+ const header=`<div class="report-head"><span class="kicker">${e(title)}</span><h1>${e(t(labels[page]))}</h1></div>`+(['careers','ai','tree','future','plan'].includes(page)?renderMalaysiaContext(model.report.malaysiaIntelligence,language):'');
  const missing=signals.items.filter(i=>i.state!=='self-report');
  const missingNote=missing.length?`<p class="ex-local-notice">${L('Responses that cannot support an interpretation','无法支持解释的回答','Jawapan yang tidak menyokong tafsiran')}: ${missing.map(i=>`${e(i.id)} (${i.state==='unanswered'?L('unanswered','未回答','belum dijawab'):L('not applicable / cannot assess','不适用／无法判断','tidak berkenaan / tidak dapat dinilai')})`).join(' · ')}</p>`:'';
  let body='';

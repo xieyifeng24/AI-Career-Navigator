@@ -1,0 +1,459 @@
+{
+  "snapshot": "malaysia-intelligence-2026-10-23-24-v1",
+  "verified_on": "2026-10-24",
+  "python": {
+    "tests": 77,
+    "passed": 77
+  },
+  "javascript": {
+    "tests": 155,
+    "passed": 155
+  },
+  "secret_pattern_scan": {
+    "findings": 0,
+    "files_scanned": 68,
+    "limitation": "Pattern scan is not a guarantee that all possible sensitive information is absent; changed files also reviewed."
+  },
+  "career_checks": [
+    {
+      "occupation_id": "software",
+      "dimensions": 9,
+      "task_families": 5,
+      "scenario_rules": 3,
+      "source_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S08",
+        "S09",
+        "S11",
+        "S16",
+        "S19",
+        "S20",
+        "S21",
+        "S24",
+        "S25",
+        "S30",
+        "S32",
+        "S33"
+      ]
+    },
+    {
+      "occupation_id": "data",
+      "dimensions": 9,
+      "task_families": 5,
+      "scenario_rules": 3,
+      "source_ids": [
+        "BNM-AI",
+        "EMP-IPSOS",
+        "S03-FULL",
+        "S09",
+        "S19",
+        "S20",
+        "S24",
+        "S25"
+      ]
+    },
+    {
+      "occupation_id": "ai-research",
+      "dimensions": 9,
+      "task_families": 5,
+      "scenario_rules": 3,
+      "source_ids": [
+        "S03",
+        "S05",
+        "S06",
+        "S09",
+        "S10",
+        "S11",
+        "S14",
+        "S16",
+        "S17",
+        "S19",
+        "S20",
+        "S24",
+        "S25",
+        "S33"
+      ]
+    },
+    {
+      "occupation_id": "security",
+      "dimensions": 9,
+      "task_families": 5,
+      "scenario_rules": 3,
+      "source_ids": [
+        "BNM-AI",
+        "MF-CYBER",
+        "MY-CYBER",
+        "MYF-CYBER-PAY",
+        "S03-FULL",
+        "S19",
+        "S20",
+        "S24",
+        "S25"
+      ]
+    },
+    {
+      "occupation_id": "ux",
+      "dimensions": 9,
+      "task_families": 5,
+      "scenario_rules": 3,
+      "source_ids": [
+        "MF-UX",
+        "MY-UX",
+        "S03-FULL",
+        "S19",
+        "S20",
+        "S24",
+        "S25"
+      ]
+    },
+    {
+      "occupation_id": "creative",
+      "dimensions": 9,
+      "task_families": 5,
+      "scenario_rules": 3,
+      "source_ids": [
+        "EMP-STREAMLINE",
+        "MDEC-CONTENT",
+        "MY-CREATIVE",
+        "MY-UX",
+        "S03-FULL",
+        "S19",
+        "S20",
+        "S24",
+        "S25"
+      ]
+    },
+    {
+      "occupation_id": "game",
+      "dimensions": 9,
+      "task_families": 5,
+      "scenario_rules": 3,
+      "source_ids": [
+        "EMP-STREAMLINE",
+        "MDEC-CONTENT",
+        "MY-GAME",
+        "S03-FULL",
+        "S08",
+        "S19",
+        "S20",
+        "S24",
+        "S25"
+      ]
+    },
+    {
+      "occupation_id": "product",
+      "dimensions": 9,
+      "task_families": 5,
+      "scenario_rules": 3,
+      "source_ids": [
+        "BNM-AI",
+        "EMP-IPSOS",
+        "MF-FAIR",
+        "MY-ADMIN",
+        "MY-BA",
+        "MY-SYSTEMS",
+        "S03-FULL",
+        "S19",
+        "S20",
+        "S24",
+        "S25"
+      ]
+    },
+    {
+      "occupation_id": "marketing",
+      "dimensions": 9,
+      "task_families": 5,
+      "scenario_rules": 3,
+      "source_ids": [
+        "BNM-AI",
+        "MF-FAIR",
+        "MY-MARKETING",
+        "S01",
+        "S03-FULL",
+        "S19",
+        "S20",
+        "S24",
+        "S25"
+      ]
+    },
+    {
+      "occupation_id": "business-analysis",
+      "dimensions": 9,
+      "task_families": 5,
+      "scenario_rules": 3,
+      "source_ids": [
+        "EMP-IPSOS",
+        "EMP-IWK",
+        "MF-UX",
+        "MY-BA",
+        "MY-SYSTEMS",
+        "S03-FULL",
+        "S19",
+        "S20",
+        "S24",
+        "S25"
+      ]
+    },
+    {
+      "occupation_id": "finance",
+      "dimensions": 9,
+      "task_families": 5,
+      "scenario_rules": 3,
+      "source_ids": [
+        "BNM-AI",
+        "MF-FINANCE",
+        "S03-FULL",
+        "S19",
+        "S20",
+        "S24",
+        "S25",
+        "S29"
+      ]
+    },
+    {
+      "occupation_id": "education",
+      "dimensions": 9,
+      "task_families": 5,
+      "scenario_rules": 3,
+      "source_ids": [
+        "EMP-UNITEN",
+        "MY-TRAINING",
+        "S03-FULL",
+        "S19",
+        "S20",
+        "S24",
+        "S25"
+      ]
+    },
+    {
+      "occupation_id": "writing",
+      "dimensions": 9,
+      "task_families": 5,
+      "scenario_rules": 3,
+      "source_ids": [
+        "BNM-PILOTS",
+        "EMP-TERADYNE",
+        "MY-WRITING",
+        "S03-FULL",
+        "S19",
+        "S20",
+        "S24",
+        "S25"
+      ]
+    },
+    {
+      "occupation_id": "health",
+      "dimensions": 9,
+      "task_families": 5,
+      "scenario_rules": 3,
+      "source_ids": [
+        "EMP-KPJU",
+        "MOH-DIGITAL",
+        "MY-SYSTEMS",
+        "S03-FULL",
+        "S09",
+        "S19",
+        "S20",
+        "S24",
+        "S25"
+      ]
+    },
+    {
+      "occupation_id": "environment",
+      "dimensions": 9,
+      "task_families": 5,
+      "scenario_rules": 3,
+      "source_ids": [
+        "S04",
+        "S07",
+        "S09",
+        "S10",
+        "S12",
+        "S13",
+        "S14",
+        "S15",
+        "S19",
+        "S20",
+        "S24",
+        "S25",
+        "S28",
+        "S29",
+        "S35"
+      ]
+    },
+    {
+      "occupation_id": "energy",
+      "dimensions": 9,
+      "task_families": 5,
+      "scenario_rules": 3,
+      "source_ids": [
+        "EMP-SUNWAY",
+        "MY-ENERGY",
+        "S03-FULL",
+        "S19",
+        "S20",
+        "S24",
+        "S25"
+      ]
+    },
+    {
+      "occupation_id": "urban",
+      "dimensions": 9,
+      "task_families": 5,
+      "scenario_rules": 3,
+      "source_ids": [
+        "EMP-GDP",
+        "MY-PLANNER-BOARD",
+        "MY-URBAN",
+        "S03-FULL",
+        "S19",
+        "S20",
+        "S24",
+        "S25"
+      ]
+    },
+    {
+      "occupation_id": "agri",
+      "dimensions": 9,
+      "task_families": 5,
+      "scenario_rules": 3,
+      "source_ids": [
+        "MY-AGRI",
+        "MY-FOOD-OA",
+        "MY-SBC",
+        "MYF-AGRI",
+        "NAIO-AGRI",
+        "S03-FULL",
+        "S19",
+        "S20",
+        "S24",
+        "S25"
+      ]
+    },
+    {
+      "occupation_id": "water",
+      "dimensions": 9,
+      "task_families": 5,
+      "scenario_rules": 3,
+      "source_ids": [
+        "EMP-IWK",
+        "MY-WATER",
+        "S03-FULL",
+        "S19",
+        "S20",
+        "S24",
+        "S25"
+      ]
+    },
+    {
+      "occupation_id": "marine",
+      "dimensions": 9,
+      "task_families": 5,
+      "scenario_rules": 3,
+      "source_ids": [
+        "EMP-REEF",
+        "EMP-REEF-WORK",
+        "MY-BIO",
+        "S03-FULL",
+        "S10",
+        "S19",
+        "S20",
+        "S24",
+        "S25"
+      ]
+    },
+    {
+      "occupation_id": "biodiversity",
+      "dimensions": 9,
+      "task_families": 5,
+      "scenario_rules": 3,
+      "source_ids": [
+        "EMP-GEC",
+        "MY-BIO",
+        "MY-SBC",
+        "S03-FULL",
+        "S10",
+        "S19",
+        "S20",
+        "S24",
+        "S25"
+      ]
+    },
+    {
+      "occupation_id": "social-impact",
+      "dimensions": 9,
+      "task_families": 5,
+      "scenario_rules": 3,
+      "source_ids": [
+        "EMP-GEC",
+        "MY-ADMIN",
+        "MY-SOCIAL",
+        "S03-FULL",
+        "S19",
+        "S20",
+        "S24",
+        "S25"
+      ]
+    },
+    {
+      "occupation_id": "policy",
+      "dimensions": 9,
+      "task_families": 5,
+      "scenario_rules": 3,
+      "source_ids": [
+        "BNM-PILOTS",
+        "EMP-ISIS",
+        "MY-POLICY",
+        "S03-FULL",
+        "S19",
+        "S20",
+        "S24",
+        "S25"
+      ]
+    },
+    {
+      "occupation_id": "partnerships",
+      "dimensions": 9,
+      "task_families": 5,
+      "scenario_rules": 3,
+      "source_ids": [
+        "EMP-GEC",
+        "MF-FAIR",
+        "MY-ADMIN",
+        "MY-PR",
+        "S03-FULL",
+        "S19",
+        "S20",
+        "S24",
+        "S25"
+      ]
+    }
+  ],
+  "pilot_rows_preserved": true,
+  "known_limits": [
+    "No national occupation wage distribution for most roles",
+    "No comparable state occupation shares",
+    "Some product branches have conditional MASCO mappings",
+    "MyCOL exact-title status unresolved for some roles",
+    "Most task-level AI effects are conditional inference; not measured local productivity"
+  ],
+  "git_base": "337abca0848a03c2092061b572f705035c8b127d",
+  "github_push_status": "Pending commit and push; do not treat this audit as a remote receipt",
+  "browser_acceptance": {
+    "date": "2026-10-24",
+    "four_background_steps": true,
+    "twelve_unknown_answers_preserved": true,
+    "career_panels": 24,
+    "what_if_states": [
+      "unknown after SQL only",
+      "conditional after SQL + API + authorised review"
+    ],
+    "hypotheses_clear_on_refresh": true,
+    "actual_download_verified": true,
+    "source": "Manual browser interactions against local FastAPI server; public live deployment not changed"
+  }
+}

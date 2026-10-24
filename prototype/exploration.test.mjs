@@ -4,6 +4,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {createHash} from 'node:crypto';
+// Canonical LF checksums preserve author-content checks on Windows CRLF checkouts.
 import {bank,directions,questionsFor,createDraft,setDirection,validateExploration,analyzeExploration,simulateExploration,exampleProfile,contextRoles} from './exploration/engine.js';
 import {renderExplorationIntake,pageQuestions,renderExplorationSection,renderExplorationSimulator,collectExploration} from './exploration/ui.js';
 import {buildLocalReport} from './local/engine.js';
@@ -22,8 +23,8 @@ test('1–3: author-supplied content and scoring are unchanged, 10 directions ea
  const source=path.join(root,manifest.source_directory),fullName=Object.keys(manifest.sha256).find(n=>n.endsWith('_V2.json'));
  const full=JSON.parse(fs.readFileSync(path.join(source,fullName),'utf8'));
  const markdown=fs.readFileSync(path.join(source,Object.keys(manifest.sha256).find(n=>n.endsWith('.md'))),'utf8');
- for(const [filename,hash] of Object.entries(manifest.sha256))assert.equal(createHash('sha256').update(fs.readFileSync(path.join(source,filename))).digest('hex'),hash);
- for(const filename of ['bank.json','scoring.json'])assert.ok(questionOriginals.includes(createHash('sha256').update(fs.readFileSync(path.join(root,'prototype/exploration',filename))).digest('hex')));
+ for(const [filename,hash] of Object.entries(manifest.sha256))assert.equal(createHash('sha256').update(fs.readFileSync(path.join(source,filename)).toString('utf8').replace(/\r\n/g,'\n')).digest('hex'),hash);
+ for(const filename of ['bank.json','scoring.json'])assert.ok(questionOriginals.includes(createHash('sha256').update(fs.readFileSync(path.join(root,'prototype/exploration',filename)).toString('utf8').replace(/\r\n/g,'\n')).digest('hex')));
  for(const d of directions){const questions=questionsFor(d.id);assert.equal(questions.length,12);assert.equal(questions.filter(q=>q.direction_id==='COMMON').length,4);assert.equal(questions.filter(q=>q.direction_id===d.id).length,8);
   const profile=createDraft(d.id);assert.equal(Array.from({length:6},(_,i)=>pageQuestions(profile,i+1)).flat().length,12);
   for(const q of questions){const original=full.questions.find(x=>x.id===q.id);assert.equal(q.question,original.question);assert.ok(markdown.includes(q.question));assert.equal(q.required,false);assert.deepEqual(q.options,original.options.map(({id,text})=>({id,text})));assert.ok(q.options.some(o=>o.id==='U'));
